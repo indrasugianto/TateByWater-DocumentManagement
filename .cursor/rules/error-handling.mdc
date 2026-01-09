@@ -1,0 +1,348 @@
+---
+description: "Error handling patterns and best practices"
+alwaysApply: true
+---
+
+# Error Handling Patterns & Best Practices
+
+## Exception Handling Philosophy
+
+**MUST** follow these principles:
+
+1. **Fail Fast**: Detect errors early
+2. **Fail Loudly**: Don't silently swallow errors
+3. **Provide Context**: Include useful error messages
+4. **Clean Up**: Always clean up resources in `finally` blocks
+5. **Log Appropriately**: Use logging instead of print for errors
+
+## Try/Except/Finally Structure
+
+**MUST** use proper try/except/finally structure:
+
+```python
+✅ GOOD:
+def extract_vba_from_access(accdb_path: str, output_dir: str) -> dict | None:
+    access = None
+    try:
+        access = win32com.client.Dispatch("Access.Application")
+        access.OpenCurrentDatabase(os.path.abspath(accdb_path))
+        # ... work ...
+        return stats
+    except FileNotFoundError as e:
+        print(f"Error: Database file not found: {e}")
+        return None
+    except Exception as e:
+        print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
+    finally:
+        if access:
+            try:
+                access.CloseCurrentDatabase()
+                access.Quit()
+            except:
+                pass
+
+❌ BAD:
+def extract_vba_from_access(accdb_path: str, output_dir: str):
+    access = win32com.client.Dispatch("Access.Application")
+    access.OpenCurrentDatabase(accdb_path)  # May raise exception
+    # ... work ...
+    access.Quit()  # May not execute if exception occurs
+```
+
+## Exception Specificity
+
+**MUST** catch specific exceptions when possible:
+
+```python
+✅ GOOD:
+try:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+except FileNotFoundError:
+    print(f"Error: File not found: {file_path}")
+except PermissionError:
+    print(f"Error: Permission denied: {file_path}")
+except UnicodeDecodeError as e:
+    print(f"Error: Encoding issue: {e}")
+except Exception as e:
+    print(f"Error: Unexpected error: {e}")
+
+❌ BAD:
+try:
+    with open(file_path, 'r') as f:
+        content = f.read()
+except:  # Too broad - catches everything including KeyboardInterrupt
+    print("Error")
+```
+
+## Error Messages
+
+**MUST** provide informative error messages:
+
+```python
+✅ GOOD:
+if not os.path.exists(accdb_path):
+    print(f"Error: Access database not found at {accdb_path}")
+    print(f"Current working directory: {os.getcwd()}")
+    sys.exit(1)
+
+❌ BAD:
+if not os.path.exists(accdb_path):
+    print("Error")  # Not helpful
+    sys.exit(1)
+```
+
+**MUST** include:
+- What went wrong
+- Where it went wrong (file path, function name)
+- Why it might have gone wrong (context)
+- What the user should do (if applicable)
+
+## Logging vs Print
+
+**SHOULD** use logging instead of print for errors:
+
+```python
+✅ GOOD:
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+try:
+    # ... operation ...
+except Exception as e:
+    logger.error(f"Failed to extract VBA: {e}", exc_info=True)
+    return None
+
+❌ BAD:
+try:
+    # ... operation ...
+except Exception as e:
+    print(f"Error: {e}")  # Use logging instead
+    return None
+```
+
+**MUST** use print only for:
+- User-facing progress messages
+- Interactive prompts
+- Simple scripts where logging is overkill
+
+## Nested Exception Handling
+
+**MUST** handle exceptions at appropriate levels:
+
+```python
+✅ GOOD:
+def extract_vba_from_access(accdb_path: str, output_dir: str) -> dict | None:
+    access = None
+    try:
+        access = win32com.client.Dispatch("Access.Application")
+        # ... outer operations ...
+        
+        for component in vba_project.VBComponents:
+            try:
+                # ... component-specific operations ...
+                code_module = component.CodeModule
+                line_count = code_module.CountOfLines
+            except AttributeError as e:
+                print(f"  [WARNING] Component {component.Name} has no code: {e}")
+                continue  # Skip this component, continue with next
+            except Exception as e:
+                print(f"  [ERROR] Error extracting {component.Name}: {e}")
+                continue  # Skip this component, continue with next
+        
+        return stats
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+    finally:
+        # ... cleanup ...
+
+❌ BAD:
+def extract_vba_from_access(accdb_path: str, output_dir: str):
+    access = win32com.client.Dispatch("Access.Application")
+    for component in vba_project.VBComponents:
+        code_module = component.CodeModule  # May raise exception, stops entire loop
+        line_count = code_module.CountOfLines
+```
+
+## Resource Cleanup
+
+**MUST** always clean up resources in `finally` blocks:
+
+```python
+✅ GOOD:
+access = None
+try:
+    access = win32com.client.Dispatch("Access.Application")
+    # ... work ...
+finally:
+    if access:
+        try:
+            access.CloseCurrentDatabase()
+            access.Quit()
+        except Exception:
+            pass  # Ignore cleanup errors
+
+❌ BAD:
+access = win32com.client.Dispatch("Access.Application")
+# ... work ...
+access.Quit()  # May not execute if exception occurs
+```
+
+## Error Propagation
+
+**SHOULD** decide when to handle vs propagate:
+
+```python
+✅ GOOD:
+# Handle and return None/False for recoverable errors
+def extract_component(component) -> str | None:
+    try:
+        return component.CodeModule.Lines(1, 100)
+    except AttributeError:
+        return None  # Component has no code - not an error
+
+# Propagate for unexpected errors
+def validate_path(path: str) -> Path:
+    path_obj = Path(path)
+    if not path_obj.exists():
+        raise FileNotFoundError(f"Path does not exist: {path}")
+    return path_obj
+
+❌ BAD:
+# Swallowing all errors
+def extract_component(component) -> str:
+    try:
+        return component.CodeModule.Lines(1, 100)
+    except:
+        return ""  # Hides the error
+
+# Catching and re-raising without context
+def validate_path(path: str) -> Path:
+    try:
+        path_obj = Path(path)
+        if not path_obj.exists():
+            raise FileNotFoundError()
+    except Exception as e:
+        raise  # Lost context
+```
+
+## Validation and Early Returns
+
+**MUST** validate inputs early:
+
+```python
+✅ GOOD:
+def extract_vba_from_access(accdb_path: str, output_dir: str) -> dict | None:
+    # Validate inputs early
+    if not accdb_path:
+        raise ValueError("accdb_path cannot be empty")
+    
+    accdb_path_obj = Path(accdb_path)
+    if not accdb_path_obj.exists():
+        print(f"Error: Database not found: {accdb_path}")
+        return None
+    
+    if not accdb_path_obj.suffix.lower() in ['.accdb', '.mdb']:
+        print(f"Error: Invalid file type: {accdb_path}")
+        return None
+    
+    # ... rest of function ...
+
+❌ BAD:
+def extract_vba_from_access(accdb_path: str, output_dir: str):
+    # No validation - fails later with confusing error
+    access.OpenCurrentDatabase(accdb_path)
+```
+
+## Traceback Information
+
+**SHOULD** include traceback for debugging:
+
+```python
+✅ GOOD:
+except Exception as e:
+    print(f"Error: {e}")
+    import traceback
+    traceback.print_exc()  # Full traceback for debugging
+    return None
+
+❌ BAD:
+except Exception as e:
+    print(f"Error: {e}")  # No traceback - harder to debug
+    return None
+```
+
+## Error Recovery
+
+**SHOULD** implement graceful degradation:
+
+```python
+✅ GOOD:
+stats = {'modules': 0, 'class_modules': 0, 'total_lines': 0, 'components': []}
+
+for component in vba_project.VBComponents:
+    try:
+        # Try to extract component
+        code = extract_component_code(component)
+        stats['components'].append({'name': component.Name, 'code': code})
+        stats['total_lines'] += len(code.splitlines())
+    except Exception as e:
+        # Log error but continue processing other components
+        print(f"  [WARNING] Skipped {component.Name}: {e}")
+        stats['components'].append({'name': component.Name, 'error': str(e)})
+
+# Return partial results even if some components failed
+return stats
+
+❌ BAD:
+for component in vba_project.VBComponents:
+    code = extract_component_code(component)  # Stops entire process on first error
+    stats['components'].append({'name': component.Name, 'code': code})
+```
+
+## Custom Exceptions
+
+**SHOULD** create custom exceptions for domain-specific errors:
+
+```python
+✅ GOOD:
+class VBAExtractionError(Exception):
+    """Base exception for VBA extraction errors."""
+    pass
+
+class ComponentNotFoundError(VBAExtractionError):
+    """Raised when a component cannot be found."""
+    pass
+
+class InvalidDatabaseError(VBAExtractionError):
+    """Raised when database file is invalid."""
+    pass
+
+# Usage:
+if not accdb_path_obj.exists():
+    raise InvalidDatabaseError(f"Database not found: {accdb_path}")
+
+❌ BAD:
+# Using generic exceptions everywhere
+if not accdb_path_obj.exists():
+    raise Exception("Database not found")  # Too generic
+```
+
+## Error Handling Checklist
+
+Before committing code, verify:
+
+- [ ] All file operations wrapped in try/except
+- [ ] All COM operations wrapped in try/except
+- [ ] Resources cleaned up in `finally` blocks
+- [ ] Error messages are informative
+- [ ] Specific exceptions caught when possible
+- [ ] Traceback included for debugging (when appropriate)
+- [ ] Input validation performed early
+- [ ] Errors logged appropriately (not just printed)

@@ -1,0 +1,195 @@
+---
+globs:
+  - "**/*.py"
+description: "Best practices for Windows COM automation with win32com"
+---
+
+# Windows COM Automation Best Practices
+
+## COM Object Lifecycle
+
+**MUST** properly initialize and cleanup COM objects:
+
+```python
+✅ GOOD:
+access = win32com.client.Dispatch("Access.Application")
+try:
+    access.OpenCurrentDatabase(abs_path)
+    # ... work with Access ...
+finally:
+    try:
+        access.CloseCurrentDatabase()
+        access.Quit()
+    except:
+        pass  # Ignore cleanup errors
+
+❌ BAD:
+access = win32com.client.Dispatch("Access.Application")
+access.OpenCurrentDatabase(abs_path)
+# ... work ...
+# Missing cleanup - Access stays open!
+```
+
+## Error Handling for COM Operations
+
+**MUST** wrap COM operations in try/except blocks:
+
+```python
+✅ GOOD:
+try:
+    vba_project = access.VBE.ActiveVBProject
+    component = vba_project.VBComponents.Item(component_name)
+except Exception as e:
+    print(f"[ERROR] Failed to access component: {e}")
+    return None
+
+❌ BAD:
+vba_project = access.VBE.ActiveVBProject  # May raise exception
+component = vba_project.VBComponents.Item(component_name)  # May raise exception
+```
+
+## Path Handling for COM
+
+**MUST** convert paths to absolute paths before passing to COM:
+
+```python
+✅ GOOD:
+abs_path = os.path.abspath(accdb_path)
+access.OpenCurrentDatabase(abs_path)
+
+❌ BAD:
+access.OpenCurrentDatabase(accdb_path)  # Relative paths may fail
+```
+
+## COM Object State Checking
+
+**SHOULD** check if COM objects are initialized before use:
+
+```python
+✅ GOOD:
+if olApp is None:
+    olApp = CreateObject("Outlook.Application")
+
+❌ BAD:
+olApp.CreateItem(0)  # May fail if olApp is None
+```
+
+## Exception Handling Patterns
+
+**MUST** catch specific COM exceptions when possible:
+
+```python
+✅ GOOD:
+try:
+    code_module = component.CodeModule
+    line_count = code_module.CountOfLines
+except AttributeError as e:
+    print(f"[ERROR] Component has no CodeModule: {e}")
+except Exception as e:
+    print(f"[ERROR] Unexpected error: {e}")
+
+❌ BAD:
+try:
+    code_module = component.CodeModule
+except:  # Too broad
+    pass
+```
+
+## Resource Cleanup
+
+**MUST** ensure COM objects are properly released:
+
+1. **Always** use `finally` blocks for cleanup
+2. **Always** call `Quit()` on Application objects
+3. **Always** call `CloseCurrentDatabase()` before `Quit()`
+4. **Ignore** exceptions during cleanup (they're often harmless)
+
+```python
+✅ GOOD:
+finally:
+    try:
+        access.CloseCurrentDatabase()
+        access.Quit()
+        print("\nAccess closed.")
+    except Exception:
+        pass  # Cleanup errors are usually harmless
+
+❌ BAD:
+finally:
+    access.Quit()  # Missing CloseCurrentDatabase()
+    # Missing exception handling
+```
+
+## COM Method Calls
+
+**SHOULD** handle COM method calls that may return `None`:
+
+```python
+✅ GOOD:
+code_module = component.CodeModule
+if code_module is None:
+    print(f"  - Component {component_name} has no code module")
+    continue
+
+line_count = code_module.CountOfLines
+
+❌ BAD:
+line_count = component.CodeModule.CountOfLines  # May fail if None
+```
+
+## Windows-Specific Considerations
+
+**MUST** remember:
+- COM automation only works on Windows
+- `win32com` requires `pywin32` package
+- Some COM operations may be slow - consider progress indicators
+- COM objects may hold locks - always cleanup properly
+
+## Debugging COM Issues
+
+**SHOULD** add detailed error messages for COM operations:
+
+```python
+✅ GOOD:
+try:
+    access.OpenCurrentDatabase(abs_path)
+except Exception as e:
+    print(f"Error opening database: {e}")
+    print(f"Database path: {abs_path}")
+    print(f"Path exists: {os.path.exists(abs_path)}")
+    import traceback
+    traceback.print_exc()
+
+❌ BAD:
+try:
+    access.OpenCurrentDatabase(abs_path)
+except:
+    print("Error")  # Not helpful
+```
+
+## Performance Considerations
+
+**SHOULD** minimize COM calls:
+- Cache COM object references when possible
+- Batch operations when feasible
+- Avoid repeated property access
+
+```python
+✅ GOOD:
+vba_project = access.VBE.ActiveVBProject
+component_count = vba_project.VBComponents.Count
+for i in range(component_count):
+    component = vba_project.VBComponents.Item(i + 1)  # 1-indexed
+    # ... process component ...
+
+❌ BAD:
+for i in range(access.VBE.ActiveVBProject.VBComponents.Count):  # Repeated COM calls
+    component = access.VBE.ActiveVBProject.VBComponents.Item(i + 1)
+```
+
+## Thread Safety
+
+**MUST** remember:
+- COM objects are **NOT** thread-safe
+- Do **NOT** share COM objects across threads
+- Create separate COM instances per thread if needed

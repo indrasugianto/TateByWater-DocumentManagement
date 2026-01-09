@@ -1,0 +1,137 @@
+---
+description: "Dependency management and requirements"
+---
+
+# Dependency Management
+
+## Requirements File
+
+**MUST** maintain `requirements.txt` with all dependencies:
+
+```txt
+# Windows COM automation
+pywin32>=306
+
+# Optional: Development dependencies
+# pytest>=7.0.0
+# black>=22.0.0
+# ruff>=0.1.0
+# mypy>=1.0.0
+```
+
+## Installation
+
+**MUST** document installation process:
+
+```bash
+# Create virtual environment (recommended)
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## Dependency Updates
+
+**SHOULD** regularly update dependencies:
+
+1. Check for updates: `pip list --outdated`
+2. Test updates in development environment
+3. Update `requirements.txt` with version pins
+4. Test extraction process after updates
+
+## Version Pinning
+
+**SHOULD** pin major versions:
+
+```txt
+✅ GOOD:
+pywin32>=306,<307  # Pin major version, allow patch updates
+
+❌ BAD:
+pywin32  # No version - may break with updates
+pywin32==306.0.0  # Too strict - no patch updates
+```
+
+## Windows-Specific Dependencies
+
+**MUST** document Windows requirement:
+
+- `pywin32` only works on Windows
+- Project cannot run on Linux/Mac
+- Document this limitation in README
+
+## Virtual Environments
+
+**SHOULD** use virtual environments:
+
+- Isolates project dependencies
+- Prevents conflicts with system packages
+- Makes dependency management easier
+- Include `venv/` in `.gitignore`
+
+## Dependency Documentation
+
+**MUST** document why each dependency is needed:
+
+```txt
+# Windows COM automation - Required for Access automation
+pywin32>=306
+```
+
+## Security Considerations
+
+**SHOULD** check dependencies for vulnerabilities:
+
+- Use `pip-audit` or similar tools
+- Review dependency updates for security patches
+- Keep dependencies up to date
+
+## Adding New Dependencies
+
+**MUST** follow this process:
+
+1. Install: `pip install package_name`
+2. Test: Verify it works as expected
+3. Add to `requirements.txt`: `pip freeze > requirements.txt` or manual edit
+4. Document: Add comment explaining why it's needed
+5. Commit: Include `requirements.txt` in commit
+
+## Development Dependencies
+
+**SHOULD** separate dev dependencies (optional):
+
+```txt
+# requirements-dev.txt
+-r requirements.txt
+
+# Development tools
+pytest>=7.0.0
+black>=22.0.0
+ruff>=0.1.0
+mypy>=1.0.0
+```
+
+## Dependency Conflicts
+
+**SHOULD** resolve conflicts:
+
+- Check dependency compatibility
+- Use compatible versions
+- Consider alternatives if conflicts persist
+- Document any known conflicts
+
+## Lock Files (Optional)
+
+**MAY** use lock files for reproducibility:
+
+- `requirements-lock.txt` with exact versions
+- Generated with `pip freeze > requirements-lock.txt`
+- Use for production deployments
+- Keep `requirements.txt` with version ranges for development

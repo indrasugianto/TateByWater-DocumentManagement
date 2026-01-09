@@ -6,15 +6,14 @@ This rule ensures the AI maintains persistent memory across sessions by using th
 
 ## Knowledge Base Structure
 
-This project uses **markdown files** in the `docs/cursor/` directory to maintain persistent context:
+This project uses **markdown files** in the `docs/` directory to maintain persistent context:
 
 ```
-docs/cursor/
+docs/
 ├── project-plan.md          # Current work, roadmap, task tracking
 ├── tech-debt.md             # Known issues, improvement opportunities
 ├── architecture-decisions.md # ADRs (Architecture Decision Records)
-├── testing-strategy.md      # Test plan and coverage roadmap
-└── security-audit.md        # Security findings and remediation
+└── vba-extraction-notes.md  # VBA extraction domain knowledge
 ```
 
 ## CRITICAL WORKFLOW RULES
@@ -23,18 +22,18 @@ docs/cursor/
 
 **BEFORE beginning ANY new feature or complex task:**
 
-1. **Read** `@docs/cursor/project-plan.md` to understand:
+1. **Read** `@docs/project-plan.md` to understand:
    - Current project status
    - Active tasks and priorities
    - What's already been done
    - Dependencies and blockers
 
-2. **Read** `@docs/cursor/tech-debt.md` to check:
+2. **Read** `@docs/tech-debt.md` to check:
    - Known issues related to your task
    - Improvement opportunities
    - Patterns to follow or avoid
 
-3. **Read** `@docs/cursor/architecture-decisions.md` to understand:
+3. **Read** `@docs/architecture-decisions.md` to understand:
    - Why certain design decisions were made
    - Architectural patterns in use
    - Technology choices and rationale
@@ -42,8 +41,8 @@ docs/cursor/
 ```
 ✅ GOOD Workflow:
 1. User: "Add caching to SalesforceClient"
-2. AI: *Reads @docs/cursor/project-plan.md*
-3. AI: *Reads @docs/cursor/tech-debt.md*
+2. AI: *Reads @docs/project-plan.md*
+3. AI: *Reads @docs/tech-debt.md*
 4. AI: *Checks if caching task is already tracked*
 5. AI: Implements feature with full context
 
@@ -57,7 +56,7 @@ docs/cursor/
 
 **WHILE working on a task:**
 
-1. **Update** `@docs/cursor/project-plan.md` as you complete steps:
+1. **Update** `@docs/project-plan.md` as you complete steps:
    ```markdown
    ## Current Tasks
 
@@ -69,7 +68,7 @@ docs/cursor/
    - Result: Reduced auth calls from 18/run to 1/run
    ```
 
-2. **Document decisions** in `@docs/cursor/architecture-decisions.md`:
+2. **Document decisions** in `@docs/architecture-decisions.md`:
    ```markdown
    ## ADR-005: Token Caching Strategy
 
@@ -88,7 +87,7 @@ docs/cursor/
    - ⚠️ Tokens lost on application restart
    ```
 
-3. **Track issues** in `@docs/cursor/tech-debt.md`:
+3. **Track issues** in `@docs/tech-debt.md`:
    ```markdown
    ## Known Issues
 
@@ -282,7 +281,7 @@ Knowledge Base: security-audit.md
 
 ### If AI Loses Context Mid-Task:
 
-1. **Read** `@docs/cursor/project-plan.md` → Find "In Progress" section
+1. **Read** `@docs/project-plan.md` → Find "In Progress" section
 2. **Read** the specific task description
 3. **Check** recent commits/changes
 4. **Review** related Cursor Rules
@@ -305,16 +304,16 @@ You're using the knowledge base effectively when:
 
 ```
 Step 1: Research
-- Read @docs/cursor/project-plan.md
+- Read @docs/project-plan.md
   → Find: This is not currently in progress
-- Read @docs/cursor/tech-debt.md
+- Read @docs/tech-debt.md
   → Find: "Full Refresh" listed as known limitation
   → Find: Proposal to use LastModifiedDate field
-- Read @docs/cursor/architecture-decisions.md
+- Read @docs/architecture-decisions.md
   → Find: ADR-003 explains why full refresh was chosen initially
 
 Step 2: Plan
-- Update @docs/cursor/project-plan.md
+- Update @docs/project-plan.md
   → Add to "In Progress": 
     - "Implement Incremental Updates (Started: 2025-01-15)"
     - Checklist of steps
@@ -332,8 +331,8 @@ Step 4: Document
   → Add any new limitations discovered
 
 Step 5: Formalize
-- Update performance-optimization.mdc rule if needed
-- Update database-access.mdc with new incremental patterns
+- Update vba-extraction-workflow.mdc rule if needed
+- Create new rules as patterns emerge
 ```
 
 ## Critical Reminders

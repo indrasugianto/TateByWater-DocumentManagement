@@ -1,0 +1,171 @@
+---
+globs:
+  - "**/*.py"
+description: "Python coding standards and best practices for this project"
+---
+
+# Python Standards & Best Practices
+
+## Type Hints
+
+**MUST** use type hints for all function parameters and return types:
+
+```python
+✅ GOOD:
+def extract_vba_from_access(accdb_path: str, output_dir: str) -> dict[str, int] | None:
+    """Extract VBA code from Access database."""
+    pass
+
+❌ BAD:
+def extract_vba_from_access(accdb_path, output_dir):
+    """Extract VBA code from Access database."""
+    pass
+```
+
+**MUST** use `typing` module for complex types:
+- Use `dict[str, int]` instead of `dict`
+- Use `list[str]` instead of `list`
+- Use `Optional[Type]` or `Type | None` for nullable returns
+- Use `Path` from `pathlib` for path parameters
+
+## Docstrings
+
+**MUST** include docstrings for all functions and classes using Google-style format:
+
+```python
+def function_name(param1: str, param2: int) -> bool:
+    """
+    Brief description of what the function does.
+    
+    More detailed explanation if needed. Can span multiple lines.
+    
+    Args:
+        param1: Description of param1
+        param2: Description of param2
+    
+    Returns:
+        Description of return value
+    
+    Raises:
+        ValueError: When param1 is invalid
+        FileNotFoundError: When file doesn't exist
+    """
+    pass
+```
+
+## Code Style (PEP 8)
+
+**MUST** follow PEP 8 conventions:
+- Use `snake_case` for functions and variables
+- Use `UPPER_CASE` for constants
+- Use `PascalCase` only for classes
+- Maximum line length: 88 characters (Black formatter default)
+- Use 4 spaces for indentation (never tabs)
+- Use blank lines to separate logical sections
+
+## Import Organization
+
+**MUST** organize imports in this order:
+1. Standard library imports
+2. Third-party imports
+3. Local application imports
+
+**MUST** use absolute imports (avoid relative imports)
+
+```python
+✅ GOOD:
+import os
+import sys
+from pathlib import Path
+
+import win32com.client
+
+from local_module import something
+
+❌ BAD:
+from .local_module import something  # Relative import
+import win32com.client  # Before standard library
+```
+
+## Path Handling
+
+**MUST** use `pathlib.Path` instead of `os.path`:
+
+```python
+✅ GOOD:
+from pathlib import Path
+
+script_dir = Path(__file__).parent
+accdb_path = script_dir / "msaccess" / "database.accdb"
+output_dir = script_dir / "extracted_vba"
+
+❌ BAD:
+import os
+
+script_dir = os.path.dirname(__file__)
+accdb_path = os.path.join(script_dir, "msaccess", "database.accdb")
+```
+
+## String Formatting
+
+**MUST** use f-strings for string formatting (Python 3.6+):
+
+```python
+✅ GOOD:
+print(f"Opening database: {accdb_path}")
+error_msg = f"Error extracting {component_name}: {error}"
+
+❌ BAD:
+print("Opening database: {}".format(accdb_path))
+print("Opening database: %s" % accdb_path)
+```
+
+## Constants
+
+**MUST** define constants at module level using `UPPER_CASE`:
+
+```python
+# Component type constants
+COMPONENT_TYPE_MODULE = 1
+COMPONENT_TYPE_CLASS = 2
+COMPONENT_TYPE_FORM = 3
+COMPONENT_TYPE_DOCUMENT = 100
+```
+
+## Function Complexity
+
+**SHOULD** keep functions focused and under 50 lines when possible
+**SHOULD** extract complex logic into separate helper functions
+**MUST** use early returns to reduce nesting
+
+## Error Handling
+
+See `error-handling.mdc` for detailed error handling patterns.
+
+## Resource Management
+
+**MUST** use context managers (`with` statements) for file operations:
+
+```python
+✅ GOOD:
+with open(file_path, 'w', encoding='utf-8', errors='replace') as f:
+    f.write(content)
+
+❌ BAD:
+f = open(file_path, 'w')
+f.write(content)
+f.close()
+```
+
+## Type Checking
+
+**SHOULD** run `mypy` or `pyright` for type checking
+**SHOULD** add type stubs for third-party libraries if needed
+
+## Code Quality Tools
+
+**SHOULD** use:
+- `black` for code formatting
+- `ruff` or `flake8` for linting
+- `mypy` or `pyright` for type checking
+- `pytest` for testing (if tests are added)

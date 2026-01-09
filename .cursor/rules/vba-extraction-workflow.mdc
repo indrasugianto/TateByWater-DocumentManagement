@@ -1,0 +1,265 @@
+---
+description: "VBA extraction workflow and domain knowledge"
+---
+
+# VBA Extraction Workflow & Domain Knowledge
+
+## Overview
+
+This project extracts VBA (Visual Basic for Applications) code from MS Access database files (`.accdb` or `.mdb`). The extraction process uses Windows COM automation to access the Access VBA project and extract code modules.
+
+## Component Types
+
+**MUST** understand these VBA component types:
+
+### Standard Modules (Type 1: `vbext_ct_StdModule`)
+- **Extension**: `.bas`
+- **Purpose**: Contains standalone procedures and functions
+- **Example**: `Module1.bas`, `Utils.bas`
+- **Code Location**: `component.CodeModule`
+
+### Class Modules (Type 2: `vbext_ct_ClassModule`)
+- **Extension**: `.cls`
+- **Purpose**: Contains class definitions
+- **Example**: `OutlookApp.cls`, `ValidatedForm.cls`
+- **Code Location**: `component.CodeModule`
+
+### Forms (Type 3: `vbext_ct_MSForm`)
+- **Extension**: `.form.bas`
+- **Purpose**: Contains form event handlers and code-behind
+- **Example**: `frmMain.form.bas`
+- **Code Location**: `component.CodeModule`
+- **Note**: Forms may have code modules attached
+
+### Reports (Type 100: `vbext_ct_Document`)
+- **Extension**: `.report.bas`
+- **Purpose**: Contains report event handlers and code-behind
+- **Example**: `rptSummary.report.bas`
+- **Code Location**: `component.CodeModule`
+- **Note**: Reports may have code modules attached
+
+## Extraction Process
+
+**MUST** follow this workflow:
+
+1. **Initialize COM**
+   ```python
+   access = win32com.client.Dispatch("Access.Application")
+   ```
+
+2. **Open Database**
+   ```python
+   abs_path = os.path.abspath(accdb_path)
+   access.OpenCurrentDatabase(abs_path)
+   ```
+
+3. **Access VBA Project**
+   ```python
+   vba_project = access.VBE.ActiveVBProject
+   ```
+
+4. **Iterate Components**
+   ```python
+   for component in vba_project.VBComponents:
+       component_type = component.Type
+       component_name = component.Name
+   ```
+
+5. **Extract Code**
+   ```python
+   code_module = component.CodeModule
+   line_count = code_module.CountOfLines
+   if line_count > 0:
+       code_text = code_module.Lines(1, line_count)
+   ```
+
+6. **Save to File**
+   ```python
+   output_file = output_dir / f"{component_name}.{ext}"
+   with open(output_file, 'w', encoding='utf-8', errors='replace') as f:
+       f.write(header)
+       f.write(code_text)
+   ```
+
+7. **Cleanup**
+   ```python
+   access.CloseCurrentDatabase()
+   access.Quit()
+   ```
+
+## File Naming Conventions
+
+**MUST** use these naming patterns:
+
+- Standard modules: `{ComponentName}.bas`
+- Class modules: `{ClassName}.cls`
+- Forms: `{FormName}.form.bas` (if `"Form_"` in name or type == 3)
+- Reports: `{ReportName}.report.bas` (otherwise for type 100)
+
+**MUST** sanitize component names:
+- Remove invalid filesystem characters: `<>:"/\|?*`
+- Replace with underscore: `_`
+- Preserve original name as much as possible
+
+## File Header Format
+
+**MUST** include metadata header in extracted files:
+
+```vba
+' Component: {ComponentName}
+' Type: {type_name}
+' Lines: {line_count}
+' ============================================================
+
+{code_text}
+```
+
+## Component Type Detection
+
+**MUST** use this mapping:
+
+```python
+COMPONENT_TYPE_MAP = {
+    1: ("module", "bas"),           # Standard module
+    2: ("class", "cls"),             # Class module
+    3: ("form", "form.bas"),         # Form
+    100: ("document", "report.bas")  # Report (or Form)
+}
+
+# Additional logic needed:
+# - If type 100 and "Form_" in name → form
+# - If type 100 and not "Form_" → report
+```
+
+## Statistics Tracking
+
+**MUST** track these statistics:
+
+```python
+stats = {
+    'modules': 0,           # Count of standard modules
+    'class_modules': 0,     # Count of class modules
+    'forms': 0,             # Count of forms with code
+    'reports': 0,           # Count of reports with code
+    'total_lines': 0,       # Total lines of code extracted
+    'components': []        # List of component details
+}
+```
+
+Each component entry should include:
+```python
+{
+    'name': str,      # Component name
+    'type': str,      # Type name (module, class, form, report)
+    'lines': int,     # Line count
+    'file': str       # Output file path
+}
+```
+
+## Error Handling for Components
+
+**MUST** handle component-level errors gracefully:
+
+```python
+for component in vba_project.VBComponents:
+    try:
+        code_module = component.CodeModule
+        # ... extract code ...
+    except AttributeError:
+        # Component has no code module - skip
+        print(f"  - {component.Name} has no code")
+        continue
+    except Exception as e:
+        # Log error but continue with other components
+        print(f"  [ERROR] Failed to extract {component.Name}: {e}")
+        continue
+```
+
+## Encoding Considerations
+
+**MUST** handle encoding issues:
+
+- VBA code may contain legacy encodings
+- Use `encoding='utf-8'` with `errors='replace'`
+- Invalid bytes will be replaced with replacement character
+- This prevents crashes from encoding errors
+
+## Empty Components
+
+**SHOULD** handle empty components:
+
+```python
+line_count = code_module.CountOfLines
+if line_count > 0:
+    # Extract and save code
+else:
+    print(f"  - {component.Name} has no code")
+    # Optionally: Still create empty file or skip
+```
+
+## COM Object Lifecycle
+
+**MUST** manage COM objects properly:
+
+1. Create: `access = win32com.client.Dispatch("Access.Application")`
+2. Use: Open database, access VBA project
+3. Cleanup: Always in `finally` block
+   ```python
+   try:
+       access.CloseCurrentDatabase()
+       access.Quit()
+   except:
+       pass  # Ignore cleanup errors
+   ```
+
+## Performance Considerations
+
+**SHOULD** be aware of:
+
+- COM operations are relatively slow
+- Large databases may take time to process
+- Consider progress indicators for long operations
+- Batch operations when possible
+
+## Common Issues
+
+### Issue: Component has no CodeModule
+- **Cause**: Some components don't have code
+- **Solution**: Check `line_count` or catch `AttributeError`
+- **Action**: Skip component or create empty file
+
+### Issue: Invalid component name
+- **Cause**: Component names may contain invalid filesystem characters
+- **Solution**: Sanitize filename before saving
+- **Action**: Replace invalid chars with underscore
+
+### Issue: Encoding errors
+- **Cause**: VBA code may contain non-UTF-8 characters
+- **Solution**: Use `errors='replace'` in file open
+- **Action**: Invalid bytes replaced automatically
+
+### Issue: Access stays open
+- **Cause**: Exception before cleanup
+- **Solution**: Always use `finally` block
+- **Action**: Ensure `Quit()` is called
+
+## Testing Extraction
+
+**SHOULD** verify extraction:
+
+1. Check file count matches component count
+2. Verify file extensions are correct
+3. Check file headers contain metadata
+4. Verify code content is preserved
+5. Check statistics are accurate
+
+## Future Enhancements
+
+Potential improvements:
+
+- Extract form/report design (not just code)
+- Preserve module organization
+- Extract references/dependencies
+- Generate index/table of contents
+- Support for multiple databases
+- Incremental extraction (only changed components)

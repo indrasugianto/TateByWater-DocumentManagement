@@ -1,0 +1,168 @@
+---
+description: "Project structure and organization standards"
+alwaysApply: true
+---
+
+# Project Structure & Organization
+
+## Directory Structure
+
+**MUST** maintain this directory structure:
+
+```
+TateByWater-DocumentManagement/
+├── extract_vba.py              # Main extraction script
+├── requirements.txt             # Python dependencies
+├── README.md                    # Project documentation
+├── .gitignore                   # Git ignore rules
+├── extracted_vba/               # Output directory for extracted VBA files
+│   ├── *.bas                    # Standard modules
+│   ├── *.cls                    # Class modules
+│   └── *.form.bas / *.report.bas # Form/Report modules
+├── msaccess/                    # Source Access database files
+│   └── *.accdb / *.mdb          # Access database files
+├── docs/                        # Project documentation
+│   ├── project-plan.md          # Current work and roadmap
+│   ├── tech-debt.md             # Known issues and improvements
+│   ├── architecture-decisions.md # ADRs
+│   └── vba-extraction-notes.md  # VBA domain knowledge
+└── .cursor/                     # Cursor IDE configuration
+    └── rules/                   # Cursor rules
+        ├── *.mdc                # Rule files
+        └── doc/                 # Rule documentation
+```
+
+## File Naming Conventions
+
+**MUST** follow these naming conventions:
+
+### Python Files
+- Use `snake_case.py` for Python modules
+- Use descriptive names: `extract_vba.py` not `script.py`
+- Test files: `test_*.py` or `*_test.py`
+
+### VBA Extracted Files
+- Standard modules: `{ComponentName}.bas`
+- Class modules: `{ClassName}.cls`
+- Forms: `{FormName}.form.bas`
+- Reports: `{ReportName}.report.bas`
+
+### Documentation Files
+- Use `kebab-case.md` for markdown files
+- Use descriptive names: `project-plan.md` not `plan.md`
+
+### Configuration Files
+- Use standard names: `requirements.txt`, `.gitignore`, `README.md`
+- Use `.mdc` extension for Cursor rules
+
+## Directory Purposes
+
+### `extracted_vba/`
+- **Purpose**: Contains extracted VBA code files
+- **Contents**: Generated `.bas`, `.cls`, `.form.bas`, `.report.bas` files
+- **Note**: May be regenerated - consider adding to `.gitignore`
+
+### `msaccess/`
+- **Purpose**: Contains source MS Access database files
+- **Contents**: `.accdb` or `.mdb` files
+- **Note**: These are source files - should be version controlled
+
+### `docs/`
+- **Purpose**: Persistent knowledge base and project documentation
+- **Contents**: Project planning, tech debt, architecture decisions, domain knowledge
+- **Note**: See `documentation-practices.mdc` for usage
+
+### `.cursor/rules/`
+- **Purpose**: Cursor IDE project rules
+- **Contents**: `.mdc` rule files that guide AI behavior
+- **Note**: Rules are automatically applied based on globs/triggers
+
+## File Organization Principles
+
+**MUST** follow these principles:
+
+1. **Separation of Concerns**
+   - Source code in root or `src/`
+   - Generated files in separate directories
+   - Documentation in `docs/`
+   - Configuration in root or `.config/`
+
+2. **Clarity**
+   - Use descriptive directory names
+   - Group related files together
+   - Avoid deep nesting (max 3-4 levels)
+
+3. **Maintainability**
+   - Keep structure simple
+   - Document unusual organization choices
+   - Use consistent naming across project
+
+## Adding New Files
+
+**MUST** follow these guidelines when adding files:
+
+### Python Modules
+- Place in root directory (for simple projects)
+- Or in `src/` directory (for larger projects)
+- Use `__init__.py` if creating packages
+
+### Tests
+- Create `tests/` directory when adding tests
+- Use `pytest` structure: `tests/test_*.py`
+- Or co-locate: `test_*.py` next to source files
+
+### Configuration Files
+- Place in root directory
+- Use standard names (`requirements.txt`, `pyproject.toml`)
+- Document non-standard configurations
+
+### Documentation
+- Place in `docs/` directory
+- Use markdown format (`.md`)
+- Follow naming conventions
+
+## Git Structure
+
+**SHOULD** maintain clean Git structure:
+
+- **Commit messages**: Use descriptive messages
+- **Branching**: Use feature branches for new work
+- **Ignore files**: Use `.gitignore` appropriately
+  - Ignore `extracted_vba/` if regenerated
+  - Ignore `__pycache__/`, `*.pyc`
+  - Ignore IDE-specific files (`.vscode/`, `.idea/`)
+  - Ignore virtual environments (`venv/`, `.venv/`)
+
+## Import Paths
+
+**MUST** use absolute imports:
+
+```python
+✅ GOOD:
+from pathlib import Path
+import win32com.client
+
+❌ BAD:
+from .local_module import something  # Relative import
+```
+
+## Module Organization
+
+**SHOULD** organize code logically:
+
+1. **Imports** (standard, third-party, local)
+2. **Constants** (module-level)
+3. **Classes** (if any)
+4. **Functions** (main functions first, helpers after)
+5. **Main execution** (`if __name__ == "__main__"`)
+
+## Documentation Location
+
+**MUST** place documentation appropriately:
+
+- **README.md**: Root directory - project overview
+- **API docs**: `docs/api/` or inline docstrings
+- **Architecture docs**: `docs/architecture-decisions.md`
+- **Project planning**: `docs/project-plan.md`
+- **Tech debt**: `docs/tech-debt.md`
+- **Domain knowledge**: `docs/vba-extraction-notes.md`

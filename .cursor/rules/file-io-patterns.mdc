@@ -1,0 +1,265 @@
+---
+globs:
+  - "**/*.py"
+description: "File I/O patterns and best practices"
+---
+
+# File I/O Patterns & Best Practices
+
+## Path Handling
+
+**MUST** use `pathlib.Path` for all path operations:
+
+```python
+✅ GOOD:
+from pathlib import Path
+
+script_dir = Path(__file__).parent
+output_dir = script_dir / "extracted_vba"
+output_file = output_dir / f"{component_name}.{ext}"
+
+if not output_dir.exists():
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+❌ BAD:
+import os
+
+output_dir = os.path.join(os.path.dirname(__file__), "extracted_vba")
+output_file = os.path.join(output_dir, f"{component_name}.{ext}")
+os.makedirs(output_dir, exist_ok=True)
+```
+
+## File Encoding
+
+**MUST** always specify encoding explicitly:
+
+```python
+✅ GOOD:
+with open(file_path, 'w', encoding='utf-8', errors='replace') as f:
+    f.write(content)
+
+with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
+    content = f.read()
+
+❌ BAD:
+with open(file_path, 'w') as f:  # Platform-dependent encoding
+    f.write(content)
+```
+
+**MUST** use `errors='replace'` when reading files that may contain invalid UTF-8:
+- VBA code may contain legacy encodings
+- Prevents crashes from encoding errors
+- Replaces invalid bytes with replacement character
+
+## Directory Creation
+
+**MUST** use `exist_ok=True` to avoid errors if directory exists:
+
+```python
+✅ GOOD:
+from pathlib import Path
+
+output_dir = Path("extracted_vba")
+output_dir.mkdir(parents=True, exist_ok=True)
+
+# Or using os.makedirs:
+import os
+os.makedirs(output_dir, exist_ok=True)
+
+❌ BAD:
+os.makedirs(output_dir)  # Raises error if exists
+```
+
+## File Writing Patterns
+
+**MUST** use context managers (`with` statements):
+
+```python
+✅ GOOD:
+output_file = Path(output_dir) / f"{component_name}.{ext}"
+with open(output_file, 'w', encoding='utf-8', errors='replace') as f:
+    f.write(header)
+    f.write(code_text)
+
+❌ BAD:
+f = open(output_file, 'w')
+f.write(header)
+f.write(code_text)
+f.close()  # May not execute if exception occurs
+```
+
+## File Reading Patterns
+
+**MUST** handle file not found errors:
+
+```python
+✅ GOOD:
+from pathlib import Path
+
+file_path = Path("some_file.txt")
+if not file_path.exists():
+    print(f"Error: File not found at {file_path}")
+    return None
+
+try:
+    with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
+        content = f.read()
+except FileNotFoundError:
+    print(f"Error: File not found at {file_path}")
+    return None
+except Exception as e:
+    print(f"Error reading file: {e}")
+    return None
+
+❌ BAD:
+with open(file_path, 'r') as f:  # May raise FileNotFoundError
+    content = f.read()
+```
+
+## Path Validation
+
+**SHOULD** validate paths before use:
+
+```python
+✅ GOOD:
+def extract_vba_from_access(accdb_path: str, output_dir: str) -> dict | None:
+    accdb_path_obj = Path(accdb_path)
+    
+    if not accdb_path_obj.exists():
+        print(f"Error: Access database not found at {accdb_path}")
+        return None
+    
+    if not accdb_path_obj.is_file():
+        print(f"Error: Path is not a file: {accdb_path}")
+        return None
+    
+    output_dir_obj = Path(output_dir)
+    output_dir_obj.mkdir(parents=True, exist_ok=True)
+    
+    # ... rest of function ...
+
+❌ BAD:
+def extract_vba_from_access(accdb_path: str, output_dir: str):
+    # No validation - may fail later
+    access.OpenCurrentDatabase(accdb_path)
+```
+
+## File Naming
+
+**MUST** sanitize filenames to avoid filesystem issues:
+
+```python
+✅ GOOD:
+import re
+from pathlib import Path
+
+def sanitize_filename(name: str) -> str:
+    """Remove invalid characters from filename."""
+    # Remove invalid characters for Windows filesystem
+    invalid_chars = r'[<>:"/\\|?*]'
+    sanitized = re.sub(invalid_chars, '_', name)
+    return sanitized
+
+component_name_safe = sanitize_filename(component_name)
+output_file = output_dir / f"{component_name_safe}.{ext}"
+
+❌ BAD:
+output_file = output_dir / f"{component_name}.{ext}"  # May contain invalid chars
+```
+
+## Cross-Platform Considerations
+
+**SHOULD** be aware of platform differences:
+- Windows: Case-insensitive paths (usually)
+- Linux/Mac: Case-sensitive paths
+- Path separators: Use `Path` objects, not hardcoded `/` or `\`
+
+```python
+✅ GOOD:
+from pathlib import Path
+
+# Works on all platforms
+file_path = Path("dir") / "subdir" / "file.txt"
+
+❌ BAD:
+# Windows-specific
+file_path = "dir\\subdir\\file.txt"
+# Unix-specific
+file_path = "dir/subdir/file.txt"
+```
+
+## Large File Handling
+
+**SHOULD** use streaming for large files:
+
+```python
+✅ GOOD:
+# For large files, read in chunks
+CHUNK_SIZE = 8192
+with open(large_file, 'rb') as f:
+    while chunk := f.read(CHUNK_SIZE):
+        process_chunk(chunk)
+
+❌ BAD:
+# Loads entire file into memory
+with open(large_file, 'r') as f:
+    content = f.read()  # May cause memory issues for large files
+```
+
+## Temporary Files
+
+**SHOULD** use `tempfile` module for temporary files:
+
+```python
+✅ GOOD:
+import tempfile
+from pathlib import Path
+
+with tempfile.TemporaryDirectory() as temp_dir:
+    temp_file = Path(temp_dir) / "temp.txt"
+    # ... use temp_file ...
+# Automatically cleaned up
+
+❌ BAD:
+temp_file = Path("/tmp/temp.txt")  # May conflict, not cleaned up
+```
+
+## File Metadata
+
+**SHOULD** preserve file metadata when needed:
+
+```python
+✅ GOOD:
+from pathlib import Path
+import os
+from datetime import datetime
+
+file_path = Path("output.txt")
+# Get modification time
+mtime = datetime.fromtimestamp(file_path.stat().st_mtime)
+# Set modification time (if needed)
+os.utime(file_path, (mtime.timestamp(), mtime.timestamp()))
+```
+
+## Error Handling
+
+**MUST** handle file I/O errors gracefully:
+
+```python
+✅ GOOD:
+try:
+    with open(file_path, 'w', encoding='utf-8', errors='replace') as f:
+        f.write(content)
+except PermissionError:
+    print(f"Error: Permission denied writing to {file_path}")
+except OSError as e:
+    print(f"Error: OS error writing file: {e}")
+except Exception as e:
+    print(f"Error: Unexpected error: {e}")
+    import traceback
+    traceback.print_exc()
+
+❌ BAD:
+with open(file_path, 'w') as f:
+    f.write(content)  # May raise unhandled exception
+```
