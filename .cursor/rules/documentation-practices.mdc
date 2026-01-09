@@ -1,0 +1,370 @@
+# 📚 Project Knowledge & Documentation Management
+
+## Purpose
+
+This rule ensures the AI maintains persistent memory across sessions by using the project's documentation framework. This prevents "AI amnesia" on complex, multi-session tasks.
+
+## Knowledge Base Structure
+
+This project uses **markdown files** in the `docs/cursor/` directory to maintain persistent context:
+
+```
+docs/cursor/
+├── project-plan.md          # Current work, roadmap, task tracking
+├── tech-debt.md             # Known issues, improvement opportunities
+├── architecture-decisions.md # ADRs (Architecture Decision Records)
+├── testing-strategy.md      # Test plan and coverage roadmap
+└── security-audit.md        # Security findings and remediation
+```
+
+## CRITICAL WORKFLOW RULES
+
+### Rule 1: ALWAYS Consult Before Acting
+
+**BEFORE beginning ANY new feature or complex task:**
+
+1. **Read** `@docs/cursor/project-plan.md` to understand:
+   - Current project status
+   - Active tasks and priorities
+   - What's already been done
+   - Dependencies and blockers
+
+2. **Read** `@docs/cursor/tech-debt.md` to check:
+   - Known issues related to your task
+   - Improvement opportunities
+   - Patterns to follow or avoid
+
+3. **Read** `@docs/cursor/architecture-decisions.md` to understand:
+   - Why certain design decisions were made
+   - Architectural patterns in use
+   - Technology choices and rationale
+
+```
+✅ GOOD Workflow:
+1. User: "Add caching to SalesforceClient"
+2. AI: *Reads @docs/cursor/project-plan.md*
+3. AI: *Reads @docs/cursor/tech-debt.md*
+4. AI: *Checks if caching task is already tracked*
+5. AI: Implements feature with full context
+
+❌ BAD Workflow:
+1. User: "Add caching to SalesforceClient"  
+2. AI: *Immediately starts coding without context*
+3. AI: Duplicates existing patterns or contradicts architecture
+```
+
+### Rule 2: ALWAYS Update As You Work
+
+**WHILE working on a task:**
+
+1. **Update** `@docs/cursor/project-plan.md` as you complete steps:
+   ```markdown
+   ## Current Tasks
+
+   ### ✅ Implement Token Caching (COMPLETED 2025-01-15)
+   - [x] Added _cachedAccessToken field
+   - [x] Implemented thread-safe cache with lock
+   - [x] Added 1-hour expiry logic
+   - [x] Added ClearCachedToken on 401 errors
+   - Result: Reduced auth calls from 18/run to 1/run
+   ```
+
+2. **Document decisions** in `@docs/cursor/architecture-decisions.md`:
+   ```markdown
+   ## ADR-005: Token Caching Strategy
+
+   **Date**: 2025-01-15
+   **Status**: Accepted
+
+   ### Context
+   Application was making 18 authentication calls per run (one per table).
+
+   ### Decision
+   Implement in-memory token caching with 1-hour expiry.
+
+   ### Consequences
+   - ✅ Reduced API calls by 94%
+   - ✅ Faster execution (saves ~30 seconds)
+   - ⚠️ Tokens lost on application restart
+   ```
+
+3. **Track issues** in `@docs/cursor/tech-debt.md`:
+   ```markdown
+   ## Known Issues
+
+   ### Token Caching Not Persistent
+   **Priority**: LOW
+   **Impact**: Minor performance hit on restart
+   **Discovered**: 2025-01-15 during token caching implementation
+   **Possible Solution**: Use distributed cache (Redis) or file-based cache
+   ```
+
+### Rule 3: ALWAYS Formalize Learnings
+
+**AFTER completing a task:**
+
+1. **If you discovered a reusable pattern**, create or update a Cursor Rule:
+   - Example: Discovered async best practice → Update `async-patterns.mdc`
+   - Example: Found security issue → Update `security-credentials.mdc`
+
+2. **If you made an architectural decision**, document it in `architecture-decisions.md`
+
+3. **If you identified technical debt**, add it to `tech-debt.md`
+
+## Document Format Standards
+
+### project-plan.md Format:
+
+```markdown
+# Project Plan
+
+## Current Sprint
+
+### 🚧 In Progress
+- Task name (Started: YYYY-MM-DD)
+  - [ ] Step 1
+  - [x] Step 2 (completed)
+  - [ ] Step 3
+
+### 📋 Planned Next
+1. Task 1 - Description
+2. Task 2 - Description
+
+### ✅ Recently Completed
+- Task name (Completed: YYYY-MM-DD)
+  - Summary of what was done
+  - Key outcomes
+
+### 🚫 Blocked
+- Task name
+  - Reason for block
+  - Required to unblock
+
+## Roadmap
+
+### Q1 2025
+- [ ] Feature 1
+- [ ] Feature 2
+
+### Q2 2025
+- [ ] Feature 3
+```
+
+### tech-debt.md Format:
+
+```markdown
+# Technical Debt
+
+## Critical Issues
+1. **Issue Title**
+   - **Priority**: CRITICAL/HIGH/MEDIUM/LOW
+   - **Impact**: Description
+   - **Discovered**: YYYY-MM-DD
+   - **Effort**: Small/Medium/Large
+   - **Solution**: Proposed approach
+
+## Known Limitations
+- Limitation 1
+- Limitation 2
+
+## Improvement Opportunities
+### Performance
+- Opportunity 1
+
+### Security
+- Opportunity 1
+
+### Code Quality
+- Opportunity 1
+```
+
+### architecture-decisions.md Format:
+
+```markdown
+# Architecture Decision Records
+
+## ADR-NNN: Title
+
+**Date**: YYYY-MM-DD
+**Status**: Proposed | Accepted | Deprecated | Superseded
+
+### Context
+What is the issue we're seeing that is motivating this decision?
+
+### Decision
+What is the change that we're proposing and/or doing?
+
+### Consequences
+What becomes easier or more difficult to do because of this change?
+- ✅ Positive consequence
+- ⚠️ Neutral consequence
+- ❌ Negative consequence
+```
+
+## When to Create New Documents
+
+### Create New Planning Documents When:
+- Starting a major feature (multi-day work)
+- Refactoring a significant portion of code
+- Investigating a complex bug
+- Planning an architecture change
+
+### Create New ADRs When:
+- Choosing between technology alternatives
+- Making significant design decisions
+- Changing established patterns
+- Deprecating old approaches
+
+## Integration with Cursor Rules
+
+### The Knowledge Base Complements Cursor Rules:
+
+| Cursor Rules | Knowledge Base |
+|--------------|----------------|
+| **What** patterns to use | **Why** we chose them |
+| **How** to implement | **When** to apply |
+| General project patterns | Specific task context |
+| Always enforced | Evolves with project |
+
+### Example Integration:
+
+```
+Cursor Rule: security-credentials.mdc
+→ Says: "NEVER hardcode credentials"
+
+Knowledge Base: security-audit.md
+→ Says: "Found hardcoded creds in appsettings.json on 2025-01-15"
+→ Says: "Remediation plan: Move to env vars by 2025-02-01"
+→ Tracks progress on fixing the issue
+```
+
+## Maintenance Schedule
+
+### Daily (During Active Development):
+- Update `project-plan.md` with progress
+- Add new tech debt items as discovered
+
+### Weekly:
+- Review and prioritize tech debt
+- Update roadmap in `project-plan.md`
+
+### Monthly:
+- Archive completed tasks
+- Review and update ADRs
+- Consolidate learnings into Cursor Rules
+
+### Quarterly:
+- Major architecture review
+- Update all documentation
+- Create new ADRs for significant changes
+
+## Best Practices
+
+### DO:
+✅ Read relevant docs BEFORE starting work
+✅ Update docs AS you work
+✅ Be specific with dates and details
+✅ Link related docs together
+✅ Use checkboxes for trackable items
+✅ Archive old information (don't delete)
+✅ Keep docs concise and scannable
+
+### DON'T:
+❌ Skip reading docs to "save time"
+❌ Update docs only at the end
+❌ Be vague ("recently", "soon", "later")
+❌ Duplicate information across docs
+❌ Let docs become stale
+❌ Write novel-length documentation
+❌ Delete historical information
+
+## Emergency Context Recovery
+
+### If AI Loses Context Mid-Task:
+
+1. **Read** `@docs/cursor/project-plan.md` → Find "In Progress" section
+2. **Read** the specific task description
+3. **Check** recent commits/changes
+4. **Review** related Cursor Rules
+5. **Continue** from last completed checkpoint
+
+## Success Metrics
+
+You're using the knowledge base effectively when:
+
+- ✅ No duplicate work across sessions
+- ✅ Architectural consistency maintained
+- ✅ All design decisions documented
+- ✅ Technical debt tracked and prioritized
+- ✅ Context preserved across AI sessions
+- ✅ New team members can understand project quickly
+
+## Example: Complete Workflow
+
+### User Request: "Implement incremental data updates"
+
+```
+Step 1: Research
+- Read @docs/cursor/project-plan.md
+  → Find: This is not currently in progress
+- Read @docs/cursor/tech-debt.md
+  → Find: "Full Refresh" listed as known limitation
+  → Find: Proposal to use LastModifiedDate field
+- Read @docs/cursor/architecture-decisions.md
+  → Find: ADR-003 explains why full refresh was chosen initially
+
+Step 2: Plan
+- Update @docs/cursor/project-plan.md
+  → Add to "In Progress": 
+    - "Implement Incremental Updates (Started: 2025-01-15)"
+    - Checklist of steps
+
+Step 3: Implement
+- Write code following Cursor Rules
+- Update project-plan.md as steps complete
+
+Step 4: Document
+- Create ADR-010 in architecture-decisions.md
+  → Explain decision to use LastModifiedDate approach
+  → Document impact on performance and data consistency
+- Update tech-debt.md
+  → Mark "Full Refresh" limitation as RESOLVED
+  → Add any new limitations discovered
+
+Step 5: Formalize
+- Update performance-optimization.mdc rule if needed
+- Update database-access.mdc with new incremental patterns
+```
+
+## Critical Reminders
+
+🚨 **This is NOT optional documentation** - This is your memory system.
+
+🚨 **Always read before writing** - Context prevents mistakes.
+
+🚨 **Update as you go** - Don't rely on remembering later.
+
+🚨 **Be specific** - "Added caching" is useless. "Added thread-safe token caching with 1-hour expiry, reducing API calls from 18 to 1 per run" is valuable.
+
+## Questions to Ask Yourself
+
+Before starting work:
+- Have I read the relevant knowledge base documents?
+- Do I understand why previous decisions were made?
+- Am I aware of related tech debt?
+
+While working:
+- Have I updated project-plan.md with progress?
+- Should I document this decision in architecture-decisions.md?
+- Did I discover new tech debt to track?
+
+After completing work:
+- Have I updated all relevant documents?
+- Should this pattern become a Cursor Rule?
+- Have I marked tasks as complete?
+
+---
+
+**Remember**: Future AI sessions depend on the documentation you create today. Write for your future self.
+alwaysApply: true
+---
