@@ -6,6 +6,7 @@ Extracts all VBA code from an Access database including modules, classes, forms,
 import win32com.client
 import os
 import sys
+import time
 from pathlib import Path
 
 def extract_vba_from_access(accdb_path, output_dir):
@@ -23,12 +24,49 @@ def extract_vba_from_access(accdb_path, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     
     # Initialize Access Application
-    access = win32com.client.Dispatch("Access.Application")
+    access = None
+    max_retries = 3
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            # Clean up any existing Access instances
+            if access:
+                try:
+                    access.CloseCurrentDatabase()
+                    access.Quit()
+                except:
+                    pass
+                access = None
+                time.sleep(1)
+            
+            # Create new Access instance
+            access = win32com.client.Dispatch("Access.Application")
+            
+            # Open the database (convert to absolute path)
+            abs_path = os.path.abspath(accdb_path)
+            
+            # Try to open the database
+            access.OpenCurrentDatabase(abs_path)
+            break  # Success, exit retry loop
+            
+        except Exception as e:
+            error_msg = str(e)
+            if "already have the database open" in error_msg.lower() or "already open" in error_msg.lower():
+                if attempt < max_retries - 1:
+                    print(f"Database appears to be open. Waiting {retry_delay} seconds and retrying... (Attempt {attempt + 1}/{max_retries})")
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    print("\nError: Database is locked by another process.")
+                    print("Please close MS Access and any other applications that might have the database open,")
+                    print("then try again.")
+                    raise
+            else:
+                # Different error, raise immediately
+                raise
     
     try:
-        # Open the database (convert to absolute path)
-        abs_path = os.path.abspath(accdb_path)
-        access.OpenCurrentDatabase(abs_path)
         
         # Get VBA project
         vba_project = access.VBE.ActiveVBProject
@@ -86,8 +124,9 @@ def extract_vba_from_access(accdb_path, output_dir):
                     else:
                         ext = "vba"
                     
-                    # Save to file
-                    output_file = os.path.join(output_dir, f"{component_name}.{ext}")
+                    # Save to file - sanitize filename
+                    safe_name = component_name.replace('*', '').replace('/', '_').replace('\\', '_').replace(':', '_').replace('?', '_').replace('"', '_').replace('<', '_').replace('>', '_').replace('|', '_')
+                    output_file = os.path.join(output_dir, f"{safe_name}.{ext}")
                     with open(output_file, 'w', encoding='utf-8', errors='replace') as f:
                         f.write(f"' Component: {component_name}\n")
                         f.write(f"' Type: {type_name}\n")
@@ -129,22 +168,31 @@ def extract_vba_from_access(accdb_path, output_dir):
         return None
     finally:
         # Close Access
-        try:
-            access.CloseCurrentDatabase()
-            access.Quit()
-            print("\nAccess closed.")
-        except:
-            pass
+        if access:
+            try:
+                access.CloseCurrentDatabase()
+                access.Quit()
+                print("\nAccess closed.")
+            except:
+                pass
 
 
 if __name__ == "__main__":
     # Configuration
     script_dir = Path(__file__).parent
-    accdb_path = str(script_dir / "msaccess" / "TB CMS.SQL.accdb")
-    output_dir = str(script_dir / "extracted_vba")
+    
+    # Check for command line arguments
+    if len(sys.argv) >= 3:
+        accdb_path = sys.argv[1]
+        output_dir = sys.argv[2]
+    else:
+        # Default to TB CMS database
+        accdb_path = str(script_dir / "msaccess" / "TB CMS.SQL.accdb")
+        output_dir = str(script_dir / "extracted_vba")
     
     if not os.path.exists(accdb_path):
         print(f"Error: Access database not found at {accdb_path}")
+        print(f"\nUsage: python extract_vba.py <path_to_accdb> <output_directory>")
         sys.exit(1)
     
     print("="*70)
