@@ -38,8 +38,19 @@ env/
 Thumbs.db
 
 # Project specific
-# Uncomment if extracted_vba/ should be ignored (if regenerated)
-# extracted_vba/
+# Access database files (binary files, not suitable for version control)
+*.accdb
+*.mdb
+*.laccdb
+*.ldb
+
+# Generated assessment outputs (can be regenerated)
+database_assessment/
+
+# Old extraction folder (replaced by database_assessment/)
+extracted_vba/
+msaccess/TB_CMS_SQL_vba/
+msaccess/dropbox_poc_vba/
 
 # Logs
 *.log
