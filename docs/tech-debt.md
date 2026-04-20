@@ -1,82 +1,49 @@
 # Technical Debt
 
-## Critical Issues
+## Critical Items
 
-None currently identified.
+### Multi-user Dropbox token isolation
+- **Priority**: HIGH
+- **Impact**: Incorrect user identity could be used for document operations.
+- **Context**: Existing POC token model is not production-safe for shared use.
+- **Action**: Enforce per-user token ownership and startup identity checks.
 
-## Known Limitations
+### Production OAuth hardening
+- **Priority**: HIGH
+- **Impact**: Increased auth and security risk during rollout.
+- **Context**: POC flow needs production controls.
+- **Action**: Add OAuth state handling, robust token-expiry handling, and hardened error paths.
 
-### Windows-Only Platform
+### Metadata migration quality
+- **Priority**: HIGH
+- **Impact**: Broken file links during/after migration from local paths to Dropbox references.
+- **Action**: Build migration verification scripts and reconciliation reporting before cutover.
+
+## Important (Non-blocking) Debt
+
+### API throttling/network resilience
+- **Priority**: MEDIUM
+- **Impact**: Intermittent failures under load/network instability.
+- **Action**: Central retry policy with `Retry-After` support and operator-facing diagnostics.
+
+### Auditability and observability
+- **Priority**: MEDIUM
+- **Impact**: Harder incident response and compliance tracing.
+- **Action**: Standardized structured logging for upload/move/delete/open-link operations.
+
+### Legacy workflow compatibility
+- **Priority**: MEDIUM
+- **Impact**: User-facing regressions if migration is all-at-once.
+- **Action**: Provider abstraction + feature flags for phased rollout and rollback.
+
+## Ongoing Constraints
+
+### Windows-only COM workflow
 - **Priority**: LOW
-- **Impact**: Project cannot run on Linux/Mac
-- **Discovered**: Initial development
-- **Effort**: N/A (by design)
-- **Solution**: Document limitation clearly in README
+- **Impact**: Tooling remains Windows-bound.
+- **Action**: Documented limitation; accepted by design.
 
-### No Type Hints
-- **Priority**: MEDIUM
-- **Impact**: Reduced code clarity and IDE support
-- **Discovered**: Code review
-- **Effort**: Small
-- **Solution**: Add type hints to all functions
+## Reference
 
-### Print Statements Instead of Logging
-- **Priority**: MEDIUM
-- **Impact**: No log levels, harder to debug
-- **Discovered**: Code review
-- **Effort**: Small
-- **Solution**: Replace with `logging` module
-
-### ~~No Dependency Management File~~ ✅ RESOLVED
-- **Priority**: ~~HIGH~~ COMPLETED
-- **Impact**: ~~Difficult to reproduce environment~~ Fixed
-- **Discovered**: Initial analysis
-- **Resolved**: 2025-01-09
-- **Solution**: Created `requirements.txt` with `pywin32>=306`
-
-### No Input Validation
-- **Priority**: MEDIUM
-- **Impact**: May fail with unclear error messages
-- **Discovered**: Code review
-- **Effort**: Small
-- **Solution**: Add validation at function entry
-
-### Mixed Path Handling
-- **Priority**: LOW
-- **Impact**: Inconsistent code style
-- **Discovered**: Code review
-- **Effort**: Small
-- **Solution**: Standardize on `pathlib.Path`
-
-## Improvement Opportunities
-
-### Performance
-- Add progress indicators for large databases
-- Consider batch processing optimizations
-
-### Code Quality
-- Add docstrings with Google-style format
-- Add type hints throughout
-- Consider adding unit tests
-
-### Features
-- Support for incremental extraction (only changed components)
-- Component dependency analysis
-- Generate index/table of contents of extracted files
-- Support for multiple databases in one run
-
-### ~~Documentation~~ ✅ RESOLVED
-- ~~Create comprehensive README.md~~ ✅ COMPLETED (2026-01-13)
-- ~~Add usage examples~~ ✅ COMPLETED
-- ~~Document common issues and solutions~~ ✅ COMPLETED
-- **Solution**: Created README.md with quick start, usage examples, and troubleshooting
-
-## Security
-
-No security issues identified currently.
-
-## Code Quality
-
-- Improve error messages with more context
-- Add input validation
-- Consider custom exceptions for domain-specific errors
+- Canonical migration plan: `docs/dropbox-migration-plan.md`
+- Current execution priorities: `docs/project-plan.md`

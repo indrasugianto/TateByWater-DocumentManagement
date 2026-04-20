@@ -154,3 +154,23 @@ Create comprehensive Cursor rules ecosystem with:
 - ✅ Best practices documented and enforced
 - ✅ AI maintains context through documentation framework
 - ⚠️ Requires keeping rules updated as project evolves
+
+---
+
+## ADR-009: Dropbox API-Native Migration Model
+
+**Date**: 2026-04-20  
+**Status**: Accepted
+
+### Context
+TBCMS currently relies on local/shared filesystem paths for document operations. The target is Dropbox for Business with each user authenticating with their own account.
+
+### Decision
+Use API-native Dropbox integration for document operations (upload/download/list/move/copy), and store per-user OAuth tokens in each user’s local Access frontend.
+
+### Consequences
+- ✅ Avoids dependency on desktop sync path consistency.
+- ✅ Supports explicit API-level error handling and audit instrumentation.
+- ✅ Aligns authentication with individual user identities.
+- ⚠️ Requires provider-layer refactor in document-management VBA.
+- ⚠️ Requires metadata migration from local paths to Dropbox references.

@@ -1,5 +1,8 @@
 # Document Management System Analysis
 
+> Note: This is a baseline analysis of the legacy filesystem-based workflow.  
+> The active implementation direction is documented in `docs/dropbox-migration-plan.md`.
+
 **Project**: TateByWater Document Management - VBA Extraction & Analysis  
 **Date**: 2026-01-12  
 **Database**: TB_CMS.SQL.accdb  
@@ -59,7 +62,7 @@ The TB CMS (Tate Bywater Case Management System) includes a comprehensive **docu
 
 ## Core Module: DocumentManagement.bas
 
-**Location**: `msaccess/extracted_vba/DocumentManagement.bas`  
+**Location**: `msaccess/TBCMS/extract/vba/modules/DocumentManagement.txt`  
 **Lines of Code**: 841  
 **Purpose**: Central module for all document management operations
 
