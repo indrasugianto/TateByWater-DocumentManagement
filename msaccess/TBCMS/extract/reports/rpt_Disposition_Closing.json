@@ -1,0 +1,183 @@
+{
+  "reportName": "rpt_Disposition_Closing",
+  "dataSource": "qry_Disposition_ClosingSheet",
+  "width": 5460,
+  "orientation": "portrait",
+  "margins": {
+    "left": 360,
+    "right": 360,
+    "top": 360,
+    "bottom": 360
+  },
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 1653,
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label451",
+          "left": 60,
+          "top": 60,
+          "width": 1020,
+          "height": 240,
+          "caption": "Disposition",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent"
+        },
+        {
+          "type": "TextBox",
+          "name": "Disposition",
+          "left": 60,
+          "top": 630,
+          "width": 5340,
+          "height": 1023,
+          "controlSource": "Disposition",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 13421772
+        },
+        {
+          "type": "TextBox",
+          "name": "Text38",
+          "left": 2100,
+          "top": 60,
+          "width": 1380,
+          "height": 240,
+          "controlSource": "Dispo_Date",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent",
+          "textAlign": "left"
+        },
+        {
+          "type": "Label",
+          "name": "Label39",
+          "left": 1560,
+          "top": 60,
+          "width": 480,
+          "height": 240,
+          "caption": "Date:",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text40",
+          "left": 2100,
+          "top": 360,
+          "width": 1380,
+          "height": 240,
+          "controlSource": "DispoJudge",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent"
+        },
+        {
+          "type": "Label",
+          "name": "Label41",
+          "left": 1560,
+          "top": 360,
+          "width": 555,
+          "height": 240,
+          "caption": "Judge:",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text42",
+          "left": 4080,
+          "top": 60,
+          "width": 840,
+          "height": 240,
+          "controlSource": "Dispo_Atty",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent",
+          "textAlign": "left"
+        },
+        {
+          "type": "Label",
+          "name": "Label43",
+          "left": 3600,
+          "top": 60,
+          "width": 360,
+          "height": 240,
+          "caption": "Atty:",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text44",
+          "left": 4080,
+          "top": 360,
+          "width": 840,
+          "height": 240,
+          "controlSource": "DispoOppC",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent",
+          "textAlign": "left"
+        },
+        {
+          "type": "Label",
+          "name": "Label45",
+          "left": 3600,
+          "top": 360,
+          "width": 360,
+          "height": 240,
+          "caption": "OC:",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent"
+        },
+        {
+          "type": "TextBox",
+          "name": "PISettelment",
+          "left": 180,
+          "top": 1080,
+          "width": 360,
+          "height": 240,
+          "controlSource": "PI Settlement Amount",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "backStyle": "transparent",
+          "visible": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text26",
+          "left": 3000,
+          "top": 1140,
+          "width": 1260,
+          "height": 315,
+          "controlSource": "Total Earned Fee",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "type": "PageHeader",
+      "height": 0,
+      "controls": []
+    },
+    {
+      "type": "PageFooter",
+      "height": 0,
+      "controls": []
+    }
+  ],
+  "vbaCodeBehind": "﻿Version =20\nVersionRequired =20\nPublishOption =1\nChecksum =-397338472\nBegin Report\n    LayoutForPrint = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    DateGrouping =1\n    GrpKeepTogether =1\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =5460\n    DatasheetFontHeight =11\n    ItemSuffix =28\n    Right =17565\n    Bottom =10125\n    DatasheetGridlinesColor =15461355\n    RecSrcDt = Begin\n        0xe044a5c7cbfde440\n    End\n    GUID = Begin\n        0x90769bec52f91148aaf01034e8221320\n    End\n    NameMap = Begin\n        0x0acc0e5500000000e5efe1acd4a1cd4e83119ad77228c4c50000000089714ceb ,\n        0x76ffe44000000000000000007100720079005f0044006900730070006f007300 ,\n        0x6900740069006f006e005f0043006c006f00730069006e006700530068006500 ,\n        0x65007400000000000000b54da87a2d750945bad86968b6a670ac07000000e5ef ,\n        0xe1acd4a1cd4e83119ad77228c4c544006900730070006f007300690074006900 ,\n        0x6f006e0000000000000037466d9d18a6ce46ae0996c1c271a49e07000000e5ef ,\n        0xe1acd4a1cd4e83119ad77228c4c544006900730070006f005f00440061007400 ,\n        0x6500000000000000fbd0b452bddc324799a91fd445b84e3307000000e5efe1ac ,\n        0xd4a1cd4e83119ad77228c4c544006900730070006f004a007500640067006500 ,\n        0x0000000000000399b8c54522114c964f440373f4fd5e07000000e5efe1acd4a1 ,\n        0xcd4e83119ad77228c4c544006900730070006f005f0041007400740079000000 ,\n        0x000000009dfa21f17b56f946add509313502544007000000e5efe1acd4a1cd4e ,\n        0x83119ad77228c4c544006900730070006f004f00700070004300000000000000 ,\n        0x8b5af03ffbbaf04fae2f2161d31ab5a207000000e5efe1acd4a1cd4e83119ad7 ,\n        0x7228c4c550004900200053006500740074006c0065006d0065006e0074002000 ,\n        0x41006d006f0075006e00740000000000000078c3c9338b18694b8a9ca83e2f29 ,\n        0x1f4507000000e5efe1acd4a1cd4e83119ad77228c4c554006f00740061006c00 ,\n        0x20004500610072006e0065006400200046006500650000000000000000000000 ,\n        0x0000000000000000000000000c00000005000000000000000000000000000000 ,\n        0x0000\n    End\n    RecordSource =\"qry_Disposition_ClosingSheet\"\n    DatasheetFontName =\"Trebuchet MS\"\n    PrtMip = Begin\n        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,\n        0x010000006801000000000000a10700000100000001000000\n    End\n    PrtDevMode = Begin\n        0x000000003ed3110f0a92e30d0000000012d3110f68987b0dc6000000004f0212 ,\n        0x010408019c00b40753ef800101000100ea0a6f08640001000f00580202000100 ,\n        0x5802030001004c657474657200d3110f49d3110f7e41ab1fa83c4f0000000000 ,\n        0x16000000a83c0000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000200 ,\n        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000010000000000010000 ,\n        0x0000010006000000070007000000000000000000010000010001160000000000 ,\n        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,\n        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,\n        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,\n        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,\n        0x40010000d2000000180000000000102710271027000010270000000000000000 ,\n        0x0000000002000000000002000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000100000000 ,\n        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000001146400000000000000000000000000 ,\n        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000070006d00690063006b0065006c00730065006e000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000050004d00490043004b004f00460043002d004800500000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000500050001000000000002000100010002000000 ,\n        0x0001010000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,\n        0x000000010000000041007200690061006c000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000001000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0001010002000000020000000100000010270000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,\n        0x0000000000000000b203000054500000bb0400005052495608c8fad501ff4d46 ,\n        0x432d3836393044570000000000000000\n    End\n    PrtDevNames = Begin\n        0x0800230047000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000055534230303300\n    End\n    FilterOnLoad =0\n    FitToPage =1\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    PrtDevModeW = Begin\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x4400570020005000720069006e007400650072002000280043006f0000000000 ,\n        0x01040801dc00b40753ef800101000100ea0a6f08640001000f00580202000100 ,\n        0x5802030001004c00650074007400650072000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000200 ,\n        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000010000000000010000 ,\n        0x0000010006000000070007000000000000000000010000010001160000000000 ,\n        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,\n        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,\n        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,\n        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,\n        0x40010000d2000000180000000000102710271027000010270000000000000000 ,\n        0x0000000002000000000002000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000100000000 ,\n        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000001146400000000000000000000000000 ,\n        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000070006d00690063006b0065006c00730065006e000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000050004d00490043004b004f00460043002d004800500000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000500050001000000000002000100010002000000 ,\n        0x0001010000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,\n        0x000000010000000041007200690061006c000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000001000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0001010002000000020000000100000010270000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,\n        0x0000000000000000b203000054500000bb0400005052495608c8fad501ff4d46 ,\n        0x432d3836393044570000000000000000\n    End\n    PrtDevNamesW = Begin\n        0x04001f0043000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000005500530042003000300033000000\n    End\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            FontName =\"Calibri\"\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Rectangle\n            BorderLineStyle =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin CheckBox\n            BorderLineStyle =0\n            LabelX =230\n            LabelY =-30\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            ShowDatePicker =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin PageHeader\n            Height =0\n            Name =\"PageHeaderSection\"\n            GUID = Begin\n                0x4fd26b46bd023640af96df1bfec98bd2\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n        Begin Section\n            KeepTogether = NotDefault\n            CanGrow = NotDefault\n            Height =1653\n            Name =\"Detail\"\n            GUID = Begin\n                0xadc0f6e68665ed4dad37bb35909c48e4\n            End\n            AlternateBackColor =16777215\n            AlternateBackThemeColorIndex =1\n            BackThemeColorIndex =1\n            Begin\n                Begin Label\n                    Left =60\n                    Top =60\n                    Width =1020\n                    Height =240\n                    FontSize =8\n                    FontWeight =600\n                    Name =\"Label451\"\n                    Caption =\"Disposition\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x0a7c6d475e77f44ab18d09a9e148ea0d\n                    End\n                    LayoutCachedLeft =60\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =1080\n                    LayoutCachedHeight =300\n                    ThemeFontIndex =-1\n                    BackThemeColorIndex =-1\n                    BorderThemeColorIndex =-1\n                    BorderTint =100.0\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    FELineBreak = NotDefault\n                    ScrollBars =2\n                    Left =60\n                    Top =630\n                    Width =5340\n                    Height =1023\n                    FontSize =8\n                    BorderColor =13421772\n                    Name =\"Disposition\"\n                    ControlSource =\"Disposition\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x2394e1048561c14d904c21321dd1225d\n                    End\n                    AsianLineBreak =0\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =60\n                    LayoutCachedTop =630\n                    LayoutCachedWidth =5400\n                    LayoutCachedHeight =1653\n                    BorderShade =80.0\n                    ThemeFontIndex =-1\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                End\n                Begin TextBox\n                    FELineBreak = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    BackStyle =0\n                    Left =2100\n                    Top =60\n                    Width =1380\n                    FontSize =8\n                    TabIndex =1\n                    Name =\"Text38\"\n                    ControlSource =\"Dispo_Date\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0xbb6981f63b2a734c964a2ed9755f9509\n                    End\n                    AsianLineBreak =0\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =2100\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =3480\n                    LayoutCachedHeight =300\n                    BackThemeColorIndex =-1\n                    BorderThemeColorIndex =-1\n                    BorderShade =100.0\n                    ThemeFontIndex =-1\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                    Begin\n                        Begin Label\n                            Left =1560\n                            Top =60\n                            Width =480\n                            Height =240\n                            FontSize =8\n                            Name =\"Label39\"\n                            Caption =\"Date:\"\n                            FontName =\"Arial\"\n                            GUID = Begin\n                                0xb39264877c5bc84da5a78786974788c2\n                            End\n                            LayoutCachedLeft =1560\n                            LayoutCachedTop =60\n                            LayoutCachedWidth =2040\n                            LayoutCachedHeight =300\n                            ThemeFontIndex =-1\n                            BackThemeColorIndex =-1\n                            BorderThemeColorIndex =-1\n                            BorderTint =100.0\n                            ForeThemeColorIndex =-1\n                            ForeTint =100.0\n                            GridlineThemeColorIndex =-1\n                            GridlineShade =100.0\n                        End\n                    End\n                End\n                Begin TextBox\n                    FELineBreak = NotDefault\n                    OldBorderStyle =0\n                    BackStyle =0\n                    Left =2100\n                    Top =360\n                    Width =1380\n                    FontSize =8\n                    TabIndex =2\n                    Name =\"Text40\"\n                    ControlSource =\"DispoJudge\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x3040b4f2b2cea24592c0188befd7a305\n                    End\n                    AsianLineBreak =0\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =2100\n                    LayoutCachedTop =360\n                    LayoutCachedWidth =3480\n                    LayoutCachedHeight =600\n                    BackThemeColorIndex =-1\n                    BorderThemeColorIndex =-1\n                    BorderShade =100.0\n                    ThemeFontIndex =-1\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                    Begin\n                        Begin Label\n                            Left =1560\n                            Top =360\n                            Width =555\n                            Height =240\n                            FontSize =8\n                            Name =\"Label41\"\n                            Caption =\"Judge:\"\n                            FontName =\"Arial\"\n                            GUID = Begin\n                                0xeb7de1ca26e64c499dc42bb16814119b\n                            End\n                            LayoutCachedLeft =1560\n                            LayoutCachedTop =360\n                            LayoutCachedWidth =2115\n                            LayoutCachedHeight =600\n                            ThemeFontIndex =-1\n                            BackThemeColorIndex =-1\n                            BorderThemeColorIndex =-1\n                            BorderTint =100.0\n                            ForeThemeColorIndex =-1\n                            ForeTint =100.0\n                            GridlineThemeColorIndex =-1\n                            GridlineShade =100.0\n                        End\n                    End\n                End\n                Begin TextBox\n                    FELineBreak = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    BackStyle =0\n                    Left =4080\n                    Top =60\n                    Width =840\n                    FontSize =8\n                    TabIndex =3\n                    Name =\"Text42\"\n                    ControlSource =\"Dispo_Atty\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x58206f4d89f8474fabaf30aec65dd139\n                    End\n                    AsianLineBreak =0\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =4080\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =4920\n                    LayoutCachedHeight =300\n                    BackThemeColorIndex =-1\n                    BorderThemeColorIndex =-1\n                    BorderShade =100.0\n                    ThemeFontIndex =-1\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                    Begin\n                        Begin Label\n                            Left =3600\n                            Top =60\n                            Width =360\n                            Height =240\n                            FontSize =8\n                            Name =\"Label43\"\n                            Caption =\"Atty:\"\n                            FontName =\"Arial\"\n                            GUID = Begin\n                                0x73b67fd6a32a034faf6e7326573dabf8\n                            End\n                            LayoutCachedLeft =3600\n                            LayoutCachedTop =60\n                            LayoutCachedWidth =3960\n                            LayoutCachedHeight =300\n                            ThemeFontIndex =-1\n                            BackThemeColorIndex =-1\n                            BorderThemeColorIndex =-1\n                            BorderTint =100.0\n                            ForeThemeColorIndex =-1\n                            ForeTint =100.0\n                            GridlineThemeColorIndex =-1\n                            GridlineShade =100.0\n                        End\n                    End\n                End\n                Begin TextBox\n                    FELineBreak = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    BackStyle =0\n                    Left =4080\n                    Top =360\n                    Width =840\n                    FontSize =8\n                    TabIndex =4\n                    Name =\"Text44\"\n                    ControlSource =\"DispoOppC\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0xe11f593bce837f41a8ce3ce822615b87\n                    End\n                    AsianLineBreak =0\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =4080\n                    LayoutCachedTop =360\n                    LayoutCachedWidth =4920\n                    LayoutCachedHeight =600\n                    BackThemeColorIndex =-1\n                    BorderThemeColorIndex =-1\n                    BorderShade =100.0\n                    ThemeFontIndex =-1\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                    Begin\n                        Begin Label\n                            Left =3600\n                            Top =360\n                            Width =360\n                            Height =240\n                            FontSize =8\n                            Name =\"Label45\"\n                            Caption =\"OC:\"\n                            FontName =\"Arial\"\n                            GUID = Begin\n                                0xe86ec0f2a8719346bae8af4e57f72a32\n                            End\n                            LayoutCachedLeft =3600\n                            LayoutCachedTop =360\n                            LayoutCachedWidth =3960\n                            LayoutCachedHeight =600\n                            ThemeFontIndex =-1\n                            BackThemeColorIndex =-1\n                            BorderThemeColorIndex =-1\n                            BorderTint =100.0\n                            ForeThemeColorIndex =-1\n                            ForeTint =100.0\n                            GridlineThemeColorIndex =-1\n                            GridlineShade =100.0\n                        End\n                    End\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    FELineBreak = NotDefault\n                    OldBorderStyle =0\n                    BackStyle =0\n                    Left =180\n                    Top =1080\n                    Width =360\n                    FontSize =8\n                    TabIndex =5\n                    Name =\"PISettelment\"\n                    ControlSource =\"PI Settlement Amount\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x25ea54dd28969f43a842b699aaf35e36\n                    End\n                    AsianLineBreak =0\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =180\n                    LayoutCachedTop =1080\n                    LayoutCachedWidth =540\n                    LayoutCachedHeight =1320\n                    BackThemeColorIndex =-1\n                    BorderThemeColorIndex =-1\n                    BorderShade =100.0\n                    ThemeFontIndex =-1\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    GridlineThemeColorIndex =-1\n                    GridlineShade =100.0\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    IMESentenceMode =3\n                    Left =3000\n                    Top =1140\n                    Width =1260\n                    Height =315\n                    TabIndex =6\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Text26\"\n                    ControlSource =\"Total Earned Fee\"\n                    FontName =\"Trebuchet MS\"\n                    GUID = Begin\n                        0xc327ab30f1b19f44a93c87d7910bcf79\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedLeft =3000\n                    LayoutCachedTop =1140\n                    LayoutCachedWidth =4260\n                    LayoutCachedHeight =1455\n                End\n            End\n        End\n        Begin PageFooter\n            Height =0\n            Name =\"PageFooterSection\"\n            GUID = Begin\n                0x227d8926059a9544872bab7f6e43236d\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n    End\nEnd"
+}

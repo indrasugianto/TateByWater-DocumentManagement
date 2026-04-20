@@ -1,0 +1,139 @@
+{
+  "reportName": "rpt_Reconciliation sub",
+  "dataSource": "SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qryTakeOffStep2.AvailBalance, qryTakeOffStep2.TakeOffMonthID FROM qryTakeOffStep2; ",
+  "width": 9120,
+  "caption": "rpt_Reconciliation sub",
+  "orientation": "portrait",
+  "margins": {
+    "left": 360,
+    "right": 360,
+    "top": 360,
+    "bottom": 360
+  },
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 450,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "FileNumber",
+          "left": 0,
+          "top": 60,
+          "width": 1440,
+          "height": 330,
+          "controlSource": "FileNumber",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638
+        },
+        {
+          "type": "TextBox",
+          "name": "Name",
+          "left": 2400,
+          "top": 60,
+          "width": 3720,
+          "height": 330,
+          "controlSource": "Name",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638
+        },
+        {
+          "type": "TextBox",
+          "name": "AvailBalance",
+          "left": 6360,
+          "top": 0,
+          "width": 2220,
+          "height": 330,
+          "controlSource": "AvailBalance",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "format": "Currency"
+        },
+        {
+          "type": "TextBox",
+          "name": "TakeOffMonthID",
+          "left": 1680,
+          "top": 120,
+          "width": 420,
+          "height": 195,
+          "controlSource": "TakeOffMonthID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "type": "ReportHeader",
+      "height": 300,
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 0,
+          "top": 1,
+          "width": 1140,
+          "height": 284,
+          "caption": "File No.",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 2400,
+          "top": 0,
+          "width": 2280,
+          "height": 284,
+          "caption": "Name",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
+        },
+        {
+          "type": "Label",
+          "name": "Label24",
+          "left": 7560,
+          "top": 0,
+          "width": 1515,
+          "height": 285,
+          "caption": "Balance",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        }
+      ]
+    },
+    {
+      "type": "ReportFooter",
+      "height": 0,
+      "controls": []
+    },
+    {
+      "type": "PageHeader",
+      "height": 0,
+      "controls": []
+    },
+    {
+      "type": "PageFooter",
+      "height": 0,
+      "controls": []
+    }
+  ],
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =-1285254023\nBegin Report\n    LayoutForPrint = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    DateGrouping =1\n    GrpKeepTogether =1\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =9120\n    DatasheetFontHeight =11\n    ItemSuffix =8\n    Left =690\n    Top =4785\n    Right =10515\n    Bottom =6570\n    DatasheetGridlinesColor =15132391\n    GUID = Begin\n        0xe3ad49560ba3a64991345e61bd345f17\n    End\n    NameMap = Begin\n        0x0acc0e5500000000a0ef34001c1f35004c7d2e0102000000000000004f0566b1 ,\n        0xb58ae5400000000000000000710072007900540061006b0065004f0066006600 ,\n        0x5300740065007000320000000000000057b580c5b6e9b84aa194ef9882c75598 ,\n        0x07000000a0ef34001c1f35004c7d2e0102000000460069006c0065004e007500 ,\n        0x6d006200650072000000000000001655b572767cd44ca1cac15bffb4d2a80700 ,\n        0x0000a0ef34001c1f35004c7d2e01020000004e0061006d006500000000000000 ,\n        0xc3ed0fb55e238f49b0aee34ade9d172f07000000a0ef34001c1f35004c7d2e01 ,\n        0x0200000041007600610069006c00420061006c0061006e006300650000000000 ,\n        0x0000094505a3ad573e4f8b948c60769d32ef07000000a0ef34001c1f35004c7d ,\n        0x2e0102000000540061006b0065004f00660066004d006f006e00740068004900 ,\n        0x4400000000000000000000000000000000000000000000000c00000005000000 ,\n        0x0000000000000000000000000000\n    End\n    RecordSource =\"SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qryTakeOffStep2.AvailBa\"\n        \"lance, qryTakeOffStep2.TakeOffMonthID FROM qryTakeOffStep2; \"\n    Caption =\"rpt_Reconciliation sub\"\n    DatasheetFontName =\"Calibri\"\n    PrtMip = Begin\n        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,\n        0x010000006801000000000000a10700000100000001000000\n    End\n    PrtDevMode = Begin\n        0x001200008d2aa364c6bdd979e46f1913f0c278208086d977200000000000a00f ,\n        0x010408019c00b4070f93010001000100ea0a6f08640001000700580201000100 ,\n        0x5802010000004c657474657200456e015ca4a3640000000044baf727582fa364 ,\n        0x32bcd97920640000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000200 ,\n        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000010000000000010000 ,\n        0x0000010006000000070007000000000000000000010000010001160000000000 ,\n        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,\n        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,\n        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,\n        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,\n        0x40010000d2000000180000000000102710271027000010270000000000000000 ,\n        0x0000000002000000000002000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000100000000 ,\n        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000001146400000000000000000000000000 ,\n        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000070006d00690063006b0065006c00730065006e000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000054004100540045002d00300031003500360035002d0057005300 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000500050001000000000002000100010002000000 ,\n        0x0001010000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,\n        0x000000010000000041007200690061006c000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000001000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0001010002000000020000000100000010270000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,\n        0x0000000000000000b203000054500000bb04000050524956fbc7e5d501ff4d46 ,\n        0x432d3836393044570000000000000000\n    End\n    PrtDevNames = Begin\n        0x080023003e000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000005553 ,\n        0x4230303300\n    End\n    FilterOnLoad =0\n    FitToPage =1\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    PrtDevModeW = Begin\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x4400570020005000720069006e00740065007200000000000000000000000000 ,\n        0x01040801dc00b4070f93010001000100ea0a6f08640001000700580201000100 ,\n        0x5802010000004c00650074007400650072000000daefa464e8e5a46430df1313 ,\n        0xa833211098850000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000200 ,\n        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000010000000000010000 ,\n        0x0000010006000000070007000000000000000000010000010001160000000000 ,\n        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,\n        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,\n        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,\n        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,\n        0x40010000d2000000180000000000102710271027000010270000000000000000 ,\n        0x0000000002000000000002000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000100000000 ,\n        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000001146400000000000000000000000000 ,\n        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000070006d00690063006b0065006c00730065006e000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000054004100540045002d00300031003500360035002d0057005300 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000500050001000000000002000100010002000000 ,\n        0x0001010000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,\n        0x000000010000000041007200690061006c000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000001000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0001010002000000020000000100000010270000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,\n        0x0000000000000000b203000054500000bb04000050524956fbc7e5d501ff4d46 ,\n        0x432d3836393044570000000000000000\n    End\n    PrtDevNamesW = Begin\n        0x04001f003a000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000550053004200300030003300 ,\n        0x0000\n    End\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            FontName =\"Calibri\"\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            ShowDatePicker =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin FormHeader\n            KeepTogether = NotDefault\n            Height =300\n            Name =\"ReportHeader\"\n            GUID = Begin\n                0x482989875f00234593d35b18f7606c7d\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            Begin\n                Begin Label\n                    TextAlign =1\n                    Top =1\n                    Width =1140\n                    Height =284\n                    FontSize =10\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =8355711\n                    Name =\"Label0\"\n                    Caption =\"File No.\"\n                    GUID = Begin\n                        0x44be102a84e3014282b102d2f27e08a7\n                    End\n                    BottomPadding =150\n                    GridlineColor =10921638\n                    LayoutCachedTop =1\n                    LayoutCachedWidth =1140\n                    LayoutCachedHeight =285\n                    ForeTint =100.0\n                End\n                Begin Label\n                    TextAlign =1\n                    Left =2400\n                    Width =2280\n                    Height =284\n                    FontSize =10\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =8355711\n                    Name =\"Label3\"\n                    Caption =\"Name\"\n                    GUID = Begin\n                        0x805ef95266db6e43a24c88cabedc302b\n                    End\n                    BottomPadding =150\n                    GridlineColor =10921638\n                    LayoutCachedLeft =2400\n                    LayoutCachedWidth =4680\n                    LayoutCachedHeight =284\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =7560\n                    Width =1515\n                    Height =285\n                    FontSize =10\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =8355711\n                    Name =\"Label24\"\n                    Caption =\"Balance\"\n                    GUID = Begin\n                        0x48a6e73ffa5a464fa0843542687c242a\n                    End\n                    BottomPadding =150\n                    GridlineColor =10921638\n                    LayoutCachedLeft =7560\n                    LayoutCachedWidth =9075\n                    LayoutCachedHeight =285\n                    ForeTint =100.0\n                End\n            End\n        End\n        Begin PageHeader\n            Height =0\n            Name =\"PageHeaderSection\"\n            GUID = Begin\n                0xef0ab9fe804d3243aac82af40316fddd\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n        Begin Section\n            KeepTogether = NotDefault\n            Height =450\n            Name =\"Detail\"\n            GUID = Begin\n                0xb4299e472b9ec349afb20af608e728ac\n            End\n            AutoHeight =1\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    OldBorderStyle =0\n                    IMESentenceMode =3\n                    Top =60\n                    Height =330\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"FileNumber\"\n                    ControlSource =\"FileNumber\"\n                    GUID = Begin\n                        0x7f2b0673f31f304aa06bf585a4b02239\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =1440\n                    LayoutCachedHeight =390\n                End\n                Begin TextBox\n                    OldBorderStyle =0\n                    IMESentenceMode =3\n                    Left =2400\n                    Top =60\n                    Width =3720\n                    Height =330\n                    TabIndex =1\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Name\"\n                    ControlSource =\"Name\"\n                    GUID = Begin\n                        0x6d32c4c1cb6df7429c323c5bec68463d\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedLeft =2400\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =6120\n                    LayoutCachedHeight =390\n                End\n                Begin TextBox\n                    OldBorderStyle =0\n                    IMESentenceMode =3\n                    Left =6360\n                    Width =2220\n                    Height =330\n                    ColumnWidth =1605\n                    TabIndex =2\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"AvailBalance\"\n                    ControlSource =\"AvailBalance\"\n                    Format =\"$#,##0.00;($#,##0.00)\"\n                    GUID = Begin\n                        0x1851787d7bcaa94881ae8e104e27aca0\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedLeft =6360\n                    LayoutCachedWidth =8580\n                    LayoutCachedHeight =330\n                    CurrencySymbol =\"$\"\n                    ColLCID =1033\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    IMESentenceMode =3\n                    Left =1680\n                    Top =120\n                    Width =420\n                    Height =195\n                    TabIndex =3\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"TakeOffMonthID\"\n                    ControlSource =\"TakeOffMonthID\"\n                    GUID = Begin\n                        0x656e3406c9c3fc4489160decd8518a57\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedLeft =1680\n                    LayoutCachedTop =120\n                    LayoutCachedWidth =2100\n                    LayoutCachedHeight =315\n                End\n            End\n        End\n        Begin PageFooter\n            Height =0\n            Name =\"PageFooterSection\"\n            GUID = Begin\n                0xfd73faa961c1214280aaec8aadbca9c9\n            End\n            AutoHeight =1\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n        Begin FormFooter\n            KeepTogether = NotDefault\n            Height =0\n            Name =\"ReportFooter\"\n            GUID = Begin\n                0xd5c185541330d449af71611c1633204d\n            End\n            AutoHeight =1\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n    End\nEnd"
+}

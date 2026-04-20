@@ -1,0 +1,16 @@
+{
+  "reportName": "rptReceiptRec",
+  "dataSource": "tblReceipts",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "tblReceipts",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblReceipts"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

@@ -1,0 +1,5 @@
+SELECT [Last_Name] & ", " & [First_Name] AS Name, tblCase.Matter_type, tblCase.Orig_Atty, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_") AS FileNumber, tblCase.Case_Letter, tblCase.Number_, tblCase.CaseID, tblCase.Closed, qryTakeOff_trust_account.Balance, tblCase.Executor, tblCase.Case_Letter
+FROM tblCase LEFT JOIN qryTakeOff_trust_account ON tblCase.CaseID = qryTakeOff_trust_account.CaseID
+GROUP BY [Last_Name] & ", " & [First_Name], tblCase.Matter_type, tblCase.Orig_Atty, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_"), tblCase.Number_, tblCase.CaseID, tblCase.Closed, qryTakeOff_trust_account.Balance, tblCase.Executor, tblCase.Case_Letter, tblCase.Case_Letter
+HAVING (((qryTakeOff_trust_account.Balance)<>0))
+ORDER BY [Last_Name] & ", " & [First_Name];

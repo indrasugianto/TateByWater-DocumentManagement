@@ -1,0 +1,24 @@
+{
+  "reportName": "rpt_Trust_Closing",
+  "dataSource": "qryStmtTrustRPT1",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "qryStmtTrustRPT1",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryStmtTrustRPT1"
+    ],
+    "terminalTables": [
+      "vwStmtTrustRPT1"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryStmtTrustRPT1",
+        "to": "vwStmtTrustRPT1",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

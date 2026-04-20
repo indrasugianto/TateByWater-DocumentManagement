@@ -1,0 +1,2456 @@
+{
+  "formName": "zClient Ledger OLD",
+  "caption": "Client Ledger",
+  "recordSource": "tblCase",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": true,
+  "width": 20280,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box385",
+          "left": 15780,
+          "top": 2820,
+          "width": 4500,
+          "height": 1320,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box309",
+          "left": 16320,
+          "top": 5520,
+          "width": 3540,
+          "height": 1260,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box383",
+          "left": 6120,
+          "top": 3360,
+          "width": 5040,
+          "height": 1680,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box382",
+          "left": 60,
+          "top": 3360,
+          "width": 6000,
+          "height": 1680,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box381",
+          "left": 15780,
+          "top": 60,
+          "width": 4500,
+          "height": 2520,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box380",
+          "left": 13200,
+          "top": 60,
+          "width": 2400,
+          "height": 900,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box378",
+          "left": 180,
+          "top": 1140,
+          "width": 6780,
+          "height": 780,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box376",
+          "left": 1800,
+          "top": 2100,
+          "width": 3071,
+          "height": 449,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box363",
+          "left": 6960,
+          "top": 60,
+          "width": 6030,
+          "height": 900,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box192",
+          "left": 75,
+          "top": 2880,
+          "width": 11085,
+          "height": 480,
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "SOL",
+          "left": 18480,
+          "top": 180,
+          "width": 1200,
+          "height": 300,
+          "controlSource": "SOL",
+          "tabIndex": 32,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Line",
+          "name": "Line24",
+          "left": 75,
+          "top": 3360,
+          "width": 11100,
+          "height": 0,
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Address",
+          "left": 2415,
+          "top": 3480,
+          "width": 3420,
+          "height": 240,
+          "controlSource": "Address",
+          "tabIndex": 13,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "City",
+          "left": 2415,
+          "top": 3780,
+          "width": 1620,
+          "height": 240,
+          "controlSource": "City",
+          "tabIndex": 14,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "State",
+          "left": 4095,
+          "top": 3780,
+          "width": 720,
+          "height": 240,
+          "controlSource": "State",
+          "tabIndex": 15,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Zip",
+          "left": 4875,
+          "top": 3780,
+          "width": 960,
+          "height": 240,
+          "controlSource": "Zip",
+          "tabIndex": 16,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "HmPhone",
+          "left": 2415,
+          "top": 4080,
+          "width": 1260,
+          "height": 240,
+          "controlSource": "HmPhone",
+          "tabIndex": 17,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "WkPhone",
+          "left": 7620,
+          "top": 4650,
+          "width": 1380,
+          "height": 240,
+          "controlSource": "WkPhone",
+          "tabIndex": 27,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OtherPhone",
+          "left": 4575,
+          "top": 4080,
+          "width": 1260,
+          "height": 240,
+          "controlSource": "OtherPhone",
+          "tabIndex": 18,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label236",
+          "left": 1275,
+          "top": 4080,
+          "width": 1050,
+          "height": 210,
+          "caption": "Phone",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label237",
+          "left": 6465,
+          "top": 4650,
+          "width": 975,
+          "height": 240,
+          "caption": "Work Phone",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label238",
+          "left": 3795,
+          "top": 4080,
+          "width": 720,
+          "height": 210,
+          "caption": "Other Ph",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label240",
+          "left": 195,
+          "top": 3420,
+          "width": 1020,
+          "height": 405,
+          "caption": "Personal  Information:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label262",
+          "left": 1275,
+          "top": 3480,
+          "width": 690,
+          "height": 210,
+          "caption": "Address",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label263",
+          "left": 1275,
+          "top": 3780,
+          "width": 1080,
+          "height": 210,
+          "caption": "City/State/Zip",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label307",
+          "left": 18000,
+          "top": 195,
+          "width": 480,
+          "height": 285,
+          "caption": "SOL",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Closed",
+          "left": 8100,
+          "top": 120,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Closed",
+          "tabIndex": 51,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label334",
+          "left": 8400,
+          "top": 120,
+          "width": 555,
+          "height": 240,
+          "caption": "Closed",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Current Balance",
+          "left": 13380,
+          "top": 480,
+          "width": 2040,
+          "height": 330,
+          "controlSource": "=Nz(DLookUp(\"Balance\",\"qryMatter\",\"CaseID=\" & [CaseID]),0)++Nz([retainer],0)",
+          "format": "Currency",
+          "tabIndex": 50,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label339",
+          "left": 13680,
+          "top": 180,
+          "width": 1500,
+          "height": 240,
+          "caption": "Current Balance",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label442",
+          "left": 1200,
+          "top": 3000,
+          "width": 1260,
+          "height": 210,
+          "caption": "Referral Source:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Action",
+          "left": 5880,
+          "top": 5400,
+          "width": 5295,
+          "height": 720,
+          "controlSource": "Action",
+          "tabIndex": 30,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Clsdate",
+          "left": 7860,
+          "top": 360,
+          "width": 1080,
+          "height": 240,
+          "controlSource": "Clsdate",
+          "tabIndex": 52,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Line",
+          "name": "Line466",
+          "left": 75,
+          "top": 2880,
+          "width": 11100,
+          "height": 0,
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Comments",
+          "left": 60,
+          "top": 5400,
+          "width": 5640,
+          "height": 1500,
+          "controlSource": "Comments",
+          "tabIndex": 28,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label472",
+          "left": 60,
+          "top": 5160,
+          "width": 1035,
+          "height": 180,
+          "caption": "Comments:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Police Officer",
+          "left": 15960,
+          "top": 3600,
+          "width": 4139,
+          "height": 301,
+          "controlSource": "POfc",
+          "tabIndex": 42,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label1267",
+          "left": 15960,
+          "top": 3360,
+          "width": 2760,
+          "height": 270,
+          "caption": "Police Officer / Complaining Witness:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "SSN",
+          "left": 4320,
+          "top": 4680,
+          "width": 1515,
+          "height": 240,
+          "controlSource": "SSN",
+          "tabIndex": 21,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label503",
+          "left": 3840,
+          "top": 4680,
+          "width": 360,
+          "height": 210,
+          "caption": "SSN",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label504",
+          "left": 1275,
+          "top": 4380,
+          "width": 600,
+          "height": 240,
+          "caption": "Email",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "WkAddress",
+          "left": 7620,
+          "top": 4050,
+          "width": 3360,
+          "height": 240,
+          "controlSource": "WkAddress",
+          "tabIndex": 23,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "WkCity",
+          "left": 7620,
+          "top": 4350,
+          "width": 1620,
+          "height": 240,
+          "controlSource": "WkCity",
+          "tabIndex": 24,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "WkState",
+          "left": 9300,
+          "top": 4350,
+          "width": 720,
+          "height": 240,
+          "controlSource": "WkState",
+          "tabIndex": 25,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "WkZip",
+          "left": 10080,
+          "top": 4350,
+          "width": 900,
+          "height": 240,
+          "controlSource": "WkZip",
+          "tabIndex": 26,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label509",
+          "left": 6360,
+          "top": 4350,
+          "width": 1080,
+          "height": 210,
+          "caption": "City/State/Zip",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Email",
+          "left": 2415,
+          "top": 4380,
+          "width": 3420,
+          "height": 240,
+          "controlSource": "Email",
+          "tabIndex": 19,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "DOB",
+          "left": 2415,
+          "top": 4680,
+          "width": 1260,
+          "height": 240,
+          "controlSource": "DOB",
+          "format": "Short Date",
+          "tabIndex": 20,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label513",
+          "left": 1275,
+          "top": 4680,
+          "width": 480,
+          "height": 210,
+          "caption": "DOB",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label514",
+          "left": 6360,
+          "top": 4050,
+          "width": 1080,
+          "height": 210,
+          "caption": "Work Address",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Action_Needed_on_Payment",
+          "left": 5880,
+          "top": 5160,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Action_Needed_on_Payment",
+          "tabIndex": 29,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label547",
+          "left": 6180,
+          "top": 5160,
+          "width": 1155,
+          "height": 240,
+          "caption": "Action Needed",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Individual Referrer",
+          "left": 6300,
+          "top": 2940,
+          "width": 3045,
+          "height": 315,
+          "controlSource": "[Individual Referrer]",
+          "tabIndex": 12,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OC Address",
+          "left": 17100,
+          "top": 1320,
+          "width": 3120,
+          "height": 240,
+          "controlSource": "[OC Address]",
+          "tabIndex": 35,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OC City",
+          "left": 17100,
+          "top": 1620,
+          "width": 1620,
+          "height": 240,
+          "controlSource": "[OC City]",
+          "tabIndex": 36,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OC State",
+          "left": 18780,
+          "top": 1620,
+          "width": 480,
+          "height": 240,
+          "controlSource": "[OC State]",
+          "tabIndex": 37,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OC Zip",
+          "left": 19320,
+          "top": 1620,
+          "width": 900,
+          "height": 240,
+          "controlSource": "[OC Zip]",
+          "tabIndex": 38,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OC Phone",
+          "left": 17100,
+          "top": 1920,
+          "width": 1380,
+          "height": 240,
+          "controlSource": "[OC Phone]",
+          "tabIndex": 39,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OC Fax",
+          "left": 18960,
+          "top": 1920,
+          "width": 1260,
+          "height": 240,
+          "controlSource": "[OC Fax]",
+          "tabIndex": 40,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label114",
+          "left": 16380,
+          "top": 1920,
+          "width": 600,
+          "height": 210,
+          "caption": "Phone:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label115",
+          "left": 18480,
+          "top": 1920,
+          "width": 390,
+          "height": 240,
+          "caption": "Fax:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label116",
+          "left": 16260,
+          "top": 540,
+          "width": 750,
+          "height": 480,
+          "caption": "Opposing Counsel:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label117",
+          "left": 16320,
+          "top": 1320,
+          "width": 660,
+          "height": 210,
+          "caption": "Address:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label118",
+          "left": 15900,
+          "top": 1620,
+          "width": 1095,
+          "height": 210,
+          "caption": "City/State/Zip:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label119",
+          "left": 16500,
+          "top": 2220,
+          "width": 465,
+          "height": 240,
+          "caption": "Email:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "OC Email",
+          "left": 17100,
+          "top": 2220,
+          "width": 3120,
+          "height": 240,
+          "controlSource": "[OC Email]",
+          "tabIndex": 41,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Ocounsel",
+          "left": 17100,
+          "top": 720,
+          "width": 3120,
+          "height": 240,
+          "controlSource": "Ocounsel",
+          "tabIndex": 33,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Referral",
+          "left": 2580,
+          "top": 2940,
+          "width": 2040,
+          "height": 300,
+          "controlSource": "Referral",
+          "rowSource": "SELECT tblDropD.DropID, tblDropD.CodeVal FROM tblDropD WHERE (((tblDropD.FieldName)=\"Referral\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 11,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label210",
+          "left": 4800,
+          "top": 3000,
+          "width": 1455,
+          "height": 240,
+          "caption": "Individual Referrer: ",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Pro Bono",
+          "left": 12480,
+          "top": 6660,
+          "width": 255,
+          "height": 315,
+          "controlSource": "[Pro Bono]",
+          "tabIndex": 47,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label219",
+          "left": 11400,
+          "top": 6600,
+          "width": 975,
+          "height": 315,
+          "caption": "Pro Bono",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Pro Bono PM",
+          "left": 13500,
+          "top": 6600,
+          "width": 540,
+          "height": 240,
+          "controlSource": "[Pro Bono PM]",
+          "tabIndex": 48,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Pro Bono JRT",
+          "left": 14940,
+          "top": 6600,
+          "width": 540,
+          "height": 240,
+          "controlSource": "[Pro Bono JRT]",
+          "tabIndex": 49,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label73",
+          "left": 12780,
+          "top": 6600,
+          "width": 660,
+          "height": 285,
+          "caption": "PM Hrs",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label74",
+          "left": 14160,
+          "top": 6600,
+          "width": 645,
+          "height": 300,
+          "caption": "JRT Hrs",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Employer Name",
+          "left": 7620,
+          "top": 3750,
+          "width": 3360,
+          "height": 240,
+          "controlSource": "[Employer Name]",
+          "tabIndex": 22,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label233",
+          "left": 6210,
+          "top": 3750,
+          "width": 1230,
+          "height": 240,
+          "caption": "Employer Name",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Hourly",
+          "left": 16860,
+          "top": 6360,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Hourly",
+          "tabIndex": 44,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label264",
+          "left": 17090,
+          "top": 6360,
+          "width": 675,
+          "height": 255,
+          "caption": "Hourly",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Contingency",
+          "left": 18000,
+          "top": 5970,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Contingency",
+          "tabIndex": 45,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label265",
+          "left": 18230,
+          "top": 5940,
+          "width": 1095,
+          "height": 315,
+          "caption": "Contingency",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Hybrid",
+          "left": 18000,
+          "top": 6390,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Hybrid",
+          "tabIndex": 46,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label266",
+          "left": 18230,
+          "top": 6360,
+          "width": 615,
+          "height": 315,
+          "caption": "Hybrid",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Fixed",
+          "left": 16860,
+          "top": 5970,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Fixed",
+          "tabIndex": 43,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label267",
+          "left": 17090,
+          "top": 5940,
+          "width": 675,
+          "height": 315,
+          "caption": "Fixed",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label268",
+          "left": 17400,
+          "top": 5640,
+          "width": 1560,
+          "height": 240,
+          "caption": "Type of Billing:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "AuthorityToTalkTo",
+          "left": 5880,
+          "top": 6420,
+          "width": 5295,
+          "height": 480,
+          "controlSource": "AuthorityToTalkTo",
+          "tabIndex": 31,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label269",
+          "left": 5880,
+          "top": 6180,
+          "width": 1440,
+          "height": 240,
+          "caption": "Authority to talk to:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label333",
+          "left": 15960,
+          "top": 180,
+          "width": 660,
+          "height": 210,
+          "caption": "Civil",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label335",
+          "left": 15960,
+          "top": 2940,
+          "width": 1740,
+          "height": 210,
+          "caption": "Criminal / Traffic",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "FIRM",
+          "left": 17100,
+          "top": 1020,
+          "width": 3120,
+          "height": 240,
+          "controlSource": "Firm",
+          "tabIndex": 34,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label340",
+          "left": 16320,
+          "top": 1020,
+          "width": 660,
+          "height": 210,
+          "caption": "Firm:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label349",
+          "left": 5190,
+          "top": 2190,
+          "width": 960,
+          "height": 285,
+          "caption": "PARALEGAL:",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command353",
+          "left": 7080,
+          "top": 660,
+          "width": 1860,
+          "height": 240,
+          "caption": "Closing Sheet",
+          "tabIndex": 53,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label354",
+          "left": 7080,
+          "top": 360,
+          "width": 720,
+          "height": 240,
+          "caption": "Cls. Date:",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "ParaLegal",
+          "left": 6180,
+          "top": 2160,
+          "width": 780,
+          "height": 300,
+          "controlSource": "ParaLegal",
+          "rowSource": "SELECT tblDropD.DropID, tblDropD.CodeVal FROM tblDropD WHERE (((tblDropD.FieldName)=\"Paralegal\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "Scan",
+          "left": 11220,
+          "top": 240,
+          "width": 260,
+          "height": 240,
+          "controlSource": "Scan",
+          "tabIndex": 54,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label358",
+          "left": 11520,
+          "top": 240,
+          "width": 720,
+          "height": 240,
+          "caption": "Scanned",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Scan Location",
+          "left": 9540,
+          "top": 660,
+          "width": 3390,
+          "height": 240,
+          "controlSource": "[Scan Location]",
+          "tabIndex": 56,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label360",
+          "left": 9275,
+          "top": 360,
+          "width": 1140,
+          "height": 240,
+          "caption": "File Location:",
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line361",
+          "left": 9120,
+          "top": 180,
+          "width": 0,
+          "height": 720,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label365",
+          "left": 7080,
+          "top": 120,
+          "width": 720,
+          "height": 240,
+          "caption": "Closing",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSearch",
+          "left": 9180,
+          "top": 660,
+          "width": 240,
+          "height": 240,
+          "caption": "Scanning",
+          "tabIndex": 55,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label370",
+          "left": 9240,
+          "top": 120,
+          "width": 1140,
+          "height": 240,
+          "caption": "Scanning",
+          "visible": true
+        },
+        {
+          "type": "SubForm",
+          "name": "frmHearingDate",
+          "left": 11340,
+          "top": 1140,
+          "width": 4260,
+          "height": 5280,
+          "tabIndex": 58,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmHearingDate",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "TextBox",
+          "name": "First_Name",
+          "left": 3720,
+          "top": 480,
+          "width": 2910,
+          "height": 360,
+          "controlSource": "First_Name",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Last_Name",
+          "left": 195,
+          "top": 495,
+          "width": 3405,
+          "height": 360,
+          "controlSource": "Last_Name",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label342",
+          "left": 225,
+          "top": 255,
+          "width": 840,
+          "height": 270,
+          "caption": "Last Name",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label194",
+          "left": 3720,
+          "top": 240,
+          "width": 885,
+          "height": 270,
+          "caption": "First Name",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Spanish",
+          "left": 2160,
+          "top": 240,
+          "width": 1440,
+          "height": 330,
+          "controlSource": "Spanish",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label372",
+          "left": 2390,
+          "top": 240,
+          "width": 675,
+          "height": 240,
+          "caption": "Spanish",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Court",
+          "left": 7339,
+          "top": 1371,
+          "width": 3810,
+          "height": 315,
+          "controlSource": "Court",
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CourtCaseNo",
+          "left": 7320,
+          "top": 2028,
+          "width": 3825,
+          "height": 675,
+          "controlSource": "CourtCaseNo",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CaseOpenDate",
+          "left": 2055,
+          "top": 1513,
+          "width": 1440,
+          "height": 315,
+          "controlSource": "caseOpenDate",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Case_Letter",
+          "left": 600,
+          "top": 1513,
+          "width": 1320,
+          "height": 315,
+          "controlSource": "Case_Letter",
+          "rowSource": "SELECT Code, codeVal, sortOrder FROM tblDropD WHERE FieldName='Case_letter' ORDER BY SortOrder; ",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "FileNo",
+          "left": 2692,
+          "top": 2155,
+          "width": 2040,
+          "height": 315,
+          "controlSource": "=Replace([Case_Letter] & [Yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty],\"__\",\"_\")",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 600,
+          "top": 1215,
+          "width": 1080,
+          "height": 300,
+          "caption": "Case Letter",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 2040,
+          "top": 1200,
+          "width": 1455,
+          "height": 300,
+          "caption": "Case Open Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label4",
+          "left": 4080,
+          "top": 1200,
+          "width": 1194,
+          "height": 300,
+          "caption": "Orig Atty",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 1845,
+          "top": 2190,
+          "width": 840,
+          "height": 360,
+          "caption": "FILE NO.",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label41",
+          "left": 7335,
+          "top": 1080,
+          "width": 2145,
+          "height": 315,
+          "caption": "Court (County and Type)",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label51",
+          "left": 7320,
+          "top": 1740,
+          "width": 1680,
+          "height": 315,
+          "caption": "Court Case No(s).",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label199",
+          "left": 5820,
+          "top": 1200,
+          "width": 900,
+          "height": 240,
+          "caption": "Associate\r\n",
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line379",
+          "left": 5520,
+          "top": 1260,
+          "width": 0,
+          "height": 600,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label384",
+          "left": 7740,
+          "top": 3420,
+          "width": 1635,
+          "height": 240,
+          "caption": "Work Information",
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box387",
+          "left": 15780,
+          "top": 4380,
+          "width": 4500,
+          "height": 960,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label388",
+          "left": 15960,
+          "top": 4500,
+          "width": 1740,
+          "height": 255,
+          "caption": "Family Law",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command128",
+          "left": 15960,
+          "top": 4860,
+          "width": 4200,
+          "height": 360,
+          "caption": "Sub&mit Client Info to Family Law Form",
+          "tabIndex": 57,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "ComboBox",
+          "name": "OrigAtty",
+          "left": 3840,
+          "top": 1500,
+          "width": 1500,
+          "height": 315,
+          "controlSource": "Orig_Atty",
+          "rowSource": "SELECT Code, codeVal, sortOrder FROM tblDropD WHERE FieldName='Orig_Atty' ORDER BY SortOrder; ",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Assoc",
+          "left": 5760,
+          "top": 1500,
+          "width": 1020,
+          "height": 300,
+          "controlSource": "HandlingAtty_Case",
+          "rowSource": "SELECT Code, codeVal, sortOrder FROM tblDropD WHERE FieldName='HandlingAtty_Case' ORDER BY SortOrder; ",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box153",
+          "left": 9360,
+          "top": 7215,
+          "width": 2220,
+          "height": 600,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box151",
+          "left": 12180,
+          "top": 7260,
+          "width": 7260,
+          "height": 600,
+          "visible": true
+        },
+        {
+          "type": "SubForm",
+          "name": "frmBilling",
+          "left": 60,
+          "top": 15660,
+          "width": 9300,
+          "height": 2340,
+          "tabIndex": 59,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmBilling",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "SubForm",
+          "name": "frmBankruptcy",
+          "left": 60,
+          "top": 22200,
+          "width": 19380,
+          "height": 8925,
+          "tabIndex": 60,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmBankruptcy",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "SubForm",
+          "name": "frmPersonalInjury",
+          "left": 60,
+          "top": 18000,
+          "width": 19380,
+          "height": 4200,
+          "tabIndex": 61,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmPersonalInjury",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "SubForm",
+          "name": "frmDisposition",
+          "left": 9360,
+          "top": 15660,
+          "width": 10080,
+          "height": 2340,
+          "tabIndex": 62,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmDisposition",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "TextBox",
+          "name": "CaseID",
+          "left": 0,
+          "top": 7260,
+          "width": 900,
+          "height": 61,
+          "controlSource": "CaseID",
+          "tabIndex": 63,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Auto_Header0",
+          "left": 120,
+          "top": 8040,
+          "width": 3720,
+          "height": 765,
+          "caption": "Matter, Payments, and AR",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Matter_type",
+          "left": 1200,
+          "top": 9000,
+          "width": 3300,
+          "height": 300,
+          "controlSource": "Matter_type",
+          "tabIndex": 64,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Retainer",
+          "left": 4500,
+          "top": 9000,
+          "width": 1164,
+          "height": 300,
+          "controlSource": "Retainer",
+          "tabIndex": 65,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text65",
+          "left": 6828,
+          "top": 9000,
+          "width": 1089,
+          "height": 300,
+          "controlSource": "Retainer",
+          "tabIndex": 66,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label53",
+          "left": 120,
+          "top": 8700,
+          "width": 1104,
+          "height": 270,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label54",
+          "left": 1200,
+          "top": 8705,
+          "width": 3300,
+          "height": 270,
+          "caption": "Matter",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label55",
+          "left": 4500,
+          "top": 8700,
+          "width": 1164,
+          "height": 270,
+          "caption": "Debit",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label56",
+          "left": 5664,
+          "top": 8700,
+          "width": 1164,
+          "height": 270,
+          "caption": "Credit",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label57",
+          "left": 7917,
+          "top": 8705,
+          "width": 1248,
+          "height": 270,
+          "caption": "Advance",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label61",
+          "left": 5664,
+          "top": 9000,
+          "width": 1164,
+          "height": 300,
+          "caption": "None",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label64",
+          "left": 6828,
+          "top": 8705,
+          "width": 1089,
+          "height": 270,
+          "caption": "Balance",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtCaseOpenDate",
+          "left": 120,
+          "top": 8995,
+          "width": 1104,
+          "height": 300,
+          "controlSource": "CaseOpenDate",
+          "tabIndex": 67,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "SubForm",
+          "name": "frmMatter",
+          "left": 0,
+          "top": 9600,
+          "width": 9240,
+          "height": 5880,
+          "tabIndex": 68,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmMatter",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "SubForm",
+          "name": "frmTrustAccount",
+          "left": 9360,
+          "top": 9240,
+          "width": 10260,
+          "height": 6240,
+          "tabIndex": 69,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmTrustAccount",
+          "linkMasterFields": [
+            "CaseID"
+          ],
+          "linkChildFields": [
+            "CaseID"
+          ]
+        },
+        {
+          "type": "Label",
+          "name": "Label113",
+          "left": 9900,
+          "top": 8040,
+          "width": 2520,
+          "height": 456,
+          "caption": "Trust Account",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label410",
+          "left": 9540,
+          "top": 8700,
+          "width": 960,
+          "height": 300,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label411",
+          "left": 10500,
+          "top": 8700,
+          "width": 3300,
+          "height": 300,
+          "caption": "Description",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label412",
+          "left": 13770,
+          "top": 8700,
+          "width": 1215,
+          "height": 300,
+          "caption": "Deposit",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label413",
+          "left": 14925,
+          "top": 8700,
+          "width": 1215,
+          "height": 300,
+          "caption": "Withdrawal",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label414",
+          "left": 18000,
+          "top": 8700,
+          "width": 600,
+          "height": 300,
+          "caption": "Uncsh",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label6",
+          "left": 17256,
+          "top": 8700,
+          "width": 750,
+          "height": 300,
+          "caption": "Check #",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label415",
+          "left": 16104,
+          "top": 8700,
+          "width": 1152,
+          "height": 300,
+          "caption": "Balance",
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line121",
+          "left": 0,
+          "top": 15600,
+          "width": 19860,
+          "height": 0,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line122",
+          "left": 0,
+          "top": 15540,
+          "width": 19860,
+          "height": 0,
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "FamilyLaw",
+          "left": 7320,
+          "top": 8100,
+          "width": 300,
+          "height": 240,
+          "controlSource": "FamilyLaw",
+          "tabIndex": 70,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSubmitToFamilyLaw",
+          "left": 4500,
+          "top": 8100,
+          "width": 2400,
+          "height": 360,
+          "caption": "Su&bmit to Family Law Form",
+          "tabIndex": 71,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label129",
+          "left": 1200,
+          "top": 9360,
+          "width": 3300,
+          "height": 270,
+          "caption": "AR Pay Outlay",
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line130",
+          "left": 9300,
+          "top": 7980,
+          "width": 0,
+          "height": 7620,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line133",
+          "left": 0,
+          "top": 7980,
+          "width": 19860,
+          "height": 0,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line134",
+          "left": 19860,
+          "top": 7980,
+          "width": 0,
+          "height": 7620,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line136",
+          "left": 0,
+          "top": 7140,
+          "width": 0,
+          "height": 7620,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line137",
+          "left": 0,
+          "top": 7140,
+          "width": 0,
+          "height": 7620,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line138",
+          "left": 19860,
+          "top": 7140,
+          "width": 0,
+          "height": 900,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command225",
+          "left": 7740,
+          "top": 8040,
+          "width": 1320,
+          "height": 360,
+          "caption": "A&dd New Case",
+          "tabIndex": 72,
+          "visible": false,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdStatemenTrustAccount",
+          "left": 14100,
+          "top": 8100,
+          "width": 3360,
+          "height": 360,
+          "caption": "Prod&uce Statement of Trust Account",
+          "tabIndex": 73,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdInvoice",
+          "left": 2507,
+          "top": 7275,
+          "width": 2115,
+          "height": 480,
+          "caption": "New Fee/Cost In&voice",
+          "tabIndex": 74,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdPastDueInvoice",
+          "left": 4804,
+          "top": 7275,
+          "width": 2115,
+          "height": 480,
+          "caption": "&Past Due Invoice",
+          "tabIndex": 75,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdBalanceInvoice",
+          "left": 7101,
+          "top": 7275,
+          "width": 2115,
+          "height": 480,
+          "caption": "&No Balance Invoice",
+          "tabIndex": 76,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdCreateHourlyBill",
+          "left": 16140,
+          "top": 7380,
+          "width": 2400,
+          "height": 360,
+          "caption": "&Create New Hourly Bill",
+          "tabIndex": 77,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "CmdFullHistoryInvoice",
+          "left": 210,
+          "top": 7275,
+          "width": 2115,
+          "height": 480,
+          "caption": "&Full History Invoice",
+          "tabIndex": 78,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdHourlyBillList",
+          "left": 13620,
+          "top": 7380,
+          "width": 2400,
+          "height": 360,
+          "caption": "Client &Hourly Bills",
+          "tabIndex": 79,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdPrintLabel",
+          "left": 9473,
+          "top": 7320,
+          "width": 1980,
+          "height": 360,
+          "caption": "Print Address &Label",
+          "tabIndex": 80,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label150",
+          "left": 12300,
+          "top": 7440,
+          "width": 1215,
+          "height": 300,
+          "caption": "TIME KEEPING",
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image152",
+          "left": 18765,
+          "top": 7350,
+          "width": 540,
+          "height": 420,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label154",
+          "left": 18660,
+          "top": 8700,
+          "width": 825,
+          "height": 300,
+          "caption": "UnDep",
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line155",
+          "left": 18600,
+          "top": 8700,
+          "width": 0,
+          "height": 300,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line112",
+          "left": 0,
+          "top": 7110,
+          "width": 19860,
+          "height": 0,
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "yr",
+          "left": 5154,
+          "top": 94,
+          "width": 1440,
+          "height": 315,
+          "controlSource": "yr",
+          "tabIndex": 81,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label417",
+          "left": 4889,
+          "top": 94,
+          "width": 255,
+          "height": 315,
+          "caption": "yr",
+          "visible": false
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box377",
+          "left": 11100,
+          "top": 150,
+          "width": 3360,
+          "height": 1830,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box270",
+          "left": 6240,
+          "top": 120,
+          "width": 4860,
+          "height": 1860,
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image75",
+          "left": 480,
+          "top": 240,
+          "width": 3720,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label77",
+          "left": 1080,
+          "top": 1200,
+          "width": 2595,
+          "height": 540,
+          "caption": "CLIENT LEDGER",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text228",
+          "left": 6420,
+          "top": 900,
+          "width": 4560,
+          "height": 420,
+          "controlSource": "=[FileNo]",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": false,
+          "locked": true
+        },
+        {
+          "type": "Label",
+          "name": "Label229",
+          "left": 4980,
+          "top": 900,
+          "width": 1200,
+          "height": 450,
+          "caption": "File No.",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbYear",
+          "left": 13200,
+          "top": 360,
+          "width": 1080,
+          "height": 420,
+          "rowSource": "tblYearMap",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label232",
+          "left": 11340,
+          "top": 360,
+          "width": 1740,
+          "height": 300,
+          "caption": "LEDGER YEAR",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text342",
+          "left": 7680,
+          "top": 1440,
+          "width": 3300,
+          "height": 360,
+          "controlSource": "Matter_type",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": false,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text344",
+          "left": 6420,
+          "top": 1440,
+          "width": 1140,
+          "height": 360,
+          "controlSource": "CaseOpenDate",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": false,
+          "locked": true
+        },
+        {
+          "type": "Label",
+          "name": "Label345",
+          "left": 4620,
+          "top": 1485,
+          "width": 1560,
+          "height": 270,
+          "caption": "Open Date  Matter",
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line346",
+          "left": 7620,
+          "top": 1440,
+          "width": 0,
+          "height": 300,
+          "visible": true
+        },
+        {
+          "type": "Line",
+          "name": "Line347",
+          "left": 5535,
+          "top": 1485,
+          "width": 0,
+          "height": 240,
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Label373",
+          "left": 6420,
+          "top": 300,
+          "width": 4563,
+          "height": 480,
+          "controlSource": "=IIf([Last_Name]<>\"\",[Last_Name] & \", \" & [First_Name],\"\")",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label374",
+          "left": 5220,
+          "top": 300,
+          "width": 1005,
+          "height": 450,
+          "caption": "Name",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClearFilter",
+          "left": 12660,
+          "top": 900,
+          "width": 1575,
+          "height": 525,
+          "caption": "   Cl&ear Filter",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label72",
+          "left": 11520,
+          "top": 840,
+          "width": 690,
+          "height": 960,
+          "caption": "Toggle: Open ClosedAll",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkClosed",
+          "left": 12240,
+          "top": 900,
+          "width": 340,
+          "height": 220,
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdCaseList",
+          "left": 12780,
+          "top": 1500,
+          "width": 1320,
+          "height": 360,
+          "caption": "Year Case List",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSave",
+          "left": 17760,
+          "top": 360,
+          "width": 1320,
+          "height": 360,
+          "caption": "&Save",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdAddNew",
+          "left": 17760,
+          "top": 1320,
+          "width": 1320,
+          "height": 360,
+          "caption": "&Add New",
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClose",
+          "left": 17760,
+          "top": 840,
+          "width": 1320,
+          "height": 360,
+          "caption": "Cl&ose",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "Image399",
+          "left": 14820,
+          "top": 180,
+          "width": 2460,
+          "height": 1800,
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onCurrent": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\nPrivate cls As New clsFormValidation\r\n\r\n\r\nPrivate Sub cmdCaseList_Click()\r\n    DoCmd.openform \"frmYearWiseCaseList\", acNormal, , , , , Me.cmbYear.value\r\nEnd Sub\r\n\r\nPrivate Sub cmdSearch_Click()\r\n    On Error GoTo ErrHandler\r\n    With Application.FileDialog(msoFileDialogFilePicker)\r\n        .AllowMultiSelect = False\r\n        .Title = \"Select Location\"\r\n        .show\r\n        If .SelectedItems.Count <> 0 Then\r\n            strPath = .SelectedItems(1)\r\n            'Me.Text359 = strPath\r\n            'Me.Check357 = -1\r\n        Else\r\n            ShowMessage \"No location selected!\"\r\n        End If\r\n    End With\r\nErrHandler:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmbYear_AfterUpdate()\r\n    Me.FilterOn = False\r\n    Me.Filter = \"[Yr]= '\" & Me.cmbYear & \"'\"\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub Command128_Click()\r\n    lngChnc = 1\r\n    DoCmd.RunCommand acCmdSaveRecord '=== TO SAVE ANY UNSAVED NEW CASE.\r\n    DoCmd.openform \"frmFamilyLaw\", acNormal, , \"CaseID=\" & Me.CaseID, , acWindowNormal, Me.CaseID\r\nEnd Sub\r\n\r\nPrivate Sub Command353_Click()\r\n    On Error GoTo ErrHandler_CmdClosingSheet\r\n    DoCmd.OpenReport \"rpt_Main_Closing\", acViewPreview, , \"[CaseID]=\" & Me.CaseID\r\nErrHandler_CmdClosingSheet:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub Email_BeforeUpdate(Cancel As Integer)\r\n    Dim ctlval As Control\r\n    Set ctlval = Form.ActiveControl\r\n    Cancel = EmailCheck(ctlval)\r\n    Set ctlval = Nothing\r\nEnd Sub\r\n\r\n\r\n\r\nPrivate Sub OC_Email_BeforeUpdate(Cancel As Integer)\r\n    Dim ctlval As Control\r\n    Set ctlval = Form.ActiveControl\r\n    Cancel = EmailCheck(ctlval)\r\n    Set ctlval = Nothing\r\nEnd Sub\r\n\r\n'Private Sub Referral_AfterUpdate()\r\n'  If Nz(Me.Referral.Column(1), \"\") = \"Individual Referral\" Then\r\n'        Me.Individual_Referrer.Enabled = True\r\n'        Me.Individual_Referrer.SetFocus\r\n'    Else\r\n'        Me.Individual_Referrer = Null\r\n'        Me.Individual_Referrer.Enabled = False\r\n'        Me.Referral.SetFocus\r\n'    End If\r\n'End Sub\r\n\r\nPrivate Function EmailCheck(ByRef ctl As Control) As Boolean\r\n    If ctl Like \"*@*.*\" Then\r\n        ' its correct\r\n        EmailCheck = False\r\n    Else\r\n        MsgBox \"Please enter email address in correct format e.g., Test@human.com\", vbOKOnly + vbInformation, \"TB CMS: Incorrect Input\"\r\n        EmailCheck = True\r\n    End If\r\nEnd Function\r\n\r\n\r\n\r\n'gaz\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbYear = Null\r\n    Me.chkClosed = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub chkClosed_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n        \r\n    If Not IsNull(Me.chkClosed) Then strSQL = strSQL & \" AND closed = \" & Me.chkClosed\r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\n'Private Sub Text359_AfterUpdate()\r\n'    If Nz(Me.Text359, \"\") = \"\" Then\r\n'        Me.Check357 = 0\r\n'    Else\r\n'        Me.Check357 = -1\r\n'    End If\r\n'End Sub\r\n\r\n'GH 2017-07-17:\r\n'Private Sub CaseOpenDate_AfterUpdate()\r\n'\r\n'    'Debug.Print Form_frmCase.frmMatter.Form.Date2\r\n'    'Debug.Print Form_frmCase.frmMatter.deta.Form.Detail.txtCaseOpenDate.value\r\n'\r\n'    On Error GoTo ErrHandler\r\n'\r\n'    Form_frmCase.Recordset.Edit\r\n'    Form_frmCase.Recordset(\"CaseOpenDate\") = Me.CaseOpenDate  '#11/11/1111#\r\n'    Form_frmCase.Recordset.Update\r\n'\r\n'    Exit Sub\r\n'ErrHandler:\r\n'    If Err.Description = \"No current record.\" Then\r\n'        Me.Dirty = False\r\n'        Form_frmCase.Recordset.AddNew\r\n'        Form_frmCase.Recordset(\"CaseID\") = Me.CaseID\r\n'        Form_frmCase.Recordset(\"CaseOpenDate\") = Me.CaseOpenDate  '#11/11/1111#\r\n'        'Form_frmCase.Recordset.Update\r\n'        Form_frmCase.Refresh\r\n'    End If\r\n'\r\n'End Sub\r\n'\r\n'Private Sub Form_BeforeInsert(Cancel As Integer)\r\n'    Call BeforeInsertRecord\r\n'End Sub\r\n'\r\n'Sub BeforeInsertRecord()\r\n'    If Me.Last_Name = \"\" Then\r\n'        MsgBox \"Last Name is mandatory.\"\r\n'        Me.Last_Name.SetFocus\r\n'        Me.Undo\r\n'    Else\r\n'        DoCmd.RunCommand acCmdSaveRecord\r\n'        CaseGenerator\r\n'    End If\r\n'End Sub\r\n\r\nPrivate Sub cmdSave_Click()\r\n    'gaz 2017-07-23 disabled:\r\n\r\n'    If Me.Dirty Then\r\n'        cls.ExeCommand SaveRec 'gh: weird validation?\r\n'    End If\r\n'    CaseGenerator\r\n\r\n    'gaz 2017-07-23\r\n    \r\nEnd Sub\r\n\r\nPrivate Sub cmdAddNew_Click()\r\n    'cls.ExeCommand Addrec\r\n    DoCmd.GoToRecord , , acNewRec\r\nEnd Sub\r\n\r\n\r\n'----------------------------------\r\n'GH Temporary Disabled functions\r\n'Private Sub Form_Load()\r\n'    If Not IsDisableEvents Then\r\n'        'cls.RequiredControls = Array(Me.Last_Name, Me.First_Name, Me.Referral, Me.HmPhone)\r\n'        cls.RequiredControls = Array(Me.Last_Name)\r\n'        Dim dt As Long\r\n'        Set cls.Form = Me\r\n'        dt = Format(Date, \"yy\")\r\n'        Me.cmbYear.value = dt\r\n'        cmbYear_AfterUpdate\r\n'    Else\r\n'        IsDisableEvents = False\r\n'    End If\r\n'End Sub\r\n\r\n\r\n\r\n\r\n\r\n'****************************************************\r\n'-------------------- Code from FrmCase:\r\n'****************************************************\r\n\r\n\r\n\r\n\r\n'Option Compare Database\r\n\r\nPrivate Sub cmdStatemenTrustAccount_Click()\r\n    On Error GoTo ErrHanlder_cmdStatementrustAccount\r\n        StatementofTrustAccount_Filter = True\r\n        DoCmd.OpenReport \"Statement of Trust Account\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0)\r\nErrHanlder_cmdStatementrustAccount:\r\n    If Err.Number = 2501 Then\r\n        ShowMessage \"No records found!\"\r\n    ElseIf Err.Number <> 0 Then\r\n        ShowMessage Err.Description\r\n    End If\r\n    \r\nEnd Sub\r\n\r\nPrivate Sub Command225_Click()\r\nOn Error Resume Next\r\n    DoCmd.RunCommand acCmdRecordsGoToNew\r\nEnd Sub\r\n\r\n'gaz 2017-05-02\r\nPrivate Sub cmdInvoice_Click()\r\n    \r\n    DoCmd.Close acReport, \"New Invoice\", acSaveYes\r\n    \r\n    intCaseID = Nz(Me.CaseID, 0)\r\n    intMatterID = DLookup(\"MatterID\", \"qry_get_MatterID_from_zero_balance\", \"CaseID=\" & intCaseID & \" AND RetBal=0\")\r\n    'strFilter = \"[CaseID]=\" & Nz(Me.CaseID, 0) & \" AND MatterID>=\" & intMatterID\r\n    \r\n    If IsNull(intMatterID) Then\r\n        strMatterID = \"\"\r\n    Else\r\n        strMatterID = \" AND MatterID>\" & intMatterID\r\n    End If\r\n    \r\n    strFilter = \"[CaseID]=\" & Nz(Me.CaseID, 0) & strMatterID\r\n    [Report_New Invoice].Filter = strFilter\r\n    [Report_New Invoice].OrderBy = \"MatterID\"\r\n    DoCmd.OpenReport \"New Invoice\", acViewPreview, , strFilter\r\nEnd Sub\r\n\r\n'gaz 2017-05-05\r\nPrivate Sub cmdPastDueInvoice_Click()\r\n    On Error GoTo ErrHandler_cmdPastDueInvoice\r\n    \r\n    DoCmd.Close acReport, \"Invoice - Past Due\", acSaveYes\r\n    \r\n    If Nz(Me.CaseID, 0) = 0 Then\r\n        ShowMessage \"Please select a client.\"\r\n    Else\r\n        DoCmd.OpenReport \"Invoice - Past Due\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0) '& \" AND [Past Due] = \" & -1\r\n    End If\r\nErrHandler_cmdPastDueInvoice:\r\n    If Err.Number = 2501 Then\r\n        ShowMessage \"No records found!\"\r\n    ElseIf Err.Number <> 0 Then\r\n        ShowMessage Err.Description\r\n    End If\r\nEnd Sub\r\n\r\n'gaz 2017-05-05\r\nPrivate Sub cmdBalanceInvoice_Click()\r\n    On Error GoTo ErrHandler_cmdBalanceInvoice\r\n                \r\n    DoCmd.Close acReport, \"Invoice - No Balance Due\", acSaveYes\r\n    'DoCmd.OpenReport \"Invoice - No Balance Due\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0) & \" AND [chkBalanceDue] = \" & 0\r\n    DoCmd.OpenReport \"Invoice - No Balance Due\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0)\r\n        \r\nErrHandler_cmdBalanceInvoice:\r\n    If Err.Number = 2501 Then\r\n        ShowMessage \"No records found!\"\r\n    ElseIf Err.Number <> 0 Then\r\n        ShowMessage Err.Description\r\n    End If\r\n    \r\nEnd Sub\r\n\r\n'gaz 2017-05-05\r\nPrivate Sub CmdFullHistoryInvoice_Click()\r\n    \r\n    On Error GoTo ErrHandler_cmdInvoice\r\n    \r\n    DoCmd.Close acReport, \"Invoice\", acSaveYes\r\n    DoCmd.OpenReport \"Invoice\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0)\r\nErrHandler_cmdInvoice:\r\n    If Err.Number = 2501 Then\r\n        ShowMessage \"No records found!\"\r\n    ElseIf Err.Number <> 0 Then\r\n        ShowMessage Err.Description\r\n    End If\r\nEnd Sub\r\n\r\n'? gaz: deleted during moving the controls to the upper part\r\n'Private Sub Text272_BeforeUpdate(Cancel As Integer)\r\n      'If Not IsNull(Me.Text272) Then\r\n        'If CLng(Right(Year(Me.Text272), 2)) <> Me.Parent.Combo231.value Then\r\n        '    MsgBox \"The date is not of the year selected in the Ledger year column!\", vbCritical + vbInformation, \"Invalid Input\"\r\n        '    Cancel = True\r\n        'End If\r\n     'Else\r\n           ' MsgBox \"Case open date cannot be left blank!\", vbInformation, \"Invalid Input!\"\r\n           ' Cancel = True\r\n     'End If\r\n'End Sub\r\n\r\nPrivate Sub cmdCreateHourlyBill_Click()\r\n    'NEW TK BILL\r\n    On Error GoTo ErrHandler_cmdCreateHourlyBill\r\n    \r\n    'Check if this CaseID is in the Time Keeping table:\r\n    Dim rs As DAO.Recordset\r\n    If DCount(\"CaseID\", \"TB Time Keeping\", \"CaseID=\" & Nz(Me.CaseID, 0)) = 0 Then\r\n        Set rs = CurrentDb.OpenRecordset(\"TB Time Keeping\", dbOpenDynaset, dbSeeChanges)\r\n        rs.AddNew\r\n        rs.Fields(\"CaseID\") = Nz(Me.CaseID, 0)\r\n        rs.Update\r\n        rs.Close\r\n        Set rs = Nothing\r\n    Else\r\n        'do  nothing\r\n    End If\r\n    DoCmd.openform \"Time Keeping\", acNormal, , \"[CaseID]=\" & Nz(Me.CaseID, 0), , , \"Hide Filter\"\r\n    Call [Form_Time Keeping].cmdAddNew_Click\r\n    '[Form_Time Keeping].cmbClients = Me.CaseID\r\n    'Call [Form_Time Keeping].cmbClients_AfterUpdate\r\n    \r\nErrHandler_cmdCreateHourlyBill:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmdHourlyBillList_Click()\r\n    'SHOW TK BILLS FORM\r\n    \r\n    If IsNull(CaseID) Then\r\n        MsgBox \"Please select a client\", , \"TB CMS\"\r\n        Exit Sub\r\n    End If\r\n    DoCmd.openform \"Time Keeping\", acNormal, , \"[CaseID]=\" & Nz(Me.CaseID, 0), , , \"Hide Filter\"\r\n    \r\n    'GH 2017-08-11 it was not compiling so I temporary disabled it\r\n    '[Form_Time Keeping].cmbClients = Me.CaseID\r\n    \r\n    If Not IsNull(CaseID) Then\r\n       ' Call [Form_Time Keeping].cmbclients_AfterUpdate\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdPrintLabel_Click()\r\n    On Error GoTo ErrHandler_cmdPrintLabel_Click\r\n    \r\n    answer = MsgBox(\"Would you like to print this label?\", vbYesNo, \"TB CMS: Direct Print\")\r\n    If answer = vbYes Then\r\n        If CurrentProject.AllReports(\"rpt_address_label\").IsLoaded Then\r\n            DoCmd.Close acReport, \"rpt_address_label\", acSaveNo\r\n        End If\r\n        \r\n        DoCmd.OpenReport \"rpt_address_label\", acNormal, , \"[CaseID]=\" & Me.CaseID\r\n    End If\r\n    \r\nErrHandler_cmdPrintLabel_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmdSubmitToFamilyLaw_Click()\r\n'    Dim strSQL As String\r\n'    strSQL = \"Insert into [Family Law - Divorce]  ([CaseID]) values (\" & lngCaseID & \")\"\r\n'    DoCmd.SetWarnings False\r\n'    DoCmd.RunSQL (strSQL)\r\n    lngChnc = 1\r\n      DoCmd.RunCommand acCmdSaveRecord '=== TO SAVE ANY UNSAVED NEW CASE.\r\n    DoCmd.openform \"frmFamilyLaw\", acNormal, , \"CaseID=\" & lngCaseID, , acWindowNormal, lngCaseID\r\nEnd Sub\r\n\r\n\r\n\r\n'000000000000000\r\n'Private Sub Form_AfterUpdate()\r\n'    lngCaseID = Nz(Me.CaseID, 0)\r\n'    'CaseGenerator '=== this can take time in case of large scale data\r\n'\r\n'    If IsNull(Me.Number_) Then\r\n'\r\n'        maxval = Nz(DMax(\"Number_\", \"tblCase\", \"Yr='\" & intval & \"'\"), 0)\r\n'    End If\r\n'\r\n'    On Error GoTo errorhandler\r\n'    Me.Parent.frmCaseList.Requery\r\n'    Exit Sub\r\n'errorhandler:\r\n'    MsgBox \"An error was encountered: \" & Err.Description\r\n'\r\n'End Sub\r\n'\r\nPrivate Sub Form_Current()\r\n\r\n    lngCaseID = Nz(Me.CaseID, 0)\r\n\r\n    Debug.Print \"CaseID: \" & GetCaseID\r\n\r\n'    If DLookup(\"Balance\", \"qryMatter\", \"CaseID=\" & GetCaseID()) > 0 Then\r\n'        Me.frmBilling.Form.Controls(\"chkBalanceDue\") = True\r\n'    Else\r\n'        Me.frmBilling.Form.Controls(\"chkBalanceDue\") = False\r\n'    End If\r\nEnd Sub\r\n'\r\n\r\n\r\n\r\n'Private Sub Case_Letter_AfterUpdate()\r\n    'Me.yr = Format(Date, \"yy\") 'Right(Year(Date), 2)\r\n    'Me.Year = Format(Date, \"yy\") 'Right(Year(Date), 2)\r\n'End Sub\r\n\r\n\r\n'Private Sub Last_Name_AfterUpdate()\r\n    '?\r\n'End Sub\r\n\r\nPrivate Sub CaseOpenDate_AfterUpdate()\r\n    nrMax = Nz(DMax(\"Number_\", \"tblCase\", \"Yr='\" & Me.yr & \"'\"), 0)\r\n    Me.Number_ = nrMax + 1\r\nEnd Sub\r\n\r\nPrivate Sub OrigAtty_AfterUpdate()\r\n    Me.FileNo.Requery\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    cls.ExeCommand Cancelrec\r\n    DoCmd.Close acForm, Me.Name, acSave\r\nEnd Sub",
+  "subformReferences": [
+    "frmBankruptcy",
+    "frmBilling",
+    "frmDisposition",
+    "frmHearingDate",
+    "frmMatter",
+    "frmPersonalInjury",
+    "frmTrustAccount"
+  ]
+}

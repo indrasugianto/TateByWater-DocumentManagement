@@ -1,0 +1,16 @@
+{
+  "reportName": "rptCriminalStatusNotesLog",
+  "dataSource": "SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePerson, tblNotes.NoteDescription, tblNotes.NoteTime, tblNotes.CaseID, tblNotes.IDNotes FROM tblNotes; ",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePerson, tblNotes.NoteDescription, tblNotes.NoteTime, tblNotes.CaseID, tblNotes.IDNotes FROM tblNotes;",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblNotes"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

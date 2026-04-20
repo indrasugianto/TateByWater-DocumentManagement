@@ -1,0 +1,16 @@
+{
+  "reportName": "rptPersInjProviderBills",
+  "dataSource": "tblPersInjProv",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "tblPersInjProv",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblPersInjProv"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

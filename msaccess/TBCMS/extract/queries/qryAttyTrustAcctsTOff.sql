@@ -1,0 +1,2 @@
+SELECT Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_") AS FileNumber, [Last_Name] & ", " & [First_Name] AS Name, tblCase.*, tblTakeOff.*
+FROM tblCase INNER JOIN tblTakeOff ON tblCase.CaseID = tblTakeOff.CaseID;

@@ -1,0 +1,89 @@
+{
+  "formName": "frmBrowse_BackEnd",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 6878,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "lblMessage",
+          "left": 135,
+          "top": 645,
+          "width": 6675,
+          "height": 870,
+          "caption": "The back end db is not found. Please locate the back end DB through browse button.",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdYes",
+          "left": 4020,
+          "top": 1620,
+          "width": 1290,
+          "height": 360,
+          "caption": "Ok",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdNo",
+          "left": 5400,
+          "top": 1620,
+          "width": 1395,
+          "height": 360,
+          "caption": "Cancel",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "lblTitle",
+          "left": 0,
+          "top": 0,
+          "width": 6870,
+          "height": 360,
+          "controlSource": "=GetCompanyName()",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command6",
+          "left": 2400,
+          "top": 1620,
+          "width": 1470,
+          "height": 360,
+          "caption": "Browse",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmdNo_Click()\r\n    YesNo_Value = 2\r\n    Util.CloseForm\r\nEnd Sub\r\n\r\nPrivate Sub cmdYes_Click()\r\n    SelectedPath = lblMessage.Caption\r\n    YesNo_Value = 1\r\n    Util.CloseForm\r\nEnd Sub\r\n\r\nPublic Function CodeBehind_Form_Load() As Boolean\r\n    YesNo_Value = -1\r\n    CodeBehind_Form_Load = True\r\nEnd Function\r\n\r\nPrivate Sub Command6_Click()\r\n    Dim dbName As String\r\n    dbName = BrowseDB_1(\"Select path for backend DB\")\r\n    lblMessage.Caption = dbName\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\nCodeBehind_Form_Load\r\nEnd Sub\r\n\r\n\r\nPublic Function BrowseDB_1(Optional Title As String = \"Select Access DB\", Optional Description As String = \"Access Database\", _\r\n                            Optional Filter As String = \"*.accdb\") As String\r\n\r\n    Dim d As FileDialog\r\n\r\n    Set d = Application.FileDialog(msoFileDialogFilePicker)\r\n    \r\n    d.AllowMultiSelect = False\r\n    d.Filters.Clear\r\n    d.Title = Title\r\n    d.Filters.Add Description, Filter\r\n    d.show\r\n    On Error Resume Next\r\n    BrowseDB_1 = d.SelectedItems(1)\r\n    \r\nEnd Function\r\n"
+}

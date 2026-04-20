@@ -1,0 +1,4 @@
+SELECT tblCase.Last_Name, tblCase.First_Name, tblCase.Closed, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.CourtCaseNo, tblCase.SOL, [Personal Injury].CaseID, [Personal Injury].[Filing Date], [Personal Injury].Litigation, [Personal Injury].DOI, [Personal Injury].Demand, [Personal Injury].BriefDescription, [Personal Injury].ID, tblDropD.SortOrder, tblDropD.FieldName, [Personal Injury].ServedDate, [Personal Injury].CompltServed, [Personal Injury].PISOL, [Personal Injury].PIStatus, [Personal Injury].LiabilityLimit, [Personal Injury].PIState
+FROM (tblDropD LEFT JOIN tblCase ON tblDropD.CodeVal = tblCase.Orig_Atty) LEFT JOIN [Personal Injury] ON tblCase.CaseID = [Personal Injury].CaseID
+WHERE (((tblCase.Closed)=No) AND ((tblCase.Case_Letter)="P") AND (([Personal Injury].CaseID)<>11377) AND ((tblDropD.FieldName)="orig_atty"))
+ORDER BY tblDropD.SortOrder;

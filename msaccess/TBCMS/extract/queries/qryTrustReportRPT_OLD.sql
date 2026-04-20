@@ -1,0 +1,3 @@
+SELECT tblCase.CaseID, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Matter_type, tblCase.CaseOpenDate, [Trust Account].CheckCashed, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS CaseNo, tblCase.Last_Name, tblCase.First_Name, [Trust Account].TrustAccountID
+FROM tblCase LEFT JOIN [Trust Account] ON tblCase.CaseID = [Trust Account].CaseID
+WHERE (((tblCase.CaseID) Is Not Null));

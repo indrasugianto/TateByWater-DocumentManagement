@@ -1,0 +1,3 @@
+SELECT qryInvoiceComprehensiveTrustCredit2.TDate, qryInvoiceComprehensiveTrustCredit2.TMatter, qryInvoiceComprehensiveTrustCredit2.Credit, qryInvoiceComprehensiveTrustCredit2.OrderNr, qryInvoiceComprehensiveTrustCredit2.CaseID, [TB Time Keeping].[BilL Closed Date], qryInvoiceComprehensiveTrustCredit2.CaseID, [TB Time Keeping].Bill_ID
+FROM qryInvoiceComprehensiveTrustCredit2 RIGHT JOIN [TB Time Keeping] ON qryInvoiceComprehensiveTrustCredit2.Bill_ID = [TB Time Keeping].Bill_ID
+WHERE (((qryInvoiceComprehensiveTrustCredit2.TDate)>=[BilL Closed Date]) AND (([TB Time Keeping].[BilL Closed Date]) Is Not Null));

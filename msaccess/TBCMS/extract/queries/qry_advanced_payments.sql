@@ -1,0 +1,3 @@
+SELECT vw_advanced_payments.Name, vw_advanced_payments.FileNumber, vw_advanced_payments.MatterID, vw_advanced_payments.CaseID, vw_advanced_payments.Date2, vw_advanced_payments.Pay_Outlay, vw_advanced_payments.Charge, vw_advanced_payments.Payment, vw_advanced_payments.FirmPrepaid, vw_advanced_payments.InsertPymt, vw_advanced_payments.AdvancedLegal, vw_advanced_payments.SSMA_TimeStamp, vw_advanced_payments.Orig_Atty, vw_advanced_payments.Case_Letter, vw_advanced_payments.CodeVal, vw_advanced_payments.Creimb, *
+FROM vw_advanced_payments
+ORDER BY vw_advanced_payments.Date2 DESC;

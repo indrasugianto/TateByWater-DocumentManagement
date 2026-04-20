@@ -1,0 +1,3 @@
+SELECT fncGetMatterARBalanceWithCaseID([OrderNr],[tblcase].[CaseID]) AS Balance, Billing.[Balance Due Date], Billing.[Billing Notes], tblCase.Last_Name, tblCase.First_Name, tblCase.CaseOpenDate, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Address, tblCase.City, tblCase.State, tblCase.Zip, tblCase.Matter_type, tblCase.Retainer, tblCase.Case_Letter, [Matter and AR].OrderNr, tblCase.Retainer, [Matter and AR].CaseID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Charge, [Matter and AR].Payment
+FROM (tblCase LEFT JOIN Billing ON tblCase.CaseID = Billing.CaseID) INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID
+ORDER BY [Matter and AR].OrderNr;

@@ -1,0 +1,27 @@
+{
+  "reportName": "rpt_MergeInvTimeDetail",
+  "dataSource": "tblTimeTableDetail",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "tblTimeTableDetail",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblTimeTableDetail"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdInsertTime_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4628,
+      "lineEnd": 4651,
+      "usesDoCmd": [],
+      "usesSql": true
+    }
+  ],
+  "confidence": "medium"
+}

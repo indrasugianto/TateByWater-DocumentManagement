@@ -1,0 +1,163 @@
+{
+  "reportName": "Invoice - No Balance Due",
+  "dataSource": "qryInvoiceRPT1",
+  "triggerPaths": [
+    {
+      "formName": "frmClientLedger",
+      "controlName": "cmdBalanceInvoice",
+      "eventName": "onClick",
+      "procedureName": "cmdBalanceInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17238,
+      "lineEnd": 17294,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmClientLedger",
+      "controlName": "cmdEmailNoBalance",
+      "eventName": "onClick",
+      "procedureName": "cmdEmailNoBalance_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16941,
+      "lineEnd": 16964,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "zClient Ledger OLD",
+      "controlName": "cmdBalanceInvoice",
+      "eventName": "onClick",
+      "procedureName": "cmdBalanceInvoice_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7965,
+      "lineEnd": 7981,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmHome",
+      "controlName": "cmdDeleteAll",
+      "eventName": "onClick",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1920,
+      "lineEnd": 2057,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmHomeAdmin",
+      "controlName": "cmdDeleteAll",
+      "eventName": "onClick",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6356,
+      "lineEnd": 6493,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "qryInvoiceRPT1",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryInvoiceRPT1"
+    ],
+    "terminalTables": [
+      "vwInvoiceRPT1"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryInvoiceRPT1",
+        "to": "vwInvoiceRPT1",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frm_invoices_summary",
+      "procedureName": "cmdNoBalancePrint_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8349,
+      "lineEnd": 8364,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdEmailNoBalance_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16941,
+      "lineEnd": 16964,
+      "usesDoCmd": [
+        "OpenReport",
+        "SendObject"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdBalanceInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17238,
+      "lineEnd": 17294,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdBalanceInvoice_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7965,
+      "lineEnd": 7981,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmHome",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1920,
+      "lineEnd": 2057,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "Quit",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmHomeAdmin",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6356,
+      "lineEnd": 6493,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "Quit",
+        "openform"
+      ],
+      "usesSql": true
+    }
+  ],
+  "confidence": "high"
+}

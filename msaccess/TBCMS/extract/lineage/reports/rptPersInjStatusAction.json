@@ -1,0 +1,37 @@
+{
+  "reportName": "rptPersInjStatusAction",
+  "dataSource": "SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, TblActionNeeded.CaseID FROM TblActionNeeded WHERE (((TblActionNeeded.ActionComp)=No)); ",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, TblActionNeeded.CaseID FROM TblActionNeeded WHERE (((TblActionNeeded.ActionComp)=No));",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [],
+    "terminalTables": [
+      "TblActionNeeded"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmActionNeededAll",
+      "procedureName": "cmdActionNeededDone_Click",
+      "sourceFile": "extract/vba/forms/frmActionNeededAll.txt",
+      "lineStart": 6994,
+      "lineEnd": 7023,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmActionNeededAll",
+      "procedureName": "DateComp1_DblClick",
+      "sourceFile": "extract/vba/forms/frmActionNeededAll.txt",
+      "lineStart": 7066,
+      "lineEnd": 7116,
+      "usesDoCmd": [],
+      "usesSql": true
+    }
+  ],
+  "confidence": "medium"
+}

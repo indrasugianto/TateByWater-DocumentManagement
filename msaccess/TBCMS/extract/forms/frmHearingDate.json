@@ -1,0 +1,280 @@
+{
+  "formName": "frmHearingDate",
+  "recordSource": "SELECT tblHearingDate.HearingID, tblHearingDate.CaseID, tblHearingDate.Hearing_Date, tblHearingDate.HearingType, tblHearingDate.HearingTime, tblHearingDate.HrgResult, tblHearingDate.HrgCal, tblHearingDate.Verified, tblHearingDate.ClientPresent, tblHearingDate.Reminder, tblHearingDate.ReminderCheck, tblHearingDate.SSMA_TimeStamp FROM tblHearingDate ORDER BY tblHearingDate.Hearing_Date; ",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 7710,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Image",
+          "name": "OutlookCalendar",
+          "left": 6000,
+          "top": 0,
+          "width": 600,
+          "height": 360,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdOutlookCalendar2",
+          "left": 6000,
+          "top": 0,
+          "width": 576,
+          "height": 366,
+          "tabIndex": 11,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "HearingID",
+          "left": 360,
+          "top": 30,
+          "width": 360,
+          "height": 90,
+          "controlSource": "HearingID",
+          "tabIndex": 8,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CaseID",
+          "left": 720,
+          "top": 30,
+          "width": 240,
+          "height": 90,
+          "controlSource": "CaseID",
+          "tabIndex": 7,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdDelete",
+          "left": 0,
+          "top": 0,
+          "width": 306,
+          "height": 366,
+          "caption": "Command19",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "Text41",
+          "left": 360,
+          "top": 30,
+          "width": 360,
+          "height": 90,
+          "controlSource": "HearingID",
+          "tabIndex": 9,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text42",
+          "left": 720,
+          "top": 30,
+          "width": 240,
+          "height": 90,
+          "controlSource": "CaseID",
+          "tabIndex": 10,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "HearingType",
+          "left": 2820,
+          "top": 30,
+          "width": 2565,
+          "height": 315,
+          "controlSource": "HearingType",
+          "rowSource": "qry_HearingType_list_options",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Hearing_Date",
+          "left": 345,
+          "top": 30,
+          "width": 1155,
+          "height": 315,
+          "controlSource": "Hearing_Date",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "HearingTime",
+          "left": 1560,
+          "top": 30,
+          "width": 1200,
+          "height": 315,
+          "controlSource": "HearingTime",
+          "rowSource": "8:00 AM;8:30 AM;9:00 AM;9:30 AM;10:00 AM;10:30 AM;11:00 AM;11:30 AM;12:00 PM;12:30 PM;1:00 PM;1:30 PM;2:00 PM;2:30 PM;3:00 PM;3:30 PM;4:00 PM;4:30 PM;5:00 PM;5:30 PM;6:00 PM",
+          "format": "Medium Time",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "HrgCal",
+          "left": 6630,
+          "top": 60,
+          "width": 240,
+          "height": 240,
+          "controlSource": "hrgCal",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "Verified",
+          "left": 5460,
+          "top": 75,
+          "width": 240,
+          "height": 240,
+          "controlSource": "Verified",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "Client Present",
+          "left": 5760,
+          "top": 75,
+          "width": 240,
+          "height": 240,
+          "controlSource": "ClientPresent",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Combo40",
+          "left": 6960,
+          "top": 30,
+          "width": 750,
+          "height": 299,
+          "controlSource": "Reminder",
+          "rowSource": "Called;LM;Text;Email",
+          "tabIndex": 12,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label21",
+          "left": 300,
+          "top": 30,
+          "width": 1140,
+          "height": 315,
+          "caption": "HRG DATE",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label20",
+          "left": 2820,
+          "top": 30,
+          "width": 1020,
+          "height": 315,
+          "caption": "TYPE",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label31",
+          "left": 1800,
+          "top": 30,
+          "width": 600,
+          "height": 315,
+          "caption": "TIME",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label47",
+          "left": 6540,
+          "top": 15,
+          "width": 420,
+          "height": 315,
+          "caption": "Cal",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label53",
+          "left": 5760,
+          "top": 0,
+          "width": 315,
+          "height": 315,
+          "caption": "CP",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label54",
+          "left": 5460,
+          "top": 0,
+          "width": 210,
+          "height": 315,
+          "caption": "V",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label56",
+          "left": 6960,
+          "top": 45,
+          "width": 720,
+          "height": 285,
+          "caption": "Remind",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": " Option Compare Database\r\n\r\n\r\n'Private Sub cmdAddAppt_Click()\r\n'    On Error GoTo Add_Err\r\n'\r\n'    'Save record first to be sure required fields are filled.\r\n'    DoCmd.RunCommand acCmdSaveRecord\r\n'\r\n'    'Exit the procedure if appointment has been added to Outlook.\r\n'    If Me!AddedToOutlook = True Then\r\n'        MsgBox \"This appointment is already added to Microsoft Outlook\"\r\n'        Exit Sub\r\n'    'Add a new appointment.\r\n'    Else\r\n'        Dim objOutlook As Outlook.Application\r\n'        Dim objAppt As Outlook.AppointmentItem\r\n'        Dim objRecurPattern As Outlook.RecurrencePattern\r\n'\r\n'        Set objOutlook = CreateObject(\"Outlook.Application\")\r\n'        Set objAppt = objOutlook.CreateItem(olAppointmentItem)\r\n'\r\n'        With objAppt\r\n'            .Start = Me!Hearing_Date & \" \" & Me!HearingTime\r\n''            .Duration = Me!ApptLength\r\n'            .Subject = Me!HearingType\r\n'            .Location = Me!Court\r\n'\r\n'            If Not IsNull(Me!ApptNotes) Then .Body = Me!ApptNotes\r\n'            If Not IsNull(Me!ApptLocation) Then .Location = Me!ApptLocation\r\n'            If Me!ApptReminder Then\r\n'                .ReminderMinutesBeforeStart = Me!ReminderMinutes\r\n'                .ReminderSet = True\r\n'            End If\r\n'\r\n'            Set objRecurPattern = .GetRecurrencePattern\r\n'\r\n'            With objRecurPattern\r\n'                .RecurrenceType = olRecursWeekly\r\n'                .Interval = 1\r\n'                'Once per week\r\n'                .PatternStartDate = #7/9/2003#\r\n'                'You could get these values\r\n'                'from new text boxes on the form.\r\n'                .PatternEndDate = #7/23/2003#\r\n'            End With\r\n'\r\n'            .Save\r\n'            .Close (olSave)\r\n'            End With\r\n'            'Release the AppointmentItem object variable.\r\n'            Set objAppt = Nothing\r\n'    End If\r\n'\r\n'    'Release the Outlook object variable.\r\n'    Set objOutlook = Nothing\r\n'\r\n'    'Set the AddedToOutlook flag, save the record, display a message.\r\n'    Me!AddedToOutlook = True\r\n'    DoCmd.RunCommand acCmdSaveRecord\r\n'    MsgBox \"Appointment Added!\"\r\n'\r\n'    Exit Sub\r\n'\r\n'Add_Err:\r\n'    MsgBox \"Error \" & Err.Number & vbCrLf & Err.Description\r\n'    Exit Sub\r\n'End Sub\r\n'\r\nPrivate Sub cmdOutlookCalendar2_Click()\r\n    \r\n    If IsNull(Me.Hearing_Date) Then\r\n        MsgBox \"Please input a correct date\", , \"TB CMS\"\r\n        Me.Hearing_Date.SetFocus\r\n        Exit Sub\r\n    End If\r\n    \r\n    Const olFolderCalendar = 9\r\n    Dim olkApp, olkSes, olkFolder\r\n    'On Error Resume Next\r\n    'Set olkApp = GetObject(, \"Outlook.Application\")\r\n    'If TypeName(olkApp) = \"Nothing\" Then\r\n        Set olkApp = CreateObject(\"Outlook.Application\")\r\n        Set olkSes = olkApp.GetNameSpace(\"MAPI\")\r\n        'Change Outlook on the next line to the name of the default mail profile'\r\n        'olkSes.Logon \"Paul Mickelsen- Office 365\"\r\n    'Else\r\n        'Set olkSes = olkApp.Session\r\n    'End If\r\n    Set olkFolder = olkSes.GetDefaultFolder(olFolderCalendar)\r\n    olkFolder.Display\r\n\r\n    Dim objAppt As Outlook.AppointmentItem\r\n    Set objAppt = olkApp.CreateItem(olAppointmentItem)\r\n\r\n        With objAppt\r\n            .Start = Me.Hearing_Date & \" \" & Me.HearingTime\r\n            .Duration = 120 'Me!ApptLength\r\n            \r\n            strHearingType = \"\"\r\n            If Not IsNull(Me.HearingType) Then\r\n                strHearingType = \" (\" & Me.HearingType & \")\"\r\n            End If\r\n            \r\n            .Subject = Form_frmClientLedger.Last_Name & \", \" & Form_frmClientLedger.First_Name & strHearingType\r\n            'LastName, FirstName (HearingType)\r\n            '.Location = Nz(Form_frmClientLedger.CourtandType, \"\") '& \" \" & Form_frmClientLedger.CType\r\n            strCourtAndType = Nz(Form_frmClientLedger.cmbCourt, \"\") & \" \" & Nz(Form_frmClientLedger.cmbCType, \"\")\r\n            ' Nz(Me.cmbCourt, 0) + \" \" + Nz([CType], 0)\r\n            .Location = strCourtAndType '& \" \" & Form_frmClientLedger.CType\r\n            \r\n'            If Not IsNull(Me!ApptNotes) Then .Body = Me!ApptNotes\r\n'            If Not IsNull(Me!ApptLocation) Then .Location = Me!ApptLocation\r\n'            If Me!ApptReminder Then\r\n'                .ReminderMinutesBeforeStart = Me!ReminderMinutes\r\n'                .ReminderSet = True\r\n'            End If\r\n'\r\n'            Set objRecurPattern = .GetRecurrencePattern\r\n'\r\n'            With objRecurPattern\r\n'                .RecurrenceType = olRecursWeekly\r\n'                .Interval = 1\r\n'                'Once per week\r\n'                .PatternStartDate = #7/9/2003#\r\n'                'You could get these values\r\n'                'from new text boxes on the form.\r\n'                .PatternEndDate = #7/23/2003#\r\n'            End With\r\n            .Display\r\n '           .Save\r\n            '.Close (olSave)\r\n        End With\r\n            'Release the AppointmentItem object variable.\r\n            'Set objAppt = Nothing\r\n\r\n\r\n    'close outlook\r\n    Set olkApp = Nothing\r\n    Set olkSes = Nothing\r\n    Set olkFolder = Nothing\r\n    \r\n    Me.HrgCal.value = -1\r\n    \r\nEnd Sub\r\n\r\nPrivate Sub Combo40_AfterUpdate()\r\n    If ClientPresent = 0 Then\r\n        Me.Reminder.value = Null\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub Combo40_BeforeUpdate(Cancel As Integer)\r\n    If ClientPresent = 0 Then\r\n        Me.Reminder.value = Null\r\n        MsgBox \"No need to send reminder of hearing where client not required to be present.\", vbInformation, \"TB CMS\"\r\n    End If\r\nEnd Sub"
+}

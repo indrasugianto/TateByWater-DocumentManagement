@@ -1,0 +1,118 @@
+{
+  "reportName": "rpt_File_Folder_Label",
+  "dataSource": "qryFileFolderLabel",
+  "width": 4566,
+  "caption": "File Folder Label",
+  "orientation": "landscape",
+  "margins": {
+    "left": 240,
+    "right": 240,
+    "top": 341,
+    "bottom": 341
+  },
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 1040,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text4",
+          "left": 0,
+          "top": 255,
+          "width": 4566,
+          "height": 245,
+          "controlSource": "=[Matter_type]",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text7",
+          "left": 0,
+          "top": 525,
+          "width": 4566,
+          "height": 245,
+          "controlSource": "=[Court] & \" \" & [CType] & \" \" & [FirstofHearing_Date]",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "lblName",
+          "left": 0,
+          "top": 0,
+          "width": 4560,
+          "height": 245,
+          "controlSource": "=IIf([Last_Name] Is Not Null And [First_Name] Is Null,[Last_Name],[Last_Name] & \", \" & [First_Name]) & \" (\" & [Case_Letter] & [Yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty] & \")\"",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text14",
+          "left": 0,
+          "top": 795,
+          "width": 1596,
+          "height": 245,
+          "controlSource": "HmPhone",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text15",
+          "left": 3165,
+          "top": 285,
+          "width": 1296,
+          "height": 315,
+          "controlSource": "tblcase.CaseID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text17",
+          "left": 1590,
+          "top": 795,
+          "width": 2976,
+          "height": 245,
+          "controlSource": "Email",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        }
+      ]
+    }
+  ],
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =126603005\nBegin Report\n    LayoutForPrint = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    DefaultView =0\n    DateGrouping =1\n    GrpKeepTogether =1\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridY =10\n    Width =4566\n    DatasheetFontHeight =11\n    ItemSuffix =18\n    Right =13470\n    Bottom =10080\n    DatasheetGridlinesColor =15132391\n    RecSrcDt = Begin\n        0x3f4be0cd8dffe440\n    End\n    GUID = Begin\n        0xc20e7d9b5fc1a549ae7331815dccfc73\n    End\n    NameMap = Begin\n        0x0acc0e5500000000bb6f8fd435e1944194ba99ad40e3ce7100000000a542c56f ,\n        0x728ce5400000000000000000710072007900460069006c00650046006f006c00 ,\n        0x6400650072004c006100620065006c000000000000002cbb672e62dae14c9759 ,\n        0x93ca6284252307000000bb6f8fd435e1944194ba99ad40e3ce714d0061007400 ,\n        0x7400650072005f007400790070006500000000000000b211bd9788c09d4899c1 ,\n        0x1b887f94f92107000000bb6f8fd435e1944194ba99ad40e3ce7143006f007500 ,\n        0x72007400000000000000b170278c8b705845ae17732b2411189a07000000bb6f ,\n        0x8fd435e1944194ba99ad40e3ce7143005400790070006500000000000000f92d ,\n        0xa6fb1cd9364cae5361553303767907000000bb6f8fd435e1944194ba99ad40e3 ,\n        0xce71460069007200730074006f006600480065006100720069006e0067005f00 ,\n        0x4400610074006500000000000000f60a08845f8ac546828f8311de2f4d9e0700 ,\n        0x0000bb6f8fd435e1944194ba99ad40e3ce714c006100730074005f004e006100 ,\n        0x6d00650000000000000058fb73e124cdf948844604f03c07f43a07000000bb6f ,\n        0x8fd435e1944194ba99ad40e3ce71460069007200730074005f004e0061006d00 ,\n        0x6500000000000000d7f52b0d69161f4b8fdde353c7fd3bb307000000bb6f8fd4 ,\n        0x35e1944194ba99ad40e3ce7143006100730065005f004c006500740074006500 ,\n        0x7200000000000000678281d415c1e34fac3dc8b0dbbc015f07000000bb6f8fd4 ,\n        0x35e1944194ba99ad40e3ce715900720000000000000010e9224f102a8b41803f ,\n        0xd5057d476c3307000000bb6f8fd435e1944194ba99ad40e3ce714e0075006d00 ,\n        0x6200650072005f00000000000000859ebf1d83dcc843b36b3440c2e1f6de0700 ,\n        0x0000bb6f8fd435e1944194ba99ad40e3ce714f007200690067005f0041007400 ,\n        0x74007900000000000000c99fe2f51891a247869e18745ab1b1da07000000bb6f ,\n        0x8fd435e1944194ba99ad40e3ce7148006d00500068006f006e00650000000000 ,\n        0x000074de3e499745f04ba6e60895456ce93a000000009f71e108d38ae5400000 ,\n        0x000000000000740062006c006300610073006500000000000000cd217b05fecd ,\n        0x214db10d1fe8801776830700000074de3e499745f04ba6e60895456ce93a4300 ,\n        0x610073006500490044000000000000000a5a9d632932994ab8f74d0e42ee7780 ,\n        0x07000000bb6f8fd435e1944194ba99ad40e3ce7145006d00610069006c000000 ,\n        0x00000000000000000000000000000000000000000c0000000500000000000000 ,\n        0x00000000000000000000\n    End\n    RecordSource =\"qryFileFolderLabel\"\n    Caption =\"File Folder Label\"\n    DatasheetFontName =\"Calibri\"\n    PrtMip = Begin\n        0x9c000000800000009c0000007f00000000000000d61100001004000001000000 ,\n        0x010000006801000000000000a10700000100000001000000\n    End\n    PrtDevMode = Begin\n        0x536d617274204c6162656c205072696e746572203632300060321e0f00008c01 ,\n        0x010400069c007c034def800502001f01ea0a6f08640001000f00cb0001000100 ,\n        0xcb0002000000005000008c0100000000102edf22102edf22c4476e01d20d4000 ,\n        0x102edf22ec470000000000000000000000000000010000000000000001000000 ,\n        0x0200000001000000ffffffff0000000000000000000000000000000044494e55 ,\n        0x220040019c0300006a0bb4940000000000000000000000000000000000000000 ,\n        0x00000000000000000a0000000000000000000000000000000000070000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000020010000534d544a ,\n        0x0000000010001001000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000000000000000000000000000\n    End\n    PrtDevNames = Begin\n        0x080011002900000077696e73706f6f6c00536d617274204c6162656c20507269 ,\n        0x6e74657220363230005553423030320000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000\n    End\n    FilterOnLoad =0\n    FitToPage =1\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    PrtDevModeW = Begin\n        0x53006d0061007200740020004c006100620065006c0020005000720069006e00 ,\n        0x7400650072002000360032003000000000000000000000000000000000000000 ,\n        0x01040006dc007c034def800502001f01ea0a6f08640001000f00cb0001000100 ,\n        0xcb00020000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000000000000001000000 ,\n        0x0200000001000000ffffffff0000000000000000000000000000000044494e55 ,\n        0x220040019c0300006a0bb4940000000000000000000000000000000000000000 ,\n        0x00000000000000000a0000000000000000000000000000000000070000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000020010000534d544a ,\n        0x0000000010001001000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000000000000000000000000000\n    End\n    PrtDevNamesW = Begin\n        0x04000d0025000000770069006e00730070006f006f006c00000053006d006100 ,\n        0x7200740020004c006100620065006c0020005000720069006e00740065007200 ,\n        0x2000360032003000000055005300420030003000320000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000\n    End\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            FontName =\"Calibri\"\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Rectangle\n            BorderLineStyle =0\n            Width =850\n            Height =850\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            Width =1701\n            LabelX =-1701\n            FontSize =11\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            ShowDatePicker =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin EmptyCell\n            Height =240\n            GridlineColor =12632256\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Section\n            KeepTogether = NotDefault\n            CanGrow = NotDefault\n            Height =1040\n            Name =\"Detail\"\n            GUID = Begin\n                0x3eb2747c4f7b254797c351bc8e1455f2\n            End\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Top =255\n                    Width =4566\n                    Height =245\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Text4\"\n                    ControlSource =\"=[Matter_type]\"\n                    GUID = Begin\n                        0xbca2ee06a1088448be58d75871953ed5\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedTop =255\n                    LayoutCachedWidth =4566\n                    LayoutCachedHeight =500\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Top =525\n                    Width =4566\n                    Height =245\n                    TabIndex =1\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Text7\"\n                    ControlSource =\"=[Court] & \\\" \\\" & [CType] & \\\" \\\" & [FirstofHearing_Date]\"\n                    GUID = Begin\n                        0xaa7075ac0e1d144cb978a0519201a1ab\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedTop =525\n                    LayoutCachedWidth =4566\n                    LayoutCachedHeight =770\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Width =4560\n                    Height =245\n                    FontWeight =700\n                    TabIndex =2\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"lblName\"\n                    ControlSource =\"=IIf([Last_Name] Is Not Null And [First_Name] Is Null,[Last_Name],[Last_Name] & \"\n                        \"\\\", \\\" & [First_Name]) & \\\" (\\\" & [Case_Letter] & [Yr] & \\\"-\\\" & [Number_] & \\\"-\"\n                        \"\\\" & [Orig_Atty] & \\\")\\\"\"\n                    GUID = Begin\n                        0x5d788378ffa9934c9e61d5adf4cf0b22\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedWidth =4560\n                    LayoutCachedHeight =245\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Top =795\n                    Width =1596\n                    Height =245\n                    TabIndex =3\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Text14\"\n                    ControlSource =\"HmPhone\"\n                    GUID = Begin\n                        0x0fee638cd5ee5240b1c55a6791f0a0a5\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedTop =795\n                    LayoutCachedWidth =1596\n                    LayoutCachedHeight =1040\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    IMESentenceMode =3\n                    Left =3165\n                    Top =285\n                    Width =1296\n                    Height =315\n                    TabIndex =4\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Text15\"\n                    ControlSource =\"tblcase.CaseID\"\n                    GUID = Begin\n                        0x86939d3f143b784997f7e8d0b2a53edf\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedLeft =3165\n                    LayoutCachedTop =285\n                    LayoutCachedWidth =4461\n                    LayoutCachedHeight =600\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =1590\n                    Top =795\n                    Width =2976\n                    Height =245\n                    TabIndex =5\n                    BorderColor =10921638\n                    ForeColor =4210752\n                    Name =\"Text17\"\n                    ControlSource =\"Email\"\n                    GUID = Begin\n                        0x903efa13d730b4409e96e7b3808a9d3e\n                    End\n                    GridlineColor =10921638\n\n                    LayoutCachedLeft =1590\n                    LayoutCachedTop =795\n                    LayoutCachedWidth =4566\n                    LayoutCachedHeight =1040\n                End\n            End\n        End\n    End\nEnd"
+}

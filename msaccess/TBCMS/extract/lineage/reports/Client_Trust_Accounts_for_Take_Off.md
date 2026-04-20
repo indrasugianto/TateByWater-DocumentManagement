@@ -1,0 +1,81 @@
+# Report Lineage: Client_Trust_Accounts_for_Take_Off
+
+## Trigger Paths
+- frmTakeOff -> cmdShowReportCBH -> onClick -> cmdShowReportCBH_Click (high confidence)
+- frmTakeOff -> cmdShowReportJRT -> onClick -> cmdShowReportJRT_Click (high confidence)
+- frmTakeOff -> cmdShowReportALL -> onClick -> cmdShowReportALL_Click (high confidence)
+- frmTakeOff -> cmdAttyReport -> onClick -> cmdAttyReport_Click (high confidence)
+- frmTakeOff -> cmbShowReportCHHandling -> onClick -> cmbShowReportCHHandling_Click (high confidence)
+- frmTakeOff -> cmbShowReportMTHandling -> onClick -> cmbShowReportMTHandling_Click (high confidence)
+
+## Data Lineage
+- RecordSource: `qryAttyTrustAcctsTOff`
+- RecordSourceType: `saved-query`
+- Involved Queries: qryAttyTrustAcctsTOff
+- Terminal Tables: tblCase, tblTakeOff
+
+## Related VBA Procedures
+- form frmClientLedger::cmdClientReviewEmail_Click [16447-16477]
+- form frmClientLedger::cmdClientReviewEmailESP_Click [16478-16508]
+- form frmClientLedger::cmbFileNumbers_AfterUpdate [17358-17495]
+- form frmClientLedger::CaseOpenDate_AfterUpdate [17540-17550]
+- form frmAttyFeeGeneration::FilterMe [8563-8575]
+- form frmTakeOffReconciliation::cmdInsertData_Click [3863-3942]
+- form zClient Ledger OLD::cmdSubmitToFamilyLaw_Click [8066-8096]
+- form zClient Ledger OLD::CaseOpenDate_AfterUpdate [8122-8126]
+- form frmTakeOff::cmdInsertIntoTA_Click [5340-5414]
+- form frmTakeOff::cmbShowReportCHHandling_Click [5415-5420]
+- form frmTakeOff::cmbShowReportMKHandling_Click [5421-5426]
+- form frmTakeOff::cmbShowReportMTHandling_Click [5427-5432]
+- form frmTakeOff::cmdAttyReport_Click [5443-5453]
+- form frmTakeOff::cmdShowReportALL_Click [5465-5478]
+- form frmTakeOff::cmdShowReportBA_Click [5479-5484]
+- form frmTakeOff::cmdShowReportCBH_Click [5485-5507]
+- form frmTakeOff::cmdShowReportDEB_Click [5508-5525]
+- form frmTakeOff::cmdShowReportGBF_Click [5526-5551]
+- form frmTakeOff::Command103_Click [5552-5574]
+- form frmTakeOff::Command104_Click [5575-5597]
+- form frmTakeOff::cmdShowReportJF_Click [5725-5730]
+- form frmTakeOff::cmdShowReportKDB_Click [5731-5750]
+- form frmTakeOff::cmdShowReportMK_Click [5751-5771]
+- form frmTakeOff::cmdShowReportMT_Click [5772-5791]
+- form frmTakeOff::cmdShowReportNH_Click [5792-5799]
+- form frmTakeOff::cmdShowReportPM_Click [5800-5821]
+- form frmTakeOff::cmdShowReportRLF_Click [5822-5828]
+- form frmTakeOff::cmdShowReportTDT_Click [5829-5850]
+- form frmTakeOff::cmbInsertFees_Click [5851-5907]
+- form frmTakeOff::fncRecordExists [5908-5972]
+- form frmTakeOff::cmdShowReportJRT_Click [5973-6001]
+- form Intakes::cmdClose_Click [7608-7660]
+- form Intakes::cmdCreateOpen_Click [7723-7770]
+- form frmTakeOff2::cmdInsertIntoTA_Click [674-748]
+- form frmTakeOff2::cmbShowReportCHHandling_Click [749-754]
+- form frmTakeOff2::cmbShowReportMKHandling_Click [755-760]
+- form frmTakeOff2::cmbShowReportMTHandling_Click [761-766]
+- form frmTakeOff2::cmdShowReportALL_Click [785-798]
+- form frmTakeOff2::cmdShowReportCBH_Click [799-821]
+- form frmTakeOff2::cmdShowReportDEB_Click [822-839]
+- form frmTakeOff2::cmdShowReportGBF_Click [840-865]
+- form frmTakeOff2::cmdShowReportKDB_Click [1039-1058]
+- form frmTakeOff2::cmdShowReportMK_Click [1059-1079]
+- form frmTakeOff2::cmdShowReportMT_Click [1080-1099]
+- form frmTakeOff2::cmdShowReportPM_Click [1100-1121]
+- form frmTakeOff2::cmdShowReportTDT_Click [1122-1196]
+- form frmTakeOff2::fncRecordExists [1197-1261]
+- form frmTakeOff2::cmdShowReportJRT_Click [1262-1290]
+- form frmTakeOffTest::cmdInsertIntoTA_Click [675-749]
+- form frmTakeOffTest::cmbShowReportCHHandling_Click [750-755]
+- form frmTakeOffTest::cmbShowReportMKHandling_Click [756-761]
+- form frmTakeOffTest::cmbShowReportMTHandling_Click [762-767]
+- form frmTakeOffTest::cmdShowReportALL_Click [786-799]
+- form frmTakeOffTest::cmdShowReportCBH_Click [800-822]
+- form frmTakeOffTest::cmdShowReportDEB_Click [823-840]
+- form frmTakeOffTest::cmdShowReportGBF_Click [841-866]
+- form frmTakeOffTest::cmdShowReportKDB_Click [1040-1059]
+- form frmTakeOffTest::cmdShowReportMK_Click [1060-1080]
+- form frmTakeOffTest::cmdShowReportMT_Click [1081-1100]
+- form frmTakeOffTest::cmdShowReportPM_Click [1101-1122]
+- form frmTakeOffTest::cmdShowReportTDT_Click [1123-1143]
+- form frmTakeOffTest::cmbInsertFees_Click [1144-1197]
+- form frmTakeOffTest::fncRecordExists [1198-1262]
+- form frmTakeOffTest::cmdShowReportJRT_Click [1263-1291]

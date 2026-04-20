@@ -1,0 +1,256 @@
+{
+  "reportName": "rpt_address_label",
+  "dataSource": "tblCase",
+  "triggerPaths": [
+    {
+      "formName": "frm_invoices_summary",
+      "controlName": "cmdPrintLabel",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8369,
+      "lineEnd": 8397,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frm_trust_summary",
+      "controlName": "cmbAddressLabel",
+      "eventName": "onClick",
+      "procedureName": "cmbAddressLabel_Click",
+      "sourceFile": "extract/vba/forms/frm_trust_summary.txt",
+      "lineStart": 6891,
+      "lineEnd": 6920,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmClientLedger",
+      "controlName": "cmdPrintLabelP",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintLabelP_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16715,
+      "lineEnd": 16745,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmClientLedger",
+      "controlName": "cmdPrintLabel",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17295,
+      "lineEnd": 17347,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "zClient Ledger OLD",
+      "controlName": "cmdPrintLabel",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8050,
+      "lineEnd": 8065,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmTimeKeepingClosed",
+      "controlName": "cmdPrintLabel",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7895,
+      "lineEnd": 7924,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "tblCase",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblCase"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frm_invoices_summary",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8369,
+      "lineEnd": 8397,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frm_trust_summary",
+      "procedureName": "cmbAddressLabel_Click",
+      "sourceFile": "extract/vba/forms/frm_trust_summary.txt",
+      "lineStart": 6891,
+      "lineEnd": 6920,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmail_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16447,
+      "lineEnd": 16477,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmailESP_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16478,
+      "lineEnd": 16508,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdPrintLabelP_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16715,
+      "lineEnd": 16745,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17295,
+      "lineEnd": 17347,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmbFileNumbers_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17358,
+      "lineEnd": 17495,
+      "usesDoCmd": [
+        "GoToRecord",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17540,
+      "lineEnd": 17550,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8050,
+      "lineEnd": 8065,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8066,
+      "lineEnd": 8096,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8122,
+      "lineEnd": 8126,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7608,
+      "lineEnd": 7660,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7723,
+      "lineEnd": 7770,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7895,
+      "lineEnd": 7924,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    }
+  ],
+  "confidence": "high"
+}

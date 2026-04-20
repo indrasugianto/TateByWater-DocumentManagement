@@ -1,0 +1,70 @@
+{
+  "formName": "frmOkAlert",
+  "caption": "ALERT",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 6300,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "lblMessage",
+          "left": 135,
+          "top": 645,
+          "width": 6105,
+          "height": 675,
+          "caption": "No message specified!",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "lblMessage2",
+          "left": 120,
+          "top": 1380,
+          "width": 6105,
+          "height": 315,
+          "caption": " ",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdYes",
+          "left": 4500,
+          "top": 1800,
+          "width": 1680,
+          "height": 360,
+          "caption": "Ok",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "lblTitle",
+          "left": 0,
+          "top": 0,
+          "width": 6240,
+          "height": 360,
+          "controlSource": "=GetCompanyName()",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPublic Function CodeBehind_Form_Load() As Boolean\r\n    lblMessage.Caption = message\r\n    lblMessage2.Caption = Message1\r\n    CodeBehind_Form_Load = True\r\nEnd Function\r\n\r\nPrivate Sub Form_Load()\r\nCodeBehind_Form_Load\r\nEnd Sub"
+}

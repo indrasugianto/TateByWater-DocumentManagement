@@ -1,0 +1,109 @@
+{
+  "formName": "frmPersInjLog",
+  "recordSource": "SELECT tblPersInjLog.EventDate, tblPersInjLog.EventDescription, tblPersInjLog.ID, tblPersInjLog.PersInjLogID FROM tblPersInjLog ORDER BY tblPersInjLog.EventDate; ",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 8196,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text3",
+          "left": 60,
+          "top": 60,
+          "width": 1080,
+          "height": 315,
+          "controlSource": "EventDate",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text5",
+          "left": 1200,
+          "top": 60,
+          "width": 6300,
+          "height": 720,
+          "controlSource": "EventDescription",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdDelete",
+          "left": 7620,
+          "top": 120,
+          "width": 576,
+          "height": 331,
+          "caption": "Command24",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 60,
+          "top": 0,
+          "width": 480,
+          "height": 300,
+          "caption": "LOG",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 60,
+          "top": 300,
+          "width": 600,
+          "height": 300,
+          "caption": "DATE",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 1260,
+          "top": 300,
+          "width": 1995,
+          "height": 300,
+          "caption": "Description / Update",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text7",
+          "left": 4680,
+          "top": 60,
+          "width": 300,
+          "height": 315,
+          "controlSource": "ID",
+          "tabIndex": 0,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub Form_MouseWheel(ByVal Page As Boolean, ByVal Count As Long)\r\n If Not Me.Dirty Then\r\n   If (Count < 0) And (Me.CurrentRecord > 1) Then\r\n     DoCmd.GoToRecord , , acPrevious\r\n   ElseIf (Count > 0) And (Me.CurrentRecord < Me.Recordset.RecordCount) Then\r\n        DoCmd.GoToRecord , , acNext\r\n   End If\r\n Else\r\n   MsgBox \"The record has changed. Save the current record before moving to another record.\", , \"TB CMS\"\r\n End If\r\nEnd Sub"
+}

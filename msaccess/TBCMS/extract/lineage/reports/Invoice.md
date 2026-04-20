@@ -1,0 +1,133 @@
+# Report Lineage: Invoice
+
+## Trigger Paths
+- frm_invoices_summary -> cmdPreview -> onClick -> cmdPreview_Click (high confidence)
+- frm_invoices_summary -> Cmd_PreviewNew -> onClick -> Cmd_PreviewNew_Click (medium confidence)
+- frm_invoices_summary -> cmdRecordInvoice -> onClick -> cmdRecordInvoice_Click (high confidence)
+- frm_invoices_summary -> cmdPastDue -> onClick -> cmdPastDue_Click (medium confidence)
+- frm_invoices_summary -> cmdPastDueLT -> onClick -> cmdPastDueLT_Click (medium confidence)
+- frm_invoices_summary -> cmdRecordPDInvoice -> onClick -> cmdRecordPDInvoice_Click (medium confidence)
+- frm_trust_summary -> cmdPrintStmtTrust -> onClick -> cmdPrintStmtTrust_Click (medium confidence)
+- frmClientLedger -> CrStatusRep -> onClick -> CrStatusRep_Click (medium confidence)
+- frmClientLedger -> CommandFullHistoryInvoice -> onClick -> CommandFullHistoryInvoice_Click (high confidence)
+- frmClientLedger -> cmdInvoice -> onClick -> cmdInvoice_Click (medium confidence)
+- frmClientLedger -> cmdPastDueInvoice -> onClick -> cmdPastDueInvoice_Click (medium confidence)
+- frmClientLedger -> cmdBalanceInvoice -> onClick -> cmdBalanceInvoice_Click (high confidence)
+- frmClientLedger -> cmdEmailPastDue -> onClick -> cmdEmailPastDue_Click (medium confidence)
+- frmClientLedger -> cmdEmailNoBalance -> onClick -> cmdEmailNoBalance_Click (medium confidence)
+- frmClientLedger -> cmdEmailFullHistory -> onClick -> cmdEmailFullHistory_Click (high confidence)
+- frmTimeKeepingOpen -> cmdPrintInvoice -> onClick -> cmdPrintInvoice_Click (medium confidence)
+- frmTimeKeepingOpen -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
+- zClient Ledger OLD -> cmdInvoice -> onClick -> cmdInvoice_Click (medium confidence)
+- zClient Ledger OLD -> cmdPastDueInvoice -> onClick -> cmdPastDueInvoice_Click (medium confidence)
+- zClient Ledger OLD -> cmdBalanceInvoice -> onClick -> cmdBalanceInvoice_Click (medium confidence)
+- zClient Ledger OLD -> CmdFullHistoryInvoice -> onClick -> CmdFullHistoryInvoice_Click (high confidence)
+- frmAttyNotes -> cmdPrintNotes -> onClick -> cmdPrintNotes_Click (medium confidence)
+- zfrmSelectCaseNum -> CmdOpenInvoiceAttachReport -> onClick -> CmdOpenInvoiceAttachReport_Click (medium confidence)
+- frmHome -> cmdInvoice -> onClick -> cmdInvoice_Click (high confidence)
+- frmHome -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (medium confidence)
+- frmInvoiceSent -> cmdRecordSentInvoice -> onClick -> cmdRecordSentInvoice_Click (high confidence)
+- frmInvoiceSent -> cmdRecondSentPDInvoice -> onClick -> cmdRecondSentPDInvoice_Click (medium confidence)
+- zfrmSelectCaseNum_Discount -> CmdOpenInvoiceAttachReport -> onClick -> CmdOpenInvoiceAttachReport_Click (medium confidence)
+- frmTimeKeepingClosed -> cmdRecord -> onClick -> cmdRecord_Click (medium confidence)
+- frmTimeKeepingClosed -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
+- frmTimeKeepingClosed -> cmdCompFull -> onClick -> cmdCompFull_Click (medium confidence)
+- frmTimeKeepingClosed -> cmdCompCurr -> onClick -> cmdCompCurr_Click (medium confidence)
+- frmTimeKeepingClosed -> cmdPreview2 -> onClick -> cmdPreview2_Click (medium confidence)
+- frmTimeKeepingClosed -> cmdRecordShort -> onClick -> cmdRecordShort_Click (medium confidence)
+- frmUpcoming Hearings -> cmdPrintNotes -> onClick -> cmdPrintNotes_Click (medium confidence)
+- Time Keeping -> cmdPrintInvoice -> onClick -> cmdPrintInvoice_Click (medium confidence)
+- Time Keeping -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
+- Time Keeping -> cmdRecordTKStatement -> onClick -> cmdRecordTKStatement_Click (medium confidence)
+- Time Keeping -> cmdPrevStatement -> onClick -> cmdPrevStatement_Click (medium confidence)
+- Time Keeping -> cmdCompFullHistory -> onClick -> cmdCompFullHistory_Click (medium confidence)
+- Time Keeping -> cmdCompCurrent -> onClick -> cmdCompCurrent_Click (medium confidence)
+- Time Keeping -> cmdCompShort -> onClick -> cmdCompShort_Click (medium confidence)
+- Time Keeping -> cmdEmailShort -> onClick -> cmdEmailShort_Click (medium confidence)
+- Time Keeping -> cmdEmailLong -> onClick -> cmdEmailLong_Click (medium confidence)
+- Time Keeping -> cmdRecordShortTK -> onClick -> cmdRecordShortTK_Click (medium confidence)
+- frmPersonalInjury -> CrStatusRep -> onClick -> CrStatusRep_Click (medium confidence)
+- frmHomeAdmin -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (medium confidence)
+
+## Data Lineage
+- RecordSource: `qryInvoiceRPT1`
+- RecordSourceType: `saved-query`
+- Involved Queries: qryInvoiceRPT1
+- Terminal Tables: vwInvoiceRPT1
+
+## Related VBA Procedures
+- form frm_invoices_summary::CaseID_Click [8120-8132]
+- form frm_invoices_summary::Cmd_PreviewNew_Click [8176-8206]
+- form frm_invoices_summary::Cmd_PrintNew_Click [8207-8238]
+- form frm_invoices_summary::cmdPastDueLT_Click [8259-8275]
+- form frm_invoices_summary::cmdPrintInvoice_Click [8276-8291]
+- form frm_invoices_summary::cmdPastDue_Click [8292-8307]
+- form frm_invoices_summary::cmdPreview_Click [8308-8319]
+- form frm_invoices_summary::cmdPastDuePrint_Click [8334-8348]
+- form frm_invoices_summary::cmdNoBalancePrint_Click [8349-8364]
+- form frm_invoices_summary::cmdPrintPastDueLT_Click [8398-8412]
+- form frm_invoices_summary::cmdRecordInvoice_Click [8413-8471]
+- form frm_invoices_summary::cmdRecordPDInvoice_Click [8540-8598]
+- form frm_trust_summary::cmdPrintStmtTrust_Click [6969-6984]
+- form frmClientLedger::cmdOpenDocumentFolderInvoices_Click [16681-16685]
+- form frmClientLedger::CrStatusRep_Click [16857-16876]
+- form frmClientLedger::cmdEmailPastDue_Click [16914-16940]
+- form frmClientLedger::cmdEmailNoBalance_Click [16941-16964]
+- form frmClientLedger::cmdEmailFullHistory_Click [16965-16988]
+- form frmClientLedger::cmdPastDueInvoice_Click [17210-17237]
+- form frmClientLedger::cmdBalanceInvoice_Click [17238-17294]
+- form frmClientLedger::CommandFullHistoryInvoice_Click [17622-17641]
+- form frmClientLedger::cmdInvoice_Click [17642-17671]
+- form frmTakeOffReconciliation::txtTKButton_Click [3724-3781]
+- form frmTimeKeepingOpen::cmdPreview_Click [7386-7407]
+- form frmTimeKeepingOpen::cmdPrintInvoice_Click [7408-7431]
+- form frmTimeKeepingOpen::cmdAddNewTK_Click [7452-7533]
+- form zClient Ledger OLD::cmdInvoice_Click [7925-7945]
+- form zClient Ledger OLD::cmdPastDueInvoice_Click [7946-7964]
+- form zClient Ledger OLD::cmdBalanceInvoice_Click [7965-7981]
+- form zClient Ledger OLD::CmdFullHistoryInvoice_Click [7982-8007]
+- form frmAttyNotes::cmdPrintNotes_Click [612-633]
+- form zfrmSelectCaseNum::CmdOpenInvoiceAttachReport_Click [385-404]
+- form frmHome::cmdInvoice_Click [1910-1919]
+- form frmHome::cmdDeleteAll_Click [1920-2057]
+- form frmInvoiceSent::cmdBillingOpenInvoiceFolder_Click [1042-1051]
+- form frmInvoiceSent::cmdRecondSentPDInvoice_Click [1052-1114]
+- form frmInvoiceSent::cmdRecordSentInvoice_Click [1115-1179]
+- form zfrmSelectCaseNum_Discount::CmdOpenInvoiceAttachReport_Click [391-410]
+- form frmTimeKeepingClosed::cmdCompCurr_Click [7742-7790]
+- form frmTimeKeepingClosed::cmdCompFull_Click [7791-7823]
+- form frmTimeKeepingClosed::cmdPreview_Click [7824-7849]
+- form frmTimeKeepingClosed::cmdPrintInvoice_Click [7850-7873]
+- form frmTimeKeepingClosed::cmdPreview2_Click [7874-7894]
+- form frmTimeKeepingClosed::cmdRecordShort_Click [7925-8041]
+- form frmTimeKeepingClosed::cmdRecord_Click [8105-8221]
+- form frmUpcoming Hearings::cmdPrintNotes_Click [7565-7584]
+- form Time Keeping::cmdBillingOpenInvoiceFolder_Click [3983-3988]
+- form Time Keeping::cmdCompFullHistory_Click [3989-4030]
+- form Time Keeping::cmdCompShort_Click [4031-4073]
+- form Time Keeping::cmdEmailLong_Click [4074-4119]
+- form Time Keeping::cmdEmailShort_Click [4120-4165]
+- form Time Keeping::cmdPrevStatement_Click [4166-4195]
+- form Time Keeping::cmdPrevHourlyInvoice_Click [4196-4198]
+- form Time Keeping::cmdRecordShortTK_Click [4199-4316]
+- form Time Keeping::cmdPrintInvoice_Click [4405-4438]
+- form Time Keeping::cmdRecordTKStatement_Click [4457-4572]
+- form Time Keeping::cmdPreview_Click [4609-4627]
+- form Time Keeping::cmdCompCurrent_Click [4787-4840]
+- form frmTKClose::txtTKButton_Click [2512-2841]
+- form frmPersonalInjury::CrStatusRep_Click [3991-4010]
+- form frmHomeAdmin::cmdInvoice_Click [6346-6355]
+- form frmHomeAdmin::cmdDeleteAll_Click [6356-6493]
+- report rpt_Comprehensive_InvoiceTKEx3Costs::Report_Activate [2614-2623]
+- report rptInvoiceComprARCur::Report_Open [584-590]
+- report rpt_Compr_InvoiceADVCur::Report_Open [1610-1646]
+- report rptInvoiceComprPymtsARCur::Report_Open [572-576]
+- report Invoice2::Charge19_Click [2001-2033]
+- report rpt_Comprehensive_InvoiceTKEx2::Report_Activate [2715-2724]
+- report Rpt_MergeInvTK::Charge19_Click [1949-1981]
+- report rptInvoiceComprTrustCur::Report_NoData [584-605]
+- report rptInvoiceComprTrustCur::Report_Open [606-611]
+- report rpt_Comprehensive_InvoiceTKEx1::Report_Activate [2372-2381]
+- report rpt_Comprehensive_InvoiceTKEx3CostsS::Report_Activate [2496-2505]
+- report rpt_Comprehensive_InvoiceTKEx2S::Report_Activate [2591-2600]
+- report rpt_Comprehensive_InvoiceTKEx1S::Report_Activate [2190-2199]

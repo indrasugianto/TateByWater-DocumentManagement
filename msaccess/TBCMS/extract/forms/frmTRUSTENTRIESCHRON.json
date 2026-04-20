@@ -1,0 +1,871 @@
+{
+  "formName": "frmTRUSTENTRIESCHRON",
+  "caption": "Trust Account Entries",
+  "recordSource": "qryTrustEntriesChron",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": true,
+  "width": 18420,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "CheckNumber",
+          "left": 13695,
+          "top": 0,
+          "width": 717,
+          "height": 360,
+          "controlSource": "CheckNumber",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Credit",
+          "left": 12432,
+          "top": 0,
+          "width": 1152,
+          "height": 360,
+          "controlSource": "Credit",
+          "format": "Currency",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "CheckCashed",
+          "left": 15975,
+          "top": 0,
+          "width": 234,
+          "height": 225,
+          "controlSource": "CheckCashed",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Debit",
+          "left": 10020,
+          "top": 0,
+          "width": 1212,
+          "height": 360,
+          "controlSource": "Debit",
+          "format": "Currency",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "TMatter",
+          "left": 6720,
+          "top": 0,
+          "width": 3252,
+          "height": 360,
+          "controlSource": "TMatter",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "TDate",
+          "left": 5580,
+          "top": 0,
+          "width": 1080,
+          "height": 360,
+          "controlSource": "TDate",
+          "format": "Short Date",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "DepCleared",
+          "left": 14895,
+          "top": 0,
+          "width": 234,
+          "height": 225,
+          "controlSource": "DepCleared",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Name",
+          "left": 1380,
+          "top": 4,
+          "width": 3180,
+          "height": 359,
+          "controlSource": "Name",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Reconciled",
+          "left": 11715,
+          "top": 60,
+          "width": 240,
+          "height": 240,
+          "controlSource": "Reconciled",
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OrigAtty",
+          "left": 4620,
+          "top": 0,
+          "width": 900,
+          "height": 360,
+          "controlSource": "Orig_Atty",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "CaseNum",
+          "left": 94,
+          "top": 47,
+          "width": 1230,
+          "height": 300,
+          "controlSource": "Case No",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "CommandButton",
+          "name": "cmdFilter",
+          "left": 7215,
+          "top": 598,
+          "width": 480,
+          "height": 345,
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Auto_Header0",
+          "left": 1020,
+          "top": 300,
+          "width": 3960,
+          "height": 540,
+          "caption": "Trust Account Entries ",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 4721,
+          "top": 328,
+          "width": 1170,
+          "height": 255,
+          "caption": "From",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 60,
+          "top": 1515,
+          "width": 960,
+          "height": 284,
+          "caption": "File No.",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 1395,
+          "top": 1020,
+          "width": 2280,
+          "height": 284,
+          "caption": "Name",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label24",
+          "left": 15495,
+          "top": 1365,
+          "width": 1095,
+          "height": 465,
+          "caption": "Uncashed\r\nCheck",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label93",
+          "left": 13635,
+          "top": 1320,
+          "width": 795,
+          "height": 240,
+          "caption": "Check#",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 5655,
+          "top": 1560,
+          "width": 900,
+          "height": 284,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label4",
+          "left": 10095,
+          "top": 1320,
+          "width": 930,
+          "height": 284,
+          "caption": "Deposits",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label5",
+          "left": 12420,
+          "top": 1335,
+          "width": 1080,
+          "height": 284,
+          "caption": "Withdrawal",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label7",
+          "left": 6570,
+          "top": 1320,
+          "width": 1380,
+          "height": 299,
+          "caption": "Description",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label112",
+          "left": 14415,
+          "top": 1365,
+          "width": 1020,
+          "height": 480,
+          "caption": "Uncl Deposit",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label8",
+          "left": 11295,
+          "top": 1380,
+          "width": 1035,
+          "height": 525,
+          "caption": "WF\r\nReconciled",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label12",
+          "left": 4695,
+          "top": 1260,
+          "width": 840,
+          "height": 284,
+          "caption": "Orig Atty",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClearFilter",
+          "left": 13860,
+          "top": 257,
+          "width": 1545,
+          "height": 405,
+          "caption": "   &Clear Filter",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "txtFrom",
+          "left": 4721,
+          "top": 620,
+          "width": 1170,
+          "height": 315,
+          "format": "Short Date",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label19",
+          "left": 5973,
+          "top": 328,
+          "width": 1170,
+          "height": 255,
+          "caption": "To",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtTo",
+          "left": 5973,
+          "top": 620,
+          "width": 1170,
+          "height": 315,
+          "format": "Short Date",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "OptionGroup",
+          "name": "Frame23",
+          "left": 4620,
+          "top": 289,
+          "width": 3197,
+          "height": 778,
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label25",
+          "left": 7200,
+          "top": 343,
+          "width": 510,
+          "height": 315,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbOrigAtty",
+          "left": 4650,
+          "top": 1575,
+          "width": 915,
+          "height": 285,
+          "rowSource": "JRT;DEB;GBF;PM;TDT;NH;RLF;JF;CMH;BA;KDB;RRL;WNE;RYR",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "cmdWFReconcile",
+          "left": 12015,
+          "top": 1380,
+          "width": 240,
+          "height": 240,
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClose",
+          "left": 15540,
+          "top": 257,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbClients",
+          "left": 1455,
+          "top": 1590,
+          "width": 3120,
+          "height": 270,
+          "rowSource": "qryCaseIDclientsAll",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkUnclearedDep",
+          "left": 15135,
+          "top": 1380,
+          "width": 240,
+          "height": 240,
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkUncashed",
+          "left": 16515,
+          "top": 1380,
+          "width": 240,
+          "height": 240,
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtCheck",
+          "left": 13695,
+          "top": 1575,
+          "width": 728,
+          "height": 285,
+          "tabIndex": 11,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtDescription",
+          "left": 6735,
+          "top": 1575,
+          "width": 3233,
+          "height": 285,
+          "tabIndex": 12,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtDep",
+          "left": 10095,
+          "top": 1575,
+          "width": 1133,
+          "height": 285,
+          "tabIndex": 13,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtWith",
+          "left": 12435,
+          "top": 1575,
+          "width": 1133,
+          "height": 285,
+          "tabIndex": 14,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txt_WF_CHK",
+          "left": 11160,
+          "top": 662,
+          "width": 2400,
+          "height": 255,
+          "format": "Currency",
+          "tabIndex": 15,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkNonZeroD",
+          "left": 11025,
+          "top": 1365,
+          "width": 288,
+          "height": 288,
+          "tabIndex": 16,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkNonZeroW",
+          "left": 13395,
+          "top": 1365,
+          "width": 288,
+          "height": 288,
+          "tabIndex": 17,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtClient",
+          "left": 1455,
+          "top": 1245,
+          "width": 3120,
+          "height": 299,
+          "tabIndex": 18,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Image",
+          "name": "Image54",
+          "left": 11160,
+          "top": 240,
+          "width": 2400,
+          "height": 360,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdRequery",
+          "left": 15540,
+          "top": 722,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Requery",
+          "tabIndex": 19,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "Image57",
+          "left": 60,
+          "top": 120,
+          "width": 900,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkChks",
+          "left": 14250,
+          "top": 1335,
+          "width": 288,
+          "height": 288,
+          "tabIndex": 20,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text59",
+          "left": 7980,
+          "top": 452,
+          "width": 3000,
+          "height": 555,
+          "controlSource": "TrustChronMemo",
+          "tabIndex": 21,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label60",
+          "left": 7980,
+          "top": 180,
+          "width": 2160,
+          "height": 255,
+          "caption": "Notes:",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd35D",
+          "left": 10080,
+          "top": 1080,
+          "width": 300,
+          "height": 240,
+          "caption": "35",
+          "tabIndex": 22,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd65D",
+          "left": 10440,
+          "top": 1080,
+          "width": 300,
+          "height": 240,
+          "caption": "65",
+          "tabIndex": 23,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd95D",
+          "left": 10800,
+          "top": 1080,
+          "width": 300,
+          "height": 240,
+          "caption": "95",
+          "tabIndex": 24,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd35W",
+          "left": 12480,
+          "top": 1080,
+          "width": 300,
+          "height": 240,
+          "caption": "35",
+          "tabIndex": 25,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd65W",
+          "left": 12810,
+          "top": 1080,
+          "width": 300,
+          "height": 240,
+          "caption": "65",
+          "tabIndex": 26,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd95W",
+          "left": 13140,
+          "top": 1080,
+          "width": 300,
+          "height": 240,
+          "caption": "95",
+          "tabIndex": 27,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd35",
+          "left": 14400,
+          "top": 780,
+          "width": 300,
+          "height": 240,
+          "caption": "35",
+          "tabIndex": 28,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd65",
+          "left": 14760,
+          "top": 780,
+          "width": 300,
+          "height": 240,
+          "caption": "65",
+          "tabIndex": 29,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmd95",
+          "left": 15120,
+          "top": 780,
+          "width": 300,
+          "height": 240,
+          "caption": "95",
+          "tabIndex": 30,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label70",
+          "left": 13740,
+          "top": 780,
+          "width": 660,
+          "height": 315,
+          "caption": "Rpt Last:",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "type": "FormFooter",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "txtSumOfBalances",
+          "left": 11640,
+          "top": 0,
+          "width": 1500,
+          "height": 315,
+          "format": "Currency",
+          "tabIndex": 0,
+          "visible": false,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtSumOfUncashed",
+          "left": 15660,
+          "top": 345,
+          "width": 1260,
+          "height": 315,
+          "format": "Currency",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtSumOfUnclearDeposits",
+          "left": 14400,
+          "top": 345,
+          "width": 1140,
+          "height": 315,
+          "format": "Currency",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "Label",
+          "name": "Label48",
+          "left": 14619,
+          "top": 60,
+          "width": 583,
+          "height": 329,
+          "caption": "Total",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label49",
+          "left": 15916,
+          "top": 60,
+          "width": 628,
+          "height": 329,
+          "caption": "Total ",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtJMTrust",
+          "left": 11640,
+          "top": 360,
+          "width": 1500,
+          "height": 315,
+          "format": "Currency",
+          "tabIndex": 3,
+          "visible": false,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtSMTrust",
+          "left": 11640,
+          "top": 660,
+          "width": 1500,
+          "height": 315,
+          "format": "Currency",
+          "tabIndex": 4,
+          "visible": false,
+          "enabled": true,
+          "locked": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    'If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    'If Not IsNull(Me.chkPastDue) Then strSQL = strSQL & \" AND [Past Due] = \" & Me.chkPastDue\r\n    'If Not IsNull(Me.chkNoBalance) Then strSQL = strSQL & \" AND chkBalanceDue = \" & Me.chkNoBalance\r\n    \r\n'    If Not IsNull(Me.chkNonZero) Then\r\n'        If chkNonZero Then\r\n'            strSQL = strSQL & \" AND BalRet >0 \"\r\n'        Else\r\n'            strSQL = strSQL & \" AND BalRet =0 \"\r\n'        End If\r\n'    End If\r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.txtFrom) Then strSQL = strSQL & \" AND TDate >= #\" & Me.txtFrom & \"#\"\r\n    If Not IsNull(Me.txtTo) Then strSQL = strSQL & \" AND TDate <= #\" & Me.txtTo & \"#\"\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.cmdWFReconcile) Then strSQL = strSQL & \" AND Reconciled = \" & IIf(Me.cmdWFReconcile, 1, 0)\r\n    If Not IsNull(Me.ChkUncashed) Then strSQL = strSQL & \" AND CheckCashed = \" & IIf(Me.ChkUncashed, 1, 0)\r\n    If Not IsNull(Me.chkUnclearedDep) Then strSQL = strSQL & \" AND DepCleared = \" & IIf(Me.chkUnclearedDep, 1, 0)\r\n    If Not IsNull(Me.txtCheck) Then strSQL = strSQL & \" AND CheckNumber like '*\" & Me.txtCheck & \"*'\"\r\n    If Not IsNull(Me.txtDescription) Then strSQL = strSQL & \" AND TMatter like '*\" & Me.txtDescription & \"*'\"\r\n    If Not IsNull(Me.txtWith) Then strSQL = strSQL & \" AND Credit like '\" & Me.txtWith & \"*'\"\r\n    If Not IsNull(Me.txtDep) Then strSQL = strSQL & \" AND Debit like '\" & Me.txtDep & \"*'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '*\" & Me.txtClient & \"*'\"\r\n'    If Not IsNull(Me.chkChks) Then strSQL = strSQL & \" AND CheckNumber like '*' & Me.chkChks & '*'\"\r\n    If Not IsNull(Me.chkNonZeroD) Then\r\n        If chkNonZeroD Then\r\n            strSQL = strSQL & \" AND Debit <>0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Debit = 0 \"\r\n        End If\r\n    End If\r\n    If Not IsNull(Me.chkNonZeroW) Then\r\n        If chkNonZeroW Then\r\n            strSQL = strSQL & \" AND Credit <>0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Credit = 0 \"\r\n        End If\r\n    End If\r\n    If Not IsNull(Me.chkChks) Then\r\n        If chkChks Then\r\n            strSQL = strSQL & \" AND Checknumber like '*'\"\r\n        Else\r\n            strSQL = strSQL & \" AND Checknumber not like '*'\"\r\n        End If\r\n    End If\r\n    \r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub CaseNum_Click()\r\n    On Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub chkChks_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZeroD_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZeroW_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkUncashed_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkUnclearedDep_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmd35D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd35w_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35W\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd35_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65W_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65W\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95W_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95W\", acViewPreview\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\n'Sub FilterClear()\r\n'    'clear controls:\r\n'    'Me.cmbClients = Null\r\n''    Me.chkPastDue = Null\r\n''    Me.chkNoBalance = Null\r\n''    Me.chkNonZero = Null\r\n'\r\n'    Me.filter = \"\"\r\n'    Me.FilterOn = False\r\n'End Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdFilter_Click()\r\n    FilterMe\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbClients = Null\r\n'    Me.chkPastDue = Null\r\n'    Me.chkNoBalance = Null\r\n'    Me.chkNonZero = Null\r\n    Me.txtFrom = Null\r\n    Me.txtTo = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.cmdWFReconcile = Null\r\n    Me.ChkUncashed = Null\r\n    Me.chkUnclearedDep = Null\r\n    Me.txtCheck = Null\r\n    Me.txtDescription = Null\r\n    Me.txtWith = Null\r\n    Me.txtDep = Null\r\n    Me.chkNonZeroD = Null\r\n    Me.chkNonZeroW = Null\r\n    Me.txtClient = Null\r\n    Me.chkChks = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub cmdRequery_Click()\r\n    If Me.Dirty = True Then Me.Dirty = False\r\n    Me.Requery\r\n    Me.txtSMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=12664\")\r\n    Me.txtSumOfBalances = DLookup(\"SumOfBalance\", \"qryReconciliation_sumOfBalances\") - Me.txtSMTrust\r\n    Me.txtSumOfUncashed = DLookup(\"SumOfCredit\", \"qryReconciliation_sumOfCredit\")  'Not cashed! please check qyery !\r\n    Me.txtSumOfUnclearDeposits = DLookup(\"SumOfDebit\", \"qryReconciliation_sumOfUnclearedDeposits\")\r\n    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep\r\nEnd Sub\r\n\r\nPrivate Sub cmdWFReconcile_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n    'Me.txtJMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=11946\")\r\n    Me.txtSMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=12664\")\r\n    Me.txtSumOfBalances = DLookup(\"SumOfBalance\", \"qryReconciliation_sumOfBalances\") - Me.txtSMTrust\r\n    Me.txtSumOfUncashed = DLookup(\"SumOfCredit\", \"qryReconciliation_sumOfCredit\")  'Not cashed! please check qyery !\r\n    Me.txtSumOfUnclearDeposits = DLookup(\"SumOfDebit\", \"qryReconciliation_sumOfUnclearedDeposits\")\r\n    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep\r\nEnd Sub\r\n\r\nPrivate Sub txtCheck_AfterUpdate()\r\n    If Not IsNull(txtCheck) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtDep_AfterUpdate()\r\n    If Not IsNull(txtDep) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtDescription_AfterUpdate()\r\n    If Not IsNull(txtDescription) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtWith_AfterUpdate()\r\n    If Not IsNull(txtWith) Then Call FilterMe\r\nEnd Sub"
+}

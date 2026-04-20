@@ -1,0 +1,16 @@
+{
+  "reportName": "rpt_CaseNumber_Closing",
+  "dataSource": "tbl_CtCaseNumbers",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "tbl_CtCaseNumbers",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tbl_CtCaseNumbers"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

@@ -1,0 +1,52 @@
+{
+  "reportName": "rpt_trustee_address_label",
+  "dataSource": "Bankruptcy",
+  "triggerPaths": [
+    {
+      "formName": "frmBankruptcy",
+      "controlName": "cmdPrintTrusteeLabel",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintTrusteeLabel_Click",
+      "sourceFile": "extract/vba/forms/frmBankruptcy.txt",
+      "lineStart": 2497,
+      "lineEnd": 2512,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "Bankruptcy",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "Bankruptcy"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmBankruptcy",
+      "procedureName": "cmdPrintTrusteeLabel_Click",
+      "sourceFile": "extract/vba/forms/frmBankruptcy.txt",
+      "lineStart": 2497,
+      "lineEnd": 2512,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmCalls",
+      "procedureName": "cmdBankruptcySend_Click",
+      "sourceFile": "extract/vba/forms/frmCalls.txt",
+      "lineStart": 7869,
+      "lineEnd": 7893,
+      "usesDoCmd": [],
+      "usesSql": false
+    }
+  ],
+  "confidence": "high"
+}

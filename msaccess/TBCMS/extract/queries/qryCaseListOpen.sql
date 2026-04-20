@@ -1,0 +1,3 @@
+SELECT vwCaseListOpen.CaseID, vwCaseListOpen.CaseOpenDate, vwCaseListOpen.ClientName, vwCaseListOpen.Case_Letter, vwCaseListOpen.yr, vwCaseListOpen.Number_, vwCaseListOpen.Orig_Atty, vwCaseListOpen.Extended_Ledger, vwCaseListOpen.Court, vwCaseListOpen.Matter_type, vwCaseListOpen.FileNumber, vwCaseListOpen.[Scan Location], vwCaseListOpen.HandlingAtty_Case, vwCaseListOpen.Closed, vwCaseListOpen.CodeVal, vwCaseListOpen.ParaLegal, vwCaseListOpen.PIStatus, vwCaseListOpen.Retainer
+FROM vwCaseListOpen
+ORDER BY vwCaseListOpen.ClientName;

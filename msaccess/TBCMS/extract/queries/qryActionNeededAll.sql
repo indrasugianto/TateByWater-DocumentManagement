@@ -1,0 +1,4 @@
+SELECT tblCase.CaseID, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, tblCase.ParaLegal, tblCase.Matter_type, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], [Last_Name] & ", " & [First_Name] AS Name, TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, tblCase.Action_Needed_on_Payment, tblCase.SOL, tblDropD.CodeVal, TblActionNeeded.DateComp, TblActionNeeded.ActPerson, TblActionNeeded.DateComp1, TblActionNeeded.StartDate, tblCase.Closed, TblActionNeeded.ActionNeededID
+FROM (tblCase LEFT JOIN tblDropD ON tblCase.Case_Letter = tblDropD.Code) LEFT JOIN TblActionNeeded ON tblCase.CaseID = TblActionNeeded.CaseID
+WHERE (((TblActionNeeded.ActionComp)=No) AND ((tblCase.Closed)=False))
+ORDER BY IIf(IsNull([DateComp1]),#12/31/2100#,[DateComp1]);

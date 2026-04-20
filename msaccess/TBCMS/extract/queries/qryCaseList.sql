@@ -1,0 +1,2 @@
+SELECT tblCase.CaseID, tblCase.Matter_type, tblCase.Court, Replace([case_letter] & "_" & [yr] & "_" & [Number_] & "_" & [Orig_Atty],"__","_") AS CaseNo, tblCase.CourtCaseNo, tblCase.CaseOpenDate
+FROM tblCase;

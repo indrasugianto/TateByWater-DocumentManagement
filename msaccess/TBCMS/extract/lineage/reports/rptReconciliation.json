@@ -1,0 +1,148 @@
+{
+  "reportName": "rptReconciliation",
+  "dataSource": "tblTakeOffMonth",
+  "triggerPaths": [
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmd_PreviewReconReport",
+      "eventName": "onClick",
+      "procedureName": "cmd_PreviewReconReport_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5433,
+      "lineEnd": 5442,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "tblTakeOffMonth",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblTakeOffMonth"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmAttyFeeGeneration",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
+      "lineStart": 8563,
+      "lineEnd": 8575,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "cmdInsertData_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3863,
+      "lineEnd": 3942,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmd_PreviewReconReport_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5433,
+      "lineEnd": 5442,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5851,
+      "lineEnd": 5907,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5908,
+      "lineEnd": 5972,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmd_PreviewReconReport_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 767,
+      "lineEnd": 776,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportTDT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1122,
+      "lineEnd": 1196,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1197,
+      "lineEnd": 1261,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmd_PreviewReconReport_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 768,
+      "lineEnd": 777,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1144,
+      "lineEnd": 1197,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1198,
+      "lineEnd": 1262,
+      "usesDoCmd": [],
+      "usesSql": true
+    }
+  ],
+  "confidence": "high"
+}

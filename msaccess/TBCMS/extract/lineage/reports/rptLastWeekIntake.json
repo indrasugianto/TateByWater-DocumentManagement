@@ -1,0 +1,64 @@
+{
+  "reportName": "rptLastWeekIntake",
+  "dataSource": "SELECT [TB Intakes].ID, [TB Intakes].[GI Last Name], [TB Intakes].[GI First Name], [TB Intakes].[GI phone], [TB Intakes].[GI Date], [TB Intakes].[GI Practice Area], [TB Intakes].[GI Individual Referrer], [TB Intakes].[GI Comments], [TB Intakes].[GI No Further Action], [TB Intakes].[GI Open], [TB Intakes].[GI Open Date], [TB Intakes].[GI Referral], [TB Intakes].ReasonDintHire, [TB Intakes].FollowUpDate, [TB Intakes].Attorny, [TB Intakes].QuotedFee FROM [TB Intakes] WHERE ((([TB Intakes].[GI Date]) Between getSTDT() And getENDT())); ",
+  "triggerPaths": [
+    {
+      "formName": "Intakes",
+      "controlName": "cmdLastWeekIntakes",
+      "eventName": "onClick",
+      "procedureName": "cmdLastWeekIntakes_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7846,
+      "lineEnd": 7874,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "SELECT [TB Intakes].ID, [TB Intakes].[GI Last Name], [TB Intakes].[GI First Name], [TB Intakes].[GI phone], [TB Intakes].[GI Date], [TB Intakes].[GI Practice Area], [TB Intakes].[GI Individual Referrer], [TB Intakes].[GI Comments], [TB Intakes].[GI No Further Action], [TB Intakes].[GI Open], [TB Intakes].[GI Open Date], [TB Intakes].[GI Referral], [TB Intakes].ReasonDintHire, [TB Intakes].FollowUpDate, [TB Intakes].Attorny, [TB Intakes].QuotedFee FROM [TB Intakes] WHERE ((([TB Intakes].[GI Date]) Between getSTDT() And getENDT()));",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [],
+    "terminalTables": [
+      "TB Intakes"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7608,
+      "lineEnd": 7660,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7723,
+      "lineEnd": 7770,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdLastWeekIntakes_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7846,
+      "lineEnd": 7874,
+      "usesDoCmd": [
+        "OpenReport",
+        "RunCommand"
+      ],
+      "usesSql": false
+    }
+  ],
+  "confidence": "high"
+}

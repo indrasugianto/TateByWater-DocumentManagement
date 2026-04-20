@@ -1,0 +1,337 @@
+{
+  "reportName": "rptInvoiceComprPymtsAR",
+  "dataSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Payment, tblCase.CaseOpenDate, [Matter and AR].OrderNr, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Bill_ID FROM (tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID) INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([Matter and AR].Date2)<=[Bill Closed Date]) AND (([Matter and AR].Pay_Outlay) Not Like \"Adjustment\") AND (([Matter and AR].Payment)>0)) ORDER BY [Matter and AR].Date2; ",
+  "triggerPaths": [
+    {
+      "formName": "frmTimeKeepingClosed",
+      "controlName": "cmdCompCurr",
+      "eventName": "onClick",
+      "procedureName": "cmdCompCurr_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7742,
+      "lineEnd": 7790,
+      "confidence": "medium",
+      "reportMentionType": "inferred"
+    },
+    {
+      "formName": "Time Keeping",
+      "controlName": "cmdCompCurrent",
+      "eventName": "onClick",
+      "procedureName": "cmdCompCurrent_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4787,
+      "lineEnd": 4840,
+      "confidence": "medium",
+      "reportMentionType": "inferred"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Payment, tblCase.CaseOpenDate, [Matter and AR].OrderNr, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Bill_ID FROM (tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID) INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([Matter and AR].Date2)<=[Bill Closed Date]) AND (([Matter and AR].Pay_Outlay) Not Like \"Adjustment\") AND (([Matter and AR].Payment)>0)) ORDER BY [Matter and AR].Date2;",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [],
+    "terminalTables": [
+      "Matter and AR",
+      "TB Time Keeping"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmbFileNumbers_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17358,
+      "lineEnd": 17495,
+      "usesDoCmd": [
+        "GoToRecord",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frm_advanced_payments",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frm_advanced_payments.txt",
+      "lineStart": 7008,
+      "lineEnd": 7035,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "txtTKButton_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3724,
+      "lineEnd": 3781,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingOpen",
+      "procedureName": "cmdAddNewTK_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7452,
+      "lineEnd": 7533,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdCreateHourlyBill_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8008,
+      "lineEnd": 8032,
+      "usesDoCmd": [
+        "openform"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm.txt",
+      "lineStart": 3192,
+      "lineEnd": 3292,
+      "usesDoCmd": [
+        "RunCommand"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmMatter",
+      "procedureName": "Date2_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmMatter.txt",
+      "lineStart": 1513,
+      "lineEnd": 1563,
+      "usesDoCmd": [
+        "GoToControl",
+        "GoToRecord",
+        "RunCommand"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmMatter",
+      "procedureName": "reorderByDateMatter",
+      "sourceFile": "extract/vba/forms/frmMatter.txt",
+      "lineStart": 1572,
+      "lineEnd": 1593,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdCompCurr_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7742,
+      "lineEnd": 7790,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdRecordShort_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7925,
+      "lineEnd": 8041,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdAddNewTK_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 8062,
+      "lineEnd": 8104,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdRecord_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 8105,
+      "lineEnd": 8221,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdRecordShortTK_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4199,
+      "lineEnd": 4316,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdRecordTKStatement_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4457,
+      "lineEnd": 4572,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdCreateAR_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4573,
+      "lineEnd": 4608,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdInsertTime_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4628,
+      "lineEnd": 4651,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdAddNew_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4652,
+      "lineEnd": 4673,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "addNewTK",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4674,
+      "lineEnd": 4729,
+      "usesDoCmd": [
+        "GoToRecord"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdCompCurrent_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4787,
+      "lineEnd": 4840,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTKClose",
+      "procedureName": "txtTKButton_Click",
+      "sourceFile": "extract/vba/forms/frmTKClose.txt",
+      "lineStart": 2512,
+      "lineEnd": 2841,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm3",
+      "procedureName": "CaseNum_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm3.txt",
+      "lineStart": 2558,
+      "lineEnd": 2680,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm_OLD",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm_OLD.txt",
+      "lineStart": 2653,
+      "lineEnd": 2762,
+      "usesDoCmd": [
+        "RunCommand"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "report",
+      "objectName": "rpt_Compr_InvoiceADVCur",
+      "procedureName": "Report_Open",
+      "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
+      "lineStart": 1610,
+      "lineEnd": 1646,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "report",
+      "objectName": "Invoice2",
+      "procedureName": "Charge19_Click",
+      "sourceFile": "extract/vba/reports/Invoice2.txt",
+      "lineStart": 2001,
+      "lineEnd": 2033,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "report",
+      "objectName": "Rpt_MergeInvTK",
+      "procedureName": "Charge19_Click",
+      "sourceFile": "extract/vba/reports/Rpt_MergeInvTK.txt",
+      "lineStart": 1949,
+      "lineEnd": 1981,
+      "usesDoCmd": [],
+      "usesSql": true
+    }
+  ],
+  "confidence": "high"
+}

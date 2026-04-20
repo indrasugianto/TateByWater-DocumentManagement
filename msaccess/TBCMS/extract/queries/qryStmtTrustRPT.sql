@@ -1,0 +1,2 @@
+SELECT vwStmtTrustRPT.CaseID, vwStmtTrustRPT.Case_Letter, vwStmtTrustRPT.yr, vwStmtTrustRPT.Number_, vwStmtTrustRPT.Orig_Atty, vwStmtTrustRPT.Matter_type, vwStmtTrustRPT.Retainer, vwStmtTrustRPT.CaseOpenDate, vwStmtTrustRPT.TrustAccountID, vwStmtTrustRPT.TDate, vwStmtTrustRPT.TMatter, vwStmtTrustRPT.Debit, vwStmtTrustRPT.Credit, vwStmtTrustRPT.CheckCashed, vwStmtTrustRPT.CheckNumber, vwStmtTrustRPT.[Case No], vwStmtTrustRPT.DepCleared, vwStmtTrustRPT.Reconciled, vwStmtTrustRPT.OrderNr
+FROM vwStmtTrustRPT;

@@ -1,0 +1,24 @@
+{
+  "reportName": "rpt_Reconciliation sub",
+  "dataSource": "SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qryTakeOffStep2.AvailBalance, qryTakeOffStep2.TakeOffMonthID FROM qryTakeOffStep2; ",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qryTakeOffStep2.AvailBalance, qryTakeOffStep2.TakeOffMonthID FROM qryTakeOffStep2;",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [
+      "qryTakeOffStep2"
+    ],
+    "terminalTables": [
+      "vwTakeOffStep2"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryTakeOffStep2",
+        "to": "vwTakeOffStep2",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

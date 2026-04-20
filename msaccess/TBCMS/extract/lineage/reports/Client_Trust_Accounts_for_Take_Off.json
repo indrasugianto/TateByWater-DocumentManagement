@@ -1,0 +1,884 @@
+{
+  "reportName": "Client_Trust_Accounts_for_Take_Off",
+  "dataSource": "qryAttyTrustAcctsTOff",
+  "triggerPaths": [
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmdShowReportCBH",
+      "eventName": "onClick",
+      "procedureName": "cmdShowReportCBH_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5485,
+      "lineEnd": 5507,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmdShowReportJRT",
+      "eventName": "onClick",
+      "procedureName": "cmdShowReportJRT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5973,
+      "lineEnd": 6001,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmdShowReportALL",
+      "eventName": "onClick",
+      "procedureName": "cmdShowReportALL_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5465,
+      "lineEnd": 5478,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmdAttyReport",
+      "eventName": "onClick",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5443,
+      "lineEnd": 5453,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmbShowReportCHHandling",
+      "eventName": "onClick",
+      "procedureName": "cmbShowReportCHHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5415,
+      "lineEnd": 5420,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmTakeOff",
+      "controlName": "cmbShowReportMTHandling",
+      "eventName": "onClick",
+      "procedureName": "cmbShowReportMTHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5427,
+      "lineEnd": 5432,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "qryAttyTrustAcctsTOff",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryAttyTrustAcctsTOff"
+    ],
+    "terminalTables": [
+      "tblCase",
+      "tblTakeOff"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryAttyTrustAcctsTOff",
+        "to": "tblCase",
+        "type": "table"
+      },
+      {
+        "from": "qryAttyTrustAcctsTOff",
+        "to": "tblTakeOff",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmail_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16447,
+      "lineEnd": 16477,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmailESP_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16478,
+      "lineEnd": 16508,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmbFileNumbers_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17358,
+      "lineEnd": 17495,
+      "usesDoCmd": [
+        "GoToRecord",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17540,
+      "lineEnd": 17550,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmAttyFeeGeneration",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
+      "lineStart": 8563,
+      "lineEnd": 8575,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "cmdInsertData_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3863,
+      "lineEnd": 3942,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8066,
+      "lineEnd": 8096,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8122,
+      "lineEnd": 8126,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5340,
+      "lineEnd": 5414,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbShowReportCHHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5415,
+      "lineEnd": 5420,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbShowReportMKHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5421,
+      "lineEnd": 5426,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbShowReportMTHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5427,
+      "lineEnd": 5432,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5443,
+      "lineEnd": 5453,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportALL_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5465,
+      "lineEnd": 5478,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportBA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5479,
+      "lineEnd": 5484,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportCBH_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5485,
+      "lineEnd": 5507,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportDEB_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5508,
+      "lineEnd": 5525,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportGBF_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5526,
+      "lineEnd": 5551,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "Command103_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5552,
+      "lineEnd": 5574,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "Command104_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5575,
+      "lineEnd": 5597,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportJF_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5725,
+      "lineEnd": 5730,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportKDB_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5731,
+      "lineEnd": 5750,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportMK_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5751,
+      "lineEnd": 5771,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportMT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5772,
+      "lineEnd": 5791,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportNH_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5792,
+      "lineEnd": 5799,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportPM_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5800,
+      "lineEnd": 5821,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportRLF_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5822,
+      "lineEnd": 5828,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportTDT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5829,
+      "lineEnd": 5850,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5851,
+      "lineEnd": 5907,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5908,
+      "lineEnd": 5972,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdShowReportJRT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 5973,
+      "lineEnd": 6001,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7608,
+      "lineEnd": 7660,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7723,
+      "lineEnd": 7770,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 674,
+      "lineEnd": 748,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmbShowReportCHHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 749,
+      "lineEnd": 754,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmbShowReportMKHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 755,
+      "lineEnd": 760,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmbShowReportMTHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 761,
+      "lineEnd": 766,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportALL_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 785,
+      "lineEnd": 798,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportCBH_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 799,
+      "lineEnd": 821,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportDEB_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 822,
+      "lineEnd": 839,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportGBF_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 840,
+      "lineEnd": 865,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportKDB_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1039,
+      "lineEnd": 1058,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportMK_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1059,
+      "lineEnd": 1079,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportMT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1080,
+      "lineEnd": 1099,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportPM_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1100,
+      "lineEnd": 1121,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportTDT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1122,
+      "lineEnd": 1196,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1197,
+      "lineEnd": 1261,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportJRT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1262,
+      "lineEnd": 1290,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 675,
+      "lineEnd": 749,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbShowReportCHHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 750,
+      "lineEnd": 755,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbShowReportMKHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 756,
+      "lineEnd": 761,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbShowReportMTHandling_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 762,
+      "lineEnd": 767,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportALL_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 786,
+      "lineEnd": 799,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportCBH_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 800,
+      "lineEnd": 822,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportDEB_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 823,
+      "lineEnd": 840,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportGBF_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 841,
+      "lineEnd": 866,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportKDB_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1040,
+      "lineEnd": 1059,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportMK_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1060,
+      "lineEnd": 1080,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportMT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1081,
+      "lineEnd": 1100,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportPM_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1101,
+      "lineEnd": 1122,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportTDT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1123,
+      "lineEnd": 1143,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1144,
+      "lineEnd": 1197,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1198,
+      "lineEnd": 1262,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdShowReportJRT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1263,
+      "lineEnd": 1291,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    }
+  ],
+  "confidence": "high"
+}

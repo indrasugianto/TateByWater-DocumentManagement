@@ -1,0 +1,825 @@
+{
+  "formName": "frmCalls",
+  "caption": "Calls",
+  "recordSource": "tblCalls",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": true,
+  "width": 12960,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box44",
+          "left": 0,
+          "top": 0,
+          "width": 12960,
+          "height": 8280,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box67",
+          "left": 6420,
+          "top": 6180,
+          "width": 4080,
+          "height": 1920,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box61",
+          "left": 360,
+          "top": 6180,
+          "width": 5940,
+          "height": 1920,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box39",
+          "left": 360,
+          "top": 4080,
+          "width": 11460,
+          "height": 1920,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box38",
+          "left": 360,
+          "top": 300,
+          "width": 11460,
+          "height": 3600,
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "CLastName",
+          "left": 5220,
+          "top": 1380,
+          "width": 6420,
+          "height": 390,
+          "controlSource": "CLastName",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CFirstName",
+          "left": 600,
+          "top": 1380,
+          "width": 4380,
+          "height": 390,
+          "controlSource": "CFirstName",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Comments",
+          "left": 540,
+          "top": 4680,
+          "width": 11100,
+          "height": 1080,
+          "controlSource": "CallComments",
+          "tabIndex": 13,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label67",
+          "left": 5220,
+          "top": 1020,
+          "width": 1560,
+          "height": 360,
+          "caption": "Last Name",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label68",
+          "left": 600,
+          "top": 1020,
+          "width": 1560,
+          "height": 360,
+          "caption": "First Name",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label70",
+          "left": 600,
+          "top": 480,
+          "width": 1260,
+          "height": 375,
+          "caption": "Call Date:",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Comments Label",
+          "left": 540,
+          "top": 4260,
+          "width": 2655,
+          "height": 360,
+          "caption": "Comments / Message",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "CDate",
+          "left": 1980,
+          "top": 480,
+          "width": 1980,
+          "height": 390,
+          "controlSource": "CDate",
+          "format": "Short Date",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CPhone",
+          "left": 1620,
+          "top": 2640,
+          "width": 3840,
+          "height": 390,
+          "controlSource": "CPhone",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 600,
+          "top": 2640,
+          "width": 870,
+          "height": 360,
+          "caption": "Phone",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 8325,
+          "top": 2025,
+          "width": 1650,
+          "height": 390,
+          "caption": "Practice Area",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "ID",
+          "left": 300,
+          "top": 180,
+          "width": 420,
+          "height": 255,
+          "controlSource": "CallID",
+          "tabIndex": 18,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "CPracticeArea",
+          "left": 10065,
+          "top": 2025,
+          "width": 1620,
+          "height": 434,
+          "controlSource": "CPracticeArea",
+          "rowSource": "SELECT Code, codeVal, sortOrder FROM tblDropD WHERE FieldName='Case_letter' ORDER BY SortOrder; ",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CMatter",
+          "left": 1620,
+          "top": 2040,
+          "width": 6720,
+          "height": 390,
+          "controlSource": "CallMatter",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label29",
+          "left": 600,
+          "top": 2040,
+          "width": 1020,
+          "height": 420,
+          "caption": "Matter",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label442",
+          "left": 600,
+          "top": 3240,
+          "width": 870,
+          "height": 390,
+          "caption": "Source",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "CReferral",
+          "left": 1665,
+          "top": 3240,
+          "width": 5055,
+          "height": 390,
+          "controlSource": "CReferral",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder FROM tblDropD WHERE (((tblDropD.FieldName)=\"Referral\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 11,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "CAttorney",
+          "left": 10065,
+          "top": 2625,
+          "width": 1620,
+          "height": 390,
+          "controlSource": "CAtty",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder FROM tblDropD WHERE (((tblDropD.FieldName)=\"Orig_Atty\" Or (tblDropD.FieldName)=\"Paralegal\" Or (tblDropD.FieldName)=\"Staff\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label34",
+          "left": 8100,
+          "top": 2625,
+          "width": 1860,
+          "height": 390,
+          "caption": "Atty / Staff",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label47",
+          "left": 4080,
+          "top": 480,
+          "width": 780,
+          "height": 375,
+          "caption": "Time:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "CTime",
+          "left": 4920,
+          "top": 480,
+          "width": 1860,
+          "height": 390,
+          "controlSource": "CallTime",
+          "format": "Medium Time",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbEmailAtty",
+          "left": 600,
+          "top": 7140,
+          "width": 1080,
+          "height": 360,
+          "controlSource": "CAtty",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder FROM tblDropD WHERE (((tblDropD.FieldName)=\"Orig_Atty\" Or (tblDropD.FieldName)=\"Paralegal\" Or (tblDropD.FieldName)=\"Staff\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 14,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSendEmail",
+          "left": 1800,
+          "top": 7200,
+          "width": 900,
+          "height": 299,
+          "caption": "Send",
+          "tabIndex": 19,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "SendCrim",
+          "left": 4560,
+          "top": 6780,
+          "width": 1500,
+          "height": 300,
+          "caption": "Criminal",
+          "tabIndex": 20,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdPartners",
+          "left": 2940,
+          "top": 7200,
+          "width": 1500,
+          "height": 300,
+          "caption": "Partners",
+          "tabIndex": 21,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSendFamily",
+          "left": 4560,
+          "top": 7200,
+          "width": 1500,
+          "height": 300,
+          "caption": "Family Law",
+          "tabIndex": 22,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label57",
+          "left": 600,
+          "top": 6360,
+          "width": 1500,
+          "height": 390,
+          "caption": "EMAIL",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label58",
+          "left": 600,
+          "top": 6840,
+          "width": 1515,
+          "height": 345,
+          "caption": "Atty / Staff",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label59",
+          "left": 2940,
+          "top": 6360,
+          "width": 795,
+          "height": 345,
+          "caption": "Groups",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSendAll",
+          "left": 2940,
+          "top": 6780,
+          "width": 1500,
+          "height": 300,
+          "caption": "All Attorneys",
+          "tabIndex": 23,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "ComboBox",
+          "name": "Transferred",
+          "left": 5760,
+          "top": 4200,
+          "width": 1080,
+          "height": 360,
+          "rowSource": "qry_OrigAtty_list_options",
+          "tabIndex": 12,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label65",
+          "left": 4260,
+          "top": 4215,
+          "width": 1440,
+          "height": 360,
+          "caption": "Transferred",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label66",
+          "left": 6660,
+          "top": 6360,
+          "width": 1680,
+          "height": 360,
+          "caption": "CONSULT",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "SchedDate",
+          "left": 6660,
+          "top": 7290,
+          "width": 1380,
+          "height": 330,
+          "controlSource": "SchedDate",
+          "format": "Short Date",
+          "tabIndex": 15,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "SchedTime",
+          "left": 8190,
+          "top": 7290,
+          "width": 1500,
+          "height": 330,
+          "controlSource": "SchedTime",
+          "rowSource": "8:00 AM;8:30 AM;9:00 AM;9:30 AM;10:00 AM;10:30 AM;11:00 AM;11:30 AM;12:00 PM;12:30 PM;1:00 PM;1:30 PM;2:00 PM;2:30 PM;3:00 PM;3:30 PM;4:00 PM;4:30 PM;5:00 PM;5:30 PM;6:00 PM",
+          "tabIndex": 16,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Image",
+          "name": "Image72",
+          "left": 9780,
+          "top": 7260,
+          "width": 540,
+          "height": 420,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdOutlookCalendar2",
+          "left": 9780,
+          "top": 7290,
+          "width": 576,
+          "height": 366,
+          "tabIndex": 24,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label73",
+          "left": 6660,
+          "top": 6960,
+          "width": 795,
+          "height": 345,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label74",
+          "left": 8205,
+          "top": 6960,
+          "width": 795,
+          "height": 345,
+          "caption": "Time",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "HiredFirm",
+          "left": 9240,
+          "top": 4290,
+          "width": 260,
+          "height": 240,
+          "controlSource": "HiredFirm",
+          "tabIndex": 17,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label75",
+          "left": 9470,
+          "top": 4260,
+          "width": 855,
+          "height": 315,
+          "caption": "Hired TB",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbClientType",
+          "left": 10185,
+          "top": 480,
+          "width": 1500,
+          "height": 330,
+          "controlSource": "ClientType",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder FROM tblDropD WHERE (((tblDropD.FieldName)=\"ClientType\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label77",
+          "left": 9150,
+          "top": 495,
+          "width": 945,
+          "height": 315,
+          "caption": "Type:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtAttyEmail",
+          "left": 6600,
+          "top": 7680,
+          "width": 3720,
+          "height": 315,
+          "controlSource": "attyEmail",
+          "tabIndex": 25,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdAllTBSend",
+          "left": 4560,
+          "top": 6360,
+          "width": 1500,
+          "height": 300,
+          "caption": "All TB",
+          "tabIndex": 26,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdParalegals",
+          "left": 2940,
+          "top": 7620,
+          "width": 1500,
+          "height": 300,
+          "caption": "Paralegals",
+          "tabIndex": 27,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdEstatePlanning",
+          "left": 4560,
+          "top": 7620,
+          "width": 1500,
+          "height": 300,
+          "caption": "Estate Plan",
+          "tabIndex": 28,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbPhoneType",
+          "left": 6840,
+          "top": 2640,
+          "width": 1500,
+          "height": 390,
+          "controlSource": "CPhoneType",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder FROM tblDropD WHERE (((tblDropD.FieldName)=\"PhoneType\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "CPhoneExt",
+          "left": 5520,
+          "top": 2640,
+          "width": 1260,
+          "height": 390,
+          "controlSource": "CPhoneExt",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label101",
+          "left": 5460,
+          "top": 2460,
+          "width": 345,
+          "height": 180,
+          "caption": "EXT",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box37",
+          "left": 0,
+          "top": 0,
+          "width": 12960,
+          "height": 1440,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label7",
+          "left": 1380,
+          "top": 195,
+          "width": 2625,
+          "height": 900,
+          "caption": "CALLS",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClose",
+          "left": 10980,
+          "top": 600,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "Image36",
+          "left": 180,
+          "top": 240,
+          "width": 1020,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "cmbHome",
+          "left": 12300,
+          "top": 600,
+          "width": 480,
+          "height": 345,
+          "visible": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command226",
+          "left": 4260,
+          "top": 585,
+          "width": 1800,
+          "height": 360,
+          "caption": "&Add New",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdCallListForm",
+          "left": 6540,
+          "top": 585,
+          "width": 1800,
+          "height": 360,
+          "caption": "Call List",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormFooter",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box41",
+          "left": 0,
+          "top": 0,
+          "width": 12960,
+          "height": 1620,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label82",
+          "left": 1140,
+          "top": 420,
+          "width": 4200,
+          "height": 630,
+          "caption": "Subject: Client Name, Phone Number, Matter, Source, Type\r\nBody: Date, Time, Comments",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label83",
+          "left": 5580,
+          "top": 420,
+          "width": 4365,
+          "height": 630,
+          "caption": "Subject: C: Client Name, Phone Number, Matter, Source, Type\r\nBody: Invite Sent: Date, Time, Comments\r\n* Still need to invite attendees.",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label84",
+          "left": 1140,
+          "top": 180,
+          "width": 510,
+          "height": 240,
+          "caption": "Email:\r\n",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label85",
+          "left": 5580,
+          "top": 180,
+          "width": 765,
+          "height": 240,
+          "caption": "Calendar:\r\n",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n'Private cls As New clsFormValidation\r\n'Public Err3314Encountered As Boolean\r\n\r\nPrivate Sub CAttorney_AfterUpdate()\r\n     If Me.cmbEmailAtty = \"JRT\" Then\r\n        Me.attyEmail.value = \"jtate@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"DEB\" Then\r\n        Me.attyEmail.value = \"dbywater@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"GBF\" Then\r\n        Me.attyEmail.value = \"gfuller@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"PM\" Then\r\n        Me.attyEmail.value = \"pmickelsen@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"TDT\" Then\r\n        Me.attyEmail.value = \"ttull@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"JN\" Then\r\n        Me.attyEmail.value = \"jnolasco@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"BA\" Then\r\n        Me.attyEmail.value = \"bader@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"KDB\" Then\r\n        Me.attyEmail.value = \"kbigus@tatebywater.com\"\r\n    End If\r\n     If Me.cmbEmailAtty = \"WNE\" Then\r\n        Me.attyEmail.value = \"wevans@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"RRL\" Then\r\n        Me.attyEmail.value = \"rlucero@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"DK\" Then\r\n        Me.attyEmail.value = \"dkrisky@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"RYR\" Then\r\n        Me.attyEmail.value = \"rranaf@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"KP\" Then\r\n        Me.attyEmail.value = \"kpizarro@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"RLF\" Then\r\n        Me.attyEmail.value = \"rfredericks@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"CMH\" Then\r\n        Me.attyEmail.value = \"cmhiggins@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"HG\" Then\r\n        Me.attyEmail.value = \"hgrossman@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"NH\" Then\r\n        Me.attyEmail.value = \"nhasan@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"AO\" Then\r\n        Me.attyEmail.value = \"aorellana@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"IQ\" Then\r\n        Me.attyEmail.value = \"iquintero@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"LV\" Then\r\n        Me.attyEmail.value = \"lvelasquez@tatebywater.com\"\r\n    End If\r\n    If Me.cmbEmailAtty = \"JI\" Then\r\n        Me.attyEmail.value = \"jilarraza@tatebywater.com\"\r\n    End If\r\n    \r\n    \r\nEnd Sub\r\nPrivate Sub cmbHome_Click()\r\nDoCmd.openform \"frmhome\", acNormal\r\nEnd Sub\r\nPrivate Sub cmdBankruptcySend_Click()\r\n\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Bankruptcy: Please call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Me.CallComments\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"kvasquez@tatebywater.com\" & \"; \" & \"gfuller@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\nPrivate Sub cmdCallListForm_Click()\r\n    DoCmd.openform \"frmCallsList\", acNormal\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\nDoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdEstatePlanning_Click()\r\n\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Estate Planning: Please call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"bader@tatebywater.com\" & \"; \" & \"kbigus@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\nPrivate Sub cmdOutlookCalendar2_Click()\r\n    Me.Refresh\r\n    If IsNull(Me.SchedDate) Then\r\n        MsgBox \"Please input a correct date\", , \"TB CMS\"\r\n        Me.SchedDate.SetFocus\r\n        Exit Sub\r\n    End If\r\n    \r\n    Const olFolderCalendar = 9\r\n    Dim olkApp, olkSes, olkFolder\r\n    'On Error Resume Next\r\n    'Set olkApp = GetObject(, \"Outlook.Application\")\r\n    'If TypeName(olkApp) = \"Nothing\" Then\r\n        Set olkApp = CreateObject(\"Outlook.Application\")\r\n        Set olkSes = olkApp.GetNameSpace(\"MAPI\")\r\n        'Change Outlook on the next line to the name of the default mail profile'\r\n        'olkSes.Logon \"Paul Mickelsen- Office 365\"\r\n    'Else\r\n        'Set olkSes = olkApp.Session\r\n    'End If\r\n    Set olkFolder = olkSes.GetDefaultFolder(olFolderCalendar)\r\n    olkFolder.Display\r\n\r\n    Dim objAppt As Outlook.AppointmentItem\r\n    Set objAppt = olkApp.CreateItem(olAppointmentItem)\r\n\r\n            strMatter = \"\"\r\n            If Not IsNull(Me.CallMatter) Then\r\n                strMatter = \" (\" & Me.CallMatter & \")\"\r\n            End If\r\n            \r\n            strSource = \"\"\r\n            If Not IsNull(Me.CReferral) Then\r\n                strSource = \" (\" & Me.CReferral & \")\"\r\n            End If\r\n            \r\n            strClientTYpe = \"\"\r\n            If Not IsNull(Me.ClientType) Then\r\n                strClientTYpe = \", \" & Me.ClientType\r\n            End If\r\n            \r\n            strPhone = \"\"\r\n            If Not IsNull(Me.CPhone) Then\r\n                strPhone = \", \" & Me.CPhone\r\n            End If\r\n            \r\n            strCPhoneType = \"\"\r\n            If Not IsNull(Me.CPhoneType) Then\r\n                strCPhoneType = \" (\" & Me.CPhoneType & \")\"\r\n            End If\r\n            \r\n        With objAppt\r\n            .Start = Me.SchedDate & \" \" & Me.SchedTime\r\n            .Duration = 60 'Me!ApptLength\r\n            .Subject = \"C: \" & Me.CFirstName & \" \" & Me.CLastName & strPhone & strCPhoneType & strMatter & strSource & strClientTYpe\r\n            .Body = \"Invite sent: \" & Nz(Me.CDate) & \",  \" & Nz(Me.CallTime) & \",  \" & Nz(Me.CallComments)\r\n            .Display\r\n        End With\r\n            'Release the AppointmentItem object variable.\r\n            'Set objAppt = Nothing\r\n    'close outlook\r\n    Set olkApp = Nothing\r\n    Set olkSes = Nothing\r\n    Set olkFolder = Nothing\r\nEnd Sub\r\n\r\nPrivate Sub cmdParalegals_Click()\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Paralegals: Please advise and call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"hgrossman@tatebywater.com\" & \"; \" & \"iquintero@tatebywater.com\" & \"; \" & \"aorellana@tatebywater.com\" & \"; \" & \"kpizarro@tatebywater.com\" & \"; \" & \"lvelasquez@tatebywater.com\" & \"; \" & \"jilarraza@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\nPrivate Sub cmdPartners_Click()\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Partners. Please advise and/or call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"jtate@tatebywater.com\" & \"; \" & \"dbywater@tatebywater.com\" & \"; \" & \"cmhiggins@tatebywater.com\" & \"; \" & \"pmickelsen@tatebywater.com\" & \"; \" & \"ttull@tatebywater.com\" & \"; \" & \"nhasan@tatebywater.com\" & \"; \" & \"rfredericks@tatebywater.com\" & \"; \" & \"bader@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\nPrivate Sub cmdSendAll_Click()\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Please call and/or advise: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"jtate@tatebywater.com\" & \"; \" & \"dbywater@tatebywater.com\" & \"; \" & \"wevans@tatebywater.com\" & \"; \" & \"pmickelsen@tatebywater.com\" & \"; \" & \"ttull@tatebywater.com\" & \"; \" & \"nhasan@tatebywater.com\" & \"; \" & \"bader@tatebywater.com\" & \"; \" & \"kbigus@tatebywater.com\" & \"; \" & \"cmhiggins@tatebywater.com\" & \"; \" & \"rfredericks@tatebywater.com\" & \"; \" & \"dkrisky@tatebywater.com\" & \"; \" & \"rlucero@tatebywater.com\" & \"; \" & \"rrana@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\nPrivate Sub cmdSendEmail_Click()\r\n\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    email_ = Me.attyEmail\r\n    subject_ = \"Please call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter) & \", \" & Nz(Me.ClientType)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = email_\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\nPrivate Sub cmdSendFamily_Click()\r\n    \r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Potential Family Law. Please advise and call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"jtate@tatebywater.com\" & \"; \" & \"dbywater@tatebywater.com\" & \"; \" & \"pmickelsen@tatebywater.com\" & \"; \" & \"ttull@tatebywater.com\" & \"; \" & \"nhasan@tatebywater.com\" & \"; \" & \"cmhiggins@tatebywater.com\" & \"; \" & \"rfredericks@tatebywater.com\" & \"; \" & \"hgrossman@tatebywater.com\" & \"; \" & \"kpizarro@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\n'Private Sub Form_Load()\r\n'    'Set cls.Form = Me\r\n'    'DoCmd.RunCommand acCmdRecordsGoToNew\r\n'    'cls.RequiredControls = Array(Me.GI_Last_Name, Me.GI_First_Name, Me.GI_Phone, Me.Referral, Me.GI_Practice_Area, Me.Date_Opened)\r\n'    'cls.RequiredControls = Array(Me.GI_Last_Name, Me.GI_First_Name, Me.Date_Opened)\r\n'End Sub\r\n\r\nPrivate Sub Command226_Click()\r\n    'cls.ExeCommand Addrec\r\n    DoCmd.GoToRecord , , acNewRec\r\nEnd Sub\r\nPrivate Sub Form_Load()\r\n    DoCmd.GoToRecord , , acNewRec\r\nEnd Sub\r\n\r\nPrivate Sub SendCrim_Click()\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"Potential Criminal. Please advise and call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"jtate@tatebywater.com\" & \"; \" & \"pmickelsen@tatebywater.com\" & \"; \" & \"ttull@tatebywater.com\" & \"; \" & \"nhasan@tatebywater.com\" & \"; \" & \"wevans@tatebywater.com\" & \"; \" & \"aorellana@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub\r\n\r\nPrivate Sub cmdAllTBSend_Click()\r\n    Me.Refresh\r\n    Dim OutlookApp As Object\r\n    Dim MItem As Object\r\n    Dim email_ As String\r\n    Dim subject_ As String\r\n    Dim body_ As String\r\n    Dim attach_ As String\r\n     \r\n    Set OutlookApp = CreateObject(\"Outlook.Application\")\r\n     \r\n    subject_ = \"ALL TB: Please advise and/or call: \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & \", \" & Nz(Me.CallMatter)\r\n    body_ = Me.CDate & \",  \" & Me.CallTime & \": \" & Nz(Me.CFirstName) & \" \" & Nz(Me.CLastName) & \", \" & Nz(Me.CPhone) & Nz(Me.CallComments)\r\n     \r\n     'create Mail Item and send it\r\n    Set MItem = OutlookApp.CreateItem(0)\r\n    With MItem\r\n        .To = \"jtate@tatebywater.com\" & \"; \" & \"dbywater@tatebywater.com\" & \"; \" & \"hgrossman@tatebywater.com\" & \"; \" & \"pmickelsen@tatebywater.com\" & \"; \" & \"ttull@tatebywater.com\" & \"; \" & \"nhasan@tatebywater.com\" & \"; \" & \"bader@tatebywater.com\" & \"; \" & \"kbigus@tatebywater.com\" & \"; \" & \"rfredericks@tatebywater.com\" & \"; \" & \"aorellana@tatebywater.com\" & \"; \" & \"iquintero@tatebywater.com\" & \"; \" & \"kpizarro@tatebywater.com\" & \"; \" & \"kmcallister@tatebywater.com\" & \"; \" & \"wevans@tatebywater.com\" & \"; \" & \"cmhiggins@tatebywater.com\" & \"; \" & \"rlucero@tatebywater.com\" & \"; \" & \"jnolasco@tatebywater.com\" & \"; \" & \"rrana@tatebywater.com\" & \"; \" & \"lvelasquez@tatebywater.com\" & \"; \" & \"jilarraza@tatebywater.com\"\r\n        .Subject = subject_\r\n        .Body = body_\r\n         '.Attachments.Add \"C:\\FolderName\\Filename.txt\"\r\n        .Display\r\n    End With\r\nEnd Sub"
+}

@@ -1,0 +1,3 @@
+SELECT tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Matter_type, tblCase.HmPhone, tblCase.Court, tblCase.CType, tblCase.CaseID, First(tblHearingDate.Hearing_Date) AS FirstOfHearing_Date, tblCase.Email
+FROM tblCase LEFT JOIN tblHearingDate ON tblCase.CaseID = tblHearingDate.CaseID
+GROUP BY tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Matter_type, tblCase.HmPhone, tblCase.Court, tblCase.CType, tblCase.CaseID, tblCase.Email;

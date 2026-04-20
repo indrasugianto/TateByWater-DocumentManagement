@@ -1,0 +1,24 @@
+{
+  "reportName": "Rpt_MergeInvTK",
+  "dataSource": "qryInvoiceRPT1",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "qryInvoiceRPT1",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryInvoiceRPT1"
+    ],
+    "terminalTables": [
+      "vwInvoiceRPT1"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryInvoiceRPT1",
+        "to": "vwInvoiceRPT1",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

@@ -1,0 +1,255 @@
+{
+  "formName": "frm_Billing_Tracker",
+  "caption": "Billing Tracker",
+  "recordSource": "qryBillingTracker",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 7200,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Date2",
+          "left": 2505,
+          "top": 0,
+          "width": 1101,
+          "height": 284,
+          "controlSource": "Tdate",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text49",
+          "left": 4605,
+          "top": 0,
+          "width": 1596,
+          "height": 240,
+          "controlSource": "Time_",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Name",
+          "left": 285,
+          "top": 0,
+          "width": 1296,
+          "height": 240,
+          "controlSource": "Tatty",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label48",
+          "left": 315,
+          "top": 1650,
+          "width": 1290,
+          "height": 330,
+          "caption": "Atty / Staff",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbOrigAtty",
+          "left": 285,
+          "top": 2016,
+          "width": 1290,
+          "height": 374,
+          "rowSource": "JRT;DEB;GBF;PM;TDT;NH;RLF;CMH;KDB;MT;KV;LG;NT;BF;SL;AC;SU",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label55",
+          "left": 1425,
+          "top": 435,
+          "width": 3330,
+          "height": 750,
+          "caption": "BILLING TRACKER",
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image36",
+          "left": 285,
+          "top": 285,
+          "width": 1020,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmbclose",
+          "left": 5046,
+          "top": 444,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "cmbHome",
+          "left": 6360,
+          "top": 435,
+          "width": 480,
+          "height": 345,
+          "visible": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClearFilter",
+          "left": 5040,
+          "top": 942,
+          "width": 1740,
+          "height": 360,
+          "caption": "   &Clear Filter",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmbFilter",
+          "left": 3720,
+          "top": 1815,
+          "width": 495,
+          "height": 360,
+          "caption": "   &Filter",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label57",
+          "left": 1950,
+          "top": 1650,
+          "width": 555,
+          "height": 315,
+          "caption": "From",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtFrom",
+          "left": 2496,
+          "top": 1650,
+          "width": 1110,
+          "height": 299,
+          "format": "Short Date",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label59",
+          "left": 2160,
+          "top": 2025,
+          "width": 315,
+          "height": 315,
+          "caption": "To",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtTo",
+          "left": 2499,
+          "top": 2019,
+          "width": 1095,
+          "height": 284,
+          "format": "Short Date",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "OptionGroup",
+          "name": "Frame61",
+          "left": 1860,
+          "top": 1452,
+          "width": 2462,
+          "height": 1003,
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label34",
+          "left": 1965,
+          "top": 1305,
+          "width": 855,
+          "height": 315,
+          "caption": "Date(s):",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtTotal",
+          "left": 4569,
+          "top": 2016,
+          "width": 1654,
+          "height": 374,
+          "controlSource": "=Sum([Time_])",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label42",
+          "left": 4470,
+          "top": 1665,
+          "width": 1290,
+          "height": 315,
+          "caption": "Total Hours:",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmbClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\n'Private Sub Case_Letter_AfterUpdate()\r\n'    Call FilterMe\r\n'End Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    If Not IsNull(Me.txtFrom) Then strSQL = strSQL & \" AND Tdate >= #\" & Me.txtFrom & \"#\"\r\n    If Not IsNull(Me.txtTo) Then strSQL = strSQL & \" AND Tdate <= #\" & Me.txtTo & \"#\"\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Tatty = '\" & Me.cmbOrigAtty & \"'\"\r\n        \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub cmbclose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmbCodeVal_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n\r\n    Me.txtFrom = Null\r\n    Me.txtTo = Null\r\n    Me.cmbOrigAtty = Null\r\n\r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub cmbFilter_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\nPrivate Sub cmbHome_Click()\r\n    DoCmd.openform \"frmhome\", acNormal\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub"
+}

@@ -1,0 +1,16 @@
+{
+  "reportName": "rptPersInjStatusLog",
+  "dataSource": "tblPersInjLog",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "tblPersInjLog",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblPersInjLog"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}
