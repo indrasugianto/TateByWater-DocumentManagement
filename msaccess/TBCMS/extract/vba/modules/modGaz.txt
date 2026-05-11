@@ -89,7 +89,7 @@ Function fncTakeOffSums(FieldName As String, intTakeOffMonthID As Integer)
 End Function
 
 Function fncTakeOffSumsAttorneys(intTakeOffMonthID As Integer, strOrig_Atty As String, strCase_Letter As String, strFieldName As String) As Currency
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim retValue As Currency
 
 Dim cn As ADODB.Connection
@@ -120,12 +120,12 @@ Dim sql As String
         rs.MoveFirst
         retValue = pcaConvertNulls(rs(strFieldName), 0)
     End If
-EXIT_HANDLER:
+Exit_Handler:
     fncTakeOffSumsAttorneys = retValue
     Exit Function
-ERR_HANDLER:
+Err_Handler:
     foo = pcaStdErrMsg(Err, Error)
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 

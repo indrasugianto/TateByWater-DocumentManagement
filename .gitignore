@@ -54,3 +54,9 @@ msaccess/dropbox_poc_vba/
 
 # Logs
 *.log
+
+# Claude Code local settings (per-machine; may contain credentials)
+.claude/
+
+# Binary archives
+*.zip

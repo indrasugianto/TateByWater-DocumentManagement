@@ -70,7 +70,7 @@
         {
           "type": "TextBox",
           "name": "TMatter",
-          "left": 6720,
+          "left": 4290,
           "top": 0,
           "width": 3252,
           "height": 360,
@@ -83,7 +83,7 @@
         {
           "type": "TextBox",
           "name": "TDate",
-          "left": 5580,
+          "left": 8880,
           "top": 0,
           "width": 1080,
           "height": 360,
@@ -110,7 +110,7 @@
         {
           "type": "TextBox",
           "name": "Name",
-          "left": 1380,
+          "left": 1020,
           "top": 4,
           "width": 3180,
           "height": 359,
@@ -136,7 +136,7 @@
         {
           "type": "TextBox",
           "name": "OrigAtty",
-          "left": 4620,
+          "left": 60,
           "top": 0,
           "width": 900,
           "height": 360,
@@ -149,7 +149,7 @@
         {
           "type": "TextBox",
           "name": "CaseNum",
-          "left": 94,
+          "left": 7654,
           "top": 47,
           "width": 1230,
           "height": 300,
@@ -204,7 +204,7 @@
         {
           "type": "Label",
           "name": "Label0",
-          "left": 60,
+          "left": 7620,
           "top": 1515,
           "width": 960,
           "height": 284,
@@ -214,7 +214,7 @@
         {
           "type": "Label",
           "name": "Label3",
-          "left": 1395,
+          "left": 1035,
           "top": 1020,
           "width": 2280,
           "height": 284,
@@ -244,7 +244,7 @@
         {
           "type": "Label",
           "name": "Label2",
-          "left": 5655,
+          "left": 8955,
           "top": 1560,
           "width": 900,
           "height": 284,
@@ -274,7 +274,7 @@
         {
           "type": "Label",
           "name": "Label7",
-          "left": 6570,
+          "left": 4140,
           "top": 1320,
           "width": 1380,
           "height": 299,
@@ -304,7 +304,7 @@
         {
           "type": "Label",
           "name": "Label12",
-          "left": 4695,
+          "left": 135,
           "top": 1260,
           "width": 840,
           "height": 284,
@@ -319,7 +319,7 @@
           "width": 1545,
           "height": 405,
           "caption": "   &Clear Filter",
-          "tabIndex": 1,
+          "tabIndex": 2,
           "visible": true,
           "enabled": true,
           "events": {
@@ -350,26 +350,13 @@
           "visible": true
         },
         {
-          "type": "TextBox",
-          "name": "txtTo",
-          "left": 5973,
-          "top": 620,
-          "width": 1170,
-          "height": 315,
-          "format": "Short Date",
-          "tabIndex": 4,
-          "visible": true,
-          "enabled": true,
-          "locked": false
-        },
-        {
           "type": "OptionGroup",
           "name": "Frame23",
           "left": 4620,
           "top": 289,
           "width": 3197,
           "height": 778,
-          "tabIndex": 2,
+          "tabIndex": 1,
           "visible": true,
           "enabled": true,
           "locked": false
@@ -385,13 +372,26 @@
           "visible": true
         },
         {
+          "type": "TextBox",
+          "name": "txtTo",
+          "left": 5973,
+          "top": 620,
+          "width": 1170,
+          "height": 315,
+          "format": "Short Date",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
           "type": "ComboBox",
           "name": "cmbOrigAtty",
-          "left": 4650,
+          "left": 90,
           "top": 1575,
           "width": 915,
           "height": 285,
-          "rowSource": "JRT;DEB;GBF;PM;TDT;NH;RLF;JF;CMH;BA;KDB;RRL;WNE;RYR",
+          "rowSource": "JRT;DEB;PM;TDT;RLF;CMH;BA;KDB;RYR;DJB",
           "tabIndex": 5,
           "visible": true,
           "enabled": true,
@@ -427,7 +427,7 @@
         {
           "type": "ComboBox",
           "name": "cmbClients",
-          "left": 1455,
+          "left": 1095,
           "top": 1590,
           "width": 3120,
           "height": 270,
@@ -476,7 +476,7 @@
         {
           "type": "TextBox",
           "name": "txtDescription",
-          "left": 6735,
+          "left": 4305,
           "top": 1575,
           "width": 3233,
           "height": 285,
@@ -549,7 +549,7 @@
         {
           "type": "TextBox",
           "name": "txtClient",
-          "left": 1455,
+          "left": 1095,
           "top": 1245,
           "width": 3120,
           "height": 299,
@@ -867,5 +867,5 @@
   "formEvents": {
     "onLoad": "[Event Procedure]"
   },
-  "vbaCodeBehind": "Option Compare Database\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    'If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    'If Not IsNull(Me.chkPastDue) Then strSQL = strSQL & \" AND [Past Due] = \" & Me.chkPastDue\r\n    'If Not IsNull(Me.chkNoBalance) Then strSQL = strSQL & \" AND chkBalanceDue = \" & Me.chkNoBalance\r\n    \r\n'    If Not IsNull(Me.chkNonZero) Then\r\n'        If chkNonZero Then\r\n'            strSQL = strSQL & \" AND BalRet >0 \"\r\n'        Else\r\n'            strSQL = strSQL & \" AND BalRet =0 \"\r\n'        End If\r\n'    End If\r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.txtFrom) Then strSQL = strSQL & \" AND TDate >= #\" & Me.txtFrom & \"#\"\r\n    If Not IsNull(Me.txtTo) Then strSQL = strSQL & \" AND TDate <= #\" & Me.txtTo & \"#\"\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.cmdWFReconcile) Then strSQL = strSQL & \" AND Reconciled = \" & IIf(Me.cmdWFReconcile, 1, 0)\r\n    If Not IsNull(Me.ChkUncashed) Then strSQL = strSQL & \" AND CheckCashed = \" & IIf(Me.ChkUncashed, 1, 0)\r\n    If Not IsNull(Me.chkUnclearedDep) Then strSQL = strSQL & \" AND DepCleared = \" & IIf(Me.chkUnclearedDep, 1, 0)\r\n    If Not IsNull(Me.txtCheck) Then strSQL = strSQL & \" AND CheckNumber like '*\" & Me.txtCheck & \"*'\"\r\n    If Not IsNull(Me.txtDescription) Then strSQL = strSQL & \" AND TMatter like '*\" & Me.txtDescription & \"*'\"\r\n    If Not IsNull(Me.txtWith) Then strSQL = strSQL & \" AND Credit like '\" & Me.txtWith & \"*'\"\r\n    If Not IsNull(Me.txtDep) Then strSQL = strSQL & \" AND Debit like '\" & Me.txtDep & \"*'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '*\" & Me.txtClient & \"*'\"\r\n'    If Not IsNull(Me.chkChks) Then strSQL = strSQL & \" AND CheckNumber like '*' & Me.chkChks & '*'\"\r\n    If Not IsNull(Me.chkNonZeroD) Then\r\n        If chkNonZeroD Then\r\n            strSQL = strSQL & \" AND Debit <>0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Debit = 0 \"\r\n        End If\r\n    End If\r\n    If Not IsNull(Me.chkNonZeroW) Then\r\n        If chkNonZeroW Then\r\n            strSQL = strSQL & \" AND Credit <>0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Credit = 0 \"\r\n        End If\r\n    End If\r\n    If Not IsNull(Me.chkChks) Then\r\n        If chkChks Then\r\n            strSQL = strSQL & \" AND Checknumber like '*'\"\r\n        Else\r\n            strSQL = strSQL & \" AND Checknumber not like '*'\"\r\n        End If\r\n    End If\r\n    \r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub CaseNum_Click()\r\n    On Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub chkChks_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZeroD_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZeroW_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkUncashed_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkUnclearedDep_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmd35D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd35w_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35W\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd35_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65W_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65W\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95W_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95W\", acViewPreview\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\n'Sub FilterClear()\r\n'    'clear controls:\r\n'    'Me.cmbClients = Null\r\n''    Me.chkPastDue = Null\r\n''    Me.chkNoBalance = Null\r\n''    Me.chkNonZero = Null\r\n'\r\n'    Me.filter = \"\"\r\n'    Me.FilterOn = False\r\n'End Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdFilter_Click()\r\n    FilterMe\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbClients = Null\r\n'    Me.chkPastDue = Null\r\n'    Me.chkNoBalance = Null\r\n'    Me.chkNonZero = Null\r\n    Me.txtFrom = Null\r\n    Me.txtTo = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.cmdWFReconcile = Null\r\n    Me.ChkUncashed = Null\r\n    Me.chkUnclearedDep = Null\r\n    Me.txtCheck = Null\r\n    Me.txtDescription = Null\r\n    Me.txtWith = Null\r\n    Me.txtDep = Null\r\n    Me.chkNonZeroD = Null\r\n    Me.chkNonZeroW = Null\r\n    Me.txtClient = Null\r\n    Me.chkChks = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub cmdRequery_Click()\r\n    If Me.Dirty = True Then Me.Dirty = False\r\n    Me.Requery\r\n    Me.txtSMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=12664\")\r\n    Me.txtSumOfBalances = DLookup(\"SumOfBalance\", \"qryReconciliation_sumOfBalances\") - Me.txtSMTrust\r\n    Me.txtSumOfUncashed = DLookup(\"SumOfCredit\", \"qryReconciliation_sumOfCredit\")  'Not cashed! please check qyery !\r\n    Me.txtSumOfUnclearDeposits = DLookup(\"SumOfDebit\", \"qryReconciliation_sumOfUnclearedDeposits\")\r\n    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep\r\nEnd Sub\r\n\r\nPrivate Sub cmdWFReconcile_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n    'Me.txtJMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=11946\")\r\n    Me.txtSMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=12664\")\r\n    Me.txtSumOfBalances = DLookup(\"SumOfBalance\", \"qryReconciliation_sumOfBalances\") - Me.txtSMTrust\r\n    Me.txtSumOfUncashed = DLookup(\"SumOfCredit\", \"qryReconciliation_sumOfCredit\")  'Not cashed! please check qyery !\r\n    Me.txtSumOfUnclearDeposits = DLookup(\"SumOfDebit\", \"qryReconciliation_sumOfUnclearedDeposits\")\r\n    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep\r\nEnd Sub\r\n\r\nPrivate Sub txtCheck_AfterUpdate()\r\n    If Not IsNull(txtCheck) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtDep_AfterUpdate()\r\n    If Not IsNull(txtDep) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtDescription_AfterUpdate()\r\n    If Not IsNull(txtDescription) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtWith_AfterUpdate()\r\n    If Not IsNull(txtWith) Then Call FilterMe\r\nEnd Sub"
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    'If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    'If Not IsNull(Me.chkPastDue) Then strSQL = strSQL & \" AND [Past Due] = \" & Me.chkPastDue\r\n    'If Not IsNull(Me.chkNoBalance) Then strSQL = strSQL & \" AND chkBalanceDue = \" & Me.chkNoBalance\r\n    \r\n'    If Not IsNull(Me.chkNonZero) Then\r\n'        If chkNonZero Then\r\n'            strSQL = strSQL & \" AND BalRet >0 \"\r\n'        Else\r\n'            strSQL = strSQL & \" AND BalRet =0 \"\r\n'        End If\r\n'    End If\r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.txtFrom) Then strSQL = strSQL & \" AND TDate >= #\" & Me.txtFrom & \"#\"\r\n    If Not IsNull(Me.txtTo) Then strSQL = strSQL & \" AND TDate <= #\" & Me.txtTo & \"#\"\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.cmdWFReconcile) Then strSQL = strSQL & \" AND Reconciled = \" & IIf(Me.cmdWFReconcile, 1, 0)\r\n    If Not IsNull(Me.ChkUncashed) Then strSQL = strSQL & \" AND CheckCashed = \" & IIf(Me.ChkUncashed, 1, 0)\r\n    If Not IsNull(Me.chkUnclearedDep) Then strSQL = strSQL & \" AND DepCleared = \" & IIf(Me.chkUnclearedDep, 1, 0)\r\n    If Not IsNull(Me.txtCheck) Then strSQL = strSQL & \" AND CheckNumber like '*\" & Me.txtCheck & \"*'\"\r\n    If Not IsNull(Me.txtDescription) Then strSQL = strSQL & \" AND TMatter like '*\" & Me.txtDescription & \"*'\"\r\n    If Not IsNull(Me.txtWith) Then strSQL = strSQL & \" AND Credit like '\" & Me.txtWith & \"*'\"\r\n    If Not IsNull(Me.txtDep) Then strSQL = strSQL & \" AND Debit like '\" & Me.txtDep & \"*'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '*\" & Me.txtClient & \"*'\"\r\n'    If Not IsNull(Me.chkChks) Then strSQL = strSQL & \" AND CheckNumber like '*' & Me.chkChks & '*'\"\r\n    If Not IsNull(Me.chkNonZeroD) Then\r\n        If chkNonZeroD Then\r\n            strSQL = strSQL & \" AND Debit <>0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Debit = 0 \"\r\n        End If\r\n    End If\r\n    If Not IsNull(Me.chkNonZeroW) Then\r\n        If chkNonZeroW Then\r\n            strSQL = strSQL & \" AND Credit <>0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Credit = 0 \"\r\n        End If\r\n    End If\r\n    If Not IsNull(Me.chkChks) Then\r\n        If chkChks Then\r\n            strSQL = strSQL & \" AND Checknumber like '*'\"\r\n        Else\r\n            strSQL = strSQL & \" AND Checknumber not like '*'\"\r\n        End If\r\n    End If\r\n    \r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub CaseNum_Click()\r\n    On Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub chkChks_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZeroD_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZeroW_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkUncashed_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkUnclearedDep_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmd35D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd35w_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35W\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd35_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_35\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd65W_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_65W\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95D_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95D\", acViewPreview\r\nEnd Sub\r\nPrivate Sub cmd95W_Click()\r\n    DoCmd.OpenReport \"rpt_Trust_Chron_95W\", acViewPreview\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\n'Sub FilterClear()\r\n'    'clear controls:\r\n'    'Me.cmbClients = Null\r\n''    Me.chkPastDue = Null\r\n''    Me.chkNoBalance = Null\r\n''    Me.chkNonZero = Null\r\n'\r\n'    Me.filter = \"\"\r\n'    Me.FilterOn = False\r\n'End Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdFilter_Click()\r\n    FilterMe\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbClients = Null\r\n'    Me.chkPastDue = Null\r\n'    Me.chkNoBalance = Null\r\n'    Me.chkNonZero = Null\r\n    Me.txtFrom = Null\r\n    Me.txtTo = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.cmdWFReconcile = Null\r\n    Me.ChkUncashed = Null\r\n    Me.chkUnclearedDep = Null\r\n    Me.txtCheck = Null\r\n    Me.txtDescription = Null\r\n    Me.txtWith = Null\r\n    Me.txtDep = Null\r\n    Me.chkNonZeroD = Null\r\n    Me.chkNonZeroW = Null\r\n    Me.txtClient = Null\r\n    Me.chkChks = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub cmdRequery_Click()\r\n    If Me.Dirty = True Then Me.Dirty = False\r\n    Me.Requery\r\n    Me.txtSMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=12664\")\r\n    Me.txtSumOfBalances = DLookup(\"SumOfBalance\", \"qryReconciliation_sumOfBalances\") - Nz(Me.txtSMTrust, 0)\r\n    Me.txtSumOfUncashed = DLookup(\"SumOfCredit\", \"qryReconciliation_sumOfCredit\")  'Not cashed! please check qyery !\r\n    Me.txtSumOfUnclearDeposits = DLookup(\"SumOfDebit\", \"qryReconciliation_sumOfUnclearedDeposits\")\r\n    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep\r\nEnd Sub\r\n\r\nPrivate Sub cmdWFReconcile_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n    'Me.txtJMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=11946\")\r\n    Me.txtSMTrust = DLookup(\"AvailBalance\", \"qryTakeOff\", \"CaseID=12664\")\r\n    Me.txtSumOfBalances = DLookup(\"SumOfBalance\", \"qryReconciliation_sumOfBalances\") - Nz(Me.txtSMTrust, 0)\r\n    Me.txtSumOfUncashed = DLookup(\"SumOfCredit\", \"qryReconciliation_sumOfCredit\")  'Not cashed! please check qyery !\r\n    Me.txtSumOfUnclearDeposits = DLookup(\"SumOfDebit\", \"qryReconciliation_sumOfUnclearedDeposits\")\r\n    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep\r\nEnd Sub\r\n\r\nPrivate Sub txtCheck_AfterUpdate()\r\n    If Not IsNull(txtCheck) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtDep_AfterUpdate()\r\n    If Not IsNull(txtDep) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtDescription_AfterUpdate()\r\n    If Not IsNull(txtDescription) Then Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtWith_AfterUpdate()\r\n    If Not IsNull(txtWith) Then Call FilterMe\r\nEnd Sub"
 }

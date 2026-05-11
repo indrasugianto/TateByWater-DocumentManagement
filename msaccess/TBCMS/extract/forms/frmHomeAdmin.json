@@ -74,28 +74,13 @@
         },
         {
           "type": "CommandButton",
-          "name": "cmdTakeOff",
-          "left": 6345,
-          "top": 4980,
-          "width": 1515,
-          "height": 1020,
-          "caption": "Take Off\r\nEntry",
-          "tabIndex": 4,
-          "visible": true,
-          "enabled": true,
-          "events": {
-            "onClick": "[Event Procedure]"
-          }
-        },
-        {
-          "type": "CommandButton",
           "name": "cmdTKClose",
           "left": 10440,
           "top": 2340,
           "width": 3120,
           "height": 1020,
           "caption": "TK CLOSE",
-          "tabIndex": 5,
+          "tabIndex": 4,
           "visible": true,
           "enabled": true,
           "events": {
@@ -115,12 +100,12 @@
         {
           "type": "CommandButton",
           "name": "Command120",
-          "left": 8070,
+          "left": 6360,
           "top": 4980,
-          "width": 1395,
+          "width": 3105,
           "height": 1020,
           "caption": "Take Off\r\nTransfer",
-          "tabIndex": 6,
+          "tabIndex": 5,
           "visible": true,
           "enabled": true,
           "events": {

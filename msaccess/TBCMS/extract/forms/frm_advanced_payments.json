@@ -128,7 +128,7 @@
           "top": 75,
           "width": 1851,
           "height": 315,
-          "controlSource": "=Nz(DLookUp(\"SumofBalance\",\"qryTrustAccountBalanceTotals\",\"CaseID=\" & [CaseID]),0)",
+          "controlSource": "SumOfBalance",
           "format": "Currency",
           "tabIndex": 8,
           "visible": true,
@@ -302,10 +302,10 @@
         {
           "type": "Image",
           "name": "cmbHome",
-          "left": 16665,
-          "top": 435,
+          "left": 16670,
+          "top": 440,
           "width": 480,
-          "height": 345,
+          "height": 350,
           "visible": true,
           "events": {
             "onClick": "[Event Procedure]"
@@ -438,7 +438,7 @@
           "width": 288,
           "height": 288,
           "tabIndex": 10,
-          "visible": false,
+          "visible": true,
           "enabled": true,
           "locked": false
         },
@@ -450,7 +450,7 @@
           "width": 915,
           "height": 330,
           "caption": "Non Zero",
-          "visible": false
+          "visible": true
         }
       ]
     },
@@ -485,5 +485,5 @@
     }
   ],
   "formEvents": {},
-  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub chkNonZero_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\n'Private Sub Case_Letter_AfterUpdate()\r\n'    Call FilterMe\r\n'End Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.txtFrom) Then strSQL = strSQL & \" AND [Matter and AR].Date2 >= #\" & Me.txtFrom & \"#\"\r\n    If Not IsNull(Me.txtTo) Then strSQL = strSQL & \" AND [Matter and AR].Date2 <= #\" & Me.txtTo & \"#\"\r\n    \r\n    If Not IsNull(Me.cmbCodeVal) Then strSQL = strSQL & \" AND CodeVal = '\" & Me.cmbCodeVal & \"'\"\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '\" & Me.txtClient & \"*'\"\r\n    \r\n    'If Not IsNull(Me.chkPastDue) Then strSQL = strSQL & \" AND [Past Due] = \" & Me.chkPastDue\r\n    'If Not IsNull(Me.chkNoBalance) Then strSQL = strSQL & \" AND chkBalanceDue = \" & Me.chkNoBalance\r\n    \r\n'    If Not IsNull(Me.chkNonZero) Then\r\n'       If chkNonZero Then\r\n'            strSQL = strSQL & \" AND TrustAcctBalance <>0 \"\r\n'        Else\r\n'            strSQL = strSQL & \" AND TrustAcctBalance =0 \"\r\n'        End If\r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub cmbclose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmbCodeVal_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbClients = Null\r\n'    Me.chkPastDue = Null\r\n'    Me.chkNoBalance = Null\r\n'    Me.chkNonZero = Null\r\n    \r\n    Me.txtFrom = Null\r\n    Me.txtTo = Null\r\n    Me.cmbCodeVal = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.txtClient = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub cmbFilter_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbHome_Click()\r\nDoCmd.openform \"frmhome\", acNormal\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub FileNumber_Click()\r\nOn Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmdFilter_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub"
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub chkNonZero_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\n'Private Sub Case_Letter_AfterUpdate()\r\n'    Call FilterMe\r\n'End Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.txtFrom) Then strSQL = strSQL & \" AND [Matter and AR].Date2 >= #\" & Me.txtFrom & \"#\"\r\n    If Not IsNull(Me.txtTo) Then strSQL = strSQL & \" AND [Matter and AR].Date2 <= #\" & Me.txtTo & \"#\"\r\n    \r\n    If Not IsNull(Me.cmbCodeVal) Then strSQL = strSQL & \" AND CodeVal = '\" & Me.cmbCodeVal & \"'\"\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '\" & Me.txtClient & \"*'\"\r\n    \r\n    'If Not IsNull(Me.chkPastDue) Then strSQL = strSQL & \" AND [Past Due] = \" & Me.chkPastDue\r\n    'If Not IsNull(Me.chkNoBalance) Then strSQL = strSQL & \" AND chkBalanceDue = \" & Me.chkNoBalance\r\n    \r\nIf Not IsNull(Me.chkNonZero) Then\r\nIf chkNonZero Then\r\n            strSQL = strSQL & \" AND SumOfBalance <>0 \"\r\n        End If\r\n        End If\r\n        \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub cmbclose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmbCodeVal_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbClients = Null\r\n'    Me.chkPastDue = Null\r\n'    Me.chkNoBalance = Null\r\n'    Me.chkNonZero = Null\r\n    \r\n    Me.txtFrom = Null\r\n    Me.txtTo = Null\r\n    Me.cmbCodeVal = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.txtClient = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub cmbFilter_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbHome_Click()\r\nDoCmd.openform \"frmhome\", acNormal\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub FileNumber_Click()\r\nOn Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me!CaseID, , , Me!CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me!CaseID, , , Me!CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmdFilter_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub"
 }

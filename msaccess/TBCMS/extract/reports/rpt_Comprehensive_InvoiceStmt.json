@@ -1796,21 +1796,6 @@
       "height": 840,
       "controls": [
         {
-          "type": "TextBox",
-          "name": "Text23",
-          "left": 3660,
-          "top": 480,
-          "width": 3600,
-          "height": 315,
-          "controlSource": "=IIf(([Page]>1),\"Page \" & [Page] & \" of \" & [Pages],\"\")",
-          "fontName": "Calibri",
-          "fontSize": 11,
-          "foreColor": 4210752,
-          "backStyle": "transparent",
-          "borderColor": 10921638,
-          "textAlign": "center"
-        },
-        {
           "type": "Rectangle",
           "name": "Box191",
           "left": 120,
@@ -1838,9 +1823,24 @@
         },
         {
           "type": "TextBox",
+          "name": "Text23",
+          "left": 3660,
+          "top": 435,
+          "width": 3600,
+          "height": 315,
+          "controlSource": "=IIf(([Page]>1),\"Page \" & [Page] & \" of \" & [Pages],\"\")",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
+          "textAlign": "center"
+        },
+        {
+          "type": "TextBox",
           "name": "Text8",
           "left": 9180,
-          "top": 480,
+          "top": 435,
           "width": 1080,
           "height": 300,
           "controlSource": "=Date()",
@@ -1855,8 +1855,8 @@
         {
           "type": "TextBox",
           "name": "Text104",
-          "left": 120,
-          "top": 480,
+          "left": 1740,
+          "top": 420,
           "width": 1140,
           "height": 255,
           "controlSource": "=Replace([Case_Letter] & [Yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty],\"__\",\"_\")",
@@ -1869,15 +1869,29 @@
         {
           "type": "TextBox",
           "name": "Text122",
-          "left": 1260,
-          "top": 480,
-          "width": 1500,
+          "left": 8100,
+          "top": 435,
+          "width": 960,
           "height": 255,
           "controlSource": "Bill_ID",
           "fontName": "Arial",
           "fontSize": 9,
           "foreColor": 9211020,
           "borderColor": 10921638,
+          "textAlign": "left"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text158",
+          "left": 180,
+          "top": 420,
+          "width": 1500,
+          "height": 255,
+          "controlSource": "=[Last_Name]",
+          "fontName": "Arial",
+          "fontSize": 9,
+          "foreColor": 9211020,
+          "backColor": -2147483643,
           "textAlign": "left"
         }
       ]

@@ -2006,7 +2006,7 @@
     },
     {
       "type": "PageFooter",
-      "height": 990,
+      "height": 1290,
       "controls": [
         {
           "type": "TextBox",
@@ -2068,8 +2068,8 @@
         {
           "type": "TextBox",
           "name": "Text104",
-          "left": 120,
-          "top": 675,
+          "left": 1740,
+          "top": 660,
           "width": 1140,
           "height": 255,
           "controlSource": "=Replace([Case_Letter] & [Yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty],\"__\",\"_\")",
@@ -2082,9 +2082,9 @@
         {
           "type": "TextBox",
           "name": "Text122",
-          "left": 1260,
+          "left": 8100,
           "top": 675,
-          "width": 1500,
+          "width": 960,
           "height": 255,
           "controlSource": "Bill_ID",
           "fontName": "Arial",
@@ -2096,7 +2096,7 @@
         {
           "type": "Label",
           "name": "Label113",
-          "left": 780,
+          "left": 540,
           "top": 0,
           "width": 6015,
           "height": 255,
@@ -2110,8 +2110,8 @@
         },
         {
           "type": "Label",
-          "name": "Label155",
-          "left": 8707,
+          "name": "Label156",
+          "left": 9000,
           "top": 0,
           "width": 990,
           "height": 255,
@@ -2126,11 +2126,11 @@
         {
           "type": "Label",
           "name": "Label116",
-          "left": 6780,
+          "left": 6480,
           "top": 0,
-          "width": 1965,
+          "width": 2550,
           "height": 270,
-          "caption": "tatebywater.com/payment",
+          "caption": "tatebywater.com/make-a-payment",
           "fontName": "Arial",
           "fontSize": 8,
           "fontUnderline": true,
@@ -2138,6 +2138,20 @@
           "backStyle": "transparent",
           "borderColor": 8355711,
           "textAlign": "center"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text158",
+          "left": 180,
+          "top": 660,
+          "width": 1500,
+          "height": 255,
+          "controlSource": "=[Last_Name]",
+          "fontName": "Arial",
+          "fontSize": 9,
+          "foreColor": 9211020,
+          "backColor": -2147483643,
+          "textAlign": "left"
         }
       ]
     }

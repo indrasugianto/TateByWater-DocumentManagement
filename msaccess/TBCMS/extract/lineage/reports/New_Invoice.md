@@ -1,8 +1,8 @@
 # Report Lineage: New Invoice
 
 ## Trigger Paths
-- frm_invoices_summary -> Cmd_PreviewNew -> onClick -> Cmd_PreviewNew_Click (high confidence)
 - frmClientLedger -> cmdInvoice -> onClick -> cmdInvoice_Click (high confidence)
+- frm_invoices_summary -> Cmd_PreviewNew -> onClick -> Cmd_PreviewNew_Click (high confidence)
 - zClient Ledger OLD -> cmdInvoice -> onClick -> cmdInvoice_Click (high confidence)
 
 ## Data Lineage
@@ -12,8 +12,8 @@
 - Terminal Tables: vw_current_invoice
 
 ## Related VBA Procedures
-- form frm_invoices_summary::Cmd_PreviewNew_Click [8176-8206]
-- form frm_invoices_summary::Cmd_PrintNew_Click [8207-8238]
-- form frmClientLedger::cmdInvoice_Click [17642-17671]
-- form zClient Ledger OLD::cmdInvoice_Click [7925-7945]
-- report rpt_Compr_InvoiceADVCur::Report_Open [1610-1646]
+- form frmClientLedger::cmdInvoice_Click [17843-17872]
+- form frm_invoices_summary::Cmd_PreviewNew_Click [8108-8138]
+- form frm_invoices_summary::Cmd_PrintNew_Click [8139-8170]
+- form zClient Ledger OLD::cmdInvoice_Click [7946-7966]
+- report rpt_Compr_InvoiceADVCur::Report_Open [1528-1564]

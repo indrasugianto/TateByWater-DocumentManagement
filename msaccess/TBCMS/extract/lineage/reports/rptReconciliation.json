@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5433,
-      "lineEnd": 5442,
+      "lineStart": 4472,
+      "lineEnd": 4481,
       "confidence": "high",
       "reportMentionType": "literal"
     }
@@ -26,31 +26,31 @@
   "relatedVbaProcedures": [
     {
       "objectType": "form",
-      "objectName": "frmAttyFeeGeneration",
-      "procedureName": "FilterMe",
-      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
-      "lineStart": 8563,
-      "lineEnd": 8575,
-      "usesDoCmd": [],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "cmdInsertData_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3863,
-      "lineEnd": 3942,
+      "lineStart": 3471,
+      "lineEnd": 3550,
       "usesDoCmd": [],
       "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmAttyFeeGeneration",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
+      "lineStart": 8493,
+      "lineEnd": 8505,
+      "usesDoCmd": [],
+      "usesSql": false
     },
     {
       "objectType": "form",
       "objectName": "frmTakeOff",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5433,
-      "lineEnd": 5442,
+      "lineStart": 4472,
+      "lineEnd": 4481,
       "usesDoCmd": [
         "OpenReport"
       ],
@@ -61,8 +61,8 @@
       "objectName": "frmTakeOff",
       "procedureName": "cmbInsertFees_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5851,
-      "lineEnd": 5907,
+      "lineStart": 4890,
+      "lineEnd": 4945,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -71,8 +71,8 @@
       "objectName": "frmTakeOff",
       "procedureName": "fncRecordExists",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5908,
-      "lineEnd": 5972,
+      "lineStart": 4946,
+      "lineEnd": 5010,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -81,8 +81,8 @@
       "objectName": "frmTakeOff2",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 767,
-      "lineEnd": 776,
+      "lineStart": 785,
+      "lineEnd": 794,
       "usesDoCmd": [
         "OpenReport"
       ],
@@ -93,8 +93,8 @@
       "objectName": "frmTakeOff2",
       "procedureName": "cmdShowReportTDT_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 1122,
-      "lineEnd": 1196,
+      "lineStart": 1140,
+      "lineEnd": 1214,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -106,8 +106,8 @@
       "objectName": "frmTakeOff2",
       "procedureName": "fncRecordExists",
       "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 1197,
-      "lineEnd": 1261,
+      "lineStart": 1215,
+      "lineEnd": 1279,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -116,8 +116,8 @@
       "objectName": "frmTakeOffTest",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 768,
-      "lineEnd": 777,
+      "lineStart": 785,
+      "lineEnd": 794,
       "usesDoCmd": [
         "OpenReport"
       ],
@@ -128,8 +128,8 @@
       "objectName": "frmTakeOffTest",
       "procedureName": "cmbInsertFees_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 1144,
-      "lineEnd": 1197,
+      "lineStart": 1161,
+      "lineEnd": 1214,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -138,8 +138,8 @@
       "objectName": "frmTakeOffTest",
       "procedureName": "fncRecordExists",
       "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 1198,
-      "lineEnd": 1262,
+      "lineStart": 1215,
+      "lineEnd": 1279,
       "usesDoCmd": [],
       "usesSql": true
     }

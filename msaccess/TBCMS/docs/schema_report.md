@@ -120,6 +120,14 @@ FROM TblCase INNER JOIN [TB Time Keeping] ON TblCase.CaseID = [TB Time Keeping].
 
 ORDER BY [TB Time Keeping].Bill_ID, [TB Time Keeping].IANumber, TblCase.CaseID;
 ```
+### qryBillingTotals
+```sql
+SELECT tblTimeTableDetail.Bill_ID, Sum(Nz([Time_],0)*Nz([Rate],0)) AS Amount
+
+FROM tblTimeTableDetail
+
+GROUP BY tblTimeTableDetail.Bill_ID;
+```
 ### qryBillingTracker
 ```sql
 SELECT tblTimeTableDetail.Tdate, tblTimeTableDetail.Tatty, tblTimeTableDetail.Bill_ID, tblTimeTableDetail.Time_
@@ -622,6 +630,16 @@ SELECT tblCase.CaseID, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase
 
 FROM tbl...
 ```
+### qrySumofPayments
+```sql
+SELECT [Matter and AR].CaseID, Sum([Matter and AR].Payment) AS SumOfPayment
+
+FROM [Matter and AR]
+
+WHERE ((([Matter and AR].Pay_Outlay) Like "*payment*"))
+
+GROUP BY [Matter and AR].CaseID;
+```
 ### qryTKClose
 ```sql
 SELECT vwTKClose_A.CaseID, vwTKClose_A.FileNumber, vwTKClose_A.Name, vwTKClose_A.Orig_Atty, vwTKClose_A.HandlingAtty_Case, vwTKClose_A.SumOfAdvancedAR, vwTKClose_A.CostHold, vwTKClose_A.SumOfUnclearedDeposits, vwTKClose_A.Balance, vwTKClose_A.SumOfUncashedChecks, vwTKClose_A.AvailBalance, vwTKClose_A.BankBalance, vwTKClose_A.SumOfTotal, vwTKClose_A.IANumber, vwTKClose_A.Bill_ID, vwTKClose_A.Retainer, vwTKClose_A.RetainerReimb, vwTKClose_A.RetReimbAmount, vwTKClose_A.MaxOfMatterID
@@ -856,9 +874,11 @@ ORDER BY vwTrustAccount.CaseID, vwTrustAccount.OrderNr;
 ```
 ### qryTrustAccountBalanceTotals
 ```sql
-SELECT CaseID, SumOfBalance
+SELECT vwTrustAccountBalanceTotals.CaseID, Max(vwTrustAccountBalanceTotals.SumOfBalance) AS SumOfBalance
 
-FROM vwTrustAccountBalanceTotals;
+FROM vwTrustAccountBalanceTotals
+
+GROUP BY vwTrustAccountBalanceTotals.CaseID;
 ```
 ### qryTrustAccountBalanceTotals_OLD
 ```sql
@@ -1170,7 +1190,16 @@ ORDER BY [Matter and AR].OrderNr;
 ```
 ### qry_advanced_payments
 ```sql
-SELECT vw_advanced_payments.Name, vw_advanced_payments.FileNumber, vw_advanced_payments.MatterID, vw_advanced_payments.CaseID, vw_advanced_payments.Date2, vw_advanced_payments.Pay_Outlay, vw_advanced_payments.Charge, vw_advanced_payments.Payment, vw_advanced_payments.FirmPrepaid, vw_advanced_payments.InsertPymt, vw_advanced_payments.AdvancedLegal, vw_advanced_payments.SSMA_TimeStamp, vw_advanced_payments.Orig_Atty, vw_advanced_payments.Case_Letter, vw_advanced_payments.CodeVal, vw_advanced_payme...
+SELECT p.Name, p.FileNumber, p.MatterID, p.CaseID, p.Date2, p.Pay_Outlay, p.Charge, p.Payment, p.FirmPrepaid, p.InsertPymt, p.AdvancedLegal, p.SSMA_TimeStamp, p.Orig_Atty, p.Case_Letter, p.CodeVal, p.Creimb, CCur(Nz (t.SumOfBalance_agg, 0)) AS SumOfBalance
+
+FROM vw_advanced_payments AS p LEFT JOIN (SELECT
+            CaseID,
+            Max(SumOfBalance) AS SumOfBalance_agg
+        FROM
+            qryTrustAccountBalanceTotals
+        GROUP BY
+            CaseID
+    )  AS t ON p.CaseID = t.CaseI...
 ```
 ### qry_advanced_payments_OLD
 ```sql
@@ -1502,323 +1531,329 @@ WHERE ((([Trust Account].CheckCashed)=Yes)) OR ((([Trust Account].Dep...
 ## VBA Object Inventory
 | Type | Count | Objects |
 |------|-------|--------|
-| Forms | 92 | Intakes, Time Keeping, frmActionNeeded, frmActionNeededAll, frmAddUser, frmAdminLoginTK, frmApplicationLoad, frmAttyFeeGeneration, frmAttyNotes, frmBankruptcy, frmBilling, frmBrowse, frmBrowse_BackEnd, frmCalendarCheck, frmCalls, frmCallsList, frmCaseList, frmCaseListAll, frmCaseListClosed, frmCaseListOpen, frmCaseListOpen subform, frmChild, frmClientLedger, frmClientReviews, frmClientsConflict, frmConflictChk, frmCrimStatusReport, frmCtCaseNumbers, frmDisposition, frmDispositions, frmFamilyLaw, frmHearingDate, frmHome, frmHomeAdmin, frmHomeAdminLogin, frmIntakesConflicts, frmInvoiceSent, frmLogin, frmMatter, frmOkAlert, frmOpenReport, frmOppPartyConflict, frmPersInjDemand, frmPersInjLog, frmPersInjLog2, frmPersInjProvider, frmPersInjuryStatusReport, frmPersonalInjury, frmPersonalInjury2, frmReceipt, frmScanLocation, frmScansubform, frmSourceAnalytics, frmSubCH13Plans, frmSubPrevBankrupt, frmSubProofOfClaims, frmTKClose, frmTRUSTENTRIESCHRON, frmTakeOff, frmTakeOff2, frmTakeOffReconciliation, frmTakeOffSteps, frmTakeOffSubForm, frmTakeOffSubForm2, frmTakeOffSubForm3, frmTakeOffSubForm_OLD, frmTakeOffTest, frmTakeOffTotalFeesCosts, frmTimeKeepingClosed, frmTimeKeepingOpen, frmTimeTableDetail, frmTimeTableDetailMerge, frmToBeClosed, frmToBeScanned, frmTrustAccount, frmUpcoming Hearings, frmUsers, frmUsers_Edit, frmYearWiseCaseList, frmYesNoAlert, frm_Billing_Tracker, frm_Billing_Tracker2, frm_advanced_payments, frm_invoices_summary, frm_trust_summary, frm_uncashed_trust_checks, zClient Ledger OLD, zfrmFamilyLaw OLD, zfrmPersInjSOL, zfrmPersonalDetailsFamilyLaw, zfrmSelectCaseNum, zfrmSelectCaseNum_Discount |
-| Reports | 97 | Accounts Receivable, Case Sources and Revenue, Client Closing Sheet, Client_Trust_Accounts_for_PreTake_Off, Client_Trust_Accounts_for_Take_Off, Copy Of Client Closing Sheet, Invoice, Invoice - No Balance Due, Invoice - Past Due, Invoice Attach - Hourly, Invoice Attach - Hourly w Discount, Invoice2, New Invoice, Rpt_MergeInvTK, Statement of Trust Account, rptBillingTotals, rptClientNotes, rptComprehensiveTKStatement, rptCriminalStatus, rptCriminalStatusActionNeeded, rptCriminalStatusChargeNos, rptCriminalStatusNotesLog, rptCriminalStatusNotesLog2, rptCriminalStatusUpcHrgs, rptInvoiceComprARCur, rptInvoiceComprPymtsAR, rptInvoiceComprPymtsARCur, rptInvoiceComprTrustCur, rptInvoiceComprehensiveAR, rptInvoiceComprehensiveAR2, rptInvoiceComprehensiveTrust, rptInvoiceComprehensiveTrust2, rptLastTenOpen, rptLastWeekIntake, rptPISOLList, rptPIStatusSOL, rptPersInjProviderBills, rptPersInjStatusAction, rptPersInjStatusDemand, rptPersInjStatusLog, rptPersInjuryStatus, rptReceipt, rptReceiptC, rptReceiptR, rptReceiptRec, rptReconciliation, rpt_Billing_Closing, rpt_CaseNumber_Closing, rpt_Compr_InvoiceADVCur, rpt_Compr_InvoiceStmtCur, rpt_Compr_InvoiceTKExCur, rpt_Comprehensive_Invoice, rpt_Comprehensive_Invoice2, rpt_Comprehensive_InvoiceADV, rpt_Comprehensive_InvoiceADVS, rpt_Comprehensive_InvoiceStmt, rpt_Comprehensive_InvoiceStmtS, rpt_Comprehensive_InvoiceTKEx, rpt_Comprehensive_InvoiceTKEx1, rpt_Comprehensive_InvoiceTKEx1S, rpt_Comprehensive_InvoiceTKEx2, rpt_Comprehensive_InvoiceTKEx2S, rpt_Comprehensive_InvoiceTKEx3Costs, rpt_Comprehensive_InvoiceTKEx3CostsS, rpt_Comprehensive_InvoiceTKLessTrustCostAR, rpt_Comprehensive_InvoiceTKLessTrustRep, rpt_Comprehensive_InvoiceTKLessTrustRep2, rpt_Disposition_Closing, rpt_File_Folder_Label, rpt_Main_Closing, rpt_Matter_Closing, rpt_MergeInvMatter, rpt_MergeInvTimeDetail, rpt_OpenCases, rpt_Open_Cases, rpt_Reconciliation sub, rpt_TKExceedsTrust, rpt_TKLessTrust, rpt_TKTotalAdvance, rpt_TimeDetail_Comprehensive, rpt_TimeDetail_Comprehensive2, rpt_Trust_Chron_35, rpt_Trust_Chron_35D, rpt_Trust_Chron_35W, rpt_Trust_Chron_65, rpt_Trust_Chron_65D, rpt_Trust_Chron_65W, rpt_Trust_Chron_95, rpt_Trust_Chron_95D, rpt_Trust_Chron_95W, rpt_Trust_Closing, rpt_address_label, rpt_address_labelEx, rpt_adj_address_label, rpt_ftrustee_address_label, rpt_opp_counsel_address_label, rpt_trustee_address_label |
+| Forms | 94 | Intakes, Time Keeping, frmActionNeeded, frmActionNeededAll, frmActionNeededAll2, frmActionNeededAll3, frmAddUser, frmAdminLoginTK, frmApplicationLoad, frmAttyFeeGeneration, frmAttyNotes, frmBankruptcy, frmBilling, frmBrowse, frmBrowse_BackEnd, frmCalendarCheck, frmCalls, frmCallsList, frmCaseList, frmCaseListAll, frmCaseListClosed, frmCaseListOpen, frmCaseListOpen subform, frmChild, frmClientLedger, frmClientReviews, frmClientsConflict, frmConflictChk, frmCrimStatusReport, frmCtCaseNumbers, frmDisposition, frmDispositions, frmFamilyLaw, frmHearingDate, frmHome, frmHomeAdmin, frmHomeAdminLogin, frmIntakesConflicts, frmInvoiceSent, frmLogin, frmMatter, frmOkAlert, frmOpenReport, frmOppPartyConflict, frmPersInjDemand, frmPersInjLog, frmPersInjLog2, frmPersInjProvider, frmPersInjuryStatusReport, frmPersonalInjury, frmPersonalInjury2, frmReceipt, frmScanLocation, frmScansubform, frmSourceAnalytics, frmSubCH13Plans, frmSubPrevBankrupt, frmSubProofOfClaims, frmTKClose, frmTRUSTENTRIESCHRON, frmTakeOff, frmTakeOff2, frmTakeOffReconciliation, frmTakeOffSteps, frmTakeOffSubForm, frmTakeOffSubForm2, frmTakeOffSubForm3, frmTakeOffSubForm_OLD, frmTakeOffTest, frmTakeOffTotalFeesCosts, frmTimeKeepingClosed, frmTimeKeepingOpen, frmTimeTableDetail, frmTimeTableDetailMerge, frmToBeClosed, frmToBeScanned, frmTrustAccount, frmUpcoming Hearings, frmUsers, frmUsers_Edit, frmYearWiseCaseList, frmYesNoAlert, frm_Billing_Tracker, frm_Billing_Tracker2, frm_advanced_payments, frm_invoices_summary, frm_trust_summary, frm_uncashed_trust_checks, zClient Ledger OLD, zfrmFamilyLaw OLD, zfrmPersInjSOL, zfrmPersonalDetailsFamilyLaw, zfrmSelectCaseNum, zfrmSelectCaseNum_Discount |
+| Reports | 99 | Accounts Receivable, Case Sources and Revenue, Client Closing Sheet, Client_Trust_Accounts_for_PreTake_Off, Client_Trust_Accounts_for_Take_Off, Copy Of Client Closing Sheet, Invoice, Invoice - No Balance Due, Invoice - Past Due, Invoice Attach - Hourly, Invoice Attach - Hourly w Discount, Invoice2, New Invoice, Rpt_MergeInvTK, Statement of Trust Account, rptBillingTotals, rptClientNotes, rptComprehensiveTKStatement, rptCriminalStatus, rptCriminalStatusActionNeeded, rptCriminalStatusChargeNos, rptCriminalStatusNotesLog, rptCriminalStatusNotesLog2, rptCriminalStatusUpcHrgs, rptInvoiceComprARCur, rptInvoiceComprPymtsAR, rptInvoiceComprPymtsARCur, rptInvoiceComprTrustCur, rptInvoiceComprehensiveAR, rptInvoiceComprehensiveAR2, rptInvoiceComprehensiveTrust, rptInvoiceComprehensiveTrust2, rptLastTenOpen, rptLastWeekIntake, rptPISOLList, rptPIStatusSOL, rptPersInjProviderBills, rptPersInjStatusAction, rptPersInjStatusDemand, rptPersInjStatusLog, rptPersInjuryStatus, rptReceipt, rptReceiptC, rptReceiptR, rptReceiptRec, rptReconciliation, rptTKReport, rptTKReport2, rpt_Billing_Closing, rpt_CaseNumber_Closing, rpt_Compr_InvoiceADVCur, rpt_Compr_InvoiceStmtCur, rpt_Compr_InvoiceTKExCur, rpt_Comprehensive_Invoice, rpt_Comprehensive_Invoice2, rpt_Comprehensive_InvoiceADV, rpt_Comprehensive_InvoiceADVS, rpt_Comprehensive_InvoiceStmt, rpt_Comprehensive_InvoiceStmtS, rpt_Comprehensive_InvoiceTKEx, rpt_Comprehensive_InvoiceTKEx1, rpt_Comprehensive_InvoiceTKEx1S, rpt_Comprehensive_InvoiceTKEx2, rpt_Comprehensive_InvoiceTKEx2S, rpt_Comprehensive_InvoiceTKEx3Costs, rpt_Comprehensive_InvoiceTKEx3CostsS, rpt_Comprehensive_InvoiceTKLessTrustCostAR, rpt_Comprehensive_InvoiceTKLessTrustRep, rpt_Comprehensive_InvoiceTKLessTrustRep2, rpt_Disposition_Closing, rpt_File_Folder_Label, rpt_Main_Closing, rpt_Matter_Closing, rpt_MergeInvMatter, rpt_MergeInvTimeDetail, rpt_OpenCases, rpt_Open_Cases, rpt_Reconciliation sub, rpt_TKExceedsTrust, rpt_TKLessTrust, rpt_TKTotalAdvance, rpt_TimeDetail_Comprehensive, rpt_TimeDetail_Comprehensive2, rpt_Trust_Chron_35, rpt_Trust_Chron_35D, rpt_Trust_Chron_35W, rpt_Trust_Chron_65, rpt_Trust_Chron_65D, rpt_Trust_Chron_65W, rpt_Trust_Chron_95, rpt_Trust_Chron_95D, rpt_Trust_Chron_95W, rpt_Trust_Closing, rpt_address_label, rpt_address_labelEx, rpt_adj_address_label, rpt_ftrustee_address_label, rpt_opp_counsel_address_label, rpt_trustee_address_label |
 | Modules | 23 | AccessType, Authentication, CaseGeneratorModule, Configuration, Context, DocumentManagement, FormUtils, ModGeneric Func, ModUpload, Module1, OutlookApp, PcaStdLib, Relinking, UI Images, User, Util, ValidatedForm, basFindField, clsFormValidation, modErrmsgs, modFutureDateVarification, modGaz, mod_create_table_with_all_db_schema |
 | Classes | 0 |  |
 | Macros | 0 |  |
 
 ## Structured Report Inventory
-**Extracted:** 97 reports
+**Extracted:** 99 reports
 
 | Report | Data Source | Sections | Subreports |
 |--------|------------|----------|------------|
-| Invoice - Past Due | qryInvoiceRPT1 | 6 | 0 |
-| rpt_Billing_Closing | SELECT tblCase.CaseID, Disposition.[Total Earned Fee] AS Exp... | 1 | 0 |
-| rpt_Trust_Closing | qryStmtTrustRPT1 | 3 | 0 |
-| rptCriminalStatusNotesLog | SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePers... | 3 | 0 |
 | rpt_TKTotalAdvance | qryInvoiceAttachRPT1 | 7 | 0 |
 | rpt_Matter_Closing | SELECT vw_rpt_Matter_Closing.CaseID, vw_rpt_Matter_Closing.M... | 3 | 0 |
+| rptCriminalStatusNotesLog | SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePers... | 3 | 0 |
+| rpt_Trust_Closing | qryStmtTrustRPT1 | 3 | 0 |
+| rpt_Billing_Closing | SELECT tblCase.CaseID, Disposition.[Total Earned Fee] AS Exp... | 1 | 0 |
 | Accounts Receivable | qry_invoices_summaryRPT | 5 | 0 |
-| rpt_CaseNumber_Closing | tbl_CtCaseNumbers | 5 | 0 |
 | rpt_Main_Closing | tblCase | 3 | 5 |
 | rpt_Disposition_Closing | qry_Disposition_ClosingSheet | 3 | 0 |
+| rpt_CaseNumber_Closing | tbl_CtCaseNumbers | 5 | 0 |
 | Case Sources and Revenue | qryCaseSourcesRPT1 | 5 | 0 |
-| Invoice - No Balance Due | qryInvoiceRPT1 | 7 | 0 |
-| rptPersInjStatusAction | SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.Acti... | 5 | 0 |
+| rpt_Comprehensive_InvoiceStmtS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | rpt_Comprehensive_InvoiceTKEx3Costs | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | Copy Of Client Closing Sheet | qryClosing RPT1 | 4 | 0 |
-| rptInvoiceComprARCur | SELECT * FROM qry_InvoiceAR_curr;  | 3 | 0 |
+| rpt_Compr_InvoiceADVCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | Client Closing Sheet | qryClosing RPT1 | 4 | 0 |
 | rptInvoiceComprehensiveTrust2 | qryInvoiceComprehensiveTrustCredit4 | 3 | 0 |
-| rpt_Compr_InvoiceADVCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptInvoiceComprPymtsARCur | qry_InvoicePymts_curr | 3 | 0 |
-| rptReceipt | qryReceipt | 5 | 0 |
 | Client_Trust_Accounts_for_PreTake_Off | qryTakeOff | 5 | 0 |
 | Client_Trust_Accounts_for_Take_Off | qryAttyTrustAcctsTOff | 5 | 0 |
 | rpt_Reconciliation sub | SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qry... | 5 | 0 |
-| New Invoice | qry_current_invoice | 7 | 0 |
 | rpt_Comprehensive_Invoice | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 3 |
+| New Invoice | qry_current_invoice | 7 | 0 |
 | Invoice | qryInvoiceRPT1 | 7 | 0 |
+| Invoice - No Balance Due | qryInvoiceRPT1 | 7 | 0 |
+| Invoice - Past Due | qryInvoiceRPT1 | 7 | 0 |
 | Invoice Attach - Hourly | qryInvoiceAttachRPT1 | 7 | 0 |
+| rptPISOLList |  | 5 | 0 |
+| rpt_Comprehensive_InvoiceTKEx3CostsS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | Invoice Attach - Hourly w Discount | qryInvoiceAttachRPT1 | 5 | 0 |
 | rpt_Trust_Chron_35 | qryTrustEntriesChronRPT35 | 5 | 0 |
 | rptInvoiceComprehensiveAR2 | SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and... | 3 | 0 |
 | Invoice2 | qryInvoiceRPT1 | 7 | 0 |
 | rpt_address_label | tblCase | 1 | 0 |
-| rptPersInjProviderBills | tblPersInjProv | 5 | 0 |
-| rptReconciliation | tblTakeOffMonth | 5 | 1 |
+| rpt_address_labelEx | tblCase | 1 | 0 |
+| rptLastTenOpen | SELECT qryCaseListOpen.CaseID, qryCaseListOpen.CaseOpenDate,... | 5 | 0 |
+| rpt_adj_address_label | SELECT [Personal Injury].Adjuster1, tblCase.CaseID, [Persona... | 1 | 0 |
+| rptInvoiceComprehensiveAR | SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and... | 3 | 0 |
+| rpt_Compr_InvoiceStmtCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Compr_InvoiceTKExCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | rptCriminalStatusNotesLog2 | tblNotes | 3 | 0 |
 | rpt_MergeInvMatter | SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and... | 3 | 0 |
 | rpt_Comprehensive_Invoice2 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_TKLessTrust | qryInvoiceAttachRPT1 | 7 | 1 |
-| rpt_Comprehensive_InvoiceTKEx2 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptInvoiceComprehensiveTrust | qryInvoiceComprehensiveTrustCredit | 3 | 0 |
 | rpt_Trust_Chron_65 | qryTrustEntriesChron65 | 5 | 0 |
 | rpt_TimeDetail_Comprehensive2 | qryInvoiceComprehensiveTimeDetail2 | 7 | 0 |
+| rpt_TKLessTrust | qryInvoiceAttachRPT1 | 7 | 1 |
+| rpt_Comprehensive_InvoiceTKEx2 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | rpt_Comprehensive_InvoiceADV | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_OpenCases | qryCaseListOpen | 5 | 0 |
+| rpt_Comprehensive_InvoiceTKEx2S | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceADVS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceTKEx1 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceStmt | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | rpt_Comprehensive_InvoiceTKEx | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptInvoiceComprPymtsAR | SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and... | 3 | 0 |
-| rpt_Compr_InvoiceTKExCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Open_Cases | qryTakeOff | 5 | 0 |
+| rpt_Comprehensive_InvoiceTKEx1S | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceTKLessTrustCostAR | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceTKLessTrustRep | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceTKLessTrustRep2 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | rpt_TimeDetail_Comprehensive | qryInvoiceComprehensiveTimeDetail | 7 | 0 |
 | rpt_File_Folder_Label | qryFileFolderLabel | 1 | 0 |
 | rpt_ftrustee_address_label | Bankruptcy | 1 | 0 |
-| rptPersInjStatusLog | tblPersInjLog | 5 | 0 |
 | rpt_MergeInvTimeDetail | tblTimeTableDetail | 2 | 0 |
 | Rpt_MergeInvTK | qryInvoiceRPT1 | 7 | 2 |
-| rpt_opp_counsel_address_label | tblCase | 1 | 0 |
 | rpt_trustee_address_label | Bankruptcy | 1 | 0 |
-| Statement of Trust Account | qryStmtTrustRPT1 | 5 | 0 |
+| rpt_opp_counsel_address_label | tblCase | 1 | 0 |
 | rpt_TKExceedsTrust | qryInvoiceAttachRPT1 | 7 | 0 |
-| rpt_Compr_InvoiceStmtCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptInvoiceComprehensiveAR | SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and... | 3 | 0 |
-| rptInvoiceComprTrustCur | qryInvoiceComprehensiveTrustCredit | 3 | 0 |
-| rptLastWeekIntake | SELECT [TB Intakes].ID, [TB Intakes].[GI Last Name], [TB Int... | 5 | 0 |
-| rpt_Comprehensive_InvoiceStmt | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptPersInjuryStatus | qryPersInjStatus | 5 | 4 |
-| rptPersInjStatusDemand | tblPersInjDemand | 5 | 0 |
-| rpt_Comprehensive_InvoiceTKLessTrustCostAR | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptReceiptC | qryReceipt | 5 | 0 |
-| rptReceiptRec | tblReceipts | 5 | 0 |
-| rptReceiptR | tblReceipts | 5 | 0 |
-| rpt_Comprehensive_InvoiceTKLessTrustRep | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_Comprehensive_InvoiceTKLessTrustRep2 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_address_labelEx | tblCase | 1 | 0 |
-| rptComprehensiveTKStatement | qryInvoiceAttachComp | 7 | 0 |
-| rpt_Comprehensive_InvoiceTKEx1 | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_adj_address_label | SELECT [Personal Injury].Adjuster1, tblCase.CaseID, [Persona... | 1 | 0 |
-| rptLastTenOpen | SELECT qryCaseListOpen.CaseID, qryCaseListOpen.CaseOpenDate,... | 5 | 0 |
-| rptClientNotes | SELECT tblCase.CaseID, tblCase.Last_Name, tblCase.First_Name... | 5 | 0 |
-| rptPIStatusSOL | qryAttyTrustAcctsTOff | 5 | 0 |
-| rptPISOLList |  | 5 | 0 |
-| rpt_Comprehensive_InvoiceTKEx3CostsS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rptCriminalStatus | qryCrimStatus | 5 | 4 |
-| rptCriminalStatusActionNeeded | SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.Acti... | 5 | 0 |
-| rptCriminalStatusUpcHrgs | SELECT tblHearingDate.CaseID, tblHearingDate.Hearing_Date, t... | 3 | 0 |
-| rptCriminalStatusChargeNos | tbl_CtCaseNumbers | 3 | 0 |
-| rpt_Comprehensive_InvoiceADVS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_Comprehensive_InvoiceTKEx2S | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_Comprehensive_InvoiceStmtS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_Comprehensive_InvoiceTKEx1S | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_Open_Cases | qryTakeOff | 5 | 0 |
-| rpt_OpenCases | qryCaseListOpen | 5 | 0 |
-| rpt_Trust_Chron_95 | qryTrustEntriesChronRPT95 | 5 | 0 |
 | rpt_Trust_Chron_35D | qryTrustEntriesChronRPT35D | 5 | 0 |
 | rpt_Trust_Chron_65D | qryTrustEntriesChronRPT65D | 5 | 0 |
 | rpt_Trust_Chron_95D | qryTrustEntriesChronRPT95D | 5 | 0 |
 | rpt_Trust_Chron_35W | qryTrustEntriesChronRPT35W | 5 | 0 |
 | rpt_Trust_Chron_65W | qryTrustEntriesChronRPT65W | 5 | 0 |
 | rpt_Trust_Chron_95W | qryTrustEntriesChronRPT95W | 5 | 0 |
+| rpt_Trust_Chron_95 | qryTrustEntriesChronRPT95 | 5 | 0 |
 | rptBillingTotals | SELECT vwBillingTracker2.Tatty, Sum(vwBillingTracker2.Time_)... | 5 | 0 |
+| rptClientNotes | SELECT tblCase.CaseID, tblCase.Last_Name, tblCase.First_Name... | 5 | 0 |
+| rptComprehensiveTKStatement | qryInvoiceAttachComp | 7 | 0 |
+| rptCriminalStatus | qryCrimStatus | 5 | 4 |
+| rptCriminalStatusActionNeeded | SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.Acti... | 5 | 0 |
+| rptCriminalStatusChargeNos | tbl_CtCaseNumbers | 3 | 0 |
+| rptCriminalStatusUpcHrgs | SELECT tblHearingDate.CaseID, tblHearingDate.Hearing_Date, t... | 3 | 0 |
+| rptInvoiceComprARCur | SELECT * FROM qry_InvoiceAR_curr;  | 3 | 0 |
+| rptInvoiceComprehensiveTrust | qryInvoiceComprehensiveTrustCredit | 3 | 0 |
+| rptInvoiceComprPymtsAR | SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and... | 3 | 0 |
+| rptInvoiceComprPymtsARCur | qry_InvoicePymts_curr | 3 | 0 |
+| rptInvoiceComprTrustCur | qryInvoiceComprehensiveTrustCredit | 3 | 0 |
+| rptLastWeekIntake | SELECT [TB Intakes].ID, [TB Intakes].[GI Last Name], [TB Int... | 5 | 0 |
+| rptPersInjProviderBills | tblPersInjProv | 5 | 0 |
+| rptPersInjStatusAction | SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.Acti... | 5 | 0 |
+| rptPersInjStatusDemand | tblPersInjDemand | 5 | 0 |
+| rptPersInjStatusLog | tblPersInjLog | 5 | 0 |
+| rptPersInjuryStatus | qryPersInjStatus | 5 | 4 |
+| rptPIStatusSOL | qryAttyTrustAcctsTOff | 5 | 0 |
+| rptReceipt | qryReceipt | 5 | 0 |
+| rptReceiptC | qryReceipt | 5 | 0 |
+| rptReceiptR | tblReceipts | 5 | 0 |
+| rptReceiptRec | tblReceipts | 5 | 0 |
+| rptReconciliation | tblTakeOffMonth | 5 | 1 |
+| rptTKReport | qryTimeKeeping | 5 | 0 |
+| rptTKReport2 | qryTimeKeeping | 6 | 0 |
+| Statement of Trust Account | qryStmtTrustRPT1 | 5 | 0 |
 
 ## Structured Form Inventory
-**Extracted:** 92 forms
+**Extracted:** 94 forms
 
 | Form | Record Source | Sections | Controls |
 |------|---------------|----------|----------|
-| frm_invoices_summary | SELECT vw_frm_invoices_summary.CaseID, vw_frm_invoices_summa... | 3 | 58 |
-| frmBankruptcy | SELECT Bankruptcy.BankruptcyID, Bankruptcy.CaseID, Bankruptc... | 1 | 68 |
-| frm_trust_summary | qry_trustStatements | 2 | 30 |
-| frmClientLedger | SELECT vwfrmClientLedger.CaseID, vwfrmClientLedger.Last_Name... | 1 | 335 |
+| frmClientLedger | SELECT vwfrmClientLedger.CaseID, vwfrmClientLedger.Last_Name... | 1 | 341 |
 | frm_advanced_payments | qry_advanced_payments | 3 | 38 |
 | frm_uncashed_trust_checks | qry_uncashed_trust_checks | 3 | 30 |
-| frmChild | SELECT tblChild.Child_ID, tblChild.FamilyLaw_ID, tblChild.Ch... | 2 | 7 |
+| frmActionNeededAll3 | qryActionNeededAll | 2 | 30 |
+| frmBankruptcy | SELECT Bankruptcy.BankruptcyID, Bankruptcy.CaseID, Bankruptc... | 1 | 68 |
+| frm_trust_summary | qry_trustStatements | 2 | 30 |
+| frm_invoices_summary | SELECT vw_frm_invoices_summary.CaseID, vw_frm_invoices_summa... | 3 | 58 |
+| frm_Billing_Tracker | qryBillingTracker | 2 | 19 |
+| frmDispositions | qryDispos | 2 | 52 |
+| frm_Billing_Tracker2 | qryBillingTracker2 | 2 | 36 |
 | frmTimeTableDetailMerge | SELECT tblTimeTableDetail.Time_ID, tblTimeTableDetail.Tdate,... | 3 | 22 |
-| frmActionNeeded | SELECT TblActionNeeded.ActionNeededID, TblActionNeeded.CaseI... | 1 | 8 |
-| frmHearingDate | SELECT tblHearingDate.HearingID, tblHearingDate.CaseID, tblH... | 2 | 21 |
-| frmApplicationLoad |  | 0 | 0 |
-| frmActionNeededAll | qryActionNeededAll | 2 | 39 |
+| frmChild | SELECT tblChild.Child_ID, tblChild.FamilyLaw_ID, tblChild.Ch... | 2 | 7 |
+| frmActionNeeded | SELECT TblActionNeeded.ActionNeededID, TblActionNeeded.CaseI... | 1 | 9 |
+| frmTakeOffReconciliation | qryTakeOff | 2 | 121 |
 | frmAttyFeeGeneration | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 3 | 101 |
-| frmTakeOffReconciliation | qryTakeOff | 2 | 127 |
-| frmTimeKeepingOpen | qryTimeKeepingOpen | 2 | 37 |
+| frmActionNeededAll | qryActionNeededAll | 2 | 39 |
+| frmActionNeededAll2 | qryActionNeededAll2 | 2 | 27 |
+| frmCalls | tblCalls | 3 | 70 |
+| frmLogin |  | 1 | 10 |
 | frmClientReviews | SELECT tblCase.Last_Name, tblCase.First_Name, tblCase.Case_L... | 3 | 37 |
 | frmAddUser | tblUsers | 1 | 11 |
-| frmLogin |  | 1 | 10 |
-| frmSubCH13Plans | SELECT CH13Plans.IDCH13Plans, CH13Plans.IDBankruptcy, CH13Pl... | 2 | 12 |
-| frmBilling | SELECT Billing.ID, Billing.CaseID, Billing.[Balance Due Date... | 1 | 14 |
-| zClient Ledger OLD | tblCase | 2 | 209 |
-| frmBrowse |  | 1 | 5 |
-| frmTakeOff | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 2 | 176 |
-| frmBrowse_BackEnd |  | 1 | 5 |
-| frmCaseListClosed | qryCaseListClosed | 2 | 34 |
 | frmCalendarCheck | qryCalendarCheck | 2 | 39 |
-| frmAttyNotes | SELECT tblNotes.IDNotes, tblNotes.CaseID, tblNotes.NoteDate,... | 2 | 10 |
-| frmCaseList |  | 2 | 11 |
-| frmCaseListAll | qryCaseListAll | 2 | 38 |
-| frmCaseListOpen subform | SELECT [qryCaseListOpen].[CaseID], [qryCaseListOpen].[CaseOp... | 1 | 30 |
-| frmTakeOffSubForm | SELECT vwfrmTakeOffSubForm.FileNumber, vwfrmTakeOffSubForm.N... | 2 | 84 |
-| zfrmPersInjSOL | qrySOL | 2 | 27 |
-| frmCaseListOpen | qryCaseListOpen | 2 | 39 |
-| frmClientsConflict | tblCase | 2 | 17 |
-| frmCallsList | SELECT tblCalls.CFirstName, tblCalls.CLastName, tblCalls.CDa... | 3 | 39 |
-| frmUsers_Edit | SELECT * FROM tblUsers;  | 1 | 12 |
-| frmTimeTableDetail | SELECT vwTimeTableDetail.Time_ID, vwTimeTableDetail.Tdate, v... | 3 | 31 |
-| frmConflictChk |  | 2 | 8 |
-| zfrmSelectCaseNum |  | 1 | 4 |
-| frmCtCaseNumbers | SELECT tbl_CtCaseNumbers.CtCaseNoID, tbl_CtCaseNumbers.CaseI... | 1 | 6 |
-| frmTakeOffSubForm2 | qryTakeOffStep2 | 2 | 63 |
-| frmDisposition | SELECT Disposition.DispoID, Disposition.CaseID, Disposition.... | 1 | 25 |
-| frmDispositions | qryDispos | 2 | 52 |
-| frmOppPartyConflict | tblCase | 2 | 15 |
-| frmPersInjuryStatusReport |  | 1 | 7 |
-| frmFamilyLaw | SELECT [Family Law - Divorce].ID, [Family Law - Divorce].Cas... | 1 | 127 |
-| frmHome |  | 3 | 38 |
-| frmToBeClosed | qryToBeClosed | 2 | 32 |
-| frmIntakesConflicts | TB Intakes | 2 | 17 |
-| frmOkAlert |  | 1 | 4 |
-| frmInvoiceSent | SELECT tbl_InvoiceSent.CaseID, tbl_InvoiceSent.InvSent, tbl_... | 2 | 20 |
-| frmSubProofOfClaims | SELECT ProofOfClaims.IDProofOfClaims, ProofOfClaims.IDBankru... | 2 | 23 |
-| Intakes | TB Intakes | 3 | 59 |
-| frmMatter | SELECT vwMatterAndAR.MatterID, vwMatterAndAR.CaseID, vwMatte... | 1 | 17 |
-| frmTakeOffTotalFeesCosts | tblTakeOffMonth | 2 | 39 |
-| frmSourceAnalytics | qryCaseSourcesRPT1 | 3 | 45 |
-| frmTakeOffSteps |  | 2 | 15 |
-| frmUsers | SELECT * FROM tblUsers;  | 2 | 10 |
-| frmSubPrevBankrupt | SELECT tblPrevBank.IDPrevBank, tblPrevBank.IDBankruptcy, tbl... | 2 | 10 |
-| zfrmSelectCaseNum_Discount |  | 1 | 4 |
-| frmTrustAccount | SELECT vwTrustAccountTable.TrustAccountID, vwTrustAccountTab... | 1 | 17 |
-| frmYearWiseCaseList | SELECT TblCase.CaseID, TblCase.CaseOpenDate, [Last_Name] & "... | 2 | 41 |
-| frmYesNoAlert |  | 1 | 5 |
-| frmTimeKeepingClosed | qryTimeKeepingClosed | 2 | 53 |
-| frmToBeScanned | qryToBeScanned | 2 | 31 |
-| frmUpcoming Hearings | qryUpcomingHearings | 2 | 53 |
-| Time Keeping | qryTimeKeeping | 1 | 108 |
-| zfrmFamilyLaw OLD | qryFamilyLaw | 2 | 164 |
-| zfrmPersonalDetailsFamilyLaw | tblCase | 1 | 30 |
-| frmTKClose | qryTKClose1 | 2 | 71 |
-| frmPersonalInjury2 | Personal Injury | 1 | 107 |
-| frmPersInjLog2 | tblPersInjLog | 2 | 6 |
-| frmPersInjDemand | tblPersInjDemand | 2 | 9 |
-| frmPersInjLog | SELECT tblPersInjLog.EventDate, tblPersInjLog.EventDescripti... | 2 | 7 |
-| frmPersonalInjury | SELECT [Personal Injury].ID, [Personal Injury].CaseID, [Pers... | 1 | 109 |
-| frmReceipt | tblReceipts | 1 | 33 |
-| frmCalls | tblCalls | 3 | 67 |
-| frm_Billing_Tracker | qryBillingTracker | 2 | 19 |
-| frmPersInjProvider | SELECT tblPersInjProv.PIProviderID, tblPersInjProv.ID, tblPe... | 2 | 21 |
-| frmTRUSTENTRIESCHRON | qryTrustEntriesChron | 3 | 68 |
-| frmTakeOff2 | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 2 | 9 |
-| frmScansubform | SELECT tblScans.ScansID, tblScans.CaseID, tblScans.ScanLocat... | 1 | 2 |
-| frmScanLocation | tblScans | 1 | 3 |
-| frmHomeAdminLogin |  | 1 | 8 |
-| frmHomeAdmin |  | 3 | 13 |
 | frmAdminLoginTK |  | 1 | 8 |
-| frmTakeOffTest | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 2 | 9 |
-| frmTakeOffSubForm3 | qryTakeOffStep2 | 2 | 75 |
-| frm_Billing_Tracker2 | qryBillingTracker2 | 2 | 36 |
-| frmTakeOffSubForm_OLD | qryTakeOffStep2 | 2 | 77 |
+| frmPersInjDemand | tblPersInjDemand | 2 | 9 |
+| frmHearingDate | SELECT tblHearingDate.HearingID, tblHearingDate.CaseID, tblH... | 2 | 21 |
+| frmApplicationLoad |  | 0 | 0 |
+| frmCaseList |  | 2 | 11 |
+| frmAttyNotes | SELECT tblNotes.IDNotes, tblNotes.CaseID, tblNotes.NoteDate,... | 2 | 10 |
+| frmBilling | SELECT Billing.ID, Billing.CaseID, Billing.[Balance Due Date... | 1 | 14 |
+| frmBrowse |  | 1 | 5 |
+| frmCaseListClosed | qryCaseListClosed | 2 | 34 |
+| frmBrowse_BackEnd |  | 1 | 5 |
+| frmReceipt | tblReceipts | 1 | 33 |
+| frmClientsConflict | tblCase | 2 | 17 |
+| frmUsers_Edit | SELECT * FROM tblUsers;  | 1 | 12 |
+| frmCallsList | SELECT tblCalls.CFirstName, tblCalls.CLastName, tblCalls.CDa... | 3 | 39 |
+| frmCaseListOpen subform | SELECT [qryCaseListOpen].[CaseID], [qryCaseListOpen].[CaseOp... | 1 | 30 |
+| frmCaseListAll | qryCaseListAll | 2 | 38 |
+| frmCaseListOpen | qryCaseListOpen | 2 | 39 |
+| frmHomeAdmin |  | 3 | 12 |
+| zfrmSelectCaseNum |  | 1 | 4 |
+| frmConflictChk |  | 2 | 8 |
+| frmPersInjuryStatusReport |  | 1 | 7 |
+| frmOppPartyConflict | tblCase | 2 | 15 |
+| frmFamilyLaw | SELECT [Family Law - Divorce].ID, [Family Law - Divorce].Cas... | 1 | 127 |
 | frmOpenReport |  | 1 | 10 |
 | frmCrimStatusReport |  | 1 | 11 |
+| frmCtCaseNumbers | SELECT tbl_CtCaseNumbers.CtCaseNoID, tbl_CtCaseNumbers.CaseI... | 1 | 6 |
+| frmDisposition | SELECT Disposition.DispoID, Disposition.CaseID, Disposition.... | 1 | 25 |
+| frmHome |  | 3 | 38 |
+| frmScanLocation | tblScans | 1 | 3 |
+| frmHomeAdminLogin |  | 1 | 8 |
+| frmOkAlert |  | 1 | 4 |
+| frmIntakesConflicts | TB Intakes | 2 | 17 |
+| frmSubProofOfClaims | SELECT ProofOfClaims.IDProofOfClaims, ProofOfClaims.IDBankru... | 2 | 23 |
+| frmInvoiceSent | SELECT tbl_InvoiceSent.CaseID, tbl_InvoiceSent.InvSent, tbl_... | 2 | 18 |
+| frmPersonalInjury2 | Personal Injury | 1 | 107 |
+| frmMatter | SELECT vwMatterAndAR.MatterID, vwMatterAndAR.CaseID, vwMatte... | 1 | 17 |
+| frmPersInjLog | SELECT tblPersInjLog.EventDate, tblPersInjLog.EventDescripti... | 2 | 10 |
+| frmPersInjProvider | SELECT tblPersInjProv.PIProviderID, tblPersInjProv.ID, tblPe... | 2 | 21 |
+| frmPersInjLog2 | tblPersInjLog | 2 | 6 |
+| frmPersonalInjury | SELECT [Personal Injury].ID, [Personal Injury].CaseID, [Pers... | 1 | 109 |
+| frmScansubform | SELECT tblScans.ScansID, tblScans.CaseID, tblScans.ScanLocat... | 1 | 2 |
+| frmSourceAnalytics | qryCaseSourcesRPT1 | 3 | 45 |
+| frmSubCH13Plans | SELECT CH13Plans.IDCH13Plans, CH13Plans.IDBankruptcy, CH13Pl... | 2 | 12 |
+| frmSubPrevBankrupt | SELECT tblPrevBank.IDPrevBank, tblPrevBank.IDBankruptcy, tbl... | 2 | 10 |
+| frmTakeOff | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 2 | 154 |
+| frmTakeOff2 | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 2 | 9 |
+| frmTakeOffSteps |  | 2 | 15 |
+| frmTakeOffSubForm | SELECT vwfrmTakeOffSubForm.FileNumber, vwfrmTakeOffSubForm.N... | 2 | 84 |
+| frmTakeOffSubForm_OLD | qryTakeOffStep2 | 2 | 77 |
+| frmTakeOffSubForm2 | qryTakeOffStep2 | 2 | 63 |
+| frmTakeOffSubForm3 | qryTakeOffStep2 | 2 | 75 |
+| frmTakeOffTest | SELECT tblTakeOffMonth.*, tblTakeOffMonth.TakeOffDate FROM t... | 2 | 9 |
+| frmTakeOffTotalFeesCosts | tblTakeOffMonth | 2 | 39 |
+| frmTimeKeepingClosed | qryTimeKeepingClosed | 2 | 53 |
+| frmTimeKeepingOpen | qryTimeKeepingOpen | 2 | 37 |
+| frmTimeTableDetail | SELECT vwTimeTableDetail.Time_ID, vwTimeTableDetail.Tdate, v... | 3 | 31 |
+| frmTKClose | qryTKClose1 | 2 | 71 |
+| frmToBeClosed | qryToBeClosed | 2 | 32 |
+| frmToBeScanned | qryToBeScanned | 2 | 31 |
+| frmTrustAccount | SELECT vwTrustAccountTable.TrustAccountID, vwTrustAccountTab... | 1 | 17 |
+| zfrmSelectCaseNum_Discount |  | 1 | 4 |
+| frmTRUSTENTRIESCHRON | qryTrustEntriesChron | 3 | 68 |
+| frmUpcoming Hearings | qryUpcomingHearings | 2 | 53 |
+| frmUsers | SELECT * FROM tblUsers;  | 2 | 10 |
+| frmYearWiseCaseList | SELECT TblCase.CaseID, TblCase.CaseOpenDate, [Last_Name] & "... | 2 | 41 |
+| frmYesNoAlert |  | 1 | 5 |
+| Intakes | TB Intakes | 3 | 59 |
+| Time Keeping | qryTimeKeeping | 1 | 113 |
+| zClient Ledger OLD | tblCase | 2 | 209 |
+| zfrmFamilyLaw OLD | qryFamilyLaw | 2 | 164 |
+| zfrmPersInjSOL | qrySOL | 2 | 27 |
+| zfrmPersonalDetailsFamilyLaw | tblCase | 1 | 30 |
 
 ## JSON Layer Summary
 | Artifact | Count |
 |----------|-------|
-| Structured forms (`extract/forms/*.json`) | 92 |
-| Structured reports (`extract/reports/*.json`) | 97 |
-| Query index (`extract/queries/index.json`) | 211 |
-| VBA index (`extract/vba/index.json`) | 1162 procedures |
-| Report lineage index (`extract/lineage/index.json`) | 97 reports |
+| Structured forms (`extract/forms/*.json`) | 94 |
+| Structured reports (`extract/reports/*.json`) | 99 |
+| Query index (`extract/queries/index.json`) | 213 |
+| VBA index (`extract/vba/index.json`) | 1200 procedures |
+| Report lineage index (`extract/lineage/index.json`) | 99 reports |
 | App manifest (`extract/app_manifest.json`) | 1 |
 
 ## Report Lineage Summary
-**Generated:** 97 lineage report(s)
+**Generated:** 99 lineage report(s)
 
 | Report | Trigger Paths | Queries | Tables | Confidence |
 |--------|---------------|---------|--------|------------|
-| Invoice - Past Due | 9 | 1 | 1 | high |
-| rpt_Billing_Closing | 0 | 0 | 2 | medium |
-| rpt_Trust_Closing | 0 | 1 | 1 | medium |
-| rptCriminalStatusNotesLog | 0 | 0 | 1 | medium |
 | rpt_TKTotalAdvance | 2 | 2 | 3 | high |
 | rpt_Matter_Closing | 0 | 0 | 1 | medium |
+| rptCriminalStatusNotesLog | 0 | 0 | 1 | medium |
+| rpt_Trust_Closing | 0 | 1 | 1 | medium |
+| rpt_Billing_Closing | 0 | 0 | 2 | medium |
 | Accounts Receivable | 3 | 2 | 2 | high |
-| rpt_CaseNumber_Closing | 0 | 0 | 1 | medium |
 | rpt_Main_Closing | 6 | 0 | 1 | high |
 | rpt_Disposition_Closing | 0 | 1 | 2 | medium |
+| rpt_CaseNumber_Closing | 0 | 0 | 1 | medium |
 | Case Sources and Revenue | 0 | 2 | 2 | medium |
-| Invoice - No Balance Due | 5 | 1 | 1 | high |
-| rptPersInjStatusAction | 0 | 0 | 1 | medium |
+| rpt_Comprehensive_InvoiceStmtS | 4 | 0 | 2 | high |
 | rpt_Comprehensive_InvoiceTKEx3Costs | 8 | 0 | 2 | high |
 | Copy Of Client Closing Sheet | 0 | 2 | 5 | medium |
-| rptInvoiceComprARCur | 2 | 2 | 1 | high |
+| rpt_Compr_InvoiceADVCur | 2 | 0 | 2 | high |
 | Client Closing Sheet | 0 | 2 | 5 | medium |
 | rptInvoiceComprehensiveTrust2 | 0 | 1 | 2 | medium |
-| rpt_Compr_InvoiceADVCur | 2 | 0 | 2 | high |
-| rptInvoiceComprPymtsARCur | 2 | 2 | 1 | high |
-| rptReceipt | 2 | 1 | 2 | high |
 | Client_Trust_Accounts_for_PreTake_Off | 1 | 2 | 1 | high |
 | Client_Trust_Accounts_for_Take_Off | 6 | 1 | 2 | high |
 | rpt_Reconciliation sub | 0 | 1 | 1 | medium |
-| New Invoice | 3 | 1 | 1 | high |
 | rpt_Comprehensive_Invoice | 9 | 0 | 2 | high |
-| Invoice | 47 | 1 | 1 | high |
+| New Invoice | 3 | 1 | 1 | high |
+| Invoice | 49 | 1 | 1 | high |
+| Invoice - No Balance Due | 5 | 1 | 1 | high |
+| Invoice - Past Due | 9 | 1 | 1 | high |
 | Invoice Attach - Hourly | 13 | 2 | 3 | high |
+| rptPISOLList | 0 | 0 | 0 | medium |
+| rpt_Comprehensive_InvoiceTKEx3CostsS | 4 | 0 | 2 | high |
 | Invoice Attach - Hourly w Discount | 9 | 2 | 3 | high |
 | rpt_Trust_Chron_35 | 3 | 1 | 2 | high |
 | rptInvoiceComprehensiveAR2 | 0 | 0 | 2 | medium |
 | Invoice2 | 5 | 1 | 1 | high |
 | rpt_address_label | 6 | 0 | 1 | high |
-| rptPersInjProviderBills | 0 | 0 | 1 | medium |
-| rptReconciliation | 1 | 0 | 1 | high |
+| rpt_address_labelEx | 5 | 0 | 1 | high |
+| rptLastTenOpen | 1 | 1 | 2 | high |
+| rpt_adj_address_label | 1 | 0 | 2 | high |
+| rptInvoiceComprehensiveAR | 0 | 0 | 2 | medium |
+| rpt_Compr_InvoiceStmtCur | 2 | 0 | 2 | high |
+| rpt_Compr_InvoiceTKExCur | 2 | 0 | 2 | high |
 | rptCriminalStatusNotesLog2 | 0 | 0 | 1 | medium |
 | rpt_MergeInvMatter | 0 | 0 | 2 | medium |
 | rpt_Comprehensive_Invoice2 | 0 | 0 | 2 | medium |
-| rpt_TKLessTrust | 2 | 2 | 3 | high |
-| rpt_Comprehensive_InvoiceTKEx2 | 8 | 0 | 2 | high |
-| rptInvoiceComprehensiveTrust | 0 | 1 | 2 | medium |
 | rpt_Trust_Chron_65 | 3 | 1 | 2 | high |
 | rpt_TimeDetail_Comprehensive2 | 0 | 2 | 2 | medium |
+| rpt_TKLessTrust | 2 | 2 | 3 | high |
+| rpt_Comprehensive_InvoiceTKEx2 | 8 | 0 | 2 | high |
 | rpt_Comprehensive_InvoiceADV | 9 | 0 | 2 | high |
+| rpt_OpenCases | 1 | 1 | 1 | high |
+| rpt_Comprehensive_InvoiceTKEx2S | 4 | 0 | 2 | high |
+| rpt_Comprehensive_InvoiceADVS | 4 | 0 | 2 | high |
+| rpt_Comprehensive_InvoiceTKEx1 | 8 | 0 | 2 | high |
+| rpt_Comprehensive_InvoiceStmt | 9 | 0 | 2 | high |
 | rpt_Comprehensive_InvoiceTKEx | 9 | 0 | 2 | high |
-| rptInvoiceComprPymtsAR | 2 | 0 | 2 | high |
-| rpt_Compr_InvoiceTKExCur | 2 | 0 | 2 | high |
+| rpt_Open_Cases | 0 | 2 | 1 | medium |
+| rpt_Comprehensive_InvoiceTKEx1S | 4 | 0 | 2 | high |
+| rpt_Comprehensive_InvoiceTKLessTrustCostAR | 0 | 0 | 2 | medium |
+| rpt_Comprehensive_InvoiceTKLessTrustRep | 1 | 0 | 2 | high |
+| rpt_Comprehensive_InvoiceTKLessTrustRep2 | 0 | 0 | 2 | medium |
 | rpt_TimeDetail_Comprehensive | 0 | 2 | 3 | medium |
 | rpt_File_Folder_Label | 1 | 1 | 2 | high |
 | rpt_ftrustee_address_label | 1 | 0 | 1 | high |
-| rptPersInjStatusLog | 0 | 0 | 1 | medium |
 | rpt_MergeInvTimeDetail | 0 | 0 | 1 | medium |
 | Rpt_MergeInvTK | 0 | 1 | 1 | medium |
-| rpt_opp_counsel_address_label | 1 | 0 | 1 | high |
 | rpt_trustee_address_label | 1 | 0 | 1 | high |
-| Statement of Trust Account | 7 | 1 | 1 | high |
+| rpt_opp_counsel_address_label | 1 | 0 | 1 | high |
 | rpt_TKExceedsTrust | 2 | 2 | 3 | high |
-| rpt_Compr_InvoiceStmtCur | 2 | 0 | 2 | high |
-| rptInvoiceComprehensiveAR | 0 | 0 | 2 | medium |
-| rptInvoiceComprTrustCur | 2 | 1 | 2 | high |
-| rptLastWeekIntake | 1 | 0 | 1 | high |
-| rpt_Comprehensive_InvoiceStmt | 9 | 0 | 2 | high |
-| rptPersInjuryStatus | 4 | 1 | 2 | high |
-| rptPersInjStatusDemand | 0 | 0 | 1 | medium |
-| rpt_Comprehensive_InvoiceTKLessTrustCostAR | 0 | 0 | 2 | medium |
-| rptReceiptC | 1 | 1 | 2 | high |
-| rptReceiptRec | 0 | 0 | 1 | medium |
-| rptReceiptR | 1 | 0 | 1 | high |
-| rpt_Comprehensive_InvoiceTKLessTrustRep | 1 | 0 | 2 | high |
-| rpt_Comprehensive_InvoiceTKLessTrustRep2 | 0 | 0 | 2 | medium |
-| rpt_address_labelEx | 5 | 0 | 1 | high |
-| rptComprehensiveTKStatement | 1 | 1 | 2 | high |
-| rpt_Comprehensive_InvoiceTKEx1 | 8 | 0 | 2 | high |
-| rpt_adj_address_label | 1 | 0 | 2 | high |
-| rptLastTenOpen | 1 | 1 | 2 | high |
-| rptClientNotes | 2 | 0 | 2 | high |
-| rptPIStatusSOL | 0 | 1 | 2 | medium |
-| rptPISOLList | 0 | 0 | 0 | medium |
-| rpt_Comprehensive_InvoiceTKEx3CostsS | 4 | 0 | 2 | high |
-| rptCriminalStatus | 3 | 1 | 2 | high |
-| rptCriminalStatusActionNeeded | 0 | 0 | 1 | medium |
-| rptCriminalStatusUpcHrgs | 0 | 0 | 1 | medium |
-| rptCriminalStatusChargeNos | 0 | 0 | 1 | medium |
-| rpt_Comprehensive_InvoiceADVS | 4 | 0 | 2 | high |
-| rpt_Comprehensive_InvoiceTKEx2S | 4 | 0 | 2 | high |
-| rpt_Comprehensive_InvoiceStmtS | 4 | 0 | 2 | high |
-| rpt_Comprehensive_InvoiceTKEx1S | 4 | 0 | 2 | high |
-| rpt_Open_Cases | 0 | 2 | 1 | medium |
-| rpt_OpenCases | 1 | 1 | 1 | high |
-| rpt_Trust_Chron_95 | 3 | 1 | 2 | high |
 | rpt_Trust_Chron_35D | 1 | 1 | 2 | high |
 | rpt_Trust_Chron_65D | 1 | 1 | 2 | high |
 | rpt_Trust_Chron_95D | 1 | 1 | 2 | high |
 | rpt_Trust_Chron_35W | 1 | 1 | 2 | high |
 | rpt_Trust_Chron_65W | 1 | 1 | 2 | high |
 | rpt_Trust_Chron_95W | 1 | 1 | 2 | high |
+| rpt_Trust_Chron_95 | 3 | 1 | 2 | high |
 | rptBillingTotals | 1 | 0 | 1 | high |
+| rptClientNotes | 2 | 0 | 2 | high |
+| rptComprehensiveTKStatement | 1 | 1 | 2 | high |
+| rptCriminalStatus | 3 | 1 | 2 | high |
+| rptCriminalStatusActionNeeded | 0 | 0 | 1 | medium |
+| rptCriminalStatusChargeNos | 0 | 0 | 1 | medium |
+| rptCriminalStatusUpcHrgs | 0 | 0 | 1 | medium |
+| rptInvoiceComprARCur | 2 | 2 | 1 | high |
+| rptInvoiceComprehensiveTrust | 0 | 1 | 2 | medium |
+| rptInvoiceComprPymtsAR | 2 | 0 | 2 | high |
+| rptInvoiceComprPymtsARCur | 2 | 2 | 1 | high |
+| rptInvoiceComprTrustCur | 2 | 1 | 2 | high |
+| rptLastWeekIntake | 1 | 0 | 1 | high |
+| rptPersInjProviderBills | 0 | 0 | 1 | medium |
+| rptPersInjStatusAction | 0 | 0 | 1 | medium |
+| rptPersInjStatusDemand | 0 | 0 | 1 | medium |
+| rptPersInjStatusLog | 0 | 0 | 1 | medium |
+| rptPersInjuryStatus | 4 | 1 | 2 | high |
+| rptPIStatusSOL | 0 | 1 | 2 | medium |
+| rptReceipt | 2 | 1 | 2 | high |
+| rptReceiptC | 1 | 1 | 2 | high |
+| rptReceiptR | 1 | 0 | 1 | high |
+| rptReceiptRec | 0 | 0 | 1 | medium |
+| rptReconciliation | 1 | 0 | 1 | high |
+| rptTKReport | 2 | 1 | 2 | high |
+| rptTKReport2 | 2 | 1 | 2 | high |
+| Statement of Trust Account | 7 | 1 | 1 | high |
 

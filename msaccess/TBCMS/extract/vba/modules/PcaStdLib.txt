@@ -628,13 +628,13 @@ rv = pcaReplaceStr(rv, "0", "")
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 rv = Left(rv & "0000", 4)
 '-----------------------------------------------------------------
-EXIT_HANDLER:
+Exit_Handler:
 pcaSoundEx = rv
 Exit Function
 '-----------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
 foo = pcaStdErrMsg(Err, Error)
-Resume EXIT_HANDLER:
+Resume Exit_Handler:
 Resume
 End Function
 
@@ -957,7 +957,7 @@ AskYesNoCancel = MsgBox(s, 35 + def, sTitle)
 End Function
 Function pcaFileSelect(Optional vDefaultFilter As String, Optional vDefaultFileName As String, _
                             Optional vDirectory As String, Optional vDialogTitle As String) As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim FileFilter As String
 Dim rv As String
 Dim strFilter As String
@@ -994,17 +994,17 @@ Dim lngFilterIndex As Long
     
     pcaFileSelect = rv
 '--------------------------------
-EXIT_HANDLER:
+Exit_Handler:
     Exit Function
 '--------------------------------
-ERR_HANDLER:
+Err_Handler:
     Call pcaStdErrMsg(Err.Number, Err.Description)
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
     Resume
 End Function
 Function pcaFileSaveAs(Optional vDefaultFilter As String, Optional vDefaultFileName As String, _
                             Optional vDirectory As String, Optional vDialogTitle As String) As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim FileFilter As String
 Dim rv As String
 Dim strFilter As String
@@ -1041,18 +1041,18 @@ Dim lngFilterIndex As Long
     
     pcaFileSaveAs = rv
 '--------------------------------
-EXIT_HANDLER:
+Exit_Handler:
     Exit Function
 '--------------------------------
-ERR_HANDLER:
+Err_Handler:
     Call pcaStdErrMsg(Err.Number, Err.Description)
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
     Resume
 End Function
 
 
 Function pcaIsFile(sFile As Variant, Optional DispMsg As Boolean = False) As Integer
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim MSG As String, foo
 Const ERR_DISKNOTREADY = 71, ERR_DEVICEUNAVAILABLE = 68
 Const MB_EXCLAIM = 48, MB_STOP = 16, MB_OK_CANCEL = 1, BUTTON_OK = 1
@@ -1061,7 +1061,7 @@ pcaIsFile = (GetAttr(sFile) And vbDirectory) = 0
 EXIT_FUNCTION:
 Exit Function
 '=========================================================
-ERR_HANDLER:
+Err_Handler:
 Select Case Err
 'Case ERR_DISKNOTREADY
 '   Msg = "Put a floppy disk in the drive and close the drive door."
@@ -1101,7 +1101,7 @@ Resume EXIT_FUNCTION:
 Resume
 End Function
 Function pcaDeleteFile(fName As String) As Integer
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 If fName = "" Then
     pcaDeleteFile = False
     Exit Function
@@ -1116,7 +1116,7 @@ EXIT_FUNCTION:
 pcaDeleteFile = Not pcaIsFile(fName)
 Exit Function
 '--------------------------------------------
-ERR_HANDLER:
+Err_Handler:
 Select Case Err
 Case 75  'Path/File access error
     pcaDeleteFile = False
@@ -1133,7 +1133,7 @@ Function pcaGetTempFileName(ByVal DriveLetter As Integer, ByVal Prefix As String
 End Function
 Function pcaFileOpen(sFileName As String, OpenMode As Integer) As Integer
 Dim fh As Integer, foo
-On Error GoTo ERR_HANDLER:
+On Error GoTo Err_Handler:
 Const FOPEN_WRITE = 1
 Const FOPEN_READWRITE = 2
 Const FOPEN_READ = 0
@@ -1150,7 +1150,7 @@ EXIT_FUNCTION:
 pcaFileOpen = fh
 Exit Function
 '----------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
 fh = -1
 Select Case Err
 End Select
@@ -1256,7 +1256,7 @@ End Function
 Function pcaReadFileIntoString(strFile As String) As String
 Dim fh As Long, foo
 Dim buffer As String, retval As String
-On Error GoTo ERR_HANDLER:
+On Error GoTo Err_Handler:
 fh = pcaFileOpen(strFile, 0)
 If fh < 0 Then
     MsgBox "Couldn't open file: " & strFile
@@ -1273,7 +1273,7 @@ If fh <> -1 Then Close fh
 pcaReadFileIntoString = retval
 Exit Function
 
-ERR_HANDLER:
+Err_Handler:
 Call pcaStdErrMsg(Err, Error)
 Resume EXIT_FUNCTION
 End Function
@@ -1446,7 +1446,7 @@ Resume Next
 Resume
 End Function
 Function PcaFormatCreditCard(sCreditCard As String) As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim rv As String
 Dim i As Integer
     rv = sCreditCard
@@ -1456,13 +1456,13 @@ Dim i As Integer
     rv = pcaReplaceStr(rv, "/", "")
     rv = Left(rv, 16)
     rv = Left(rv, 4) & "-" & Mid(rv, 5, 4) & "-" & Mid(rv, 9, 4) & "-" & Mid(rv, 13)
-EXIT_HANDLER:
+Exit_Handler:
     PcaFormatCreditCard = rv
     Exit Function
-ERR_HANDLER:
+Err_Handler:
     rv = ""
     foo = pcaStdErrMsg(Err, Error)
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
     Resume
 End Function
 
@@ -1495,7 +1495,7 @@ Public Function ahtCommonFileOpenSave( _
 ' OpenFile: Boolean(True=Open File/False=Save As)
 ' Out:
 ' Return Value: Either Null or the selected filename
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim OFN As tagOPENFILENAME
 Dim strFileName As String
 Dim strFileTitle As String
@@ -1560,12 +1560,12 @@ Dim fResult As Boolean
     Else
         ahtCommonFileOpenSave = vbNullString
     End If
-EXIT_HANDLER:
+Exit_Handler:
     Exit Function
-ERR_HANDLER:
+Err_Handler:
     'fail to open the common file open save dialog
     ahtCommonFileOpenSave = InputBox("Please Enter File Name:", "Filename?", FileName)
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
     Resume
 End Function
 
@@ -1593,7 +1593,7 @@ Dim intPos As Integer
 End Function
 
 Function PcaRunQuery(s As String)
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 DoEvents
 Debug.Print "Running: " & s
 Echo True, "Running: " & s
@@ -1606,7 +1606,7 @@ SELECTQUERY:
 DoCmd.OpenQuery s
 Exit Function
 
-ERR_HANDLER:
+Err_Handler:
 If Err = 3065 Then
     Err = 0
     Resume SELECTQUERY
@@ -1618,7 +1618,7 @@ Resume
 End Function
 
 Public Function PcaDetachAllLinkTables()
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim rs As DAO.Recordset
 Dim sql As String
 Dim db As Database
@@ -1643,18 +1643,18 @@ Dim rv As Boolean
         rs.MoveNext
     Loop
     rv = True
-EXIT_HANDLER:
+Exit_Handler:
     PcaDetachAllLinkTables = rv
     Exit Function
-ERR_HANDLER:
+Err_Handler:
     Resume Next
     rv = False
     foo = pcaStdErrMsg(Err, Error)
-    GoTo EXIT_HANDLER
+    GoTo Exit_Handler
 End Function
 
 Public Function PcaAttachLinkTables() As Boolean
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 ' we will need to create this table using DAO
 Dim tdf As DAO.TableDef
 
@@ -1712,12 +1712,12 @@ Dim rv As Boolean
         rs.MoveNext
     Loop
     rv = True
-EXIT_HANDLER:
+Exit_Handler:
     PcaAttachLinkTables = rv
     Exit Function
 Exit Function
 '---------------------------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
     Select Case Err
     Case 3010 'table already exists
         Resume Next
@@ -1727,7 +1727,7 @@ ERR_HANDLER:
         foo = pcaStdErrMsg(Err, Error)
         rv = False
     End Select
-    GoTo EXIT_HANDLER
+    GoTo Exit_Handler
 Resume
 End Function
 
@@ -1736,7 +1736,7 @@ Public Function dbINIGetSetting(pSection As String, _
             Optional pDefault As String = "", _
             Optional pAutoAdd As Boolean = False _
 ) As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim db As Database
 Dim sql As String
 Dim rs As DAO.Recordset
@@ -1757,16 +1757,16 @@ Dim rs As DAO.Recordset
         rs.MoveNext
     Loop
     dbINIGetSetting = "" & pDefault
-EXIT_HANDLER:
+Exit_Handler:
 Exit Function
 '---------------------------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
 Err.Raise vbObjectError + Err.Number, Err.Source, Err.Description
 Resume
 End Function
 
 Public Function PcaGetConnnectionString() As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim db As Database
 Dim sql As String
 Dim rs As DAO.Recordset
@@ -1792,20 +1792,20 @@ Dim sApplicationStatus As String
     End If
     
     
-EXIT_HANDLER:
+Exit_Handler:
     PcaGetConnnectionString = sConnectionString
     Exit Function
 Exit Function
 '---------------------------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
     foo = pcaStdErrMsg(Err, Error)
     sConnectionString = ""
-    GoTo EXIT_HANDLER
+    GoTo Exit_Handler
 Resume
 End Function
 
 Public Function PcaGetSQLServerName() As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim db As Database
 Dim sql As String
 Dim rs As DAO.Recordset
@@ -1831,20 +1831,20 @@ Dim sApplicationStatus As String
     End If
     
     
-EXIT_HANDLER:
+Exit_Handler:
     PcaGetSQLServerName = sServerName
     Exit Function
 Exit Function
 '---------------------------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
     foo = pcaStdErrMsg(Err, Error)
     sServerName = ""
-    GoTo EXIT_HANDLER
+    GoTo Exit_Handler
 Resume
 End Function
 
 Public Function PcaGetApplicationVersion() As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
 Dim db As Database
 Dim sql As String
 Dim rs As DAO.Recordset
@@ -1855,15 +1855,15 @@ Dim sApplicationVersion As String
     
     
     
-EXIT_HANDLER:
+Exit_Handler:
     PcaGetApplicationVersion = sApplicationVersion
     Exit Function
 Exit Function
 '---------------------------------------------------------------------------------
-ERR_HANDLER:
+Err_Handler:
     foo = pcaStdErrMsg(Err, Error)
     sApplicationVersion = ""
-    GoTo EXIT_HANDLER
+    GoTo Exit_Handler
 Resume
 End Function
 

@@ -1,3 +1,10 @@
-SELECT vw_advanced_payments.Name, vw_advanced_payments.FileNumber, vw_advanced_payments.MatterID, vw_advanced_payments.CaseID, vw_advanced_payments.Date2, vw_advanced_payments.Pay_Outlay, vw_advanced_payments.Charge, vw_advanced_payments.Payment, vw_advanced_payments.FirmPrepaid, vw_advanced_payments.InsertPymt, vw_advanced_payments.AdvancedLegal, vw_advanced_payments.SSMA_TimeStamp, vw_advanced_payments.Orig_Atty, vw_advanced_payments.Case_Letter, vw_advanced_payments.CodeVal, vw_advanced_payments.Creimb, *
-FROM vw_advanced_payments
-ORDER BY vw_advanced_payments.Date2 DESC;
+SELECT p.Name, p.FileNumber, p.MatterID, p.CaseID, p.Date2, p.Pay_Outlay, p.Charge, p.Payment, p.FirmPrepaid, p.InsertPymt, p.AdvancedLegal, p.SSMA_TimeStamp, p.Orig_Atty, p.Case_Letter, p.CodeVal, p.Creimb, CCur(Nz (t.SumOfBalance_agg, 0)) AS SumOfBalance
+FROM vw_advanced_payments AS p LEFT JOIN (SELECT
+            CaseID,
+            Max(SumOfBalance) AS SumOfBalance_agg
+        FROM
+            qryTrustAccountBalanceTotals
+        GROUP BY
+            CaseID
+    )  AS t ON p.CaseID = t.CaseID
+ORDER BY p.Date2 DESC;

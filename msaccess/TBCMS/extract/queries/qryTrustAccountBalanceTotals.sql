@@ -1,2 +1,3 @@
-SELECT CaseID, SumOfBalance
-FROM vwTrustAccountBalanceTotals;
+SELECT vwTrustAccountBalanceTotals.CaseID, Max(vwTrustAccountBalanceTotals.SumOfBalance) AS SumOfBalance
+FROM vwTrustAccountBalanceTotals
+GROUP BY vwTrustAccountBalanceTotals.CaseID;

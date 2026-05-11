@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompCurr_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7742,
-      "lineEnd": 7790,
+      "lineStart": 7680,
+      "lineEnd": 7728,
       "confidence": "high",
       "reportMentionType": "literal"
     },
@@ -19,8 +19,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompCurrent_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4787,
-      "lineEnd": 4840,
+      "lineStart": 4846,
+      "lineEnd": 4899,
       "confidence": "high",
       "reportMentionType": "literal"
     }
@@ -51,11 +51,11 @@
   "relatedVbaProcedures": [
     {
       "objectType": "form",
-      "objectName": "frm_invoices_summary",
-      "procedureName": "Cmd_PreviewNew_Click",
-      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8176,
-      "lineEnd": 8206,
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17843,
+      "lineEnd": 17872,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -64,11 +64,11 @@
     },
     {
       "objectType": "form",
-      "objectName": "frmClientLedger",
-      "procedureName": "cmdInvoice_Click",
-      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17642,
-      "lineEnd": 17671,
+      "objectName": "frm_invoices_summary",
+      "procedureName": "Cmd_PreviewNew_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8108,
+      "lineEnd": 8138,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -80,8 +80,8 @@
       "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdCompCurr_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7742,
-      "lineEnd": 7790,
+      "lineStart": 7680,
+      "lineEnd": 7728,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -93,8 +93,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdCompCurrent_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4787,
-      "lineEnd": 4840,
+      "lineStart": 4846,
+      "lineEnd": 4899,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -103,21 +103,21 @@
     },
     {
       "objectType": "report",
-      "objectName": "rptInvoiceComprARCur",
+      "objectName": "rpt_Compr_InvoiceADVCur",
       "procedureName": "Report_Open",
-      "sourceFile": "extract/vba/reports/rptInvoiceComprARCur.txt",
-      "lineStart": 584,
-      "lineEnd": 590,
+      "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
+      "lineStart": 1528,
+      "lineEnd": 1564,
       "usesDoCmd": [],
       "usesSql": true
     },
     {
       "objectType": "report",
-      "objectName": "rpt_Compr_InvoiceADVCur",
+      "objectName": "rptInvoiceComprARCur",
       "procedureName": "Report_Open",
-      "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
-      "lineStart": 1610,
-      "lineEnd": 1646,
+      "sourceFile": "extract/vba/reports/rptInvoiceComprARCur.txt",
+      "lineStart": 525,
+      "lineEnd": 531,
       "usesDoCmd": [],
       "usesSql": true
     }

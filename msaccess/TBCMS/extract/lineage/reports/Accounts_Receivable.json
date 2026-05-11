@@ -8,19 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdOpenReportAcctReceivable_Click",
       "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8525,
-      "lineEnd": 8535,
-      "confidence": "high",
-      "reportMentionType": "literal"
-    },
-    {
-      "formName": "frmHome",
-      "controlName": "cmdDeleteAll",
-      "eventName": "onClick",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1920,
-      "lineEnd": 2057,
+      "lineStart": 8457,
+      "lineEnd": 8467,
       "confidence": "high",
       "reportMentionType": "literal"
     },
@@ -30,8 +19,19 @@
       "eventName": "onClick",
       "procedureName": "cmdDeleteAll_Click",
       "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6356,
-      "lineEnd": 6493,
+      "lineStart": 6313,
+      "lineEnd": 6450,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmHome",
+      "controlName": "cmdDeleteAll",
+      "eventName": "onClick",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1868,
+      "lineEnd": 2005,
       "confidence": "high",
       "reportMentionType": "literal"
     }
@@ -71,8 +71,8 @@
       "objectName": "frm_invoices_summary",
       "procedureName": "cmdOpenReportAcctReceivable_Click",
       "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8525,
-      "lineEnd": 8535,
+      "lineStart": 8457,
+      "lineEnd": 8467,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -81,11 +81,11 @@
     },
     {
       "objectType": "form",
-      "objectName": "frmHome",
+      "objectName": "frmHomeAdmin",
       "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1920,
-      "lineEnd": 2057,
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6313,
+      "lineEnd": 6450,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -96,11 +96,11 @@
     },
     {
       "objectType": "form",
-      "objectName": "frmHomeAdmin",
+      "objectName": "frmHome",
       "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6356,
-      "lineEnd": 6493,
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1868,
+      "lineEnd": 2005,
       "usesDoCmd": [
         "Close",
         "OpenReport",

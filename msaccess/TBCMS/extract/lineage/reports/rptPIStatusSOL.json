@@ -31,8 +31,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16447,
-      "lineEnd": 16477,
+      "lineStart": 16628,
+      "lineEnd": 16658,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -41,8 +41,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16478,
-      "lineEnd": 16508,
+      "lineStart": 16659,
+      "lineEnd": 16689,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -51,8 +51,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17358,
-      "lineEnd": 17495,
+      "lineStart": 17559,
+      "lineEnd": 17696,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -64,18 +64,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17540,
-      "lineEnd": 17550,
-      "usesDoCmd": [],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmAttyFeeGeneration",
-      "procedureName": "FilterMe",
-      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
-      "lineStart": 8563,
-      "lineEnd": 8575,
+      "lineStart": 17741,
+      "lineEnd": 17751,
       "usesDoCmd": [],
       "usesSql": false
     },
@@ -84,8 +74,133 @@
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "cmdInsertData_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3863,
-      "lineEnd": 3942,
+      "lineStart": 3471,
+      "lineEnd": 3550,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmAttyFeeGeneration",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
+      "lineStart": 8493,
+      "lineEnd": 8505,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 4379,
+      "lineEnd": 4453,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 4890,
+      "lineEnd": 4945,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 4946,
+      "lineEnd": 5010,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 692,
+      "lineEnd": 766,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportTDT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1140,
+      "lineEnd": 1214,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1215,
+      "lineEnd": 1279,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 692,
+      "lineEnd": 766,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1161,
+      "lineEnd": 1214,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1215,
+      "lineEnd": 1279,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -94,8 +209,8 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdSubmitToFamilyLaw_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8066,
-      "lineEnd": 8096,
+      "lineStart": 8087,
+      "lineEnd": 8117,
       "usesDoCmd": [
         "RunCommand",
         "RunSQL",
@@ -109,125 +224,10 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8122,
-      "lineEnd": 8126,
+      "lineStart": 8143,
+      "lineEnd": 8147,
       "usesDoCmd": [],
       "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOff",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5340,
-      "lineEnd": 5414,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOff",
-      "procedureName": "cmbInsertFees_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5851,
-      "lineEnd": 5907,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOff",
-      "procedureName": "fncRecordExists",
-      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 5908,
-      "lineEnd": 5972,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7608,
-      "lineEnd": 7660,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7723,
-      "lineEnd": 7770,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOff2",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 674,
-      "lineEnd": 748,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOff2",
-      "procedureName": "cmdShowReportTDT_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 1122,
-      "lineEnd": 1196,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOff2",
-      "procedureName": "fncRecordExists",
-      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 1197,
-      "lineEnd": 1261,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffTest",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 675,
-      "lineEnd": 749,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffTest",
-      "procedureName": "cmbInsertFees_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 1144,
-      "lineEnd": 1197,
-      "usesDoCmd": [],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffTest",
-      "procedureName": "fncRecordExists",
-      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 1198,
-      "lineEnd": 1262,
-      "usesDoCmd": [],
-      "usesSql": true
     }
   ],
   "confidence": "medium"

@@ -3,24 +3,24 @@
   "dataSource": "qry_current_invoice",
   "triggerPaths": [
     {
-      "formName": "frm_invoices_summary",
-      "controlName": "Cmd_PreviewNew",
-      "eventName": "onClick",
-      "procedureName": "Cmd_PreviewNew_Click",
-      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8176,
-      "lineEnd": 8206,
-      "confidence": "high",
-      "reportMentionType": "literal"
-    },
-    {
       "formName": "frmClientLedger",
       "controlName": "cmdInvoice",
       "eventName": "onClick",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17642,
-      "lineEnd": 17671,
+      "lineStart": 17843,
+      "lineEnd": 17872,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frm_invoices_summary",
+      "controlName": "Cmd_PreviewNew",
+      "eventName": "onClick",
+      "procedureName": "Cmd_PreviewNew_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8108,
+      "lineEnd": 8138,
       "confidence": "high",
       "reportMentionType": "literal"
     },
@@ -30,8 +30,8 @@
       "eventName": "onClick",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7925,
-      "lineEnd": 7945,
+      "lineStart": 7946,
+      "lineEnd": 7966,
       "confidence": "high",
       "reportMentionType": "literal"
     }
@@ -56,11 +56,24 @@
   "relatedVbaProcedures": [
     {
       "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17843,
+      "lineEnd": 17872,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
       "objectName": "frm_invoices_summary",
       "procedureName": "Cmd_PreviewNew_Click",
       "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8176,
-      "lineEnd": 8206,
+      "lineStart": 8108,
+      "lineEnd": 8138,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -72,21 +85,8 @@
       "objectName": "frm_invoices_summary",
       "procedureName": "Cmd_PrintNew_Click",
       "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8207,
-      "lineEnd": 8238,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmClientLedger",
-      "procedureName": "cmdInvoice_Click",
-      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17642,
-      "lineEnd": 17671,
+      "lineStart": 8139,
+      "lineEnd": 8170,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -98,8 +98,8 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7925,
-      "lineEnd": 7945,
+      "lineStart": 7946,
+      "lineEnd": 7966,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -111,8 +111,8 @@
       "objectName": "rpt_Compr_InvoiceADVCur",
       "procedureName": "Report_Open",
       "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
-      "lineStart": 1610,
-      "lineEnd": 1646,
+      "lineStart": 1528,
+      "lineEnd": 1564,
       "usesDoCmd": [],
       "usesSql": true
     }

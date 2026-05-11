@@ -68,12 +68,12 @@
         {
           "type": "TextBox",
           "name": "InvSentNotes",
-          "left": 6840,
+          "left": 5580,
           "top": 30,
-          "width": 4980,
+          "width": 6060,
           "height": 315,
           "controlSource": "InvSentNotes",
-          "tabIndex": 7,
+          "tabIndex": 6,
           "visible": true,
           "enabled": true,
           "locked": false
@@ -88,20 +88,6 @@
           "controlSource": "TKDate",
           "format": "Short Date",
           "tabIndex": 3,
-          "visible": true,
-          "enabled": true,
-          "locked": false
-        },
-        {
-          "type": "TextBox",
-          "name": "ClientCall",
-          "left": 5595,
-          "top": 30,
-          "width": 1140,
-          "height": 315,
-          "controlSource": "ClientCall",
-          "format": "Short Date",
-          "tabIndex": 6,
           "visible": true,
           "enabled": true,
           "locked": false
@@ -128,7 +114,7 @@
           "width": 426,
           "height": 366,
           "caption": "Command19",
-          "tabIndex": 8,
+          "tabIndex": 7,
           "visible": true,
           "enabled": true,
           "events": {
@@ -193,7 +179,7 @@
         {
           "type": "Label",
           "name": "Label7",
-          "left": 6840,
+          "left": 5580,
           "top": 420,
           "width": 960,
           "height": 300,
@@ -223,16 +209,6 @@
           "width": 1155,
           "height": 300,
           "caption": "TK Sent",
-          "visible": true
-        },
-        {
-          "type": "Label",
-          "name": "Label11",
-          "left": 5565,
-          "top": 420,
-          "width": 1245,
-          "height": 300,
-          "caption": "Collect Call",
           "visible": true
         },
         {
@@ -268,6 +244,8 @@
       ]
     }
   ],
-  "formEvents": {},
-  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmdBillingOpenInvoiceFolder_Click()\r\nDim lCaseID As Variant\r\n    \r\n    lCaseID = Forms!frmClientLedger!CaseID\r\n    \r\n    If Not OpenDocumentFolder(lCaseID, \"Client Invoices\") Then\r\n        MsgBox \"Failed to open document folder...\", , \"TB CMS\"\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdRecondSentPDInvoice_Click()\r\n    Dim sExistingReportName As String\r\n    Dim DocumentFileName As String\r\n    Dim DocumentFolderName As String\r\n    Dim AllInvoicesFolderName As String\r\n    Dim CaseID As Variant\r\n    Dim First_Name As Variant\r\n    Dim Last_Name As Variant\r\n    Dim strSQL As String\r\n    \r\n    CaseID = Forms!frmClientLedger!CaseID\r\n    First_Name = Forms!frmClientLedger!First_Name\r\n    Last_Name = Forms!frmClientLedger!Last_Name\r\n    \r\n    If pcaempty(CaseID) Then\r\n        MsgBox \"Please select a client\", , \"TB CMS\"\r\n    Else\r\n            \r\n\r\n\r\n        'put the Invoice PDF copy to \\Invoices folder\r\n\r\n \r\n        sExistingReportName = \"Invoice - Past Due\"\r\n        DocumentFileName = Nz(First_Name) & \" \" & Nz(Last_Name) & \" - \" & \"PD Invoice\" & \" \" & Date\r\n        DocumentFileName = Replace(DocumentFileName, \"/\", \"-\")\r\n        \r\n        If Form_frmClientLedger.Closed Then\r\n            DocumentFolderName = GetClosedDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        Else\r\n            DocumentFolderName = GetDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        End If\r\n        \r\n        AllInvoicesFolderName = GetAllInvoicesFolderName(Form_frmClientLedger.CaseID)\r\n        \r\n    \r\n        DoCmd.OpenReport sExistingReportName, acViewPreview, , \"[CaseID]=\" & Nz(CaseID, 0), acHidden  '& \" AND [Past Due] = \" & -1\r\n        If FolderExistsCreate(DocumentFolderName, True) Then\r\n            \r\n            'save the invoice document to client document invoice folder\r\n            DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, DocumentFolderName & DocumentFileName & \".pdf\"\r\n            \r\n            'save the document to _ALL INVOICES folder\r\n            If FolderExistsCreate(AllInvoicesFolderName, True) Then\r\n                DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, AllInvoicesFolderName & DocumentFileName & \".pdf\"\r\n            End If\r\n            \r\n            DoCmd.Close acReport, sExistingReportName, acSaveNo\r\n            \r\n            If Not SaveCaseDocument(CaseID, \"Client Invoices\", DocumentFolderName & DocumentFileName & \".pdf\") Then\r\n                MsgBox \"Failed to save Case Document record...\", , \"TB CMS\"\r\n            End If\r\n            \r\n            strSQL = \"Insert into [tbl_InvoiceSent] \"\r\n                    strSQL = strSQL & \"        (CaseID, InvSent, InvBalance)\"\r\n                    strSQL = strSQL & \" values (\" & Form_frmClientLedger.CaseID & \", #\" & Format(Date, \"yyyy-MM-dd\") & \"#, \" & Form_frmClientLedger.[Current Balance] & \")\"\r\n            Debug.Print strSQL\r\n            CurrentDb.Execute strSQL, dbSeeChanges\r\n            Me.Requery\r\n        End If\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdRecordSentInvoice_Click()\r\n    Dim sExistingReportName As String\r\n    Dim DocumentFileName As String\r\n    Dim DocumentFolderName As String\r\n    Dim AllInvoicesFolderName As String\r\n    Dim CaseID As Variant\r\n    Dim First_Name As Variant\r\n    Dim Last_Name As Variant\r\n    Dim strSQL As String\r\n    Dim sFileFullPath As String\r\n    \r\n    \r\n    CaseID = Forms!frmClientLedger!CaseID\r\n    First_Name = Forms!frmClientLedger!First_Name\r\n    Last_Name = Forms!frmClientLedger!Last_Name\r\n    \r\n    If pcaempty(CaseID) Then\r\n        MsgBox \"Please select a client\", , \"TB CMS\"\r\n    Else\r\n            \r\n        'put the Invoice PDF copy to \\Invoices folder\r\n\r\n \r\n        sExistingReportName = \"Invoice2\"\r\n        DocumentFileName = Nz(First_Name) & \" \" & Nz(Last_Name) & \" - \" & \"Invoice\" & \" \" & Date\r\n        DocumentFileName = Replace(DocumentFileName, \"/\", \"-\")\r\n        \r\n        If Form_frmClientLedger.Closed Then\r\n            DocumentFolderName = GetClosedDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        Else\r\n            DocumentFolderName = GetDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        End If\r\n        \r\n        AllInvoicesFolderName = GetAllInvoicesFolderName(Form_frmClientLedger.CaseID)\r\n        \r\n        \r\n           \r\n        DoCmd.OpenReport sExistingReportName, acViewPreview, , \"[CaseID]=\" & Nz(CaseID, 0), acHidden  '& \" AND [Past Due] = \" & -1\r\n        If FolderExistsCreate(DocumentFolderName, True) Then\r\n            'save the document to client document invoice folder\r\n            DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, DocumentFolderName & DocumentFileName & \".pdf\"\r\n            \r\n            'save the document to _ALL INVOICES folder\r\n            If FolderExistsCreate(AllInvoicesFolderName, True) Then\r\n                DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, AllInvoicesFolderName & DocumentFileName & \".pdf\"\r\n            End If\r\n            \r\n            DoCmd.Close acReport, sExistingReportName, acSaveNo\r\n            \r\n            If Not SaveCaseDocument(CaseID, \"Client Invoices\", DocumentFolderName & DocumentFileName & \".pdf\") Then\r\n                MsgBox \"Failed to save Case Document record...\", , \"TB CMS\"\r\n            End If\r\n            \r\n              strSQL = \"Insert into [tbl_InvoiceSent] \"\r\n                    strSQL = strSQL & \"        (CaseID, InvSent, InvBalance)\"\r\n                    strSQL = strSQL & \" values (\" & Form_frmClientLedger.CaseID & \", #\" & Format(Date, \"yyyy-MM-dd\") & \"#, \" & Form_frmClientLedger.[Current Balance] & \")\"\r\n            Debug.Print strSQL\r\n            CurrentDb.Execute strSQL, dbSeeChanges\r\n            Me.Requery\r\n\r\n        End If\r\n    End If\r\n\r\nEnd Sub\r\n"
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmdBillingOpenInvoiceFolder_Click()\r\nDim lCaseID As Variant\r\n    \r\n    lCaseID = Forms!frmClientLedger!CaseID\r\n    \r\n    If Not OpenDocumentFolder(lCaseID, \"Client Invoices\") Then\r\n        MsgBox \"Failed to open document folder...\", , \"TB CMS\"\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdRecondSentPDInvoice_Click()\r\n    Dim sExistingReportName As String\r\n    Dim DocumentFileName As String\r\n    Dim DocumentFolderName As String\r\n    Dim AllInvoicesFolderName As String\r\n    Dim CaseID As Variant\r\n    Dim First_Name As Variant\r\n    Dim Last_Name As Variant\r\n    Dim strSQL As String\r\n    \r\n    CaseID = Forms!frmClientLedger!CaseID\r\n    First_Name = Forms!frmClientLedger!First_Name\r\n    Last_Name = Forms!frmClientLedger!Last_Name\r\n    \r\n    If pcaempty(CaseID) Then\r\n        MsgBox \"Please select a client\", , \"TB CMS\"\r\n    Else\r\n            \r\n\r\n\r\n        'put the Invoice PDF copy to \\Invoices folder\r\n\r\n \r\n        sExistingReportName = \"Invoice - Past Due\"\r\n        DocumentFileName = Nz(First_Name) & \" \" & Nz(Last_Name) & \" - \" & \"PD Invoice\" & \" \" & Date\r\n        DocumentFileName = Replace(DocumentFileName, \"/\", \"-\")\r\n        \r\n        If Form_frmClientLedger.Closed Then\r\n            DocumentFolderName = GetClosedDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        Else\r\n            DocumentFolderName = GetDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        End If\r\n        \r\n        AllInvoicesFolderName = GetAllInvoicesFolderName(Form_frmClientLedger.CaseID)\r\n        \r\n    \r\n        DoCmd.OpenReport sExistingReportName, acViewPreview, , \"[CaseID]=\" & Nz(CaseID, 0), acHidden  '& \" AND [Past Due] = \" & -1\r\n        If FolderExistsCreate(DocumentFolderName, True) Then\r\n            \r\n            'save the invoice document to client document invoice folder\r\n            DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, DocumentFolderName & DocumentFileName & \".pdf\"\r\n            \r\n            'save the document to _ALL INVOICES folder\r\n            If FolderExistsCreate(AllInvoicesFolderName, True) Then\r\n                DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, AllInvoicesFolderName & DocumentFileName & \".pdf\"\r\n            End If\r\n            \r\n            DoCmd.Close acReport, sExistingReportName, acSaveNo\r\n            \r\n            If Not SaveCaseDocument(CaseID, \"Client Invoices\", DocumentFolderName & DocumentFileName & \".pdf\") Then\r\n                MsgBox \"Failed to save Case Document record...\", , \"TB CMS\"\r\n            End If\r\n            \r\n            strSQL = \"Insert into [tbl_InvoiceSent] \"\r\n                    strSQL = strSQL & \"        (CaseID, InvSent, InvBalance)\"\r\n                    strSQL = strSQL & \" values (\" & Form_frmClientLedger.CaseID & \", #\" & Format(Date, \"yyyy-MM-dd\") & \"#, \" & Form_frmClientLedger.[Current Balance] & \")\"\r\n            Debug.Print strSQL\r\n            CurrentDb.Execute strSQL, dbSeeChanges\r\n            Me.Requery\r\n        End If\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdRecordSentInvoice_Click()\r\n    Dim sExistingReportName As String\r\n    Dim DocumentFileName As String\r\n    Dim DocumentFolderName As String\r\n    Dim AllInvoicesFolderName As String\r\n    Dim CaseID As Variant\r\n    Dim First_Name As Variant\r\n    Dim Last_Name As Variant\r\n    Dim strSQL As String\r\n    Dim sFileFullPath As String\r\n    \r\n    \r\n    CaseID = Forms!frmClientLedger!CaseID\r\n    First_Name = Forms!frmClientLedger!First_Name\r\n    Last_Name = Forms!frmClientLedger!Last_Name\r\n    \r\n    If pcaempty(CaseID) Then\r\n        MsgBox \"Please select a client\", , \"TB CMS\"\r\n    Else\r\n            \r\n        'put the Invoice PDF copy to \\Invoices folder\r\n\r\n \r\n        sExistingReportName = \"Invoice2\"\r\n        DocumentFileName = Nz(First_Name) & \" \" & Nz(Last_Name) & \" - \" & \"Invoice\" & \" \" & Date\r\n        DocumentFileName = Replace(DocumentFileName, \"/\", \"-\")\r\n        \r\n        If Form_frmClientLedger.Closed Then\r\n            DocumentFolderName = GetClosedDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        Else\r\n            DocumentFolderName = GetDocumentFolderName(Form_frmClientLedger.CaseID, \"Client Invoices\")\r\n        End If\r\n        \r\n        AllInvoicesFolderName = GetAllInvoicesFolderName(Form_frmClientLedger.CaseID)\r\n        \r\n        \r\n           \r\n        DoCmd.OpenReport sExistingReportName, acViewPreview, , \"[CaseID]=\" & Nz(CaseID, 0), acHidden  '& \" AND [Past Due] = \" & -1\r\n        If FolderExistsCreate(DocumentFolderName, True) Then\r\n            'save the document to client document invoice folder\r\n            DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, DocumentFolderName & DocumentFileName & \".pdf\"\r\n            \r\n            'save the document to _ALL INVOICES folder\r\n            If FolderExistsCreate(AllInvoicesFolderName, True) Then\r\n                DoCmd.OutputTo acOutputReport, sExistingReportName, acFormatPDF, AllInvoicesFolderName & DocumentFileName & \".pdf\"\r\n            End If\r\n            \r\n            DoCmd.Close acReport, sExistingReportName, acSaveNo\r\n            \r\n            If Not SaveCaseDocument(CaseID, \"Client Invoices\", DocumentFolderName & DocumentFileName & \".pdf\") Then\r\n                MsgBox \"Failed to save Case Document record...\", , \"TB CMS\"\r\n            End If\r\n            \r\n              strSQL = \"Insert into [tbl_InvoiceSent] \"\r\n                    strSQL = strSQL & \"        (CaseID, InvSent, InvBalance)\"\r\n                    strSQL = strSQL & \" values (\" & Form_frmClientLedger.CaseID & \", #\" & Format(Date, \"yyyy-MM-dd\") & \"#, \" & Form_frmClientLedger.[Current Balance] & \")\"\r\n            Debug.Print strSQL\r\n            CurrentDb.Execute strSQL, dbSeeChanges\r\n            Me.Requery\r\n\r\n        End If\r\n    End If\r\n\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n    Me.OrderBy = \"IIf(Not IsNull([TKDate]) And IsNull([InvSent]), 0, 1), \" & _\r\n                 \"IIf(Not IsNull([TKDate]) And IsNull([InvSent]), [TKDate], [InvSent]) ASC\"\r\n    Me.OrderByOn = True\r\nEnd Sub"
 }

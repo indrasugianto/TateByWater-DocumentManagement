@@ -1,6 +1,6 @@
 {
   "formName": "frmPersInjLog",
-  "recordSource": "SELECT tblPersInjLog.EventDate, tblPersInjLog.EventDescription, tblPersInjLog.ID, tblPersInjLog.PersInjLogID FROM tblPersInjLog ORDER BY tblPersInjLog.EventDate; ",
+  "recordSource": "SELECT tblPersInjLog.EventDate, tblPersInjLog.EventDescription, tblPersInjLog.ID, tblPersInjLog.PersInjLogID, tblPersInjLog.LogParalegal FROM tblPersInjLog ORDER BY tblPersInjLog.EventDate DESC; ",
   "defaultView": 1,
   "allowEdits": true,
   "allowAdditions": true,
@@ -20,6 +20,7 @@
           "width": 1080,
           "height": 315,
           "controlSource": "EventDate",
+          "format": "Short Date",
           "tabIndex": 0,
           "visible": true,
           "enabled": true,
@@ -52,6 +53,33 @@
           "events": {
             "onClick": "[Embedded Macro]"
           }
+        },
+        {
+          "type": "ComboBox",
+          "name": "ParaLegal",
+          "left": 240,
+          "top": 420,
+          "width": 900,
+          "height": 314,
+          "controlSource": "LogParalegal",
+          "rowSource": "AO;KP;JN;IQ;FM",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text9",
+          "left": 7560,
+          "top": 540,
+          "width": 540,
+          "height": 315,
+          "controlSource": "PersInjLogID",
+          "tabIndex": 4,
+          "visible": false,
+          "enabled": true,
+          "locked": false
         }
       ]
     },
@@ -100,10 +128,27 @@
           "visible": false,
           "enabled": true,
           "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "AddNewBtn",
+          "left": 660,
+          "top": 180,
+          "width": 540,
+          "height": 300,
+          "caption": "New",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
         }
       ]
     }
   ],
-  "formEvents": {},
-  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub Form_MouseWheel(ByVal Page As Boolean, ByVal Count As Long)\r\n If Not Me.Dirty Then\r\n   If (Count < 0) And (Me.CurrentRecord > 1) Then\r\n     DoCmd.GoToRecord , , acPrevious\r\n   ElseIf (Count > 0) And (Me.CurrentRecord < Me.Recordset.RecordCount) Then\r\n        DoCmd.GoToRecord , , acNext\r\n   End If\r\n Else\r\n   MsgBox \"The record has changed. Save the current record before moving to another record.\", , \"TB CMS\"\r\n End If\r\nEnd Sub"
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub AddNewBtn_Click()\r\n   On Error GoTo Err_Handler\r\n\r\n    Dim hadRows As Boolean\r\n    hadRows = (Me.RecordsetClone.RecordCount > 0)\r\n\r\n    ' Sort newest-first\r\n    Me.OrderBy = \"[EventDate] DESC\"\r\n    Me.OrderByOn = True\r\n    Me.AllowAdditions = True\r\n\r\n    ' Save any edits on the current row\r\n    If Me.Dirty Then Me.Dirty = False\r\n\r\n    If hadRows Then\r\n        ' Duplicate current record (copies required/filter fields so new row stays visible)\r\n        DoCmd.RunCommand acCmdSelectRecord\r\n        DoCmd.RunCommand acCmdCopy\r\n        DoCmd.RunCommand acCmdPasteAppend   ' focus is now on the NEW record\r\n    Else\r\n        ' No rows yet—just start a new one\r\n        DoCmd.GoToRecord , , acNewRec\r\n    End If\r\n\r\n    ' --- We are on the NEW record now ---\r\n    Me!EventDate = Now\r\n\r\n    ' Blank these fields (use Null; fall back to \"\" if the field disallows Nulls)\r\n    On Error Resume Next\r\n    Me!LogParalegal = Null\r\n    If Err.Number <> 0 Then Err.Clear: Me!LogParalegal = vbNullString\r\n    On Error GoTo Err_Handler\r\n\r\n    On Error Resume Next\r\n    Me!EventDescription = Null\r\n    If Err.Number <> 0 Then Err.Clear: Me!EventDescription = vbNullString\r\n    On Error GoTo Err_Handler\r\n\r\n    ' Save the new record\r\n    If Me.Dirty Then Me.Dirty = False\r\n\r\n    ' Requery to enforce sort, then go to the top (which should be this record)\r\n    Me.Requery\r\n    With Me.RecordsetClone\r\n        If .RecordCount > 0 Then\r\n            .MoveFirst\r\n            Me.Bookmark = .Bookmark\r\n        End If\r\n    End With\r\n\r\nExit_Handler:\r\n    Exit Sub\r\n\r\nErr_Handler:\r\n    MsgBox \"Error \" & Err.Number & \": \" & Err.Description, vbExclamation, \"Add New Record\"\r\n    Resume Exit_Handler\r\nEnd Sub\r\nPrivate Function BuildEqCriteria(ByVal FieldName As String, ByVal v As Variant) As String\r\n    If IsNull(v) Then\r\n        BuildEqCriteria = \"[\" & FieldName & \"] IS NULL\"\r\n    ElseIf VarType(v) = vbString Then\r\n        BuildEqCriteria = \"[\" & FieldName & \"]=\" & Chr$(34) & Replace(v, Chr$(34), Chr$(34) & Chr$(34)) & Chr$(34)\r\n    ElseIf VarType(v) = vbDate Then\r\n        BuildEqCriteria = \"[\" & FieldName & \"]=#\" & Format$(v, \"yyyy-mm-dd hh:nn:ss\") & \"#\"\r\n    Else\r\n        BuildEqCriteria = \"[\" & FieldName & \"]=\" & v\r\n    End If\r\nEnd Function\r\n\r\nPrivate Sub Form_Load()\r\n    Me.OrderBy = \"[EventDate] DESC\"\r\n    Me.OrderByOn = True\r\nEnd Sub\r\n\r\nPrivate Sub Form_MouseWheel(ByVal Page As Boolean, ByVal Count As Long)\r\n If Not Me.Dirty Then\r\n   If (Count < 0) And (Me.CurrentRecord > 1) Then\r\n     DoCmd.GoToRecord , , acPrevious\r\n   ElseIf (Count > 0) And (Me.CurrentRecord < Me.Recordset.RecordCount) Then\r\n        DoCmd.GoToRecord , , acNext\r\n   End If\r\n Else\r\n   MsgBox \"The record has changed. Save the current record before moving to another record.\", , \"TB CMS\"\r\n End If\r\nEnd Sub"
 }

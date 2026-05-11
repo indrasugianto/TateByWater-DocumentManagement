@@ -49,7 +49,7 @@ Public Function FindField(strFieldName As String, _
     Optional strObjectName As String, _
     Optional iObjectTypes As FindFieldObject = ffoAll, _
     Optional bExactMatchOnly As Boolean) As Long
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
     'Purpose:   Search the current database for where a field name is used. MAIN FUNCTION.
     'Arguments: strFieldName:    the field name to find (or part of field name.)
     '           strObjectName:   Leave blank to search all objects. Only named object if entered.
@@ -176,7 +176,7 @@ On Error GoTo ERR_HANDLER
         End If
     End If
 
-EXIT_HANDLER:
+Exit_Handler:
     FindField = lngKt
     'Clean up
     Set accObj = Nothing
@@ -185,13 +185,13 @@ EXIT_HANDLER:
     Set db = Nothing
     Exit Function
 
-ERR_HANDLER:
+Err_Handler:
     MsgBox "Error " & Err.Number & ": " & Err.Description, vbExclamation, "FindField"
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 Private Function FindInTableQuery(obj As Object, strText2Match As String) As Long
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
     'Purpose:   Find fields where the Name, SourceField, or Caption matches the string.
     'Arguments: obj = the TableDef or QueryDef to search.
     '           strText2Match is the text to search for, including any wildcards.
@@ -222,17 +222,17 @@ On Error GoTo ERR_HANDLER
     lngKt = lngKt + FindInProperty(obj, "Filter", strText2Match)
     lngKt = lngKt + FindInProperty(obj, "OrderBy", strText2Match)
 
-EXIT_HANDLER:
+Exit_Handler:
     FindInTableQuery = lngKt
     Exit Function
 
-ERR_HANDLER:
+Err_Handler:
     MsgBox "Error " & Err.Number & ": " & Err.Description, vbExclamation, "FindInTableQuery"
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 Private Function FindInFormReport(obj As Object, strText2Match As String) As Long
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
     'Purpose:   Search for controls where the Name, Control Source, or Caption matches the string.
     'Arguments: obj = a reference to the form or report.
     '           strText2Match is the text to search for, including any wildcards.
@@ -274,18 +274,18 @@ On Error GoTo ERR_HANDLER
     lngKt = lngKt + FindInProperty(obj, "Filter", strText2Match)
     lngKt = lngKt + FindInProperty(obj, "OrderBy", strText2Match)
     
-EXIT_HANDLER:
+Exit_Handler:
     FindInFormReport = lngKt
     Set ctl = Nothing
     Exit Function
 
-ERR_HANDLER:
+Err_Handler:
     MsgBox "Error " & Err.Number & ": " & Err.Description, vbExclamation, "FindInFormReport"
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 Private Function FindInProperty(obj As Object, strPropName As String, strText2Match As String) As Long
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
     'Purpose:   Search the Filter an OrderBy properties of the object for the string.
     'Arguments: obj           = a reference to TableDef, QueryDef, Form, or Report.
     '           strPropName   = name of property to search, e.g. "Filter" or "OrderBy".
@@ -297,21 +297,21 @@ On Error GoTo ERR_HANDLER
         FindInProperty = 1&
     End If
     
-EXIT_HANDLER:
+Exit_Handler:
     Exit Function
 
-ERR_HANDLER:
+Err_Handler:
     Select Case Err.Number
     Case 438&, 3270&                'Property doesn't apply; Property not found.
         'do nothing
     Case Else
         MsgBox "Error " & Err.Number & ": " & Err.Description, vbExclamation, ".FindInProperty"
     End Select
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 Private Function FindInGroupLevel(rpt As Report, strText2Match As String) As Long
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
     'Purpose:   Search the Control Source of each Group Level of a report.
     'Arguments: rpt = a reference to the report.
     '           strText2Match is the text to search for, including any wildcards.
@@ -328,15 +328,15 @@ On Error GoTo ERR_HANDLER
         i = i + 1
     Loop
     
-EXIT_HANDLER:
+Exit_Handler:
     FindInGroupLevel = lngKt
     Exit Function
 
-ERR_HANDLER:
+Err_Handler:
     If Err.Number <> 2464& Then     'No more group levels.
         MsgBox "Error " & Err.Number & ": " & Err.Description, vbExclamation, "FindInGroupLevel()"
     End If
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 Public Function ObjectExists(obj As Object, strObjectName As String) As Boolean
@@ -350,7 +350,7 @@ Public Function ObjectExists(obj As Object, strObjectName As String) As Boolean
 End Function
 
 Public Function ControlTypeName(lngControlType As AcControlType) As String
-On Error GoTo ERR_HANDLER
+On Error GoTo Err_Handler
     'Purpose:   Return the name of the ControlType.
     'Argument:  A Long Integer that is one of the acControlType constants.
     'Return:    A string describing the type of control.
@@ -382,12 +382,12 @@ On Error GoTo ERR_HANDLER
     
     ControlTypeName = strReturn
 
-EXIT_HANDLER:
+Exit_Handler:
     Exit Function
 
-ERR_HANDLER:
+Err_Handler:
     MsgBox "Error " & Err.Number & ": " & Err.Description, vbExclamation, "ControlTypeName()"
-    Resume EXIT_HANDLER
+    Resume Exit_Handler
 End Function
 
 Public Function HasProperty(obj As Object, strPropName As String) As Boolean

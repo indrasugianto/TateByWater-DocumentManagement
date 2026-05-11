@@ -19,7 +19,9 @@
       "referencedTables": [
         "vw_advanced_payments"
       ],
-      "referencedQueries": []
+      "referencedQueries": [
+        "qryTrustAccountBalanceTotals"
+      ]
     },
     {
       "name": "qry_advanced_payments_OLD",
@@ -766,6 +768,16 @@
       "referencedTables": [
         "tblCase",
         "tblTakeOff"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryBillingTotals",
+      "sqlFile": "extract/queries/qryBillingTotals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
       ],
       "referencedQueries": []
     },
@@ -1561,6 +1573,16 @@
       "referencedQueries": [
         "qryTrustAccount"
       ]
+    },
+    {
+      "name": "qrySumofPayments",
+      "sqlFile": "extract/queries/qrySumofPayments.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR"
+      ],
+      "referencedQueries": []
     },
     {
       "name": "qryTakeOff",

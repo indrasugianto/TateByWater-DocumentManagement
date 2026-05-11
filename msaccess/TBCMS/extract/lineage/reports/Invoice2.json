@@ -3,35 +3,13 @@
   "dataSource": "qryInvoiceRPT1",
   "triggerPaths": [
     {
-      "formName": "frm_invoices_summary",
-      "controlName": "cmdPreview",
-      "eventName": "onClick",
-      "procedureName": "cmdPreview_Click",
-      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8308,
-      "lineEnd": 8319,
-      "confidence": "high",
-      "reportMentionType": "literal"
-    },
-    {
-      "formName": "frm_invoices_summary",
-      "controlName": "cmdRecordInvoice",
-      "eventName": "onClick",
-      "procedureName": "cmdRecordInvoice_Click",
-      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8413,
-      "lineEnd": 8471,
-      "confidence": "high",
-      "reportMentionType": "literal"
-    },
-    {
       "formName": "frmClientLedger",
       "controlName": "CommandFullHistoryInvoice",
       "eventName": "onClick",
       "procedureName": "CommandFullHistoryInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17622,
-      "lineEnd": 17641,
+      "lineStart": 17823,
+      "lineEnd": 17842,
       "confidence": "high",
       "reportMentionType": "literal"
     },
@@ -41,8 +19,30 @@
       "eventName": "onClick",
       "procedureName": "cmdEmailFullHistory_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16965,
-      "lineEnd": 16988,
+      "lineStart": 17166,
+      "lineEnd": 17189,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frm_invoices_summary",
+      "controlName": "cmdPreview",
+      "eventName": "onClick",
+      "procedureName": "cmdPreview_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8240,
+      "lineEnd": 8251,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frm_invoices_summary",
+      "controlName": "cmdRecordInvoice",
+      "eventName": "onClick",
+      "procedureName": "cmdRecordInvoice_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8345,
+      "lineEnd": 8403,
       "confidence": "high",
       "reportMentionType": "literal"
     },
@@ -52,8 +52,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordSentInvoice_Click",
       "sourceFile": "extract/vba/forms/frmInvoiceSent.txt",
-      "lineStart": 1115,
-      "lineEnd": 1179,
+      "lineStart": 1078,
+      "lineEnd": 1142,
       "confidence": "high",
       "reportMentionType": "literal"
     }
@@ -78,38 +78,11 @@
   "relatedVbaProcedures": [
     {
       "objectType": "form",
-      "objectName": "frm_invoices_summary",
-      "procedureName": "cmdPreview_Click",
-      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8308,
-      "lineEnd": 8319,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frm_invoices_summary",
-      "procedureName": "cmdRecordInvoice_Click",
-      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
-      "lineStart": 8413,
-      "lineEnd": 8471,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmdEmailFullHistory_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16965,
-      "lineEnd": 16988,
+      "lineStart": 17166,
+      "lineEnd": 17189,
       "usesDoCmd": [
         "OpenReport",
         "SendObject"
@@ -121,8 +94,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "CommandFullHistoryInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17622,
-      "lineEnd": 17641,
+      "lineStart": 17823,
+      "lineEnd": 17842,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -131,11 +104,38 @@
     },
     {
       "objectType": "form",
+      "objectName": "frm_invoices_summary",
+      "procedureName": "cmdPreview_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8240,
+      "lineEnd": 8251,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frm_invoices_summary",
+      "procedureName": "cmdRecordInvoice_Click",
+      "sourceFile": "extract/vba/forms/frm_invoices_summary.txt",
+      "lineStart": 8345,
+      "lineEnd": 8403,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
       "objectName": "frmInvoiceSent",
       "procedureName": "cmdRecordSentInvoice_Click",
       "sourceFile": "extract/vba/forms/frmInvoiceSent.txt",
-      "lineStart": 1115,
-      "lineEnd": 1179,
+      "lineStart": 1078,
+      "lineEnd": 1142,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -148,8 +148,8 @@
       "objectName": "Invoice2",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Invoice2.txt",
-      "lineStart": 2001,
-      "lineEnd": 2033,
+      "lineStart": 2044,
+      "lineEnd": 2076,
       "usesDoCmd": [],
       "usesSql": true
     },
@@ -158,8 +158,8 @@
       "objectName": "Rpt_MergeInvTK",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Rpt_MergeInvTK.txt",
-      "lineStart": 1949,
-      "lineEnd": 1981,
+      "lineStart": 1869,
+      "lineEnd": 1901,
       "usesDoCmd": [],
       "usesSql": true
     }
