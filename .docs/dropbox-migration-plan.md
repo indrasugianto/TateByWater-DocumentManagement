@@ -105,12 +105,16 @@ flowchart LR
 
 - **Integration mode**: API-native Dropbox operations, not filesystem sync dependency.
 - **Token scope**: per-user tokens stored in each user's local Access frontend in `tblDropboxTokens` (DAO/`CurrentDb`).
-- **File reference strategy**: no new columns added to `tblCaseDocuments`, `tblScans`, or the Intakes table. The Dropbox path for any document is derived at runtime from the existing `DocumentFileName` field using the path translation formula. `DocumentFileName` is never overwritten — it remains the canonical record. All Dropbox API calls use the derived path directly.
-- **Path derivation formula** (applied by `DropboxService.ToDropboxPath(localPath)`):
-  1. Replace `S:\COMMON\` with `/Company/COMMON/`
-  2. Replace `S:\Closed File Scans\` with `/Company/Closed File Scans/`
-  3. Replace all remaining `\` with `/`
-  Confirmed lossless against all 18,561 rows in `tblCaseDocuments` (May 2026) — zero non-conforming paths exist.
+- **File reference strategy**: no new columns added to `tblCaseDocuments`, `tblScans`, or the Intakes table. `DocumentFileName` (and `tblScans.ScanLocation`) stores the Dropbox path directly after the one-time data migration in `migrate_paths_to_dropbox/STEP_1_UPDATE.sql`. All Dropbox API calls use `DocumentFileName` as-is. No runtime translation is required.
+- **Path migration (one-time, pre-cutover)**: all `DocumentFileName` and `ScanLocation` values are updated in SQL Server before TBCMS goes live:
+  - Strip a leading `#` if present (Access hyperlink format artifact)
+  - Replace `S:\` with `/Company/`
+  - Replace all remaining `\` with `/`
+  - Scripts: `database_assessment/TB_CMS_SQL/queries/migrate_paths_to_dropbox/`
+    - `STEP_0_ANALYZE.sql` — safe inspection, no changes
+    - `STEP_1_UPDATE.sql` — transactional update with spot-check before COMMIT
+    - `STEP_2_VERIFY.sql` — post-commit validation (expects zero S:\ rows remaining)
+  - `spMoveDocumentFolder` writes updated paths in the same `/Company/` format going forward.
 - **Migration style**: direct cutover. All files are already in Dropbox; S:\ is no longer in use. No hybrid period, no per-row `StorageProvider` flag. The global `StorageProvider` flag in `tblDropboxRootConfig` controls whether TBCMS routes through the Dropbox API (`Dropbox`) or the legacy filesystem (`Local`), and is the single rollback switch.
 - **OAuth flow**: authorization code grant with `token_access_type=offline`. VBA shells a PowerShell `HttpListener` on `http://localhost:8765` before opening the browser. When the user clicks Allow, Dropbox redirects to `localhost:8765` automatically — PowerShell captures the code, displays a green "Authorization complete — you can close this tab" page in the browser, and writes the redirect URL to a temp file VBA polls. No copy-paste required. The redirect URI `http://localhost:8765` must be registered in the Dropbox App Console (Settings → OAuth 2 → Redirect URIs) exactly as written. A manual paste fallback (redirect to `http://localhost`, no port) is retained in the codebase via `USE_LOCAL_LISTENER = False` for environments where port 8765 is blocked or PowerShell execution policy prevents the listener script from running. Both redirect URIs must be registered in the App Console.
 - **OAuth frequency — once per user**: The full browser OAuth flow runs exactly once per user. Dropbox returns both an `access_token` (4-hour lifetime) and a `refresh_token` (long-lived, no expiry under normal conditions). Both are DPAPI-encrypted and stored in `tblDropboxTokens`. On every subsequent session, `InitializeDropboxAPI` loads the stored tokens silently — no browser, no user interaction. If the access token is within 5 minutes of expiry, it is refreshed silently using the refresh token before any API call is made. Users are only prompted to re-authorize in the following situations:
@@ -489,10 +493,10 @@ Read namespace ID from `tblDropboxRootConfig.NamespaceId` at startup; store in m
 Migrate and validate in this order:
 
 **1. Open document file/folder actions** *(no file creation — read only)*
-- Replace `FollowHyperlink(localPath)` with `FollowHyperlink(DropboxService.GetTemporaryLink(derivedDropboxPath))`
-  where `derivedDropboxPath = DropboxService.ToDropboxPath(DocumentFileName)`
-- No local fallback. S:\ is gone. If the derived path returns a 404 from Dropbox, surface an error: "Document not found in Dropbox — please contact IT."
-- Folder open: open the Dropbox web URL for the folder (`https://www.dropbox.com/home` + derived folder path). Confirm UX approach with users before implementing.
+- Replace `FollowHyperlink(localPath)` with `FollowHyperlink(DropboxService.GetTemporaryLink(DocumentFileName))`
+  `DocumentFileName` now stores the Dropbox path directly (e.g. `/Company/COMMON/RLF/...`). No translation needed.
+- No local fallback. S:\ is gone. If Dropbox returns a 404, surface an error: "Document not found in Dropbox — please contact IT."
+- Folder open: open the Dropbox web URL for the folder (`https://www.dropbox.com/home` + folder path from `DocumentFileName`). Confirm UX approach with users before implementing.
 - No conflict possible — read-only operation.
 
 **2. Scan save flow** (`SaveScannedFileAs`) *(external-source ingest — file already exists in scanner drop folder)*
@@ -515,7 +519,7 @@ Migrate and validate in this order:
 - **Close sequence**:
   1. `files/copy_v2`: copy document folder to `ClosedFileScanFolderTemplate` (if user confirms)
   2. `files/move_v2`: move document folder from `OpenCasesFolderTemplate` to `ClosedCasesFolderTemplate` with `autorename = false`
-  3. On move success: call `spMoveDocumentFolder` — it updates `DocumentFileName` for all case rows to the new closed path (same S:\ path rewrite logic as today, applied to the stored `DocumentFileName` values). The path derivation formula then resolves correctly from the updated `DocumentFileName`.
+  3. On move success: call updated `spMoveDocumentFolder` — it rewrites `DocumentFileName` for all case rows from the open Dropbox path to the closed Dropbox path (e.g. `/Company/COMMON/RLF/_CLIENTS/Domestic/Smith/` → `/Company/COMMON/RLF/_CLIENTS/Domestic/_CLOSED/Smith/`). The SP must be updated to work with `/Company/`-rooted forward-slash paths instead of the legacy `S:\` backslash logic. See G2.
   4. On move conflict: surface error with full path details, abort — do not proceed to delete any source content
 - **Reopen sequence**: `files/move_v2` from `ClosedCasesFolderTemplate` back to `OpenCasesFolderTemplate`; update `spMoveDocumentFolder`
 - Partial state protection: `files/delete_v2` is never called in these workflows — Dropbox `move_v2` is atomic server-side
@@ -542,25 +546,28 @@ Migrate and validate in this order:
 
 ### Phase 7: Pilot, Cutover, and Rollback
 
-#### Pre-cutover verification (replaces backfill)
+#### Pre-cutover steps
 
-All files are already in Dropbox. No data migration or ID population is required. The pre-cutover step is verification only: confirm that every `DocumentFileName` row in `tblCaseDocuments` resolves to an existing file in Dropbox before flipping the global flag.
+**Step 1 — Path migration (STEP_1_UPDATE.sql)**
+Run `database_assessment/TB_CMS_SQL/queries/migrate_paths_to_dropbox/STEP_1_UPDATE.sql` on `awsql2022dev/TateByWater`.
+This rewrites all `DocumentFileName` values in `tblCaseDocuments` and all `ScanLocation` values in `tblScans` from `S:\` format to `/Company/` Dropbox paths in a single transaction.
+Review the spot-check output before committing. Run `STEP_2_VERIFY.sql` after committing to confirm zero S:\ rows remain.
 
-**Verification script** (run once before cutover):
-For each row in `tblCaseDocuments`, apply the path derivation formula to `DocumentFileName` and call `files/get_metadata` on the derived path. Record the result in a `VerificationReport` table:
+**Step 2 — Dropbox file existence verification**
+For each row in `tblCaseDocuments`, read `DocumentFileName` (now a Dropbox path) and call `files/get_metadata` to confirm the file exists. Record results in a `VerificationReport` table:
 
 | Column | Description |
 |---|---|
 | `CaseDocumentID` | FK to `tblCaseDocuments` |
-| `DerivedDropboxPath` | Computed path from `DocumentFileName` |
+| `DropboxPath` | `DocumentFileName` value used for the check |
 | `Status` | `Found`, `NotFound`, or `Error` |
 | `CheckedAt` | Timestamp |
 
-Output a summary: counts of `Found`, `NotFound`, and `Error` rows. Cutover proceeds only when `NotFound` and `Error` counts are zero.
+Cutover proceeds only when `NotFound` and `Error` counts are zero.
 
-**`NotFound` rows** indicate a file that exists in SQL Server but cannot be located at the derived Dropbox path. Resolution options: locate the file manually in Dropbox and update `DocumentFileName` to match the actual path, or mark the row as archived if the underlying file no longer exists.
+**`NotFound` rows** indicate a file that exists in SQL Server but cannot be located at the Dropbox path stored in `DocumentFileName`. Resolution: locate the file in Dropbox and update `DocumentFileName` directly to the correct path, or mark the row as archived if the file no longer exists.
 
-**`tblScans` and intake records**: same verification applied to `tblScans.DocumentFileName` and `Scan_Location_GI` rows where the `#…#` markers have been stripped (see Phase 1b).
+**`tblScans` verification**: same check applied to `tblScans.ScanLocation` rows after the path migration.
 
 #### Cutover checklist
 
@@ -644,9 +651,12 @@ risk.
 - **Decision required**: confirm Dropbox's current published lifetime and rewrite all three references to the single confirmed value. Update Risks if the actual lifetime materially affects link-distribution UX (e.g., emailed links).
 
 **G2. `spMoveDocumentFolder` redesign is undefined.**
-- Today's proc iterates `tblCaseDocuments` rows for a case and rewrites each path by splitting on `\`, hard-coded position 3 as the `_CLOSED` injection point (Analysis §5, §9). It operates on `S:\`-rooted backslashed UNC strings.
-- Phase 5 step 4 calls "updated `spMoveDocumentFolder` with new `@DropboxPath`" but never defines: (a) input parameter set, (b) how it rewrites each row's `DropboxPath` for `/`-rooted Dropbox layout, (c) whether it operates per-row or accepts a folder old→new translation pair, (d) what it does with rows that still have legacy `S:\` paths during Hybrid mode.
-- **Decision required**: design the new proc signature and body before Phase 4 (compatibility layer) begins. Document the exact path-rewrite rule for closed/open transitions on Dropbox paths.
+- Today's proc iterates `tblCaseDocuments` rows for a case and rewrites each path by splitting on `\`, with a hard-coded position for injecting `_CLOSED` (Analysis §5, §9). It operates on `S:\`-rooted backslash strings.
+- After the path migration (`STEP_1_UPDATE.sql`), `DocumentFileName` stores `/Company/`-rooted forward-slash paths. The proc must be updated to:
+  - Accept an `@OldFolderPath NVARCHAR` + `@NewFolderPath NVARCHAR` pair (Dropbox paths, forward-slash) rather than reconstructing paths from positional splits
+  - Perform a `REPLACE(DocumentFileName, @OldFolderPath, @NewFolderPath)` update for all rows in the case
+  - The VBA caller (`Phase 5 step 4`) derives `@OldFolderPath` and `@NewFolderPath` from the Dropbox `move_v2` source and destination paths
+- **Decision required**: confirm the SP signature and body before Phase 5 step 4 implementation. No Hybrid-mode complexity — all paths are Dropbox paths after the migration.
 
 **G3. `spSaveCaseDocument` dedupe semantics — resolved.**
 No new Dropbox columns are added to `tblCaseDocuments`. The existing dedupe key `(CaseID, DocumentFileName)` is retained unchanged. `spSaveCaseDocument` signature requires no Dropbox-specific parameter additions.
