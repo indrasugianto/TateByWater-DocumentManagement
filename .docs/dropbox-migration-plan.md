@@ -39,6 +39,7 @@ The existing POC is at `database_assessment/DropboxPOC/vba_code/DropboxAPI_POC.b
 - Multi-user token isolation — POC is single-identity/global-token
 - DPAPI encryption replacing hex encoding
 - `state` parameter in OAuth flow (CSRF protection)
+- Local HTTP listener (`localhost:8765`) replacing manual URL-paste — **validated in `DropboxOAuthTest.bas` (May 2026)**
 - `files/move_v2`, `files/copy_v2`, `files/delete_v2` operations
 - `files/get_temporary_link` for document open
 - `files/get_metadata` for file ID resolution
@@ -97,7 +98,17 @@ flowchart LR
 - **Token scope**: per-user tokens stored in each user's local Access frontend in `tblDropboxTokens` (DAO/`CurrentDb`).
 - **File reference strategy**: store both `DropboxFileId` (Dropbox internal ID, format `id:AbCd...`, stable across renames/moves) and `DropboxPath` (human-readable logical path) for every document. `DocumentFileName` retained as legacy fallback during hybrid period.
 - **Migration style**: phased rollout with `StorageProvider` feature flag; fallback to legacy provider is instant (single row update).
-- **OAuth flow**: authorization code grant with `token_access_type=offline`. Redirect URI is `http://localhost`. User authorizes in browser; VBA displays an `InputBox` prompting the user to paste the full redirect URL (containing the `code` parameter). VBA extracts `code` and `state` from that URL, validates `state`, then exchanges `code` for tokens. This is the standard pattern for desktop Access apps that cannot handle HTTP callbacks.
+- **OAuth flow**: authorization code grant with `token_access_type=offline`. VBA shells a PowerShell `HttpListener` on `http://localhost:8765` before opening the browser. When the user clicks Allow, Dropbox redirects to `localhost:8765` automatically — PowerShell captures the code, displays a green "Authorization complete — you can close this tab" page in the browser, and writes the redirect URL to a temp file VBA polls. No copy-paste required. The redirect URI `http://localhost:8765` must be registered in the Dropbox App Console (Settings → OAuth 2 → Redirect URIs) exactly as written. A manual paste fallback (redirect to `http://localhost`, no port) is retained in the codebase via `USE_LOCAL_LISTENER = False` for environments where port 8765 is blocked or PowerShell execution policy prevents the listener script from running. Both redirect URIs must be registered in the App Console.
+- **OAuth frequency — once per user**: The full browser OAuth flow runs exactly once per user. Dropbox returns both an `access_token` (4-hour lifetime) and a `refresh_token` (long-lived, no expiry under normal conditions). Both are DPAPI-encrypted and stored in `tblDropboxTokens`. On every subsequent session, `InitializeDropboxAPI` loads the stored tokens silently — no browser, no user interaction. If the access token is within 5 minutes of expiry, it is refreshed silently using the refresh token before any API call is made. Users are only prompted to re-authorize in the following situations:
+
+  | Situation | Reason |
+  |---|---|
+  | IT admin inserts row in `tblDropboxRevocationList` | Intentional deprovisioning — forced re-auth on next startup |
+  | User revokes app in their own Dropbox account settings | Dropbox invalidates the refresh token |
+  | User's Windows profile is rebuilt or reset | DPAPI blob is bound to the original Windows session; cannot be decrypted on a new profile |
+  | `tblDropboxTokens` is deleted or corrupted | No stored token to load |
+
+  The user runbook must document all four recovery paths (re-auth steps with screenshots). See G18 for DPAPI profile-reset handling.
 - **Conflict policy**: **overwrite** for save/scan workflows; **fail explicitly** (no `autorename`) for move operations during case close/reopen — surfaces a user-facing error requiring manual resolution.
 - **Temporary downloaded files**: stored in `%TEMP%\TBCMS\` as `<GUID>_<original_filename>`. Deleted on `Workbook_BeforeClose` equivalent (`Form_Unload` of the Access startup form) and at next session open. Directory is user-profile-scoped.
 - **Document open links**: `files/get_temporary_link` (24-hour expiry) for all document-open actions. Never permanent shared links — limits exposure of sensitive case documents.
@@ -107,6 +118,7 @@ flowchart LR
 - **Upload size limit**: Dropbox `files/upload` supports up to 150 MB. Files exceeding 150 MB must use `files/upload_session/start` + `files/upload_session/append_v2` + `files/upload_session/finish` (chunked upload). This applies to large TIF/PDF case scan files. `DropboxService` must detect file size before upload and route accordingly.
 - **VBA unit testing framework**: Rubberduck (https://rubberduckvba.com).
 - **Access startup hook**: initialization code (`InitializeDropboxAPI`, `StorageProvider` flag load, revocation check) runs in the `Form_Open` event of the application's startup form (whichever form is set as the Display Form in Access Options). Do not use an `AutoExec` macro — it cannot call VBA with error handling.
+- **Team namespace header (required on every API call)**: The Tate Bywater Dropbox Business team uses a dedicated team root namespace (confirmed ID: `14334595683`). All `DropboxService` API calls — list, upload, download, move, copy, delete, metadata, temporary link — **must** include the header `Dropbox-API-Path-Root: {"namespace_id": "14334595683", ".tag": "namespace_id"}`. Without this header, calls resolve against the user's personal home namespace (which is empty) rather than the shared team folder tree. The namespace ID is read from `tblDropboxRootConfig.NamespaceId` at startup; `DropboxService` stores it in a module-level variable and injects it into every request.
 
 ---
 
@@ -138,24 +150,33 @@ Templates use the same token language as today (so the same
 - `(customuserentry)` — placeholder for user-editable filename
   segment; resolved to literal `<type here>` in the Save As preview.
 
-Example proposed Dropbox templates (final values populated by IT admin
-during setup, mirroring the existing on-prem layout):
+Dropbox templates (confirmed against live Dropbox team — namespace `14334595683`,
+verified May 2026):
 
-| Field | Example value |
-|-------|--------------|
-| `TeamRootPath` | `/TBW` |
+| Field | Confirmed value |
+|-------|----------------|
+| `TeamRootPath` | `/Company/COMMON` |
 | `OpenCasesFolderTemplate` | `\ [Orig_Atty] \_CLIENTS\ [Case_Letter] \ [Last_Name] , ~ [First_Name] ~ [FileNo] \` |
 | `ClosedCasesFolderTemplate` | `\ [Orig_Atty] \_CLIENTS\ [Case_Letter] \ _CLOSED \ [Last_Name] , ~ [First_Name] ~ [FileNo] \` |
 | `AllInvoicesFolderTemplate` | *(empty — root only)* |
-| `AllInvoicesDirectory` | `/TBW/_ALL INVOICES` |
-| `ClosedFileScanFolderTemplate` | ` \ TB \ [Yr] \` |
-| `ClosedFileScanDirectory` | `/TBW/CLOSED FILE SCANS` |
-| `IntakeFolderTemplate` | `/TBW/Intakes` |
+| `AllInvoicesDirectory` | `/Company/COMMON/_ALL INVOICES` |
+| `ClosedFileScanFolderTemplate` | `\ TB \ [Yr] \` |
+| `ClosedFileScanDirectory` | `/Company/Closed File Scans` |
+| `ScannerDirectory` | `/Company/COMMON/_SCANNER` |
+| `IntakeFolderTemplate` | `/Company/COMMON/Intakes` |
+
+> `IntakeFolderTemplate` path does not yet exist in Dropbox. IT must create
+> `/Company/COMMON/Intakes` before Phase 5 intake flows go live. All other paths
+> above are confirmed to exist in the live team namespace.
 
 > The shape exactly mirrors the existing `tblDocumentRootDirectory`
 > row, only with Dropbox `/`-rooted paths replacing `S:\` UNC roots.
 > This keeps the migration semantics-preserving: a closed-case folder
 > resolves to the same logical structure on either provider.
+>
+> **Critical**: `Closed File Scans` uses title case in Dropbox (not `CLOSED FILE SCANS`
+> as on the legacy S: drive). Use the Dropbox casing exactly to avoid creating a
+> duplicate folder.
 
 ### Canonical DocumentType folder mapping
 
@@ -211,15 +232,15 @@ but can influence Phase 7 backfill design.
 
 #### A. From the Dropbox App Console (https://www.dropbox.com/developers/apps)
 
-Create one app for TBCMS.
+App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
 
 | Item | Where it goes | Notes |
 |---|---|---|
-| **App key** (blocking) | `tblDropboxRootConfig.AppKey` (SQL Server, plain) and `tblDropboxConfig.AppKey` (local frontend, plain) | Public value |
-| **App secret** (blocking) | `tblDropboxConfig.AppSecret` (local frontend only, DPAPI-encrypted per user) | Never store in SQL Server |
-| Permission type | App configuration | "Scoped access" + "Full Dropbox" (App Folder is too restrictive) |
-| Scopes | App configuration | `files.content.read`, `files.content.write`, `files.metadata.read`, `sharing.read`, `account_info.read`. No team-admin scopes |
-| Redirect URIs | App configuration | Register `http://localhost` plus any extra port variants required for the user-paste OAuth flow |
+| **App key** ✅ captured | `tblDropboxRootConfig.AppKey` (SQL Server, plain) and `tblDropboxConfig.AppKey` (local frontend, plain) | Value: `dqleswbnux8k3m5` |
+| **App secret** ✅ captured | `tblDropboxConfig.AppSecret` (local frontend only, DPAPI-encrypted per user) | Rotate immediately if compromised; never store in SQL Server |
+| Permission type ✅ | App configuration | "Scoped access" + "Full Dropbox" confirmed |
+| Scopes ✅ | App configuration | `files.content.read`, `files.content.write`, `files.metadata.read`, `sharing.read`, `account_info.read` confirmed enabled |
+| Redirect URIs ✅ confirmed | App configuration | `http://localhost:8765` (primary — local HTTP listener, no copy-paste) and `http://localhost` (fallback — manual paste) both registered. Both confirmed working in `DropboxOAuthTest.bas` (May 2026). |
 | OAuth 2 settings | App configuration | Confirm "Allow implicit grant" is **off**. We use authorization code flow with `token_access_type=offline` |
 | App status | Production submission | Development apps cap at 250 linked users. If headcount exceeds 250, **submit for production approval** — 1–2 week turnaround |
 
@@ -230,7 +251,7 @@ Create one app for TBCMS.
 | **Plan tier** (blocking) | Standard / Advanced / Business Plus / Enterprise. Determines whether **Team Spaces** is available (Advanced+) vs. classic shared folders, and affects API rate limits |
 | Licensed seats vs. headcount | Are there enough Dropbox Business seats for all TBCMS users? Procurement lead time if not |
 | Storage quota | Current consumption + headroom for existing `S:\COMMON` data plus migration growth |
-| **Team root** (blocking) | Path where TBCMS data will live (proposed `/TBW`). Confirm no collision with existing content |
+| **Team root** ✅ confirmed | Root namespace ID `14334595683` (team: "Tate Bywater"). TBCMS case data lives under `/Company/COMMON`. Attorney folders (`RLF`, `PM`, `TDT`, etc.), `_ALL INVOICES`, and `_SCANNER` confirmed present. `Closed File Scans` confirmed at `/Company/Closed File Scans`. No collision with existing content. |
 | **Permission model** | Shared-folder-per-attorney? Per-role groups (attorneys, paralegals, admin assistants)? Ethical-wall constraints? Drives the Dropbox Business group/folder design |
 | Data residency | US or EU storage region. Some legal contracts dictate this |
 | Audit log access | Confirm team admin can pull Dropbox's native audit feed. Complements `tblDropboxAuditLog`, does not replace it |
@@ -318,14 +339,16 @@ Create one app for TBCMS.
 | Column | Type | Description |
 |--------|------|-------------|
 | `ConfigID` | INT PK | Single row, ConfigID = 1 |
-| `TeamRootPath` | NVARCHAR(500) | Dropbox Business team folder root (e.g., `/TBW`) — equivalent of `DocumentRootDirectory` |
+| `NamespaceId` | NVARCHAR(50) | Dropbox team root namespace ID. **Confirmed value: `14334595683`**. Required in `Dropbox-API-Path-Root` header on every API call. Store here so it can be updated without a code change. |
+| `TeamRootPath` | NVARCHAR(500) | Dropbox path to firm's case document root. **Confirmed value: `/Company/COMMON`** — equivalent of `S:\COMMON`. |
 | `DocumentRootNaming` | NVARCHAR(500) | Open-case folder template using existing token language. Mirrors `tblDocumentRootDirectory.DocumentRootNaming`. |
 | `DocumentClosedNaming` | NVARCHAR(500) | Closed-case folder template. Mirrors `tblDocumentRootDirectory.DocumentClosedNaming`. |
-| `AllInvoicesDirectory` | NVARCHAR(500) | Firm-wide invoices root (Dropbox path). Mirrors `tblDocumentRootDirectory.AllInvoicesDirectory`. |
+| `AllInvoicesDirectory` | NVARCHAR(500) | Firm-wide invoices root. **Confirmed value: `/Company/COMMON/_ALL INVOICES`**. Mirrors `tblDocumentRootDirectory.AllInvoicesDirectory`. |
 | `AllInvoicesNaming` | NVARCHAR(500) | Suffix template under `AllInvoicesDirectory`. Empty in current production. |
-| `ClosedFileScanDirectory` | NVARCHAR(500) | Closed-file-scans root. Mirrors `tblDocumentRootDirectory.ClosedFileScanDirectory`. |
-| `ClosedFileScanNaming` | NVARCHAR(500) | Suffix template under `ClosedFileScanDirectory` (e.g., ` \ TB \ [Yr] \`). |
-| `IntakeDirectory` | NVARCHAR(500) | Intake scans root (case-independent). |
+| `ClosedFileScanDirectory` | NVARCHAR(500) | Closed-file-scans root. **Confirmed value: `/Company/Closed File Scans`** (title case — not all-caps). Mirrors `tblDocumentRootDirectory.ClosedFileScanDirectory`. |
+| `ClosedFileScanNaming` | NVARCHAR(500) | Suffix template under `ClosedFileScanDirectory` (confirmed value: `\ TB \ [Yr] \`). |
+| `ScannerDirectory` | NVARCHAR(500) | Scanner hardware drop folder. **Confirmed value: `/Company/COMMON/_SCANNER`**. Read-only source for scan ingest; never a write target for TBCMS uploads. |
+| `IntakeDirectory` | NVARCHAR(500) | Intake scans root (case-independent). Proposed value: `/Company/COMMON/Intakes`. **This folder does not yet exist — IT must create it before Phase 5.** |
 | `AppKey` | NVARCHAR(200) | Dropbox app key (public — for display/reference only) |
 | `StorageProvider` | NVARCHAR(20) | **Admin-controlled global feature flag**: `Local`, `Dropbox`, or `Hybrid` |
 
@@ -394,7 +417,7 @@ Create one app for TBCMS.
 Create production `DropboxService.bas` module based on the POC. All items below are changes from or additions to the POC:
 
 **Authentication:**
-- `state` parameter: at auth initiation, generate a random GUID (`CreateObject("Scriptlet.TypeLib").GUID`), store in a module-level `m_OAuthState` variable. Extract `state` from the redirect URL the user pastes back. If it does not match `m_OAuthState`, abort and log an error — do not exchange the code for tokens.
+- `state` parameter: at auth initiation, generate a random GUID (`CreateObject("Scriptlet.TypeLib").GUID`), store in a module-level `m_OAuthState` variable. The local HTTP listener captures the redirect URL automatically; VBA extracts `state` from it and compares to `m_OAuthState`. If they do not match, abort and log an error — do not exchange the code for tokens. (In the paste fallback, the user-provided URL is validated the same way.)
 - After successful token exchange, call `/users/get_current_account` and store the returned `email` in `tblDropboxTokens.DropboxAccountEmail`.
 
 **Encryption:**
@@ -409,6 +432,12 @@ Create production `DropboxService.bas` module based on the POC. All items below 
 
 **Required API operations:**
 
+All calls except `users/get_current_account` **must** include the header:
+```
+Dropbox-API-Path-Root: {"namespace_id": "14334595683", ".tag": "namespace_id"}
+```
+Read namespace ID from `tblDropboxRootConfig.NamespaceId` at startup; store in module-level `m_NamespaceId`. Without this header, paths resolve against the user's personal home namespace (empty), not the team folder tree.
+
 | Operation | Endpoint | Key parameters |
 |-----------|----------|---------------|
 | Upload ≤ 150 MB | `POST content.dropboxapi.com/2/files/upload` | `mode: overwrite`, `mute: false` |
@@ -421,7 +450,7 @@ Create production `DropboxService.bas` module based on the POC. All items below 
 | Get metadata | `POST api.dropboxapi.com/2/files/get_metadata` | Used to resolve `DropboxFileId` to current path; pass `{".tag": "id", "id": "id:AbCd..."}` |
 | Temporary link | `POST api.dropboxapi.com/2/files/get_temporary_link` | Returns link valid for 4 hours; open via `Application.FollowHyperlink` |
 | List folder | `POST api.dropboxapi.com/2/files/list_folder` | Used for folder-browse actions |
-| Current account | `POST api.dropboxapi.com/2/users/get_current_account` | Used at startup for identity validation |
+| Current account | `POST api.dropboxapi.com/2/users/get_current_account` | Used at startup for identity validation — namespace header not required for this call |
 
 **Retry policy**: `429` → wait `Retry-After` seconds; `500`/`503` → exponential backoff (2s, 4s, 8s); `401` → attempt one token refresh then re-raise; other errors → fail immediately with translated user message. Max 3 retries total.
 
@@ -541,6 +570,7 @@ Backfill must complete and the `BackfillVerification` report must show zero unfl
 
 ## Testing Strategy
 
+- **Pre-development API smoke test** (`DropboxOAuthTest.bas`): a standalone VBA module at `database_assessment/DropboxPOC/vba_code/DropboxOAuthTest.bas` that runs the full OAuth authorization code flow, exchanges the code for a token, and lists `/Company/COMMON`. Run this once per developer workstation to confirm app credentials, scopes, namespace header, and team folder access before writing production `DropboxService.bas` code. Uses App key/secret from module-level constants — **not** from `tblDropboxConfig`. Generated access tokens from the App Console are for ad-hoc curl/API-Explorer verification only; all VBA code uses the OAuth flow.
 - **Unit tests** (Rubberduck VBA test framework): path template interpolation (`BuildCasePath`), `DocumentType`-to-folder mapping, token lifecycle state machine (`Active` → `Expired` → `Revoked`), DPAPI encrypt/decrypt round-trip, API error code translation, `state` parameter GUID validation, chunked upload routing (file size threshold).
 - **Integration tests** against a dedicated Dropbox sandbox team (separate from production team — never test against production):
   - OAuth end-to-end: auth, token storage, refresh, identity validation, revocation check
@@ -686,6 +716,12 @@ risk.
 **G19. `tblDropboxAuditLog` growth and retention policy.** Indefinite retention is stated. Add an index plan (at minimum on `EventDate` and `DropboxAccountEmail`) and a retention/archive note — at firm scale this table will grow steadily.
 
 **G20. `[GI#Last#Name]` `#`-as-space token in the Intake type.** Analysis §3 calls this out as an unusual workaround in `spGetIntakeDocumentFileName`. Preserved implicitly by reusing the SP, but add a comment in the SP source so a future rewrite doesn't strip the `#REPLACE` thinking it's dead code.
+
+**G21. Duplicate lowercase `company` folder inside `/Company`.** Live Dropbox inspection (May 2026) found `/Company/company` (lowercase) alongside the canonical `/Company` folders. This is likely an accidental creation by the desktop sync client. **Action**: Dropbox admin should delete `/Company/company` before backfill begins. If it contains content, review and relocate before deleting. Add to Phase 1b pre-flight checklist.
+
+**G22. Loose files at `/Company` root that do not belong there.** Live inspection found case-related PDFs (e.g., client payment receipts, notices of satisfaction), `.lnk` Windows shortcuts, and `.log`/`.txt` files sitting directly in `/Company` rather than in a case subfolder. These are housekeeping issues outside TBCMS scope but could cause confusion during backfill path matching. **Action**: Dropbox admin should review and relocate or delete these files before Phase 7 backfill. Add to Phase 1b pre-flight checklist.
+
+**G23. `ScannerDirectory` on-prem residency confirmed.** The scanner hardware drop folder is confirmed in Dropbox at `/Company/COMMON/_SCANNER` (equivalent of `S:\COMMON\_SCANNER`). This folder is an **ingest source only** — TBCMS reads files from it to upload to case folders; it is never a write target for TBCMS-generated files. Add to Design Decisions: the scanner drop folder remains as-is in Dropbox (mirrored from on-prem via desktop sync client) and is not managed by the Dropbox API integration. The `ScannerDirectory` value in `tblDropboxRootConfig` is used read-only to validate the source path before upload.
 
 ---
 
