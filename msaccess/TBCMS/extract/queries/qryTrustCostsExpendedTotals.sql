@@ -1,2 +1,0 @@
-SELECT vwTrustCostsExpendedTotals.CaseID, vwTrustCostsExpendedTotals.SumOfCostBalance
-FROM vwTrustCostsExpendedTotals;

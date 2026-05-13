@@ -1,2 +1,0 @@
-SELECT vw_max_matterID_by_orderNr.MaxOfOrderNr, vw_max_matterID_by_orderNr.MaxOfMatterID, vw_max_matterID_by_orderNr.CaseID
-FROM vw_max_matterID_by_orderNr;

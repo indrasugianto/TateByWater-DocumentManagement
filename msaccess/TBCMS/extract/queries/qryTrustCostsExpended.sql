@@ -1,4 +1,0 @@
-SELECT tblCase.CaseID, [Trust Account].TDate, [Trust Account].TMatter, Sum([Trust Account].Credit) AS SumOfCredit, Sum(Nz([Credit],0)) AS CostBalance
-FROM tblCase INNER JOIN [Trust Account] ON tblCase.CaseID = [Trust Account].CaseID
-GROUP BY tblCase.CaseID, [Trust Account].TDate, [Trust Account].TMatter
-HAVING ((([Trust Account].TMatter) Not Like "*Earned*" And ([Trust Account].TMatter) Not Like "*Refund*" And ([Trust Account].TMatter) Not Like "*wire*" And ([Trust Account].TMatter) Not Like "*disburse*" And ([Trust Account].TMatter) Not Like "*lien*") AND ((Sum([Trust Account].Credit))>0));

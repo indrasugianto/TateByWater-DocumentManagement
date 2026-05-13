@@ -1,3 +1,0 @@
-SELECT vwTTAmountHours_TotalCaseID.CaseID, vwTTAmountHours_TotalCaseID.SumOfSumOfTime_
-FROM vwTTAmountHours_TotalCaseID
-GROUP BY vwTTAmountHours_TotalCaseID.CaseID, vwTTAmountHours_TotalCaseID.SumOfSumOfTime_;

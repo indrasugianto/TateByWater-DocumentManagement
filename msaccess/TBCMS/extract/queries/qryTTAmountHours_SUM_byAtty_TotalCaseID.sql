@@ -1,3 +1,0 @@
-SELECT vwTTAmountHours_SUM_byAtty_TotalCaseID.SumOfSumOfTime_, vwTTAmountHours_SUM_byAtty_TotalCaseID.Tatty, vwTTAmountHours_SUM_byAtty_TotalCaseID.CaseID
-FROM vwTTAmountHours_SUM_byAtty_TotalCaseID
-GROUP BY vwTTAmountHours_SUM_byAtty_TotalCaseID.SumOfSumOfTime_, vwTTAmountHours_SUM_byAtty_TotalCaseID.Tatty, vwTTAmountHours_SUM_byAtty_TotalCaseID.CaseID;

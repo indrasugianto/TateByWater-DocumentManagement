@@ -1,3 +1,0 @@
-SELECT vwTakeOff_A.CaseID, vwTakeOff_A.FileNumber, vwTakeOff_A.Name, vwTakeOff_A.Last_Name, vwTakeOff_A.Orig_Atty, vwTakeOff_A.HandlingAtty_Case, vwTakeOff_A.SumOfAdvancedAR, vwTakeOff_A.SumOfUnclearedDeposits, vwTakeOff_A.Balance, vwTakeOff_A.SumOfUncashedChecks, vwTakeOff_A.SumOfTotal, vwTakeOff_A.IANumber, vwTakeOff_A.Bill_ID, vwTakeOff_A.CostHold, vwTakeOff_A.SumOfCostBalance, vwTakeOff_A.SumofPrepaid, vwTakeOff_A.SumAdvLegal, vwTakeOff_A.SumEarnedAdv, vwTakeOff_A.SumCostReimb, vwTakeOff_A.Matter_type
-FROM vwTakeOff_A
-ORDER BY vwTakeOff_A.Name;

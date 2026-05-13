@@ -1,2 +1,0 @@
-SELECT vw_advanced_totals_SUM.CaseID, vw_advanced_totals_SUM.SumOfCharge, vw_advanced_totals_SUM.FirmPrepaid
-FROM vw_advanced_totals_SUM;

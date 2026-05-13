@@ -1,4 +1,0 @@
-SELECT tblCase.CaseID, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, tblCase.ParaLegal, tblCase.Matter_type, tblHearingDate.Hearing_Date, tblHearingDate.HearingType, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, [Last_Name] & ", " & [First_Name] AS Name, tblHearingDate.HearingTime, tblHearingDate.HrgResult, tblCase.Closed
-FROM tblCase INNER JOIN tblHearingDate ON tblCase.CaseID = tblHearingDate.CaseID
-WHERE (((tblHearingDate.Hearing_Date)=Date()-60) AND ((tblCase.Closed)=No)) OR (((tblHearingDate.Hearing_Date)>Date()-60))
-ORDER BY tblHearingDate.Hearing_Date;

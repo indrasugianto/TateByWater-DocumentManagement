@@ -1,2 +1,0 @@
-SELECT vwCaseSourcesRPT.CaseID, vwCaseSourcesRPT.Case_Letter, vwCaseSourcesRPT.Number_, vwCaseSourcesRPT.Orig_Atty, vwCaseSourcesRPT.Matter_type, vwCaseSourcesRPT.CaseOpenDate, vwCaseSourcesRPT.CaseNo, vwCaseSourcesRPT.yr, vwCaseSourcesRPT.[Total Earned Fee], vwCaseSourcesRPT.Clsdate, vwCaseSourcesRPT.Closed
-FROM vwCaseSourcesRPT;

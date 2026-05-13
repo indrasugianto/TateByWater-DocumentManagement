@@ -1,2 +1,0 @@
-SELECT vwTrustReportRPT1.CaseID, vwTrustReportRPT1.Case_Letter, vwTrustReportRPT1.yr, vwTrustReportRPT1.Number_, vwTrustReportRPT1.Orig_Atty, vwTrustReportRPT1.Matter_type, vwTrustReportRPT1.CaseOpenDate, vwTrustReportRPT1.SumOfBalance, vwTrustReportRPT1.CheckCashed, vwTrustReportRPT1.CaseNo, vwTrustReportRPT1.Last_Name, vwTrustReportRPT1.First_Name
-FROM vwTrustReportRPT1;

@@ -1,3 +1,0 @@
-SELECT qry_TimeKeeping_bill_totals.CaseID, Sum(qry_TimeKeeping_bill_totals.Total) AS SumOfTotal, qry_TimeKeeping_bill_totals.[Bill Closed], qry_TimeKeeping_bill_totals.IANumber, qry_TimeKeeping_bill_totals.Bill_ID
-FROM qry_TimeKeeping_bill_totals
-GROUP BY qry_TimeKeeping_bill_totals.CaseID, qry_TimeKeeping_bill_totals.[Bill Closed], qry_TimeKeeping_bill_totals.IANumber, qry_TimeKeeping_bill_totals.Bill_ID;

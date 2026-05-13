@@ -1,3 +1,0 @@
-SELECT tblTimeTableDetail.Bill_ID, tblTimeTableDetail.Tdate, tblTimeTableDetail.Tatty, tblTimeTableDetail.Rate, tblTimeTableDetail.Time_, [Rate]*[Time_] AS Billed, [TB Time Keeping].CaseID, tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, [Last_Name] & ", " & [First_Name] AS Name, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_") AS FileNumber
-FROM tblCase INNER JOIN ([TB Time Keeping] INNER JOIN tblTimeTableDetail ON [TB Time Keeping].Bill_ID = tblTimeTableDetail.Bill_ID) ON tblCase.CaseID = [TB Time Keeping].CaseID
-ORDER BY tblTimeTableDetail.Tdate DESC;

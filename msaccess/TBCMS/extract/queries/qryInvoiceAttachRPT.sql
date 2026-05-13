@@ -1,3 +1,0 @@
-SELECT tblCase.CaseID, [TB Time Keeping].Bill_ID, [TB Time Keeping].[Bill Sent], [TB Time Keeping].[Bill Paid], [TB Time Keeping].[Bill Closed], [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Discount, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS CaseNo, [TB Time Keeping].IANumber, tblTimeTableDetail.Tdate, tblTimeTableDetail.Description, tblTimeTableDetail.Tatty, tblTimeTableDetail.Rate, tblTimeTableDetail.Time_, [TB Time Keeping].TimeNotes
-FROM tblCase INNER JOIN ([TB Time Keeping] INNER JOIN tblTimeTableDetail ON [TB Time Keeping].Bill_ID = tblTimeTableDetail.Bill_ID) ON tblCase.CaseID = [TB Time Keeping].CaseID
-ORDER BY tblTimeTableDetail.Tdate;

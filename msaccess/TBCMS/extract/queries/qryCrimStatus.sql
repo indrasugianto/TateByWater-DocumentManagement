@@ -1,3 +1,0 @@
-SELECT tblCase.Last_Name, tblCase.First_Name, tblCase.Closed, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Retainer, tblCase.Matter_type, tblCase.Court, tblCase.CType, tblDropD.FieldName, tblCase.CaseID, tblDropD.SortOrder
-FROM tblCase LEFT JOIN tblDropD ON tblCase.Orig_Atty = tblDropD.CodeVal
-WHERE (((tblCase.Closed)=No) AND ((tblCase.Case_Letter)="C" Or (tblCase.Case_Letter)="T") AND ((tblDropD.FieldName)="orig_atty"));

@@ -1,3 +1,0 @@
-SELECT TblCase.CaseID, TblCase.Case_Letter, TblCase.Orig_Atty, TblCase.Matter_type, TblCase.Court, TblCase.CaseOpenDate, TblCase.HandlingAtty_Case, Disposition.Dispo_Atty, Disposition.Dispo_Date, Disposition.[PI Settlement Amount], Disposition.[Entire np], Disposition.[Not Guilty Dismissed], Disposition.Plea, Disposition.Trial, Disposition.Disposition, [Last_Name] & ", " & [First_Name] AS Name, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], [Personal Injury].Litigation, tblDropD.CodeVal
-FROM ((TblCase LEFT JOIN tblDropD ON TblCase.Case_Letter = tblDropD.Code) INNER JOIN Disposition ON TblCase.CaseID = Disposition.CaseID) INNER JOIN [Personal Injury] ON TblCase.CaseID = [Personal Injury].CaseID
-ORDER BY Disposition.Dispo_Date DESC;

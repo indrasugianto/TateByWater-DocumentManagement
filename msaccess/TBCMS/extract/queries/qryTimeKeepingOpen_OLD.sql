@@ -1,3 +1,0 @@
-SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].Bill_ID, [TB Time Keeping].IANumber, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_") AS FileNumber, [SumOfAmount]-Nz([Discount]) AS BalanceCalculated, tblCase.*, [TB Time Keeping].[Bill Open], [tblCase].[Last_Name] & ", " & [tblCase].[First_Name] AS Name
-FROM tblCase INNER JOIN ([TB Time Keeping] INNER JOIN qry_time_table_totals ON [TB Time Keeping].Bill_ID = qry_time_table_totals.Bill_ID) ON tblCase.CaseID = [TB Time Keeping].CaseID
-WHERE ((([TB Time Keeping].[Bill Closed])=No));

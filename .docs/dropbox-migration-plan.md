@@ -114,7 +114,7 @@ flowchart LR
   - Strip a leading `#` if present (Access hyperlink format artifact)
   - Replace `S:\` with `/Company/`
   - Replace all remaining `\` with `/`
-  - Scripts: `database_assessment/TB_CMS_SQL/queries/migrate_paths_to_dropbox/`
+  - Scripts: `database_assessment/TBCMS/migrate_paths_to_dropbox/`
     - `STEP_0_ANALYZE.sql` — safe inspection, no changes
     - `STEP_1_UPDATE.sql` — transactional update with spot-check before COMMIT
     - `STEP_2_VERIFY.sql` — post-commit validation (expects zero S:\ rows remaining)
@@ -553,7 +553,7 @@ Migrate and validate in this order:
 #### Pre-cutover steps
 
 **Step 1 — Path migration (STEP_1_UPDATE.sql)**
-Run `database_assessment/TB_CMS_SQL/queries/migrate_paths_to_dropbox/STEP_1_UPDATE.sql` on `awsql2022dev/TateByWater`.
+Run `database_assessment/TBCMS/migrate_paths_to_dropbox/STEP_1_UPDATE.sql` on `awsql2022dev/TateByWater`.
 This rewrites all `DocumentFileName` values in `tblCaseDocuments` and all `ScanLocation` values in `tblScans` from `S:\` format to `/Company/` Dropbox paths in a single transaction.
 Review the spot-check output before committing. Run `STEP_2_VERIFY.sql` after committing to confirm zero S:\ rows remain.
 

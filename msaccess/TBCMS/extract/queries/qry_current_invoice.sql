@@ -1,3 +1,0 @@
-SELECT vw_current_invoice.Balance, vw_current_invoice.[Balance Due Date], vw_current_invoice.[Billing Notes], vw_current_invoice.Last_Name, vw_current_invoice.First_Name, vw_current_invoice.CaseOpenDate, vw_current_invoice.yr, vw_current_invoice.Number_, vw_current_invoice.Orig_Atty, vw_current_invoice.Address, vw_current_invoice.City, vw_current_invoice.State, vw_current_invoice.Zip, vw_current_invoice.Matter_type, vw_current_invoice.Retainer, vw_current_invoice.Case_Letter, vw_current_invoice.OrderNr, vw_current_invoice.CaseID, vw_current_invoice.Date2, vw_current_invoice.Pay_Outlay, vw_current_invoice.Charge, vw_current_invoice.Payment
-FROM vw_current_invoice
-ORDER BY vw_current_invoice.OrderNr;

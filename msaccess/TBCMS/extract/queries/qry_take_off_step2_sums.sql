@@ -1,2 +1,0 @@
-SELECT vw_take_off_step2_sums.TakeOffMonthID, vw_take_off_step2_sums.SumOfCBHRev, vw_take_off_step2_sums.SumOfMKRev, vw_take_off_step2_sums.SumOfCBHCom, vw_take_off_step2_sums.SumOfMTRev, vw_take_off_step2_sums.SumOfMTCom, vw_take_off_step2_sums.SumOfKBCom, vw_take_off_step2_sums.SumOfMKCom, vw_take_off_step2_sums.SumOfRLFCom, vw_take_off_step2_sums.SumOfEarlyEarned, vw_take_off_step2_sums.SumOfTOEarned, vw_take_off_step2_sums.SumOfTOEarlyAndEarned, vw_take_off_step2_sums.SumOfCostReimb
-FROM vw_take_off_step2_sums;

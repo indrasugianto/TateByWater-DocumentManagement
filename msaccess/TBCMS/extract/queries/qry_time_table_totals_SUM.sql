@@ -1,2 +1,0 @@
-SELECT vw_time_table_totals_SUM.CaseID, vw_time_table_totals_SUM.SumOfSumOfAmount
-FROM vw_time_table_totals_SUM;

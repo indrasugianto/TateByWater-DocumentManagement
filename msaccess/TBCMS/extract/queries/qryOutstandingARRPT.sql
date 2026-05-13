@@ -1,2 +1,0 @@
-SELECT tblCase.CaseID, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Matter_type, tblCase.Retainer, tblCase.CaseOpenDate, qryMatter.Balance, Billing.[Balance Due Date], Billing.[Past Due], Billing.[Long Term Collections], Billing.chkBalanceDue, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS CaseNo, Billing.WriteOff
-FROM (tblCase INNER JOIN qryMatter ON tblCase.CaseID = qryMatter.CaseID) INNER JOIN Billing ON tblCase.CaseID = Billing.CaseID;

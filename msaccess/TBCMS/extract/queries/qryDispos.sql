@@ -1,3 +1,0 @@
-SELECT vwDispos.CaseID, vwDispos.Case_Letter, vwDispos.Orig_Atty, vwDispos.Matter_type, vwDispos.Court, vwDispos.CaseOpenDate, vwDispos.HandlingAtty_Case, vwDispos.Dispo_Atty, vwDispos.Dispo_Date, vwDispos.[PI Settlement Amount], vwDispos.[Entire np], vwDispos.[Not Guilty Dismissed], vwDispos.Plea, vwDispos.Trial, vwDispos.Disposition, vwDispos.Name, vwDispos.[Case No], vwDispos.Litigation, vwDispos.CodeVal, vwDispos.FieldName
-FROM vwDispos
-ORDER BY vwDispos.Dispo_Date DESC;

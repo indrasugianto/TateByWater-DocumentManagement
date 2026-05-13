@@ -1,3 +1,0 @@
-SELECT tblCase.CaseID, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Matter_type, tblCase.Retainer, tblCase.CaseOpenDate, [Trust Account].TrustAccountID, [Trust Account].TDate, [Trust Account].TMatter, [Trust Account].Debit, [Trust Account].Credit, [Trust Account].CheckCashed, [Trust Account].CheckNumber, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], [Trust Account].DepCleared, [Trust Account].Reconciled, [Trust Account].OrderNr
-FROM tblCase LEFT JOIN [Trust Account] ON tblCase.CaseID = [Trust Account].CaseID
-WHERE (((tblCase.CaseID) Is Not Null));

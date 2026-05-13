@@ -1,3 +1,0 @@
-SELECT tblCase.CaseID, tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], [Last_Name] & ", " & [First_Name] AS Name, TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, tblCase.ParaLegal, tblCase.Matter_type
-FROM tblCase INNER JOIN TblActionNeeded ON tblCase.CaseID = TblActionNeeded.CaseID
-WHERE (((TblActionNeeded.ActionComp)=No));

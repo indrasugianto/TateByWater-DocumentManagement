@@ -1,4 +1,0 @@
-SELECT tblCase.CaseID, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, tblCase.ParaLegal, tblCase.Matter_type, tblHearingDate.Hearing_Date, tblHearingDate.HearingType, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, [Last_Name] & ", " & [First_Name] AS Name, tblHearingDate.HearingTime, tblHearingDate.HrgCal, tblCase.HmPhone, tblCase.Email, tblHearingDate.Reminder, tblHearingDate.ClientPresent, tblCase.Retainer, tblHearingDate.HrgResult, tblCase.Spanish
-FROM tblCase INNER JOIN tblHearingDate ON tblCase.CaseID = tblHearingDate.CaseID
-WHERE (((tblHearingDate.Hearing_Date)>Date()-14))
-ORDER BY tblHearingDate.Hearing_Date;
