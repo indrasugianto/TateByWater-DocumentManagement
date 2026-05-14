@@ -1,0 +1,2352 @@
+Attribute VB_Name = "DropboxService"
+' ============================================================================
+' Module: DropboxService
+' Purpose: Production Dropbox API integration for TBCMS. Phase 3 of the
+'          Dropbox migration plan.
+'
+' CURRENTLY IMPLEMENTED:
+'   Phase 3a (foundation):
+'     - Module-level config state + accessors
+'     - SQL config load (tblDropboxConfig + tblDropboxRootConfig)
+'     - ALLOW_DROPBOX_WRITES kill-switch + GuardWritesEnabled
+'     - Namespace-header injector (Dropbox-API-Path-Root)
+'     - DPAPI encrypt/decrypt helpers (replace POC's hex encoding)
+'     - LogAuditEvent (calls dbo.spLogDropboxAuditEvent)
+'     - LogLocal (writes to local tblDropboxLog)
+'     - Phase3a_SmokeTest
+'   Phase 3b pass 1 (token storage foundation):
+'     - tblDropboxTokens schema upgrade (DropboxAccountEmail + TokenStatus;
+'       migrates legacy IsActive column)
+'     - OAuth state-parameter helpers (CSRF guard, single-use; CoCreateGuid)
+'     - SaveTokens / LoadTokens / ClearTokens with DPAPI on disk
+'     - TokenIsExpiring + cache accessors
+'     - Phase3b_Pass1_SmokeTest
+'   Phase 3b pass 2 (OAuth code-exchange + identity + revocation):
+'     - HTTP transport (WinHttp, namespace-header injection)
+'     - JSON + URL helpers (ExtractJsonString, ExtractJsonLong, UrlEncode,
+'       ExtractQueryParam)
+'     - PowerShell HttpListener on :8765 for OAuth callback capture,
+'       with manual-paste fallback gated by USE_LOCAL_LISTENER
+'     - AuthenticateUser (full code-exchange flow), ExchangeCodeForToken,
+'       GetCurrentAccountEmail (/users/get_current_account)
+'     - IsAccountRevoked (queries SQL tblDropboxRevocationList; fail-open)
+'     - RefreshAccessToken, EnsureValidToken
+'     - Phase3b_Pass2_UnitTest (no browser) +
+'       Phase3b_Pass2_AuthFlowTest (browser required)
+'   Phase 3c (read-only API operations):
+'     - NewGuid helper (extracted from GenerateOAuthState)
+'     - Path/file utilities: JsonEscapePath, SanitizeWindowsFilename,
+'       DropboxBaseName, BuildLocalTempPath, WriteBytesToFile
+'     - HttpDownloadBinary (WinHttp for content.dropboxapi.com endpoints)
+'     - CleanupTempFiles (purges %TEMP%\TBCMS\)
+'     - OpenDocument (download + native-app launch — the doc-open primary path)
+'     - GetMetadata (Found / NotFound / transport-failure tristate;
+'       VerificationReport's primary API)
+'     - ListFolder, GetTemporaryLink (24h validity per G1)
+'     - Phase3c_SmokeTest (no user input) +
+'       Phase3c_OpenDocumentTest (interactive — pass a real path)
+'
+' PENDING:
+'   3d — Write API ops (files/upload, files/upload_session/*, files/move_v2,
+'        files/copy_v2, files/delete_v2, files/create_folder_v2)
+'   3e — Startup-form wiring (Form_Open hook)
+'
+' KILL-SWITCH:
+'   ALLOW_DROPBOX_WRITES = False in this build (TBCMS_Test.accde).
+'   Every write entrypoint (added in 3d) calls GuardWritesEnabled as its
+'   first executable statement; the constant is flipped to True only in
+'   the production TBCMS.accde build.
+' ============================================================================
+
+Option Compare Database
+Option Explicit
+
+' ----------------------------------------------------------------------------
+' COMPILE-TIME CONSTANTS
+' ----------------------------------------------------------------------------
+
+' Test-environment kill-switch. Flipped to True only in the production
+' TBCMS.accde build (see Phase 7 cutover). Every Dropbox write entrypoint
+' must call GuardWritesEnabled "<callerName>" as its first statement.
+Public Const ALLOW_DROPBOX_WRITES As Boolean = False
+
+' Dropbox API endpoints
+Private Const API_BASE As String = "https://api.dropboxapi.com/2"
+Private Const CONTENT_BASE As String = "https://content.dropboxapi.com/2"
+Private Const OAUTH_BASE As String = "https://api.dropboxapi.com/oauth2"
+
+' Local-side artifacts
+Private Const LOG_TABLE As String = "tblDropboxLog"
+Private Const TEMP_SUBDIR As String = "TBCMS"
+
+' Sentinel value the installer seeds for AppSecret. Must be replaced post-
+' install before InitializeDropboxConfig succeeds.
+Private Const APPSECRET_PLACEHOLDER As String = _
+    "REPLACE_WITH_APP_SECRET_FROM_DROPBOX_APP_CONSOLE"
+
+' OAuth flow endpoints (Phase 3b pass 2)
+Private Const AUTH_URL_BASE As String = "https://www.dropbox.com/oauth2/authorize"
+Private Const TOKEN_URL As String = "https://api.dropboxapi.com/oauth2/token"
+Private Const ACCOUNT_URL As String = "https://api.dropboxapi.com/2/users/get_current_account"
+
+' Local HTTP listener for OAuth callback (Phase 3b pass 2)
+Private Const LISTENER_PORT As Long = 8765
+Private Const LISTENER_TIMEOUT_S As Long = 120
+
+' Flip to False if PowerShell ExecutionPolicy / port 8765 are blocked.
+' False routes the OAuth callback through the manual-paste InputBox fallback
+' (requires http://localhost — no port — registered in the Dropbox App Console).
+Public Const USE_LOCAL_LISTENER As Boolean = True
+
+' ----------------------------------------------------------------------------
+' MODULE-LEVEL CONFIG CACHE (populated by InitializeDropboxConfig)
+' ----------------------------------------------------------------------------
+
+Private m_AppKey            As String
+Private m_AppSecret         As String
+Private m_RedirectUri       As String
+Private m_NamespaceId       As String
+Private m_TeamRootPath      As String
+Private m_ConfigLoaded      As Boolean
+
+' Set later by 3b's identity validation; declared here so audit logging
+' can fetch it via GetDropboxAccountEmail without forward references.
+Private m_DropboxAccountEmail As String
+
+' --- Phase 3b pass 1: OAuth state + token cache ---
+
+' Per-session CSRF guard for OAuth authorization-code flow. Set by
+' GenerateOAuthState before opening the browser; consumed (and cleared)
+' by ValidateOAuthState on the redirect callback. Single-use.
+Private m_OAuthState            As String
+
+' Current-session token cache. Plaintext IN MEMORY ONLY — on disk these
+' values are DPAPI-encrypted in tblDropboxTokens.
+Private m_CurrentAccessToken    As String
+Private m_CurrentRefreshToken   As String
+Private m_CurrentExpiresAt      As Date
+Private m_TokenLoaded           As Boolean
+
+' ----------------------------------------------------------------------------
+' WINDOWS DPAPI DECLARATIONS (Crypt32.dll)
+' ----------------------------------------------------------------------------
+
+Private Type DATA_BLOB
+    cbData As Long
+#If VBA7 Then
+    pbData As LongPtr
+#Else
+    pbData As Long
+#End If
+End Type
+
+Private Type GUID
+    Data1 As Long
+    Data2 As Integer
+    Data3 As Integer
+    Data4(0 To 7) As Byte
+End Type
+
+#If VBA7 Then
+Private Declare PtrSafe Function CryptProtectData Lib "Crypt32.dll" ( _
+    pDataIn As DATA_BLOB, _
+    ByVal szDataDescr As LongPtr, _
+    ByVal pOptionalEntropy As LongPtr, _
+    ByVal pvReserved As LongPtr, _
+    ByVal pPromptStruct As LongPtr, _
+    ByVal dwFlags As Long, _
+    pDataOut As DATA_BLOB) As Long
+
+Private Declare PtrSafe Function CryptUnprotectData Lib "Crypt32.dll" ( _
+    pDataIn As DATA_BLOB, _
+    ByVal ppszDataDescr As LongPtr, _
+    ByVal pOptionalEntropy As LongPtr, _
+    ByVal pvReserved As LongPtr, _
+    ByVal pPromptStruct As LongPtr, _
+    ByVal dwFlags As Long, _
+    pDataOut As DATA_BLOB) As Long
+
+Private Declare PtrSafe Function LocalFree Lib "kernel32" ( _
+    ByVal hMem As LongPtr) As LongPtr
+
+Private Declare PtrSafe Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _
+    Destination As Any, _
+    Source As Any, _
+    ByVal Length As LongPtr)
+
+Private Declare PtrSafe Function CoCreateGuid Lib "ole32.dll" ( _
+    ByRef pGuid As GUID) As Long
+
+Private Declare PtrSafe Function StringFromGUID2 Lib "ole32.dll" ( _
+    ByRef rguid As GUID, _
+    ByVal lpsz As LongPtr, _
+    ByVal cchMax As Long) As Long
+#Else
+Private Declare Function CryptProtectData Lib "Crypt32.dll" ( _
+    pDataIn As DATA_BLOB, _
+    ByVal szDataDescr As Long, _
+    ByVal pOptionalEntropy As Long, _
+    ByVal pvReserved As Long, _
+    ByVal pPromptStruct As Long, _
+    ByVal dwFlags As Long, _
+    pDataOut As DATA_BLOB) As Long
+
+Private Declare Function CryptUnprotectData Lib "Crypt32.dll" ( _
+    pDataIn As DATA_BLOB, _
+    ByVal ppszDataDescr As Long, _
+    ByVal pOptionalEntropy As Long, _
+    ByVal pvReserved As Long, _
+    ByVal pPromptStruct As Long, _
+    ByVal dwFlags As Long, _
+    pDataOut As DATA_BLOB) As Long
+
+Private Declare Function LocalFree Lib "kernel32" ( _
+    ByVal hMem As Long) As Long
+
+Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _
+    Destination As Any, _
+    Source As Any, _
+    ByVal Length As Long)
+
+Private Declare Function CoCreateGuid Lib "ole32.dll" ( _
+    ByRef pGuid As GUID) As Long
+
+Private Declare Function StringFromGUID2 Lib "ole32.dll" ( _
+    ByRef rguid As GUID, _
+    ByVal lpsz As Long, _
+    ByVal cchMax As Long) As Long
+#End If
+
+' ============================================================================
+' SECTION 1 — CONFIG LOAD
+' ============================================================================
+
+' Loads dbo.tblDropboxConfig and dbo.tblDropboxRootConfig from SQL Server
+' into module-level cache. Idempotent — subsequent calls are no-ops.
+' Raises if a config row is missing or the AppSecret is still the placeholder.
+'
+' Should be called once at startup from the application's startup form
+' (Form_Open). All other public entrypoints in this module assume the config
+' has already been loaded.
+Public Sub InitializeDropboxConfig()
+    Const CALLER As String = "InitializeDropboxConfig"
+
+    If m_ConfigLoaded Then Exit Sub
+
+    Dim cn As ADODB.Connection
+    Dim rs As ADODB.Recordset
+    Set cn = New ADODB.Connection
+
+    On Error GoTo HandleError
+
+    cn.Open PcaGetConnnectionString()
+
+    ' --- tblDropboxConfig (singleton row, ConfigID = 1) ---
+    Set rs = New ADODB.Recordset
+    rs.Open "SELECT AppKey, AppSecret, RedirectUri " & _
+            "FROM dbo.tblDropboxConfig WHERE ConfigID = 1", _
+            cn, adOpenForwardOnly, adLockReadOnly
+    If rs.EOF Then
+        Err.Raise vbObjectError + 6010, CALLER, _
+            "dbo.tblDropboxConfig row ConfigID=1 not found. " & _
+            "Run Dropbox-Migration-SQL-Install.sql against this database."
+    End If
+    m_AppKey = Nz(rs!AppKey, "")
+    m_AppSecret = Nz(rs!AppSecret, "")
+    m_RedirectUri = Nz(rs!RedirectUri, "")
+    rs.Close
+
+    If m_AppSecret = APPSECRET_PLACEHOLDER Or LenB(m_AppSecret) = 0 Then
+        Err.Raise vbObjectError + 6011, CALLER, _
+            "tblDropboxConfig.AppSecret is empty or still the placeholder. " & _
+            "Run: UPDATE dbo.tblDropboxConfig SET AppSecret = N'<real secret>' " & _
+            "WHERE ConfigID = 1;"
+    End If
+
+    ' --- tblDropboxRootConfig (singleton row, ConfigID = 1) ---
+    rs.Open "SELECT NamespaceId, TeamRootPath " & _
+            "FROM dbo.tblDropboxRootConfig WHERE ConfigID = 1", _
+            cn, adOpenForwardOnly, adLockReadOnly
+    If rs.EOF Then
+        Err.Raise vbObjectError + 6012, CALLER, _
+            "dbo.tblDropboxRootConfig row ConfigID=1 not found. " & _
+            "Run Dropbox-Migration-SQL-Install.sql against this database."
+    End If
+    m_NamespaceId = Nz(rs!NamespaceId, "")
+    m_TeamRootPath = Nz(rs!TeamRootPath, "")
+    rs.Close
+
+    If LenB(m_NamespaceId) = 0 Then
+        Err.Raise vbObjectError + 6013, CALLER, _
+            "tblDropboxRootConfig.NamespaceId is empty. Re-run the installer."
+    End If
+
+    cn.Close
+    Set rs = Nothing
+    Set cn = Nothing
+
+    m_ConfigLoaded = True
+    LogLocal CALLER, "Info", _
+        "Dropbox config loaded. NamespaceId=" & m_NamespaceId & _
+        ", TeamRootPath=" & m_TeamRootPath
+    Exit Sub
+
+HandleError:
+    Dim errNum As Long, errDesc As String
+    errNum = Err.Number
+    errDesc = Err.Description
+    If Not rs Is Nothing Then
+        If rs.State = adStateOpen Then rs.Close
+        Set rs = Nothing
+    End If
+    If Not cn Is Nothing Then
+        If cn.State = adStateOpen Then cn.Close
+        Set cn = Nothing
+    End If
+    LogLocal CALLER, "Error", "Err=" & errNum & " " & errDesc
+    Err.Raise errNum, CALLER, errDesc
+End Sub
+
+' Read-only accessors for the cached config.
+' Callers must call InitializeDropboxConfig at startup before using these.
+
+Public Function GetAppKey() As String
+    EnsureConfigLoaded "GetAppKey"
+    GetAppKey = m_AppKey
+End Function
+
+Public Function GetAppSecret() As String
+    EnsureConfigLoaded "GetAppSecret"
+    GetAppSecret = m_AppSecret
+End Function
+
+Public Function GetRedirectUri() As String
+    EnsureConfigLoaded "GetRedirectUri"
+    GetRedirectUri = m_RedirectUri
+End Function
+
+Public Function GetNamespaceId() As String
+    EnsureConfigLoaded "GetNamespaceId"
+    GetNamespaceId = m_NamespaceId
+End Function
+
+Public Function GetTeamRootPath() As String
+    EnsureConfigLoaded "GetTeamRootPath"
+    GetTeamRootPath = m_TeamRootPath
+End Function
+
+Public Function GetDropboxAccountEmail() As String
+    ' Populated by Phase 3b identity validation. Empty until then.
+    GetDropboxAccountEmail = m_DropboxAccountEmail
+End Function
+
+Public Sub SetDropboxAccountEmail(ByVal email As String)
+    ' Called from Phase 3b after /users/get_current_account.
+    m_DropboxAccountEmail = email
+End Sub
+
+Private Sub EnsureConfigLoaded(callerName As String)
+    If Not m_ConfigLoaded Then
+        Err.Raise vbObjectError + 6014, callerName, _
+            "DropboxService config not loaded. Call InitializeDropboxConfig at startup."
+    End If
+End Sub
+
+' ============================================================================
+' SECTION 2 — KILL-SWITCH
+' ============================================================================
+
+' Every write entrypoint (added in Phase 3d) must call this as its first
+' executable statement, e.g.:
+'   Public Function UploadFile(...) As Boolean
+'       GuardWritesEnabled "UploadFile"
+'       ...
+'
+' When ALLOW_DROPBOX_WRITES = False (test build), this raises and aborts
+' the caller. Bypassing requires producing a different compiled .accde.
+Public Sub GuardWritesEnabled(callerName As String)
+    If Not ALLOW_DROPBOX_WRITES Then
+        LogLocal "GuardWritesEnabled", "Warn", _
+            "Write blocked: " & callerName & _
+            " (ALLOW_DROPBOX_WRITES = False — test environment is read-only against /Company)"
+        Err.Raise vbObjectError + 6001, callerName, _
+            "Dropbox writes are disabled in this build (test environment, /Company is read-only)."
+    End If
+End Sub
+
+' ============================================================================
+' SECTION 3 — NAMESPACE HEADER
+' ============================================================================
+
+' Every Dropbox API call EXCEPT users/get_current_account must include
+' Dropbox-API-Path-Root header pointing at the team namespace, or the call
+' resolves against the user's empty personal home namespace instead of
+' /Company. Phase 3c/3d HTTP-request helpers will inject this header.
+Public Function DropboxPathRootHeader() As String
+    EnsureConfigLoaded "DropboxPathRootHeader"
+    DropboxPathRootHeader = _
+        "{""" & ".tag"" : ""namespace_id"", ""namespace_id"": """ & m_NamespaceId & """}"
+End Function
+
+' ============================================================================
+' SECTION 4 — DPAPI ENCRYPT / DECRYPT
+' ============================================================================
+' Per-user DPAPI: ciphertext is bound to the current Windows session and
+' cannot be decrypted by another user or on another machine. Replaces the
+' POC's hex encoding for tblDropboxTokens.AccessToken / RefreshToken
+' (storage wired up in Phase 3b).
+'
+' Output is base64-encoded so the ciphertext can be stored in a TEXT/MEMO
+' column without binary-marshalling concerns.
+
+Public Function EncryptDPAPI(plaintext As String) As String
+    Const CALLER As String = "EncryptDPAPI"
+    Dim plainBytes() As Byte
+    Dim plainBlob As DATA_BLOB, cipherBlob As DATA_BLOB
+    Dim ok As Long, n As Long
+    Dim cipherBytes() As Byte
+
+    If LenB(plaintext) = 0 Then
+        EncryptDPAPI = ""
+        Exit Function
+    End If
+
+    ' Copy the string's UTF-16 bytes into a managed Byte() so we can take VarPtr.
+    n = LenB(plaintext)
+    ReDim plainBytes(0 To n - 1)
+    CopyMemory plainBytes(0), ByVal StrPtr(plaintext), CLng(n)
+    plainBlob.cbData = n
+    plainBlob.pbData = VarPtr(plainBytes(0))
+
+    ok = CryptProtectData(plainBlob, 0, 0, 0, 0, 0, cipherBlob)
+    If ok = 0 Then
+        Err.Raise vbObjectError + 6020, CALLER, _
+            "CryptProtectData failed (LastDllError=" & Err.LastDllError & ")"
+    End If
+
+    n = cipherBlob.cbData
+    ReDim cipherBytes(0 To n - 1)
+    CopyMemory cipherBytes(0), ByVal cipherBlob.pbData, CLng(n)
+    LocalFree cipherBlob.pbData
+
+    EncryptDPAPI = BytesToBase64(cipherBytes)
+End Function
+
+Public Function DecryptDPAPI(ciphertext As String) As String
+    Const CALLER As String = "DecryptDPAPI"
+    Dim cipherBytes() As Byte
+    Dim cipherBlob As DATA_BLOB, plainBlob As DATA_BLOB
+    Dim ok As Long, n As Long
+
+    If LenB(ciphertext) = 0 Then
+        DecryptDPAPI = ""
+        Exit Function
+    End If
+
+    cipherBytes = Base64ToBytes(ciphertext)
+    n = UBound(cipherBytes) - LBound(cipherBytes) + 1
+    cipherBlob.cbData = n
+    cipherBlob.pbData = VarPtr(cipherBytes(LBound(cipherBytes)))
+
+    ok = CryptUnprotectData(cipherBlob, 0, 0, 0, 0, 0, plainBlob)
+    If ok = 0 Then
+        Err.Raise vbObjectError + 6021, CALLER, _
+            "CryptUnprotectData failed (LastDllError=" & Err.LastDllError & "). " & _
+            "Token may have been encrypted on a different Windows user / profile; " & _
+            "user must re-authenticate."
+    End If
+
+    n = plainBlob.cbData
+    ' Build a String of (n / 2) UTF-16 chars and copy the bytes into its buffer.
+    DecryptDPAPI = String$(n \ 2, vbNullChar)
+    CopyMemory ByVal StrPtr(DecryptDPAPI), ByVal plainBlob.pbData, CLng(n)
+    LocalFree plainBlob.pbData
+End Function
+
+' --- Base64 helpers (use MSXML2 bin.base64 — built into Windows) ---
+
+Private Function BytesToBase64(bytes() As Byte) As String
+    Dim doc As Object, node As Object
+    Set doc = CreateObject("MSXML2.DOMDocument.6.0")
+    Set node = doc.createElement("b64")
+    node.DataType = "bin.base64"
+    node.nodeTypedValue = bytes
+    BytesToBase64 = node.Text
+End Function
+
+Private Function Base64ToBytes(s As String) As Byte()
+    Dim doc As Object, node As Object
+    Set doc = CreateObject("MSXML2.DOMDocument.6.0")
+    Set node = doc.createElement("b64")
+    node.DataType = "bin.base64"
+    node.Text = s
+    Base64ToBytes = node.nodeTypedValue
+End Function
+
+' ============================================================================
+' SECTION 5 — AUDIT LOG (SQL Server, via spLogDropboxAuditEvent)
+' ============================================================================
+' Audit-critical events (Upload, Move, Copy, Delete, LinkGenerate) — failure
+' to log MUST NOT crash the caller. On-Error-Resume-Next is intentional.
+
+Public Sub LogAuditEvent( _
+    ByVal actionType As String, _
+    ByVal outcome As String, _
+    Optional ByVal caseID As Variant, _
+    Optional ByVal documentType As String = "", _
+    Optional ByVal dropboxPath As String = "", _
+    Optional ByVal errorDetail As String = "" _
+)
+    On Error Resume Next
+
+    Dim cn As ADODB.Connection
+    Set cn = New ADODB.Connection
+    cn.Open PcaGetConnnectionString()
+    If Err.Number <> 0 Then GoTo Cleanup
+
+    Dim cmd As ADODB.Command
+    Set cmd = New ADODB.Command
+    cmd.ActiveConnection = cn
+    cmd.CommandType = adCmdStoredProc
+    cmd.CommandText = "dbo.spLogDropboxAuditEvent"
+
+    Dim emailVal As Variant, caseVal As Variant
+    Dim typeVal As Variant, pathVal As Variant, errVal As Variant
+    emailVal = IIf(LenB(m_DropboxAccountEmail) = 0, Null, m_DropboxAccountEmail)
+    caseVal = IIf(IsMissing(caseID) Or IsNull(caseID), Null, caseID)
+    typeVal = IIf(LenB(documentType) = 0, Null, documentType)
+    pathVal = IIf(LenB(dropboxPath) = 0, Null, dropboxPath)
+    errVal = IIf(LenB(errorDetail) = 0, Null, errorDetail)
+
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@DropboxAccountEmail", adVarWChar, adParamInput, 320, emailVal)
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@CaseID", adInteger, adParamInput, , caseVal)
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@DocumentType", adVarWChar, adParamInput, 100, typeVal)
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@DropboxPath", adLongVarWChar, adParamInput, _
+        IIf(IsNull(pathVal), 1, Len(CStr(pathVal))), pathVal)
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@ActionType", adVarWChar, adParamInput, 50, actionType)
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@Outcome", adVarWChar, adParamInput, 20, outcome)
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "@ErrorDetail", adLongVarWChar, adParamInput, _
+        IIf(IsNull(errVal), 1, Len(CStr(errVal))), errVal)
+
+    cmd.Execute
+
+Cleanup:
+    If Not cn Is Nothing Then
+        If cn.State = adStateOpen Then cn.Close
+        Set cn = Nothing
+    End If
+    Set cmd = Nothing
+    Err.Clear   ' don't leak suppressed errors to the caller
+End Sub
+
+' ============================================================================
+' SECTION 6 — LOCAL DEBUG LOG (Access frontend tblDropboxLog)
+' ============================================================================
+' Per-session debug log. Created lazily if the table doesn't exist yet so
+' Phase 3a doesn't depend on a separate table-creation step.
+
+Public Sub LogLocal(ByVal functionName As String, _
+                    ByVal logLevel As String, _
+                    ByVal details As String)
+    On Error Resume Next
+    EnsureLocalLogTable
+
+    Dim db As DAO.Database
+    Set db = CurrentDb
+    db.Execute _
+        "INSERT INTO " & LOG_TABLE & _
+        " (LogDate, LogLevel, FunctionName, Details) VALUES (" & _
+        "Now(), '" & SqlEscape(logLevel) & "', '" & SqlEscape(functionName) & _
+        "', '" & SqlEscape(details) & "')", _
+        dbFailOnError
+    Set db = Nothing
+    Err.Clear   ' don't leak suppressed errors to the caller
+End Sub
+
+Private Sub EnsureLocalLogTable()
+    On Error Resume Next
+    If TableExists(LOG_TABLE) Then
+        Err.Clear
+        Exit Sub
+    End If
+
+    Dim db As DAO.Database
+    Set db = CurrentDb
+    db.Execute _
+        "CREATE TABLE " & LOG_TABLE & " (" & _
+        "  LogID         AUTOINCREMENT PRIMARY KEY, " & _
+        "  LogDate       DATETIME, " & _
+        "  LogLevel      TEXT(20), " & _
+        "  FunctionName  TEXT(100), " & _
+        "  Details       MEMO " & _
+        ")", _
+        dbFailOnError
+    Set db = Nothing
+    Err.Clear   ' don't leak suppressed errors
+End Sub
+
+Private Function TableExists(tableName As String) As Boolean
+    ' Enumerate rather than catch error — avoids false negatives when
+    ' Err.Number is non-zero from a prior swallowed error in another helper.
+    ' Hold the Database reference: each CurrentDb call returns a new ref
+    ' that gets released after the expression, dangling any TableDef we
+    ' kept from it (DAO error 3420 on first Fields access).
+    Dim db As DAO.Database, tdf As DAO.TableDef
+    Set db = CurrentDb
+    For Each tdf In db.TableDefs
+        If StrComp(tdf.Name, tableName, vbTextCompare) = 0 Then
+            TableExists = True
+            Exit Function
+        End If
+    Next
+End Function
+
+Private Function SqlEscape(s As String) As String
+    SqlEscape = Replace(s, "'", "''")
+End Function
+
+' ============================================================================
+' SECTION 7 — SMOKE TEST
+' ============================================================================
+' Run this from the VBA Immediate window to validate Phase 3a end-to-end:
+'   ? DropboxService.Phase3a_SmokeTest
+'
+' Validates:
+'   - SQL connectivity (config load from tblDropboxConfig + tblDropboxRootConfig)
+'   - AppSecret is not the placeholder
+'   - Kill-switch blocks a simulated write attempt
+'   - Namespace header builds correctly
+'   - DPAPI round-trip (encrypt then decrypt yields the original string)
+'   - Audit log insert against dbo.spLogDropboxAuditEvent
+'   - Local log insert into tblDropboxLog
+'
+' Returns "OK" on success or an error description.
+
+Public Function Phase3a_SmokeTest() As String
+    On Error GoTo HandleError
+
+    ' (1) Config load
+    InitializeDropboxConfig
+    If LenB(GetAppKey()) = 0 Then Err.Raise vbObjectError + 6090, , "AppKey empty after load"
+    If GetAppSecret() = APPSECRET_PLACEHOLDER Then _
+        Err.Raise vbObjectError + 6091, , "AppSecret is the placeholder"
+    If LenB(GetNamespaceId()) = 0 Then Err.Raise vbObjectError + 6092, , "NamespaceId empty"
+
+    ' (2) Kill-switch
+    Dim killSwitchFired As Boolean
+    On Error Resume Next
+    GuardWritesEnabled "Phase3a_SmokeTest"
+    killSwitchFired = (Err.Number <> 0)
+    Err.Clear
+    On Error GoTo HandleError
+    If Not killSwitchFired Then _
+        Err.Raise vbObjectError + 6093, , "ALLOW_DROPBOX_WRITES is True; expected False in test build"
+
+    ' (3) Namespace header shape
+    Dim hdr As String
+    hdr = DropboxPathRootHeader()
+    If InStr(hdr, GetNamespaceId()) = 0 Then _
+        Err.Raise vbObjectError + 6094, , "Namespace header missing NamespaceId"
+    If InStr(hdr, "namespace_id") = 0 Then _
+        Err.Raise vbObjectError + 6095, , "Namespace header malformed"
+
+    ' (4) DPAPI round-trip
+    Dim plain As String, roundTrip As String
+    plain = "Test plaintext " & Now() & " " & Rnd()
+    roundTrip = DecryptDPAPI(EncryptDPAPI(plain))
+    If roundTrip <> plain Then _
+        Err.Raise vbObjectError + 6096, , _
+            "DPAPI round-trip mismatch. Sent [" & plain & "] got [" & roundTrip & "]"
+
+    ' (5) Audit log insert (via SP) — verify via SELECT @@IDENTITY or row count
+    LogAuditEvent "Upload", "Success", Null, "Phase3a-Test", "/Company/__smoke_test__", _
+        "Phase3a_SmokeTest at " & Now()
+
+    ' (6) Local log
+    LogLocal "Phase3a_SmokeTest", "Info", "Smoke test completed at " & Now()
+
+    Phase3a_SmokeTest = "OK"
+    Exit Function
+
+HandleError:
+    Phase3a_SmokeTest = "FAIL: Err=" & Err.Number & " " & Err.Description & _
+        " (in " & Err.Source & ")"
+End Function
+
+' ============================================================================
+' SECTION 8 — tblDropboxTokens SCHEMA UPGRADE (Phase 3b pass 1)
+' ============================================================================
+' The local Access tblDropboxTokens table was created by the POC with the
+' schema:
+'     TokenID, AccessToken, RefreshToken, TokenType, ExpiresAt,
+'     CreatedDate, IsActive (YESNO)
+'
+' Production schema (per the plan, deliverable 8) adds DropboxAccountEmail
+' and replaces IsActive with TokenStatus (TEXT 20). This upgrade is
+' idempotent and safe to call on every startup.
+
+Public Sub UpgradeTokenTableSchema()
+    Const TABLE_NAME As String = "tblDropboxTokens"
+    Const CALLER As String = "UpgradeTokenTableSchema"
+
+    Dim db As DAO.Database
+    Dim tdf As DAO.TableDef
+    Dim stepName As String
+
+    On Error GoTo HandleError
+
+    stepName = "OpenCurrentDb"
+    Set db = CurrentDb
+
+    If Not TableExists(TABLE_NAME) Then
+        ' Fresh create with the new schema.
+        stepName = "CreateTable"
+        db.Execute _
+            "CREATE TABLE " & TABLE_NAME & " (" & _
+            "  TokenID AUTOINCREMENT PRIMARY KEY, " & _
+            "  DropboxAccountEmail TEXT(255), " & _
+            "  AccessToken MEMO, " & _
+            "  RefreshToken MEMO, " & _
+            "  TokenType TEXT(50), " & _
+            "  ExpiresAt DATETIME, " & _
+            "  CreatedDate DATETIME, " & _
+            "  TokenStatus TEXT(20) " & _
+            ")", _
+            dbFailOnError
+        LogLocal CALLER, "Info", "Created " & TABLE_NAME & " (new schema)"
+        Set db = Nothing
+        Exit Sub
+    End If
+
+    ' Table exists — apply column-by-column migrations.
+    stepName = "OpenTableDef"
+    Set tdf = db.TableDefs(TABLE_NAME)
+
+    If Not ColumnExists(tdf, "DropboxAccountEmail") Then
+        stepName = "AddColumn.DropboxAccountEmail"
+        db.Execute _
+            "ALTER TABLE " & TABLE_NAME & " ADD COLUMN DropboxAccountEmail TEXT(255)", _
+            dbFailOnError
+        LogLocal CALLER, "Info", "Added column DropboxAccountEmail"
+        stepName = "RefreshTableDef.AfterDropboxAccountEmail"
+        Set tdf = db.TableDefs(TABLE_NAME)  ' refresh
+    End If
+
+    If Not ColumnExists(tdf, "TokenStatus") Then
+        stepName = "AddColumn.TokenStatus"
+        db.Execute _
+            "ALTER TABLE " & TABLE_NAME & " ADD COLUMN TokenStatus TEXT(20)", _
+            dbFailOnError
+        LogLocal CALLER, "Info", "Added column TokenStatus"
+        stepName = "RefreshTableDef.AfterTokenStatus"
+        Set tdf = db.TableDefs(TABLE_NAME)  ' refresh
+
+        ' If the legacy IsActive column is still present, migrate its semantics:
+        ' IsActive=True → 'Active', else 'Expired'.
+        If ColumnExists(tdf, "IsActive") Then
+            stepName = "MigrateData.IsActiveToTokenStatus"
+            db.Execute _
+                "UPDATE " & TABLE_NAME & _
+                " SET TokenStatus = IIf(IsActive, 'Active', 'Expired')", _
+                dbFailOnError
+            LogLocal CALLER, "Info", "Migrated IsActive → TokenStatus"
+        Else
+            stepName = "BackfillData.TokenStatusDefaultActive"
+            db.Execute _
+                "UPDATE " & TABLE_NAME & " SET TokenStatus = 'Active' WHERE TokenStatus IS NULL", _
+                dbFailOnError
+        End If
+    End If
+
+    ' Drop the legacy IsActive column if it's still present.
+    ' Use ALTER TABLE rather than DAO tdf.Fields.Delete — the SQL path is more
+    ' lock-tolerant. If this still fails with Err 70 / 3211, ensure no view of
+    ' tblDropboxTokens is open in the Access Navigation Pane.
+    stepName = "RefreshTableDef.BeforeDropIsActive"
+    Set tdf = db.TableDefs(TABLE_NAME)  ' refresh
+    If ColumnExists(tdf, "IsActive") Then
+        stepName = "DropColumn.IsActive"
+        db.Execute "ALTER TABLE " & TABLE_NAME & " DROP COLUMN IsActive", dbFailOnError
+        LogLocal CALLER, "Info", "Dropped legacy column IsActive"
+    End If
+
+    Set tdf = Nothing
+    Set db = Nothing
+    Exit Sub
+
+HandleError:
+    Dim errNum As Long, errDesc As String
+    errNum = Err.Number
+    errDesc = Err.Description
+    Dim daoDetails As String
+    daoDetails = DaoErrorsText()
+    Set tdf = Nothing
+    Set db = Nothing
+    Err.Raise errNum, CALLER, _
+        "Step=" & stepName & "; " & errDesc & _
+        IIf(LenB(daoDetails) > 0, "; DAO=" & daoDetails, "")
+End Sub
+
+Private Function ColumnExists(tdf As DAO.TableDef, columnName As String) As Boolean
+    ' Enumerate rather than catch error — see TableExists for why.
+    Dim f As DAO.Field
+    For Each f In tdf.Fields
+        If StrComp(f.Name, columnName, vbTextCompare) = 0 Then
+            ColumnExists = True
+            Exit Function
+        End If
+    Next
+End Function
+
+Private Function DaoErrorsText() As String
+    On Error Resume Next
+    Dim daoErr As DAO.Error
+    Dim details As String
+
+    For Each daoErr In DBEngine.Errors
+        If LenB(details) > 0 Then details = details & " | "
+        details = details & "#" & CStr(daoErr.Number) & " " & daoErr.Description
+    Next
+
+    DaoErrorsText = details
+End Function
+
+' ============================================================================
+' SECTION 9 — OAUTH STATE PARAMETER (CSRF guard)
+' ============================================================================
+' Per RFC 6749 section 10.12: the OAuth client SHOULD include a non-guessable
+' state value in the authorization request and verify it in the callback.
+' We generate a fresh GUID per session, embed it in the authorize URL, and
+' compare on callback. State is single-use — ValidateOAuthState clears
+' m_OAuthState as it consumes it.
+
+Public Function GenerateOAuthState() As String
+    m_OAuthState = NewGuid()
+    GenerateOAuthState = m_OAuthState
+End Function
+
+' Returns a fresh GUID as a 36-char hex string with dashes, no braces.
+' Uses Win32 CoCreateGuid + StringFromGUID2 — no Scriptlet.TypeLib COM
+' dependency (often blocked by Group Policy).
+Public Function NewGuid() As String
+    Const CALLER As String = "NewGuid"
+    Const GUID_WITH_BRACES_MAX_CHARS As Long = 39   ' 38 chars + null terminator
+    Dim g As GUID, rc As Long, guid As String
+
+    rc = CoCreateGuid(g)
+    If rc <> 0 Then
+        Err.Raise vbObjectError + 6160, CALLER, "CoCreateGuid failed (HRESULT=" & rc & ")"
+    End If
+
+    guid = String$(GUID_WITH_BRACES_MAX_CHARS, vbNullChar)
+    rc = StringFromGUID2(g, StrPtr(guid), GUID_WITH_BRACES_MAX_CHARS)
+    If rc <= 1 Then
+        Err.Raise vbObjectError + 6161, CALLER, "StringFromGUID2 failed (return=" & rc & ")"
+    End If
+
+    guid = Left$(guid, rc - 1)  ' trim trailing null
+    If Left$(guid, 1) = "{" And Right$(guid, 1) = "}" Then
+        guid = Mid$(guid, 2, Len(guid) - 2)  ' strip braces
+    End If
+    NewGuid = guid
+End Function
+
+Public Function ValidateOAuthState(ByVal receivedState As String) As Boolean
+    Dim expected As String
+    expected = m_OAuthState
+    m_OAuthState = ""   ' consume — single-use
+
+    If LenB(expected) = 0 Then
+        ValidateOAuthState = False
+        Exit Function
+    End If
+    ValidateOAuthState = (StrComp(expected, receivedState, vbBinaryCompare) = 0)
+End Function
+
+Public Sub ClearOAuthState()
+    m_OAuthState = ""
+End Sub
+
+' ============================================================================
+' SECTION 10 — TOKEN STORAGE (DPAPI-encrypted in tblDropboxTokens)
+' ============================================================================
+' SaveTokens: DELETE existing rows, then INSERT one fresh row with DPAPI-
+' encrypted AccessToken and RefreshToken. In-memory cache is updated too.
+'
+' LoadTokens: SELECT TOP 1 active row, decrypt with DPAPI, populate cache.
+' If DPAPI decrypt fails (different Windows profile, blob corruption), the
+' cache is left empty and the caller must trigger re-auth.
+'
+' ClearTokens: wipes the local table and the in-memory cache. Used on
+' revocation detection or DPAPI decrypt failure.
+
+Public Sub SaveTokens( _
+    ByVal accessToken As String, _
+    ByVal refreshToken As String, _
+    ByVal expiresInSec As Long, _
+    ByVal tokenType As String, _
+    ByVal accountEmail As String _
+)
+    Const CALLER As String = "SaveTokens"
+    UpgradeTokenTableSchema    ' ensure new schema before INSERT
+
+    Dim db As DAO.Database
+    Set db = CurrentDb
+
+    db.Execute "DELETE FROM tblDropboxTokens", dbFailOnError
+
+    Dim expiresAt As Date
+    expiresAt = DateAdd("s", expiresInSec, Now())
+
+    ' Insert via DAO recordset to avoid Access SQL PARAMETERS type quirks
+    ' (e.g., MEMO/LONGTEXT declarations) across engine versions.
+    Dim rs As DAO.Recordset
+    Set rs = db.OpenRecordset("tblDropboxTokens", dbOpenDynaset, dbAppendOnly)
+    rs.AddNew
+    rs!DropboxAccountEmail = accountEmail
+    rs!AccessToken = EncryptDPAPI(accessToken)
+    rs!RefreshToken = EncryptDPAPI(refreshToken)
+    rs!TokenType = tokenType
+    rs!ExpiresAt = expiresAt
+    rs!CreatedDate = Now()
+    rs!TokenStatus = "Active"
+    rs.Update
+    rs.Close
+    Set rs = Nothing
+
+    ' Update in-memory cache to match what we just stored.
+    m_CurrentAccessToken = accessToken
+    m_CurrentRefreshToken = refreshToken
+    m_CurrentExpiresAt = expiresAt
+    m_DropboxAccountEmail = accountEmail
+    m_TokenLoaded = True
+
+    Set db = Nothing
+
+    LogLocal CALLER, "Info", _
+        "Tokens saved for " & accountEmail & " (expires " & expiresAt & ")"
+End Sub
+
+Public Function LoadTokens() As Boolean
+    Const CALLER As String = "LoadTokens"
+    LoadTokens = False
+
+    If Not TableExists("tblDropboxTokens") Then Exit Function
+
+    Dim db As DAO.Database
+    Dim rs As DAO.Recordset
+    Set db = CurrentDb
+    Set rs = db.OpenRecordset( _
+        "SELECT TOP 1 DropboxAccountEmail, AccessToken, RefreshToken, " & _
+        "       ExpiresAt, TokenStatus " & _
+        "  FROM tblDropboxTokens " & _
+        " WHERE TokenStatus = 'Active' " & _
+        " ORDER BY TokenID DESC", _
+        dbOpenSnapshot)
+
+    If rs.EOF Then
+        rs.Close: Set rs = Nothing: Set db = Nothing
+        LogLocal CALLER, "Info", "No active token row in tblDropboxTokens"
+        Exit Function
+    End If
+
+    On Error Resume Next
+    Dim decAccess As String, decRefresh As String
+    decAccess = DecryptDPAPI(Nz(rs!AccessToken, ""))
+    Dim decErrA As Long: decErrA = Err.Number
+    Err.Clear
+    decRefresh = DecryptDPAPI(Nz(rs!RefreshToken, ""))
+    Dim decErrB As Long: decErrB = Err.Number
+    Err.Clear
+    On Error GoTo 0
+
+    If decErrA <> 0 Or decErrB <> 0 Then
+        LogLocal CALLER, "Warn", _
+            "DPAPI decrypt failed (access=" & decErrA & ", refresh=" & decErrB & _
+            "). Likely a different Windows user / profile. Caller must re-authenticate."
+        rs.Close: Set rs = Nothing: Set db = Nothing
+        Exit Function
+    End If
+
+    m_CurrentAccessToken = decAccess
+    m_CurrentRefreshToken = decRefresh
+    m_CurrentExpiresAt = Nz(rs!ExpiresAt, #1/1/1900#)
+    m_DropboxAccountEmail = Nz(rs!DropboxAccountEmail, "")
+    m_TokenLoaded = True
+    LoadTokens = True
+
+    rs.Close: Set rs = Nothing: Set db = Nothing
+    LogLocal CALLER, "Info", "Tokens loaded for " & m_DropboxAccountEmail
+End Function
+
+Public Sub ClearTokens()
+    On Error Resume Next
+    If TableExists("tblDropboxTokens") Then
+        CurrentDb.Execute "DELETE FROM tblDropboxTokens", dbFailOnError
+    End If
+    m_CurrentAccessToken = ""
+    m_CurrentRefreshToken = ""
+    m_CurrentExpiresAt = #1/1/1900#
+    m_TokenLoaded = False
+    m_DropboxAccountEmail = ""
+    Err.Clear   ' don't leak suppressed errors
+    On Error GoTo 0
+End Sub
+
+' Read-only accessors for the in-memory cache.
+
+Public Function GetCurrentAccessToken() As String
+    GetCurrentAccessToken = m_CurrentAccessToken
+End Function
+
+Public Function GetCurrentRefreshToken() As String
+    GetCurrentRefreshToken = m_CurrentRefreshToken
+End Function
+
+Public Function GetCurrentTokenExpiresAt() As Date
+    GetCurrentTokenExpiresAt = m_CurrentExpiresAt
+End Function
+
+Public Function IsTokenLoaded() As Boolean
+    IsTokenLoaded = m_TokenLoaded
+End Function
+
+' True if the current access token expires within 5 minutes. Phase 3b pass 2
+' will use this as the auto-refresh trigger before every API call.
+Public Function TokenIsExpiring() As Boolean
+    If Not m_TokenLoaded Then
+        TokenIsExpiring = False
+        Exit Function
+    End If
+    TokenIsExpiring = (DateDiff("s", Now(), m_CurrentExpiresAt) < 300)
+End Function
+
+' ============================================================================
+' SECTION 11 — PHASE 3b PASS-1 SMOKE TEST
+' ============================================================================
+' Validates: schema upgrade idempotency, state-parameter generation /
+' validation / single-use semantics, and the SaveTokens → LoadTokens →
+' ClearTokens round-trip with DPAPI encryption verified.
+'
+' Does NOT require browser interaction. Run from the Immediate window:
+'   ? DropboxService.Phase3b_Pass1_SmokeTest
+
+Public Function Phase3b_Pass1_SmokeTest() As String
+    Dim stepName As String
+    On Error GoTo HandleError
+
+    ' (1) Schema upgrade — idempotent
+    stepName = "1a.SchemaUpgrade.FirstPass"
+    UpgradeTokenTableSchema
+    stepName = "1b.SchemaVerify.TableExists"
+    If Not TableExists("tblDropboxTokens") Then _
+        Err.Raise vbObjectError + 6100, , "tblDropboxTokens not created"
+    stepName = "1c.SchemaUpgrade.SecondPass"
+    UpgradeTokenTableSchema    ' run twice; second call must be a no-op
+
+    ' Verify the new schema has DropboxAccountEmail + TokenStatus, no IsActive.
+    ' Hold the Database reference so the TableDef doesn't dangle (DAO 3420).
+    Dim db As DAO.Database, tdf As DAO.TableDef
+    stepName = "1d.SchemaVerify.OpenTableDef"
+    Set db = CurrentDb
+    Set tdf = db.TableDefs("tblDropboxTokens")
+    stepName = "1e.SchemaVerify.DropboxAccountEmail"
+    If Not ColumnExists(tdf, "DropboxAccountEmail") Then _
+        Err.Raise vbObjectError + 6101, , "DropboxAccountEmail column missing after upgrade"
+    stepName = "1f.SchemaVerify.TokenStatus"
+    If Not ColumnExists(tdf, "TokenStatus") Then _
+        Err.Raise vbObjectError + 6102, , "TokenStatus column missing after upgrade"
+    stepName = "1g.SchemaVerify.IsActiveDropped"
+    If ColumnExists(tdf, "IsActive") Then _
+        Err.Raise vbObjectError + 6103, , "Legacy IsActive column not dropped"
+    Set tdf = Nothing
+    Set db = Nothing
+
+    ' (2) OAuth state — uniqueness, match, single-use consumption
+    Dim s1 As String, s2 As String
+    stepName = "2a.OAuthState.Generate1"
+    s1 = GenerateOAuthState()
+    stepName = "2b.OAuthState.LengthCheck"
+    If Len(s1) < 30 Then Err.Raise vbObjectError + 6110, , "Generated state too short"
+    stepName = "2c.OAuthState.Generate2"
+    s2 = GenerateOAuthState()
+    stepName = "2d.OAuthState.CollisionCheck"
+    If s1 = s2 Then Err.Raise vbObjectError + 6111, , "State GUIDs collided (must be unique)"
+    stepName = "2e.OAuthState.ValidateMatch"
+    If Not ValidateOAuthState(s2) Then _
+        Err.Raise vbObjectError + 6112, , "Validation rejected matching state"
+    stepName = "2f.OAuthState.ValidateSingleUse"
+    If ValidateOAuthState(s2) Then _
+        Err.Raise vbObjectError + 6113, , "State accepted after consumption (must be single-use)"
+
+    ' (3) Token round-trip through DPAPI
+    Dim testAccess As String, testRefresh As String, testEmail As String
+    testAccess = "sl.TEST_ACCESS_" & Format$(Now, "yyyymmddhhnnss") & "_" & Rnd()
+    testRefresh = "TEST_REFRESH_" & Format$(Now, "yyyymmddhhnnss") & "_" & Rnd()
+    testEmail = "smoketest@example.com"
+
+    stepName = "3a.Tokens.ClearBeforeSave"
+    ClearTokens
+    stepName = "3b.Tokens.Save"
+    SaveTokens testAccess, testRefresh, 14400, "Bearer", testEmail
+
+    ' Wipe in-memory cache, then reload from storage to prove round-trip.
+    m_CurrentAccessToken = ""
+    m_CurrentRefreshToken = ""
+    m_DropboxAccountEmail = ""
+    m_TokenLoaded = False
+
+    stepName = "3c.Tokens.Load"
+    If Not LoadTokens() Then _
+        Err.Raise vbObjectError + 6120, , "LoadTokens returned False after SaveTokens"
+    stepName = "3d.Tokens.VerifyAccess"
+    If GetCurrentAccessToken() <> testAccess Then _
+        Err.Raise vbObjectError + 6121, , "AccessToken round-trip mismatch"
+    stepName = "3e.Tokens.VerifyRefresh"
+    If GetCurrentRefreshToken() <> testRefresh Then _
+        Err.Raise vbObjectError + 6122, , "RefreshToken round-trip mismatch"
+    stepName = "3f.Tokens.VerifyEmail"
+    If GetDropboxAccountEmail() <> testEmail Then _
+        Err.Raise vbObjectError + 6123, , "DropboxAccountEmail round-trip mismatch"
+    stepName = "3g.Tokens.VerifyLoadedFlag"
+    If Not IsTokenLoaded() Then _
+        Err.Raise vbObjectError + 6124, , "IsTokenLoaded false after LoadTokens"
+
+    ' (4) Verify on-disk storage is DPAPI-encrypted, not plaintext
+    Dim rs As DAO.Recordset
+    stepName = "4a.StorageInspect.OpenRecordset"
+    Set rs = CurrentDb.OpenRecordset( _
+        "SELECT TOP 1 AccessToken, RefreshToken FROM tblDropboxTokens ORDER BY TokenID DESC", _
+        dbOpenSnapshot)
+    stepName = "4b.StorageInspect.RequireRow"
+    If rs.EOF Then _
+        Err.Raise vbObjectError + 6130, , "No row in tblDropboxTokens after SaveTokens"
+    Dim storedAccess As String, storedRefresh As String
+    storedAccess = Nz(rs!AccessToken, "")
+    storedRefresh = Nz(rs!RefreshToken, "")
+    rs.Close
+    Set rs = Nothing
+
+    stepName = "4c.StorageInspect.AccessNotPlaintext"
+    If storedAccess = testAccess Then _
+        Err.Raise vbObjectError + 6131, , "AccessToken stored as PLAINTEXT — DPAPI not applied!"
+    stepName = "4d.StorageInspect.AccessNoPlaintextSubstring"
+    If InStr(storedAccess, testAccess) > 0 Then _
+        Err.Raise vbObjectError + 6132, , "AccessToken plaintext substring found in stored value"
+    stepName = "4e.StorageInspect.RefreshNotPlaintext"
+    If storedRefresh = testRefresh Then _
+        Err.Raise vbObjectError + 6133, , "RefreshToken stored as PLAINTEXT — DPAPI not applied!"
+
+    ' (5) TokenIsExpiring should be False (we just saved with 14400s expiry)
+    stepName = "5.TokenIsExpiring.FalseForFreshToken"
+    If TokenIsExpiring() Then _
+        Err.Raise vbObjectError + 6140, , "TokenIsExpiring True for a fresh 4-hour token"
+
+    ' (6) ClearTokens wipes both table and cache
+    stepName = "6a.Tokens.ClearAfterRoundTrip"
+    ClearTokens
+    stepName = "6b.Tokens.VerifyLoadedFalseAfterClear"
+    If IsTokenLoaded() Then _
+        Err.Raise vbObjectError + 6150, , "IsTokenLoaded True after ClearTokens"
+    stepName = "6c.Tokens.VerifyLoadFailsAfterClear"
+    If LoadTokens() Then _
+        Err.Raise vbObjectError + 6151, , "LoadTokens succeeded after ClearTokens (table not wiped)"
+
+    Phase3b_Pass1_SmokeTest = "OK"
+    Exit Function
+
+HandleError:
+    Dim errNum As Long, errDesc As String, errSrc As String
+    errNum = Err.Number
+    errDesc = Err.Description
+    errSrc = Err.Source
+    Dim daoDetails As String
+    daoDetails = DaoErrorsText()
+    Phase3b_Pass1_SmokeTest = _
+        "FAIL: Step=" & stepName & "; Err=" & errNum & " " & errDesc & _
+        " (in " & errSrc & ")" & _
+        IIf(LenB(daoDetails) > 0, "; DAO=" & daoDetails, "")
+End Function
+
+' ============================================================================
+' SECTION 12 — HTTP TRANSPORT (Phase 3b pass 2)
+' ============================================================================
+' Generic HTTP helper using WinHttp.WinHttpRequest.5.1 (synchronous).
+' Returns True if status was 2xx. Populates outStatus + outBody regardless.
+' The Dropbox-API-Path-Root header is injected when includeNamespace=True;
+' the only Dropbox endpoint that does NOT require it is users/get_current_account.
+
+Private Function HttpRequest( _
+    ByVal method As String, _
+    ByVal url As String, _
+    ByVal body As String, _
+    ByVal contentType As String, _
+    ByVal bearerToken As String, _
+    ByVal includeNamespace As Boolean, _
+    ByRef outStatus As Long, _
+    ByRef outBody As String _
+) As Boolean
+    Dim http As Object
+    On Error GoTo HandleError
+
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    http.Open method, url, False
+    If LenB(contentType) > 0 Then
+        http.SetRequestHeader "Content-Type", contentType
+    End If
+    If LenB(bearerToken) > 0 Then
+        http.SetRequestHeader "Authorization", "Bearer " & bearerToken
+    End If
+    If includeNamespace Then
+        http.SetRequestHeader "Dropbox-API-Path-Root", DropboxPathRootHeader()
+    End If
+    http.Send body
+
+    outStatus = http.Status
+    outBody = http.ResponseText
+    HttpRequest = (outStatus >= 200 And outStatus < 300)
+    Set http = Nothing
+    Exit Function
+
+HandleError:
+    outStatus = -1
+    outBody = "VBA error: Err=" & Err.Number & " " & Err.Description
+    HttpRequest = False
+    Set http = Nothing
+End Function
+
+' ============================================================================
+' SECTION 13 — JSON + URL HELPERS (Phase 3b pass 2)
+' ============================================================================
+
+' Extracts a string-valued JSON field. Returns "" if not found.
+' Handles backslash-escaped quote chars; not a full JSON parser.
+Private Function ExtractJsonString(ByVal json As String, ByVal key As String) As String
+    Dim searchKey As String
+    searchKey = """" & key & """:"
+    Dim startPos As Long
+    startPos = InStr(json, searchKey)
+    If startPos = 0 Then Exit Function
+    startPos = startPos + Len(searchKey)
+    ' Skip whitespace
+    Do While startPos <= Len(json) And _
+             (Mid$(json, startPos, 1) = " " Or Mid$(json, startPos, 1) = vbTab)
+        startPos = startPos + 1
+    Loop
+    If startPos > Len(json) Or Mid$(json, startPos, 1) <> """" Then Exit Function
+    startPos = startPos + 1
+    Dim endPos As Long
+    endPos = startPos
+    Do While endPos <= Len(json)
+        If Mid$(json, endPos, 1) = "\" Then
+            endPos = endPos + 2     ' skip escape + next char
+        ElseIf Mid$(json, endPos, 1) = """" Then
+            Exit Do
+        Else
+            endPos = endPos + 1
+        End If
+    Loop
+    ExtractJsonString = Mid$(json, startPos, endPos - startPos)
+End Function
+
+' Extracts a number-valued JSON field. Returns -1 if not found.
+Private Function ExtractJsonLong(ByVal json As String, ByVal key As String) As Long
+    Dim searchKey As String
+    searchKey = """" & key & """:"
+    Dim startPos As Long
+    startPos = InStr(json, searchKey)
+    If startPos = 0 Then
+        ExtractJsonLong = -1
+        Exit Function
+    End If
+    startPos = startPos + Len(searchKey)
+    Do While startPos <= Len(json) And _
+             (Mid$(json, startPos, 1) = " " Or Mid$(json, startPos, 1) = vbTab)
+        startPos = startPos + 1
+    Loop
+    Dim endPos As Long, ch As String
+    endPos = startPos
+    Do While endPos <= Len(json)
+        ch = Mid$(json, endPos, 1)
+        If (ch >= "0" And ch <= "9") Or ch = "-" Then
+            endPos = endPos + 1
+        Else
+            Exit Do
+        End If
+    Loop
+    If endPos = startPos Then
+        ExtractJsonLong = -1
+        Exit Function
+    End If
+    ExtractJsonLong = CLng(Mid$(json, startPos, endPos - startPos))
+End Function
+
+' RFC 3986 percent-encoding for OAuth query parameters and form bodies.
+Private Function UrlEncode(ByVal text As String) As String
+    Dim result As String, i As Long, charCode As Long, c As String
+    For i = 1 To Len(text)
+        c = Mid$(text, i, 1)
+        charCode = Asc(c)
+        Select Case charCode
+            Case 65 To 90, 97 To 122, 48 To 57    ' A-Z, a-z, 0-9
+                result = result & c
+            Case 45, 46, 95, 126                   ' - . _ ~ (unreserved)
+                result = result & c
+            Case Else
+                result = result & "%" & Right$("0" & Hex$(charCode), 2)
+        End Select
+    Next i
+    UrlEncode = result
+End Function
+
+' Extracts a query parameter from a URL like http://localhost:8765/?code=abc&state=xyz.
+Private Function ExtractQueryParam(ByVal url As String, ByVal paramName As String) As String
+    Dim qPos As Long
+    qPos = InStr(url, "?")
+    If qPos = 0 Then Exit Function
+    Dim queryString As String
+    queryString = Mid$(url, qPos + 1)
+    Dim hashPos As Long
+    hashPos = InStr(queryString, "#")
+    If hashPos > 0 Then queryString = Left$(queryString, hashPos - 1)
+    Dim parts() As String, prefix As String, i As Long
+    parts = Split(queryString, "&")
+    prefix = paramName & "="
+    For i = 0 To UBound(parts)
+        If Left$(parts(i), Len(prefix)) = prefix Then
+            ExtractQueryParam = Mid$(parts(i), Len(prefix) + 1)
+            Exit Function
+        End If
+    Next i
+End Function
+
+' ============================================================================
+' SECTION 14 — BROWSER + LOCAL HTTP LISTENER (Phase 3b pass 2)
+' ============================================================================
+' Shells a PowerShell HttpListener on localhost:LISTENER_PORT to capture
+' Dropbox's OAuth redirect automatically. Manual-paste fallback is retained
+' via USE_LOCAL_LISTENER = False (see constants at top of module).
+
+Private Function EnsureOAuthTempDir() As String
+    Dim dirPath As String
+    dirPath = Environ$("TEMP") & "\TBCMS"
+    If Dir$(dirPath, vbDirectory) = "" Then MkDir dirPath
+    EnsureOAuthTempDir = dirPath
+End Function
+
+Private Sub OpenBrowser(ByVal url As String)
+    Application.FollowHyperlink url, , True   ' True = new window
+End Sub
+
+' Non-blocking sleep — DoEvents loop until elapsed.
+Private Sub WaitMilliseconds(ByVal ms As Long)
+    Dim endTime As Single
+    endTime = Timer + (ms / 1000)
+    Do While Timer < endTime
+        DoEvents
+    Loop
+End Sub
+
+' Writes the PowerShell HttpListener script to disk. Script binds to
+' localhost:port, captures the first request URL, writes it to OutputFile,
+' returns a "you can close this tab" HTML page, and exits.
+Private Function WriteListenerScript(ByVal ps1Path As String, _
+                                     ByVal outputPath As String, _
+                                     ByVal port As Long) As Boolean
+    Dim fileNum As Integer
+    fileNum = FreeFile
+    On Error GoTo WriteError
+    Open ps1Path For Output As #fileNum
+    Print #fileNum, "param([string]$OutputFile)"
+    Print #fileNum, "$listener = New-Object System.Net.HttpListener"
+    Print #fileNum, "$listener.Prefixes.Add('http://localhost:" & port & "/')"
+    Print #fileNum, "try {"
+    Print #fileNum, "    $listener.Start()"
+    Print #fileNum, "    $context = $listener.GetContext()"
+    Print #fileNum, "    $redirectUrl = $context.Request.Url.ToString()"
+    Print #fileNum, "    $html = '<html><head><style>body{font-family:sans-serif;"
+    Print #fileNum, "text-align:center;padding:60px;background:#f0f4f8}"
+    Print #fileNum, "h2{color:#2d7d46}p{color:#444}</style></head><body>"
+    Print #fileNum, "<h2>&#10003; Authorization Complete</h2>"
+    Print #fileNum, "<p>You can close this tab and return to TBCMS in Access.</p>"
+    Print #fileNum, "</body></html>'"
+    Print #fileNum, "    $bytes = [System.Text.Encoding]::UTF8.GetBytes($html)"
+    Print #fileNum, "    $context.Response.ContentType = 'text/html; charset=utf-8'"
+    Print #fileNum, "    $context.Response.ContentLength64 = $bytes.Length"
+    Print #fileNum, "    $context.Response.OutputStream.Write($bytes, 0, $bytes.Length)"
+    Print #fileNum, "    $context.Response.OutputStream.Close()"
+    Print #fileNum, "    $redirectUrl | Out-File -FilePath $OutputFile -Encoding UTF8 -NoNewline"
+    Print #fileNum, "} finally {"
+    Print #fileNum, "    $listener.Stop()"
+    Print #fileNum, "}"
+    Close #fileNum
+    WriteListenerScript = True
+    Exit Function
+WriteError:
+    On Error Resume Next
+    Close #fileNum
+    On Error GoTo 0
+    WriteListenerScript = False
+End Function
+
+' Polls a file path until it has content, returns trimmed content or "" on timeout.
+Private Function PollForFile(ByVal filePath As String, ByVal timeoutSec As Long) As String
+    Dim startTime As Single, content As String, fileNum As Integer, line As String
+    startTime = Timer
+    Do
+        If Dir$(filePath) <> "" Then
+            On Error Resume Next
+            fileNum = FreeFile
+            Open filePath For Input As #fileNum
+            content = ""
+            Do While Not EOF(fileNum)
+                Line Input #fileNum, line
+                content = content & line
+            Loop
+            Close #fileNum
+            Err.Clear
+            On Error GoTo 0
+            content = Trim$(content)
+            If LenB(content) > 0 Then
+                PollForFile = content
+                Exit Function
+            End If
+        End If
+        WaitMilliseconds 500
+        Dim elapsed As Single
+        elapsed = Timer - startTime
+        If elapsed < 0 Then elapsed = elapsed + 86400   ' midnight rollover
+        If elapsed >= timeoutSec Then Exit Function
+    Loop
+End Function
+
+' ============================================================================
+' SECTION 15 — OAUTH AUTHORIZATION-CODE FLOW (Phase 3b pass 2)
+' ============================================================================
+' Public entrypoint: AuthenticateUser. Orchestrates:
+'   1. Generate state (CSRF guard)
+'   2. Open browser to authorize URL
+'   3. Capture redirect via local HTTP listener (or manual paste fallback)
+'   4. Validate state, extract code
+'   5. POST code to /oauth2/token → access_token + refresh_token
+'   6. Call /users/get_current_account to get the user's Dropbox email
+'   7. Check tblDropboxRevocationList — abort if revoked
+'   8. SaveTokens (DPAPI-encrypt and persist to tblDropboxTokens)
+'
+' Returns True if a usable token is now in memory and on disk.
+' Endpoint constants AUTH_URL_BASE, TOKEN_URL, ACCOUNT_URL are at the top of
+' the module.
+
+Public Function AuthenticateUser() As Boolean
+    Const CALLER As String = "AuthenticateUser"
+
+    EnsureConfigLoaded CALLER
+
+    Dim stateValue As String
+    stateValue = GenerateOAuthState()
+
+    Dim redirectUri As String
+    If USE_LOCAL_LISTENER Then
+        redirectUri = "http://localhost:" & LISTENER_PORT
+    Else
+        redirectUri = "http://localhost"
+    End If
+
+    Dim authUrl As String
+    authUrl = AUTH_URL_BASE & _
+              "?client_id=" & GetAppKey() & _
+              "&response_type=code" & _
+              "&token_access_type=offline" & _
+              "&state=" & stateValue & _
+              "&redirect_uri=" & UrlEncode(redirectUri)
+
+    Dim redirectCallback As String
+    If USE_LOCAL_LISTENER Then
+        redirectCallback = AwaitListenerRedirect(authUrl)
+    Else
+        redirectCallback = AwaitPasteRedirect(authUrl)
+    End If
+    If LenB(redirectCallback) = 0 Then
+        LogLocal CALLER, "Warn", "OAuth aborted — no redirect captured"
+        AuthenticateUser = False
+        Exit Function
+    End If
+
+    ' Validate state, extract code.
+    Dim returnedState As String, errParam As String, code As String
+    errParam = ExtractQueryParam(redirectCallback, "error")
+    If LenB(errParam) > 0 Then
+        MsgBox "Dropbox returned an error: " & errParam & vbCrLf & _
+               ExtractQueryParam(redirectCallback, "error_description"), _
+               vbCritical, "Authorization Error"
+        AuthenticateUser = False
+        Exit Function
+    End If
+    returnedState = ExtractQueryParam(redirectCallback, "state")
+    If Not ValidateOAuthState(returnedState) Then
+        MsgBox "State parameter mismatch — possible CSRF. Authorization aborted.", _
+               vbCritical, "Security Error"
+        AuthenticateUser = False
+        Exit Function
+    End If
+    code = ExtractQueryParam(redirectCallback, "code")
+    If LenB(code) = 0 Then
+        MsgBox "Could not extract authorization code from redirect URL.", _
+               vbCritical, "Parse Error"
+        AuthenticateUser = False
+        Exit Function
+    End If
+
+    ' Exchange code for tokens.
+    Dim accessToken As String, refreshToken As String, tokenType As String
+    Dim expiresIn As Long
+    If Not ExchangeCodeForToken(code, redirectUri, accessToken, refreshToken, _
+                                 expiresIn, tokenType) Then
+        AuthenticateUser = False
+        Exit Function
+    End If
+
+    ' Identity check.
+    Dim accountEmail As String
+    accountEmail = GetCurrentAccountEmail(accessToken)
+    If LenB(accountEmail) = 0 Then
+        MsgBox "Could not retrieve Dropbox account email. Authorization aborted.", _
+               vbCritical, "Identity Check Failed"
+        AuthenticateUser = False
+        Exit Function
+    End If
+
+    ' Revocation check.
+    If IsAccountRevoked(accountEmail) Then
+        MsgBox "Account " & accountEmail & " has been revoked by an administrator." & _
+               vbCrLf & "Contact IT.", vbCritical, "Access Revoked"
+        LogAuditEvent "LinkGenerate", "Failure", , , , _
+            "Auth blocked: " & accountEmail & " is in tblDropboxRevocationList"
+        AuthenticateUser = False
+        Exit Function
+    End If
+
+    ' Persist tokens (DPAPI-encrypted).
+    SaveTokens accessToken, refreshToken, expiresIn, tokenType, accountEmail
+    SetDropboxAccountEmail accountEmail
+
+    LogLocal CALLER, "Info", "OAuth complete for " & accountEmail
+    AuthenticateUser = True
+End Function
+
+' Starts a PowerShell HttpListener, opens the auth URL in the browser, and
+' returns the captured redirect URL (or "" on timeout).
+Private Function AwaitListenerRedirect(ByVal authUrl As String) As String
+    Const CALLER As String = "AwaitListenerRedirect"
+    Dim tempDir As String, ps1Path As String, outputPath As String
+    tempDir = EnsureOAuthTempDir()
+    ps1Path = tempDir & "\oauth_listener.ps1"
+    outputPath = tempDir & "\oauth_result.txt"
+
+    If Dir$(outputPath) <> "" Then Kill outputPath
+
+    If Not WriteListenerScript(ps1Path, outputPath, LISTENER_PORT) Then
+        MsgBox "Failed to write OAuth listener script to:" & vbCrLf & ps1Path, _
+               vbCritical, "Setup Error"
+        Exit Function
+    End If
+
+    Dim psCmd As String
+    psCmd = "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File """ & _
+            ps1Path & """ """ & outputPath & """"
+    Shell psCmd, vbHide
+
+    WaitMilliseconds 800   ' let the listener bind before opening the browser
+    OpenBrowser authUrl
+    AwaitListenerRedirect = PollForFile(outputPath, LISTENER_TIMEOUT_S)
+
+    ' Cleanup
+    On Error Resume Next
+    Kill ps1Path
+    Kill outputPath
+    Err.Clear
+    On Error GoTo 0
+
+    If LenB(AwaitListenerRedirect) = 0 Then
+        MsgBox "Timed out waiting for Dropbox redirect after " & LISTENER_TIMEOUT_S & _
+               " seconds." & vbCrLf & vbCrLf & _
+               "Possible causes:" & vbCrLf & _
+               "  - http://localhost:" & LISTENER_PORT & " is not registered in the Dropbox App Console" & vbCrLf & _
+               "  - Browser authorization was not completed in time" & vbCrLf & _
+               "  - Port " & LISTENER_PORT & " is blocked / in use" & vbCrLf & _
+               "  - PowerShell ExecutionPolicy blocks the listener script" & vbCrLf & vbCrLf & _
+               "If PowerShell is blocked, flip USE_LOCAL_LISTENER to False in " & _
+               "DropboxService.bas and retry (manual-paste fallback).", _
+               vbExclamation, "Listener Timeout"
+    End If
+End Function
+
+' Opens the browser, prompts the user to paste the redirect URL back.
+Private Function AwaitPasteRedirect(ByVal authUrl As String) As String
+    OpenBrowser authUrl
+    AwaitPasteRedirect = InputBox( _
+        "A browser window has opened the Dropbox authorization page." & vbCrLf & vbCrLf & _
+        "Steps:" & vbCrLf & _
+        "  1. Sign in with your Tate Bywater Dropbox account" & vbCrLf & _
+        "  2. Click Allow" & vbCrLf & _
+        "  3. The browser will show 'site can't be reached' — that is expected" & vbCrLf & _
+        "  4. Copy the FULL URL from the browser address bar and paste it below:", _
+        "Paste Redirect URL")
+End Function
+
+' POSTs the authorization code to /oauth2/token, populates output params.
+Private Function ExchangeCodeForToken( _
+    ByVal authCode As String, _
+    ByVal redirectUri As String, _
+    ByRef outAccessToken As String, _
+    ByRef outRefreshToken As String, _
+    ByRef outExpiresIn As Long, _
+    ByRef outTokenType As String _
+) As Boolean
+    Const CALLER As String = "ExchangeCodeForToken"
+
+    Dim body As String
+    body = "code=" & UrlEncode(authCode) & _
+           "&grant_type=authorization_code" & _
+           "&client_id=" & UrlEncode(GetAppKey()) & _
+           "&client_secret=" & UrlEncode(GetAppSecret()) & _
+           "&redirect_uri=" & UrlEncode(redirectUri)
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", TOKEN_URL, body, _
+                       "application/x-www-form-urlencoded", "", False, status, response) Then
+        MsgBox "Token exchange failed. HTTP " & status & vbCrLf & vbCrLf & _
+               Left$(response, 500), vbCritical, "Token Exchange Error"
+        LogLocal CALLER, "Error", "HTTP " & status & " " & Left$(response, 300)
+        Exit Function
+    End If
+
+    outAccessToken = ExtractJsonString(response, "access_token")
+    outRefreshToken = ExtractJsonString(response, "refresh_token")
+    outTokenType = ExtractJsonString(response, "token_type")
+    outExpiresIn = ExtractJsonLong(response, "expires_in")
+
+    If LenB(outAccessToken) = 0 Or LenB(outRefreshToken) = 0 Then
+        MsgBox "Token exchange returned unexpected payload:" & vbCrLf & _
+               Left$(response, 500), vbCritical, "Token Exchange Error"
+        Exit Function
+    End If
+    If outExpiresIn <= 0 Then outExpiresIn = 14400   ' default 4h per Dropbox spec
+
+    ExchangeCodeForToken = True
+End Function
+
+' Calls /users/get_current_account, returns the user's Dropbox email.
+' Namespace header is NOT required for this endpoint.
+Private Function GetCurrentAccountEmail(ByVal accessToken As String) As String
+    Const CALLER As String = "GetCurrentAccountEmail"
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", ACCOUNT_URL, "null", _
+                       "application/json", accessToken, False, status, response) Then
+        LogLocal CALLER, "Error", "HTTP " & status & " " & Left$(response, 300)
+        Exit Function
+    End If
+    GetCurrentAccountEmail = ExtractJsonString(response, "email")
+End Function
+
+' ============================================================================
+' SECTION 16 — REVOCATION CHECK (Phase 3b pass 2)
+' ============================================================================
+' Queries dbo.tblDropboxRevocationList for the given email. Returns True if
+' a matching row exists.
+'
+' FAILURE POLICY: If the SQL query itself fails (DB outage, permissions),
+' returns False (fail-open). Rationale: a transient SQL failure should not
+' lock all users out of Dropbox; the access token is still cryptographically
+' valid. Revocations are checked again on next startup. If you need stricter
+' fail-closed semantics, flip the HandleError branch.
+
+Public Function IsAccountRevoked(ByVal accountEmail As String) As Boolean
+    Const CALLER As String = "IsAccountRevoked"
+    Dim cn As ADODB.Connection, rs As ADODB.Recordset, cmd As ADODB.Command
+    On Error GoTo HandleError
+
+    If LenB(accountEmail) = 0 Then Exit Function   ' empty email isn't on the list
+
+    Set cn = New ADODB.Connection
+    cn.Open PcaGetConnnectionString()
+
+    Set cmd = New ADODB.Command
+    cmd.ActiveConnection = cn
+    cmd.CommandText = "SELECT TOP 1 RevocationID FROM dbo.tblDropboxRevocationList " & _
+                      "WHERE DropboxAccountEmail = ?"
+    cmd.Parameters.Append cmd.CreateParameter( _
+        "p1", adVarWChar, adParamInput, 320, accountEmail)
+    Set rs = cmd.Execute
+
+    IsAccountRevoked = Not rs.EOF
+
+    rs.Close
+    cn.Close
+    Set rs = Nothing
+    Set cmd = Nothing
+    Set cn = Nothing
+    Exit Function
+
+HandleError:
+    LogLocal CALLER, "Error", "Err=" & Err.Number & " " & Err.Description & _
+        " — revocation check failed; fail-open (treating as not revoked)"
+    LogAuditEvent "LinkGenerate", "Failure", , , , _
+        "Revocation check failed for " & accountEmail & ": " & Err.Description
+    If Not rs Is Nothing Then
+        If rs.State = adStateOpen Then rs.Close
+        Set rs = Nothing
+    End If
+    If Not cn Is Nothing Then
+        If cn.State = adStateOpen Then cn.Close
+        Set cn = Nothing
+    End If
+    Set cmd = Nothing
+    IsAccountRevoked = False
+End Function
+
+' ============================================================================
+' SECTION 17 — TOKEN REFRESH + LIFECYCLE (Phase 3b pass 2)
+' ============================================================================
+
+' Uses the stored refresh token to obtain a new access token.
+' Updates the cache and re-persists to tblDropboxTokens. Returns True on success.
+Public Function RefreshAccessToken() As Boolean
+    Const CALLER As String = "RefreshAccessToken"
+    EnsureConfigLoaded CALLER
+
+    If Not IsTokenLoaded() Then
+        If Not LoadTokens() Then
+            LogLocal CALLER, "Warn", "No stored refresh token to use"
+            Exit Function
+        End If
+    End If
+    If LenB(GetCurrentRefreshToken()) = 0 Then
+        LogLocal CALLER, "Warn", "RefreshToken is empty"
+        Exit Function
+    End If
+
+    Dim body As String
+    body = "grant_type=refresh_token" & _
+           "&refresh_token=" & UrlEncode(GetCurrentRefreshToken()) & _
+           "&client_id=" & UrlEncode(GetAppKey()) & _
+           "&client_secret=" & UrlEncode(GetAppSecret())
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", TOKEN_URL, body, _
+                       "application/x-www-form-urlencoded", "", False, status, response) Then
+        LogLocal CALLER, "Error", "HTTP " & status & " " & Left$(response, 300)
+        Exit Function
+    End If
+
+    Dim newAccess As String, newType As String
+    Dim newExpiresIn As Long
+    newAccess = ExtractJsonString(response, "access_token")
+    newType = ExtractJsonString(response, "token_type")
+    newExpiresIn = ExtractJsonLong(response, "expires_in")
+    If LenB(newAccess) = 0 Then
+        LogLocal CALLER, "Error", "Refresh returned no access_token: " & Left$(response, 300)
+        Exit Function
+    End If
+    If newExpiresIn <= 0 Then newExpiresIn = 14400
+
+    ' Re-save with the new access token; keep the existing refresh token.
+    SaveTokens newAccess, GetCurrentRefreshToken(), newExpiresIn, newType, _
+               GetDropboxAccountEmail()
+    LogLocal CALLER, "Info", _
+        "Token refreshed; new expiry " & DateAdd("s", newExpiresIn, Now())
+    RefreshAccessToken = True
+End Function
+
+' Ensures a usable access token is in memory. Refreshes if expiring within 5 min.
+' Returns True if a usable token is available, False if the user must re-auth.
+' Phase 3c/3d API helpers will call this before every API request.
+Public Function EnsureValidToken() As Boolean
+    If Not IsTokenLoaded() Then
+        If Not LoadTokens() Then
+            EnsureValidToken = False
+            Exit Function
+        End If
+    End If
+    If TokenIsExpiring() Then
+        If Not RefreshAccessToken() Then
+            EnsureValidToken = False
+            Exit Function
+        End If
+    End If
+    EnsureValidToken = (LenB(GetCurrentAccessToken()) > 0)
+End Function
+
+' ============================================================================
+' SECTION 18 — PHASE 3b PASS-2 SMOKE TESTS
+' ============================================================================
+' Two tests:
+'   Phase3b_Pass2_UnitTest      — no browser, no live Dropbox. Validates JSON,
+'                                 URL-encode, ExtractQueryParam, the
+'                                 revocation check round-trip, and the
+'                                 EnsureValidToken-with-no-token path.
+'   Phase3b_Pass2_AuthFlowTest  — REQUIRES BROWSER + INTERNET. Runs the full
+'                                 OAuth code-exchange flow end-to-end.
+
+Public Function Phase3b_Pass2_UnitTest() As String
+    On Error GoTo HandleError
+    Dim stepName As String
+
+    ' (1) JSON string extraction
+    stepName = "1a.Json.String.Access"
+    Dim sample As String
+    sample = "{""access_token"":""sl.ABC123"",""token_type"":""bearer""," & _
+             """expires_in"":14400,""refresh_token"":""rt_XYZ""}"
+    If ExtractJsonString(sample, "access_token") <> "sl.ABC123" Then _
+        Err.Raise vbObjectError + 6200, , "ExtractJsonString access_token mismatch"
+
+    stepName = "1b.Json.String.Refresh"
+    If ExtractJsonString(sample, "refresh_token") <> "rt_XYZ" Then _
+        Err.Raise vbObjectError + 6201, , "ExtractJsonString refresh_token mismatch"
+
+    stepName = "1c.Json.String.Missing"
+    If ExtractJsonString(sample, "missing") <> "" Then _
+        Err.Raise vbObjectError + 6202, , "ExtractJsonString should return empty on missing key"
+
+    ' (2) JSON number extraction
+    stepName = "2a.Json.Long.ExpiresIn"
+    If ExtractJsonLong(sample, "expires_in") <> 14400 Then _
+        Err.Raise vbObjectError + 6210, , "ExtractJsonLong expires_in mismatch"
+
+    stepName = "2b.Json.Long.Missing"
+    If ExtractJsonLong(sample, "missing") <> -1 Then _
+        Err.Raise vbObjectError + 6211, , "ExtractJsonLong missing should be -1"
+
+    ' (3) URL encoding
+    stepName = "3a.UrlEncode.Unreserved"
+    If UrlEncode("abc XYZ-._~") <> "abc%20XYZ-._~" Then _
+        Err.Raise vbObjectError + 6220, , "UrlEncode unreserved/space"
+
+    stepName = "3b.UrlEncode.Reserved"
+    If UrlEncode("a/b?c=d&e") <> "a%2Fb%3Fc%3Dd%26e" Then _
+        Err.Raise vbObjectError + 6221, , "UrlEncode reserved chars"
+
+    ' (4) Query-param extraction
+    stepName = "4a.ExtractQueryParam.Code"
+    Dim cb As String
+    cb = "http://localhost:8765/?code=abc123&state=xyz"
+    If ExtractQueryParam(cb, "code") <> "abc123" Then _
+        Err.Raise vbObjectError + 6230, , "ExtractQueryParam code mismatch"
+
+    stepName = "4b.ExtractQueryParam.State"
+    If ExtractQueryParam(cb, "state") <> "xyz" Then _
+        Err.Raise vbObjectError + 6231, , "ExtractQueryParam state mismatch"
+
+    stepName = "4c.ExtractQueryParam.Missing"
+    If ExtractQueryParam(cb, "missing") <> "" Then _
+        Err.Raise vbObjectError + 6232, , "ExtractQueryParam missing should be empty"
+
+    ' (5) Revocation round-trip
+    stepName = "5a.Revocation.LoadConfig"
+    InitializeDropboxConfig
+
+    stepName = "5b.Revocation.InsertRow"
+    Dim cn As ADODB.Connection
+    Set cn = New ADODB.Connection
+    cn.Open PcaGetConnnectionString()
+    Dim testEmail As String
+    testEmail = "unit_test_" & Format$(Now, "yyyymmddhhnnss") & "@example.com"
+    cn.Execute "INSERT INTO dbo.tblDropboxRevocationList " & _
+               "(DropboxAccountEmail, RevokedAt, Reason) VALUES (" & _
+               "N'" & SqlEscape(testEmail) & "', GETDATE(), N'Phase3b_Pass2_UnitTest')"
+
+    stepName = "5c.Revocation.DetectTrue"
+    If Not IsAccountRevoked(testEmail) Then _
+        Err.Raise vbObjectError + 6240, , "IsAccountRevoked False for inserted row"
+
+    stepName = "5d.Revocation.DeleteRow"
+    cn.Execute "DELETE FROM dbo.tblDropboxRevocationList " & _
+               "WHERE DropboxAccountEmail = N'" & SqlEscape(testEmail) & "'"
+    cn.Close
+    Set cn = Nothing
+
+    stepName = "5e.Revocation.DetectFalse"
+    If IsAccountRevoked(testEmail) Then _
+        Err.Raise vbObjectError + 6241, , "IsAccountRevoked True for missing row"
+
+    ' (6) EnsureValidToken with no stored token returns False
+    stepName = "6.EnsureValidToken.NoToken"
+    ClearTokens
+    If EnsureValidToken() Then _
+        Err.Raise vbObjectError + 6250, , "EnsureValidToken True with no stored token"
+
+    Phase3b_Pass2_UnitTest = "OK"
+    Exit Function
+
+HandleError:
+    Phase3b_Pass2_UnitTest = "FAIL: Step=" & stepName & "; Err=" & Err.Number & _
+        " " & Err.Description
+End Function
+
+' Full OAuth code-exchange flow. REQUIRES BROWSER + INTERNET.
+' Run from the Immediate window:
+'   ? DropboxService.Phase3b_Pass2_AuthFlowTest
+' Expected: a browser window opens at the Dropbox authorize page; you click
+' Allow; the function returns "OK — authenticated as <your email>".
+'
+' Post-success state:
+'   - tblDropboxTokens has one row with DPAPI-encrypted AccessToken and RefreshToken
+'   - DropboxService.GetDropboxAccountEmail() returns your Dropbox email
+'   - DropboxService.RefreshAccessToken() succeeds
+Public Function Phase3b_Pass2_AuthFlowTest() As String
+    On Error GoTo HandleError
+    InitializeDropboxConfig
+
+    If Not AuthenticateUser() Then
+        Phase3b_Pass2_AuthFlowTest = "FAIL: AuthenticateUser returned False"
+        Exit Function
+    End If
+    If Not IsTokenLoaded() Then
+        Phase3b_Pass2_AuthFlowTest = "FAIL: IsTokenLoaded False after auth"
+        Exit Function
+    End If
+    If LenB(GetDropboxAccountEmail()) = 0 Then
+        Phase3b_Pass2_AuthFlowTest = "FAIL: DropboxAccountEmail empty after auth"
+        Exit Function
+    End If
+    ' Confirm we can refresh.
+    If Not RefreshAccessToken() Then
+        Phase3b_Pass2_AuthFlowTest = "FAIL: RefreshAccessToken returned False"
+        Exit Function
+    End If
+    Phase3b_Pass2_AuthFlowTest = "OK — authenticated as " & GetDropboxAccountEmail()
+    Exit Function
+
+HandleError:
+    Phase3b_Pass2_AuthFlowTest = "FAIL: Err=" & Err.Number & " " & Err.Description
+End Function
+
+' ============================================================================
+' SECTION 19 — PATH + FILE UTILITIES (Phase 3c)
+' ============================================================================
+
+' Minimal JSON-string escape — handles backslash + double-quote.
+' Sufficient for Dropbox API path arguments (paths shouldn't contain control
+' chars, and ASCII paths are the norm in TBCMS). Non-ASCII path support
+' would need \uXXXX escaping for use inside the Dropbox-API-Arg header.
+Private Function JsonEscapePath(ByVal s As String) As String
+    Dim r As String
+    r = Replace(s, "\", "\\")
+    r = Replace(r, """", "\""")
+    JsonEscapePath = r
+End Function
+
+' Replaces Windows-illegal filename chars with underscore. Dropbox paths
+' don't normally contain these but defend in depth.
+Private Function SanitizeWindowsFilename(ByVal s As String) As String
+    Dim r As String, i As Long, c As String
+    For i = 1 To Len(s)
+        c = Mid$(s, i, 1)
+        Select Case c
+            Case "<", ">", ":", """", "|", "?", "*"
+                r = r & "_"
+            Case Else
+                r = r & c
+        End Select
+    Next i
+    SanitizeWindowsFilename = r
+End Function
+
+' Returns the basename of a Dropbox path (segment after last "/").
+Private Function DropboxBaseName(ByVal dropboxPath As String) As String
+    Dim lastSlash As Long
+    lastSlash = InStrRev(dropboxPath, "/")
+    If lastSlash > 0 Then
+        DropboxBaseName = Mid$(dropboxPath, lastSlash + 1)
+    Else
+        DropboxBaseName = dropboxPath
+    End If
+End Function
+
+' Builds %TEMP%\TBCMS\<GUID>_<basename> for downloaded documents.
+' Per the plan: GUID-prefixed so concurrent opens of the same Dropbox file
+' don't collide; user-profile-scoped via %TEMP%.
+Private Function BuildLocalTempPath(ByVal dropboxPath As String) As String
+    Dim tempDir As String, baseName As String
+    tempDir = EnsureOAuthTempDir()   ' %TEMP%\TBCMS\ — shared with OAuth artifacts
+    baseName = SanitizeWindowsFilename(DropboxBaseName(dropboxPath))
+    BuildLocalTempPath = tempDir & "\" & NewGuid() & "_" & baseName
+End Function
+
+' Writes a byte array to disk via ADODB.Stream (binary mode).
+Private Sub WriteBytesToFile(ByVal filePath As String, bytes() As Byte)
+    Dim stm As Object
+    Set stm = CreateObject("ADODB.Stream")
+    stm.Type = 1                ' adTypeBinary
+    stm.Open
+    stm.Write bytes
+    stm.SaveToFile filePath, 2  ' adSaveCreateOverWrite
+    stm.Close
+    Set stm = Nothing
+End Sub
+
+' ============================================================================
+' SECTION 20 — BINARY HTTP + TEMP-FILE CLEANUP (Phase 3c)
+' ============================================================================
+' WinHttp-based binary download for content.dropboxapi.com endpoints.
+' Returns True on 2xx; populates outBytes from ResponseBody. Non-2xx
+' captures the JSON error in outErrorText (ResponseText).
+
+Private Function HttpDownloadBinary( _
+    ByVal url As String, _
+    ByVal bearerToken As String, _
+    ByVal dropboxArgJson As String, _
+    ByRef outStatus As Long, _
+    ByRef outBytes() As Byte, _
+    ByRef outErrorText As String _
+) As Boolean
+    Dim http As Object
+    On Error GoTo HandleError
+
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    http.Open "POST", url, False
+    http.SetRequestHeader "Authorization", "Bearer " & bearerToken
+    http.SetRequestHeader "Dropbox-API-Path-Root", DropboxPathRootHeader()
+    http.SetRequestHeader "Dropbox-API-Arg", dropboxArgJson
+    ' Dropbox /files/download requires NO Content-Type and an empty body
+    http.Send
+
+    outStatus = http.Status
+    If outStatus >= 200 And outStatus < 300 Then
+        outBytes = http.ResponseBody
+        HttpDownloadBinary = True
+    Else
+        outErrorText = http.ResponseText
+        HttpDownloadBinary = False
+    End If
+    Set http = Nothing
+    Exit Function
+
+HandleError:
+    outStatus = -1
+    outErrorText = "VBA error: Err=" & Err.Number & " " & Err.Description
+    HttpDownloadBinary = False
+    Set http = Nothing
+End Function
+
+' Deletes every file in %TEMP%\TBCMS\ (subdirectories not recursed).
+' Called from Form_Open at session start and Form_Unload at session end
+' (Phase 3e wiring). Survivors of one session don't leak into the next.
+'
+' OAuth scratch files (oauth_listener.ps1, oauth_result.txt) are cleaned up
+' inline by AwaitListenerRedirect — this helper just sweeps any download
+' artifacts that survived a crash or non-clean shutdown.
+Public Sub CleanupTempFiles()
+    Const CALLER As String = "CleanupTempFiles"
+    On Error Resume Next
+
+    Dim tempDir As String, fname As String, deleted As Long
+    tempDir = Environ$("TEMP") & "\TBCMS"
+
+    If Dir$(tempDir, vbDirectory) = "" Then
+        Err.Clear
+        Exit Sub
+    End If
+
+    fname = Dir$(tempDir & "\*.*", vbNormal)
+    Do While LenB(fname) > 0
+        Kill tempDir & "\" & fname
+        If Err.Number = 0 Then deleted = deleted + 1
+        Err.Clear
+        fname = Dir$()      ' next file
+    Loop
+
+    LogLocal CALLER, "Info", "Cleaned " & deleted & " file(s) from " & tempDir
+    Err.Clear
+End Sub
+
+' ============================================================================
+' SECTION 21 — READ-ONLY DROPBOX API OPERATIONS (Phase 3c)
+' ============================================================================
+' Every entrypoint:
+'   1. Calls EnsureValidToken — refreshes silently if expiring within 5 min;
+'      returns "" / False / etc. if no valid token (caller prompts re-auth).
+'   2. Builds JSON body with namespace-aware Dropbox path.
+'   3. Calls HttpRequest (JSON) or HttpDownloadBinary (download).
+'   4. Returns the meaningful result + error context.
+
+' --- 21.1 OpenDocument: download to %TEMP%, launch in native app ----------
+'
+' Downloads the Dropbox file to %TEMP%\TBCMS\<GUID>_<filename> and opens it
+' via Application.FollowHyperlink (default file association). Returns the
+' local temp path on success, "" on failure.
+'
+' Edits made in the launched app are NOT auto-re-uploaded — see plan G10.
+' Users must save changes back via the Save flow.
+
+Public Function OpenDocument(ByVal dropboxPath As String) As String
+    Const CALLER As String = "OpenDocument"
+    Const DOWNLOAD_URL As String = "https://content.dropboxapi.com/2/files/download"
+
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogLocal CALLER, "Warn", "No valid token — caller must re-auth"
+        Exit Function
+    End If
+
+    Dim argJson As String
+    argJson = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+
+    Dim status As Long, errText As String
+    Dim bytes() As Byte
+    If Not HttpDownloadBinary(DOWNLOAD_URL, GetCurrentAccessToken(), argJson, _
+                              status, bytes, errText) Then
+        LogLocal CALLER, "Error", "Download failed: HTTP " & status & " path=" & _
+                 dropboxPath & " body=" & Left$(errText, 300)
+        Exit Function
+    End If
+
+    Dim tempPath As String
+    tempPath = BuildLocalTempPath(dropboxPath)
+
+    On Error GoTo WriteError
+    WriteBytesToFile tempPath, bytes
+    On Error GoTo 0
+
+    ' Hand off to the OS default handler.
+    On Error Resume Next
+    Application.FollowHyperlink tempPath, , True
+    If Err.Number <> 0 Then
+        LogLocal CALLER, "Error", "FollowHyperlink failed for " & tempPath & _
+                 ": Err=" & Err.Number & " " & Err.Description
+        Err.Clear
+    End If
+    On Error GoTo 0
+
+    LogLocal CALLER, "Info", "Opened " & dropboxPath & " -> " & tempPath
+    OpenDocument = tempPath
+    Exit Function
+
+WriteError:
+    LogLocal CALLER, "Error", "Failed writing temp file " & tempPath & _
+             ": Err=" & Err.Number & " " & Err.Description
+End Function
+
+' --- 21.2 GetMetadata: check if a path exists in Dropbox ------------------
+'
+' Calls /2/files/get_metadata. Used by the pre-cutover VerificationReport.
+'   outFound        = True if the path resolves, False if Dropbox returned
+'                     a path/not_found tag.
+'   outErrorDetail  = Dropbox error_summary on non-success, blank on success.
+'   outJson         = raw response JSON (for the caller to ExtractJsonString).
+'
+' Return value = True if the API call completed (status 200 OR 409). Only
+' returns False on transport / auth failure where we genuinely don't know
+' the path's state.
+
+Public Function GetMetadata( _
+    ByVal dropboxPath As String, _
+    ByRef outFound As Boolean, _
+    ByRef outErrorDetail As String, _
+    ByRef outJson As String _
+) As Boolean
+    Const CALLER As String = "GetMetadata"
+    Const URL As String = "https://api.dropboxapi.com/2/files/get_metadata"
+
+    EnsureConfigLoaded CALLER
+    outFound = False
+    outErrorDetail = ""
+    outJson = ""
+
+    If Not EnsureValidToken() Then
+        outErrorDetail = "No valid token"
+        Exit Function
+    End If
+
+    Dim body As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+
+    Dim status As Long, response As String
+    Dim ok As Boolean
+    ok = HttpRequest("POST", URL, body, "application/json", _
+                     GetCurrentAccessToken(), True, status, response)
+    outJson = response
+
+    If ok Then                     ' 2xx → found
+        outFound = True
+        GetMetadata = True
+    ElseIf status = 409 Then       ' Dropbox semantic error (e.g., path/not_found)
+        outFound = False
+        outErrorDetail = ExtractJsonString(response, "error_summary")
+        If LenB(outErrorDetail) = 0 Then outErrorDetail = Left$(response, 300)
+        GetMetadata = True         ' call itself completed; "not found" is a real answer
+    Else                            ' transport / auth / 5xx
+        outErrorDetail = "HTTP " & status & ": " & Left$(response, 300)
+        GetMetadata = False
+        LogLocal CALLER, "Error", "Transport failure for " & dropboxPath & ": " & outErrorDetail
+    End If
+End Function
+
+' --- 21.3 ListFolder ------------------------------------------------------
+'
+' Calls /2/files/list_folder. Returns the response JSON string (caller parses
+' entries with ExtractJsonString); empty on failure.
+
+Public Function ListFolder(ByVal dropboxPath As String) As String
+    Const CALLER As String = "ListFolder"
+    Const URL As String = "https://api.dropboxapi.com/2/files/list_folder"
+
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then Exit Function
+
+    Dim body As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """,""recursive"":false}"
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", URL, body, "application/json", _
+                       GetCurrentAccessToken(), True, status, response) Then
+        LogLocal CALLER, "Error", "HTTP " & status & " path=" & dropboxPath & _
+                 " body=" & Left$(response, 300)
+        Exit Function
+    End If
+    ListFolder = response
+End Function
+
+' --- 21.4 GetTemporaryLink ------------------------------------------------
+'
+' Calls /2/files/get_temporary_link. Returns a 24-hour URL (per G1) or "".
+' Per the plan, the routine document-open path uses OpenDocument (download +
+' native-app launch). GetTemporaryLink is retained for future
+' link-distribution scenarios (e.g., emailed links to opposing counsel).
+
+Public Function GetTemporaryLink(ByVal dropboxPath As String) As String
+    Const CALLER As String = "GetTemporaryLink"
+    Const URL As String = "https://api.dropboxapi.com/2/files/get_temporary_link"
+
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then Exit Function
+
+    Dim body As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", URL, body, "application/json", _
+                       GetCurrentAccessToken(), True, status, response) Then
+        LogAuditEvent "LinkGenerate", "Failure", , , dropboxPath, _
+            "HTTP " & status & " " & Left$(response, 300)
+        LogLocal CALLER, "Error", "HTTP " & status & " path=" & dropboxPath
+        Exit Function
+    End If
+
+    Dim link As String
+    link = ExtractJsonString(response, "link")
+    If LenB(link) = 0 Then
+        LogLocal CALLER, "Error", "No 'link' in response: " & Left$(response, 300)
+        Exit Function
+    End If
+
+    LogAuditEvent "LinkGenerate", "Success", , , dropboxPath, ""
+    GetTemporaryLink = link
+End Function
+
+' ============================================================================
+' SECTION 22 — PHASE 3c SMOKE TESTS
+' ============================================================================
+' Two tests:
+'   Phase3c_SmokeTest         — auto, no user input. Validates ListFolder,
+'                                GetMetadata (found + not-found), and
+'                                CleanupTempFiles end-to-end against the
+'                                production Dropbox tenant. REQUIRES a valid
+'                                token (run Phase3b_Pass2_AuthFlowTest first).
+'   Phase3c_OpenDocumentTest  — interactive. Pass a real Dropbox file path;
+'                                downloads + opens in native app.
+
+Public Function Phase3c_SmokeTest() As String
+    On Error GoTo HandleError
+    Dim stepName As String
+
+    stepName = "0.Prereqs.ConfigLoad"
+    InitializeDropboxConfig
+
+    stepName = "0.Prereqs.EnsureValidToken"
+    If Not EnsureValidToken() Then _
+        Err.Raise vbObjectError + 6300, , _
+            "No valid token. Run Phase3b_Pass2_AuthFlowTest first."
+
+    ' (1) ListFolder /Company — must return a JSON payload with at least
+    '     one entry (the team root has multiple subfolders).
+    stepName = "1.ListFolder./Company"
+    Dim listJson As String
+    listJson = ListFolder("/Company")
+    If LenB(listJson) = 0 Then _
+        Err.Raise vbObjectError + 6310, , "ListFolder /Company returned empty"
+    If InStr(listJson, """entries""") = 0 Then _
+        Err.Raise vbObjectError + 6311, , _
+            "ListFolder /Company response missing 'entries': " & Left$(listJson, 300)
+
+    ' (2) GetMetadata /Company — must succeed and report found.
+    stepName = "2.GetMetadata.Found"
+    Dim found As Boolean, errDetail As String, mdJson As String
+    If Not GetMetadata("/Company", found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 6320, , _
+            "GetMetadata transport failure for /Company: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 6321, , _
+            "GetMetadata reports /Company not found: " & errDetail
+
+    ' (3) GetMetadata for a path that cannot exist — must return found=False
+    '     without a transport failure.
+    stepName = "3.GetMetadata.NotFound"
+    Dim bogus As String
+    bogus = "/Company/__smoketest_does_not_exist_" & Format$(Now, "yyyymmddhhnnss") & _
+            "_" & NewGuid() & "__.tmp"
+    If Not GetMetadata(bogus, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 6330, , _
+            "GetMetadata transport failure for bogus path: " & errDetail
+    If found Then _
+        Err.Raise vbObjectError + 6331, , _
+            "GetMetadata reports bogus path as found: " & bogus
+    If InStr(errDetail, "not_found") = 0 Then _
+        Err.Raise vbObjectError + 6332, , _
+            "GetMetadata error_summary missing 'not_found' for bogus path: " & errDetail
+
+    ' (4) CleanupTempFiles — must not raise even if no files exist.
+    stepName = "4.CleanupTempFiles"
+    CleanupTempFiles
+
+    Phase3c_SmokeTest = "OK"
+    Exit Function
+
+HandleError:
+    Phase3c_SmokeTest = "FAIL: Step=" & stepName & "; Err=" & Err.Number & _
+        " " & Err.Description
+End Function
+
+' Interactive: downloads + opens a real Dropbox file. Returns the local temp
+' path on success.
+'   Example:
+'     ? DropboxService.Phase3c_OpenDocumentTest("/Company/COMMON/_SCANNER/some_file.pdf")
+Public Function Phase3c_OpenDocumentTest(ByVal dropboxPath As String) As String
+    On Error GoTo HandleError
+    InitializeDropboxConfig
+    If Not EnsureValidToken() Then
+        Phase3c_OpenDocumentTest = "FAIL: no valid token (run Phase3b_Pass2_AuthFlowTest first)"
+        Exit Function
+    End If
+
+    Dim tempPath As String
+    tempPath = OpenDocument(dropboxPath)
+    If LenB(tempPath) = 0 Then
+        Phase3c_OpenDocumentTest = "FAIL: OpenDocument returned empty (check tblDropboxLog)"
+        Exit Function
+    End If
+
+    Phase3c_OpenDocumentTest = "OK — downloaded to " & tempPath & " and launched"
+    Exit Function
+
+HandleError:
+    Phase3c_OpenDocumentTest = "FAIL: Err=" & Err.Number & " " & Err.Description
+End Function
+

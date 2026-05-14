@@ -13,6 +13,64 @@
 
 ---
 
+## ▶ NEXT SESSION: START HERE (paused 2026-05-14)
+
+**You are between Phase 3c and Phase 3d.**
+
+**What's done this session:**
+- Phase 3a foundation (`DropboxService.bas` SQL config load, DPAPI, kill-switch, namespace header, audit/local logging) — validated via `Phase3a_SmokeTest`
+- Phase 3b OAuth hardening (token schema upgrade, state param, DPAPI token persistence, full OAuth code-exchange via PowerShell HttpListener, identity check, revocation check, refresh) — validated end-to-end against the production Dropbox tenant via `Phase3b_Pass2_AuthFlowTest` (authenticated as `sugianto@tatebywater.com`)
+- Phase 3c read-only API ops (`OpenDocument`, `GetMetadata`, `ListFolder`, `GetTemporaryLink`, `CleanupTempFiles`, `HttpDownloadBinary`) — validated via `Phase3c_OpenDocumentTest` against a real file
+
+**State of `Dropbox-Migration/DropboxService.bas`:** 2352 lines, sections 1–22 implemented. All read-only paths work against the real Dropbox tenant.
+
+**Next concrete step — Phase 3d (gated write API operations):**
+
+Author six write entrypoints in a new section of `DropboxService.bas`, each calling `GuardWritesEnabled "<name>"` as its first executable statement. Won't actually fire in this build (`ALLOW_DROPBOX_WRITES = False`) but must compile and be ready for the production build.
+
+| Function | Endpoint | Audit ActionType |
+|---|---|---|
+| `UploadFile(localPath, dropboxPath)` | `POST content.dropboxapi.com/2/files/upload` (mode=overwrite, mute=false) | `Upload` |
+| `UploadLargeFile(localPath, dropboxPath)` | `upload_session/start` + `append_v2` + `finish`, 100 MB chunks, size > 150 MB | `Upload` |
+| `MoveFile(fromPath, toPath)` | `POST /2/files/move_v2` (autorename=false) | `Move` |
+| `CopyFile(fromPath, toPath)` | `POST /2/files/copy_v2` (autorename=false) | `Copy` |
+| `DeleteFile(dropboxPath)` | `POST /2/files/delete_v2` | `Delete` |
+| `CreateFolder(dropboxPath)` | `POST /2/files/create_folder_v2` (autorename=false; treat `path/conflict/folder` as success) | (none — log to `tblDropboxLog` only) |
+
+Plus a smoke test `Phase3d_SmokeTest` that asserts every entrypoint raises immediately with `ALLOW_DROPBOX_WRITES = False`. After 3d, the next step is **3e — startup-form wiring** (Form_Open hook in the startup form to call `InitializeDropboxConfig` + `LoadTokens` + revocation check + auto-refresh, plus the "TEST ENVIRONMENT" banner).
+
+**Smoke-test gates before resuming:**
+1. (Optional, ~5s) `? DropboxService.Phase3c_SmokeTest` — auto-validates the remaining read-only ops (`ListFolder`, `GetMetadata` found/not-found, `CleanupTempFiles`).
+2. Confirm the current token is still loaded: `? DropboxService.IsTokenLoaded()` should return `True`. If False, re-run `? DropboxService.Phase3b_Pass2_AuthFlowTest`.
+
+---
+
+## Implementation status snapshot (2026-05-14)
+
+What's been built vs what's still planned. Cross-references the phase sections below.
+
+| Phase | Status | What exists today |
+|---|---|---|
+| **0a** Test environment setup | Done | `TBCMS_Test.accde` + `awsql2022dev/TateByWater` are stood up; `TateBywaterTestUser` provisioned; pre-mutation backup taken |
+| **0b** Dropbox prerequisites intake | Mostly done | App key `dqleswbnux8k3m5`, AppSecret captured, namespace `14334595683`, scopes + redirect URIs confirmed; D1 (write-flow validation strategy) open |
+| **1a** Workflow inventory + contract freeze | Done | Captured in `.docs/document-management-analysis.md`; `vwfrmClientLedger` contract columns frozen |
+| **1b** Data-quality remediation | **Partial** (see status table inside Phase 1b) | Installer auto-applies 3 fixes (`DocumentTypes` typo, B-5 intake natural-key for 4 rows, path migration); B-4 (13 rows), B-6 (198 rows), B-7 (9 rows), B-8 (1 row) surfaced via Section 7 listings but per-row triage pending |
+| **2** Data model + config foundation | Done | `Dropbox-Migration-SQL-Install.sql` Section 1 creates all 6 tables + `spLogDropboxAuditEvent` + seed config rows. Verified on test DB. |
+| **3** DropboxService.bas hardening | **Partial** (3a + 3b + 3c done) | `DropboxService.bas` at `Dropbox-Migration/DropboxService.bas` (2352 lines). **3a + 3b + 3c complete (2026-05-14)**: SQL config load, DPAPI encrypt/decrypt, kill-switch, namespace header, audit/local logging; `tblDropboxTokens` schema upgrade with DPAPI-backed token persistence; full OAuth code-exchange flow with PowerShell HttpListener, identity check, revocation check, refresh, `EnsureValidToken`; read-only API ops — `OpenDocument` (validated end-to-end: real file downloaded + launched), `GetMetadata` (Found/NotFound/transport-failure tristate — `VerificationReport`'s primary API), `ListFolder`, `GetTemporaryLink`; binary HTTP helper for `content.dropboxapi.com`; temp-file cleanup. **3d / 3e pending**. |
+| **4** DocumentManagement compatibility | **Not started** | Includes G2 `spMoveDocumentFolder` rewrite (designed, not implemented) and G13 `spSaveCaseDocument` token guard (designed, not implemented) |
+| **5** Workflow-by-workflow migration | **Not started** | All 5 workflows designed; no VBA changes yet |
+| **6** Security + governance | **Not started** | Pre-cutover credential rotation (`TateBywaterSQLUser` + AppSecret in lockstep) pending |
+| **6.5** Test-env acceptance gate | **Not yet eligible** | Gates: D1 resolved, IT-only validation against 50 rows, UAT signed off, Phase 3–6 complete |
+| **7** Production cutover | **Not in flight** | Schedule TBD by IT + firm leadership after Phase 6.5 gate passes |
+
+**Key open decisions** (each blocks the noted phase):
+- **D1**: write-flow validation strategy (carved-out `/Company-Test/`, sandbox team, or production dry-run) — blocks Phase 6.5
+- **DocumentType folder mapping**: legal-staff sign-off on 5 special-type folder names — blocks Phase 4
+- **243-rows-per-pair policy** for `(26211, General)`: keep all / keep latest / archive — blocks Phase 1b sign-off
+- **Four-tracker reconciliation policy**: which becomes source-of-truth post-cutover — blocks Phase 1b sign-off
+
+---
+
 ## System Context
 
 **TBCMS** (Tate By Water Case Management System) is a law firm case management application with a split architecture:
@@ -35,8 +93,8 @@ This plan operates against **two distinct environments** for the duration of Pha
 | Write operations against `/Company` | Not applicable | **Forbidden by policy** in the test environment. `DropboxService` save/move/copy/delete code is implemented and unit-tested but is gated behind a kill-switch (`ALLOW_DROPBOX_WRITES = False`) in `TBCMS_Test.accde`. Validation strategy for the write paths is a deferred decision — see Phase 0a, Test-Env Decision D1. |
 
 **Existing document data volumes** (verified against live `awsql2022dev/TateByWater` mirror, reassessed 2026-05-14 — this is now the test DB):
-- `tblCaseDocuments`: 26,043 rows — canonical case document references; 13,571 distinct `(CaseID, DocumentType)` pairs; one outlier `(26211, General)` has 243 rows. **100% start with `S:\`** (`STEP_1_UPDATE.sql` will rewrite all of them).
-- `tblScans`: 4,678 rows — additional scan path records; 66% of `TypeofScan` is NULL; paths are predominantly wrapped in legacy `#...#` Access-hyperlink markers. Prefix breakdown: 3,880 (83%) start `#S:\`, 26 start `S:\` (displaytext that begins `S:\`, followed by a `#…#` UNC URL suffix), 61 are NULL/empty, **and 711 (15%) are non-canonical** — see Phase 1b for the breakdown and remediation. Casing across `tblScans` is heterogeneous: among rows referencing the closed-scans branch, title case "Closed File Scans" is predominant (2,657 rows) over uppercase "CLOSED FILE SCANS" (1,293) and URL-encoded uppercase (606); none of these casing variants matter functionally once `STEP_1_UPDATE.sql` rewrites them to the canonical `/Company/Closed File Scans/…`.
+- `tblCaseDocuments`: 26,043 rows — canonical case document references; 13,571 distinct `(CaseID, DocumentType)` pairs; one outlier `(26211, General)` has 243 rows. **100% start with `S:\`** (the installer's path migration rewrites all of them).
+- `tblScans`: 4,678 rows — additional scan path records; 66% of `TypeofScan` is NULL; paths are predominantly wrapped in legacy `#...#` Access-hyperlink markers. Prefix breakdown: 3,880 (83%) start `#S:\`, 26 start `S:\` (displaytext that begins `S:\`, followed by a `#…#` UNC URL suffix), 61 are NULL/empty, **and 711 (15%) are non-canonical** — see Phase 1b for the breakdown and remediation. Casing across `tblScans` is heterogeneous: 2,657 title-case "Closed File Scans" vs. 1,293 uppercase "CLOSED FILE SCANS" vs. 606 URL-encoded uppercase. **The installer does not case-normalise**; mixed casing survives. Dropbox's API lookup is case-insensitive so this is functionally fine, but the 1,293+606 uppercase rows are an ugly-data follow-up if anyone later runs case-sensitive tooling against these paths.
 - `tblCase`: 11,933 rows total; only **7,634 (64.0%)** have any row in `tblCaseDocuments`. 4,299 cases pre-date the ledger.
 - 29 rows in `tblDocumentTypes` (28 visible + 1 hidden `Intake` type).
 - Single configuration row in `tblDocumentRootDirectory` controls all path templates and root directories (see Path Template Syntax below).
@@ -66,7 +124,7 @@ The existing POC is at `database_assessment/DropboxPOC/vba_code/DropboxAPI_POC.b
 - `state` parameter in OAuth flow (CSRF protection)
 - Local HTTP listener (`localhost:8765`) replacing manual URL-paste — **validated in `DropboxOAuthTest.bas` (May 2026)**
 - `Dropbox-API-Path-Root` namespace header on every API call — **confirmed required, namespace ID `14334595683`**
-- Direct Dropbox path storage — `DocumentFileName` / `ScanLocation` are rewritten to `/Company/` paths by `STEP_1_UPDATE.sql` before cutover; no runtime translation formula required, no new DB columns
+- Direct Dropbox path storage — `DocumentFileName` / `ScanLocation` are rewritten to `/Company/` paths by the installer's path migration (Section 5) before cutover; no runtime translation formula required, no new DB columns
 - `files/move_v2`, `files/copy_v2`, `files/delete_v2` operations
 - `files/download` to `%TEMP%\TBCMS\` for document-open native-app launch (`files/get_temporary_link` retained as a utility for future link-distribution use, not the primary open path)
 - Chunked upload (`files/upload_session`) for files > 150 MB
@@ -97,17 +155,17 @@ The existing POC is at `database_assessment/DropboxPOC/vba_code/DropboxAPI_POC.b
 - Core file-management logic is centralized in `database_assessment/TBCMS/extract/vba/modules/DocumentManagement.txt`.
 - Main UI entry points are in `database_assessment/TBCMS/extract/vba/forms/frmClientLedger.txt` and related forms (invoice, intake, provider modules).
 - Current implementation stores and opens local/UNC full file paths via SQL procedures (`spSaveCaseDocument`, `spGetCaseDocument`) and uses `FileCopy`, `Dir`, `FollowHyperlink`, and `Scripting.FileSystemObject`.
-- `SaveCaseDocument(CaseID, DocumentType, DocumentFileName)` current signature — passes a full path as `DocumentFileName`. In the test environment, after `STEP_1_UPDATE.sql` runs against `awsql2022dev/TateByWater`, callers pass a `/Company/`-rooted Dropbox path. **The SP signature is unchanged** — no new Dropbox-specific parameters are added.
+- `SaveCaseDocument(CaseID, DocumentType, DocumentFileName)` current signature — passes a full path as `DocumentFileName`. In the test environment, after the installer's path migration runs against `awsql2022dev/TateByWater`, callers pass a `/Company/`-rooted Dropbox path. **The SP signature is unchanged** — no new Dropbox-specific parameters are added.
 - All stored procedure calls in `DocumentManagement` use `ADODB.Connection` with `PcaGetConnnectionString()` — new SP calls must follow this same pattern.
 - **All 10 file/folder SPs** (`spGetAllInvoicesFolderName`, `spGetCaseDocument`, `spGetClosedDocumentFolderName`, `spGetClosedFileScanFolderName`, `spGetDocumentFileName`, `spGetDocumentFolderName`, `spGetIntakeDocumentFileName`, `spGetIntakeFolderName`, `spMoveDocumentFolder`, `spSaveCaseDocument`) build their result paths with **dynamic SQL** that tokenizes a naming template through `fnGetListOfWords`, substitutes columns from `vwfrmClientLedger`, and `EXEC`s the result. The naming templates and root directories live in a single row in `tblDocumentRootDirectory`. Any rewrite must preserve the template language or replace it wholesale.
 - **`spMoveDocumentFolder` hard-codes position 3** of the existing path as the `_CLOSED` injection point. It cannot be retargeted to a different layout without a rewrite.
 - **Three parallel "scanned?" tracking systems** exist that do not stay in sync: `tblCaseDocuments`, `tblCase.Scan`/`tblCase.[Scan Location]`/`tblCase.ScanNotAvail`, and `tblScans`. Intakes are a fourth tracker (`TB Intakes.Scan Location GI` + `Scanned GI`). Production cutover requires an explicit reconciliation policy — see Phase 1.
 - **Data-quality defects observed in the dev mirror** (Phase 1 remediation backlog; presumed to exist in production likewise):
-  - **13 rows** in `tblCaseDocuments` match `DocumentFileName LIKE '%[[]%'`. Two distinct defects: **9 rows** carry unresolved template literals (e.g., `S:\COMMON\RLF\CLIENTS\[Case_Letter]\…`) — the `vwfrmClientLedger` row was incomplete at save time; **4 rows** are filename-truncation corruption ending in `.[df` (a `.pdf` extension that got partially eaten with a stray `[`, e.g., `…Yang, Fan - Date Stamped FOD… 9.16.22. [df`). The two defects need different remediation: the 9 unresolved-template rows can be re-resolved by re-running `spGetDocumentFolderName` + `spGetDocumentFileName` with a complete ledger row; the 4 truncated rows need the on-disk file inspected to recover the correct filename. `STEP_2_VERIFY.sql` classifies these via a `DefectType` column.
-  - Mixed casing in stored paths (`S:\CLOSED FILE SCANS\…` vs `S:\Closed File Scans\…`) — NTFS-tolerant, Dropbox/URL-intolerant. Appears in both `tblCaseDocuments` (title case predominant — all 4,331 closed-scans rows are title case) and `tblScans` (also title case predominant: 2,657 title vs. 1,293 uppercase vs. 606 URL-encoded uppercase). All variants are normalised by the canonicalisation step before `STEP_1_UPDATE.sql` runs.
-  - Non-canonical roots (cases pointing at `S:\COMMON\<Atty>\<Practice>\…` without `_CLIENTS\`) that pre-date the current `DocumentRootNaming` template. Reassess 2026-05-14 counts **198 such rows** spanning at least 11 prefix variants: `S:\COMMON\PM\…` = 65, `TDT` = 31, `BA` = 25, `RLF` = 22, `FILE SCANS` = 18, `JRT` = 17, `NH` = 13, `MK`/`KDB`/`CMH` = 2 each, `DEB` = 1. The "FILE SCANS" variant (mixed case `File Scans` and `FILE SCANS` under `S:\COMMON\…`) is its own sub-category. Additionally, 3 rows use `CLIENTS\` (without the canonical underscore prefix). None of these will be caught by the canonical `S:\COMMON\…\_CLIENTS\…` template — each must be remediated by hand (realign to canonical path, or map to a known Dropbox path) before Phase 7 verification.
-  - **711 non-canonical `tblScans.ScanLocation` rows** (15% of `tblScans`) that the simple `S:\` → `/Company/` rewrite in `STEP_1_UPDATE.sql` will not catch — see Phase 1b for the category breakdown.
-  - 4,299 cases (36.0%) have **no row** in `tblCaseDocuments` at all.
+  - **13 bracket-literal rows** in `tblCaseDocuments` (`DocumentFileName LIKE '%[[]%'`) — 9 unresolved template literals + 4 truncated `[df` filenames. Both classes require per-row triage. See Phase 1b for full detail and the installer's Section 7.2 for the classified listing.
+  - **Mixed path casing** (`S:\CLOSED FILE SCANS\…` vs `S:\Closed File Scans\…`). Dropbox lookup is case-insensitive so all variants resolve correctly, but the data is heterogeneous (~1,400 uppercase rows in `tblCaseDocuments`; ~1,900 uppercase / URL-encoded rows in `tblScans`). The installer does **not** case-normalise; mixed casing survives. Functionally fine, flagged as a follow-up if any downstream case-sensitive tooling lands later.
+  - **198 non-canonical roots in `tblCaseDocuments`** (cases pointing at `S:\COMMON\<Atty>\<Practice>\…` without `_CLIENTS\`) that pre-date the current `DocumentRootNaming` template. None are caught by the canonical `S:\COMMON\…\_CLIENTS\…` template — each must be remediated by hand (realign to canonical path, or map to a known Dropbox path) before Phase 7 verification. **"Skip" is not an option.** See Phase 1b for the full 11-prefix breakdown.
+  - **711 non-canonical `tblScans.ScanLocation` rows** (15% of `tblScans`) that a simple `S:\` → `/Company/` rewrite would not catch — the installer handles them via per-category passes B-1 through B-6. See Phase 1b for the category breakdown.
+  - **4,299 cases (36.0%) have no row in `tblCaseDocuments` at all** — out of scope for TBCMS post-cutover; users access those documents directly via the Dropbox web/desktop client.
 - **Workflow inventory is complete** in `.docs/document-management-analysis.md`. Phase 1 validates and freezes that contract rather than re-inventorying.
 
 ---
@@ -134,14 +192,21 @@ flowchart LR
 - **Integration mode**: API-native Dropbox operations, not filesystem sync dependency.
 - **Token scope**: per-user tokens stored in each tester's local Access frontend in `tblDropboxTokens` (DAO/`CurrentDb`).
 - **File reference strategy**: no new columns added to `tblCaseDocuments`, `tblScans`, or the Intakes table. `DocumentFileName` (and `tblScans.ScanLocation`, and `[TB Intakes].[Scan Location GI]`) stores the Dropbox path directly after the one-time path-migration script. All Dropbox API calls use the stored path as-is. No runtime translation is required.
-- **Path migration scripts — test-env-first execution**: all `DocumentFileName`, `ScanLocation`, and `[Scan Location GI]` values are updated in SQL Server before the test build can use them. `STEP_1_UPDATE.sql` runs **eleven** per-category rewrite passes (one for `tblCaseDocuments`; six for `tblScans` covering `#S:\…#`, display-text `S:\…#URL#`, `#file:///S:\…#`, `#?S:\…#`, `#file:///\\TBF-SRVR12\…#`, `#\\TBF-SRVR12\…#`; four for `[TB Intakes]` covering `S:\…`, `#S:\…#`, `#file:///S:\…#`, `?S:\…`). Each pass strips both leading and trailing `#` (Access-hyperlink wrap), strips `file:///` if present, URL-decodes `%20`, replaces `\\TBF-SRVR12\Company\` and `S:\` with `/Company/`, and normalises `\` → `/`. Rows the rewrite cannot recover (9 in `tblScans`, 1 in `[TB Intakes]`) are copied to `dbo.tblScans_ManualTriage` and `dbo.TBIntakes_ManualTriage` for hand-fixing.
-  - Scripts: `database_assessment/TBCMS/migrate_paths_to_dropbox/`
-    - `STEP_0_ANALYZE.sql` — safe inspection, no changes (now classifies all three tables by per-pass category and lists the OTHER quarantine candidates)
-    - `STEP_1_UPDATE.sql` — transactional multi-pass update with per-pass row-count summary and spot-check before COMMIT
-    - `STEP_2_VERIFY.sql` — post-commit validation (zero leftover offenders across `\`, `S:`, leading/trailing `#`, `file:///`, `\\TBF-SRVR12\`, `%20` — for all three tables, excluding manual-triage rows)
-    - `FIX_DocumentTypes_NamingRule_Typo.sql` — Phase 1b: corrects the `(customeruserentry)` typo on `tblDocumentTypes` row 30 (`General`)
-  - **In Phases 0–6 these scripts run against `awsql2022dev/TateByWater` only.** They must NOT run against the production SQL database. The same scripts are re-run against production as part of Phase 7 (Production Cutover).
-  - The rewritten `spMoveDocumentFolder` writes updated paths in the same `/Company/` format going forward. In the test environment this code path is gated behind `ALLOW_DROPBOX_WRITES = False` and exercised only via unit tests with mocked Dropbox responses.
+- **Path migration — one consolidated installer**: `Dropbox-Migration/Dropbox-Migration-SQL-Install.sql` is the single end-to-end script. It applies Phase 2 schema, every automated Phase 1b fix, the path migration (eleven per-category rewrite passes — see Phase 1b for the category table), verification, and diagnostic listings in one run. Idempotent. Auto-commits the path migration only if the leftover-offender count is zero, otherwise rolls back and raises. Section map:
+
+  | Section | Content |
+  |---|---|
+  | 1 | Phase 2 schema: DROP+CREATE the 6 Dropbox tables and `spLogDropboxAuditEvent`; seed singleton config rows |
+  | 2 | Manual-triage tables (create-if-missing so prior triage notes survive re-runs) |
+  | 3 | `tblDocumentTypes` row-30 typo fix |
+  | 4 | Phase 1b B-5 intake natural-key fixes (IDs 183, 185, 193, 2482) |
+  | 5 | Path migration: 11 passes across `tblCaseDocuments`, `tblScans`, `[TB Intakes]`. Unrewritable rows quarantined to `dbo.tblScans_ManualTriage` / `dbo.TBIntakes_ManualTriage` |
+  | 6 | Verification: leftover-offender check + path-prefix distribution |
+  | 7 | Phase 1b listings (output only): B-9 path-length, B-4 bracket rows, B-6 non-canonical roots, B-7/B-8 triage queues |
+
+  **In Phases 0–6 the installer runs against `awsql2022dev/TateByWater` only.** It must NOT run against the production SQL database. The same script is re-run against production as part of Phase 7 (Production Cutover).
+
+  The rewritten `spMoveDocumentFolder` (see G2) writes updated paths in the same `/Company/` format going forward. It is not in the installer yet — it lands with the `DocumentManagement.bas` refactor in Phase 4. In the test environment that code path is gated behind `ALLOW_DROPBOX_WRITES = False` and exercised only via unit tests with mocked Dropbox responses.
 - **Migration style (production target)**: direct cutover at Phase 7 — no hybrid period, no per-row provider flag, and **no `StorageProvider` flag at all**. The post-cutover production TBCMS routes every document operation through the Dropbox API unconditionally. There is no provider abstraction layer and no `LocalProvider`: `DocumentManagement` delegates directly to `DropboxService`. See Rollback section for failure recovery.
 - **OAuth flow**: authorization code grant with `token_access_type=offline`. VBA shells a PowerShell `HttpListener` on `http://localhost:8765` before opening the browser. When the user clicks Allow, Dropbox redirects to `localhost:8765` automatically — PowerShell captures the code, displays a green "Authorization complete — you can close this tab" page in the browser, and writes the redirect URL to a temp file VBA polls. No copy-paste required. The redirect URI `http://localhost:8765` must be registered in the Dropbox App Console (Settings → OAuth 2 → Redirect URIs) exactly as written. A manual paste fallback (redirect to `http://localhost`, no port) is retained in the codebase via `USE_LOCAL_LISTENER = False` for environments where port 8765 is blocked or PowerShell execution policy prevents the listener script from running. Both redirect URIs must be registered in the App Console.
 - **OAuth frequency — once per user**: The full browser OAuth flow runs exactly once per user. Dropbox returns both an `access_token` (4-hour lifetime) and a `refresh_token` (long-lived, no expiry under normal conditions). Both are DPAPI-encrypted and stored in `tblDropboxTokens`. On every subsequent session, `InitializeDropboxAPI` loads the stored tokens silently — no browser, no user interaction. If the access token is within 5 minutes of expiry, it is refreshed silently using the refresh token before any API call is made. Users are only prompted to re-authorize in the following situations:
@@ -160,7 +225,7 @@ flowchart LR
 - **Token encryption (per-user, local)**: Windows DPAPI (`CryptProtectData` / `CryptUnprotectData`) declared via VBA `Declare` statements, applied to access/refresh tokens stored in the local frontend `tblDropboxTokens`. Encrypted blobs are bound to the current user's Windows session and cannot be decrypted on another machine or by another Windows user. Replaces the POC's trivial hex encoding.
 - **AppKey and AppSecret location**: stored once in the SQL Server backend table `tblDropboxConfig` (single row, ConfigID = 1). All TBCMS frontends read the row on startup via ADO using `PcaGetConnnectionString()` and cache the values in module-level variables for the session. The values are stored **plaintext**; protection at rest is the SQL Server credential boundary (`TateBywaterSQLUser`), the same boundary that already protects every other SQL Server secret. Trade-off accepted: provisioning simplicity (one row, one update for rotation) over per-user DPAPI encryption. DPAPI is not used here because DPAPI blobs are user-session-bound and cannot be shared across users via a SQL row. Implication: AppSecret rotation is tightly coupled to `TateBywaterSQLUser` rotation — if the SQL credential is compromised, rotate the Dropbox AppSecret in lockstep (see Phase 6).
 - **Write failure**: if a Dropbox write fails (production, post-cutover), the operation fails with an error and is logged to `tblDropboxAuditLog`. No silent fallback — avoids invisible data loss. In the test environment, writes are gated off entirely (see kill-switch above).
-- **Rollback — test environment**: trivial. Drop the test-only SQL artifacts (`tblDropboxConfig`, `tblDropboxRootConfig`, `tblDropboxRevocationList`, `tblDropboxAuditLog`, `tblDropboxVerificationReport`) from `awsql2022dev/TateByWater` via `STEP_99_ROLLBACK_TESTENV.sql`, revert `tblCaseDocuments.DocumentFileName` / `tblScans.ScanLocation` from the pre-`STEP_1_UPDATE.sql` snapshot, and decommission `TBCMS_Test.accde` from tester workstations. Production is untouched throughout, so there is no rollback impact on end users.
+- **Rollback — test environment**: restore `awsql2022dev/TateByWater` from the `TateByWater_PreDropboxMigration_<date>.bak` snapshot taken at Phase 0a (this is the canonical rollback path — it wipes the Dropbox tables, reverts `DocumentFileName` / `ScanLocation` / `[Scan Location GI]`, and restores everything to the pre-migration baseline in one operation). Decommission `TBCMS_Test.accde` from tester workstations. Production is untouched throughout, so there is no rollback impact on end users.
 - **Rollback — production cutover (Phase 7)**: S:\ is still live at the point Phase 7 begins. The cutover sequence (Phase 7) keeps S:\ accessible as a fallback for a defined cooldown window (default: 30 days) by leaving the SQL `DocumentFileName` rewrite reversible via a pre-snapshot backup table. Within the cooldown window, an emergency revert restores the previous `.accde` and reverts the SQL paths. Beyond the cooldown window, S:\ may be decommissioned and rollback becomes the irreversible scenario described in the original plan. The pre-cutover `VerificationReport` must show zero `NotFound` rows before Phase 7 deployment regardless.
 - **Upload size limit**: Dropbox `files/upload` supports up to 150 MB. Files exceeding 150 MB must use `files/upload_session/start` + `files/upload_session/append_v2` + `files/upload_session/finish` (chunked upload). This applies to large TIF/PDF case scan files. `DropboxService` must detect file size before upload and route accordingly.
 - **VBA unit testing framework**: Rubberduck (https://rubberduckvba.com).
@@ -278,7 +343,7 @@ The test environment is the bounded, reversible workspace where Phases 1–6 are
 
 #### Test SQL Server database
 
-- **Target**: `awsql2022dev/TateByWater` (the existing dev mirror). All Phase 1b remediation, Phase 2 schema additions, Phase 4–5 SP changes, and the `STEP_1_UPDATE.sql` path migration apply to this DB only during Phases 0–6.
+- **Target**: `awsql2022dev/TateByWater` (the existing dev mirror). All Phase 1b remediation, Phase 2 schema additions, Phase 4–5 SP changes, and the installer's path migration apply to this DB only during Phases 0–6.
 - **Refresh from production**: before Phase 1b begins, refresh `awsql2022dev/TateByWater` from a current production backup so the test DB starts from the same row counts and content as production. Record the production backup timestamp in the runbook (e.g., "test DB refreshed from prod backup taken 2026-05-12 23:00").
 - **Snapshot-before-mutate**: immediately after refresh, take a backup of `awsql2022dev/TateByWater` named `TateByWater_PreDropboxMigration_<date>.bak`. Every Phase 1b/2 mutating script restores from this snapshot before re-running, so each iteration starts from a known baseline.
 - **Connection-string isolation**: provision a separate SQL login `TateBywaterTestUser` (distinct credential from `TateBywaterSQLUser`) with read/write only on `awsql2022dev/TateByWater`. `TBCMS_Test.accde` is built with this login baked into its `z_PCADataSources` row — it has no permission to reach the production SQL DB even if a tester somehow re-pointed it.
@@ -315,12 +380,12 @@ The test environment is the bounded, reversible workspace where Phases 1–6 are
 
 #### Acceptance criteria for Phase 0a
 
-- `TBCMS_Test.accde` installed on the IT workstation and starts successfully against `awsql2022dev/TateByWater`.
-- Startup banner "TEST ENVIRONMENT — Dropbox read-only — `awsql2022dev/TateByWater`" is visible on every form.
-- An attempt to call any `DropboxService` write entrypoint surfaces the "read-only" error and writes a log row to `tblDropboxLog`.
-- `TateBywaterTestUser` credential cannot reach production SQL (verified manually with SSMS).
-- Test DB backup `TateByWater_PreDropboxMigration_<date>.bak` exists and a test restore from it has been validated.
-- D1 is recorded as an open decision in this plan with an explicit owner and target resolution date.
+- [x] `TBCMS_Test.accde` installed on the IT workstation and starts successfully against `awsql2022dev/TateByWater`.
+- [ ] Startup banner "TEST ENVIRONMENT — Dropbox read-only — `awsql2022dev/TateByWater`" is visible on every form. *(pending — banner not yet wired; Phase 3 work)*
+- [ ] An attempt to call any `DropboxService` write entrypoint surfaces the "read-only" error and writes a log row to `tblDropboxLog`. *(pending — `GuardWritesEnabled` is Phase 3 work)*
+- [ ] `TateBywaterTestUser` credential cannot reach production SQL (verified manually with SSMS). *(pending — `TateBywaterTestUser` not yet provisioned; current SQL access is via Windows auth)*
+- [x] Test DB backup `TateByWater_PreDropboxMigration_<date>.bak` exists and a test restore from it has been validated.
+- [ ] D1 is recorded as an open decision in this plan with an explicit owner and target resolution date. *(open — needs firm-leadership input)*
 
 ---
 
@@ -366,7 +431,7 @@ App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
 | Roster of Dropbox-Business-licensed users | Email + display name + role. Feeds the identity-validation check at startup and the permission matrix |
 | TBCMS user → Dropbox email mapping | The Windows account running Access is not necessarily the Dropbox account; both identities must align in `tblDropboxTokens.DropboxAccountEmail` |
 | Office-letter ↔ team-folder mapping | `[Orig_Atty]` is the 2nd path segment in `DocumentRootNaming` (`PM`, `RLF`, `TDT`, etc.). Each office letter needs a corresponding Dropbox folder or group |
-| Migration cutover window | When `STEP_1_UPDATE.sql` runs and is verified, the `VerificationReport` passes, and the new TBCMS `.accde` is ready to deploy. Files are already in Dropbox — no file transfer is needed. The window is gated by IT scheduling the SQL update and the code deployment, not by bandwidth. |
+| Migration cutover window | When the installer runs against production and is verified, the `VerificationReport` passes, and the new TBCMS `.accde` is ready to deploy. Files are already in Dropbox — no file transfer is needed. The window is gated by IT scheduling the installer run and the code deployment, not by bandwidth. |
 
 #### D. From Dropbox documentation or a sales engineer
 
@@ -381,10 +446,10 @@ App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
 
 #### Exit criteria for Phase 0b
 
-- All "(blocking)" items in sections A and B captured and recorded.
-- Section C roster locked (open issues like missing seats raised to procurement). For Phases 0–6 the roster is narrowed to the IT admin + the 1–2 UAT testers selected in Phase 0a; the full firm roster is only required for Phase 7.
-- Section D answers documented in this plan or its addendum — specifically: confirmed rate limit, confirmed `get_temporary_link` lifetime (and the plan's two mentions corrected to match), confirmed atomicity model for `files/move_v2`, confirmed path length limit.
-- IT-admin runbook draft started, anchored on the actual app key and team root values from A and B.
+- [x] All "(blocking)" items in sections A and B captured and recorded.
+- [ ] Section C roster locked (open issues like missing seats raised to procurement). For Phases 0–6 the roster is narrowed to the IT admin + the 1–2 UAT testers selected in Phase 0a; the full firm roster is only required for Phase 7.
+- [x] Section D answers documented in this plan — `get_temporary_link` lifetime (24h, G1) and path length limit (260 chars, G14) confirmed. Rate limit (1,200 calls/min default) and `files/move_v2` atomicity to be re-confirmed against firm's actual Dropbox tier at Phase 7 staging dry-run.
+- [ ] IT-admin runbook draft started, anchored on the actual app key and team root values from A and B.
 
 ---
 
@@ -393,15 +458,36 @@ App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
 ### Phase 1: Discovery, Mapping, Data-Quality Remediation, and Contract Freeze
 
 #### 1a. Validation
-- Validate the workflow inventory in `document-management-analysis.md` against the live SQL Server database — confirm all `DocumentType` values, stored procedures, and table fields are current.
-- Freeze the **`vwfrmClientLedger` contract**: list the exact columns currently referenced by token substitution (`Last_Name`, `First_Name`, `FileNo`, `Yr`, `Orig_Atty`, `Case_Letter`, `CaseOpenDate`) and forbid breaking changes to those columns for the duration of the migration.
-- Confirm the proposed DocumentType folder mapping (see Path Template Syntax above) with legal staff.
+- [x] Validate the workflow inventory in `document-management-analysis.md` against the live SQL Server database — confirm all `DocumentType` values, stored procedures, and table fields are current.
+- [x] Freeze the **`vwfrmClientLedger` contract**: list the exact columns currently referenced by token substitution (`Last_Name`, `First_Name`, `FileNo`, `Yr`, `Orig_Atty`, `Case_Letter`, `CaseOpenDate`) and forbid breaking changes to those columns for the duration of the migration.
+- [ ] Confirm the proposed DocumentType folder mapping (see Path Template Syntax above) with legal staff.
 
 #### 1b. Data-quality remediation (must complete before Phase 7 verification)
-- **Fix the 13 bracket-literal rows** in `tblCaseDocuments` where `DocumentFileName LIKE '%[[]%'`. Heterogeneous defect: **9 rows** are unresolved template literals (`[Case_Letter]` survived into the stored path because the `vwfrmClientLedger` row was incomplete at save time) — re-resolve by re-running `spGetDocumentFolderName` + `spGetDocumentFileName` with the now-complete ledger row, or delete if the underlying file does not exist on disk. **4 rows** are truncated-filename corruption ending in `.[df` (e.g., `…Namuleme, Dorothy - Entered Order of Nonsuit .[df`) — inspect the on-disk file to recover the intended filename. `STEP_2_VERIFY.sql` (query 5) classifies each surviving row as `unresolved template` vs. `truncated .[df filename` so the two queues can be triaged separately. `STEP_1_UPDATE.sql` rewrites the root of these 13 rows to `/Company/` but leaves the defective tail intact — they still fail Dropbox `files/get_metadata` until fixed.
-- **Canonicalize path casing**: rewrite all stored paths to canonical form (lowercase root + correct case for known folder segments). Required because Dropbox paths are case-preserving but case-insensitive for lookup, and any future migration to a case-sensitive store would break. `tblCaseDocuments` is already title case across all 4,331 closed-scans rows. `tblScans` is mixed — 2,657 title, 1,293 uppercase, 606 URL-encoded uppercase — and all variants normalise to `/Company/Closed File Scans/…` via the multi-pass rewrite (`STEP_1_UPDATE.sql` passes B-1 through B-6).
+
+> **Phase 1b status snapshot (test DB, as of 2026-05-14)** — what's automated vs what still needs human triage. Every item below is surfaced by the installer; the table answers "what does the installer do for me vs leave for me to fix?"
+>
+> | Item | What | Status | Where in installer |
+> |---|---|---|---|
+> | `tblDocumentTypes` typo | Row 30 `(customeruserentry)` → `(customuserentry)` | **Auto-applied** | Section 3 |
+> | B-5 intake natural-key | 4 rows with recoverable Last/First fixed; 5 NULL-Date rows left (non-blocker — verification report uses `[TB Intakes].[ID]`) | **Auto-applied (4 of 9)** | Section 4 |
+> | Path migration | 26,043 case docs + 4,617 scans + 951 intakes rewritten; mixed casing survives (Dropbox case-insensitive — see follow-up below) | **Auto-applied** | Section 5 |
+> | B-7 `tblScans` quarantine | 9 corrupted/hash-less rows isolated to `dbo.tblScans_ManualTriage` | **Auto-quarantined**; per-row triage pending | Section 5 + listing in 7.4 |
+> | B-8 `[TB Intakes]` quarantine | 1 row (`Mejia Amaya, Manuel de Jesus.pdf`, missing `S:` root) isolated to `dbo.TBIntakes_ManualTriage` | **Auto-quarantined**; per-row triage pending | Section 5 + listing in 7.5 |
+> | B-9 path-length | Max post-rewrite length 253 chars; 0 over 260 | **Verified clean** | Section 7.1 |
+> | B-4 bracket-literal rows | 9 unresolved-template + 4 truncated `[df` filenames | **Surfaced**; per-row triage pending (file-system access required) | Listing in 7.2 |
+> | B-6 non-canonical roots | 198 rows across 11+ prefix variants (no `_CLIENTS\` segment) | **Surfaced**; per-prefix mapping decision pending | Listing in 7.3 |
+> | DocumentType folder mapping (5 special types) | Legal-staff sign-off | **Pending** | Out of installer scope |
+> | 243-rows-per-pair policy (outlier `(26211, General)`) | Keep all / keep latest / archive older | **Pending decision** | Out of installer scope |
+> | Four-tracker reconciliation (`tblCase.Scan` ↔ `tblCaseDocuments` ↔ `tblScans` ↔ `[TB Intakes]`) | Reconciliation SQL aligning the four sources | **Pending design + script** | Out of installer scope |
+> | G21 `/Company/company` duplicate folder | Dropbox admin task | **Pending** | Dropbox-side |
+> | G22 loose files at `/Company` root | Dropbox admin housekeeping | **Pending** | Dropbox-side |
+>
+> The detailed prose below covers every line item.
+
+- **Fix the 13 bracket-literal rows** in `tblCaseDocuments` where `DocumentFileName LIKE '%[[]%'`. Heterogeneous defect: **9 rows** are unresolved template literals (`[Case_Letter]` survived into the stored path because the `vwfrmClientLedger` row was incomplete at save time) — re-resolve by re-running `spGetDocumentFolderName` + `spGetDocumentFileName` with the now-complete ledger row, or delete if the underlying file does not exist on disk. **4 rows** are truncated-filename corruption ending in `[df` (e.g., `…Namuleme, Dorothy - Entered Order of Nonsuit .[df`) — inspect the on-disk file to recover the intended filename. The installer's Section 7.2 listing classifies each row as `unresolved template (re-resolve via SPs)` vs `truncated filename ending [df (inspect on-disk file)` so the two queues can be triaged separately. The path-migration step rewrites the root of these 13 rows to `/Company/` but leaves the defective tail intact — they still fail Dropbox `files/get_metadata` until fixed.
+- **Path-casing follow-up (not blocking)**: the installer's path migration does **not** case-normalise — it's a literal `S:\` → `/Company/` rewrite. Dropbox lookup is case-insensitive so all variants resolve correctly, but the data is mixed: `tblCaseDocuments` has 2,882 title-case + 1,376 uppercase closed-scans rows; `tblScans` has 2,657 title + 1,293 uppercase + 606 URL-encoded uppercase. If a future migration to a case-sensitive store is contemplated, a one-shot UPDATE to canonicalize casing should run before that migration. Out of scope for this plan.
 - **Survey non-canonical roots in `tblCaseDocuments`**: enumerate distinct path prefixes (legacy roots without `_CLIENTS\`, plus the `S:\COMMON\File Scans\…` / `S:\COMMON\FILE SCANS\…` branch). Reassess 2026-05-14 counts **198 such rows total** across 11+ prefix variants: `S:\COMMON\PM\…` = 65, `TDT` = 31, `BA` = 25, `RLF` = 22, `FILE SCANS` = 18, `JRT` = 17, `NH` = 13, `MK`/`KDB`/`CMH` = 2 each, `DEB` = 1, plus 3 rows using `CLIENTS\` without the canonical underscore. For each prefix, decide: realign to current template, or map to a known Dropbox path. **"Skip" is not an option** — at production cutover, skipped rows will produce "file not found" errors at open time with no S:\ fallback once S:\ is decommissioned in Phase 7. Every non-null, non-blank `DocumentFileName` row must have a verified Dropbox path in the `VerificationReport` before Phase 7 deployment. In the test environment the same gate is enforced so the verification logic is itself validated.
-- **Remediate the 711 non-canonical `tblScans.ScanLocation` rows.** `STEP_1_UPDATE.sql` (passes B-1 through B-6) now handles the first five categories automatically; the OTHER category is copied to `dbo.tblScans_ManualTriage` for hand-fixing. Reassess 2026-05-14 breakdown:
+- **Remediate the 711 non-canonical `tblScans.ScanLocation` rows.** The installer's path migration (Section 5, passes B-1 through B-6) handles the first five categories automatically; the OTHER category is copied to `dbo.tblScans_ManualTriage` for hand-fixing. Reassess 2026-05-14 breakdown:
 
   | Category | Count | Pattern | Handled by |
   |---|---|---|---|
@@ -412,9 +498,13 @@ App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
   | Legacy UNC, bare | 6 | `#\\TBF-SRVR12\<co>\…#` | Pass B-6: strip `#…#` wrap, then `\\TBF-SRVR12\Company\` → `/Company/` and `\` → `/` |
   | Hash-less or corrupted | 9 | Bare client names with no root, `y#http://y#`, `#Simms, EdwaS:\Close…` (concatenation corruption), `#FILE SCANS\Closed F…` (missing `S:`) | **Quarantined** in `dbo.tblScans_ManualTriage` — manual review per row: fix, archive, or delete |
 
-  The script must produce zero rows still containing `\`, `S:`, leading or trailing `#`, `file:///`, `\\TBF-SRVR12\`, or `%20` substrings on completion outside the manual-triage table. `STEP_2_VERIFY.sql` query 1 enforces this with a per-table offender count. Skipped rows produce hard 404s at open time — same gate as `tblCaseDocuments` above.
-- **Migrate `[TB Intakes].[Scan Location GI]` paths** (Phase 6.5 scope: intake records are in scope for `VerificationReport`). Reassess 2026-05-14 counts: 1,674 rows total; 951 non-null S:\-rooted rows; 723 NULL/empty; 1 quarantined OTHER row. `STEP_1_UPDATE.sql` Part C handles four categories — bare `S:\…` (849 rows), `#S:\…#` (43), `#file:///S:\…#` (57), `?S:\…` (1) — using the same multi-pass pattern as `tblScans`. The 1 OTHER row (`# FILE SCANS\Closed Final\TB\Intakes\Mejia Amaya, Manuel de Jesus.pdf#`, missing the `S:` root) is quarantined to `dbo.TBIntakes_ManualTriage`. **Note on intake path mapping**: this script performs a like-for-like rewrite — existing `S:\Closed File Scans\TB\Intakes\…` becomes `/Company/Closed File Scans/TB/Intakes/…`. The migration plan's `tblDropboxRootConfig.IntakeDirectory` proposes a structural relocation to `/Company/COMMON/Intakes` (folder does not yet exist); that relocation is a separate Phase 5 decision and a separate one-off SQL, not part of `STEP_1_UPDATE.sql`.
-- **Fix the 9 intake rows with NULL natural-key fields** before the `VerificationReport` runs. `[TB Intakes]` is uniquely addressed by `([GI Last Name], [GI First Name], [GI Date])` per the verification-report contract (Phase 2 — `tblDropboxVerificationReport` `CHECK` constraint), but 9 rows with a populated `[Scan Location GI]` have at least one of these three NULL (2 NULL Last, 3 NULL First, 7 NULL Date — 9 distinct rows; verified 2026-05-14). Without remediation, those 9 rows would either violate the CHECK constraint (blocking insert) or be silently excluded from the report (blocking verification). Per-row triage: look up the source intake in the Access form, populate the missing fields from the intake document or the Dropbox file metadata, and re-save. Captured as an idempotent SQL listing script (lists the 9 `[TB Intakes]` rows by `[Scan Location GI]` and the surviving fields) plus per-row UPDATEs the IT admin authors based on the triage. Independent of the path-rewrite scripts — runs before or after `STEP_1_UPDATE.sql` Part C without ordering constraints.
+  The migration must produce zero rows still containing `\`, `S:`, leading or trailing `#`, `file:///`, `\\TBF-SRVR12\`, or `%20` substrings on completion outside the manual-triage table. Section 6 of the installer enforces this with a per-table offender count, and Section 5 auto-rolls-back if the count is non-zero. Skipped rows produce hard 404s at open time — same gate as `tblCaseDocuments` above.
+- **Migrate `[TB Intakes].[Scan Location GI]` paths** (Phase 6.5 scope: intake records are in scope for `VerificationReport`). Reassess 2026-05-14 counts: 1,674 rows total; 951 non-null S:\-rooted rows; 723 NULL/empty; 1 quarantined OTHER row. Installer Section 5 Part C handles four categories — bare `S:\…` (849 rows), `#S:\…#` (43), `#file:///S:\…#` (57), `?S:\…` (1) — using the same multi-pass pattern as `tblScans`. The 1 OTHER row (`# FILE SCANS\Closed Final\TB\Intakes\Mejia Amaya, Manuel de Jesus.pdf#`, missing the `S:` root) is quarantined to `dbo.TBIntakes_ManualTriage`. **Note on intake path mapping**: the rewrite is like-for-like — `S:\Closed File Scans\TB\Intakes\…` becomes `/Company/Closed File Scans/TB/Intakes/…`. The migration plan's `tblDropboxRootConfig.IntakeDirectory` proposes a structural relocation to `/Company/COMMON/Intakes` (folder does not yet exist); that relocation is a separate Phase 5 decision and a separate one-off SQL, not part of the installer.
+- **Fix `[TB Intakes]` rows with NULL natural-key fields** (Phase 1b — item B-5). `[TB Intakes]` has a surrogate primary key column `[ID]` (identity, unique — confirmed 2026-05-14 via `sys.indexes` against `awsql2022dev/TateByWater`). The verification report addresses intake rows by this PK (see Phase 2 — `tblDropboxVerificationReport`), so NULL natural-key columns no longer block verification. They still matter for application-side Access form workflows that look up intakes by `([GI Last Name], [GI First Name], [GI Date])`.
+  - 9 rows have a populated `[Scan Location GI]` and at least one NULL among the three natural-key columns (2 NULL Last, 3 NULL First, 7 NULL Date — verified 2026-05-14).
+  - 4 of the 9 rows have a recoverable Last/First from the scan filename. Decisions captured 2026-05-14: ID 183 (`JJM & Associates of VA`) — business entity, `[GI First Name] = ''`; ID 185 — split crammed name into `Last = 'Morales Bolanos', First = 'Marvin Eduardo'`; ID 193 — fill `Last = 'Carpio', First = 'Alejandro'` from path; ID 2482 — fill `Last = 'Kerr'` from path.
+  - 5 rows have only a NULL `[GI Date]` (the inquiry date) with no recoverable signal — the filename's date is the scan date, not the inquiry date. Left as-is; fix manually if the source intake document can be retrieved.
+  - Applied by `Dropbox-Migration-SQL-Install.sql` Section 4 (idempotent — re-applies harmlessly via `WHERE [ID] = N AND [field] IS NULL` guards). Independent of the path migration step (Section 5); order doesn't matter.
 - **Decide the 243-rows-per-pair policy** for `tblCaseDocuments`: keep all (multi-version history), keep latest only, or archive older with a `Status` column. Current `spGetCaseDocument` only ever reads the latest by `CreatedOn`, so older rows are operationally dead.
 - **Reconcile the four scan-trackers**: produce a written decision on which becomes source-of-truth post-cutover:
   - `tblCaseDocuments` (modern; only 64.0% case coverage)
@@ -443,7 +533,7 @@ App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
 
 **Target post-cutover state** (after Phase 7 completes — describes the end state of the migration, not the current state of production). Files live in Dropbox under `/Company`; S:\ has been decommissioned at the end of the Phase 7 cooldown window; there is no hybrid period and no per-row storage provider tracking. `DocumentFileName` (in `tblCaseDocuments`), `ScanLocation` (in `tblScans`), and `[Scan Location GI]` (in `[TB Intakes]`) all store `/Company/`-rooted Dropbox paths and are passed to Dropbox API calls verbatim — no runtime translation. **Today (Phases 0–6)** the production database still holds `S:\`-rooted values and production users still resolve against S:\ as authoritative; the rewrite described below runs against the test DB `awsql2022dev/TateByWater` only, and is re-run against production as part of Phase 7 (see Design Decisions — Path migration).
 
-> **Confirmed from live database (reassess 2026-05-14):** all 26,043 rows in `tblCaseDocuments` use exactly two root prefixes — `S:\COMMON\` (21,712 rows) and `S:\Closed File Scans\` (4,331 rows) — with zero exceptions. `STEP_1_UPDATE.sql` maps these losslessly to `/Company/COMMON/` and `/Company/Closed File Scans/` respectively. `tblScans` is messier: 3,880 rows match `#S:\…#` (Access-hyperlink wrapped), 26 match `S:\…` (display-text-starts-with-S:\ followed by `#URL#` suffix — not actually bare), 61 are NULL/empty, and **711 rows are non-canonical** (617 URL-encoded `#file:///S:\…#`, 60 `#?S:\…#`, 25 legacy UNC, 9 corrupted) — see Phase 1b for the remediation table. `[TB Intakes].[Scan Location GI]` adds 951 non-null S:\-rooted rows (849 `S:\…`, 57 `#file:///S:\…#`, 43 `#S:\…#`, 1 `?S:\…`, 1 OTHER quarantined).
+> **Confirmed from live database (reassess 2026-05-14, verified by the installer run):** all 26,043 rows in `tblCaseDocuments` use exactly two root prefixes — `S:\COMMON\` (21,712 rows) and `S:\Closed File Scans\` (4,331 rows) — with zero exceptions. The installer maps these losslessly to `/Company/COMMON/` and `/Company/Closed File Scans/`. `tblScans` is messier: 3,880 rows match `#S:\…#` (Access-hyperlink wrapped), 26 match `S:\…` (display-text-starts-with-S:\ followed by `#URL#` suffix — not actually bare), 61 are NULL/empty, and **711 rows are non-canonical** (617 URL-encoded `#file:///S:\…#`, 60 `#?S:\…#`, 25 legacy UNC, 9 corrupted) — see Phase 1b for the remediation table. `[TB Intakes].[Scan Location GI]` adds 951 non-null S:\-rooted rows (849 `S:\…`, 57 `#file:///S:\…#`, 43 `#S:\…#`, 1 `?S:\…`, 1 OTHER quarantined).
 
 **Create `tblDropboxRootConfig`** (SQL Server backend, single admin-managed row — schema mirrors the existing `tblDocumentRootDirectory` so both providers share the same template semantics):
 
@@ -514,38 +604,13 @@ App created for TBCMS (May 2026). App key: `dqleswbnux8k3m5`.
 |--------|------|-------------|
 | `VerificationID` | INT PK IDENTITY |  |
 | `SourceTable` | NVARCHAR(50) NOT NULL | One of `tblCaseDocuments`, `tblScans`, or `TB Intakes` |
-| `SourceRowID` | INT NULL | FK to `tblCaseDocuments.CaseDocumentID` (when `SourceTable = 'tblCaseDocuments'`) or `tblScans.ScansID` (when `SourceTable = 'tblScans'`). **NULL when `SourceTable = 'TB Intakes'`** because that table has no surrogate primary key. |
-| `IntakeRefLastName` | NVARCHAR(255) NULL | Natural-key column 1 for `TB Intakes` rows (`[GI Last Name]`). NULL for the other two source tables. |
-| `IntakeRefFirstName` | NVARCHAR(255) NULL | Natural-key column 2 for `TB Intakes` rows (`[GI First Name]`). NULL for the other two source tables. |
-| `IntakeRefDate` | DATETIME NULL | Natural-key column 3 for `TB Intakes` rows (`[GI Date]`). NULL for the other two source tables. |
+| `SourceRowID` | INT NOT NULL | Surrogate PK of the source row. `tblCaseDocuments.CaseDocumentID`, `tblScans.ScansID`, or `[TB Intakes].[ID]` (verified 2026-05-14: `[TB Intakes].[ID]` is an IDENTITY PK; an earlier draft of this plan assumed no surrogate PK existed and added natural-key columns to compensate — that workaround has been removed). |
 | `DropboxPath` | NVARCHAR(MAX) NOT NULL | The `DocumentFileName` / `ScanLocation` / `[Scan Location GI]` value used for the `files/get_metadata` check |
 | `Status` | NVARCHAR(20) NOT NULL | `Found`, `NotFound`, or `Error` |
 | `ErrorDetail` | NVARCHAR(MAX) NULL | Dropbox error code/message when `Status = Error` |
 | `CheckedAt` | DATETIME NOT NULL |  |
 
-> Source-row identification contract:
-> - **`tblCaseDocuments`** and **`tblScans`** rows: `SourceRowID` is the surrogate PK (`CaseDocumentID` or `ScansID`); the three `IntakeRef*` columns are NULL.
-> - **`TB Intakes`** rows: `SourceRowID` is NULL; all three `IntakeRef*` columns are populated from `[GI Last Name]` + `[GI First Name]` + `[GI Date]` (the natural key under which intake rows are uniquely addressed by the form callers).
->
-> Enforce with a `CHECK` constraint. All three intake natural-key columns must be populated for `TB Intakes` rows — otherwise the verification row is non-replayable (the IT admin cannot find the source `[TB Intakes]` row to remediate or re-test):
-> ```sql
-> CONSTRAINT CK_VerificationReport_RowIdentity CHECK (
->     (SourceTable IN ('tblCaseDocuments', 'tblScans')
->          AND SourceRowID IS NOT NULL
->          AND IntakeRefLastName  IS NULL
->          AND IntakeRefFirstName IS NULL
->          AND IntakeRefDate      IS NULL)
->  OR (SourceTable = 'TB Intakes'
->          AND SourceRowID IS NULL
->          AND IntakeRefLastName  IS NOT NULL
->          AND IntakeRefFirstName IS NOT NULL
->          AND IntakeRefDate      IS NOT NULL)
-> )
-> ```
->
-> **Pre-requisite for the constraint**: 9 rows in `[TB Intakes]` with a populated `[Scan Location GI]` have at least one of `[GI Last Name]` / `[GI First Name]` / `[GI Date]` NULL (verified 2026-05-14: 2 NULL Last, 3 NULL First, 7 NULL Date — 9 distinct rows total). These rows must be hand-fixed in **Phase 1b** before the verification report runs, or they will be excluded from the report and their Dropbox paths will go unverified. Phase 1b adds an explicit remediation step (see below).
->
-> **Uniqueness caveat**: across the 951 intake rows with scan paths, the `(Last, First, Date)` 3-tuple is not strictly unique — 14 tuples have duplicates (max 4 rows per tuple). The IT admin disambiguates duplicates via the `DropboxPath` column itself when triaging a `NotFound` row. Two intake rows with the same natural key but different scan paths produce two distinct verification rows that share `IntakeRef*` values but differ in `DropboxPath` — this is acceptable; the constraint does not enforce uniqueness, only completeness.
+> Source-row identification contract: `(SourceTable, SourceRowID)` uniquely identifies the row in the source table for all three source tables. The IT admin replays a `NotFound` or `Error` row by joining back to the source PK directly. No natural-key columns are stored — the surrogate PK is sufficient, and intake natural-key NULL gaps (see Phase 1b — item B-5) no longer block verification.
 >
 > Lives on SQL Server (not in a local Access file) so IT can run the verification pass from any workstation, query results from SSMS, and retain the report after cutover for audit. UPDATE permission locked to the IT admin SQL login.
 
@@ -666,7 +731,7 @@ Read namespace ID from `tblDropboxRootConfig.NamespaceId` at startup; store in m
   | `frmTimeKeepingClosed` | Closed-case invoice generation | Signatures unchanged; same invoice flow but writes to `ClosedCasesFolderTemplate` |
   | `Intakes` | Intake scan ingest (case-independent) | Signatures unchanged; intake flow (Phase 5 step 5) |
   | `frmPersInjProvider` | Medical-provider folder/document open | Signatures unchanged; open uses download-to-temp; folder open uses Dropbox web URL |
-  | `frmScansubform` / `frmScanLocation` | Read-only views over `tblScans` | Signatures unchanged. Display the `ScanLocation` column verbatim (now a `/Company/`-rooted Dropbox path post-`STEP_1_UPDATE.sql`). On click, route through `DropboxService.OpenDocument(ScanLocation)` (same download-to-temp pattern as Phase 5 step 1). No new write paths — these forms remain read-only on `tblScans`. |
+  | `frmScansubform` / `frmScanLocation` | Read-only views over `tblScans` | Signatures unchanged. Display the `ScanLocation` column verbatim (now a `/Company/`-rooted Dropbox path post-migration). On click, route through `DropboxService.OpenDocument(ScanLocation)` (same download-to-temp pattern as Phase 5 step 1). No new write paths — these forms remain read-only on `tblScans`. |
 
 - Updated stored procedures (`spSaveCaseDocument`, `spMoveDocumentFolder`, etc.) must remain callable via `cn.Execute "exec spName @Param = value"` using `ADODB.Connection` — consistent with all existing SP calls in `DocumentManagement`.
 
@@ -777,15 +842,15 @@ All routing is through the existing wrapper `MoveDocumentByCaseStatus(CaseID, Ca
 
 The transition from "Phases 1–6 complete in test environment" to "Phase 7 production cutover authorized" is a deliberate, written gate — not an implicit hand-off. All of the following must be true before any Phase 7 step begins:
 
-- All Phase 1b data-quality remediation has been applied to `awsql2022dev/TateByWater` and re-verified after each iteration.
-- `STEP_1_UPDATE.sql` has been run and `STEP_2_VERIFY.sql` returns zero S:\ rows on the test DB.
-- `tblDropboxVerificationReport` on the test DB shows zero `NotFound` and zero `Error` across `tblCaseDocuments`, `tblScans`, and intake records. (`NotFound` rows in the test environment may reflect manual-sync gaps in `/Company` rather than data errors; each one must be individually triaged and either fixed in the test DB or attributed to a known sync gap that will be resolved before Phase 7.)
-- IT-only end-to-end validation of the document-open flow has passed against at least 50 randomly selected `tblCaseDocuments` rows spanning open cases, closed cases, and closed-file-scans.
-- Unit-test suite for every gated write path (`UploadFile`, `MoveFile`, `CopyFile`, `DeleteFile`, `CreateFolder`, `spMoveDocumentFolder` with mocked Dropbox responses) passes.
-- OAuth-end-to-end works for the IT admin and all UAT testers (token storage, refresh, identity validation, revocation).
-- UAT testers have signed off on a written scripted scenario report.
-- Test-Env Decision D1 has been resolved (write-flow validation strategy chosen).
-- Helpdesk runbook draft is reviewable.
+- [ ] All Phase 1b data-quality remediation has been applied to `awsql2022dev/TateByWater` and re-verified after each iteration. *(B-4, B-6, B-7, B-8 manual triage still pending)*
+- [x] `Dropbox-Migration-SQL-Install.sql` has been run end-to-end against the test DB and Section 6 verification returns zero leftover offenders.
+- [ ] `tblDropboxVerificationReport` on the test DB shows zero `NotFound` and zero `Error` across `tblCaseDocuments`, `tblScans`, and intake records. (`NotFound` rows in the test environment may reflect manual-sync gaps in `/Company` rather than data errors; each one must be individually triaged and either fixed in the test DB or attributed to a known sync gap that will be resolved before Phase 7.) *(blocked on Phase 3 `DropboxService.files/get_metadata` + the population script)*
+- [ ] IT-only end-to-end validation of the document-open flow has passed against at least 50 randomly selected `tblCaseDocuments` rows spanning open cases, closed cases, and closed-file-scans. *(blocked on Phase 3 + Phase 5 step 1)*
+- [ ] Unit-test suite for every gated write path (`UploadFile`, `MoveFile`, `CopyFile`, `DeleteFile`, `CreateFolder`, `spMoveDocumentFolder` with mocked Dropbox responses) passes. *(blocked on Phase 3)*
+- [ ] OAuth-end-to-end works for the IT admin and all UAT testers (token storage, refresh, identity validation, revocation). *(POC OAuth flow validated; production hardening is Phase 3)*
+- [ ] UAT testers have signed off on a written scripted scenario report.
+- [ ] Test-Env Decision D1 has been resolved (write-flow validation strategy chosen).
+- [ ] Helpdesk runbook draft is reviewable.
 
 The gate is reviewed by IT + firm leadership. Sign-off is recorded in a Phase 6.5 review document. **No automatic promotion** — explicit go decision required.
 
@@ -812,8 +877,8 @@ Full SQL backup of production: `TateByWater_PreDropboxCutover_<date>.bak`. Retai
 **Step 2 — Populate production SQL config**
 Create `tblDropboxConfig`, `tblDropboxRootConfig`, `tblDropboxRevocationList`, `tblDropboxAuditLog`, `tblDropboxVerificationReport` in **production** SQL Server per Phase 2 schema. Insert the single shared `tblDropboxConfig` row with `AppKey`, **rotated** `AppSecret`, `RedirectUri = http://localhost:8765`. Insert the single `tblDropboxRootConfig` row with the confirmed namespace ID `14334595683` and the folder templates already validated in the test environment. Lock UPDATE permission on all five tables to the IT admin SQL login.
 
-**Step 3 — Path migration (STEP_1_UPDATE.sql against production)**
-Run `STEP_1_UPDATE.sql` on the production SQL DB. Same script that ran against `awsql2022dev/TateByWater` in Phase 5 — no edits, just a different target. Review the spot-check output before committing. Run `STEP_2_VERIFY.sql` after committing.
+**Step 3 — Installer run against production**
+Run `Dropbox-Migration-SQL-Install.sql` end-to-end against the production SQL DB. Same script that ran against `awsql2022dev/TateByWater` in Phases 0–6 — no edits, just a different target. The installer auto-commits Section 5 (path migration) only if Section 6 verification returns zero leftover offenders, so a clean run leaves production in the post-migration state. If it aborts, fix the underlying data and re-run (it is idempotent).
 
 **Step 4 — Dropbox file existence verification (production)**
 Run the `VerificationReport` against the production DB after path migration. Required result: zero `NotFound`, zero `Error` across `tblCaseDocuments`, `tblScans`, and intake records.
@@ -835,7 +900,7 @@ Set S:\ to **read-only** (no writes) for the cooldown window (30 days default). 
 - [ ] `z_PCADataSources.csv` removed from version control
 - [ ] All Phase 1b remediation re-applied to production SQL
 - [ ] Production config tables created and populated; UPDATE permission locked
-- [ ] `STEP_1_UPDATE.sql` committed against production; `STEP_2_VERIFY.sql` returns zero `S:\` rows
+- [ ] `Dropbox-Migration-SQL-Install.sql` run end-to-end against production; Section 6 verification returns zero leftover offenders
 - [ ] Production `VerificationReport`: zero `NotFound` and `Error` rows
 - [ ] Smoke tests pass by role (attorney, paralegal, admin) on a staging copy of the production `.accde`
 - [ ] Helpdesk runbook finalized
@@ -890,7 +955,7 @@ Testing is layered across the test environment and the Phase 7 production cutove
 
 ### Phase 7 production cutover validation
 
-- **Staging dry-run on a copy of production SQL**: restore `TateByWater_PreDropboxCutover_<date>.bak` to a staging DB on `awsql2022dev`. Run `STEP_1_UPDATE.sql`, run `VerificationReport`, deploy a build of `TBCMS.accde` pointed at the staging DB to IT workstations only. Exercise every workflow end-to-end (including the now-enabled write flows) for a representative sample of cases. Sign off before touching real production SQL.
+- **Staging dry-run on a copy of production SQL**: restore `TateByWater_PreDropboxCutover_<date>.bak` to a staging DB on `awsql2022dev`. Run `Dropbox-Migration-SQL-Install.sql` against it, run `VerificationReport`, deploy a build of `TBCMS.accde` pointed at the staging DB to IT workstations only. Exercise every workflow end-to-end (including the now-enabled write flows) for a representative sample of cases. Sign off before touching real production SQL.
 - **Non-functional checks** (against staging, then against production at the cutover window):
   - 5 concurrent users uploading simultaneously — verify no token cross-contamination.
   - Network drop during upload — verify retry, no partial SQL record written.
@@ -910,7 +975,7 @@ Testing is layered across the test environment and the Phase 7 production cutove
 | **Manual `/Company` sync gaps surface as `NotFound` in the test `VerificationReport`** | Expected behavior, not a bug. Each `NotFound` is triaged in Phase 1b: confirm whether the gap is real (file missing from `/Company` because user never copied it) or an artifact of stale test DB data. Real gaps are escalated to a pre-Phase-7 manual sync sweep (see Phase 7 pre-flight). |
 | **Test DB drifts from production during Phases 1–6** | Test DB starts from a recent production backup (Phase 0a refresh step). Phase 1b remediation is captured as idempotent SQL scripts so it can be re-applied to production at Phase 7. Drift in production schema or `tblDocumentRootDirectory` during the test phase is mitigated by a CI/schema-snapshot check on production immediately before Phase 7. |
 | Token cross-contamination between users | DPAPI blobs are user-session-bound; `DropboxAccountEmail` checked at startup against current `/users/get_current_account` result |
-| Broken legacy links after migration | `STEP_1_UPDATE.sql` rewrites all stored paths to Dropbox format before each deployment; `VerificationReport` confirms every path resolves in Dropbox before the new `.accde` is deployed; zero `NotFound` rows required at both test-env (Phase 6.5) and production (Phase 7) gates |
+| Broken legacy links after migration | The installer's path migration rewrites all stored paths to Dropbox format before each deployment; `VerificationReport` confirms every path resolves in Dropbox before the new `.accde` is deployed; zero `NotFound` rows required at both test-env (Phase 6.5) and production (Phase 7) gates |
 | API throttling / network instability | Retry/backoff with `Retry-After` respect; persistent failure surfaces user-facing "retry later" message; no silent data loss |
 | Dropbox permission mismatch | Pre-Phase-7 permission matrix validation; access-denied errors surface immediately in `tblDropboxAuditLog` |
 | Partial state on case close move failure | `files/move_v2` is atomic on Dropbox side; conflict detected before any delete; failure logged with path details. Validated end-to-end at production cutover staging dry-run (Phase 7 pre-flight); unit-tested with mocked responses in Phases 1–6. |
@@ -1025,7 +1090,7 @@ No new Dropbox columns are added to `tblCaseDocuments`. The existing dedupe key 
 `tblDropboxConfig` moved to SQL Server backend, single shared row. IT populates `AppKey`, `AppSecret`, and `RedirectUri` once in SQL Server. Every TBCMS frontend reads the row on startup via ADO and caches it for the session. AppSecret is plaintext at rest, protected by `TateBywaterSQLUser` SQL credentials. DPAPI is no longer used for AppSecret because DPAPI blobs cannot be shared across users. See Design Decisions ("AppKey and AppSecret location") and Phase 2 (`tblDropboxConfig` schema). Trade-off: AppSecret rotation must be tightly coupled to SQL credential rotation.
 
 **G6. `tblScans` legacy-format handling — resolved.**
-- `#…#` Access-hyperlink marker stripping: handled by `STEP_1_UPDATE.sql` via per-category passes B-1 through B-6. Each pass strips both leading and trailing `#` (the original script stripped only the leading `#`, which left a defective trailing `#` on 3,905 rows — the corrected script removes both ends and additionally handles the `file:///`, `\\TBF-SRVR12\Company\`, `#?`, and `displaytext#URL#` variants). After the script runs, `ScanLocation` stores bare `/Company/`-rooted Dropbox paths with `/` separators. The 9 hash-less/corrupted OTHER rows are copied to `dbo.tblScans_ManualTriage` for hand-fixing.
+- `#…#` Access-hyperlink marker stripping: handled by the installer's path migration (Section 5) via per-category passes B-1 through B-6. Each pass strips both leading and trailing `#` and additionally handles the `file:///`, `\\TBF-SRVR12\Company\`, `#?`, and `displaytext#URL#` variants. After the migration runs, `ScanLocation` stores bare `/Company/`-rooted Dropbox paths with `/` separators. The 9 hash-less/corrupted OTHER rows are copied to `dbo.tblScans_ManualTriage` for hand-fixing.
 - 66% of `TypeofScan` is NULL — this column is not affected by the path migration and is left as-is.
 - **Inclusion in verification — confirmed**: `tblScans` rows are in scope for `tblDropboxVerificationReport` (Phase 6.5 test-env gate and Phase 7 production gate, Step 4). The same zero-`NotFound` / zero-`Error` gate applies to `tblCaseDocuments.DocumentFileName`, `tblScans.ScanLocation`, and `[TB Intakes].[Scan Location GI]` before each deployment.
 
@@ -1035,7 +1100,7 @@ There is no hybrid mode. `tblDropboxRootConfig` is the sole active config table.
 ### Moderate — resolve before the affected phase
 
 **G8. Form-caller inventory — resolved.**
-Phase 4 now names all 8 forms with explicit per-form Phase 4 treatment (see table). All keep their current call signatures; Dropbox delegation is internal to `DocumentManagement`. The two read-only `tblScans` views (`frmScansubform`, `frmScanLocation`) display `ScanLocation` verbatim (already rewritten to Dropbox paths by `STEP_1_UPDATE.sql`) and route click-to-open through `DropboxService.OpenDocument`, matching Phase 5 step 1.
+Phase 4 now names all 8 forms with explicit per-form Phase 4 treatment (see table). All keep their current call signatures; Dropbox delegation is internal to `DocumentManagement`. The two read-only `tblScans` views (`frmScansubform`, `frmScanLocation`) display `ScanLocation` verbatim (already rewritten to Dropbox paths by the installer's path migration) and route click-to-open through `DropboxService.OpenDocument`, matching Phase 5 step 1.
 
 **G9. Save-As filename-override behavior — resolved.**
 Override-with-confirmation: Save-As dialog stays; SP-generated name is the pre-filled default; if the user edits it, a confirmation prompt fires before upload. Phase 5 step 2 updated. Paired with G13's SP-side validation (`spSaveCaseDocument` rejects unresolved template tokens) to prevent silent path corruption.
@@ -1088,40 +1153,47 @@ The historical concern was that `tblDocumentRootDirectory.ScannerDirectory = S:\
 
 ## Deliverables
 
+Status legend: ✅ **DONE** · 🟡 **PARTIAL** · ⬜ **PENDING**
+
 ### Test-environment deliverables (Phases 0–6)
 
-0a. **Test environment build artifacts**:
+0a. 🟡 **PARTIAL** — Test environment build artifacts:
    - `TBCMS_Test.accde` — compiled test front-end with `ALLOW_DROPBOX_WRITES = False`, baked-in `TateBywaterTestUser` credential, baked-in `awsql2022dev/TateByWater` connection, "TEST ENVIRONMENT" startup banner. Build instructions captured in the IT runbook.
-   - `TateByWater_PreDropboxMigration_<date>.bak` — pre-mutation snapshot of test DB for clean re-runs.
-   - `STEP_99_ROLLBACK_TESTENV.sql` — drops test-env-only artifacts and restores `DocumentFileName` / `ScanLocation` from a backup table.
+   - `TateByWater_PreDropboxMigration_<date>.bak` — pre-mutation snapshot of test DB. Rollback path is restore-from-backup; no separate rollback script is needed because the installer is destructive on re-run anyway (every restore returns to the same baseline).
 
-0b. **Phase 0a acceptance evidence**: SSMS screenshots / scripted output proving `TateBywaterTestUser` cannot access production; screenshot of the test build's startup banner; log row showing a blocked write attempt against `/Company`.
+0b. ⬜ **PENDING** — Phase 0a acceptance evidence: SSMS screenshots / scripted output proving `TateBywaterTestUser` cannot access production; screenshot of the test build's startup banner; log row showing a blocked write attempt against `/Company`.
 
-1. **Phase 1b data-quality remediation report** — record of fixes/decisions for: 13 unresolved-template rows in `tblCaseDocuments`, the 711 non-canonical `tblScans.ScanLocation` rows (URL-encoded `file:///` wrappers, `#?` typos, legacy UNC paths, ~10 corrupted rows), multi-version policy for `(CaseID, DocumentType)` outliers, four-tracker reconciliation policy and SQL, path-length pre-flight results, G21/G22 Dropbox housekeeping (duplicate folder, loose files). Each fix captured as an idempotent SQL script so it can be re-applied to production at Phase 7.
-2. This plan document (updated through Phase 7 cutover).
-3. `DropboxService.bas` — VBA module with DPAPI encryption, `state` validation, local HTTP listener OAuth flow, identity check, revocation check, retry/backoff, chunked upload, all required API operations, `ALLOW_DROPBOX_WRITES` kill-switch, `GuardWritesEnabled` helper called from every write entrypoint. No path derivation formula — `DocumentFileName` stores Dropbox paths directly after `STEP_1_UPDATE.sql`.
-4. Updated `DocumentManagement.bas` — Dropbox-only delegation (no `LocalProvider`, no provider flag); stable signatures for all form callers.
-5. SQL Server schema migration scripts (config and audit tables only — no changes to existing document tables; **applied to `awsql2022dev/TateByWater` only during Phases 0–6**, re-applied to production at Phase 7):
-   - `STEP_0_ANALYZE.sql`, `STEP_1_UPDATE.sql`, `STEP_2_VERIFY.sql` — one-time path migration for `DocumentFileName` (`tblCaseDocuments`), `ScanLocation` (`tblScans`), and `[Scan Location GI]` (`[TB Intakes]`). Creates per-table manual-triage tables (`dbo.tblScans_ManualTriage`, `dbo.TBIntakes_ManualTriage`) for the small number of rows the rewrite cannot recover.
-   - `FIX_DocumentTypes_NamingRule_Typo.sql` — Phase 1b: corrects the `(customeruserentry)` typo in `tblDocumentTypes` row 30 (`General`) to canonical `(customuserentry)` so the tokenizer recognises it.
-   - `tblDropboxRootConfig` table creation + initial row
-   - `tblDropboxConfig` table creation + initial row (single shared row holding `AppKey`, `AppSecret`, `RedirectUri`)
-   - `tblDropboxRevocationList` table creation
-   - `tblDropboxAuditLog` table creation
-   - `tblDropboxOrphanQueue` table creation (compensating-delete failure queue — see Phase 5 orphan-file compensation policy)
-   - `tblDropboxVerificationReport` table creation (pre-cutover gate) — schema includes `IntakeRefLastName` / `IntakeRefFirstName` / `IntakeRefDate` columns for `TB Intakes` rows
-   - `spMoveDocumentFolder` updated to accept `@OldFolderPath` / `@NewFolderPath` Dropbox paths (see G2)
-   - `tblDocumentRootDirectory` deprecated comment
-6. Updated stored procedures: callers pass `/Company/`-rooted Dropbox paths; signatures unchanged (except `spMoveDocumentFolder` — see G2). New `spLogDropboxAuditEvent`. No backfill SP required.
-7. Pre-cutover `tblDropboxVerificationReport` population script: iterates `tblCaseDocuments`, `tblScans`, and `[TB Intakes]`, calls `files/get_metadata` for each stored Dropbox path, inserts a `Found`/`NotFound`/`Error` row per check into the SQL Server table. Run after `STEP_1_UPDATE.sql` is committed; re-run after fixes until counts are zero. Report queryable via SSMS for the IT admin. Used at both the Phase 6.5 test-env gate and the Phase 7 production gate.
-8. Local frontend upgrade script (test build, then production at Phase 7): drop legacy local `tblDropboxConfig` (replaced by SQL Server table); upgrade `tblDropboxTokens` (migrate `IsActive YESNO` → `TokenStatus TEXT(20)`, add `DropboxAccountEmail`).
-9. Test-Env Decision D1 resolution document — write-flow validation strategy choice with cost/timeline/risk analysis.
-10. Phase 6.5 acceptance gate sign-off document.
+1. 🟡 **PARTIAL** — Phase 1b data-quality remediation report. Auto-applied: `DocumentTypes` typo + B-5 intake natural-key (4 rows). Surveyed via installer Section 7 but per-row triage pending: B-4 (13 rows), B-6 (198 rows), B-7 (9 rows), B-8 (1 row). Also pending: multi-version policy for `(CaseID, DocumentType)` outliers, four-tracker reconciliation policy and SQL, G21/G22 Dropbox housekeeping (duplicate folder, loose files). B-9 path-length pre-flight is verified clean. Each fix is captured as an idempotent SQL script (the installer or a per-row UPDATE script) so it can be re-applied to production at Phase 7.
+2. 🟡 **PARTIAL (ongoing)** — This plan document. Current through 2026-05-14; will keep getting updated through Phase 7 cutover.
+3. 🟡 **PARTIAL** — `DropboxService.bas`: VBA module with DPAPI encryption, `state` validation, local HTTP listener OAuth flow, identity check, revocation check, retry/backoff, chunked upload, all required API operations, `ALLOW_DROPBOX_WRITES` kill-switch, `GuardWritesEnabled` helper called from every write entrypoint. No path derivation formula — `DocumentFileName` stores Dropbox paths directly after the installer's path migration. **3a done** (foundation: SQL config load + DPAPI + kill-switch + namespace header + audit/local log; validated by `Phase3a_SmokeTest`). **3b–3e pending** (OAuth hardening, read-only API, gated write API, startup-form wiring).
+4. ⬜ **PENDING** — Updated `DocumentManagement.bas`: Dropbox-only delegation (no `LocalProvider`, no provider flag); stable signatures for all form callers.
+5. ✅ **DONE** — **`Dropbox-Migration/Dropbox-Migration-SQL-Install.sql`** — the single end-to-end installer (applied to `awsql2022dev/TateByWater` only during Phases 0–6, re-applied to production at Phase 7). Bundles every automated migration step:
+   - **Phase 2 schema** (Section 1 of the installer):
+     - `tblDropboxRootConfig` table creation + initial row
+     - `tblDropboxConfig` table creation + initial row (single shared row holding `AppKey`, `AppSecret`, `RedirectUri`)
+     - `tblDropboxRevocationList` table creation
+     - `tblDropboxAuditLog` table creation
+     - `tblDropboxOrphanQueue` table creation (compensating-delete failure queue — see Phase 5 orphan-file compensation policy)
+     - `tblDropboxVerificationReport` table creation (pre-cutover gate) — `SourceRowID` is the surrogate PK of the source row for all three source tables (`tblCaseDocuments.CaseDocumentID`, `tblScans.ScansID`, `[TB Intakes].[ID]`); no natural-key columns
+     - `spLogDropboxAuditEvent` stored procedure
+   - **Phase 1b data-quality fixes** (Sections 3 + 4 of the installer):
+     - `tblDocumentTypes` row 30 `(customeruserentry)` typo → `(customuserentry)`
+     - `[TB Intakes]` B-5 natural-key fixes for IDs 183, 185, 193, 2482
+   - **Path migration** (Section 5 of the installer) — one-time rewrite for `DocumentFileName` (`tblCaseDocuments`), `ScanLocation` (`tblScans`), and `[Scan Location GI]` (`[TB Intakes]`). Eleven per-category passes; rows the rewrite cannot recover are quarantined to `dbo.tblScans_ManualTriage` and `dbo.TBIntakes_ManualTriage`. Auto-commits only if the leftover-offender count is zero.
+   - **Verification + Phase 1b listings** (Sections 6 + 7 of the installer) — leftover offenders, path-prefix distribution, B-4 / B-6 / B-7 / B-8 / B-9 triage queues.
+   - Properties: idempotent (`DROP IF EXISTS` for schema; `WHERE` guards for data fixes; legacy-pattern filters for path migration); environment-agnostic (binds via `USE TateByWater` only). **Destructive on re-run** — wipes audit / orphan / verification history; AppSecret reset to placeholder on every run (IT must re-`UPDATE` after install).
+   - `spMoveDocumentFolder` rewrite (`@OldFolderPath` / `@NewFolderPath` signature — see G2) is not in `Dropbox-Migration-SQL-Install.sql` yet; it lands with the `DocumentManagement.bas` refactor in Phase 4.
+   - `tblDocumentRootDirectory` deprecated comment.
+6. 🟡 **PARTIAL** — Updated stored procedures: callers pass `/Company/`-rooted Dropbox paths; signatures unchanged (except `spMoveDocumentFolder` — see G2, designed but not yet implemented). ✅ New `spLogDropboxAuditEvent` (installed). ⬜ `spMoveDocumentFolder` rewrite + G13 `spSaveCaseDocument` token guard pending — land with Phase 4. No backfill SP required.
+7. ⬜ **PENDING** — Pre-cutover `tblDropboxVerificationReport` population script: iterates `tblCaseDocuments`, `tblScans`, and `[TB Intakes]`, calls `files/get_metadata` for each stored Dropbox path, inserts a `Found`/`NotFound`/`Error` row per check into the SQL Server table. Run after the installer's path migration has committed; re-run after fixes until counts are zero. Report queryable via SSMS for the IT admin. Used at both the Phase 6.5 test-env gate and the Phase 7 production gate. *(blocks on Phase 3 — needs `DropboxService.files/get_metadata`)*
+8. ⬜ **PENDING** — Local frontend upgrade script (test build, then production at Phase 7): drop legacy local `tblDropboxConfig` (replaced by SQL Server table); upgrade `tblDropboxTokens` (migrate `IsActive YESNO` → `TokenStatus TEXT(20)`, add `DropboxAccountEmail`).
+9. ⬜ **PENDING** — Test-Env Decision D1 resolution document — write-flow validation strategy choice with cost/timeline/risk analysis. *(needs firm-leadership input)*
+10. ⬜ **PENDING** — Phase 6.5 acceptance gate sign-off document.
 
 ### Production cutover deliverables (Phase 7)
 
-11. **Production `TBCMS.accde` build** — same source tree as `TBCMS_Test.accde`, compiled with `ALLOW_DROPBOX_WRITES = True`, baked-in `TateBywaterSQLUser` credential, baked-in production SQL connection, no test banner.
-12. **Production rollout runbook** — pre-flight steps, cutover window steps, smoke-test plan, rollback procedures for both cooldown-window and post-cooldown.
-13. **IT admin runbook**: Dropbox Business app registration steps, team folder structure, permission matrix by role, one-time population of `tblDropboxRootConfig` and `tblDropboxConfig` (single shared row with AppKey/AppSecret/RedirectUri) in **production** SQL, AppSecret + `TateBywaterSQLUser` lockstep rotation procedure, token revocation procedure, S:\ read-only cooldown procedure, full-revert procedure, **per-workstation Dropbox desktop client prerequisite for ingest workflows only** (`%LOCALAPPDATA%\Dropbox\info.json` must exist and `business.path` must resolve to the firm's team root — see G24; read-only workflows do not require this), and **`tblDropboxOrphanQueue` drain procedure** (nightly review of rows `WHERE Resolution = 'Open'`; per-row decision tree: retry SP with corrected payload, delete orphan file manually, or accept as `KeptAsIs`).
-14. **User runbook**: OAuth onboarding (first-time auth steps with screenshots), re-authentication on token expiry, common error messages and resolutions, note on out-of-scope cases (the 4,299 with no `tblCaseDocuments` rows).
-15. Cutover sign-off report with completed Phase 7 production cutover checklist.
+11. ⬜ **PENDING** — Production `TBCMS.accde` build: same source tree as `TBCMS_Test.accde`, compiled with `ALLOW_DROPBOX_WRITES = True`, baked-in `TateBywaterSQLUser` credential, baked-in production SQL connection, no test banner.
+12. ⬜ **PENDING** — Production rollout runbook: pre-flight steps, cutover window steps, smoke-test plan, rollback procedures for both cooldown-window and post-cooldown.
+13. ⬜ **PENDING** — IT admin runbook: Dropbox Business app registration steps, team folder structure, permission matrix by role, one-time population of `tblDropboxRootConfig` and `tblDropboxConfig` (single shared row with AppKey/AppSecret/RedirectUri) in **production** SQL, AppSecret + `TateBywaterSQLUser` lockstep rotation procedure, token revocation procedure, S:\ read-only cooldown procedure, full-revert procedure, **per-workstation Dropbox desktop client prerequisite for ingest workflows only** (`%LOCALAPPDATA%\Dropbox\info.json` must exist and `business.path` must resolve to the firm's team root — see G24; read-only workflows do not require this), and **`tblDropboxOrphanQueue` drain procedure** (nightly review of rows `WHERE Resolution = 'Open'`; per-row decision tree: retry SP with corrected payload, delete orphan file manually, or accept as `KeptAsIs`).
+14. ⬜ **PENDING** — User runbook: OAuth onboarding (first-time auth steps with screenshots), re-authentication on token expiry, common error messages and resolutions, note on out-of-scope cases (the 4,299 with no `tblCaseDocuments` rows).
+15. ⬜ **PENDING** — Cutover sign-off report with completed Phase 7 production cutover checklist.
