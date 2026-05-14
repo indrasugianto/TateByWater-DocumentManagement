@@ -139,23 +139,92 @@ ORDER BY CaseDocumentID;
 GO
 
 -- ---------------------------------------------------------------------------
--- 9. Preview: tblScans ScanLocation after migration
+-- 9. tblScans path prefix categorisation
+--    Mirrors the per-pass classification in STEP_1_UPDATE.sql. Each row should
+--    fall into exactly one category. The OTHER bucket is quarantined.
 -- ---------------------------------------------------------------------------
-SELECT TOP 20
-    ScanID,
-    ScanLocation                                                AS Before,
-    REPLACE(
-        REPLACE(
-            CASE WHEN LEFT(ScanLocation, 1) = '#'
-                 THEN SUBSTRING(ScanLocation, 2, LEN(ScanLocation))
-                 ELSE ScanLocation
-            END,
-            'S:\', '/Company/'
-        ),
-        '\', '/'
-    )                                                           AS After
+SELECT
+    CASE
+        WHEN ScanLocation IS NULL OR LTRIM(RTRIM(ScanLocation)) = '' THEN 'NULL/EMPTY'
+        WHEN ScanLocation LIKE '#S:\%'                  THEN 'B1 #S:\…#'
+        WHEN ScanLocation LIKE 'S:\%'                   THEN 'B2 S:\… (displaytext#URL#)'
+        WHEN ScanLocation LIKE '#file:///S:\%'          THEN 'B3 #file:///S:\…#'
+        WHEN ScanLocation LIKE '#?S:\%'                 THEN 'B4 #?S:\…#'
+        WHEN ScanLocation LIKE '#file:///\\TBF-SRVR12\%' THEN 'B5 #file:///\\TBF-SRVR12\…#'
+        WHEN ScanLocation LIKE '#\\TBF-SRVR12\%'        THEN 'B6 #\\TBF-SRVR12\…#'
+        ELSE 'OTHER (quarantine)'
+    END                                                         AS Category,
+    COUNT(*)                                                    AS RowCount
+FROM tblScans
+GROUP BY
+    CASE
+        WHEN ScanLocation IS NULL OR LTRIM(RTRIM(ScanLocation)) = '' THEN 'NULL/EMPTY'
+        WHEN ScanLocation LIKE '#S:\%'                  THEN 'B1 #S:\…#'
+        WHEN ScanLocation LIKE 'S:\%'                   THEN 'B2 S:\… (displaytext#URL#)'
+        WHEN ScanLocation LIKE '#file:///S:\%'          THEN 'B3 #file:///S:\…#'
+        WHEN ScanLocation LIKE '#?S:\%'                 THEN 'B4 #?S:\…#'
+        WHEN ScanLocation LIKE '#file:///\\TBF-SRVR12\%' THEN 'B5 #file:///\\TBF-SRVR12\…#'
+        WHEN ScanLocation LIKE '#\\TBF-SRVR12\%'        THEN 'B6 #\\TBF-SRVR12\…#'
+        ELSE 'OTHER (quarantine)'
+    END
+ORDER BY COUNT(*) DESC;
+GO
+
+-- ---------------------------------------------------------------------------
+-- 10. tblScans OTHER rows — these will be copied to dbo.tblScans_ManualTriage
+--     by STEP_1_UPDATE.sql, not rewritten. Review before commit.
+-- ---------------------------------------------------------------------------
+SELECT ScansID, ScanLocation
 FROM tblScans
 WHERE ScanLocation IS NOT NULL
-  AND ScanLocation <> ''
-ORDER BY ScanID;
+  AND LTRIM(RTRIM(ScanLocation)) <> ''
+  AND ScanLocation NOT LIKE '#S:\%'
+  AND ScanLocation NOT LIKE 'S:\%'
+  AND ScanLocation NOT LIKE '#file:///S:\%'
+  AND ScanLocation NOT LIKE '#?S:\%'
+  AND ScanLocation NOT LIKE '#file:///\\TBF-SRVR12\%'
+  AND ScanLocation NOT LIKE '#\\TBF-SRVR12\%'
+ORDER BY ScansID;
+GO
+
+-- ---------------------------------------------------------------------------
+-- 11. [TB Intakes].[Scan Location GI] categorisation
+--     STEP_1_UPDATE.sql Part C handles the four recoverable categories;
+--     OTHER is quarantined to dbo.TBIntakes_ManualTriage.
+-- ---------------------------------------------------------------------------
+SELECT
+    CASE
+        WHEN [Scan Location GI] IS NULL OR LTRIM(RTRIM([Scan Location GI])) = '' THEN 'NULL/EMPTY'
+        WHEN [Scan Location GI] LIKE 'S:\%'             THEN 'C1 S:\…'
+        WHEN [Scan Location GI] LIKE '#S:\%'            THEN 'C2 #S:\…#'
+        WHEN [Scan Location GI] LIKE '#file:///S:\%'    THEN 'C3 #file:///S:\…#'
+        WHEN [Scan Location GI] LIKE '?S:\%'            THEN 'C4 ?S:\…'
+        ELSE 'OTHER (quarantine)'
+    END                                                         AS Category,
+    COUNT(*)                                                    AS RowCount
+FROM [TB Intakes]
+GROUP BY
+    CASE
+        WHEN [Scan Location GI] IS NULL OR LTRIM(RTRIM([Scan Location GI])) = '' THEN 'NULL/EMPTY'
+        WHEN [Scan Location GI] LIKE 'S:\%'             THEN 'C1 S:\…'
+        WHEN [Scan Location GI] LIKE '#S:\%'            THEN 'C2 #S:\…#'
+        WHEN [Scan Location GI] LIKE '#file:///S:\%'    THEN 'C3 #file:///S:\…#'
+        WHEN [Scan Location GI] LIKE '?S:\%'            THEN 'C4 ?S:\…'
+        ELSE 'OTHER (quarantine)'
+    END
+ORDER BY COUNT(*) DESC;
+GO
+
+-- ---------------------------------------------------------------------------
+-- 12. [TB Intakes] OTHER rows — review before commit.
+-- ---------------------------------------------------------------------------
+SELECT [GI Last Name], [GI First Name], [GI Date], [Scan Location GI]
+FROM [TB Intakes]
+WHERE [Scan Location GI] IS NOT NULL
+  AND LTRIM(RTRIM([Scan Location GI])) <> ''
+  AND [Scan Location GI] NOT LIKE 'S:\%'
+  AND [Scan Location GI] NOT LIKE '#S:\%'
+  AND [Scan Location GI] NOT LIKE '#file:///S:\%'
+  AND [Scan Location GI] NOT LIKE '?S:\%'
+ORDER BY [GI Last Name];
 GO
