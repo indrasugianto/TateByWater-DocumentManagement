@@ -565,6 +565,11 @@ On Error GoTo Err_Handler
 Dim rv As Boolean
 Dim FolderName As String
 Dim webUrl As String
+Dim pathForCheck As String
+Dim found As Boolean
+Dim errDetail As String
+Dim mdJson As String
+Dim apiOk As Boolean
 
     rv = False
 
@@ -583,8 +588,35 @@ Dim webUrl As String
             MsgBox "Folder path is not a Dropbox path (got: " & FolderName & "). " & _
                    "Contact IT — this indicates a configuration issue.", vbExclamation, "TB CMS"
         Else
-            webUrl = "https://www.dropbox.com/home" & FolderName
-            Application.FollowHyperlink webUrl
+            ' Pre-check: confirm the folder exists in Dropbox before opening
+            ' the web URL. Otherwise Dropbox shows its own "Unsupported path
+            ' provided" message which is confusing — better to surface a
+            ' clear "folder doesn't exist yet" here. GetMetadata expects no
+            ' trailing slash on folder paths.
+            pathForCheck = FolderName
+            If Right$(pathForCheck, 1) = "/" Then
+                pathForCheck = Left$(pathForCheck, Len(pathForCheck) - 1)
+            End If
+
+            apiOk = DropboxService.GetMetadata(pathForCheck, found, errDetail, mdJson)
+
+            If apiOk And Not found Then
+                ' Folder definitively does not exist (HTTP 200 + path/not_found)
+                MsgBox "The Dropbox folder for this case doesn't exist yet:" & vbCrLf & vbCrLf & _
+                       FolderName & vbCrLf & vbCrLf & _
+                       "This typically means no documents have been saved for this " & _
+                       "case + document-type combination yet. The folder will be " & _
+                       "created automatically when the first document is saved.", _
+                       vbExclamation, "TB CMS"
+            Else
+                ' Either GetMetadata confirmed found=True, or there was a
+                ' transport failure — proceed to the URL and let Dropbox respond.
+                ' /work/ is the Dropbox Business team-content prefix; /home/
+                ' triggers an "Unsupported path provided" warning banner for
+                ' team-namespace content even though it functionally works.
+                webUrl = "https://www.dropbox.com/work" & FolderName
+                Application.FollowHyperlink webUrl
+            End If
         End If
     End If
     rv = True

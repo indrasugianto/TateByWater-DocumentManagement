@@ -28,6 +28,17 @@
 --                                       B-6 198 non-canonical roots
 --                                       B-7 tblScans manual-triage queue
 --                                       B-8 [TB Intakes] manual-triage queue
+--   SECTION 8 — Phase 4c SP rewrites: drop+recreate the 7 stored procedures
+--                                     that resolved S:\-rooted paths against
+--                                     tblDocumentRootDirectory, replacing them
+--                                     with bodies that resolve /Company/-
+--                                     rooted Dropbox paths against
+--                                     tblDropboxRootConfig. Includes the G2
+--                                     spMoveDocumentFolder rewrite and the
+--                                     G13 spSaveCaseDocument token-validation
+--                                     guard. Legacy bodies are preserved as
+--                                     commented-out blocks immediately above
+--                                     each rewrite for single-file rollback.
 --
 -- TARGETS  : awsql2022dev/TateByWater (test env, Phases 0–6) and the
 --            production SQL host at Phase 7 cutover.
@@ -1397,6 +1408,839 @@ select ConfigID,
        RedirectUri
 from dbo.tblDropboxConfig;
 go
+
+-- #############################################################################
+-- SECTION 8 — PHASE 4c: STORED PROCEDURE REWRITES (Dropbox path-aware)
+-- #############################################################################
+--
+-- Drops + recreates the 7 stored procedures listed in plan section "Updated
+-- stored procedures":
+--   8.1 spGetIntakeFolderName         — read IntakeDirectory from
+--                                       tblDropboxRootConfig
+--   8.2 spGetDocumentFolderName       — open-case folder resolver
+--   8.3 spGetClosedDocumentFolderName — closed-case folder resolver
+--   8.4 spGetClosedFileScanFolderName — closed-file-scan folder resolver
+--   8.5 spGetAllInvoicesFolderName    — firm-wide invoices folder resolver
+--   8.6 spMoveDocumentFolder          — G2 rewrite (new signature:
+--                                       @OldFolderPath/@NewFolderPath,
+--                                       SET XACT_ABORT ON, both-zero-rowcount
+--                                       hard-fail, updates tblCaseDocuments
+--                                       AND tblScans in one transaction)
+--   8.7 spSaveCaseDocument            — G13 token-validation guard
+--                                       (THROW on [Field]/<currentdate>/
+--                                       (customuserentry) substrings in
+--                                       @DocumentName)
+--   8.8 Verification                  — exec each path-building SP for the
+--                                       QUAIL/30337 known-good case and
+--                                       print the resolved /Company/ path
+--                                       for visual sanity check.
+--
+-- The four SPs that DON'T need rewriting in 4c (and are intentionally NOT
+-- touched here):
+--   spGetCaseDocument           — already returns tblCaseDocuments.DocumentFileName
+--                                 verbatim (now /Company/-rooted post-migration).
+--   spGetDocumentFileName       — produces a FILENAME from DocumentNamingRule
+--                                 (no path separator concerns).
+--   spGetIntakeDocumentFileName — same, for intake filename.
+--   fnGetListOfWords            — tokenizer used by the path-building SPs;
+--                                 preserved verbatim (works for both / and \).
+--
+-- Rollback safety: the legacy (pre-4c) body of every rewritten SP is
+-- preserved as a commented-out block immediately above its replacement.
+-- To roll back one SP: comment out the new create-procedure, uncomment the
+-- legacy create-procedure, re-run this installer (idempotent).
+--
+-- Path-separator handling: tblDropboxRootConfig still stores the legacy
+-- template strings with `\` separators (e.g.,
+-- '\ [Orig_Atty] \_CLIENTS\ [Case_Letter] \ ...') so the tokenizer is
+-- unchanged. Each rewritten SP wraps its dynamic-SQL output in
+-- REPLACE(..., '\', '/') so the final resolved path is forward-slash
+-- form. This avoids touching the template-storage format itself.
+
+print N'';
+print N'>>> SECTION 8: Phase 4c — Dropbox-aware stored procedure rewrites';
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.1 spGetIntakeFolderName — single-row read of IntakeDirectory from
+--     tblDropboxRootConfig (replaces the legacy read against
+--     tblDocumentRootDirectory).
+-- ---------------------------------------------------------------------------
+
+print N'    8.1 dropping + recreating spGetIntakeFolderName';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback. To roll back: comment out
+-- the new create-procedure below, uncomment the legacy version, re-run.
+-- ============================================================================
+-- CREATE PROCEDURE [dbo].[spGetIntakeFolderName]
+-- AS
+-- BEGIN
+--     /*
+--         exec spGetIntakeFolderName
+--     */
+--     SELECT IntakeDirectory AS DocumentFolder
+--     FROM dbo.tblDocumentRootDirectory (NOLOCK);
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spGetIntakeFolderName;
+go
+
+create procedure dbo.spGetIntakeFolderName
+as
+begin
+    set nocount on;
+
+    select IntakeDirectory as DocumentFolder
+    from dbo.tblDropboxRootConfig with (nolock)
+    where ConfigID = 1;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.2 spGetDocumentFolderName — open-case folder resolver. Builds the path
+--     by tokenizing tblDropboxRootConfig.DocumentRootNaming and substituting
+--     contract columns from vwfrmClientLedger (with the Case_Letter CodeVal
+--     lookup via tblDropD). Wraps final output in REPLACE('\','/') to emit
+--     a Dropbox forward-slash path.
+-- ---------------------------------------------------------------------------
+
+print N'    8.2 dropping + recreating spGetDocumentFolderName';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback.
+-- ============================================================================
+-- CREATE   PROCEDURE [dbo].[spGetDocumentFolderName]
+--     @DocumentType VARCHAR(250),
+--     @CaseID INT
+-- AS
+-- BEGIN
+--     /*
+--         exec spGetDocumentFolderName 'Client Documents', 26081
+--     */
+--     DECLARE @DocumentRootNaming VARCHAR(500);
+--     DECLARE @DocumentRootDirectory VARCHAR(500);
+--     DECLARE @DocumentFolder VARCHAR(500);
+--     DECLARE @sql VARCHAR(MAX);
+--     DECLARE @word VARCHAR(500);
+--
+--     SELECT @DocumentRootNaming = DocumentRootNaming,
+--            @DocumentRootDirectory = DocumentRootDirectory
+--     FROM dbo.tblDocumentRootDirectory (NOLOCK);
+--
+--     SELECT @DocumentFolder = DocumentFolder
+--     FROM dbo.tblDocumentTypes (NOLOCK)
+--     WHERE DocumentType = @DocumentType;
+--
+--     SELECT @sql = 'SELECT LTRIM(RTRIM(''' + @DocumentRootDirectory + ''' +';
+--
+--     DECLARE cursorT CURSOR READ_ONLY FOR
+--     SELECT Word
+--     FROM dbo.fnGetListOfWords(@DocumentRootNaming, ' ')
+--     ORDER BY Position;
+--
+--     OPEN cursorT;
+--     WHILE (1 = 1)
+--     BEGIN
+--         FETCH cursorT INTO @word;
+--         IF @@FETCH_STATUS <> 0 BREAK;
+--         IF LEFT(@word, 1) = '['
+--         BEGIN
+--             SELECT @sql = @sql + ' convert(varchar(250), isnull(' + @word + ', '''+ '' + '''))+';
+--         END;
+--         ELSE IF @word = '~'
+--         BEGIN
+--             SELECT @sql = @sql + '''' + ' ' + ''' +';
+--         END;
+--         ELSE
+--         BEGIN
+--             SELECT @sql = @sql + '''' + @word + ''' +';
+--         END;
+--     END;
+--
+--     SELECT @sql = LEFT(@sql, LEN(@sql) - 1) + ' + ''' + @DocumentFolder + ''')) AS DocumentFolder ';
+--     SELECT @sql = @sql + ' FROM (select c.CaseID, c.Orig_Atty, d.CodeVal as Case_Letter,
+--                                         c.Last_Name, c.First_Name, c.FileNo
+--                                         from vwfrmClientLedger c (nolock)
+--                                         inner join tblDropD d (nolock)
+--                                         on c.Case_Letter = d.Code
+--                                         where d.FieldName = ''Case_Letter'') as X
+--                                         WHERE CaseID = ' + CONVERT(VARCHAR(10), @CaseID);
+--     EXEC (@sql);
+--     CLOSE cursorT;
+--     DEALLOCATE cursorT;
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spGetDocumentFolderName;
+go
+
+create procedure dbo.spGetDocumentFolderName
+    @DocumentType varchar(250),
+    @CaseID int
+as
+begin
+    set nocount on;
+    /*
+        exec dbo.spGetDocumentFolderName 'General', 30337
+    */
+    declare @DocumentRootNaming varchar(500);
+    declare @TeamRootPath varchar(500);
+    declare @DocumentFolder varchar(500);
+    declare @sql varchar(max);
+    declare @word varchar(500);
+
+    select @DocumentRootNaming = DocumentRootNaming,
+           @TeamRootPath = TeamRootPath
+    from dbo.tblDropboxRootConfig with (nolock)
+    where ConfigID = 1;
+
+    select @DocumentFolder = DocumentFolder
+    from dbo.tblDocumentTypes with (nolock)
+    where DocumentType = @DocumentType;
+
+    select @sql = 'SELECT REPLACE(LTRIM(RTRIM(''' + @TeamRootPath + ''' +';
+
+    declare cursorT cursor read_only for
+    select Word
+    from dbo.fnGetListOfWords(@DocumentRootNaming, ' ')
+    order by Position;
+
+    open cursorT;
+    while (1 = 1)
+    begin
+        fetch cursorT into @word;
+        if @@fetch_status <> 0 break;
+
+        if left(@word, 1) = '['
+        begin
+            select @sql = @sql + ' convert(varchar(250), isnull(' + @word + ', '''+ '' + '''))+';
+        end;
+        else if @word = '~'
+        begin
+            select @sql = @sql + '''' + ' ' + ''' +';
+        end;
+        else
+        begin
+            select @sql = @sql + '''' + @word + ''' +';
+        end;
+    end;
+
+    select @sql = left(@sql, len(@sql) - 1) + ' + ''' + @DocumentFolder + ''')), ''\'', ''/'') AS DocumentFolder ';
+
+    select @sql = @sql
+        + ' FROM (select c.CaseID, c.Orig_Atty, d.CodeVal as Case_Letter,
+                                    c.Last_Name, c.First_Name, c.FileNo
+                                    from vwfrmClientLedger c (nolock)
+                                    inner join tblDropD d (nolock)
+                                    on c.Case_Letter = d.Code
+                                    where d.FieldName = ''Case_Letter'') as X
+                                    WHERE CaseID = ' + convert(varchar(10), @CaseID);
+
+    exec (@sql);
+
+    close cursorT;
+    deallocate cursorT;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.3 spGetClosedDocumentFolderName — closed-case folder resolver. Same
+--     pattern as 8.2 but uses tblDropboxRootConfig.DocumentClosedNaming.
+-- ---------------------------------------------------------------------------
+
+print N'    8.3 dropping + recreating spGetClosedDocumentFolderName';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback.
+-- ============================================================================
+-- CREATE   PROCEDURE [dbo].[spGetClosedDocumentFolderName]
+--     @DocumentType VARCHAR(250),
+--     @CaseID INT
+-- AS
+-- BEGIN
+--     /*
+--         exec spGetClosedDocumentFolderName 'Client Documents', 26633
+--     */
+--     DECLARE @DocumentClosedNaming VARCHAR(500);
+--     DECLARE @DocumentFolder VARCHAR(500);
+--     DECLARE @DocumentRootDirectory VARCHAR(500);
+--     DECLARE @sql VARCHAR(MAX);
+--     DECLARE @word VARCHAR(500);
+--
+--     SELECT @DocumentClosedNaming = DocumentClosedNaming,
+--            @DocumentRootDirectory = DocumentRootDirectory
+--     FROM dbo.tblDocumentRootDirectory (NOLOCK);
+--
+--     SELECT @DocumentFolder = DocumentFolder
+--     FROM dbo.tblDocumentTypes (NOLOCK)
+--     WHERE DocumentType = @DocumentType;
+--
+--     SELECT @sql = 'SELECT LTRIM(RTRIM(''' + @DocumentRootDirectory + ''' +';
+--     -- ... [tokenizer cursor; same shape as 8.2 LEGACY] ...
+--     SELECT @sql = LEFT(@sql, LEN(@sql) - 1) + ' + ''' + @DocumentFolder + ''')) AS DocumentFolder ';
+--     SELECT @sql = @sql + ' FROM (...derived view...) WHERE CaseID = ' + CONVERT(VARCHAR(10), @CaseID);
+--     EXEC (@sql);
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spGetClosedDocumentFolderName;
+go
+
+create procedure dbo.spGetClosedDocumentFolderName
+    @DocumentType varchar(250),
+    @CaseID int
+as
+begin
+    set nocount on;
+    /*
+        exec dbo.spGetClosedDocumentFolderName 'General', 30337
+    */
+    declare @DocumentClosedNaming varchar(500);
+    declare @DocumentFolder varchar(500);
+    declare @TeamRootPath varchar(500);
+    declare @sql varchar(max);
+    declare @word varchar(500);
+
+    select @DocumentClosedNaming = DocumentClosedNaming,
+           @TeamRootPath = TeamRootPath
+    from dbo.tblDropboxRootConfig with (nolock)
+    where ConfigID = 1;
+
+    select @DocumentFolder = DocumentFolder
+    from dbo.tblDocumentTypes with (nolock)
+    where DocumentType = @DocumentType;
+
+    select @sql = 'SELECT REPLACE(LTRIM(RTRIM(''' + @TeamRootPath + ''' +';
+
+    declare cursorT cursor read_only for
+    select Word
+    from dbo.fnGetListOfWords(@DocumentClosedNaming, ' ')
+    order by Position;
+
+    open cursorT;
+    while (1 = 1)
+    begin
+        fetch cursorT into @word;
+        if @@fetch_status <> 0 break;
+
+        if left(@word, 1) = '['
+        begin
+            select @sql = @sql + ' convert(varchar(250), isnull(' + @word + ', '''+ '' + '''))+';
+        end;
+        else if @word = '~'
+        begin
+            select @sql = @sql + '''' + ' ' + ''' +';
+        end;
+        else
+        begin
+            select @sql = @sql + '''' + @word + ''' +';
+        end;
+    end;
+
+    select @sql = left(@sql, len(@sql) - 1) + ' + ''' + @DocumentFolder + ''')), ''\'', ''/'') AS DocumentFolder ';
+
+    select @sql = @sql
+        + ' FROM (select c.CaseID, c.Orig_Atty, d.CodeVal as Case_Letter,
+                                    c.Last_Name, c.First_Name, c.FileNo
+                                    from vwfrmClientLedger c (nolock)
+                                    inner join tblDropD d (nolock)
+                                    on c.Case_Letter = d.Code
+                                    where d.FieldName = ''Case_Letter'') as X
+                                    WHERE CaseID = ' + convert(varchar(10), @CaseID);
+
+    exec (@sql);
+
+    close cursorT;
+    deallocate cursorT;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.4 spGetClosedFileScanFolderName — closed-file-scans folder resolver.
+--     Reads ClosedFileScanDirectory + ClosedFileScanNaming from
+--     tblDropboxRootConfig. Includes Yr in the derived view (template uses
+--     [Yr]). Same REPLACE('\','/') wrap.
+-- ---------------------------------------------------------------------------
+
+print N'    8.4 dropping + recreating spGetClosedFileScanFolderName';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback.
+-- ============================================================================
+-- CREATE PROCEDURE [dbo].[spGetClosedFileScanFolderName]
+--     @DocumentType VARCHAR(250),
+--     @CaseID INT
+-- AS
+-- BEGIN
+--     /*
+--         exec spGetClosedFileScanFolderName 'General', 26633
+--     */
+--     DECLARE @DocumentClosedNaming VARCHAR(500);
+--     DECLARE @DocumentFolder VARCHAR(500);
+--     DECLARE @DocumentRootDirectory VARCHAR(500);
+--     DECLARE @sql VARCHAR(MAX);
+--     DECLARE @word VARCHAR(500);
+--
+--     SELECT @DocumentClosedNaming = ClosedFileScanNaming,
+--            @DocumentRootDirectory = ClosedFileScanDirectory
+--     FROM dbo.tblDocumentRootDirectory (NOLOCK);
+--
+--     SELECT @DocumentFolder = DocumentFolder
+--     FROM dbo.tblDocumentTypes (NOLOCK)
+--     WHERE DocumentType = @DocumentType;
+--     -- ... [tokenizer cursor; same shape as 8.2 LEGACY] ...
+--     SELECT @sql = LEFT(@sql, LEN(@sql) - 1) + ' + ''' + @DocumentFolder + ''')) AS DocumentFolder ';
+--     SELECT @sql = @sql + ' FROM (select c.CaseID, c.Yr, c.Orig_Atty, d.CodeVal as Case_Letter,
+--                                          c.Last_Name, c.First_Name, c.FileNo
+--                                          ... ) as X
+--                                    WHERE CaseID = ' + CONVERT(VARCHAR(10), @CaseID);
+--     EXEC (@sql);
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spGetClosedFileScanFolderName;
+go
+
+create procedure dbo.spGetClosedFileScanFolderName
+    @DocumentType varchar(250),
+    @CaseID int
+as
+begin
+    set nocount on;
+    /*
+        exec dbo.spGetClosedFileScanFolderName 'General', 30337
+    */
+    declare @ClosedFileScanNaming varchar(500);
+    declare @DocumentFolder varchar(500);
+    declare @ClosedFileScanDirectory varchar(500);
+    declare @sql varchar(max);
+    declare @word varchar(500);
+
+    select @ClosedFileScanNaming = ClosedFileScanNaming,
+           @ClosedFileScanDirectory = ClosedFileScanDirectory
+    from dbo.tblDropboxRootConfig with (nolock)
+    where ConfigID = 1;
+
+    select @DocumentFolder = DocumentFolder
+    from dbo.tblDocumentTypes with (nolock)
+    where DocumentType = @DocumentType;
+
+    select @sql = 'SELECT REPLACE(LTRIM(RTRIM(''' + @ClosedFileScanDirectory + ''' +';
+
+    declare cursorT cursor read_only for
+    select Word
+    from dbo.fnGetListOfWords(@ClosedFileScanNaming, ' ')
+    order by Position;
+
+    open cursorT;
+    while (1 = 1)
+    begin
+        fetch cursorT into @word;
+        if @@fetch_status <> 0 break;
+
+        if left(@word, 1) = '['
+        begin
+            select @sql = @sql + ' convert(varchar(250), isnull(' + @word + ', '''+ '' + '''))+';
+        end;
+        else if @word = '~'
+        begin
+            select @sql = @sql + '''' + ' ' + ''' +';
+        end;
+        else
+        begin
+            select @sql = @sql + '''' + @word + ''' +';
+        end;
+    end;
+
+    select @sql = left(@sql, len(@sql) - 1) + ' + ''' + @DocumentFolder + ''')), ''\'', ''/'') AS DocumentFolder ';
+
+    select @sql = @sql
+        + ' FROM (select c.CaseID, c.Yr, c.Orig_Atty, d.CodeVal as Case_Letter,
+                                    c.Last_Name, c.First_Name, c.FileNo
+                                    from vwfrmClientLedger c (nolock)
+                                    inner join tblDropD d (nolock)
+                                    on c.Case_Letter = d.Code
+                                    where d.FieldName = ''Case_Letter'') as X
+                                    WHERE CaseID = ' + convert(varchar(10), @CaseID);
+
+    exec (@sql);
+
+    close cursorT;
+    deallocate cursorT;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.5 spGetAllInvoicesFolderName — firm-wide all-invoices folder resolver.
+--     Hard-codes DocumentType='General' (legacy behavior); reads
+--     AllInvoicesDirectory + AllInvoicesNaming from tblDropboxRootConfig.
+-- ---------------------------------------------------------------------------
+
+print N'    8.5 dropping + recreating spGetAllInvoicesFolderName';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback.
+-- ============================================================================
+-- CREATE PROCEDURE [dbo].[spGetAllInvoicesFolderName]
+--     @CaseID INT
+-- AS
+-- BEGIN
+--     /*
+--         exec spGetAllInvoicesFolderName 9966
+--     */
+--     DECLARE @AllInvoicesNaming VARCHAR(500);
+--     DECLARE @DocumentFolder VARCHAR(500);
+--     DECLARE @DocumentRootDirectory VARCHAR(500);
+--     DECLARE @sql VARCHAR(MAX);
+--     DECLARE @word VARCHAR(500);
+--
+--     SELECT @AllInvoicesNaming = AllInvoicesNaming,
+--            @DocumentRootDirectory = AllInvoicesDirectory
+--     FROM dbo.tblDocumentRootDirectory (NOLOCK);
+--
+--     SELECT @DocumentFolder = DocumentFolder
+--     FROM dbo.tblDocumentTypes (NOLOCK)
+--     WHERE DocumentType = 'General'
+--     -- ... [tokenizer cursor; same shape as 8.2 LEGACY] ...
+--     EXEC (@sql);
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spGetAllInvoicesFolderName;
+go
+
+create procedure dbo.spGetAllInvoicesFolderName
+    @CaseID int
+as
+begin
+    set nocount on;
+    /*
+        exec dbo.spGetAllInvoicesFolderName 30337
+    */
+    declare @AllInvoicesNaming varchar(500);
+    declare @DocumentFolder varchar(500);
+    declare @AllInvoicesDirectory varchar(500);
+    declare @sql varchar(max);
+    declare @word varchar(500);
+
+    select @AllInvoicesNaming = AllInvoicesNaming,
+           @AllInvoicesDirectory = AllInvoicesDirectory
+    from dbo.tblDropboxRootConfig with (nolock)
+    where ConfigID = 1;
+
+    select @DocumentFolder = DocumentFolder
+    from dbo.tblDocumentTypes with (nolock)
+    where DocumentType = 'General';
+
+    -- AllInvoicesNaming is empty in current config; the cursor still runs
+    -- (zero iterations) and the SQL falls through to the constant root path.
+    select @sql = 'SELECT REPLACE(LTRIM(RTRIM(''' + @AllInvoicesDirectory + ''' +';
+
+    declare cursorT cursor read_only for
+    select Word
+    from dbo.fnGetListOfWords(@AllInvoicesNaming, ' ')
+    order by Position;
+
+    open cursorT;
+    while (1 = 1)
+    begin
+        fetch cursorT into @word;
+        if @@fetch_status <> 0 break;
+
+        if left(@word, 1) = '['
+        begin
+            select @sql = @sql + ' convert(varchar(250), isnull(' + @word + ', '''+ '' + '''))+';
+        end;
+        else if @word = '~'
+        begin
+            select @sql = @sql + '''' + ' ' + ''' +';
+        end;
+        else
+        begin
+            select @sql = @sql + '''' + @word + ''' +';
+        end;
+    end;
+
+    -- If AllInvoicesNaming was empty, @sql ends with '''+' (no trailing +)
+    -- and LEFT(...,LEN-1) would corrupt the SQL. Guard:
+    if right(@sql, 1) = '+'
+        select @sql = left(@sql, len(@sql) - 1);
+
+    select @sql = @sql + ' + ''' + isnull(@DocumentFolder, '') + ''')), ''\'', ''/'') AS DocumentFolder ';
+
+    select @sql = @sql
+        + ' FROM (select c.CaseID, c.Yr, c.Orig_Atty, d.CodeVal as Case_Letter,
+                                    c.Last_Name, c.First_Name, c.FileNo
+                                    from vwfrmClientLedger c (nolock)
+                                    inner join tblDropD d (nolock)
+                                    on c.Case_Letter = d.Code
+                                    where d.FieldName = ''Case_Letter'') as X
+                                    WHERE CaseID = ' + convert(varchar(10), @CaseID);
+
+    exec (@sql);
+
+    close cursorT;
+    deallocate cursorT;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.6 spMoveDocumentFolder (G2 rewrite) — new signature:
+--       @CaseID, @OldFolderPath, @NewFolderPath
+--     Updates both tblCaseDocuments AND tblScans in one transaction.
+--     SET XACT_ABORT ON + TRY/CATCH guarantees no partial state. Both-zero
+--     rowcount THROWs (caller must roll back the Dropbox move). The legacy
+--     SP's @CaseStatus parameter is gone — the new contract puts the caller
+--     in charge of computing source + destination paths (which it already
+--     does, via spGetDocumentFolderName + spGetClosedDocumentFolderName).
+-- ---------------------------------------------------------------------------
+
+print N'    8.6 dropping + recreating spMoveDocumentFolder (G2)';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback. The legacy body uses a
+-- token-walk + position-3 _CLOSED injection that hard-codes the S:\COMMON\<Atty>\_CLIENTS\<Letter>
+-- path shape. Cannot be retargeted without a rewrite, which is what G2 does.
+-- ============================================================================
+-- CREATE   PROCEDURE spMoveDocumentFolder
+--     @CaseID INT,
+--     @CaseStatus VARCHAR(20) -- Closed/Open
+-- AS
+-- BEGIN
+--     DECLARE @DocumentRootDirectory VARCHAR(500);
+--     DECLARE @SourceFileName VARCHAR(500);
+--     DECLARE @TargetFileName VARCHAR(500);
+--     DECLARE @CaseDocumentID AS INT;
+--     DECLARE @i AS INT;
+--     DECLARE @word VARCHAR(100);
+--
+--     SELECT @DocumentRootDirectory = DocumentRootDirectory
+--     FROM dbo.tblDocumentRootDirectory;
+--
+--     DECLARE cursorT CURSOR READ_ONLY FAST_FORWARD FOR
+--     SELECT CaseDocumentID FROM dbo.tblCaseDocuments (NOLOCK) WHERE CaseID = @CaseID;
+--     OPEN cursorT;
+--     WHILE (1 = 1)
+--     BEGIN
+--         FETCH cursorT INTO @CaseDocumentID;
+--         IF @@FETCH_STATUS <> 0 BREAK;
+--         SELECT @SourceFileName = SUBSTRING(DocumentFileName, LEN(@DocumentRootDirectory) + 2, LEN(DocumentFileName))
+--         FROM dbo.tblCaseDocuments (NOLOCK) WHERE CaseDocumentID = @CaseDocumentID;
+--
+--         DECLARE cursorW CURSOR READ_ONLY FAST_FORWARD FOR
+--         SELECT Word FROM dbo.fnGetListOfWords(@SourceFileName, '\') WHERE Word <> '_CLOSED';
+--         SELECT @i = 1, @TargetFileName = '';
+--         OPEN cursorW;
+--         WHILE (1 = 1)
+--         BEGIN
+--             FETCH cursorW INTO @word;
+--             IF @@FETCH_STATUS <> 0 BREAK;
+--             IF @CaseStatus = 'Closed' AND @i = 3
+--             BEGIN
+--                 SELECT @TargetFileName = @TargetFileName + '\_CLOSED';
+--             END;
+--             SELECT @TargetFileName = @TargetFileName + '\' + @word;
+--             SELECT @i = @i + 1;
+--         END;
+--         CLOSE cursorW;
+--         DEALLOCATE cursorW;
+--
+--         UPDATE dbo.tblCaseDocuments
+--         SET DocumentFileName = @DocumentRootDirectory + @TargetFileName
+--         WHERE CaseDocumentID = @CaseDocumentID;
+--     END;
+--     CLOSE cursorT;
+--     DEALLOCATE cursorT;
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spMoveDocumentFolder;
+go
+
+create procedure dbo.spMoveDocumentFolder
+    @CaseID         int,
+    @OldFolderPath  nvarchar(500),    -- e.g., /Company/COMMON/PM/_CLIENTS/Criminal/Quail, Martha 26-139-PM/
+    @NewFolderPath  nvarchar(500)     -- e.g., /Company/COMMON/PM/_CLIENTS/Criminal/_CLOSED/Quail, Martha 26-139-PM/
+as
+begin
+    set nocount on;
+    set xact_abort on;   -- any runtime error aborts the whole batch and rolls back
+
+    -- Normalize: enforce trailing slash so prefix match is unambiguous.
+    if right(@OldFolderPath, 1) <> '/' set @OldFolderPath = @OldFolderPath + '/';
+    if right(@NewFolderPath, 1) <> '/' set @NewFolderPath = @NewFolderPath + '/';
+
+    declare @CaseDocsUpdated int = 0, @ScansUpdated int = 0;
+
+    begin try
+        begin tran;
+
+        update dbo.tblCaseDocuments
+        set DocumentFileName =
+            @NewFolderPath + substring(DocumentFileName, len(@OldFolderPath) + 1, len(DocumentFileName))
+        where CaseID = @CaseID
+          and left(DocumentFileName, len(@OldFolderPath)) = @OldFolderPath;
+        set @CaseDocsUpdated = @@rowcount;
+
+        update dbo.tblScans
+        set ScanLocation =
+            @NewFolderPath + substring(ScanLocation, len(@OldFolderPath) + 1, len(ScanLocation))
+        where CaseID = @CaseID
+          and left(ScanLocation, len(@OldFolderPath)) = @OldFolderPath;
+        set @ScansUpdated = @@rowcount;
+
+        -- Hard-fail when BOTH tables had zero matches. This means the Dropbox
+        -- folder was moved but SQL has no record of the case at all, which is
+        -- almost always a sign of a path mismatch or a wrong @OldFolderPath
+        -- — we must not silently accept it. (One-of-two is acceptable:
+        -- many cases legitimately have entries in only one of the two tables.)
+        if @CaseDocsUpdated = 0 and @ScansUpdated = 0
+        begin
+            rollback tran;
+            ;throw 51000, N'spMoveDocumentFolder: zero rows updated in both tblCaseDocuments and tblScans for the given @CaseID and @OldFolderPath. Dropbox folder was moved but SQL has no record of this case under that path — operation aborted; caller must roll back the Dropbox move.', 1;
+        end
+
+        commit tran;
+    end try
+    begin catch
+        if xact_state() <> 0 rollback tran;
+        ;throw;   -- re-raise with original error number, message, severity
+    end catch;
+
+    -- Caller (MoveDocumentByCaseStatus in DocumentManagement.bas) reads this
+    -- recordset to confirm the SQL ledger matched the Dropbox move.
+    -- Exactly-one-zero rowcount is logged to tblDropboxAuditLog as a warning
+    -- and accepted (the case is still considered closed/reopened — common
+    -- when a case has documents but no scans, or vice versa). Both-zero is
+    -- impossible here because it would have raised above; the caller can
+    -- rely on at least one non-zero rowcount.
+    select @CaseDocsUpdated as CaseDocumentsUpdated,
+           @ScansUpdated    as ScansUpdated;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.7 spSaveCaseDocument (G13 rewrite) — adds an unresolved-template-token
+--     guard. THROWs (does NOT insert) if @DocumentName contains any of:
+--       - a `[...]` substring (e.g., the [Case_Letter] defect class)
+--       - the literal string `<currentdate>` (unsubstituted token)
+--       - the literal string `(customuserentry)` (unsubstituted token)
+--     This catches the 9-row Phase 1b defect class at its source. Legal
+--     staff retain the ability to add intentional context to filenames
+--     (parens for notes, dashes, etc.) — only the three template-token
+--     shapes are blocked.
+-- ---------------------------------------------------------------------------
+
+print N'    8.7 dropping + recreating spSaveCaseDocument (G13)';
+go
+
+-- LEGACY (pre-Phase 4c) — preserved for rollback.
+-- ============================================================================
+-- CREATE   PROCEDURE [dbo].[spSaveCaseDocument]
+--     @CaseID INT,
+--     @DocumentType VARCHAR(250),
+--     @DocumentName VARCHAR(500)
+-- AS
+-- BEGIN
+--     -- need to delete the record if the user is using the document name for the same case
+--     DELETE FROM dbo.tblCaseDocuments
+--     WHERE CaseID = @CaseID
+--     AND DocumentFileName = @DocumentName;
+--
+--     INSERT INTO dbo.tblCaseDocuments (CaseID, DocumentType, DocumentFileName)
+--     SELECT @CaseID, @DocumentType, @DocumentName;
+-- END;
+-- ============================================================================
+
+drop procedure if exists dbo.spSaveCaseDocument;
+go
+
+create procedure dbo.spSaveCaseDocument
+    @CaseID int,
+    @DocumentType varchar(250),
+    @DocumentName varchar(500)
+as
+begin
+    set nocount on;
+
+    -- G13 guard: reject unresolved template tokens. Catches the 9-row
+    -- Phase 1b defect class (e.g., [Case_Letter] surviving into the stored
+    -- path because the vwfrmClientLedger row was incomplete at save time).
+    -- The pattern '%[[]%]%' matches any string with a [ followed somewhere
+    -- by a ] — covers any `[Token]` shape regardless of token name.
+    if @DocumentName like '%[[]%]%'
+       or charindex('<currentdate>', @DocumentName) > 0
+       or charindex('(customuserentry)', @DocumentName) > 0
+    begin
+        ;throw 51001, N'spSaveCaseDocument: @DocumentName contains unresolved template tokens (e.g., [Field], <currentdate>, or (customuserentry)). Resolve the tokens before saving — see plan G13.', 1;
+    end;
+
+    -- Dedupe: the user may re-save the same DocumentName for the same case
+    -- (e.g., re-scan, overwrite); delete any existing row before inserting.
+    delete from dbo.tblCaseDocuments
+    where CaseID = @CaseID
+      and DocumentFileName = @DocumentName;
+
+    insert into dbo.tblCaseDocuments
+    (
+        CaseID,
+        DocumentType,
+        DocumentFileName
+    )
+    select @CaseID,
+           @DocumentType,
+           @DocumentName;
+end;
+go
+
+
+-- ---------------------------------------------------------------------------
+-- 8.8 Verification — exec each path-building SP for the known-good
+--     QUAIL/30337 case and print the resolved /Company/ path. After install,
+--     the IT admin can eyeball the output to confirm forward-slash form.
+-- ---------------------------------------------------------------------------
+
+print N'';
+print N'>>> SECTION 8 verification — exec path-building SPs for QUAIL/30337';
+go
+
+print N'';
+print N'    spGetIntakeFolderName():';
+exec dbo.spGetIntakeFolderName;
+go
+
+print N'';
+print N'    spGetDocumentFolderName(''General'', 30337):';
+exec dbo.spGetDocumentFolderName 'General', 30337;
+go
+
+print N'';
+print N'    spGetClosedDocumentFolderName(''General'', 30337):';
+exec dbo.spGetClosedDocumentFolderName 'General', 30337;
+go
+
+print N'';
+print N'    spGetClosedFileScanFolderName(''General'', 30337):';
+exec dbo.spGetClosedFileScanFolderName 'General', 30337;
+go
+
+print N'';
+print N'    spGetAllInvoicesFolderName(30337):';
+exec dbo.spGetAllInvoicesFolderName 30337;
+go
+
+print N'    SECTION 8 done.';
+go
+
 
 print N'';
 print N'================================================================================';
