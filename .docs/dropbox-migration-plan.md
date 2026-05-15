@@ -13,39 +13,38 @@
 
 ---
 
-## ▶ NEXT SESSION: START HERE (paused 2026-05-14)
+## ▶ NEXT SESSION: START HERE (paused 2026-05-15)
 
-**You are between Phase 3c and Phase 3d.**
+**Phase 3 is fully complete. You are between Phase 3 and Phase 4.**
 
 **What's done this session:**
 - Phase 3a foundation (`DropboxService.bas` SQL config load, DPAPI, kill-switch, namespace header, audit/local logging) — validated via `Phase3a_SmokeTest`
 - Phase 3b OAuth hardening (token schema upgrade, state param, DPAPI token persistence, full OAuth code-exchange via PowerShell HttpListener, identity check, revocation check, refresh) — validated end-to-end against the production Dropbox tenant via `Phase3b_Pass2_AuthFlowTest` (authenticated as `sugianto@tatebywater.com`)
 - Phase 3c read-only API ops (`OpenDocument`, `GetMetadata`, `ListFolder`, `GetTemporaryLink`, `CleanupTempFiles`, `HttpDownloadBinary`) — validated via `Phase3c_OpenDocumentTest` against a real file
+- Phase 3d gated write API ops (`UploadFile`, `UploadLargeFile`, `MoveFile`, `CopyFile`, `DeleteFile`, `CreateFolder`) + binary upload helpers (`GetFileSize`, `ReadAllBytes`, `ReadFileChunk`, `HttpUploadBinary`) — every write entrypoint calls `GuardWritesEnabled` as its first statement and raises `vbObjectError + 6001` with `ALLOW_DROPBOX_WRITES = False`. Validated via `Phase3d_SmokeTest`. Bodies compile and are ready for the production build; live API behavior is unexercised and will be exercised per Test-Env Decision D1 or at Phase 7 cutover.
+- Phase 3e startup-form wiring (`StartupBootstrap` / `StartupShutdown` / `Phase3e_SmokeTest` in `DropboxService.bas`; `Form_Open` + `Form_Unload` in `frmHome` calling them; Application Title set via `SetOption "Application Title"` so the Access window title bar carries the "TEST ENVIRONMENT" banner; `Me.Caption` updated in `Form_Open` so the form caption echoes it). Validated by re-opening `TBCMS_Test.accdb`: banner visible, no MsgBox on bootstrap, `IsTokenLoaded() = True`, `GetDropboxAccountEmail()` returns the authenticated email, `Phase3e_SmokeTest` returns OK, `tblDropboxLog` shows the per-step Info rows for the session.
 
-**State of `Dropbox-Migration/DropboxService.bas`:** 2352 lines, sections 1–22 implemented. All read-only paths work against the real Dropbox tenant.
+**State of `Dropbox-Migration/DropboxService.bas`:** 3052 lines, sections 1–26 implemented. Phase 3 is feature-complete: every Dropbox primitive the rest of the migration depends on now exists, is exercised end-to-end where the test environment allows (read-only ops), and is hard-gated where it must remain unexercised (write ops). The remaining behavioral validation for write paths is tied to Test-Env Decision D1 (Phase 0a) and the Phase 7 staging dry-run; no further code work in `DropboxService.bas` is required for Phases 4–6 except the call sites that consume it from `DocumentManagement.bas`.
 
-**Next concrete step — Phase 3d (gated write API operations):**
+**Next concrete step — Phase 4 (DocumentManagement compatibility layer):**
 
-Author six write entrypoints in a new section of `DropboxService.bas`, each calling `GuardWritesEnabled "<name>"` as its first executable statement. Won't actually fire in this build (`ALLOW_DROPBOX_WRITES = False`) but must compile and be ready for the production build.
+Refactor `database_assessment/TBCMS/extract/vba/modules/DocumentManagement.txt` so every document operation delegates to `DropboxService`. No provider abstraction layer, no `LocalProvider`, no `StorageProvider` flag — TBCMS is Dropbox-only post-cutover. All 8 forms that touch `DocumentManagement` keep their current public call signatures; the Dropbox delegation is fully internal to the module. See Phase 4 form table for the 8 forms and per-form treatment.
 
-| Function | Endpoint | Audit ActionType |
-|---|---|---|
-| `UploadFile(localPath, dropboxPath)` | `POST content.dropboxapi.com/2/files/upload` (mode=overwrite, mute=false) | `Upload` |
-| `UploadLargeFile(localPath, dropboxPath)` | `upload_session/start` + `append_v2` + `finish`, 100 MB chunks, size > 150 MB | `Upload` |
-| `MoveFile(fromPath, toPath)` | `POST /2/files/move_v2` (autorename=false) | `Move` |
-| `CopyFile(fromPath, toPath)` | `POST /2/files/copy_v2` (autorename=false) | `Copy` |
-| `DeleteFile(dropboxPath)` | `POST /2/files/delete_v2` | `Delete` |
-| `CreateFolder(dropboxPath)` | `POST /2/files/create_folder_v2` (autorename=false; treat `path/conflict/folder` as success) | (none — log to `tblDropboxLog` only) |
+Two sub-deliverables that ride with Phase 4 (designed, not implemented):
+- **G2 `spMoveDocumentFolder` rewrite** — new signature (`@OldFolderPath` / `@NewFolderPath`), `SET XACT_ABORT ON`, both-zero-rowcount hard-fail, both-table update in one transaction. SQL body is already drafted in G2 of this plan; needs to land in `Dropbox-Migration/Dropbox-Migration-SQL-Install.sql` as a new section and be exercised via unit tests with mocked Dropbox responses (the live `files/move_v2` is `ALLOW_DROPBOX_WRITES`-gated).
+- **G13 `spSaveCaseDocument` unresolved-token guard** — adds a validation that `@DocumentName` contains no `[…]`, `<…>`, or `(…)` template tokens; `THROW` if so. Lands in the same SQL install section as G2.
 
-Plus a smoke test `Phase3d_SmokeTest` that asserts every entrypoint raises immediately with `ALLOW_DROPBOX_WRITES = False`. After 3d, the next step is **3e — startup-form wiring** (Form_Open hook in the startup form to call `InitializeDropboxConfig` + `LoadTokens` + revocation check + auto-refresh, plus the "TEST ENVIRONMENT" banner).
+**Suggested entry point for Phase 4** — start with the read-only `OpenDocument` rewire (Phase 5 step 1 in the plan, which is the workflow most directly exercised by Phase 6.5's 50-row IT-only validation). The `frmClientLedger` `cmdOpenDocument_Click` handler and similar call sites currently invoke `FollowHyperlink(localPath)`; rewire them to call `DropboxService.OpenDocument(DocumentFileName)`. This is the lowest-risk Phase 4 change because it exercises only the read path. Once that round-trips end-to-end, scope the write-side refactors (which stay guard-blocked but need the code paths in place).
 
 **Smoke-test gates before resuming:**
-1. (Optional, ~5s) `? DropboxService.Phase3c_SmokeTest` — auto-validates the remaining read-only ops (`ListFolder`, `GetMetadata` found/not-found, `CleanupTempFiles`).
-2. Confirm the current token is still loaded: `? DropboxService.IsTokenLoaded()` should return `True`. If False, re-run `? DropboxService.Phase3b_Pass2_AuthFlowTest`.
+1. (Optional, ~5s) `? DropboxService.Phase3c_SmokeTest` — auto-validates the read-only ops.
+2. (Optional, ~1s) `? DropboxService.Phase3d_SmokeTest` — re-confirms every write entrypoint guard fires.
+3. (Optional, ~3s) `? DropboxService.Phase3e_SmokeTest` — re-runs the startup bootstrap and validates `IsTokenLoaded` / `GetDropboxAccountEmail`.
+4. Confirm the current token is still loaded: `? DropboxService.IsTokenLoaded()` should return `True`. If False, just reopen `TBCMS_Test.accdb` — `Form_Open` will run the bootstrap; or run `? DropboxService.Phase3b_Pass2_AuthFlowTest` for a fresh OAuth flow.
 
 ---
 
-## Implementation status snapshot (2026-05-14)
+## Implementation status snapshot (2026-05-15)
 
 What's been built vs what's still planned. Cross-references the phase sections below.
 
@@ -56,7 +55,7 @@ What's been built vs what's still planned. Cross-references the phase sections b
 | **1a** Workflow inventory + contract freeze | Done | Captured in `.docs/document-management-analysis.md`; `vwfrmClientLedger` contract columns frozen |
 | **1b** Data-quality remediation | **Partial** (see status table inside Phase 1b) | Installer auto-applies 3 fixes (`DocumentTypes` typo, B-5 intake natural-key for 4 rows, path migration); B-4 (13 rows), B-6 (198 rows), B-7 (9 rows), B-8 (1 row) surfaced via Section 7 listings but per-row triage pending |
 | **2** Data model + config foundation | Done | `Dropbox-Migration-SQL-Install.sql` Section 1 creates all 6 tables + `spLogDropboxAuditEvent` + seed config rows. Verified on test DB. |
-| **3** DropboxService.bas hardening | **Partial** (3a + 3b + 3c done) | `DropboxService.bas` at `Dropbox-Migration/DropboxService.bas` (2352 lines). **3a + 3b + 3c complete (2026-05-14)**: SQL config load, DPAPI encrypt/decrypt, kill-switch, namespace header, audit/local logging; `tblDropboxTokens` schema upgrade with DPAPI-backed token persistence; full OAuth code-exchange flow with PowerShell HttpListener, identity check, revocation check, refresh, `EnsureValidToken`; read-only API ops — `OpenDocument` (validated end-to-end: real file downloaded + launched), `GetMetadata` (Found/NotFound/transport-failure tristate — `VerificationReport`'s primary API), `ListFolder`, `GetTemporaryLink`; binary HTTP helper for `content.dropboxapi.com`; temp-file cleanup. **3d / 3e pending**. |
+| **3** DropboxService.bas hardening | **Done** (3a + 3b + 3c + 3d + 3e) | `DropboxService.bas` at `Dropbox-Migration/DropboxService.bas` (3052 lines, sections 1–26). **3a + 3b + 3c complete (2026-05-14)**: SQL config load, DPAPI encrypt/decrypt, kill-switch, namespace header, audit/local logging; `tblDropboxTokens` schema upgrade with DPAPI-backed token persistence; full OAuth code-exchange flow with PowerShell HttpListener, identity check, revocation check, refresh, `EnsureValidToken`; read-only API ops — `OpenDocument` (validated end-to-end: real file downloaded + launched), `GetMetadata` (Found/NotFound/transport-failure tristate — `VerificationReport`'s primary API), `ListFolder`, `GetTemporaryLink`; binary HTTP helper for `content.dropboxapi.com`; temp-file cleanup. **3d complete (2026-05-15)**: six gated write entrypoints — `UploadFile`, `UploadLargeFile` (three-phase chunked, 100 MB chunks for files > 100 MB), `MoveFile`, `CopyFile`, `DeleteFile`, `CreateFolder` (treats `path/conflict/folder` as success) — every entrypoint calls `GuardWritesEnabled` as its first statement; binary upload helpers `GetFileSize`, `ReadAllBytes`, `ReadFileChunk`, `HttpUploadBinary`; `Phase3d_SmokeTest` confirms all six raise `vbObjectError + 6001` under `ALLOW_DROPBOX_WRITES = False`. **3e complete (2026-05-15)**: `StartupBootstrap` / `StartupShutdown` / `Phase3e_SmokeTest` in `DropboxService.bas`; `frmHome.Form_Open` calls `StartupBootstrap` (idempotent orchestration of config + tokens + revocation + refresh + temp-file sweep), `frmHome.Form_Unload` calls `StartupShutdown`; Application Title set via `SetOption "Application Title"` so the Access title bar carries the TEST ENVIRONMENT banner; `Me.Caption` echoes it on the form. Validated by re-opening `TBCMS_Test.accdb`: bootstrap runs silently, banner visible, `Phase3e_SmokeTest` OK. |
 | **4** DocumentManagement compatibility | **Not started** | Includes G2 `spMoveDocumentFolder` rewrite (designed, not implemented) and G13 `spSaveCaseDocument` token guard (designed, not implemented) |
 | **5** Workflow-by-workflow migration | **Not started** | All 5 workflows designed; no VBA changes yet |
 | **6** Security + governance | **Not started** | Pre-cutover credential rotation (`TateBywaterSQLUser` + AppSecret in lockstep) pending |
@@ -1165,7 +1164,7 @@ Status legend: ✅ **DONE** · 🟡 **PARTIAL** · ⬜ **PENDING**
 
 1. 🟡 **PARTIAL** — Phase 1b data-quality remediation report. Auto-applied: `DocumentTypes` typo + B-5 intake natural-key (4 rows). Surveyed via installer Section 7 but per-row triage pending: B-4 (13 rows), B-6 (198 rows), B-7 (9 rows), B-8 (1 row). Also pending: multi-version policy for `(CaseID, DocumentType)` outliers, four-tracker reconciliation policy and SQL, G21/G22 Dropbox housekeeping (duplicate folder, loose files). B-9 path-length pre-flight is verified clean. Each fix is captured as an idempotent SQL script (the installer or a per-row UPDATE script) so it can be re-applied to production at Phase 7.
 2. 🟡 **PARTIAL (ongoing)** — This plan document. Current through 2026-05-14; will keep getting updated through Phase 7 cutover.
-3. 🟡 **PARTIAL** — `DropboxService.bas`: VBA module with DPAPI encryption, `state` validation, local HTTP listener OAuth flow, identity check, revocation check, retry/backoff, chunked upload, all required API operations, `ALLOW_DROPBOX_WRITES` kill-switch, `GuardWritesEnabled` helper called from every write entrypoint. No path derivation formula — `DocumentFileName` stores Dropbox paths directly after the installer's path migration. **3a done** (foundation: SQL config load + DPAPI + kill-switch + namespace header + audit/local log; validated by `Phase3a_SmokeTest`). **3b–3e pending** (OAuth hardening, read-only API, gated write API, startup-form wiring).
+3. ✅ **DONE** — `DropboxService.bas` (3052 lines, sections 1–26): VBA module with DPAPI encryption, `state` validation, local HTTP listener OAuth flow, identity check, revocation check, retry/backoff, chunked upload, all required API operations, `ALLOW_DROPBOX_WRITES` kill-switch, `GuardWritesEnabled` helper called from every write entrypoint, `StartupBootstrap` / `StartupShutdown` orchestration consumed from `frmHome.Form_Open` / `Form_Unload`. No path derivation formula — `DocumentFileName` stores Dropbox paths directly after the installer's path migration. All five sub-phases done: **3a** foundation (SQL config + DPAPI + kill-switch + namespace header + audit/local log; `Phase3a_SmokeTest`); **3b** OAuth hardening (identity + revocation + refresh; `Phase3b_Pass2_AuthFlowTest`); **3c** read-only API ops + binary download (`Phase3c_SmokeTest`, `Phase3c_OpenDocumentTest`); **3d** six gated write entrypoints + binary upload helpers (`Phase3d_SmokeTest` confirms every guard fires under `ALLOW_DROPBOX_WRITES = False`); **3e** startup-form wiring (`Phase3e_SmokeTest`; `frmHome.Form_Open` runs the bootstrap on app open, TEST ENVIRONMENT banner visible on the Access title bar via `SetOption "Application Title"`).
 4. ⬜ **PENDING** — Updated `DocumentManagement.bas`: Dropbox-only delegation (no `LocalProvider`, no provider flag); stable signatures for all form callers.
 5. ✅ **DONE** — **`Dropbox-Migration/Dropbox-Migration-SQL-Install.sql`** — the single end-to-end installer (applied to `awsql2022dev/TateByWater` only during Phases 0–6, re-applied to production at Phase 7). Bundles every automated migration step:
    - **Phase 2 schema** (Section 1 of the installer):

@@ -98,6 +98,13 @@ Private Const LISTENER_TIMEOUT_S As Long = 120
 ' (requires http://localhost — no port — registered in the Dropbox App Console).
 Public Const USE_LOCAL_LISTENER As Boolean = True
 
+' Upload routing thresholds (Phase 3d). Dropbox /files/upload single-shot cap
+' is 150 MB; files above that use the upload_session three-phase flow with
+' 100 MB chunks. UploadFile defensively rejects > 150 MB so a caller-side
+' routing mistake fails loudly rather than hitting an HTTP 413 from Dropbox.
+Private Const SINGLE_UPLOAD_MAX_BYTES As Long = 157286400      ' 150 * 1024 * 1024
+Private Const UPLOAD_CHUNK_BYTES As Long = 104857600           ' 100 * 1024 * 1024
+
 ' ----------------------------------------------------------------------------
 ' MODULE-LEVEL CONFIG CACHE (populated by InitializeDropboxConfig)
 ' ----------------------------------------------------------------------------
@@ -2348,5 +2355,698 @@ Public Function Phase3c_OpenDocumentTest(ByVal dropboxPath As String) As String
 
 HandleError:
     Phase3c_OpenDocumentTest = "FAIL: Err=" & Err.Number & " " & Err.Description
+End Function
+
+' ============================================================================
+' SECTION 23 — BINARY UPLOAD HELPERS (Phase 3d)
+' ============================================================================
+' File I/O + binary HTTP helpers for /files/upload and the upload_session
+' three-phase flow. WinHttp + ADODB.Stream — no extra references required.
+
+' File size as Currency (Long would overflow at 2 GB; large case scans may
+' exceed). Returns -1 on file-missing / read failure (caller logs).
+Private Function GetFileSize(ByVal filePath As String) As Currency
+    Dim fso As Object, f As Object
+    On Error GoTo HandleError
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set f = fso.GetFile(filePath)
+    GetFileSize = CCur(f.Size)
+    Set f = Nothing
+    Set fso = Nothing
+    Exit Function
+HandleError:
+    Set f = Nothing
+    Set fso = Nothing
+    GetFileSize = -1
+End Function
+
+' Loads filePath into outBytes via ADODB.Stream. Returns False on read error.
+Private Function ReadAllBytes(ByVal filePath As String, _
+                               ByRef outBytes() As Byte) As Boolean
+    Dim stm As Object
+    On Error GoTo HandleError
+    Set stm = CreateObject("ADODB.Stream")
+    stm.Type = 1                ' adTypeBinary
+    stm.Open
+    stm.LoadFromFile filePath
+    outBytes = stm.Read
+    stm.Close
+    Set stm = Nothing
+    ReadAllBytes = True
+    Exit Function
+HandleError:
+    If Not stm Is Nothing Then
+        On Error Resume Next
+        stm.Close
+        On Error GoTo 0
+    End If
+    Set stm = Nothing
+    ReadAllBytes = False
+End Function
+
+' Reads `length` bytes from filePath starting at byteOffset. Used by
+' UploadLargeFile to stream 100 MB chunks without loading the whole file
+' into memory at once.
+Private Function ReadFileChunk(ByVal filePath As String, _
+                                ByVal byteOffset As Currency, _
+                                ByVal length As Long, _
+                                ByRef outBytes() As Byte) As Boolean
+    Dim stm As Object
+    On Error GoTo HandleError
+    Set stm = CreateObject("ADODB.Stream")
+    stm.Type = 1
+    stm.Open
+    stm.LoadFromFile filePath
+    If byteOffset > 0 Then stm.Position = CDbl(byteOffset)
+    outBytes = stm.Read(length)
+    stm.Close
+    Set stm = Nothing
+    ReadFileChunk = True
+    Exit Function
+HandleError:
+    If Not stm Is Nothing Then
+        On Error Resume Next
+        stm.Close
+        On Error GoTo 0
+    End If
+    Set stm = Nothing
+    ReadFileChunk = False
+End Function
+
+' POSTs `bytes` to a content.dropboxapi.com endpoint with the Dropbox-API-Arg
+' header (JSON-encoded args), the namespace header, and the bearer token.
+' Returns True on 2xx; populates outStatus + outResponse on every path.
+Private Function HttpUploadBinary( _
+    ByVal url As String, _
+    ByVal bearerToken As String, _
+    ByVal dropboxArgJson As String, _
+    bytes() As Byte, _
+    ByRef outStatus As Long, _
+    ByRef outResponse As String _
+) As Boolean
+    Dim http As Object
+    On Error GoTo HandleError
+
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    http.Open "POST", url, False
+    http.SetRequestHeader "Authorization", "Bearer " & bearerToken
+    http.SetRequestHeader "Dropbox-API-Path-Root", DropboxPathRootHeader()
+    http.SetRequestHeader "Dropbox-API-Arg", dropboxArgJson
+    http.SetRequestHeader "Content-Type", "application/octet-stream"
+    http.Send bytes
+
+    outStatus = http.Status
+    outResponse = http.ResponseText
+    HttpUploadBinary = (outStatus >= 200 And outStatus < 300)
+    Set http = Nothing
+    Exit Function
+
+HandleError:
+    outStatus = -1
+    outResponse = "VBA error: Err=" & Err.Number & " " & Err.Description
+    HttpUploadBinary = False
+    Set http = Nothing
+End Function
+
+' ============================================================================
+' SECTION 24 — GATED WRITE API OPERATIONS (Phase 3d)
+' ============================================================================
+' Every entrypoint:
+'   1. Calls GuardWritesEnabled as its FIRST executable statement — raises
+'      vbObjectError + 6001 immediately when ALLOW_DROPBOX_WRITES = False
+'      (test build). No HTTP traffic happens; the guard logs a
+'      "Write blocked" row to tblDropboxLog and re-raises out to the caller.
+'   2. In the production build (ALLOW_DROPBOX_WRITES = True): ensures config
+'      is loaded + a valid token is present, performs the API call, logs
+'      Upload/Move/Copy/Delete outcomes to tblDropboxAuditLog (Success and
+'      Failure), and writes a session row to tblDropboxLog.
+'
+' Conflict policy (per plan Design Decisions):
+'   UploadFile / UploadLargeFile : mode=overwrite, mute=false (save flow
+'                                  re-saves are intentional new versions)
+'   MoveFile / CopyFile          : autorename=false; conflicts surface to
+'                                  caller for explicit resolution
+'   DeleteFile                   : path-not-found surfaces to caller
+'   CreateFolder                 : autorename=false; path/conflict treated
+'                                  as success (folder already there is fine)
+'                                  — no audit row, local log only.
+'
+' SINGLE_UPLOAD_MAX_BYTES + UPLOAD_CHUNK_BYTES routing thresholds live in
+' the COMPILE-TIME CONSTANTS block at the top of the module.
+
+' --- 24.1 UploadFile (single-shot, ≤ 150 MB) -----------------------------
+'
+' Uploads localPath -> dropboxPath via /2/files/upload. Files > 150 MB are
+' rejected with an audit-logged failure; caller must route to UploadLargeFile.
+
+Public Function UploadFile(ByVal localPath As String, _
+                            ByVal dropboxPath As String, _
+                            Optional ByVal caseID As Variant, _
+                            Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "UploadFile"
+    Const URL As String = "https://content.dropboxapi.com/2/files/upload"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "No valid token"
+        Exit Function
+    End If
+
+    Dim fileSize As Currency
+    fileSize = GetFileSize(localPath)
+    If fileSize < 0 Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Source file not found or unreadable: " & localPath
+        Exit Function
+    End If
+    If fileSize > SINGLE_UPLOAD_MAX_BYTES Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "File exceeds 150 MB single-shot limit (" & CStr(fileSize) & _
+            " bytes); route to UploadLargeFile"
+        Exit Function
+    End If
+
+    Dim bytes() As Byte
+    If Not ReadAllBytes(localPath, bytes) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Failed to read source file: " & localPath
+        Exit Function
+    End If
+
+    Dim argJson As String
+    argJson = "{""path"":""" & JsonEscapePath(dropboxPath) & """," & _
+              """mode"":""overwrite"",""autorename"":false," & _
+              """mute"":false,""strict_conflict"":false}"
+
+    Dim status As Long, response As String
+    If Not HttpUploadBinary(URL, GetCurrentAccessToken(), argJson, _
+                            bytes, status, response) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "HTTP " & status & ": " & Left$(response, 300)
+        LogLocal CALLER, "Error", "Upload failed: HTTP " & status & _
+                 " path=" & dropboxPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Upload", "Success", caseID, documentType, dropboxPath, ""
+    LogLocal CALLER, "Info", "Uploaded " & localPath & " (" & CStr(fileSize) & _
+             " bytes) to " & dropboxPath
+    UploadFile = True
+End Function
+
+' --- 24.2 UploadLargeFile (chunked, > UPLOAD_CHUNK_BYTES) -----------------
+'
+' Three-phase chunked upload:
+'   1. /upload_session/start  — sends chunk 0, returns session_id
+'   2. /upload_session/append_v2 — sends each middle chunk (zero or more)
+'   3. /upload_session/finish — sends final chunk + commits with the path
+'
+' Chunk size: 100 MB. Algorithm requires fileSize > UPLOAD_CHUNK_BYTES so
+' both start and finish always have data to send (avoids the zero-byte
+' edge case). Caller routes by fileSize > 150 MB per plan.
+
+Public Function UploadLargeFile(ByVal localPath As String, _
+                                 ByVal dropboxPath As String, _
+                                 Optional ByVal caseID As Variant, _
+                                 Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "UploadLargeFile"
+    Const URL_START As String = "https://content.dropboxapi.com/2/files/upload_session/start"
+    Const URL_APPEND As String = "https://content.dropboxapi.com/2/files/upload_session/append_v2"
+    Const URL_FINISH As String = "https://content.dropboxapi.com/2/files/upload_session/finish"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "No valid token"
+        Exit Function
+    End If
+
+    Dim fileSize As Currency
+    fileSize = GetFileSize(localPath)
+    If fileSize < 0 Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Source file not found or unreadable: " & localPath
+        Exit Function
+    End If
+    If fileSize <= UPLOAD_CHUNK_BYTES Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "UploadLargeFile requires fileSize > " & UPLOAD_CHUNK_BYTES & _
+            " bytes (got " & CStr(fileSize) & "); route to UploadFile"
+        Exit Function
+    End If
+
+    Dim token As String
+    token = GetCurrentAccessToken()
+    Dim status As Long, response As String
+    Dim chunk() As Byte
+
+    ' --- Phase 1: /upload_session/start (sends first 100 MB) --------------
+    If Not ReadFileChunk(localPath, 0, UPLOAD_CHUNK_BYTES, chunk) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Read first chunk failed"
+        Exit Function
+    End If
+
+    Dim startArg As String
+    startArg = "{""close"":false}"
+    If Not HttpUploadBinary(URL_START, token, startArg, chunk, status, response) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "upload_session/start HTTP " & status & ": " & Left$(response, 300)
+        Exit Function
+    End If
+
+    Dim sessionID As String
+    sessionID = ExtractJsonString(response, "session_id")
+    If LenB(sessionID) = 0 Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "upload_session/start missing session_id: " & Left$(response, 300)
+        Exit Function
+    End If
+
+    ' --- Phase 2: /upload_session/append_v2 for middle chunks -------------
+    Dim offset As Currency
+    offset = UPLOAD_CHUNK_BYTES
+    Do While (fileSize - offset) > UPLOAD_CHUNK_BYTES
+        If Not ReadFileChunk(localPath, offset, UPLOAD_CHUNK_BYTES, chunk) Then
+            LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+                "Read chunk failed at offset " & CStr(offset)
+            Exit Function
+        End If
+
+        Dim appendArg As String
+        appendArg = "{""cursor"":{""session_id"":""" & sessionID & _
+                    """,""offset"":" & CStr(offset) & "},""close"":false}"
+        If Not HttpUploadBinary(URL_APPEND, token, appendArg, chunk, _
+                                 status, response) Then
+            LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+                "upload_session/append_v2 HTTP " & status & " offset=" & _
+                CStr(offset) & ": " & Left$(response, 300)
+            Exit Function
+        End If
+
+        offset = offset + UPLOAD_CHUNK_BYTES
+    Loop
+
+    ' --- Phase 3: /upload_session/finish (sends final chunk + commit) -----
+    Dim lastLen As Long
+    lastLen = CLng(fileSize - offset)
+    If Not ReadFileChunk(localPath, offset, lastLen, chunk) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Read final chunk failed at offset " & CStr(offset)
+        Exit Function
+    End If
+
+    Dim finishArg As String
+    finishArg = "{""cursor"":{""session_id"":""" & sessionID & _
+                """,""offset"":" & CStr(offset) & "}," & _
+                """commit"":{""path"":""" & JsonEscapePath(dropboxPath) & """," & _
+                """mode"":""overwrite"",""autorename"":false," & _
+                """mute"":false,""strict_conflict"":false}}"
+    If Not HttpUploadBinary(URL_FINISH, token, finishArg, chunk, _
+                             status, response) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "upload_session/finish HTTP " & status & ": " & Left$(response, 300)
+        Exit Function
+    End If
+
+    LogAuditEvent "Upload", "Success", caseID, documentType, dropboxPath, ""
+    LogLocal CALLER, "Info", "UploadLargeFile " & localPath & " (" & _
+             CStr(fileSize) & " bytes) -> " & dropboxPath
+    UploadLargeFile = True
+End Function
+
+' --- 24.3 MoveFile -------------------------------------------------------
+'
+' Wraps /2/files/move_v2 with autorename=false. Works for files OR folders
+' (Dropbox makes no API-level distinction). The case close/reopen flow uses
+' this to relocate the whole case folder via one API call. Plan G2's
+' spMoveDocumentFolder is invoked by the caller AFTER the move succeeds.
+
+Public Function MoveFile(ByVal fromPath As String, _
+                          ByVal toPath As String, _
+                          Optional ByVal caseID As Variant, _
+                          Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "MoveFile"
+    Const URL As String = "https://api.dropboxapi.com/2/files/move_v2"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogAuditEvent "Move", "Failure", caseID, documentType, _
+            fromPath & " -> " & toPath, "No valid token"
+        Exit Function
+    End If
+
+    Dim body As String
+    body = "{""from_path"":""" & JsonEscapePath(fromPath) & """," & _
+           """to_path"":""" & JsonEscapePath(toPath) & """," & _
+           """allow_shared_folder"":false,""autorename"":false," & _
+           """allow_ownership_transfer"":false}"
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", URL, body, "application/json", _
+                       GetCurrentAccessToken(), True, status, response) Then
+        LogAuditEvent "Move", "Failure", caseID, documentType, _
+            fromPath & " -> " & toPath, _
+            "HTTP " & status & ": " & Left$(response, 300)
+        LogLocal CALLER, "Error", "Move failed: HTTP " & status & " " & _
+                 fromPath & " -> " & toPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Move", "Success", caseID, documentType, _
+        fromPath & " -> " & toPath, ""
+    LogLocal CALLER, "Info", "Moved " & fromPath & " -> " & toPath
+    MoveFile = True
+End Function
+
+' --- 24.4 CopyFile -------------------------------------------------------
+'
+' Wraps /2/files/copy_v2 with autorename=false. Used by case close to seed
+' the Closed File Scans copy before the main move (Phase 5 step 4 optional
+' first step). Works for files OR folders.
+
+Public Function CopyFile(ByVal fromPath As String, _
+                          ByVal toPath As String, _
+                          Optional ByVal caseID As Variant, _
+                          Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "CopyFile"
+    Const URL As String = "https://api.dropboxapi.com/2/files/copy_v2"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogAuditEvent "Copy", "Failure", caseID, documentType, _
+            fromPath & " -> " & toPath, "No valid token"
+        Exit Function
+    End If
+
+    Dim body As String
+    body = "{""from_path"":""" & JsonEscapePath(fromPath) & """," & _
+           """to_path"":""" & JsonEscapePath(toPath) & """," & _
+           """allow_shared_folder"":false,""autorename"":false," & _
+           """allow_ownership_transfer"":false}"
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", URL, body, "application/json", _
+                       GetCurrentAccessToken(), True, status, response) Then
+        LogAuditEvent "Copy", "Failure", caseID, documentType, _
+            fromPath & " -> " & toPath, _
+            "HTTP " & status & ": " & Left$(response, 300)
+        LogLocal CALLER, "Error", "Copy failed: HTTP " & status & " " & _
+                 fromPath & " -> " & toPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Copy", "Success", caseID, documentType, _
+        fromPath & " -> " & toPath, ""
+    LogLocal CALLER, "Info", "Copied " & fromPath & " -> " & toPath
+    CopyFile = True
+End Function
+
+' --- 24.5 DeleteFile -----------------------------------------------------
+'
+' Wraps /2/files/delete_v2. The orphan-file compensation policy (Phase 5)
+' invokes this after an upload+SP failure to remove the orphan upload.
+' Works for files OR folders.
+
+Public Function DeleteFile(ByVal dropboxPath As String, _
+                            Optional ByVal caseID As Variant, _
+                            Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "DeleteFile"
+    Const URL As String = "https://api.dropboxapi.com/2/files/delete_v2"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogAuditEvent "Delete", "Failure", caseID, documentType, dropboxPath, _
+            "No valid token"
+        Exit Function
+    End If
+
+    Dim body As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+
+    Dim status As Long, response As String
+    If Not HttpRequest("POST", URL, body, "application/json", _
+                       GetCurrentAccessToken(), True, status, response) Then
+        LogAuditEvent "Delete", "Failure", caseID, documentType, dropboxPath, _
+            "HTTP " & status & ": " & Left$(response, 300)
+        LogLocal CALLER, "Error", "Delete failed: HTTP " & status & " " & dropboxPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Delete", "Success", caseID, documentType, dropboxPath, ""
+    LogLocal CALLER, "Info", "Deleted " & dropboxPath
+    DeleteFile = True
+End Function
+
+' --- 24.6 CreateFolder ---------------------------------------------------
+'
+' Wraps /2/files/create_folder_v2 with autorename=false. Returns True when
+' the folder exists at dropboxPath on return — including the "already exists"
+' case (Dropbox responds with HTTP 409 + path/conflict/folder, which we treat
+' as success).
+'
+' Per plan: no audit log entry — local debug log only. CreateFolder runs
+' during workflow setup, not as an end-user action.
+
+Public Function CreateFolder(ByVal dropboxPath As String) As Boolean
+    Const CALLER As String = "CreateFolder"
+    Const URL As String = "https://api.dropboxapi.com/2/files/create_folder_v2"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+    If Not EnsureValidToken() Then
+        LogLocal CALLER, "Warn", "No valid token; cannot create folder " & dropboxPath
+        Exit Function
+    End If
+
+    Dim body As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """,""autorename"":false}"
+
+    Dim status As Long, response As String
+    If HttpRequest("POST", URL, body, "application/json", _
+                    GetCurrentAccessToken(), True, status, response) Then
+        LogLocal CALLER, "Info", "Created folder " & dropboxPath
+        CreateFolder = True
+        Exit Function
+    End If
+
+    ' Treat path/conflict/folder (HTTP 409) as success — folder already there.
+    If status = 409 Then
+        Dim errSummary As String
+        errSummary = ExtractJsonString(response, "error_summary")
+        If InStr(errSummary, "conflict") > 0 Then
+            LogLocal CALLER, "Info", "Folder already exists (treated as success): " & _
+                     dropboxPath
+            CreateFolder = True
+            Exit Function
+        End If
+    End If
+
+    LogLocal CALLER, "Error", "Create folder failed: HTTP " & status & _
+             " path=" & dropboxPath & " body=" & Left$(response, 300)
+End Function
+
+' ============================================================================
+' SECTION 25 — PHASE 3d SMOKE TEST
+' ============================================================================
+' Confirms every write entrypoint raises the GuardWritesEnabled error
+' (vbObjectError + 6001) immediately when ALLOW_DROPBOX_WRITES = False.
+' Each call generates one "Write blocked: <name>" row in tblDropboxLog.
+'
+' Usage:  ? DropboxService.Phase3d_SmokeTest
+
+Public Function Phase3d_SmokeTest() As String
+    Const EXPECTED_ERR As Long = vbObjectError + 6001
+    Dim failures As String
+
+    If ALLOW_DROPBOX_WRITES Then
+        Phase3d_SmokeTest = "SKIP: ALLOW_DROPBOX_WRITES = True (production build) — guard test not applicable"
+        Exit Function
+    End If
+
+    On Error Resume Next
+
+    Err.Clear
+    UploadFile "C:\__nonexistent__", "/Company/__guard_test_upload__.tmp"
+    If Err.Number <> EXPECTED_ERR Then _
+        failures = failures & vbCrLf & "  UploadFile: expected Err=" & _
+        EXPECTED_ERR & " got Err=" & Err.Number & " (" & Err.Description & ")"
+
+    Err.Clear
+    UploadLargeFile "C:\__nonexistent__", "/Company/__guard_test_large__.tmp"
+    If Err.Number <> EXPECTED_ERR Then _
+        failures = failures & vbCrLf & "  UploadLargeFile: expected Err=" & _
+        EXPECTED_ERR & " got Err=" & Err.Number & " (" & Err.Description & ")"
+
+    Err.Clear
+    MoveFile "/Company/__guard_test_from__", "/Company/__guard_test_to__"
+    If Err.Number <> EXPECTED_ERR Then _
+        failures = failures & vbCrLf & "  MoveFile: expected Err=" & _
+        EXPECTED_ERR & " got Err=" & Err.Number & " (" & Err.Description & ")"
+
+    Err.Clear
+    CopyFile "/Company/__guard_test_from__", "/Company/__guard_test_to__"
+    If Err.Number <> EXPECTED_ERR Then _
+        failures = failures & vbCrLf & "  CopyFile: expected Err=" & _
+        EXPECTED_ERR & " got Err=" & Err.Number & " (" & Err.Description & ")"
+
+    Err.Clear
+    DeleteFile "/Company/__guard_test_delete__"
+    If Err.Number <> EXPECTED_ERR Then _
+        failures = failures & vbCrLf & "  DeleteFile: expected Err=" & _
+        EXPECTED_ERR & " got Err=" & Err.Number & " (" & Err.Description & ")"
+
+    Err.Clear
+    CreateFolder "/Company/__guard_test_folder__"
+    If Err.Number <> EXPECTED_ERR Then _
+        failures = failures & vbCrLf & "  CreateFolder: expected Err=" & _
+        EXPECTED_ERR & " got Err=" & Err.Number & " (" & Err.Description & ")"
+
+    Err.Clear
+    On Error GoTo 0
+
+    If LenB(failures) = 0 Then
+        Phase3d_SmokeTest = "OK — all 6 write entrypoints raised the expected guard error (vbObjectError + 6001)"
+    Else
+        Phase3d_SmokeTest = "FAIL:" & failures
+    End If
+End Function
+
+' ============================================================================
+' SECTION 26 — STARTUP / SHUTDOWN HOOKS (Phase 3e)
+' ============================================================================
+' Form_Open in the Access startup form (frmHome) calls StartupBootstrap to
+' wire every Dropbox session primitive together in the right order:
+'   1. InitializeDropboxConfig  — load tblDropboxConfig + tblDropboxRootConfig
+'   2. LoadTokens               — DPAPI-decrypt from local tblDropboxTokens
+'                                 (falls through to AuthenticateUser if no
+'                                 token row exists — first-time / re-auth)
+'   3. IsAccountRevoked         — check SQL revocation list; re-auth if revoked
+'   4. EnsureValidToken         — auto-refresh if expiring within 5 min;
+'                                 re-auth if refresh itself fails (token
+'                                 revoked server-side by the user)
+'   5. CleanupTempFiles         — sweep crash-survivors from %TEMP%\TBCMS\
+'
+' Idempotent: re-running is safe (config reloads, token state caches refresh,
+' revocation re-checks, temp dir gets swept again).
+'
+' Form_Unload calls StartupShutdown which re-sweeps temp files so downloaded
+' documents don't survive a session.
+
+' Returns "OK" on success, or a user-facing error message describing the
+' first step that failed. Caller surfaces the error via MsgBox; the form
+' MUST NOT crash on a bootstrap failure (the user may still want to look
+' at the app and retry).
+Public Function StartupBootstrap() As String
+    Const CALLER As String = "StartupBootstrap"
+    On Error GoTo HandleError
+
+    Dim stepName As String
+
+    stepName = "InitializeDropboxConfig"
+    InitializeDropboxConfig
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    stepName = "LoadTokens"
+    If Not LoadTokens() Then
+        LogLocal CALLER, "Info", "No stored token; running OAuth flow (first-time auth)"
+        If Not AuthenticateUser() Then
+            StartupBootstrap = "OAuth authentication was cancelled or failed. " & _
+                "Document-open operations will not work this session. " & _
+                "Close TBCMS and re-launch to retry."
+            Exit Function
+        End If
+    End If
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    stepName = "IsAccountRevoked"
+    Dim email As String
+    email = GetDropboxAccountEmail()
+    If LenB(email) > 0 Then
+        If IsAccountRevoked(email) Then
+            ClearTokens
+            LogLocal CALLER, "Warn", "Account " & email & _
+                " is on the revocation list; cleared tokens and re-running OAuth"
+            If Not AuthenticateUser() Then
+                StartupBootstrap = "Account " & email & " has been revoked by IT. " & _
+                    "Re-authentication was cancelled. Contact IT."
+                Exit Function
+            End If
+        End If
+    End If
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    stepName = "EnsureValidToken"
+    If Not EnsureValidToken() Then
+        LogLocal CALLER, "Warn", _
+            "EnsureValidToken returned False; clearing tokens and re-running OAuth"
+        ClearTokens
+        If Not AuthenticateUser() Then
+            StartupBootstrap = "Dropbox token refresh failed and " & _
+                "re-authentication was cancelled. Contact IT if this persists."
+            Exit Function
+        End If
+    End If
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    stepName = "CleanupTempFiles"
+    CleanupTempFiles
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    LogLocal CALLER, "Info", "StartupBootstrap complete; " & _
+        "session ready for read-only Dropbox operations (writes guarded by " & _
+        "ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES & ")"
+    StartupBootstrap = "OK"
+    Exit Function
+
+HandleError:
+    LogLocal CALLER, "Error", "Failed at step '" & stepName & "': Err=" & _
+        Err.Number & " " & Err.Description
+    StartupBootstrap = "Dropbox session could not be initialized at step '" & _
+        stepName & "': " & Err.Description
+End Function
+
+' Form_Unload hook. Sweeps %TEMP%\TBCMS\ so downloaded documents don't
+' survive the session. Idempotent and silent on error.
+Public Sub StartupShutdown()
+    On Error Resume Next
+    CleanupTempFiles
+    LogLocal "StartupShutdown", "Info", "Session ended; temp files swept"
+    Err.Clear
+End Sub
+
+' Programmatic smoke test for Phase 3e. Confirms the bootstrap ran end-to-end
+' and the session ended in the expected state. Usable from the Immediate
+' window (the bootstrap is idempotent, so re-running is safe).
+'
+' Usage:  ? DropboxService.Phase3e_SmokeTest
+Public Function Phase3e_SmokeTest() As String
+    Dim result As String
+    result = StartupBootstrap()
+    If Left$(result, 2) <> "OK" Then
+        Phase3e_SmokeTest = "FAIL: " & result
+        Exit Function
+    End If
+
+    If Not IsTokenLoaded() Then
+        Phase3e_SmokeTest = "FAIL: bootstrap reported OK but IsTokenLoaded = False"
+        Exit Function
+    End If
+
+    Dim email As String
+    email = GetDropboxAccountEmail()
+    If LenB(email) = 0 Then
+        Phase3e_SmokeTest = "FAIL: bootstrap reported OK but DropboxAccountEmail is blank"
+        Exit Function
+    End If
+
+    Phase3e_SmokeTest = "OK — bootstrap complete; IsTokenLoaded = True; " & _
+        "email = " & email & "; ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES
 End Function
 
