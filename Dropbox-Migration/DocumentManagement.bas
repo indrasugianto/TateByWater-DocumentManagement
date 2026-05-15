@@ -6,29 +6,45 @@ Dim foo
 ' =============================================================================
 ' Phase 4 rewire status (last updated 2026-05-15):
 '
-'   Phase 4a — Read-flow rewire (DONE in this file):
+'   Phase 4a — Read-flow rewire (DONE):
 '     OpenDocumentFile     -> DropboxService.OpenDocument
 '                             (download to %TEMP%\TBCMS\ + native-app launch)
 '     OpenDocumentFolder   -> Dropbox web URL (Application.FollowHyperlink)
 '
-'   Rollback safety: the legacy (pre-4a) bodies of OpenDocumentFile and
-'   OpenDocumentFolder are preserved as commented-out blocks immediately
-'   above each rewired function. To roll back, swap the comment/uncomment
-'   state on the active vs. LEGACY block and re-import this file. The
-'   exact swap procedure is documented above the first LEGACY block.
+'   Phase 4b — Config layer + local-synced-root routing (DONE):
+'     OpenDocumentFolder   -> Windows Explorer against the local-synced
+'                             folder when the desktop client is signed in,
+'                             with fallback to the Dropbox web URL.
+'                             Eliminates the "Unsupported path provided"
+'                             warning Dropbox emits for team-namespace
+'                             deep-links via /home/ or /work/.
+'     GetDocumentRootFolder -> read tblDropboxRootConfig.TeamRootPath +
+'                              DropboxService.DropboxPathToLocalPath
+'                              (legacy: tblDocumentRootDirectory).
+'                              Currently has zero callers in the project
+'                              (kept for contract stability).
+'     GetScannerFolder     -> read tblDropboxRootConfig.ScannerDirectory +
+'                             DropboxService.DropboxPathToLocalPath.
+'                             Two callers: Intakes.cmdScan_Click + the
+'                             frmClientLedger scan flow. Both consume the
+'                             local Windows path as Office.FileDialog
+'                             InitialFileName.
 '
-'   Phase 4b / 4c / 4d — pending:
-'     4b config layer (GetDocumentRootFolder/GetScannerFolder switch to
-'        tblDropboxRootConfig; add LocalPathToDropboxPath to DropboxService),
-'     4c G2/G13 SQL changes,
-'     4d write-flow rewires (SaveScannedFileAs / MoveDocumentByCaseStatus /
-'        CopyDocumentToClosedFileScan). Until 4d lands, those functions still
-'        contain the legacy S:\ FSO/FileCopy logic; calling them in the test
-'        environment will FAIL because the SQL-stored paths are now /Company/-
-'        rooted (not valid Windows paths). This is intentional — write flows
-'        are gated by ALLOW_DROPBOX_WRITES = False in DropboxService anyway,
-'        and 4a delivers the read-only validation surface for the Phase 6.5
-'        50-row open-document gate.
+'   Phase 4c — Stored procedure rewrites (DONE in Dropbox-Migration-SQL-
+'              Install.sql Section 8). Live on awsql2022dev/TateByWater.
+'
+'   Phase 4d — Write-flow rewires (PENDING). Until 4d lands,
+'              SaveScannedFileAs, MoveDocumentByCaseStatus, and
+'              CopyDocumentToClosedFileScan still contain the legacy S:\
+'              FSO/FileCopy logic. Calling them in the test environment
+'              will fail (legacy spMoveDocumentFolder signature is gone
+'              after 4c, so the close/reopen flow fails earlier than
+'              before). Intentional interim state — writes are gated by
+'              ALLOW_DROPBOX_WRITES = False in DropboxService anyway.
+'
+'   Rollback safety: legacy (pre-4a / pre-4b) bodies of every rewired
+'   function are preserved as commented-out blocks immediately above each
+'   active function. Swap procedure documented above the first LEGACY block.
 ' =============================================================================
 
 
@@ -158,26 +174,73 @@ Err_Handler:
 End Function
 
 
-' Phase 4b will switch this from tblDocumentRootDirectory to
-' tblDropboxRootConfig.TeamRootPath. Unchanged in 4a.
+' ============================================================================
+' LEGACY (pre-Phase 4b) — GetDocumentRootFolder
+' ----------------------------------------------------------------------------
+' Preserved for rollback. Same swap procedure as the LEGACY OpenDocumentFolder
+' block earlier in this file (comment-out active + uncomment LEGACY + re-import).
+' ============================================================================
+' Public Function GetDocumentRootFolder() As String
+' On Error GoTo Err_Handler
+' Dim rv As String
+' Dim cn As ADODB.Connection
+' Dim rs As ADODB.Recordset
+' Dim sql As String
+'     Set cn = New ADODB.Connection
+'     cn.Open PcaGetConnnectionString
+'     sql = "SELECT DocumentRootDirectory FROM tblDocumentRootDirectory"
+'     Set rs = cn.Execute(sql)
+'     If Not rs.EOF() Then
+'         rv = rs("DocumentRootDirectory")
+'     Else
+'         rv = ""
+'     End If
+' Exit_Handler:
+'     GetDocumentRootFolder = rv
+'     Exit Function
+' Err_Handler:
+'     rv = ""
+'     foo = pcaStdErrMsg(Err, Error)
+'     Resume Exit_Handler
+' End Function
+' ============================================================================
+
+
+' --- Phase 4b rewire --------------------------------------------------------
+' Reads TeamRootPath from tblDropboxRootConfig (e.g., /Company/COMMON) and
+' converts to the local-synced Windows path (e.g.,
+' C:\Users\<u>\Tate Bywater Dropbox\<Name>\Company\COMMON) so the result is
+' compatible with the legacy contract (a Windows path callers can pass to
+' Office.FileDialog or Dir).
+'
+' Returns "" when the desktop client isn't installed/signed in
+' (m_LocalSyncedRoot unresolved). Callers must tolerate "" (the existing
+' implementation also returned "" if tblDocumentRootDirectory was empty,
+' so this is contract-compatible).
+'
+' This function is currently unreferenced by other VBA in the project
+' (Phase 4b survey: zero callers). Updated for consistency.
 Public Function GetDocumentRootFolder() As String
 On Error GoTo Err_Handler
 Dim rv As String
 Dim cn As ADODB.Connection
 Dim rs As ADODB.Recordset
 Dim sql As String
+Dim dropboxPath As String
 
     Set cn = New ADODB.Connection
     cn.Open PcaGetConnnectionString
 
-    sql = ""
-    sql = sql & "SELECT DocumentRootDirectory "
-    sql = sql & "FROM tblDocumentRootDirectory"
+    sql = "SELECT TeamRootPath FROM dbo.tblDropboxRootConfig WHERE ConfigID = 1"
 
     Set rs = cn.Execute(sql)
 
     If Not rs.EOF() Then
-        rv = rs("DocumentRootDirectory")
+        dropboxPath = pcaConvertNulls(rs("TeamRootPath"), "")
+    End If
+
+    If LenB(dropboxPath) > 0 Then
+        rv = DropboxService.DropboxPathToLocalPath(dropboxPath)
     Else
         rv = ""
     End If
@@ -191,26 +254,65 @@ Err_Handler:
 End Function
 
 
-' Phase 4b will switch this from tblDocumentRootDirectory to
-' tblDropboxRootConfig.ScannerDirectory. Unchanged in 4a.
+' ============================================================================
+' LEGACY (pre-Phase 4b) — GetScannerFolder
+' ============================================================================
+' Public Function GetScannerFolder() As String
+' On Error GoTo Err_Handler
+' Dim rv As String
+' Dim cn As ADODB.Connection
+' Dim rs As ADODB.Recordset
+' Dim sql As String
+'     Set cn = New ADODB.Connection
+'     cn.Open PcaGetConnnectionString
+'     sql = "SELECT ScannerDirectory FROM tblDocumentRootDirectory"
+'     Set rs = cn.Execute(sql)
+'     If Not rs.EOF() Then
+'         rv = rs("ScannerDirectory")
+'     Else
+'         rv = ""
+'     End If
+' Exit_Handler:
+'     GetScannerFolder = rv
+'     Exit Function
+' Err_Handler:
+'     rv = ""
+'     foo = pcaStdErrMsg(Err, Error)
+'     Resume Exit_Handler
+' End Function
+' ============================================================================
+
+
+' --- Phase 4b rewire --------------------------------------------------------
+' Reads ScannerDirectory from tblDropboxRootConfig (e.g.,
+' /Company/COMMON/_SCANNER) and converts to the local-synced Windows path
+' so callers — Intakes.cmdScan_Click + frmClientLedger's scan flow — can
+' pass it to Office.FileDialog as the InitialFileName.
+'
+' Returns "" when the desktop client isn't installed/signed in. Callers
+' fall back to whatever default Office.FileDialog picks (typically the
+' user's last-used folder).
 Public Function GetScannerFolder() As String
 On Error GoTo Err_Handler
 Dim rv As String
 Dim cn As ADODB.Connection
 Dim rs As ADODB.Recordset
 Dim sql As String
+Dim dropboxPath As String
 
     Set cn = New ADODB.Connection
     cn.Open PcaGetConnnectionString
 
-    sql = ""
-    sql = sql & "SELECT ScannerDirectory "
-    sql = sql & "FROM tblDocumentRootDirectory"
+    sql = "SELECT ScannerDirectory FROM dbo.tblDropboxRootConfig WHERE ConfigID = 1"
 
     Set rs = cn.Execute(sql)
 
     If Not rs.EOF() Then
-        rv = rs("ScannerDirectory")
+        dropboxPath = pcaConvertNulls(rs("ScannerDirectory"), "")
+    End If
+
+    If LenB(dropboxPath) > 0 Then
+        rv = DropboxService.DropboxPathToLocalPath(dropboxPath)
     Else
         rv = ""
     End If
@@ -548,23 +650,80 @@ End Function
 ' ============================================================================
 
 
-' --- Phase 4a rewire --------------------------------------------------------
-' Folder open: route through the Dropbox web URL. The previous behavior
-' resolved an S:\ folder, prompted to create it if missing, and showed a
-' local file-picker dialog so the user could pick a file inside. In the
-' Dropbox world, the folder lives on Dropbox; opening it in the browser
-' gives the user access to navigate, click files, drag-and-drop, etc.,
-' via Dropbox's native UI. The desktop client (if installed and signed in)
-' also exposes the folder locally, but the web URL works regardless of
-' client state.
+' ============================================================================
+' LEGACY (pre-Phase 4b — Phase 4a version) — OpenDocumentFolder
+' ----------------------------------------------------------------------------
+' Preserved for rollback. This is the Phase 4a body (browser-only, no
+' Explorer routing). The Phase 4b active version below tries Explorer first
+' and falls back to the browser. To roll back: comment-out the active body,
+' uncomment this LEGACY block, re-import.
+' ----------------------------------------------------------------------------
+' Public Function OpenDocumentFolder(ByVal CaseID As Variant, ByVal DocumentType As Variant) As Boolean
+' On Error GoTo Err_Handler
+' Dim rv As Boolean
+' Dim FolderName As String
+' Dim webUrl As String
+' Dim pathForCheck As String
+' Dim found As Boolean
+' Dim errDetail As String
+' Dim mdJson As String
+' Dim apiOk As Boolean
+'     rv = False
+'     If pcaempty(CaseID) Then
+'         MsgBox "Please select a case before proceeding...", , "TB CMS"
+'     Else
+'         If GetCaseClosedStatus(CaseID) Then
+'             FolderName = GetClosedDocumentFolderName(CaseID, DocumentType)
+'         Else
+'             FolderName = GetDocumentFolderName(CaseID, DocumentType)
+'         End If
+'         If pcaempty(FolderName) Then
+'             MsgBox "Could not resolve the document folder for this case.", vbExclamation, "TB CMS"
+'         ElseIf Left$(FolderName, 1) <> "/" Then
+'             MsgBox "Folder path is not a Dropbox path (got: " & FolderName & "). Contact IT...", vbExclamation, "TB CMS"
+'         Else
+'             pathForCheck = FolderName
+'             If Right$(pathForCheck, 1) = "/" Then
+'                 pathForCheck = Left$(pathForCheck, Len(pathForCheck) - 1)
+'             End If
+'             apiOk = DropboxService.GetMetadata(pathForCheck, found, errDetail, mdJson)
+'             If apiOk And Not found Then
+'                 MsgBox "The Dropbox folder for this case doesn't exist yet...", vbExclamation, "TB CMS"
+'             Else
+'                 webUrl = "https://www.dropbox.com/work" & FolderName
+'                 Application.FollowHyperlink webUrl
+'             End If
+'         End If
+'     End If
+'     rv = True
+' Exit_Handler:
+'     OpenDocumentFolder = rv
+'     Exit Function
+' Err_Handler:
+'     rv = False
+'     foo = pcaStdErrMsg(Err, Error)
+'     Resume Exit_Handler
+' End Function
+' ============================================================================
+
+
+' --- Phase 4b rewire --------------------------------------------------------
+' Folder open: route through Windows Explorer against the local
+' Dropbox-synced folder when the desktop client has resolved the team root
+' on disk. Falls back to the Dropbox web URL when:
+'   - The desktop client isn't installed/signed in (m_LocalSyncedRoot empty)
+'   - The local synced folder doesn't exist on disk (case never synced)
 '
-' UX TODO (Phase 6.5 UAT): validate that browser-open is the right UX vs.
-' opening the local-synced folder via Explorer. See plan Phase 5 step 1.
+' Explorer routing avoids the "Unsupported path provided" warning banner
+' Dropbox shows for any /home/ or /work/ deep-link into team-namespace
+' content, and gives attorneys the familiar File Explorer UX they used in
+' the S:\ days.
 Public Function OpenDocumentFolder(ByVal CaseID As Variant, ByVal DocumentType As Variant) As Boolean
 On Error GoTo Err_Handler
 Dim rv As Boolean
 Dim FolderName As String
 Dim webUrl As String
+Dim localPath As String
 Dim pathForCheck As String
 Dim found As Boolean
 Dim errDetail As String
@@ -588,11 +747,23 @@ Dim apiOk As Boolean
             MsgBox "Folder path is not a Dropbox path (got: " & FolderName & "). " & _
                    "Contact IT — this indicates a configuration issue.", vbExclamation, "TB CMS"
         Else
-            ' Pre-check: confirm the folder exists in Dropbox before opening
-            ' the web URL. Otherwise Dropbox shows its own "Unsupported path
-            ' provided" message which is confusing — better to surface a
-            ' clear "folder doesn't exist yet" here. GetMetadata expects no
-            ' trailing slash on folder paths.
+            ' Try the local-synced folder first (best UX — no browser banner).
+            localPath = DropboxService.DropboxPathToLocalPath(FolderName)
+            If LenB(localPath) > 0 Then
+                ' Strip trailing slash that DropboxPathToLocalPath may produce
+                ' from the trailing '/' on FolderName.
+                If Right$(localPath, 1) = "\" Then
+                    localPath = Left$(localPath, Len(localPath) - 1)
+                End If
+                If Dir$(localPath, vbDirectory) <> "" Then
+                    ' Local folder is synced and exists — open Explorer there.
+                    Shell "explorer.exe """ & localPath & """", vbNormalFocus
+                    rv = True
+                    GoTo Exit_Handler
+                End If
+            End If
+
+            ' Fallback path: pre-check existence in Dropbox, then web URL.
             pathForCheck = FolderName
             If Right$(pathForCheck, 1) = "/" Then
                 pathForCheck = Left$(pathForCheck, Len(pathForCheck) - 1)
@@ -601,7 +772,6 @@ Dim apiOk As Boolean
             apiOk = DropboxService.GetMetadata(pathForCheck, found, errDetail, mdJson)
 
             If apiOk And Not found Then
-                ' Folder definitively does not exist (HTTP 200 + path/not_found)
                 MsgBox "The Dropbox folder for this case doesn't exist yet:" & vbCrLf & vbCrLf & _
                        FolderName & vbCrLf & vbCrLf & _
                        "This typically means no documents have been saved for this " & _
@@ -609,11 +779,10 @@ Dim apiOk As Boolean
                        "created automatically when the first document is saved.", _
                        vbExclamation, "TB CMS"
             Else
-                ' Either GetMetadata confirmed found=True, or there was a
-                ' transport failure — proceed to the URL and let Dropbox respond.
-                ' /work/ is the Dropbox Business team-content prefix; /home/
-                ' triggers an "Unsupported path provided" warning banner for
-                ' team-namespace content even though it functionally works.
+                ' Either GetMetadata confirmed found, or there was a transport
+                ' failure — open the Dropbox web URL. /work/ is the team-content
+                ' prefix; expect a cosmetic "Unsupported path provided" banner
+                ' from Dropbox for team-namespace deep links.
                 webUrl = "https://www.dropbox.com/work" & FolderName
                 Application.FollowHyperlink webUrl
             End If

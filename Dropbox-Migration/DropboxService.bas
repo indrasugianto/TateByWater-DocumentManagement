@@ -120,6 +120,13 @@ Private m_ConfigLoaded      As Boolean
 ' can fetch it via GetDropboxAccountEmail without forward references.
 Private m_DropboxAccountEmail As String
 
+' Phase 4b: Dropbox desktop client's local mount of the firm's Business team
+' root. Populated by ResolveLocalSyncedRoot from %LOCALAPPDATA%\Dropbox\info.json.
+' Empty string if the desktop client is not installed / signed in — read-only
+' workflows (document-open, VerificationReport) work without it; ingest
+' workflows + Explorer folder-open require it.
+Private m_LocalSyncedRoot       As String
+
 ' --- Phase 3b pass 1: OAuth state + token cache ---
 
 ' Per-session CSRF guard for OAuth authorization-code flow. Set by
@@ -2999,6 +3006,15 @@ Public Function StartupBootstrap() As String
     CleanupTempFiles
     LogLocal CALLER, "Info", "Step OK: " & stepName
 
+    ' Non-fatal: resolve the Dropbox desktop client's local mount point.
+    ' Success enables Explorer folder-open + ingest-workflow path conversion;
+    ' failure just means those flows fall back gracefully (read-only flows
+    ' work either way). Errors are swallowed inside ResolveLocalSyncedRoot.
+    stepName = "ResolveLocalSyncedRoot"
+    Dim syncedOk As Boolean
+    syncedOk = ResolveLocalSyncedRoot()
+    LogLocal CALLER, "Info", "Step " & IIf(syncedOk, "OK", "skipped (desktop client unresolved)") & ": " & stepName
+
     LogLocal CALLER, "Info", "StartupBootstrap complete; " & _
         "session ready for read-only Dropbox operations (writes guarded by " & _
         "ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES & ")"
@@ -3048,5 +3064,262 @@ Public Function Phase3e_SmokeTest() As String
 
     Phase3e_SmokeTest = "OK — bootstrap complete; IsTokenLoaded = True; " & _
         "email = " & email & "; ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES
+End Function
+
+' ============================================================================
+' SECTION 27 — LOCAL-SYNCED-ROOT RESOLUTION (Phase 4b)
+' ============================================================================
+' Reads %LOCALAPPDATA%\Dropbox\info.json — created and maintained by the
+' Dropbox desktop client — to discover where the firm's Business team root
+' is mounted on disk (the "business.path" field). Cached in m_LocalSyncedRoot
+' for the session.
+'
+' Used for two flows:
+'   1. Ingest workflows (scan-save, intake) — pre-Phase 4d: convert the
+'      user-picked local file path (from Office.FileDialog) into the
+'      corresponding /Company/ Dropbox API path via LocalPathToDropboxPath
+'      before upload.
+'   2. Folder-open — convert the /Company/ Dropbox path to its local-synced
+'      equivalent via DropboxPathToLocalPath and launch File Explorer there,
+'      bypassing the browser and the "Unsupported path provided" warning
+'      Dropbox emits for team-namespace deep-links via the web UI.
+'
+' If the desktop client is not installed / signed in, info.json is missing
+' and m_LocalSyncedRoot stays "". Read-only flows (document-open via
+' DropboxService.OpenDocument, VerificationReport) work normally without
+' the desktop client. Workflows that pick a local file or open Explorer
+' fall back gracefully (caller decides — see G24 in the plan).
+'
+' info.json format (per Dropbox documentation):
+'   { "personal": { ... },
+'     "business": { "path": "C:\\Users\\<user>\\Tate Bywater Dropbox\\<Name>",
+'                   "host": <num>, "is_team": true, "subscription_type": "Business" } }
+
+Public Function ResolveLocalSyncedRoot() As Boolean
+    Const CALLER As String = "ResolveLocalSyncedRoot"
+    Dim infoPath As String
+    Dim contents As String
+    Dim businessBlock As String
+
+    On Error GoTo HandleError
+
+    infoPath = Environ$("LOCALAPPDATA") & "\Dropbox\info.json"
+    If Dir$(infoPath) = "" Then
+        LogLocal CALLER, "Info", "info.json not found at " & infoPath & _
+            "; ingest workflows + Explorer folder-open will fall back"
+        m_LocalSyncedRoot = ""
+        ResolveLocalSyncedRoot = False
+        Exit Function
+    End If
+
+    contents = ReadTextFileUtf8(infoPath)
+    If LenB(contents) = 0 Then
+        LogLocal CALLER, "Warn", "info.json present but empty / unreadable"
+        m_LocalSyncedRoot = ""
+        ResolveLocalSyncedRoot = False
+        Exit Function
+    End If
+
+    ' Locate the "business":{...} sub-object and extract its "path" field.
+    businessBlock = ExtractJsonObject(contents, "business")
+    If LenB(businessBlock) = 0 Then
+        LogLocal CALLER, "Info", "info.json has no 'business' block " & _
+            "(personal-only client?); ingest workflows will fall back"
+        m_LocalSyncedRoot = ""
+        ResolveLocalSyncedRoot = False
+        Exit Function
+    End If
+
+    m_LocalSyncedRoot = ExtractJsonString(businessBlock, "path")
+    If LenB(m_LocalSyncedRoot) = 0 Then
+        LogLocal CALLER, "Warn", "business.path missing from info.json"
+        ResolveLocalSyncedRoot = False
+        Exit Function
+    End If
+
+    ' JSON escapes backslashes as "\\" — unescape to a normal Windows path.
+    m_LocalSyncedRoot = Replace(m_LocalSyncedRoot, "\\", "\")
+
+    ' Trim trailing backslash so concatenation with a leading "\" path is clean.
+    If Right$(m_LocalSyncedRoot, 1) = "\" Then
+        m_LocalSyncedRoot = Left$(m_LocalSyncedRoot, Len(m_LocalSyncedRoot) - 1)
+    End If
+
+    LogLocal CALLER, "Info", "Resolved business path: " & m_LocalSyncedRoot
+    ResolveLocalSyncedRoot = True
+    Exit Function
+
+HandleError:
+    LogLocal CALLER, "Warn", "Failed to resolve info.json: Err=" & _
+        Err.Number & " " & Err.Description
+    m_LocalSyncedRoot = ""
+    ResolveLocalSyncedRoot = False
+End Function
+
+Public Function GetLocalSyncedRoot() As String
+    GetLocalSyncedRoot = m_LocalSyncedRoot
+End Function
+
+' Converts a Windows local path (e.g. C:\Users\jdoe\Tate Bywater Dropbox\
+' John Doe\Company\COMMON\_SCANNER\scan_20260514.pdf) into its Dropbox API
+' equivalent (/Company/COMMON/_SCANNER/scan_20260514.pdf). Returns "" if
+' localPath is not under m_LocalSyncedRoot, or if m_LocalSyncedRoot has
+' not been resolved — caller surfaces a clear error.
+Public Function LocalPathToDropboxPath(ByVal localPath As String) As String
+    If LenB(m_LocalSyncedRoot) = 0 Then Exit Function
+    If LenB(localPath) <= Len(m_LocalSyncedRoot) Then Exit Function
+
+    ' Case-insensitive prefix match (Windows paths are case-insensitive).
+    If StrComp(Left$(localPath, Len(m_LocalSyncedRoot)), m_LocalSyncedRoot, vbTextCompare) <> 0 Then
+        Exit Function
+    End If
+
+    Dim relative As String
+    relative = Mid$(localPath, Len(m_LocalSyncedRoot) + 1)
+    relative = Replace(relative, "\", "/")
+    If Left$(relative, 1) <> "/" Then
+        relative = "/" & relative
+    End If
+
+    LocalPathToDropboxPath = relative
+End Function
+
+' Reverse direction: converts a Dropbox API path (e.g. /Company/COMMON/PM/
+' _CLIENTS/Criminal/Zand, Ayla Gilan C26-177-PM/) to its local-synced
+' Windows equivalent. Returns "" if m_LocalSyncedRoot is not resolved or
+' dropboxPath isn't a /-rooted path. Caller checks Dir(result, vbDirectory)
+' before launching Explorer (file/folder may not have synced yet).
+Public Function DropboxPathToLocalPath(ByVal dropboxPath As String) As String
+    If LenB(m_LocalSyncedRoot) = 0 Then Exit Function
+    If LenB(dropboxPath) = 0 Then Exit Function
+    If Left$(dropboxPath, 1) <> "/" Then Exit Function
+
+    Dim relative As String
+    relative = Replace(dropboxPath, "/", "\")
+    ' relative starts with "\" — drop it so the join with m_LocalSyncedRoot is clean.
+    relative = Mid$(relative, 2)
+
+    DropboxPathToLocalPath = m_LocalSyncedRoot & "\" & relative
+End Function
+
+' ----------------------------------------------------------------------------
+' Helpers private to Section 27.
+
+' Reads a file's full contents as a UTF-8 string. Returns "" on any error.
+Private Function ReadTextFileUtf8(ByVal filePath As String) As String
+    Dim stm As Object
+    On Error GoTo HandleError
+    Set stm = CreateObject("ADODB.Stream")
+    stm.Type = 2                ' adTypeText
+    stm.Charset = "utf-8"
+    stm.Open
+    stm.LoadFromFile filePath
+    ReadTextFileUtf8 = stm.ReadText
+    stm.Close
+    Set stm = Nothing
+    Exit Function
+HandleError:
+    If Not stm Is Nothing Then
+        On Error Resume Next
+        stm.Close
+        On Error GoTo 0
+    End If
+    Set stm = Nothing
+    ReadTextFileUtf8 = ""
+End Function
+
+' Extracts a JSON object literal — {...} — for a named key. Returns the
+' substring INCLUDING the outer braces, or "" if not found. Used to locate
+' the "business":{...} sub-object inside info.json before ExtractJsonString
+' is run against its body.
+Private Function ExtractJsonObject(ByVal json As String, ByVal key As String) As String
+    Dim searchKey As String, startPos As Long
+    searchKey = """" & key & """:"
+    startPos = InStr(json, searchKey)
+    If startPos = 0 Then Exit Function
+
+    startPos = startPos + Len(searchKey)
+    Do While startPos <= Len(json) And _
+             (Mid$(json, startPos, 1) = " " Or Mid$(json, startPos, 1) = vbTab)
+        startPos = startPos + 1
+    Loop
+    If startPos > Len(json) Or Mid$(json, startPos, 1) <> "{" Then Exit Function
+
+    Dim depth As Long, i As Long, ch As String
+    depth = 1
+    i = startPos + 1
+    Do While i <= Len(json) And depth > 0
+        ch = Mid$(json, i, 1)
+        If ch = "{" Then
+            depth = depth + 1
+        ElseIf ch = "}" Then
+            depth = depth - 1
+        End If
+        i = i + 1
+    Loop
+
+    If depth = 0 Then
+        ExtractJsonObject = Mid$(json, startPos, i - startPos)
+    End If
+End Function
+
+' Phase4b_SmokeTest — confirms ResolveLocalSyncedRoot reads info.json
+' successfully and that LocalPathToDropboxPath / DropboxPathToLocalPath
+' round-trip cleanly. Skips with "SKIP" if the desktop client isn't
+' installed (info.json missing) — that's a legitimate environment, not
+' a test failure.
+Public Function Phase4b_SmokeTest() As String
+    On Error GoTo HandleError
+
+    Dim resolved As Boolean
+    resolved = ResolveLocalSyncedRoot()
+
+    Dim root As String
+    root = GetLocalSyncedRoot()
+
+    If Not resolved Or LenB(root) = 0 Then
+        Phase4b_SmokeTest = "SKIP: ResolveLocalSyncedRoot returned False " & _
+            "(Dropbox desktop client not installed, or info.json lacks a " & _
+            "business path). Ingest workflows + Explorer folder-open will " & _
+            "fall back — this is a legitimate runtime state for read-only " & _
+            "test sessions."
+        Exit Function
+    End If
+
+    ' Round-trip a known Dropbox path.
+    Dim dropboxPath As String, localPath As String, backToDropbox As String
+    dropboxPath = "/Company/COMMON/_SCANNER"
+    localPath = DropboxPathToLocalPath(dropboxPath)
+
+    If LenB(localPath) = 0 Then
+        Phase4b_SmokeTest = "FAIL: DropboxPathToLocalPath returned empty for " & dropboxPath
+        Exit Function
+    End If
+
+    backToDropbox = LocalPathToDropboxPath(localPath)
+    If backToDropbox <> dropboxPath Then
+        Phase4b_SmokeTest = "FAIL: round-trip mismatch: " & dropboxPath & _
+            " -> " & localPath & " -> " & backToDropbox
+        Exit Function
+    End If
+
+    ' Verify the synced folder is actually mounted on disk. If the desktop
+    ' client is signed in but hasn't synced /Company yet, this fails — also
+    ' a legitimate transient state.
+    Dim onDisk As String
+    onDisk = ""
+    If Dir$(localPath, vbDirectory) <> "" Then
+        onDisk = "yes"
+    Else
+        onDisk = "no (desktop client may not have synced this path yet)"
+    End If
+
+    Phase4b_SmokeTest = "OK — m_LocalSyncedRoot = " & root & _
+        "; round-trip: " & dropboxPath & " <-> " & localPath & _
+        "; folder on disk: " & onDisk
+    Exit Function
+
+HandleError:
+    Phase4b_SmokeTest = "FAIL: Err=" & Err.Number & " " & Err.Description
 End Function
 
