@@ -2926,6 +2926,113 @@ Public Function Phase3d_SmokeTest() As String
 End Function
 
 ' ============================================================================
+' SECTION 25b — PHASE 4d UPLOAD SMOKE TEST
+' ============================================================================
+' Self-contained end-to-end write test. Creates a small temp file in
+' %TEMP%\TBCMS\, uploads it to /Company/__smoke_test__/upload_<ts>_<guid>.txt
+' via UploadFile, verifies the upload landed via GetMetadata, then deletes
+' the remote test file (and the local temp file) to leave the tenant in its
+' starting state.
+'
+' Requires ALLOW_DROPBOX_WRITES = True. If writes are still gated this
+' returns SKIP with a hint about flipping the constant.
+'
+' Usage:  ? DropboxService.Phase4d_UploadSmokeTest
+Public Function Phase4d_UploadSmokeTest() As String
+    On Error GoTo HandleError
+    Dim stepName As String
+    Dim localPath As String
+    Dim dropboxPath As String
+    Dim content As String
+    Dim ticker As String
+    Dim tempDir As String
+    Dim fso As Object
+    Dim ts As Object
+    Dim found As Boolean, errDetail As String, mdJson As String
+    Dim warnNote As String
+
+    If Not ALLOW_DROPBOX_WRITES Then
+        Phase4d_UploadSmokeTest = _
+            "SKIP: ALLOW_DROPBOX_WRITES = False. Flip the constant in " & _
+            "DropboxService.bas (top of module), re-import, then re-run."
+        Exit Function
+    End If
+
+    stepName = "0.Prereqs.ConfigLoad"
+    InitializeDropboxConfig
+
+    stepName = "0.Prereqs.EnsureValidToken"
+    If Not EnsureValidToken() Then _
+        Err.Raise vbObjectError + 6400, , _
+            "No valid token. Run Phase3b_Pass2_AuthFlowTest first."
+
+    ' (1) Create a small local file in %TEMP%\TBCMS\
+    stepName = "1.WriteLocalTempFile"
+    tempDir = Environ$("TEMP") & "\TBCMS"
+    On Error Resume Next
+    MkDir tempDir
+    Err.Clear
+    On Error GoTo HandleError
+
+    ticker = Format$(Now, "yyyymmdd_hhnnss") & "_" & NewGuid()
+    localPath = tempDir & "\smoketest_" & ticker & ".txt"
+    content = "Phase4d upload smoke test at " & Now() & " - " & ticker
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set ts = fso.CreateTextFile(localPath, True)
+    ts.Write content
+    ts.Close
+    Set ts = Nothing
+
+    ' (2) Upload to /Company/__smoke_test__/
+    stepName = "2.UploadFile"
+    dropboxPath = "/Company/__smoke_test__/upload_" & ticker & ".txt"
+    If Not UploadFile(localPath, dropboxPath, Null, "Phase4d-Test") Then _
+        Err.Raise vbObjectError + 6410, , _
+            "UploadFile returned False for " & dropboxPath & _
+            "; see tblDropboxAuditLog / tblDropboxLog for detail"
+
+    ' (3) GetMetadata — verify the upload landed
+    stepName = "3.VerifyViaGetMetadata"
+    If Not GetMetadata(dropboxPath, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 6420, , _
+            "GetMetadata transport failure for uploaded path: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 6421, , _
+            "GetMetadata reports uploaded path not found: " & dropboxPath
+
+    ' (4) Remote cleanup — delete the test file from Dropbox
+    stepName = "4.DeleteFile"
+    If Not DeleteFile(dropboxPath, Null, "Phase4d-Test") Then _
+        warnNote = " WARN: Remote cleanup failed — " & dropboxPath & _
+                   " was left behind. Check tblDropboxAuditLog."
+
+    ' (5) Local cleanup — best-effort
+    stepName = "5.DeleteLocalTemp"
+    On Error Resume Next
+    fso.DeleteFile localPath, True
+    Err.Clear
+    On Error GoTo HandleError
+
+    Phase4d_UploadSmokeTest = "OK — uploaded " & Len(content) & _
+        " bytes to " & dropboxPath & " and verified; remote deleted." & warnNote
+    Exit Function
+
+HandleError:
+    Dim handlerErrDesc As String
+    handlerErrDesc = Err.Description
+    Phase4d_UploadSmokeTest = "FAIL: Step=" & stepName & "; Err=" & Err.Number & _
+        " " & handlerErrDesc
+    ' Best-effort cleanup so failed runs don't leave artifacts behind.
+    On Error Resume Next
+    If LenB(dropboxPath) > 0 Then DeleteFile dropboxPath, Null, "Phase4d-Test"
+    If LenB(localPath) > 0 Then
+        If fso Is Nothing Then Set fso = CreateObject("Scripting.FileSystemObject")
+        fso.DeleteFile localPath, True
+    End If
+End Function
+
+' ============================================================================
 ' SECTION 26 — STARTUP / SHUTDOWN HOOKS (Phase 3e)
 ' ============================================================================
 ' Form_Open in the Access startup form (frmHome) calls StartupBootstrap to

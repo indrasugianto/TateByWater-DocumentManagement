@@ -13,18 +13,32 @@
 
 ---
 
-## ▶ NEXT SESSION: START HERE (paused 2026-05-15, late session)
+## ▶ NEXT SESSION: START HERE (paused 2026-05-17, end-to-end write verification complete)
 
-**Phase 4 is fully complete. You are between Phase 4 and the Phase 6.5 readiness work (specifically, Deliverable #7).**
+**Phase 4 is fully complete, and the write path is now verified end-to-end against the real Dropbox tenant. You are between Phase 4 and the Phase 6.5 readiness work (specifically, Deliverable #7).**
 
-**What's done across all sessions through 2026-05-15:**
+**What changed this session (2026-05-17):**
 
-- **Phase 3a–3e** — `DropboxService.bas` (3325 lines, sections 1–27). DPAPI, kill-switch, namespace header, audit/local logging, full OAuth code-exchange flow (PowerShell HttpListener + identity + revocation + refresh), read-only API ops (`OpenDocument`, `GetMetadata`, `ListFolder`, `GetTemporaryLink`, `CleanupTempFiles`), gated write API ops (`UploadFile`, `UploadLargeFile`, `MoveFile`, `CopyFile`, `DeleteFile`, `CreateFolder` — every entrypoint calls `GuardWritesEnabled`), startup orchestration (`StartupBootstrap` / `StartupShutdown` wired into `frmHome.Form_Open` / `Form_Unload`), and `ResolveLocalSyncedRoot` (reads `%LOCALAPPDATA%\Dropbox\info.json`) + `LocalPathToDropboxPath` / `DropboxPathToLocalPath` helpers for ingest + Explorer-routing flows. Smoke tests: `Phase3a_SmokeTest`, `Phase3b_Pass1_SmokeTest` / `Pass2_UnitTest` / `Pass2_AuthFlowTest`, `Phase3c_SmokeTest` / `OpenDocumentTest`, `Phase3d_SmokeTest`, `Phase3e_SmokeTest`, `Phase4b_SmokeTest` — all green on the dev machine. Authenticated as `sugianto@tatebywater.com`.
+- **Dropbox desktop client is no longer a deployment prerequisite** (deliberate design decision — see also `memory/feedback_no_dropbox_desktop.md`):
+  - `OpenDocumentFolder` simplified to web-only: stripped the Explorer-first branch, now always opens the Dropbox web URL via `Application.FollowHyperlink`. Users accept the cosmetic "Unsupported path provided" banner Dropbox emits for `/work/` team-namespace deep links.
+  - `GetScannerFolder` simplified to a one-line `return ""` by design. `Office.FileDialog.InitialFileName = ""` opens at the user's last-used folder. The previous `DropboxPathToLocalPath` translation was removed.
+  - `DropboxService.bas` helpers `ResolveLocalSyncedRoot` / `DropboxPathToLocalPath` / `LocalPathToDropboxPath` are kept but no longer invoked from any live `DocumentManagement` flow. They fail closed (return `""` / log "skipped") if `%LOCALAPPDATA%\Dropbox\info.json` is absent.
+  - File-header status block in `DocumentManagement.bas` updated: Phase 4b marked SUPERSEDED.
 
-- **Phase 4a–4d** — `DocumentManagement.bas` (1564 lines). Every document operation delegates to `DropboxService`:
+- **Real-tenant write verification — two new smoke tests added + passed against `/Company`**:
+  - **`DropboxService.Phase4d_UploadSmokeTest`** (Section 25b in `DropboxService.bas`) — self-contained `UploadFile` → `GetMetadata` (verify) → `DeleteFile` (cleanup) cycle against `/Company/__smoke_test__/upload_<ts>_<guid>.txt`. ✅ OK 2026-05-17 (102 bytes round-tripped, audit trail in `tblDropboxAuditLog`). Use this anytime to re-verify the raw upload primitive.
+  - **`DocumentManagement.Phase5_E2E_HappyPathTest(testCaseID)`** (end of `DocumentManagement.bas`) — sequenced run of all three Phase 4d write workflows (`CopyDocumentToClosedFileScan` → `SaveScannedFileAs` → `MoveDocumentByCaseStatus` forward + reverse) with strict cleanup between steps. Step 2 is semi-interactive (SaveAs dialog requires user click). ✅ OK against `CaseID = 30405` (Bold Jr., Estate Planning, KDB — Open case with 0 docs/scans) on 2026-05-17.
+  - **`ALLOW_DROPBOX_WRITES` is back to `False`** in the committed source. To re-run write tests: flip in `DropboxService.bas:71`, save module, run, flip back.
+
+**What's done across all sessions through 2026-05-17:**
+
+- **Phase 3a–3e** — `DropboxService.bas` (~3432 lines after Phase4d_UploadSmokeTest addition, sections 1–27 + 25b). DPAPI, kill-switch, namespace header, audit/local logging, full OAuth code-exchange flow (PowerShell HttpListener + identity + revocation + refresh), read-only API ops (`OpenDocument`, `GetMetadata`, `ListFolder`, `GetTemporaryLink`, `CleanupTempFiles`), gated write API ops (`UploadFile`, `UploadLargeFile`, `MoveFile`, `CopyFile`, `DeleteFile`, `CreateFolder` — every entrypoint calls `GuardWritesEnabled`), startup orchestration (`StartupBootstrap` / `StartupShutdown` wired into `frmHome.Form_Open` / `Form_Unload`). Smoke tests: `Phase3a_SmokeTest`, `Phase3b_Pass1_SmokeTest` / `Pass2_UnitTest` / `Pass2_AuthFlowTest`, `Phase3c_SmokeTest` / `OpenDocumentTest`, `Phase3d_SmokeTest`, `Phase3e_SmokeTest`, `Phase4b_SmokeTest`, `Phase4d_UploadSmokeTest` (new) — all green on the dev machine. Authenticated as `sugianto@tatebywater.com`.
+
+- **Phase 4a–4d** — `DocumentManagement.bas` (~1985 lines after the Phase4 follow-up trims + `Phase5_E2E_HappyPathTest` addition). Every document operation delegates to `DropboxService`:
   - `OpenDocumentFile` → `DropboxService.OpenDocument` (download to `%TEMP%\TBCMS\` + native-app launch). Validated end-to-end against real cases on `awsql2022dev/TateByWater`.
-  - `OpenDocumentFolder` → tries Windows Explorer against the local-synced folder first (best UX, no Dropbox banner), falls back to `GetMetadata` pre-check + Dropbox web URL (`/work/<path>`) for users without the desktop client. The Dropbox "Unsupported path provided" banner is an accepted cosmetic-only artifact of the web-URL fallback path.
-  - `GetDocumentRootFolder` + `GetScannerFolder` → read from `tblDropboxRootConfig` and convert to local Windows paths via `DropboxPathToLocalPath` so `Office.FileDialog` callers continue to work.
+  - `OpenDocumentFolder` → web-only (see "What changed this session" above). `GetMetadata` pre-check still gates the URL launch with a friendly "folder doesn't exist yet" message when applicable.
+  - `GetDocumentRootFolder` → reads `tblDropboxRootConfig.TeamRootPath` and converts via `DropboxPathToLocalPath`. Returns `""` without the desktop client. Zero callers in the project (kept for contract stability).
+  - `GetScannerFolder` → returns `""` by design (see above).
   - `SaveScannedFileAs` → SP-driven destination resolution + override-with-confirmation Save-As + size-routed `UploadFile`/`UploadLargeFile` + `SaveCaseDocument` (G13 token guard) + orphan-file compensation policy (compensating `DeleteFile` on SP failure; `tblDropboxOrphanQueue` INSERT via private `QueueOrphanFile` helper if the delete also fails). Closed Final special-case copies to Closed File Scans via `CopyFile`.
   - `MoveDocumentByCaseStatus` → G2 caller: `DropboxService.MoveFile` + new `spMoveDocumentFolder(@CaseID, @OldFolderPath, @NewFolderPath)` + three-branch SP outcome handling (both>0 commit, exactly-one-zero warn+commit, throw → reverse-move compensation with CRITICAL-state surface if the reverse also fails).
   - `CopyDocumentToClosedFileScan` → `DropboxService.CopyFile` against `<ClosedFileScanRoot>/<basename(source)>`.
@@ -41,8 +55,8 @@
 - **Rollback safety pattern (file-internal)** — every rewired function in `DocumentManagement.bas` and every rewritten SP in `Dropbox-Migration-SQL-Install.sql` is preceded by a `LEGACY (pre-Phase 4x)` commented-out block holding the original body. To roll back a single function: comment out the active version, uncomment the LEGACY block, re-import / re-run. Documented in the file header of each file.
 
 **State of artifacts on disk (committed to GitHub, branch `main`):**
-- `Dropbox-Migration/DropboxService.bas` — 3325 lines, sections 1–27. **No further changes anticipated for Phases 5–6.** Phase 5 + Phase 6 deliverables are mostly admin / SP / sign-off work, not VBA.
-- `Dropbox-Migration/DocumentManagement.bas` — 1564 lines, 20 public functions (all SP wrappers preserved with stable signatures + 5 workflow functions rewired + 2 config functions rewired) + 1 private helper. **Phase 5 should require no further VBA changes here** — all 8 form callers in the plan's Phase 4 table call the same public functions with the same signatures as before.
+- `Dropbox-Migration/DropboxService.bas` — ~3432 lines, sections 1–27 (plus Section 25b for `Phase4d_UploadSmokeTest`). No further changes anticipated for Phases 5–6 _besides_ smoke tests; production code is stable.
+- `Dropbox-Migration/DocumentManagement.bas` — ~1985 lines, 20 public functions (all SP wrappers preserved with stable signatures + 5 workflow functions rewired + 2 config functions rewired) + 1 private helper + `Phase5_E2E_HappyPathTest` at the end. All 8 form callers in the plan's Phase 4 table call the same public functions with the same signatures as before.
 - `Dropbox-Migration/Dropbox-Migration-SQL-Install.sql` — 2251 lines, Sections 1–8. Idempotent end-to-end installer.
 
 **Next concrete step — Deliverable #7 (the pre-cutover `tblDropboxVerificationReport` population script):**
@@ -68,8 +82,11 @@ This deliverable is **mostly read-only against Dropbox** (only `files/get_metada
 1. (Optional, ~5s) `? DropboxService.Phase3c_SmokeTest` — auto-validates the read-only ops still work.
 2. (Optional, ~1s) `? DropboxService.Phase3d_SmokeTest` — re-confirms every write entrypoint guard fires.
 3. (Optional, ~3s) `? DropboxService.Phase3e_SmokeTest` — re-runs the startup bootstrap and validates `IsTokenLoaded` / `GetDropboxAccountEmail`.
-4. (Optional) `? DropboxService.Phase4b_SmokeTest` — confirms `m_LocalSyncedRoot` resolution. Returns `SKIP` on machines without the Dropbox desktop client; `OK` once installed.
+4. (Optional) `? DropboxService.Phase4b_SmokeTest` — returns `SKIP` now that the desktop-client routing has been retired (this is the expected result; the helpers still compile but aren't wired up).
 5. Confirm the current token is still loaded: `? DropboxService.IsTokenLoaded()` should return `True`. If False, just reopen `TBCMS_Test.accdb` — `frmHome.Form_Open` runs the bootstrap automatically.
+6. (Optional, write-path re-verification — requires `ALLOW_DROPBOX_WRITES = True` flip + revert):
+   - `? DropboxService.Phase4d_UploadSmokeTest` — single-shot real upload/verify/delete against `/Company/__smoke_test__/`.
+   - `? DocumentManagement.Phase5_E2E_HappyPathTest(30405)` — three-workflow end-to-end on the Bold Jr. test case (semi-interactive: SaveAs dialog on step 2). Pick a different `testCaseID` if 30405 has accumulated documents since 2026-05-17 — the pre-flight enforces `tblCaseDocuments` count = 0.
 
 **Open decisions still blocking later phases (unchanged from prior session):**
 - **D1**: write-flow validation strategy (carved-out `/Company-Test/`, sandbox team, or production dry-run) — blocks Phase 6.5

@@ -11,24 +11,25 @@ Dim foo
 '                             (download to %TEMP%\TBCMS\ + native-app launch)
 '     OpenDocumentFolder   -> Dropbox web URL (Application.FollowHyperlink)
 '
-'   Phase 4b — Config layer + local-synced-root routing (DONE):
-'     OpenDocumentFolder   -> Windows Explorer against the local-synced
-'                             folder when the desktop client is signed in,
-'                             with fallback to the Dropbox web URL.
-'                             Eliminates the "Unsupported path provided"
-'                             warning Dropbox emits for team-namespace
-'                             deep-links via /home/ or /work/.
-'     GetDocumentRootFolder -> read tblDropboxRootConfig.TeamRootPath +
-'                              DropboxService.DropboxPathToLocalPath
-'                              (legacy: tblDocumentRootDirectory).
-'                              Currently has zero callers in the project
-'                              (kept for contract stability).
-'     GetScannerFolder     -> read tblDropboxRootConfig.ScannerDirectory +
-'                             DropboxService.DropboxPathToLocalPath.
-'                             Two callers: Intakes.cmdScan_Click + the
-'                             frmClientLedger scan flow. Both consume the
-'                             local Windows path as Office.FileDialog
-'                             InitialFileName.
+'   Phase 4b — Config layer + local-synced-root routing (SUPERSEDED):
+'     The Dropbox desktop client is no longer a deployment prerequisite,
+'     so the local-synced-root routing introduced here has been removed
+'     from the live caller paths. Current behavior:
+'       OpenDocumentFolder   -> Dropbox web URL (only). Users accept the
+'                               cosmetic "Unsupported path provided" banner
+'                               Dropbox emits for /work/ team-namespace
+'                               deep-links.
+'       GetDocumentRootFolder -> reads tblDropboxRootConfig.TeamRootPath +
+'                                DropboxService.DropboxPathToLocalPath.
+'                                Zero callers (kept for contract stability);
+'                                returns "" without the desktop client.
+'       GetScannerFolder     -> returns "" by design. Office.FileDialog
+'                               opens at the user's last-used folder.
+'                               Two callers: Intakes.cmdScan_Click +
+'                               frmClientLedger scan flow.
+'     DropboxService.DropboxPathToLocalPath / LocalPathToDropboxPath /
+'     ResolveLocalSyncedRoot remain in place for future use but are no
+'     longer invoked from the active DocumentManagement flows.
 '
 '   Phase 4c — Stored procedure rewrites (DONE in Dropbox-Migration-SQL-
 '              Install.sql Section 8). Live on awsql2022dev/TateByWater.
@@ -298,46 +299,18 @@ End Function
 ' ============================================================================
 
 
-' --- Phase 4b rewire --------------------------------------------------------
-' Reads ScannerDirectory from tblDropboxRootConfig (e.g.,
-' /Company/COMMON/_SCANNER) and converts to the local-synced Windows path
-' so callers — Intakes.cmdScan_Click + frmClientLedger's scan flow — can
-' pass it to Office.FileDialog as the InitialFileName.
+' --- Phase 4 follow-up: returns "" by design -------------------------------
+' Office.FileDialog cannot navigate Dropbox API paths, and the firm has
+' opted not to require the Dropbox desktop client — so there is no Windows
+' path to hand back. Callers (Intakes.cmdScan_Click + frmClientLedger scan
+' flow) pass "" to FileDialog.InitialFileName, which opens at the user's
+' last-used folder.
 '
-' Returns "" when the desktop client isn't installed/signed in. Callers
-' fall back to whatever default Office.FileDialog picks (typically the
-' user's last-used folder).
+' Kept as a function (rather than deleted) so callers continue to compile.
+' If a local-path strategy is reintroduced later (e.g. a Windows path
+' column in tblDropboxRootConfig), wire it back through this function.
 Public Function GetScannerFolder() As String
-On Error GoTo Err_Handler
-Dim rv As String
-Dim cn As ADODB.Connection
-Dim rs As ADODB.Recordset
-Dim sql As String
-Dim dropboxPath As String
-
-    Set cn = New ADODB.Connection
-    cn.Open PcaGetConnnectionString
-
-    sql = "SELECT ScannerDirectory FROM dbo.tblDropboxRootConfig WHERE ConfigID = 1"
-
-    Set rs = cn.Execute(sql)
-
-    If Not rs.EOF() Then
-        dropboxPath = pcaConvertNulls(rs("ScannerDirectory"), "")
-    End If
-
-    If LenB(dropboxPath) > 0 Then
-        rv = DropboxService.DropboxPathToLocalPath(dropboxPath)
-    Else
-        rv = ""
-    End If
-Exit_Handler:
-    GetScannerFolder = rv
-    Exit Function
-Err_Handler:
-    rv = ""
-    foo = pcaStdErrMsg(Err, Error)
-    Resume Exit_Handler
+    GetScannerFolder = ""
 End Function
 
 
@@ -967,23 +940,20 @@ End Function
 ' ============================================================================
 
 
-' --- Phase 4b rewire --------------------------------------------------------
-' Folder open: route through Windows Explorer against the local
-' Dropbox-synced folder when the desktop client has resolved the team root
-' on disk. Falls back to the Dropbox web URL when:
-'   - The desktop client isn't installed/signed in (m_LocalSyncedRoot empty)
-'   - The local synced folder doesn't exist on disk (case never synced)
+' --- Phase 4 follow-up: web-only folder open --------------------------------
+' Open the folder via the Dropbox web URL. Pre-check existence with
+' GetMetadata so we can give a friendlier "folder doesn't exist yet"
+' message instead of dropping the user into a broken Dropbox tab.
 '
-' Explorer routing avoids the "Unsupported path provided" warning banner
-' Dropbox shows for any /home/ or /work/ deep-link into team-namespace
-' content, and gives attorneys the familiar File Explorer UX they used in
-' the S:\ days.
+' Design decision: do NOT route through Windows Explorer / the local-
+' synced folder. The Dropbox desktop client is not a deployment
+' prerequisite. Users accept the cosmetic "Unsupported path provided"
+' banner Dropbox shows for /work/ team-namespace deep links.
 Public Function OpenDocumentFolder(ByVal CaseID As Variant, ByVal DocumentType As Variant) As Boolean
 On Error GoTo Err_Handler
 Dim rv As Boolean
 Dim FolderName As String
 Dim webUrl As String
-Dim localPath As String
 Dim pathForCheck As String
 Dim found As Boolean
 Dim errDetail As String
@@ -1007,23 +977,6 @@ Dim apiOk As Boolean
             MsgBox "Folder path is not a Dropbox path (got: " & FolderName & "). " & _
                    "Contact IT — this indicates a configuration issue.", vbExclamation, "TB CMS"
         Else
-            ' Try the local-synced folder first (best UX — no browser banner).
-            localPath = DropboxService.DropboxPathToLocalPath(FolderName)
-            If LenB(localPath) > 0 Then
-                ' Strip trailing slash that DropboxPathToLocalPath may produce
-                ' from the trailing '/' on FolderName.
-                If Right$(localPath, 1) = "\" Then
-                    localPath = Left$(localPath, Len(localPath) - 1)
-                End If
-                If Dir$(localPath, vbDirectory) <> "" Then
-                    ' Local folder is synced and exists — open Explorer there.
-                    Shell "explorer.exe """ & localPath & """", vbNormalFocus
-                    rv = True
-                    GoTo Exit_Handler
-                End If
-            End If
-
-            ' Fallback path: pre-check existence in Dropbox, then web URL.
             pathForCheck = FolderName
             If Right$(pathForCheck, 1) = "/" Then
                 pathForCheck = Left$(pathForCheck, Len(pathForCheck) - 1)
@@ -1569,4 +1522,384 @@ Err_Handler:
     rv = ""
     foo = pcaStdErrMsg(Err, Error)
     Resume Exit_Handler
+End Function
+
+
+' ============================================================================
+' PHASE 5 — END-TO-END HAPPY-PATH WORKFLOW TEST
+' ============================================================================
+' Self-contained sequenced test of all three Phase 4d write workflows on a
+' designated test case, with strict cleanup between steps:
+'
+'   Step 1  CopyDocumentToClosedFileScan
+'           - Pre-stages: uploads a dummy file into the open folder so the
+'             source actually exists in Dropbox (cases with 0 documents have
+'             no folder in Dropbox yet)
+'           - Calls CopyDocumentToClosedFileScan
+'           - Verifies: destination folder appears under
+'             /Company/Closed File Scans/TB/<yr>/<caseFolder>
+'           - Cleans up: deletes the copy + the staged open folder
+'
+'   Step 2  SaveScannedFileAs (semi-interactive — user clicks SaveAs dialog)
+'           - Creates a local temp file
+'           - Calls SaveScannedFileAs(CaseID, "Case Notes", local, "Open")
+'           - Verifies: file lands in the open folder + a tblCaseDocuments
+'             row was inserted
+'           - Cleans up: deletes file + row + the open folder
+'
+'   Step 3  MoveDocumentByCaseStatus (forward + reverse)
+'           - Pre-stages: uploads a stub file + INSERTs a matching
+'             tblCaseDocuments row so the G2 SP has 1 row to update
+'             (so we hit the exactly-one-zero "Success" branch instead of
+'             the both-zero throw branch)
+'           - Calls MoveDocumentByCaseStatus(CaseID, "Closed")
+'           - Verifies: folder relocated to _CLOSED, row path updated
+'           - Calls MoveDocumentByCaseStatus(CaseID, "Open")
+'           - Verifies: folder back, row reverted
+'           - Cleans up: deletes stub file + row + the open folder
+'
+' Requires:
+'   - DropboxService.ALLOW_DROPBOX_WRITES = True
+'   - A valid Dropbox token
+'   - testCaseID must be an Open case with 0 rows in tblCaseDocuments AND
+'     tblScans (pre-flight enforces the tblCaseDocuments check)
+'
+' Returns a multi-line summary. On failure, attempts best-effort cleanup
+' (including reversing a Move that already went to Closed) before returning.
+'
+' Usage from VBA Immediate window:
+'   ? DocumentManagement.Phase5_E2E_HappyPathTest(30405)
+Public Function Phase5_E2E_HappyPathTest(ByVal testCaseID As Long) As String
+    Const STUB_DOCTYPE As String = "Case Notes"
+    Const CALLER_TAG As String = "Phase5-Test"
+
+    Dim resultLines As String
+    Dim stepName As String
+
+    Dim cn As ADODB.Connection
+    Dim rs As ADODB.Recordset
+    Dim fso As Object
+    Dim ticker As String
+    Dim found As Boolean
+    Dim errDetail As String
+    Dim mdJson As String
+    Dim actualPath As String
+
+    Dim openFolder As String
+    Dim closedFolder As String
+    Dim closedScanFolder As String
+    Dim caseFolderBase As String
+
+    ' Step 1 state
+    Dim step1_OpenFolderStaged As Boolean
+    Dim step1_StagedFile As String
+    Dim step1_CopyDest As String
+    Dim step1_CopyMade As Boolean
+
+    ' Step 2 state
+    Dim step2_LocalTemp As String
+    Dim step2_UploadedPath As String
+    Dim step2_DocID As Long
+
+    ' Step 3 state
+    Dim step3_StubFile As String
+    Dim step3_StubRowID As Long
+    Dim step3_FolderInClosed As Boolean
+
+    On Error GoTo HandleError
+    resultLines = "Phase5_E2E_HappyPathTest CaseID=" & testCaseID & vbCrLf
+
+    ' --- 0. Pre-flight ----------------------------------------------------
+    stepName = "0.PreFlight.WritesGate"
+    If Not DropboxService.ALLOW_DROPBOX_WRITES Then
+        Phase5_E2E_HappyPathTest = _
+            "SKIP: ALLOW_DROPBOX_WRITES = False. Flip the constant in " & _
+            "DropboxService.bas, re-import, then re-run."
+        Exit Function
+    End If
+
+    stepName = "0.PreFlight.ConfigLoad"
+    DropboxService.InitializeDropboxConfig
+
+    stepName = "0.PreFlight.EnsureValidToken"
+    If Not DropboxService.EnsureValidToken() Then _
+        Err.Raise vbObjectError + 7002, , _
+            "No valid Dropbox token. Run Phase3b_Pass2_AuthFlowTest first."
+
+    stepName = "0.PreFlight.ResolvePaths"
+    openFolder = GetDocumentFolderName(testCaseID, "General")
+    closedFolder = GetClosedDocumentFolderName(testCaseID, "General")
+    closedScanFolder = GetClosedFileScanFolderName(testCaseID, "General")
+    If pcaempty(openFolder) Or pcaempty(closedFolder) Or pcaempty(closedScanFolder) Then _
+        Err.Raise vbObjectError + 7000, , _
+            "Path resolution returned empty. open=[" & openFolder & _
+            "] closed=[" & closedFolder & "] closedScan=[" & closedScanFolder & "]"
+
+    If Right$(openFolder, 1) = "/" Then openFolder = Left$(openFolder, Len(openFolder) - 1)
+    If Right$(closedFolder, 1) = "/" Then closedFolder = Left$(closedFolder, Len(closedFolder) - 1)
+    If Right$(closedScanFolder, 1) = "/" Then closedScanFolder = Left$(closedScanFolder, Len(closedScanFolder) - 1)
+    caseFolderBase = Mid$(openFolder, InStrRev(openFolder, "/") + 1)
+
+    resultLines = resultLines & _
+        "  open  : " & openFolder & vbCrLf & _
+        "  closed: " & closedFolder & vbCrLf & _
+        "  scan  : " & closedScanFolder & vbCrLf
+
+    stepName = "0.PreFlight.StartingState"
+    Set cn = New ADODB.Connection
+    cn.Open PcaGetConnnectionString
+    Set rs = cn.Execute("SELECT COUNT(*) AS N FROM dbo.tblCaseDocuments WHERE CaseID = " & testCaseID)
+    If CLng(pcaConvertNulls(rs("N"), 0)) <> 0 Then _
+        Err.Raise vbObjectError + 7001, , _
+            "Pre-flight: tblCaseDocuments has " & rs("N") & " rows for CaseID " & _
+            testCaseID & "; expected 0. Pick a different case."
+    rs.Close
+
+    ticker = Format$(Now, "yyyymmdd_hhnnss")
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    On Error Resume Next
+    MkDir Environ$("TEMP") & "\TBCMS"
+    Err.Clear
+    On Error GoTo HandleError
+
+    ' --- 1. CopyDocumentToClosedFileScan ----------------------------------
+    stepName = "1.Setup.UploadStagedFile"
+    Dim step1Local As String
+    step1Local = Environ$("TEMP") & "\TBCMS\phase5_step1_stage_" & ticker & ".txt"
+    With fso.CreateTextFile(step1Local, True)
+        .Write "phase5 step1 stage at " & Now()
+        .Close
+    End With
+    step1_StagedFile = openFolder & "/__phase5_step1_stage__.txt"
+    If Not DropboxService.UploadFile(step1Local, step1_StagedFile, Null, CALLER_TAG) Then _
+        Err.Raise vbObjectError + 7010, , _
+            "UploadFile failed for step 1 stage; see tblDropboxAuditLog"
+    step1_OpenFolderStaged = True
+    On Error Resume Next
+    fso.DeleteFile step1Local, True
+    Err.Clear
+    On Error GoTo HandleError
+
+    stepName = "1.Run.CopyDocumentToClosedFileScan"
+    If Not CopyDocumentToClosedFileScan(testCaseID) Then _
+        Err.Raise vbObjectError + 7011, , "CopyDocumentToClosedFileScan returned False"
+    step1_CopyDest = closedScanFolder & "/" & caseFolderBase
+    step1_CopyMade = True
+
+    stepName = "1.Verify.CopyDestExists"
+    If Not DropboxService.GetMetadata(step1_CopyDest, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 7012, , _
+            "GetMetadata transport failure for copy dest: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 7013, , "Copy destination not found: " & step1_CopyDest
+    resultLines = resultLines & "Step 1 OK — copy at: " & step1_CopyDest & vbCrLf
+
+    stepName = "1.Cleanup.DeleteCopy"
+    If Not DropboxService.DeleteFile(step1_CopyDest, Null, CALLER_TAG) Then _
+        Err.Raise vbObjectError + 7014, , "Failed to delete copy at " & step1_CopyDest
+    step1_CopyMade = False
+
+    stepName = "1.Cleanup.DeleteStagedFolder"
+    If Not DropboxService.DeleteFile(openFolder, Null, CALLER_TAG) Then _
+        Err.Raise vbObjectError + 7015, , "Failed to delete staged open folder " & openFolder
+    step1_OpenFolderStaged = False
+    step1_StagedFile = ""
+
+    ' --- 2. SaveScannedFileAs (semi-interactive) --------------------------
+    stepName = "2.Setup.LocalTempFile"
+    step2_LocalTemp = Environ$("TEMP") & "\TBCMS\phase5_step2_source_" & ticker & ".txt"
+    With fso.CreateTextFile(step2_LocalTemp, True)
+        .Write "phase5 step2 source content at " & Now()
+        .Close
+    End With
+
+    stepName = "2.Run.SaveScannedFileAs"
+    resultLines = resultLines & _
+        "Step 2 — invoking SaveScannedFileAs. You will see a SaveAs dialog; " & _
+        "accept the suggested filename to proceed (cancel will abort the test)." & vbCrLf
+    If Not SaveScannedFileAs(testCaseID, STUB_DOCTYPE, step2_LocalTemp, "Open") Then _
+        Err.Raise vbObjectError + 7020, , "SaveScannedFileAs returned False"
+
+    stepName = "2.Verify.tblCaseDocumentsRow"
+    Set rs = cn.Execute( _
+        "SELECT TOP 1 CaseDocumentID, DocumentFileName FROM dbo.tblCaseDocuments " & _
+        "WHERE CaseID = " & testCaseID & _
+        " AND DocumentType = " & pcaAddQuotes(STUB_DOCTYPE) & _
+        " ORDER BY CaseDocumentID DESC")
+    If rs.EOF Then _
+        Err.Raise vbObjectError + 7021, , _
+            "No tblCaseDocuments row found for CaseID " & testCaseID & _
+            " (did you cancel the SaveAs dialog?)"
+    step2_DocID = CLng(rs("CaseDocumentID"))
+    step2_UploadedPath = pcaConvertNulls(rs("DocumentFileName"), "")
+    rs.Close
+
+    stepName = "2.Verify.UploadLanded"
+    If Not DropboxService.GetMetadata(step2_UploadedPath, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 7022, , _
+            "GetMetadata transport failure for uploaded path: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 7023, , _
+            "Uploaded file not found at " & step2_UploadedPath
+    resultLines = resultLines & _
+        "Step 2 OK — uploaded to: " & step2_UploadedPath & _
+        " (CaseDocumentID=" & step2_DocID & ")" & vbCrLf
+
+    stepName = "2.Cleanup.DeleteFromDropbox"
+    If Not DropboxService.DeleteFile(step2_UploadedPath, Null, CALLER_TAG) Then _
+        Err.Raise vbObjectError + 7024, , _
+            "Failed to delete uploaded file from Dropbox: " & step2_UploadedPath
+    step2_UploadedPath = ""
+
+    stepName = "2.Cleanup.DeleteOpenFolder"
+    ' Best-effort: the open folder may already be empty/auto-removed.
+    On Error Resume Next
+    DropboxService.DeleteFile openFolder, Null, CALLER_TAG
+    Err.Clear
+    On Error GoTo HandleError
+
+    stepName = "2.Cleanup.DeleteRow"
+    cn.Execute "DELETE FROM dbo.tblCaseDocuments WHERE CaseDocumentID = " & step2_DocID
+    step2_DocID = 0
+
+    On Error Resume Next
+    fso.DeleteFile step2_LocalTemp, True
+    Err.Clear
+    On Error GoTo HandleError
+    step2_LocalTemp = ""
+
+    ' --- 3. MoveDocumentByCaseStatus (forward + reverse) ------------------
+    stepName = "3.Setup.UploadStubFile"
+    Dim step3Local As String
+    step3Local = Environ$("TEMP") & "\TBCMS\phase5_step3_stub_" & ticker & ".txt"
+    With fso.CreateTextFile(step3Local, True)
+        .Write "phase5 step3 stub at " & Now()
+        .Close
+    End With
+    step3_StubFile = openFolder & "/__phase5_step3_stub__.txt"
+    If Not DropboxService.UploadFile(step3Local, step3_StubFile, Null, CALLER_TAG) Then _
+        Err.Raise vbObjectError + 7030, , "Stub UploadFile failed"
+    On Error Resume Next
+    fso.DeleteFile step3Local, True
+    Err.Clear
+    On Error GoTo HandleError
+
+    stepName = "3.Setup.InsertStubRow"
+    cn.Execute _
+        "INSERT INTO dbo.tblCaseDocuments (CaseID, DocumentType, DocumentFileName, CreatedOn) " & _
+        "VALUES (" & testCaseID & ", " & pcaAddQuotes(STUB_DOCTYPE) & ", " & _
+        pcaAddQuotes(step3_StubFile) & ", GETDATE())"
+    Set rs = cn.Execute("SELECT CAST(@@IDENTITY AS int) AS NewID")
+    step3_StubRowID = CLng(rs("NewID"))
+    rs.Close
+
+    stepName = "3.Run.MoveToClosed"
+    If Not MoveDocumentByCaseStatus(testCaseID, "Closed") Then _
+        Err.Raise vbObjectError + 7031, , _
+            "MoveDocumentByCaseStatus(Closed) returned False"
+    step3_FolderInClosed = True
+
+    stepName = "3.Verify.AfterMoveToClosed"
+    Dim expectedClosedFile As String
+    expectedClosedFile = Replace(step3_StubFile, openFolder, closedFolder)
+    If Not DropboxService.GetMetadata(expectedClosedFile, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 7032, , _
+            "GetMetadata transport failure post-MoveToClosed: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 7033, , _
+            "Stub file not at expected closed path after move: " & expectedClosedFile
+
+    Set rs = cn.Execute( _
+        "SELECT DocumentFileName FROM dbo.tblCaseDocuments WHERE CaseDocumentID = " & step3_StubRowID)
+    actualPath = pcaConvertNulls(rs("DocumentFileName"), "")
+    rs.Close
+    If actualPath <> expectedClosedFile Then _
+        Err.Raise vbObjectError + 7034, , _
+            "tblCaseDocuments path not updated to closed. Expected=[" & _
+            expectedClosedFile & "] Got=[" & actualPath & "]"
+    resultLines = resultLines & _
+        "Step 3a OK — Move(Closed): folder + row at " & expectedClosedFile & vbCrLf
+
+    stepName = "3.Run.MoveBackToOpen"
+    If Not MoveDocumentByCaseStatus(testCaseID, "Open") Then _
+        Err.Raise vbObjectError + 7035, , _
+            "MoveDocumentByCaseStatus(Open) returned False"
+    step3_FolderInClosed = False
+
+    stepName = "3.Verify.AfterMoveToOpen"
+    If Not DropboxService.GetMetadata(step3_StubFile, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 7036, , _
+            "GetMetadata transport failure post-MoveToOpen: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 7037, , _
+            "Stub file not at expected open path after revert: " & step3_StubFile
+
+    Set rs = cn.Execute( _
+        "SELECT DocumentFileName FROM dbo.tblCaseDocuments WHERE CaseDocumentID = " & step3_StubRowID)
+    actualPath = pcaConvertNulls(rs("DocumentFileName"), "")
+    rs.Close
+    If actualPath <> step3_StubFile Then _
+        Err.Raise vbObjectError + 7038, , _
+            "tblCaseDocuments path not reverted to open. Expected=[" & _
+            step3_StubFile & "] Got=[" & actualPath & "]"
+    resultLines = resultLines & _
+        "Step 3b OK — Move(Open): folder + row reverted to " & step3_StubFile & vbCrLf
+
+    stepName = "3.Cleanup.DeleteStubRow"
+    cn.Execute "DELETE FROM dbo.tblCaseDocuments WHERE CaseDocumentID = " & step3_StubRowID
+    step3_StubRowID = 0
+
+    stepName = "3.Cleanup.DeleteStubFolder"
+    If Not DropboxService.DeleteFile(openFolder, Null, CALLER_TAG) Then _
+        Err.Raise vbObjectError + 7039, , _
+            "Failed to delete open folder " & openFolder
+    step3_StubFile = ""
+
+    cn.Close
+    Set cn = Nothing
+
+    resultLines = resultLines & vbCrLf & "OK — all 3 workflows passed."
+    Phase5_E2E_HappyPathTest = resultLines
+    Exit Function
+
+HandleError:
+    Dim errNum As Long, errDesc As String
+    errNum = Err.Number
+    errDesc = Err.Description
+
+    On Error Resume Next
+
+    ' Step 3 cleanup
+    If step3_FolderInClosed Then
+        ' Forward move went through; try to put folder back to Open
+        MoveDocumentByCaseStatus testCaseID, "Open"
+    End If
+    If step3_StubRowID > 0 And Not cn Is Nothing Then
+        cn.Execute "DELETE FROM dbo.tblCaseDocuments WHERE CaseDocumentID = " & step3_StubRowID
+    End If
+    If LenB(step3_StubFile) > 0 Then _
+        DropboxService.DeleteFile step3_StubFile, Null, CALLER_TAG & "-Cleanup"
+
+    ' Step 2 cleanup
+    If LenB(step2_UploadedPath) > 0 Then _
+        DropboxService.DeleteFile step2_UploadedPath, Null, CALLER_TAG & "-Cleanup"
+    If step2_DocID > 0 And Not cn Is Nothing Then
+        cn.Execute "DELETE FROM dbo.tblCaseDocuments WHERE CaseDocumentID = " & step2_DocID
+    End If
+    If LenB(step2_LocalTemp) > 0 And Not fso Is Nothing Then _
+        fso.DeleteFile step2_LocalTemp, True
+
+    ' Step 1 cleanup
+    If step1_CopyMade And LenB(step1_CopyDest) > 0 Then _
+        DropboxService.DeleteFile step1_CopyDest, Null, CALLER_TAG & "-Cleanup"
+    If step1_OpenFolderStaged And LenB(openFolder) > 0 Then _
+        DropboxService.DeleteFile openFolder, Null, CALLER_TAG & "-Cleanup"
+
+    If Not cn Is Nothing Then
+        If cn.State = adStateOpen Then cn.Close
+        Set cn = Nothing
+    End If
+
+    Phase5_E2E_HappyPathTest = resultLines & vbCrLf & _
+        "FAIL at " & stepName & ": Err=" & errNum & " " & errDesc
 End Function
