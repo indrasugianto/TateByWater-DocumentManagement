@@ -72,8 +72,6 @@
 --      B-4, B-6, B-7, B-8 before Phase 7 verification runs.
 -- =============================================================================
 
-use TateByWater;
-go
 
 set xact_abort on;
 set nocount on;
