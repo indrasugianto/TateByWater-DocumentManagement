@@ -13,9 +13,11 @@
 
 ---
 
-## ▶ NEXT SESSION: START HERE (paused 2026-06-03, OAuth hardened for locked-down workstations; next = Deliverable #7)
+## ▶ NEXT SESSION: START HERE (paused 2026-06-03 — OAuth fix committed; create-folder feature on disk, NOT yet committed/verified)
 
-**Phase 4 is fully complete, the write path is verified end-to-end against the real Dropbox tenant, and the OAuth startup flow is now hardened for the firm's locked-down, non-admin workstations. You are between Phase 4 and the Phase 6.5 readiness work (specifically, Deliverable #7). The next concrete step is unchanged: Deliverable #7.**
+**Phase 4 is fully complete and the write path is verified end-to-end. This session did two things: (1) hardened the OAuth startup flow for locked-down workstations — *committed and verified* (commit `ea945a3`); and (2) implemented a user-facing create-folder feature — *on disk, NOT committed and NOT yet verified* (needs a kill-switch flip to test). The next concrete step is: verify + commit the create-folder feature, then resume Deliverable #7.**
+
+> ⚠️ **Uncommitted work in progress.** `DocumentManagement.bas` and `DropboxService.bas` have create-folder changes in the working tree that are **not committed**. Verify them (steps below) and commit before doing anything else, or `git stash`/review if resuming cold. `ALLOW_DROPBOX_WRITES` is `False` on disk (correct).
 
 **What changed this session (2026-06-03) — OAuth hardened for locked-down, non-admin workstations:**
 
@@ -30,6 +32,26 @@ Fixes (committed to `DropboxService.bas`):
 3. **`StartupBootstrap` error handler** now captures `Err.Number`/`Err.Description` into locals *before* `LogLocal` runs (its trailing `Err.Clear` had been blanking the surfaced message — which is why the first error box showed a bare colon).
 
 Verified: the tester re-authenticated via manual-paste + `explorer.exe`; a fresh token is now stored under their own profile and subsequent launches `LoadTokens` cleanly. **Rollout implication:** the whole firm runs locked-down workstations, so `USE_LOCAL_LISTENER = False` + the `explorer.exe` launcher **must carry into the production `.accde` build**, and `http://localhost` must stay registered in the Dropbox App Console (see new **G27**). To recover the real error from any future startup failure, read the latest `tblDropboxLog` Error row (it captures `Err=<n> <desc>` before any clear).
+
+**Also this session (2026-06-03) — create-folder feature ⚠️ ON DISK, NOT COMMITTED, NOT YET VERIFIED:**
+
+Restored the legacy "create a new folder" capability for the Dropbox world. Grounded in the extract at `database_assessment/TateByWater-CMS/extract/` (now present): the `cmdCreateFolder` / `cmdCreateFolderSub` buttons on `frmClientLedger` don't `MkDir` — they call `OpenDocumentFolder`, and the **original** `OpenDocumentFolder` ([extract DocumentManagement.txt:552](../database_assessment/TateByWater-CMS/extract/vba/modules/DocumentManagement.txt)) was a *create-on-demand-with-confirmation* function ("Folder doesn't exist. Do you want to create it?" → `MkDir` → open). The Phase-4 rewire had dropped the create step (web-only, read-only).
+
+Decisions taken (with the user): **scope = faithful legacy restore** (create-on-demand lives inside `OpenDocumentFolder`, so all folder-open buttons offer it — zero form changes; the 5-root-type block stays in the form handler where it already is); **target = test now** (flip `ALLOW_DROPBOX_WRITES` to verify).
+
+Changes on disk (uncommitted):
+- `DocumentManagement.bas` → `OpenDocumentFolder`: on a confirmed-missing folder (GetMetadata not-found), prompt → `DropboxService.CreateFolder(pathForCheck)` (SP-resolved path, never built in VBA) → open via `explorer.exe`. Single `doOpen`-gated open site. `Err_Handler` now intercepts the write-guard (`vbObjectError + 6001`) with the friendly "writes disabled" message. Header status block updated. This is a write op now (was read-only), gated by `ALLOW_DROPBOX_WRITES`.
+- `DropboxService.bas` → new **`Phase4e_CreateFolderSmokeTest`** (Section 25c): create → GetMetadata-verify → idempotent re-create → delete, all under `/Company/__smoke_test__/`, touching no real case folders. `DropboxService.CreateFolder` itself already existed (Section 24.6) — only the smoke test is new.
+
+**To verify + finish (do this first when resuming):**
+1. Re-import **both** modules → Debug → Compile.
+2. Flip `ALLOW_DROPBOX_WRITES = True` (top of `DropboxService.bas`), re-import `DropboxService.bas`, compile.
+3. `? DropboxService.Phase4e_CreateFolderSmokeTest` → expect `OK — created + verified + idempotent-create …; remote deleted.`
+4. UI: on `frmClientLedger` pick a case + doc-type with no folder yet → **Create Sub-folder** → **Yes** → it creates + opens. It writes a real empty folder into `/Company` (policy-read-only in test) — delete it after via `? DropboxService.DeleteFile("<path>")`.
+5. **Flip `ALLOW_DROPBOX_WRITES` back to `False`**, re-import, compile.
+6. Commit + push (suggested: `feat: G27 — restore create-on-demand folder creation in OpenDocumentFolder + Phase4e smoke test`). Update this block to mark the feature verified+committed.
+
+Note: gated builds (writes off) show a friendly "writes disabled" message on create; the button may also show its generic "Fail to open folder…" (handler returns False on the guard, same as other write flows). Harmless. `create_folder_v2` creates missing parents and treats already-exists as success.
 
 **What changed last session (2026-05-17):**
 

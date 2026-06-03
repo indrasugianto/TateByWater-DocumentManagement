@@ -3076,6 +3076,86 @@ HandleError:
 End Function
 
 ' ============================================================================
+' SECTION 25c — CREATE-FOLDER SMOKE TEST (G27)
+' ============================================================================
+' Self-contained end-to-end test of the CreateFolder primitive that backs the
+' OpenDocumentFolder create-on-demand flow. Creates a throwaway folder under
+' /Company/__smoke_test__/, verifies it via GetMetadata, re-creates it once to
+' prove idempotency (already-exists treated as success), then deletes it to
+' leave the tenant in its starting state. Touches NO real case folders.
+'
+' Requires ALLOW_DROPBOX_WRITES = True. If writes are gated this returns SKIP.
+'
+' Usage:  ? DropboxService.Phase4e_CreateFolderSmokeTest
+Public Function Phase4e_CreateFolderSmokeTest() As String
+    On Error GoTo HandleError
+    Dim stepName As String
+    Dim dropboxPath As String
+    Dim found As Boolean, errDetail As String, mdJson As String
+    Dim warnNote As String
+
+    If Not ALLOW_DROPBOX_WRITES Then
+        Phase4e_CreateFolderSmokeTest = _
+            "SKIP: ALLOW_DROPBOX_WRITES = False. Flip the constant in " & _
+            "DropboxService.bas (top of module), re-import, then re-run."
+        Exit Function
+    End If
+
+    stepName = "0.Prereqs.ConfigLoad"
+    InitializeDropboxConfig
+
+    stepName = "0.Prereqs.EnsureValidToken"
+    If Not EnsureValidToken() Then _
+        Err.Raise vbObjectError + 6430, , _
+            "No valid token. Run StartupBootstrap / authenticate first."
+
+    dropboxPath = "/Company/__smoke_test__/folder_" & _
+                  Format$(Now, "yyyymmdd_hhnnss") & "_" & NewGuid()
+
+    ' (1) Create
+    stepName = "1.CreateFolder"
+    If Not CreateFolder(dropboxPath) Then _
+        Err.Raise vbObjectError + 6431, , _
+            "CreateFolder returned False for " & dropboxPath & _
+            "; see tblDropboxLog for detail"
+
+    ' (2) Verify it landed
+    stepName = "2.VerifyViaGetMetadata"
+    If Not GetMetadata(dropboxPath, found, errDetail, mdJson) Then _
+        Err.Raise vbObjectError + 6432, , _
+            "GetMetadata transport failure for created path: " & errDetail
+    If Not found Then _
+        Err.Raise vbObjectError + 6433, , _
+            "GetMetadata reports created folder not found: " & dropboxPath
+
+    ' (3) Idempotency — second create on the same path must also succeed
+    stepName = "3.CreateFolder.Idempotent"
+    If Not CreateFolder(dropboxPath) Then _
+        Err.Raise vbObjectError + 6434, , _
+            "Second CreateFolder (already-exists) returned False — expected " & _
+            "True (path/conflict/folder treated as success)"
+
+    ' (4) Cleanup — delete the test folder
+    stepName = "4.DeleteFile"
+    If Not DeleteFile(dropboxPath, Null, "Phase4e-Test") Then _
+        warnNote = " WARN: cleanup failed — " & dropboxPath & _
+                   " was left behind. Check tblDropboxAuditLog."
+
+    Phase4e_CreateFolderSmokeTest = "OK — created + verified + idempotent-create " & _
+        dropboxPath & "; remote deleted." & warnNote
+    Exit Function
+
+HandleError:
+    Dim handlerErrDesc As String
+    handlerErrDesc = Err.Description
+    Phase4e_CreateFolderSmokeTest = "FAIL: Step=" & stepName & "; Err=" & _
+        Err.Number & " " & handlerErrDesc
+    ' Best-effort cleanup so failed runs don't leave artifacts behind.
+    On Error Resume Next
+    If LenB(dropboxPath) > 0 Then DeleteFile dropboxPath, Null, "Phase4e-Test"
+End Function
+
+' ============================================================================
 ' SECTION 26 — STARTUP / SHUTDOWN HOOKS (Phase 3e)
 ' ============================================================================
 ' Form_Open in the Access startup form (frmHome) calls StartupBootstrap to

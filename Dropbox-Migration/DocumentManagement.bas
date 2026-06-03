@@ -4,22 +4,27 @@ Option Explicit
 Dim foo
 
 ' =============================================================================
-' Phase 4 rewire status (last updated 2026-05-15):
+' Phase 4 rewire status (last updated 2026-06-03):
 '
 '   Phase 4a — Read-flow rewire (DONE):
 '     OpenDocumentFile     -> DropboxService.OpenDocument
 '                             (download to %TEMP%\TBCMS\ + native-app launch)
-'     OpenDocumentFolder   -> Dropbox web URL (explorer.exe; see G27 —
-'                             replaced FollowHyperlink on 2026-06-03)
+'     OpenDocumentFolder   -> Dropbox web URL via explorer.exe (G27); now also
+'                             restores legacy create-on-demand — on a confirmed-
+'                             missing folder it prompts and calls
+'                             DropboxService.CreateFolder (write op, gated by
+'                             ALLOW_DROPBOX_WRITES) before opening
 '
 '   Phase 4b — Config layer + local-synced-root routing (SUPERSEDED):
 '     The Dropbox desktop client is no longer a deployment prerequisite,
 '     so the local-synced-root routing introduced here has been removed
 '     from the live caller paths. Current behavior:
-'       OpenDocumentFolder   -> Dropbox web URL (only). Users accept the
-'                               cosmetic "Unsupported path provided" banner
-'                               Dropbox emits for /work/ team-namespace
-'                               deep-links.
+'       OpenDocumentFolder   -> Dropbox web URL (no Explorer/local-sync
+'                               routing). Users accept the cosmetic
+'                               "Unsupported path provided" banner Dropbox
+'                               emits for /work/ team-namespace deep-links.
+'                               (2026-06-03: create-on-demand re-added on top
+'                               of the web-open — see Phase 4a note above.)
 '       GetDocumentRootFolder -> reads tblDropboxRootConfig.TeamRootPath +
 '                                DropboxService.DropboxPathToLocalPath.
 '                                Zero callers (kept for contract stability);
@@ -941,10 +946,17 @@ End Function
 ' ============================================================================
 
 
-' --- Phase 4 follow-up: web-only folder open --------------------------------
+' --- Phase 4 follow-up: web-only folder open + create-on-demand -------------
 ' Open the folder via the Dropbox web URL. Pre-check existence with
-' GetMetadata so we can give a friendlier "folder doesn't exist yet"
-' message instead of dropping the user into a broken Dropbox tab.
+' GetMetadata: if the folder doesn't exist, offer to create it (restores the
+' legacy S:\ "Folder doesn't exist. Do you want to create it?" behavior — the
+' cmdCreateFolder / cmdCreateFolderSub buttons on frmClientLedger route here,
+' as do all the plain open-folder buttons). Creation goes through
+' DropboxService.CreateFolder against the SP-resolved path (G27).
+'
+' Create is a write op: gated by ALLOW_DROPBOX_WRITES. In the test build it
+' raises vbObjectError + 6001, intercepted in Err_Handler with the friendly
+' "writes disabled" message; flip the kill-switch to exercise it for real.
 '
 ' Design decision: do NOT route through Windows Explorer / the local-
 ' synced folder. The Dropbox desktop client is not a deployment
@@ -960,6 +972,7 @@ Dim found As Boolean
 Dim errDetail As String
 Dim mdJson As String
 Dim apiOk As Boolean
+Dim doOpen As Boolean
 
     rv = False
 
@@ -985,18 +998,34 @@ Dim apiOk As Boolean
 
             apiOk = DropboxService.GetMetadata(pathForCheck, found, errDetail, mdJson)
 
+            ' doOpen drives the single folder-open site below. Default True so
+            ' "folder exists" and "GetMetadata transport failure" both open the
+            ' web URL (we do not blind-create when existence is unknown).
+            doOpen = True
+
             If apiOk And Not found Then
-                MsgBox "The Dropbox folder for this case doesn't exist yet:" & vbCrLf & vbCrLf & _
-                       FolderName & vbCrLf & vbCrLf & _
-                       "This typically means no documents have been saved for this " & _
-                       "case + document-type combination yet. The folder will be " & _
-                       "created automatically when the first document is saved.", _
-                       vbExclamation, "TB CMS"
-            Else
-                ' Either GetMetadata confirmed found, or there was a transport
-                ' failure — open the Dropbox web URL. /work/ is the team-content
-                ' prefix; expect a cosmetic "Unsupported path provided" banner
-                ' from Dropbox for team-namespace deep links.
+                ' Folder confirmed missing — restore the legacy create-on-demand-
+                ' with-confirmation flow, mapped to Dropbox via CreateFolder.
+                ' pathForCheck is SP-resolved (never built in VBA).
+                If MsgBox("This folder doesn't exist yet:" & vbCrLf & vbCrLf & _
+                          FolderName & vbCrLf & vbCrLf & _
+                          "Do you want to create it now?", _
+                          vbYesNo + vbQuestion, "TB CMS") = vbYes Then
+                    If Not DropboxService.CreateFolder(pathForCheck) Then
+                        MsgBox "The folder could not be created. Please contact " & _
+                               "IT — see tblDropboxLog for detail.", _
+                               vbExclamation, "TB CMS"
+                        doOpen = False
+                    End If
+                Else
+                    doOpen = False   ' user declined — nothing to open
+                End If
+            End If
+
+            If doOpen Then
+                ' /work/ is the team-content prefix; expect a cosmetic
+                ' "Unsupported path provided" banner from Dropbox for team-
+                ' namespace deep links.
                 webUrl = "https://www.dropbox.com/work" & FolderName
                 ' LEGACY (pre-2026-06-03): Application.FollowHyperlink raises
                 ' runtime error 5 on long URLs and on locked-down workstations
@@ -1017,7 +1046,15 @@ Exit_Handler:
     Exit Function
 Err_Handler:
     rv = False
-    foo = pcaStdErrMsg(Err, Error)
+    If Err.Number = vbObjectError + 6001 Then
+        ' GuardWritesEnabled — test environment, writes disabled. The folder
+        ' open itself is read-only; this fires only on the create branch.
+        MsgBox "Dropbox writes are disabled in this test build " & _
+               "(ALLOW_DROPBOX_WRITES = False). The folder was not created.", _
+               vbInformation, "TB CMS — test environment"
+    Else
+        foo = pcaStdErrMsg(Err, Error)
+    End If
     Resume Exit_Handler
 End Function
 
