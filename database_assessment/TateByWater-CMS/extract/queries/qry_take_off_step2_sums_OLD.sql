@@ -1,0 +1,3 @@
+SELECT tblTakeOffMonth.TakeOffMonthID, Sum(qryTakeOffStep2.CBHRev) AS SumOfCBHRev, Sum(qryTakeOffStep2.MKRev) AS SumOfMKRev, Sum(qryTakeOffStep2.CBHCom) AS SumOfCBHCom, Sum(qryTakeOffStep2.MTRev) AS SumOfMTRev, Sum(qryTakeOffStep2.MTCom) AS SumOfMTCom, Sum(qryTakeOffStep2.KBCom) AS SumOfKBCom, Sum(qryTakeOffStep2.MKCom) AS SumOfMKCom, Sum(qryTakeOffStep2.RLFCom) AS SumOfRLFCom
+FROM qryTakeOffStep2 INNER JOIN tblTakeOffMonth ON qryTakeOffStep2.TakeOffMonthID = tblTakeOffMonth.TakeOffMonthID
+GROUP BY tblTakeOffMonth.TakeOffMonthID;

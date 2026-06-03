@@ -1,0 +1,274 @@
+{
+  "formName": "frmHomeAdmin",
+  "caption": "Admin",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "allowFilters": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
+  "width": 22320,
+  "timerInterval": 0,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "CommandButton",
+          "name": "cmdTakeOffSteps",
+          "left": 2220,
+          "top": 2340,
+          "width": 3120,
+          "height": 1020,
+          "caption": "Take Off Steps",
+          "picture": "(none)",
+          "tabIndex": 0,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 11830108,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdSourceAnalytics",
+          "left": 14460,
+          "top": 2340,
+          "width": 3120,
+          "height": 1020,
+          "caption": "Source Analytics",
+          "picture": "(none)",
+          "tabIndex": 1,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 7500402,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdTrustAccountChron",
+          "left": 6345,
+          "top": 2340,
+          "width": 3120,
+          "height": 1020,
+          "caption": "Trust Account (Chron)",
+          "picture": "(none)",
+          "tabIndex": 2,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 1643706,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdRecon",
+          "left": 6345,
+          "top": 3630,
+          "width": 3120,
+          "height": 1020,
+          "caption": "Reconciliation",
+          "picture": "(none)",
+          "tabIndex": 3,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 8210719,
+          "borderStyle": 1,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdTKClose",
+          "left": 10440,
+          "top": 2340,
+          "width": 3120,
+          "height": 1020,
+          "caption": "TK CLOSE",
+          "picture": "(none)",
+          "tabIndex": 4,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 5026082,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label119",
+          "left": 5820,
+          "top": 660,
+          "width": 1740,
+          "height": 720,
+          "caption": "ADMIN",
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 26,
+          "fontBold": true,
+          "foreColor": 8210719,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command120",
+          "left": 6360,
+          "top": 4980,
+          "width": 3105,
+          "height": 1020,
+          "caption": "Take Off\r\nTransfer",
+          "picture": "(none)",
+          "tabIndex": 5,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backColor": 2344189,
+          "borderStyle": 1,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "Image121",
+          "left": 420,
+          "top": 240,
+          "width": 4020,
+          "height": 1440,
+          "picture": "TB 2019 Attorneys, color_png",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "CommandButton",
+          "name": "cmdDeleteAll",
+          "left": 15480,
+          "top": 360,
+          "width": 120,
+          "height": 300,
+          "caption": "Delete all data in the database",
+          "picture": "(none)",
+          "tabIndex": 0,
+          "tabStop": true,
+          "visible": false,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClose",
+          "left": 15720,
+          "top": 330,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "picture": "(none)",
+          "tabIndex": 1,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "cmdHome",
+          "left": 16980,
+          "top": 330,
+          "width": 480,
+          "height": 345,
+          "picture": "Home Button.ico",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormFooter",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label61",
+          "left": 11790,
+          "top": 420,
+          "width": 4260,
+          "height": 315,
+          "caption": "Client Management System (vers. 1.0.0 - SQL)",
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "\r\nPrivate Sub cmbAdvancedExp_Click()\r\n    DoCmd.openform \"frm_advanced_payments\"\r\nEnd Sub\r\n\r\nPrivate Sub cmbScanForm_Click()\r\n    DoCmd.openform \"frmToBeScanned\"\r\nEnd Sub\r\n\r\nPrivate Sub cmbTimeKeepingOpen_Click()\r\n    DoCmd.openform \"frmTimeKeepingOpen\"\r\nEnd Sub\r\n\r\nPrivate Sub cmbTo_BeCloseForm_Click()\r\n    DoCmd.openform \"frmToBeClosed\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdActionNeeded_Click()\r\n    DoCmd.openform \"frmActionNeededAll\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdBillingTracker_Click()\r\n    DoCmd.openform \"frm_Billing_Tracker\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdCallsForm_Click()\r\n    DoCmd.openform \"frmCalls\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdCaseList_Click()\r\n    DoCmd.openform \"frmCaseList\", acNormal, , , , , Right(Year(Date), 2)\r\n    'Util.openform \"frmYearWiseCaseList\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdConflictChk_Click()\r\n    DoCmd.openform \"frmConflictChk\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdDispositions_Click()\r\n    DoCmd.openform \"frmDispositions\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdPIStatus_Click()\r\n    DoCmd.openform \"frmPersInjuryStatusReport\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdReceipt_Click()\r\n    DoCmd.openform \"frmReceipt\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdHome_Click()\r\n    DoCmd.openform \"frmHome\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdRecon_Click()\r\n    DoCmd.openform \"frmTakeOffReconciliation\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdSourceAnalytics_Click()\r\n    DoCmd.openform \"frmSourceAnalytics\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTakeOff_Click()\r\n    DoCmd.openform \"frmTakeOffTest\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTakeOffSteps_Click()\r\n    DoCmd.openform \"frmTakeOffSteps\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTKBilling_Click()\r\n    DoCmd.openform \"frmTimeKeepingClosed\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTrust_Click()\r\n    DoCmd.openform \"frm_trust_summary\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTKClose_Click()\r\n    DoCmd.openform \"frmTKClose\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTrustAccountChron_Click()\r\n    DoCmd.openform \"frmTrustEntriesChron\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdUpcomingHrgs_Click()\r\n DoCmd.openform \"frmUpcoming Hearings\"\r\nEnd Sub\r\n\r\nPrivate Sub Command10_Click()\r\n'    IsDisableEvents = False\r\n'    OpenFormHomeScreen \"frmClientLedger\"\r\n    DoCmd.openform \"frmClientLedger\"\r\n    DoCmd.ApplyFilter \"[Yr]= '\" & Right(Year(Now), 2) & \"' and Closed=0\"\r\n    DoCmd.GoToRecord , , acNewRec\r\n'    Me.filter = \"[Yr]= '\" & Right(Year(Now), 2) & \"' and Closed=0\"\r\n'    Me.FilterOn = True\r\n'    Add New record:\r\n'    DoCmd.GoToRecord , , acNewRec\r\n'    DoCmd.openform formName:=\"frmHome\", _\r\n    WhereCondition:=\"[yr] = \" & Right(Year(Now), 2) & \"'\"\r\nEnd Sub\r\n\r\nPrivate Sub Command102_Click()\r\n    \r\nEnd Sub\r\n\r\nPrivate Sub Command11_Click()\r\n    OpenFormHomeScreen \"Intakes\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdInvoice_Click()\r\n    On Error GoTo ErHandler_CmdInvoice\r\n    \r\n    DoCmd.openform \"frm_invoices_summary\"\r\n    'DoCmd.OpenReport \"Invoice\", acViewPreview\r\n    \r\nErHandler_CmdInvoice:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmdDeleteAll_Click()\r\n'\r\n'    answer = MsgBox(\"Are you 100% sure you want to delete all the data in the database?\", vbYesNo, \"TB CMS: Delete all data\")\r\n'\r\n'    If answer = vbYes Then\r\n'        For Each t In CurrentDb.TableDefs\r\n'            'Debug.Print t.Name\r\n'            If Not InStr(LCase(t.Name), \"msys\") > 0 Then\r\n'                'Debug.Print t.Name\r\n'                strSQL = \"delete * from [\" & t.Name & \"]\"\r\n'                CurrentDb.Execute strSQL\r\n'            End If\r\n'        Next\r\n'    End If\r\n    \r\nEnd Sub\r\n\r\n'Private Sub cmbCloseForm_Click()\r\n'    DoCmd.openform \"frm_trust_summary\"\r\n'End Sub\r\n\r\n'Private Sub cmbPISOL_Click()\r\n'    DoCmd.openform \"frmPersInjSOL\"\r\n'End Sub\r\n\r\n'Private Sub cmdInvoiceAttachDiscount_Click()\r\n'    On Error GoTo ErHandler_cmdInvoiceAttachDiscount\r\n'    DoCmd.openform \"frmSelectCaseNum_Discount\"\r\n'ErHandler_cmdInvoiceAttachDiscount:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub cmdInvoiceAttachHourly_Click()\r\n'    On Error GoTo ErHandler_cmdInvoiceAttachHourly\r\n'    DoCmd.OpenReport \"Invoice Attach - Hourly\", acViewPreview\r\n'ErHandler_cmdInvoiceAttachHourly:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub cmdInvoiceNoBalanceDue_Click()\r\n'     On Error GoTo ErHandler_cmdInvoiceNoBalanceDue\r\n'    DoCmd.OpenReport \"Invoice - No Balance Due\", acViewPreview, , \"ChkBalanceDue=\" & 0\r\n'ErHandler_cmdInvoiceNoBalanceDue:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub cmdStatementofTrust_Click()\r\n'    On Error GoTo ErHandler_cmdStatementofTrust\r\n'\r\n'    DoCmd.OpenReport \"Statement of Trust Account\", acViewPreview\r\n'ErHandler_cmdStatementofTrust:\r\n'    If Err.Number = 2501 Then\r\n'        ShowMessage \"No Record Found!\"\r\n'     ElseIf Err.Number <> 0 Then ShowMessage Err.Description\r\n'    End If\r\n'End Sub\r\n\r\n'Private Sub cmdTrustEntriesChronological_Click()\r\n'    On Error GoTo ErHandler_cmdTrustEntriesChronological\r\n'    DoCmd.openform \"frmTrustEntriesChron\"\r\n'ErHandler_cmdTrustEntriesChronological:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub Command13_Click()\r\n'    lngChnc = 2\r\n'    OpenFormHomeScreen \"frmFamilyLaw\"\r\n'End Sub\r\n\r\n'Private Sub Command19_Click()\r\n'     'docmd.OpenReport \"Invoice Attach - Hourly (12 entries)\",acViewPreview,\r\n'    OpenFormHomeScreen \"frmSelectCaseNum\"\r\n'End Sub\r\n\r\n'Private Sub Command21_LostFocus()\r\n''    If Me.Command12.Visible = True Then\r\n''        Me.Command12.Visible = False\r\n''        Me.Command19.Visible = False\r\n''    End If\r\n'End Sub\r\n\r\n'Private Sub Command26_Click()\r\n'    On Error GoTo ErrHandler_Command26\r\n'        DoCmd.OpenReport \"Accounts Receivable\", acViewPreview\r\n'ErrHandler_Command26:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub Command36_Click()\r\n'    On Error GoTo ErrHandler_Command36\r\n'        DoCmd.OpenReport \"rpt_Main_Closing\", acViewPreview\r\n'ErrHandler_Command36:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub Image17_Click()\r\n'    If MsgBox(\"Do you want to exit the application?\", vbYesNo + vbCritical) = vbYes Then DoCmd.Quit acQuitSaveNone\r\n'End Sub\r\n\r\n'Private Sub cmdInvoicePastDue_Click()\r\n'    'On Error Resume Next\r\n'    DoCmd.Close acReport, \"Invoice - Past Due\", acSaveYes\r\n'\r\n'    On Error GoTo ErHandler_cmdInvoicePastDue\r\n'    DoCmd.OpenReport \"Invoice - Past Due\", acViewPreview, , \"[Past Due]=\" & -1\r\n'ErHandler_cmdInvoicePastDue:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Gaz Removed:\r\n\r\n'Private Sub Command21_Click()\r\n'    Me.Command12.Visible = Not Me.Command12.Visible\r\n'    Me.Command19.Visible = Not Me.Command19.Visible\r\n'End Sub\r\n\r\n'Private Sub Command12_Click()\r\n'    OpenFormHomeScreen \"Time Keeping\"\r\n'End Sub\r\n\r\n'Private Sub cmdAdvancedPayments_Click()\r\n'    On Error GoTo ErHandler_cmdAdvancedPayments_Click\r\n'\r\n'    DoCmd.openform \"frm_advanced_payments\"\r\n'\r\n'ErHandler_cmdAdvancedPayments_Click:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n'Private Sub cmdUncashed_Click()\r\n'    On Error GoTo ErHandler_cmdUncashed_Click\r\n'\r\n'    DoCmd.openform \"frm_uncashed_trust_checks\"\r\n'\r\n'ErHandler_cmdUncashed_Click:\r\n'    If Err.Number <> 0 Then ShowMessage Err.Description\r\n'End Sub\r\n\r\n\r\nPrivate Sub Command100_Click()\r\n    'DoCmd.ShowToolbar \"Ribbon\", acToolbarNo\r\n    EnableProperties\r\nEnd Sub\r\n\r\nPrivate Sub Command101_Click()\r\n    DisableProperties\r\nEnd Sub\r\n\r\nPrivate Sub Command115_Click()\r\n    DoCmd.openform \"frmClientReviews\"\r\nEnd Sub\r\n\r\nPrivate Sub Command117_Click()\r\n    DoCmd.openform \"frmCalendarCheck\"\r\nEnd Sub\r\n\r\nPrivate Sub Command119_Click()\r\n    DoCmd.openform \"frmDispositions\"\r\nEnd Sub\r\n\r\nPrivate Sub Command120_Click()\r\n     DoCmd.openform \"frmTakeOff\"\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n    If isACCDE Then\r\n        DoCmd.ShowToolbar \"Ribbon\", acToolbarNo\r\n    End If\r\n    \r\n'    If frmLogin.UserID.Text = \"admin\" Then\r\n'        cmdTakeOffSteps.Visible = True\r\n'    Else\r\n'        cmdTakeOffSteps.Visible = False\r\n'    End If\r\nEnd Sub"
+}

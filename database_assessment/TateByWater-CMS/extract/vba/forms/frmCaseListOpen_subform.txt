@@ -1,0 +1,757 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =-1176203364
+Begin Form
+    AutoCenter = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    DefaultView =2
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =11520
+    DatasheetFontHeight =11
+    ItemSuffix =30
+    Right =18765
+    Bottom =12285
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0xa93ecce576ffe440
+    End
+    GUID = Begin
+        0x04da7b87181ef742921520d8423998ae
+    End
+    NameMap = Begin
+        0x0acc0e55000000001c6515eb78bbe440bb52018b44a7f06000000000dadda094 ,
+        0x2f89e640000000000000000071007200790043006100730065004c0069007300 ,
+        0x74004f00700065006e0000000000000064293fed6fae0b4980de3c90cfca9ad3 ,
+        0x070000001c6515eb78bbe440bb52018b44a7f060430061007300650049004400 ,
+        0x00000000000034aa63e578158d49bcb46a06ec8237f3070000001c6515eb78bb ,
+        0xe440bb52018b44a7f06043006100730065004f00700065006e00440061007400 ,
+        0x6500000000000000880d959ba7748f4fb9896a18ce4c5948070000001c6515eb ,
+        0x78bbe440bb52018b44a7f06043006c00690065006e0074004e0061006d006500 ,
+        0x00000000000070cbd4c9acced64e8ec5b11a31d36cab070000001c6515eb78bb ,
+        0xe440bb52018b44a7f06043006100730065005f004c0065007400740065007200 ,
+        0x0000000000001d86b7f9c887474da4907d0081184752070000001c6515eb78bb ,
+        0xe440bb52018b44a7f060790072000000000000001dad74061dd7e445a98e7b76 ,
+        0xa1cbfb85070000001c6515eb78bbe440bb52018b44a7f0604e0075006d006200 ,
+        0x650072005f000000000000001726f429b748884c92341fbecec04b1907000000 ,
+        0x1c6515eb78bbe440bb52018b44a7f0604f007200690067005f00410074007400 ,
+        0x79000000000000009da41a354a5f0940a85778710b82ff9a070000001c6515eb ,
+        0x78bbe440bb52018b44a7f06045007800740065006e006400650064005f004c00 ,
+        0x650064006700650072000000000000000d32a5da36ab8049b31ff617e72cb431 ,
+        0x070000001c6515eb78bbe440bb52018b44a7f06043006f007500720074000000 ,
+        0x0000000083d62322b089214592576ab8119e81cb070000001c6515eb78bbe440 ,
+        0xbb52018b44a7f0604d00610074007400650072005f0074007900700065000000 ,
+        0x000000001e97a7706248fe49a12adb82f288da0e070000001c6515eb78bbe440 ,
+        0xbb52018b44a7f060460069006c0065004e0075006d0062006500720000000000 ,
+        0x0000185181acd8428a49b8012d85e6cbd683070000001c6515eb78bbe440bb52 ,
+        0x018b44a7f0605300630061006e0020004c006f0063006100740069006f006e00 ,
+        0x0000000000006fb05e46cc929540b036985af4cf6406070000001c6515eb78bb ,
+        0xe440bb52018b44a7f060480061006e0064006c0069006e006700410074007400 ,
+        0x79005f004300610073006500000000000000cf847dd0bbbef54a97cfa2c3a80e ,
+        0x1326070000001c6515eb78bbe440bb52018b44a7f06043006c006f0073006500 ,
+        0x64000000000000000debbdd8f1158242bbaf4aa7b72416f6070000001c6515eb ,
+        0x78bbe440bb52018b44a7f06043006f0064006500560061006c00000000000000 ,
+        0x000000000000000000000000000000000c000000050000000000000000000000 ,
+        0x000000000000
+    End
+    RecordSource ="SELECT [qryCaseListOpen].[CaseID], [qryCaseListOpen].[CaseOpenDate], [qryCaseLis"
+        "tOpen].[ClientName], [qryCaseListOpen].[Case_Letter], [qryCaseListOpen].[yr], [q"
+        "ryCaseListOpen].[Number_], [qryCaseListOpen].[Orig_Atty], [qryCaseListOpen].[Ext"
+        "ended_Ledger], [qryCaseListOpen].[Court], [qryCaseListOpen].[Matter_type], [qryC"
+        "aseListOpen].[FileNumber], [qryCaseListOpen].[Scan Location], [qryCaseListOpen]."
+        "[HandlingAtty_Case], [qryCaseListOpen].[Closed], [qryCaseListOpen].[CodeVal] FRO"
+        "M qryCaseListOpen; "
+    Caption ="frmCaseListOpen subform"
+    DatasheetFontName ="Calibri"
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CheckBox
+            BorderLineStyle =0
+            LabelX =230
+            LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            Height =0
+            BackColor =15064278
+            Name ="FormHeader"
+            GUID = Begin
+                0x7fe784040d29a94f8374ebd4f64da7e7
+            End
+            AutoHeight =1
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =2
+            BackTint =20.0
+        End
+        Begin Section
+            Height =8370
+            Name ="Detail"
+            GUID = Begin
+                0x1ffbff3b07db6a4eaf9094e9b4de7fd8
+            End
+            AutoHeight =1
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =360
+                    Height =315
+                    ColumnWidth =1440
+                    Name ="CaseID"
+                    ControlSource ="CaseID"
+                    GUID = Begin
+                        0x916f71fa36b93743a60dd7dfb293c318
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =360
+                    LayoutCachedWidth =3330
+                    LayoutCachedHeight =675
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =360
+                            Width =1440
+                            Height =330
+                            Name ="CaseID_Label"
+                            Caption ="CaseID"
+                            GUID = Begin
+                                0x762764c47f8ae94eaab5cd518b2bb423
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =360
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =690
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =780
+                    Width =1620
+                    Height =330
+                    ColumnWidth =1620
+                    TabIndex =1
+                    Name ="CaseOpenDate"
+                    ControlSource ="CaseOpenDate"
+                    GUID = Begin
+                        0x31d1a2892459f4419f1a096f187c2ab8
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =780
+                    LayoutCachedWidth =3510
+                    LayoutCachedHeight =1110
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =780
+                            Width =1440
+                            Height =330
+                            Name ="CaseOpenDate_Label"
+                            Caption ="CaseOpenDate"
+                            GUID = Begin
+                                0x48826c9f38c2704c9653aeab4fdd8b41
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =780
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =1110
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =1200
+                    Width =3660
+                    Height =330
+                    ColumnWidth =3000
+                    TabIndex =2
+                    Name ="ClientName"
+                    ControlSource ="ClientName"
+                    GUID = Begin
+                        0xfea792acba303147bd46a9e658a7f390
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =1200
+                    LayoutCachedWidth =5550
+                    LayoutCachedHeight =1530
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =1200
+                            Width =1440
+                            Height =330
+                            Name ="ClientName_Label"
+                            Caption ="ClientName"
+                            GUID = Begin
+                                0x7939dad8a359034d9e2f926a246ea28a
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =1200
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =1530
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =1620
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =3
+                    Name ="Case_Letter"
+                    ControlSource ="Case_Letter"
+                    GUID = Begin
+                        0x4df82a59284daa48bd1c4902e698e1c7
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =1620
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =2220
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =1620
+                            Width =1440
+                            Height =330
+                            Name ="Case_Letter_Label"
+                            Caption ="Case_Letter"
+                            GUID = Begin
+                                0xed92b3213ac2364196f388a52d0faed6
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =1620
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =1950
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =2340
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =4
+                    Name ="yr"
+                    ControlSource ="yr"
+                    GUID = Begin
+                        0x45d9c71d1618924e9caefc6cd9f76442
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =2340
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =2940
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =2340
+                            Width =1440
+                            Height =330
+                            Name ="yr_Label"
+                            Caption ="yr"
+                            GUID = Begin
+                                0x1ce08c02a7eac8439bc319caf687ca3f
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =2340
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =2670
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =3060
+                    Width =1530
+                    Height =330
+                    ColumnWidth =1530
+                    TabIndex =5
+                    Name ="Number_"
+                    ControlSource ="Number_"
+                    GUID = Begin
+                        0x5fa0ef7a57a64d4882adc6ff1f044a8a
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =3060
+                    LayoutCachedWidth =3420
+                    LayoutCachedHeight =3390
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =3060
+                            Width =1440
+                            Height =330
+                            Name ="Number__Label"
+                            Caption ="Number_"
+                            GUID = Begin
+                                0x4dbf6994ee87af4bb9b0074f55e1f4b0
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =3060
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =3390
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =3480
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =6
+                    Name ="Orig_Atty"
+                    ControlSource ="Orig_Atty"
+                    GUID = Begin
+                        0x9b553a48de470642a632c655dace85b8
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =3480
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =4080
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =3480
+                            Width =1440
+                            Height =330
+                            Name ="Orig_Atty_Label"
+                            Caption ="Orig_Atty"
+                            GUID = Begin
+                                0xad67880762a090469111c5d9d26a00a9
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =3480
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =3810
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =4200
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =7
+                    Name ="Extended_Ledger"
+                    ControlSource ="Extended_Ledger"
+                    GUID = Begin
+                        0xb30d4a2deba87942856b623b8ef548c4
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =4200
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =4800
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =4200
+                            Width =1440
+                            Height =330
+                            Name ="Extended_Ledger_Label"
+                            Caption ="Extended_Ledger"
+                            GUID = Begin
+                                0x7665d8055146dc43af66a6ef7232b7d2
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =4200
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =4530
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =4920
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =8
+                    Name ="Court"
+                    ControlSource ="Court"
+                    GUID = Begin
+                        0x0417266005890f4ab3da8795dfb2826a
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =4920
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =5520
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =4920
+                            Width =1440
+                            Height =330
+                            Name ="Court_Label"
+                            Caption ="Court"
+                            GUID = Begin
+                                0x3bac0ee4f3db2b4e8d7eb302b4f0af0a
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =4920
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =5250
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =5640
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =9
+                    Name ="Matter_type"
+                    ControlSource ="Matter_type"
+                    GUID = Begin
+                        0xea5af040a496924c84f7acbe236e97ba
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =5640
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =6240
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =5640
+                            Width =1440
+                            Height =330
+                            Name ="Matter_type_Label"
+                            Caption ="Matter_type"
+                            GUID = Begin
+                                0x542218b91159934992902f92958235e9
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =5640
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =5970
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =6360
+                    Width =3660
+                    Height =330
+                    ColumnWidth =3000
+                    TabIndex =10
+                    Name ="FileNumber"
+                    ControlSource ="FileNumber"
+                    GUID = Begin
+                        0xc056df5bdf5ba146a777768631f39b02
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =6360
+                    LayoutCachedWidth =5550
+                    LayoutCachedHeight =6690
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =6360
+                            Width =1440
+                            Height =330
+                            Name ="FileNumber_Label"
+                            Caption ="FileNumber"
+                            GUID = Begin
+                                0xc55607687c0d2244bb8898881e4dd125
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =6360
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =6690
+                        End
+                    End
+                End
+                Begin TextBox
+                    FontUnderline = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =6780
+                    Width =3660
+                    Height =330
+                    ColumnWidth =3000
+                    TabIndex =11
+                    ForeColor =1279872587
+                    Name ="Scan Location"
+                    ControlSource ="Scan Location"
+                    EventProcPrefix ="Scan_Location"
+                    GUID = Begin
+                        0x59f7b00e0855f84c94c98a4e34f0f024
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =6780
+                    LayoutCachedWidth =5550
+                    LayoutCachedHeight =7110
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =6780
+                            Width =1440
+                            Height =330
+                            Name ="Scan Location_Label"
+                            Caption ="Scan Location"
+                            EventProcPrefix ="Scan_Location_Label"
+                            GUID = Begin
+                                0x7be7eb02b61ac5429769512e22a4d4b4
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =6780
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =7110
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1890
+                    Top =7200
+                    Width =4170
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =12
+                    Name ="HandlingAtty_Case"
+                    ControlSource ="HandlingAtty_Case"
+                    StatusBarText ="case specific field"
+                    GUID = Begin
+                        0x3109715b7ca5654292b1f22bc23fc01b
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =7200
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =7800
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =7200
+                            Width =1440
+                            Height =330
+                            Name ="HandlingAtty_Case_Label"
+                            Caption ="HandlingAtty_Case"
+                            GUID = Begin
+                                0xd38aaba041482849a372d147e5b4c3d1
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =7200
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =7530
+                        End
+                    End
+                End
+                Begin CheckBox
+                    OverlapFlags =85
+                    Left =1890
+                    Top =7920
+                    TabIndex =13
+                    Name ="Closed"
+                    ControlSource ="Closed"
+                    GUID = Begin
+                        0x976d8cd4e9da4f4192d7dd3ede3393d3
+                    End
+
+                    LayoutCachedLeft =1890
+                    LayoutCachedTop =7920
+                    LayoutCachedWidth =2150
+                    LayoutCachedHeight =8160
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =360
+                            Top =7920
+                            Width =1440
+                            Height =330
+                            Name ="Closed_Label"
+                            Caption ="Closed"
+                            GUID = Begin
+                                0xc03105388a6fce48b615fb9d8700bba0
+                            End
+                            LayoutCachedLeft =360
+                            LayoutCachedTop =7920
+                            LayoutCachedWidth =1800
+                            LayoutCachedHeight =8250
+                        End
+                    End
+                End
+                Begin TextBox
+                    EnterKeyBehavior = NotDefault
+                    ScrollBars =2
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =7770
+                    Top =360
+                    Width =3690
+                    Height =600
+                    ColumnWidth =3000
+                    TabIndex =14
+                    Name ="CodeVal"
+                    ControlSource ="CodeVal"
+                    GUID = Begin
+                        0x35791a94c743d84a9e9cf3af67d8b46f
+                    End
+
+                    LayoutCachedLeft =7770
+                    LayoutCachedTop =360
+                    LayoutCachedWidth =11460
+                    LayoutCachedHeight =960
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =6240
+                            Top =360
+                            Width =1440
+                            Height =330
+                            Name ="CodeVal_Label"
+                            Caption ="CodeVal"
+                            GUID = Begin
+                                0xbc51c408307fdb47a4e5da0dc7275bbd
+                            End
+                            LayoutCachedLeft =6240
+                            LayoutCachedTop =360
+                            LayoutCachedWidth =7680
+                            LayoutCachedHeight =690
+                        End
+                    End
+                End
+            End
+        End
+        Begin FormFooter
+            Height =0
+            Name ="FormFooter"
+            GUID = Begin
+                0x3a2e5cf2266cfa45abba6f9db940cf69
+            End
+            AutoHeight =1
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End

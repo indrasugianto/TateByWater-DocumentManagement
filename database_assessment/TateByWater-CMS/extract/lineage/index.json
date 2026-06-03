@@ -1,0 +1,897 @@
+{
+  "reports": [
+    {
+      "name": "rpt_TKTotalAdvance",
+      "jsonFile": "extract/lineage/reports/rpt_TKTotalAdvance.json",
+      "markdownFile": "extract/lineage/reports/rpt_TKTotalAdvance.md",
+      "triggerCount": 2,
+      "queryCount": 2,
+      "tableCount": 3,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Matter_Closing",
+      "jsonFile": "extract/lineage/reports/rpt_Matter_Closing.json",
+      "markdownFile": "extract/lineage/reports/rpt_Matter_Closing.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptCriminalStatusNotesLog",
+      "jsonFile": "extract/lineage/reports/rptCriminalStatusNotesLog.json",
+      "markdownFile": "extract/lineage/reports/rptCriminalStatusNotesLog.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Trust_Closing",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Closing.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Closing.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Billing_Closing",
+      "jsonFile": "extract/lineage/reports/rpt_Billing_Closing.json",
+      "markdownFile": "extract/lineage/reports/rpt_Billing_Closing.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "Accounts Receivable",
+      "jsonFile": "extract/lineage/reports/Accounts_Receivable.json",
+      "markdownFile": "extract/lineage/reports/Accounts_Receivable.md",
+      "triggerCount": 3,
+      "queryCount": 2,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Main_Closing",
+      "jsonFile": "extract/lineage/reports/rpt_Main_Closing.json",
+      "markdownFile": "extract/lineage/reports/rpt_Main_Closing.md",
+      "triggerCount": 6,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Disposition_Closing",
+      "jsonFile": "extract/lineage/reports/rpt_Disposition_Closing.json",
+      "markdownFile": "extract/lineage/reports/rpt_Disposition_Closing.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_CaseNumber_Closing",
+      "jsonFile": "extract/lineage/reports/rpt_CaseNumber_Closing.json",
+      "markdownFile": "extract/lineage/reports/rpt_CaseNumber_Closing.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "Case Sources and Revenue",
+      "jsonFile": "extract/lineage/reports/Case_Sources_and_Revenue.json",
+      "markdownFile": "extract/lineage/reports/Case_Sources_and_Revenue.md",
+      "triggerCount": 0,
+      "queryCount": 2,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceStmtS",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceStmtS.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceStmtS.md",
+      "triggerCount": 4,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx3Costs",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx3Costs.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx3Costs.md",
+      "triggerCount": 8,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "Copy Of Client Closing Sheet",
+      "jsonFile": "extract/lineage/reports/Copy_Of_Client_Closing_Sheet.json",
+      "markdownFile": "extract/lineage/reports/Copy_Of_Client_Closing_Sheet.md",
+      "triggerCount": 0,
+      "queryCount": 2,
+      "tableCount": 5,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Compr_InvoiceADVCur",
+      "jsonFile": "extract/lineage/reports/rpt_Compr_InvoiceADVCur.json",
+      "markdownFile": "extract/lineage/reports/rpt_Compr_InvoiceADVCur.md",
+      "triggerCount": 2,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "Client Closing Sheet",
+      "jsonFile": "extract/lineage/reports/Client_Closing_Sheet.json",
+      "markdownFile": "extract/lineage/reports/Client_Closing_Sheet.md",
+      "triggerCount": 0,
+      "queryCount": 2,
+      "tableCount": 5,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptInvoiceComprehensiveTrust2",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprehensiveTrust2.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprehensiveTrust2.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "Client_Trust_Accounts_for_PreTake_Off",
+      "jsonFile": "extract/lineage/reports/Client_Trust_Accounts_for_PreTake_Off.json",
+      "markdownFile": "extract/lineage/reports/Client_Trust_Accounts_for_PreTake_Off.md",
+      "triggerCount": 1,
+      "queryCount": 2,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "Client_Trust_Accounts_for_Take_Off",
+      "jsonFile": "extract/lineage/reports/Client_Trust_Accounts_for_Take_Off.json",
+      "markdownFile": "extract/lineage/reports/Client_Trust_Accounts_for_Take_Off.md",
+      "triggerCount": 6,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Reconciliation sub",
+      "jsonFile": "extract/lineage/reports/rpt_Reconciliation_sub.json",
+      "markdownFile": "extract/lineage/reports/rpt_Reconciliation_sub.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Comprehensive_Invoice",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_Invoice.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_Invoice.md",
+      "triggerCount": 9,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "New Invoice",
+      "jsonFile": "extract/lineage/reports/New_Invoice.json",
+      "markdownFile": "extract/lineage/reports/New_Invoice.md",
+      "triggerCount": 3,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "Invoice",
+      "jsonFile": "extract/lineage/reports/Invoice.json",
+      "markdownFile": "extract/lineage/reports/Invoice.md",
+      "triggerCount": 49,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "Invoice - No Balance Due",
+      "jsonFile": "extract/lineage/reports/Invoice_-_No_Balance_Due.json",
+      "markdownFile": "extract/lineage/reports/Invoice_-_No_Balance_Due.md",
+      "triggerCount": 5,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "Invoice - Past Due",
+      "jsonFile": "extract/lineage/reports/Invoice_-_Past_Due.json",
+      "markdownFile": "extract/lineage/reports/Invoice_-_Past_Due.md",
+      "triggerCount": 9,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "Invoice Attach - Hourly",
+      "jsonFile": "extract/lineage/reports/Invoice_Attach_-_Hourly.json",
+      "markdownFile": "extract/lineage/reports/Invoice_Attach_-_Hourly.md",
+      "triggerCount": 13,
+      "queryCount": 2,
+      "tableCount": 3,
+      "confidence": "high"
+    },
+    {
+      "name": "rptPISOLList",
+      "jsonFile": "extract/lineage/reports/rptPISOLList.json",
+      "markdownFile": "extract/lineage/reports/rptPISOLList.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 0,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx3CostsS",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx3CostsS.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx3CostsS.md",
+      "triggerCount": 4,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "Invoice Attach - Hourly w Discount",
+      "jsonFile": "extract/lineage/reports/Invoice_Attach_-_Hourly_w_Discount.json",
+      "markdownFile": "extract/lineage/reports/Invoice_Attach_-_Hourly_w_Discount.md",
+      "triggerCount": 9,
+      "queryCount": 2,
+      "tableCount": 3,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_35",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_35.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_35.md",
+      "triggerCount": 3,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptInvoiceComprehensiveAR2",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprehensiveAR2.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprehensiveAR2.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "Invoice2",
+      "jsonFile": "extract/lineage/reports/Invoice2.json",
+      "markdownFile": "extract/lineage/reports/Invoice2.md",
+      "triggerCount": 5,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_address_label",
+      "jsonFile": "extract/lineage/reports/rpt_address_label.json",
+      "markdownFile": "extract/lineage/reports/rpt_address_label.md",
+      "triggerCount": 6,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_address_labelEx",
+      "jsonFile": "extract/lineage/reports/rpt_address_labelEx.json",
+      "markdownFile": "extract/lineage/reports/rpt_address_labelEx.md",
+      "triggerCount": 5,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptLastTenOpen",
+      "jsonFile": "extract/lineage/reports/rptLastTenOpen.json",
+      "markdownFile": "extract/lineage/reports/rptLastTenOpen.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_adj_address_label",
+      "jsonFile": "extract/lineage/reports/rpt_adj_address_label.json",
+      "markdownFile": "extract/lineage/reports/rpt_adj_address_label.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptInvoiceComprehensiveAR",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprehensiveAR.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprehensiveAR.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Compr_InvoiceStmtCur",
+      "jsonFile": "extract/lineage/reports/rpt_Compr_InvoiceStmtCur.json",
+      "markdownFile": "extract/lineage/reports/rpt_Compr_InvoiceStmtCur.md",
+      "triggerCount": 2,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Compr_InvoiceTKExCur",
+      "jsonFile": "extract/lineage/reports/rpt_Compr_InvoiceTKExCur.json",
+      "markdownFile": "extract/lineage/reports/rpt_Compr_InvoiceTKExCur.md",
+      "triggerCount": 2,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptCriminalStatusNotesLog2",
+      "jsonFile": "extract/lineage/reports/rptCriminalStatusNotesLog2.json",
+      "markdownFile": "extract/lineage/reports/rptCriminalStatusNotesLog2.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_MergeInvMatter",
+      "jsonFile": "extract/lineage/reports/rpt_MergeInvMatter.json",
+      "markdownFile": "extract/lineage/reports/rpt_MergeInvMatter.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Comprehensive_Invoice2",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_Invoice2.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_Invoice2.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Trust_Chron_65",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_65.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_65.md",
+      "triggerCount": 3,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_TimeDetail_Comprehensive2",
+      "jsonFile": "extract/lineage/reports/rpt_TimeDetail_Comprehensive2.json",
+      "markdownFile": "extract/lineage/reports/rpt_TimeDetail_Comprehensive2.md",
+      "triggerCount": 0,
+      "queryCount": 2,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_TKLessTrust",
+      "jsonFile": "extract/lineage/reports/rpt_TKLessTrust.json",
+      "markdownFile": "extract/lineage/reports/rpt_TKLessTrust.md",
+      "triggerCount": 2,
+      "queryCount": 2,
+      "tableCount": 3,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx2",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx2.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx2.md",
+      "triggerCount": 8,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceADV",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceADV.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceADV.md",
+      "triggerCount": 9,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_OpenCases",
+      "jsonFile": "extract/lineage/reports/rpt_OpenCases.json",
+      "markdownFile": "extract/lineage/reports/rpt_OpenCases.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx2S",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx2S.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx2S.md",
+      "triggerCount": 4,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceADVS",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceADVS.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceADVS.md",
+      "triggerCount": 4,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx1",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx1.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx1.md",
+      "triggerCount": 8,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceStmt",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceStmt.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceStmt.md",
+      "triggerCount": 9,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx.md",
+      "triggerCount": 9,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Open_Cases",
+      "jsonFile": "extract/lineage/reports/rpt_Open_Cases.json",
+      "markdownFile": "extract/lineage/reports/rpt_Open_Cases.md",
+      "triggerCount": 0,
+      "queryCount": 2,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKEx1S",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx1S.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKEx1S.md",
+      "triggerCount": 4,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKLessTrustCostAR",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKLessTrustCostAR.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKLessTrustCostAR.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKLessTrustRep",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKLessTrustRep.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKLessTrustRep.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Comprehensive_InvoiceTKLessTrustRep2",
+      "jsonFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKLessTrustRep2.json",
+      "markdownFile": "extract/lineage/reports/rpt_Comprehensive_InvoiceTKLessTrustRep2.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_TimeDetail_Comprehensive",
+      "jsonFile": "extract/lineage/reports/rpt_TimeDetail_Comprehensive.json",
+      "markdownFile": "extract/lineage/reports/rpt_TimeDetail_Comprehensive.md",
+      "triggerCount": 0,
+      "queryCount": 2,
+      "tableCount": 3,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_File_Folder_Label",
+      "jsonFile": "extract/lineage/reports/rpt_File_Folder_Label.json",
+      "markdownFile": "extract/lineage/reports/rpt_File_Folder_Label.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_ftrustee_address_label",
+      "jsonFile": "extract/lineage/reports/rpt_ftrustee_address_label.json",
+      "markdownFile": "extract/lineage/reports/rpt_ftrustee_address_label.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_MergeInvTimeDetail",
+      "jsonFile": "extract/lineage/reports/rpt_MergeInvTimeDetail.json",
+      "markdownFile": "extract/lineage/reports/rpt_MergeInvTimeDetail.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "Rpt_MergeInvTK",
+      "jsonFile": "extract/lineage/reports/Rpt_MergeInvTK.json",
+      "markdownFile": "extract/lineage/reports/Rpt_MergeInvTK.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rpt_trustee_address_label",
+      "jsonFile": "extract/lineage/reports/rpt_trustee_address_label.json",
+      "markdownFile": "extract/lineage/reports/rpt_trustee_address_label.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_opp_counsel_address_label",
+      "jsonFile": "extract/lineage/reports/rpt_opp_counsel_address_label.json",
+      "markdownFile": "extract/lineage/reports/rpt_opp_counsel_address_label.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_TKExceedsTrust",
+      "jsonFile": "extract/lineage/reports/rpt_TKExceedsTrust.json",
+      "markdownFile": "extract/lineage/reports/rpt_TKExceedsTrust.md",
+      "triggerCount": 2,
+      "queryCount": 2,
+      "tableCount": 3,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_35D",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_35D.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_35D.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_65D",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_65D.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_65D.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_95D",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_95D.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_95D.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_35W",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_35W.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_35W.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_65W",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_65W.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_65W.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_95W",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_95W.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_95W.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rpt_Trust_Chron_95",
+      "jsonFile": "extract/lineage/reports/rpt_Trust_Chron_95.json",
+      "markdownFile": "extract/lineage/reports/rpt_Trust_Chron_95.md",
+      "triggerCount": 3,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptBillingTotals",
+      "jsonFile": "extract/lineage/reports/rptBillingTotals.json",
+      "markdownFile": "extract/lineage/reports/rptBillingTotals.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptClientNotes",
+      "jsonFile": "extract/lineage/reports/rptClientNotes.json",
+      "markdownFile": "extract/lineage/reports/rptClientNotes.md",
+      "triggerCount": 2,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptComprehensiveTKStatement",
+      "jsonFile": "extract/lineage/reports/rptComprehensiveTKStatement.json",
+      "markdownFile": "extract/lineage/reports/rptComprehensiveTKStatement.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptCriminalStatus",
+      "jsonFile": "extract/lineage/reports/rptCriminalStatus.json",
+      "markdownFile": "extract/lineage/reports/rptCriminalStatus.md",
+      "triggerCount": 3,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptCriminalStatusActionNeeded",
+      "jsonFile": "extract/lineage/reports/rptCriminalStatusActionNeeded.json",
+      "markdownFile": "extract/lineage/reports/rptCriminalStatusActionNeeded.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptCriminalStatusChargeNos",
+      "jsonFile": "extract/lineage/reports/rptCriminalStatusChargeNos.json",
+      "markdownFile": "extract/lineage/reports/rptCriminalStatusChargeNos.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptCriminalStatusUpcHrgs",
+      "jsonFile": "extract/lineage/reports/rptCriminalStatusUpcHrgs.json",
+      "markdownFile": "extract/lineage/reports/rptCriminalStatusUpcHrgs.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptInvoiceComprARCur",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprARCur.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprARCur.md",
+      "triggerCount": 2,
+      "queryCount": 2,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptInvoiceComprehensiveTrust",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprehensiveTrust.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprehensiveTrust.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptInvoiceComprPymtsAR",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprPymtsAR.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprPymtsAR.md",
+      "triggerCount": 2,
+      "queryCount": 0,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptInvoiceComprPymtsARCur",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprPymtsARCur.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprPymtsARCur.md",
+      "triggerCount": 2,
+      "queryCount": 2,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptInvoiceComprTrustCur",
+      "jsonFile": "extract/lineage/reports/rptInvoiceComprTrustCur.json",
+      "markdownFile": "extract/lineage/reports/rptInvoiceComprTrustCur.md",
+      "triggerCount": 2,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptLastWeekIntake",
+      "jsonFile": "extract/lineage/reports/rptLastWeekIntake.json",
+      "markdownFile": "extract/lineage/reports/rptLastWeekIntake.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptPersInjProviderBills",
+      "jsonFile": "extract/lineage/reports/rptPersInjProviderBills.json",
+      "markdownFile": "extract/lineage/reports/rptPersInjProviderBills.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptPersInjStatusAction",
+      "jsonFile": "extract/lineage/reports/rptPersInjStatusAction.json",
+      "markdownFile": "extract/lineage/reports/rptPersInjStatusAction.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptPersInjStatusDemand",
+      "jsonFile": "extract/lineage/reports/rptPersInjStatusDemand.json",
+      "markdownFile": "extract/lineage/reports/rptPersInjStatusDemand.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptPersInjStatusLog",
+      "jsonFile": "extract/lineage/reports/rptPersInjStatusLog.json",
+      "markdownFile": "extract/lineage/reports/rptPersInjStatusLog.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptPersInjuryStatus",
+      "jsonFile": "extract/lineage/reports/rptPersInjuryStatus.json",
+      "markdownFile": "extract/lineage/reports/rptPersInjuryStatus.md",
+      "triggerCount": 4,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptPIStatusSOL",
+      "jsonFile": "extract/lineage/reports/rptPIStatusSOL.json",
+      "markdownFile": "extract/lineage/reports/rptPIStatusSOL.md",
+      "triggerCount": 0,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptReceipt",
+      "jsonFile": "extract/lineage/reports/rptReceipt.json",
+      "markdownFile": "extract/lineage/reports/rptReceipt.md",
+      "triggerCount": 2,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptReceiptC",
+      "jsonFile": "extract/lineage/reports/rptReceiptC.json",
+      "markdownFile": "extract/lineage/reports/rptReceiptC.md",
+      "triggerCount": 1,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptReceiptR",
+      "jsonFile": "extract/lineage/reports/rptReceiptR.json",
+      "markdownFile": "extract/lineage/reports/rptReceiptR.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptReceiptRec",
+      "jsonFile": "extract/lineage/reports/rptReceiptRec.json",
+      "markdownFile": "extract/lineage/reports/rptReceiptRec.md",
+      "triggerCount": 0,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "medium"
+    },
+    {
+      "name": "rptReconciliation",
+      "jsonFile": "extract/lineage/reports/rptReconciliation.json",
+      "markdownFile": "extract/lineage/reports/rptReconciliation.md",
+      "triggerCount": 1,
+      "queryCount": 0,
+      "tableCount": 1,
+      "confidence": "high"
+    },
+    {
+      "name": "rptTKReport",
+      "jsonFile": "extract/lineage/reports/rptTKReport.json",
+      "markdownFile": "extract/lineage/reports/rptTKReport.md",
+      "triggerCount": 2,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "rptTKReport2",
+      "jsonFile": "extract/lineage/reports/rptTKReport2.json",
+      "markdownFile": "extract/lineage/reports/rptTKReport2.md",
+      "triggerCount": 2,
+      "queryCount": 1,
+      "tableCount": 2,
+      "confidence": "high"
+    },
+    {
+      "name": "Statement of Trust Account",
+      "jsonFile": "extract/lineage/reports/Statement_of_Trust_Account.json",
+      "markdownFile": "extract/lineage/reports/Statement_of_Trust_Account.md",
+      "triggerCount": 7,
+      "queryCount": 1,
+      "tableCount": 1,
+      "confidence": "high"
+    }
+  ],
+  "errors": [],
+  "count": 99
+}

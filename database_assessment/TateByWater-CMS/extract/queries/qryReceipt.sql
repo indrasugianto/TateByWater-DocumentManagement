@@ -1,0 +1,3 @@
+SELECT tblCase.Last_Name, tblCase.First_Name, tblCase.Matter_type, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, [Matter and AR].CaseID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Payment, [Matter and AR].MatterID, tblCase.Retainer
+FROM tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID
+WHERE ((([Matter and AR].Payment)>0));

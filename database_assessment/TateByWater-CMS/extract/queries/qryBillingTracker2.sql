@@ -1,0 +1,3 @@
+SELECT vwBillingTracker2.Bill_ID, vwBillingTracker2.Tdate, vwBillingTracker2.Tatty, vwBillingTracker2.Rate, vwBillingTracker2.Time_, vwBillingTracker2.Billed, vwBillingTracker2.CaseID, vwBillingTracker2.Last_Name, vwBillingTracker2.First_Name, vwBillingTracker2.Case_Letter, vwBillingTracker2.yr, vwBillingTracker2.Number_, vwBillingTracker2.Orig_Atty, vwBillingTracker2.Name, vwBillingTracker2.FileNumber, vwBillingTracker2.Time_ID, *
+FROM vwBillingTracker2
+ORDER BY vwBillingTracker2.Tdate DESC;

@@ -1,0 +1,2 @@
+SELECT vwMatterBalanceTotals.CaseID, vwMatterBalanceTotals.SumOfBalance
+FROM vwMatterBalanceTotals;

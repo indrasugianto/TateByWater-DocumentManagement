@@ -1,0 +1,3 @@
+SELECT vwInvoiceComprehensiveTrust.TrustAccountID, vwInvoiceComprehensiveTrust.TDate, vwInvoiceComprehensiveTrust.TMatter, vwInvoiceComprehensiveTrust.Debit, vwInvoiceComprehensiveTrust.Credit, vwInvoiceComprehensiveTrust.CaseID
+FROM vwInvoiceComprehensiveTrust
+ORDER BY vwInvoiceComprehensiveTrust.TDate;

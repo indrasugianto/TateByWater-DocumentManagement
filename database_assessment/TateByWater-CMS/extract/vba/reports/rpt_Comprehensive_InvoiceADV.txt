@@ -1,0 +1,1846 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =852161697
+Begin Report
+    LayoutForPrint = NotDefault
+    DividingLines = NotDefault
+    FilterOn = NotDefault
+    AllowDesignChanges = NotDefault
+    DefaultView =0
+    DateGrouping =1
+    GrpKeepTogether =1
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =10500
+    DatasheetFontHeight =11
+    ItemSuffix =121
+    Right =14205
+    Bottom =11415
+    DatasheetGridlinesColor =15132391
+    Filter ="[Bill_ID]=2533"
+    RecSrcDt = Begin
+        0xd412b558b615e540
+    End
+    GUID = Begin
+        0xc1c7210b5923bf478ec65a48cf704346
+    End
+    NameMap = Begin
+        0x0acc0e5500000000a3ae66076b51b14a95bb45b4928a6159000000004e197481 ,
+        0x0c3ae6400000000000000000740062006c004300610073006500000000000000 ,
+        0x57bd962b2c6e5f458d0c87e69d1af15a0000000023d528cab25de64000000000 ,
+        0x00000000540042002000540069006d00650020004b0065006500700069006e00 ,
+        0x670000000000000035726245a245be41924eaf1bcc5ef23e0700000057bd962b ,
+        0x2c6e5f458d0c87e69d1af15a420069006c006c00200043006c006f0073006500 ,
+        0x64000000000000003bb47c36950c0c47b9f71e2865683c120700000057bd962b ,
+        0x2c6e5f458d0c87e69d1af15a490041004e0075006d0062006500720000000000 ,
+        0x0000faf0eb4a5c8cfa4d984259f0af7ae5480700000057bd962b2c6e5f458d0c ,
+        0x87e69d1af15a420069006c006c005f00490044000000000000004d81e1dd89d6 ,
+        0xb440a6dc36ef5ab364e20700000057bd962b2c6e5f458d0c87e69d1af15a5400 ,
+        0x72007500730074006100740043006c006f0073006500000000000000bd7c65c1 ,
+        0xdfce1f478904fb194f23c44a07000000a3ae66076b51b14a95bb45b4928a6159 ,
+        0x4300610073006500490044000000000000000b804eae42f20e4c8cadda004c05 ,
+        0xed4707000000a3ae66076b51b14a95bb45b4928a61594c006100730074005f00 ,
+        0x4e0061006d0065000000000000009cf09f7573fe4249926126dd75a0f84b0700 ,
+        0x0000a3ae66076b51b14a95bb45b4928a6159460069007200730074005f004e00 ,
+        0x61006d00650000000000000040c36feade66d54b8426b10daa03b9fe07000000 ,
+        0xa3ae66076b51b14a95bb45b4928a615943006100730065004f00700065006e00 ,
+        0x44006100740065000000000000008a6a7bfb89c23a4bb8620e0653a5cfef0700 ,
+        0x0000a3ae66076b51b14a95bb45b4928a615943006100730065005f004c006500 ,
+        0x74007400650072000000000000005659e954956683449a882f0c7fe8f1e20700 ,
+        0x0000a3ae66076b51b14a95bb45b4928a6159790072000000000000003ffe2c9d ,
+        0xc2867f4aaa71f25a1dca79db07000000a3ae66076b51b14a95bb45b4928a6159 ,
+        0x4e0075006d006200650072005f0000000000000057c7e3dec799514babb3b2d2 ,
+        0x25065b8807000000a3ae66076b51b14a95bb45b4928a61594f00720069006700 ,
+        0x5f0041007400740079000000000000004c5499880604744ebe022a085b799ce3 ,
+        0x07000000a3ae66076b51b14a95bb45b4928a6159410064006400720065007300 ,
+        0x730000000000000038f697bc3534a945bccae82d78b28a6e07000000a3ae6607 ,
+        0x6b51b14a95bb45b4928a61594300690074007900000000000000070b7a68aa2f ,
+        0x4e4bb0956e0f46b2770b07000000a3ae66076b51b14a95bb45b4928a61595300 ,
+        0x74006100740065000000000000007cecace9248c1342b45cb3968ba918ee0700 ,
+        0x0000a3ae66076b51b14a95bb45b4928a61595a00690070000000000000009364 ,
+        0x84ae53ac8d4f89f191b20d23de3a07000000a3ae66076b51b14a95bb45b4928a ,
+        0x61594d00610074007400650072005f0074007900700065000000000000009ad9 ,
+        0xa95681b84841a45eb58f7a1075a60700000057bd962b2c6e5f458d0c87e69d1a ,
+        0xf15a420069006c004c00200043006c006f007300650064002000440061007400 ,
+        0x650000000000000009a6e49818f44349bb9430bef206ff860700000057bd962b ,
+        0x2c6e5f458d0c87e69d1af15a540069006d0065004e006f007400650073000000 ,
+        0x0000000048dae2aab503cd4f8e123a46676e533a07000000a3ae66076b51b14a ,
+        0x95bb45b4928a6159520065007400610069006e006500720000000000000029ca ,
+        0x37008f114d4ca7b79a4383cd09040700000057bd962b2c6e5f458d0c87e69d1a ,
+        0xf15a44006900730063006f0075006e007400000000000000152af3a8069dfd42 ,
+        0x9ae9975eebc076d807000000a3ae66076b51b14a95bb45b4928a615945007800 ,
+        0x65006300750074006f007200000000000000ca915730123b134594f1194542da ,
+        0x7e190700000057bd962b2c6e5f458d0c87e69d1af15a41005200610074004300 ,
+        0x6c006f0073006500000000000000cb2fe29402e312479dab6049ad7fac930700 ,
+        0x000057bd962b2c6e5f458d0c87e69d1af15a4300610073006500490044000000 ,
+        0x0000000025c2ac10d298e041bfeba5f31717d57d02000000d7156e8b2f89e640 ,
+        0x000000000000000072007000740049006e0076006f0069006300650043006f00 ,
+        0x6d00700072006500680065006e00730069007600650054007200750073007400 ,
+        0x32000000000000005b9b9b21e325c04fafa9ae4ca9ed6f24000000001283e798 ,
+        0x2f89e640000000000000000071007200790049006e0076006f00690063006500 ,
+        0x43006f006d00700072006500680065006e007300690076006500540072007500 ,
+        0x730074004300720065006400690074003400000000000000faf0eb4a5c8cfa4d ,
+        0x984259f0af7ae548070000005b9b9b21e325c04fafa9ae4ca9ed6f2442006900 ,
+        0x6c006c005f0049004400000000000000cb845a9ad478fe47aa7ab3a176cbcaed ,
+        0x06000000c1c7210b5923bf478ec65a48cf70434674007800740048006f007500 ,
+        0x72006c007900440075006500000000000000aab5cc86716fa04faf9f01510bef ,
+        0x6e7c06000000c1c7210b5923bf478ec65a48cf7043467200700074005f005400 ,
+        0x69006d006500440065007400610069006c005f0043006f006d00700072006500 ,
+        0x680065006e0073006900760065003200000000000000d5745fdbebe45745bc9a ,
+        0x2f4f573fef1802000000becd6b8b2f89e6400000000000000000720070007400 ,
+        0x49006e0076006f0069006300650043006f006d00700072006500680065006e00 ,
+        0x73006900760065004100520032000000000000005fde0eb29aacbb4a88266839 ,
+        0xac65919d00000000750d5bcab25de64000000000000000004d00610074007400 ,
+        0x65007200200061006e00640020004100520000000000000064a314f0e611ad49 ,
+        0x93d8f98faaf8721e070000005fde0eb29aacbb4a88266839ac65919d4d006100 ,
+        0x7400740065007200490044000000000000002ec26d80f5fa8d439ea4aeeb1fb7 ,
+        0x7de8070000005fde0eb29aacbb4a88266839ac65919d44006100740065003200 ,
+        0x000000000000a174906ba8738e41880e79f7ac56c1fe070000005fde0eb29aac ,
+        0xbb4a88266839ac65919d5000610079005f004f00750074006c00610079000000 ,
+        0x000000001a182b9bf18bfe4b9492b6ed6de14b01070000005fde0eb29aacbb4a ,
+        0x88266839ac65919d43006800610072006700650000000000000057a752eacc07 ,
+        0x62408de579a49fc1c1b7070000005fde0eb29aacbb4a88266839ac65919d4f00 ,
+        0x72006400650072004e0072000000000000006e11c70172a37147acffbfbcbb67 ,
+        0x8379070000005fde0eb29aacbb4a88266839ac65919d43006100730065004900 ,
+        0x440000000000000007b693d410bd6c4ba2bc03f68ffd0aee020000005acc588b ,
+        0x2f89e64000000000000000007200700074005f00540069006d00650044006500 ,
+        0x7400610069006c005f0043006f006d00700072006500680065006e0073006900 ,
+        0x760065003200000000000000134d61079389ee4e9ebfe8387235c7a600000000 ,
+        0x7a94e8982f89e640000000000000000071007200790049006e0076006f006900 ,
+        0x6300650043006f006d00700072006500680065006e0073006900760065005400 ,
+        0x69006d006500440065007400610069006c003200000000000000faf0eb4a5c8c ,
+        0xfa4d984259f0af7ae54807000000134d61079389ee4e9ebfe8387235c7a64200 ,
+        0x69006c006c005f0049004400000000000000226c7fdfb30bcf48b3acee550220 ,
+        0x3177020000003f276f8b2f89e640000000000000000072007000740049006e00 ,
+        0x76006f0069006300650043006f006d0070007200500079006d00740073004100 ,
+        0x52000000000000008294e2f8e6d5344bbee8fb515641b0f4070000005fde0eb2 ,
+        0x9aacbb4a88266839ac65919d5000610079006d0065006e007400000000000000 ,
+        0x000000000000000000000000000000000c000000050000000000000000000000 ,
+        0x000000000000
+    End
+    RecordSource ="SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IANumber, [TB Time Kee"
+        "ping].Bill_ID, [TB Time Keeping].TrustatClose, tblCase.CaseID, tblCase.Last_Name"
+        ", tblCase.First_Name, tblCase.CaseOpenDate, tblCase.Case_Letter, tblCase.yr, tbl"
+        "Case.Number_, tblCase.Orig_Atty, tblCase.Address, tblCase.City, tblCase.State, t"
+        "blCase.Zip, tblCase.Matter_type, [TB Time Keeping].[BilL Closed Date], [TB Time "
+        "Keeping].TimeNotes, tblCase.Retainer, [TB Time Keeping].Discount, tblCase.Execut"
+        "or, [TB Time Keeping].ARatClose FROM tblCase INNER JOIN [TB Time Keeping] ON tbl"
+        "Case.CaseID = [TB Time Keeping].CaseID; "
+    Caption ="Comprehensive Invoice - Total Advanced"
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6003000060030000600300006003000000000000042900008412000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    PrtDevMode = Begin
+        0x0000000000000000b01f4ce39c0100009015aff69c0100000000000000000000 ,
+        0x010403069c00e8030f93010001000100ea0a6f08640001000700ffff01000100 ,
+        0xffff030000004c6574746572007f0000001000000000000000000000f67f0000 ,
+        0x9015aff69c010000000000000000000000000000010000000000000001000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
+    End
+    PrtDevNames = Begin
+        0x08003b006c000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,
+        0x35362d626536332d33376332313832623061383600
+    End
+    FilterOnLoad =255
+    FitToPage =1
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    PrtDevModeW = Begin
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,
+        0x01040306dc00e8030f93010001000100ea0a6f08640001000700ffff01000100 ,
+        0xffff030000004c006500740074006500720000009c0100000400000000000000 ,
+        0xb069b6839c010000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
+    End
+    PrtDevNamesW = Begin
+        0x0400370068000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000000000005700530044002d003800310066003100 ,
+        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,
+        0x6500360033002d00330037006300320031003800320062003000610038003600 ,
+        0x0000
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Rectangle
+            BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Line
+            BorderLineStyle =0
+            GridlineColor =10921638
+            BorderThemeColorIndex =0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Image
+            OldBorderStyle =0
+            BorderLineStyle =0
+            SizeMode =3
+            PictureAlignment =2
+            BorderColor =10921638
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CommandButton
+            FontSize =11
+            FontWeight =400
+            ForeColor =4210752
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            UseTheme =1
+            Shape =1
+            Gradient =12
+            BackColor =14461583
+            BackThemeColorIndex =4
+            BackTint =60.0
+            BorderLineStyle =0
+            BorderColor =14461583
+            BorderThemeColorIndex =4
+            BorderTint =60.0
+            ThemeFontIndex =1
+            HoverColor =15189940
+            HoverThemeColorIndex =4
+            HoverTint =40.0
+            PressedColor =9917743
+            PressedThemeColorIndex =4
+            PressedShade =75.0
+            HoverForeColor =4210752
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeColor =4210752
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+        End
+        Begin CheckBox
+            BorderLineStyle =0
+            LabelX =230
+            LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            ShowDatePicker =0
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ComboBox
+            AddColon = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
+            FontName ="Calibri"
+            GridlineColor =10921638
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Subform
+            BorderLineStyle =0
+            GridlineColor =10921638
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin EmptyCell
+            Height =240
+            GridlineColor =10921638
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            KeepTogether = NotDefault
+            Height =2760
+            Name ="ReportHeader"
+            GUID = Begin
+                0x5b89e7c0e396bf478e875b9dc2aba631
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin Label
+                    TextAlign =2
+                    Left =7500
+                    Top =690
+                    Width =1830
+                    Height =300
+                    ForeColor =1643706
+                    Name ="Label28"
+                    Caption ="HOURLY DETAIL"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xe6aae12aaca1c944a798ec531a4305b9
+                    End
+                    LayoutCachedLeft =7500
+                    LayoutCachedTop =690
+                    LayoutCachedWidth =9330
+                    LayoutCachedHeight =990
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =300
+                    Top =1560
+                    Width =3180
+                    Height =300
+                    ColumnOrder =6
+                    FontSize =10
+                    ForeColor =-2147483617
+                    Name ="First and Last Name"
+                    ControlSource ="=IIf([Last_Name] Is Not Null And [First_Name] Is Null,[Last_Name],Nz([First_Name"
+                        "])+\" \"+Nz([Last_Name]))"
+                    FontName ="Arial"
+                    EventProcPrefix ="First_and_Last_Name"
+                    GUID = Begin
+                        0x299a820ce8b61e4c97b4b37a8b7464cf
+                    End
+
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =1560
+                    LayoutCachedWidth =3480
+                    LayoutCachedHeight =1860
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =300
+                    Top =1860
+                    Width =3180
+                    Height =300
+                    ColumnOrder =7
+                    FontSize =10
+                    TabIndex =1
+                    ForeColor =-2147483617
+                    Name ="Text34"
+                    ControlSource ="=[Address]"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x8e47731d5b1d9c47bbaca2dc061c8448
+                    End
+
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =1860
+                    LayoutCachedWidth =3480
+                    LayoutCachedHeight =2160
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =300
+                    Top =2160
+                    Width =3180
+                    Height =300
+                    ColumnOrder =8
+                    FontSize =10
+                    TabIndex =2
+                    ForeColor =-2147483617
+                    Name ="Text35"
+                    ControlSource ="=[City]+\", \"+[State]+\" \"+[Zip]"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x693b10f7cb754d42990cfb17c9fa12de
+                    End
+
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =2160
+                    LayoutCachedWidth =3480
+                    LayoutCachedHeight =2460
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    TextAlign =1
+                    Left =8460
+                    Top =1860
+                    Width =1860
+                    Height =300
+                    ColumnOrder =5
+                    FontSize =10
+                    TabIndex =4
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text29"
+                    ControlSource ="=Replace([Case_Letter] & [Yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty],\"__\",\""
+                        "_\")"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xa7fc10e638e32a41a85535e1544e78d6
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8460
+                    LayoutCachedTop =1860
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =2160
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =6900
+                    Top =1860
+                    Width =1380
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    BorderColor =-2147483617
+                    ForeColor =-2147483617
+                    Name ="Label30"
+                    Caption ="Client File #"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xaf75e13e068d814599a53af8914a4f72
+                    End
+                    LayoutCachedLeft =6900
+                    LayoutCachedTop =1860
+                    LayoutCachedWidth =8280
+                    LayoutCachedHeight =2145
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =8460
+                    Top =1560
+                    Width =1860
+                    Height =300
+                    ColumnOrder =9
+                    FontSize =10
+                    TabIndex =3
+                    ForeColor =-2147483617
+                    Name ="Text31"
+                    ControlSource ="BilL Closed Date"
+                    Format ="Short Date"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xf58920b4af95f041919b1035490f0350
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8460
+                    LayoutCachedTop =1560
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =1860
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =6900
+                    Top =1560
+                    Width =1380
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    BorderColor =-2147483617
+                    ForeColor =-2147483617
+                    Name ="Label32"
+                    Caption ="Date"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x0937a2abb84e804d92bc67d9216faa6a
+                    End
+                    LayoutCachedLeft =6900
+                    LayoutCachedTop =1560
+                    LayoutCachedWidth =8280
+                    LayoutCachedHeight =1845
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    IMESentenceMode =3
+                    Left =4380
+                    Top =1560
+                    Width =1500
+                    Height =315
+                    ColumnOrder =3
+                    FontSize =10
+                    TabIndex =5
+                    Name ="Text72"
+                    ControlSource ="CaseID"
+                    GUID = Begin
+                        0x81f455262886154eb9bea351bf20bf32
+                    End
+
+                    LayoutCachedLeft =4380
+                    LayoutCachedTop =1560
+                    LayoutCachedWidth =5880
+                    LayoutCachedHeight =1875
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    IMESentenceMode =3
+                    Left =4380
+                    Top =1995
+                    Width =1500
+                    Height =315
+                    ColumnOrder =4
+                    FontSize =10
+                    TabIndex =6
+                    Name ="Text74"
+                    ControlSource ="Bill_ID"
+                    GUID = Begin
+                        0x27b56284515b7c4aacd44e6fac9d777a
+                    End
+
+                    LayoutCachedLeft =4380
+                    LayoutCachedTop =1995
+                    LayoutCachedWidth =5880
+                    LayoutCachedHeight =2310
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    IMESentenceMode =3
+                    Left =6000
+                    Top =1620
+                    Width =720
+                    Height =315
+                    ColumnOrder =2
+                    FontSize =10
+                    TabIndex =7
+                    Name ="retainer"
+                    ControlSource ="Retainer"
+                    GUID = Begin
+                        0xd307a1d0823a824bba96501c88d4f98d
+                    End
+
+                    LayoutCachedLeft =6000
+                    LayoutCachedTop =1620
+                    LayoutCachedWidth =6720
+                    LayoutCachedHeight =1935
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =300
+                    Top =1260
+                    Width =3180
+                    Height =300
+                    ColumnOrder =0
+                    FontSize =10
+                    TabIndex =8
+                    ForeColor =-2147483617
+                    Name ="Text109"
+                    ControlSource ="Executor"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xa4b9ffa517b472438126e12fc7f59745
+                    End
+
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =1260
+                    LayoutCachedWidth =3480
+                    LayoutCachedHeight =1560
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    Left =7500
+                    Top =240
+                    Width =1560
+                    Height =495
+                    FontSize =18
+                    FontWeight =800
+                    ForeColor =-2147483617
+                    Name ="Label198"
+                    Caption ="INVOICE"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xdd9111a5a7c26947944d5efc2c43c5d0
+                    End
+                    LayoutCachedLeft =7500
+                    LayoutCachedTop =240
+                    LayoutCachedWidth =9060
+                    LayoutCachedHeight =735
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Image
+                    PictureType =2
+                    Width =5460
+                    Height =1080
+                    Name ="Image195"
+                    Picture ="1_TB 2019 Attorneys, color_png"
+                    GUID = Begin
+                        0x3cb41db42b36b947a0799332dbab1100
+                    End
+
+                    LayoutCachedWidth =5460
+                    LayoutCachedHeight =1080
+                    TabIndex =10
+                End
+                Begin Line
+                    LineSlant = NotDefault
+                    BorderWidth =5
+                    Left =120
+                    Top =1110
+                    Width =10200
+                    BorderColor =-2147483599
+                    Name ="Line28"
+                    GUID = Begin
+                        0x80edcc5f4314314da317f9f378e3f1c5
+                    End
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =1110
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =1110
+                    BorderThemeColorIndex =-1
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =8460
+                    Top =2160
+                    Width =1860
+                    Height =300
+                    FontSize =10
+                    TabIndex =9
+                    ForeColor =-2147483617
+                    Name ="Text69"
+                    ControlSource ="IANumber"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x624f6e078e7fe645b2c63fbd2ebdb590
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8460
+                    LayoutCachedTop =2160
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =2460
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =6900
+                    Top =2160
+                    Width =1380
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    BorderColor =-2147483617
+                    ForeColor =-2147483617
+                    Name ="Label68"
+                    Caption ="Number"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x885bb0b55153f24988fb5a5b8ae65607
+                    End
+                    LayoutCachedLeft =6900
+                    LayoutCachedTop =2160
+                    LayoutCachedWidth =8280
+                    LayoutCachedHeight =2445
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+            End
+        End
+        Begin PageHeader
+            Height =540
+            Name ="PageHeaderSection"
+            GUID = Begin
+                0x9ecbb56a04ad074bb04e778867220a49
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    Left =1200
+                    Top =60
+                    Width =5460
+                    Height =285
+                    FontSize =10
+                    BorderColor =0
+                    ForeColor =0
+                    Name ="Matter_Type"
+                    ControlSource ="Matter_Type"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xb1e6f4ca4dc4ea4081fdeffdfc52d53e
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =1200
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =6660
+                    LayoutCachedHeight =345
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =300
+                    Top =60
+                    Width =780
+                    Height =240
+                    FontSize =10
+                    FontWeight =600
+                    ForeColor =-2147483617
+                    Name ="Label37"
+                    Caption ="Matter:\015\012"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xaeb64ad70706c141b00b19d9c7c41973
+                    End
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =1080
+                    LayoutCachedHeight =300
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =6900
+                    Top =60
+                    Width =1425
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    BorderColor =-2147483617
+                    ForeColor =0
+                    Name ="Label86"
+                    Caption ="Balance Due"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x677e07fcef80784fa5db56799c96ac8b
+                    End
+                    LayoutCachedLeft =6900
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =8325
+                    LayoutCachedHeight =345
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =8460
+                    Top =60
+                    Width =1860
+                    Height =300
+                    FontSize =10
+                    FontWeight =700
+                    TabIndex =1
+                    ForeColor =0
+                    Name ="Text87"
+                    ControlSource ="=[txtHourlyDue]+Nz([ARatClose],0)"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x8feb8652ebce8143b96f82a614a8fe5d
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8460
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =360
+                    ThemeFontIndex =-1
+                    ForeTint =100.0
+                    CurrencySymbol ="$"
+                End
+                Begin Line
+                    Left =120
+                    Top =480
+                    Width =10199
+                    Name ="Line88"
+                    GUID = Begin
+                        0x2007a1bcf20bea45872c4d05e44b1c75
+                    End
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =480
+                    LayoutCachedWidth =10319
+                    LayoutCachedHeight =480
+                End
+            End
+        End
+        Begin Section
+            KeepTogether = NotDefault
+            CanGrow = NotDefault
+            CanShrink = NotDefault
+            Height =4740
+            Name ="Detail"
+            GUID = Begin
+                0xee0989191906fc4bb9fb8d368f556d09
+            End
+            AlternateBackColor =16777215
+            AlternateBackThemeColorIndex =1
+            BackThemeColorIndex =1
+            Begin
+                Begin Subform
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    Left =240
+                    Top =2820
+                    Width =4860
+                    Height =1619
+                    Name ="rptInvoiceComprehensiveTrust2"
+                    SourceObject ="Report.rptInvoiceComprehensiveTrust2"
+                    LinkChildFields ="Bill_ID"
+                    LinkMasterFields ="Bill_ID"
+                    GUID = Begin
+                        0x7dccc7c12fd7044a81bae3d256580813
+                    End
+
+                    LayoutCachedLeft =240
+                    LayoutCachedTop =2820
+                    LayoutCachedWidth =5100
+                    LayoutCachedHeight =4439
+                End
+                Begin Subform
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    Left =240
+                    Top =1020
+                    Width =4980
+                    Height =299
+                    TabIndex =1
+                    Name ="rptInvoiceComprehensiveAR2"
+                    SourceObject ="Report.rptInvoiceComprehensiveAR2"
+                    LinkChildFields ="Bill_ID"
+                    LinkMasterFields ="Bill_ID"
+                    GUID = Begin
+                        0x4541483132127340aadd3dded6515bc9
+                    End
+
+                    LayoutCachedLeft =240
+                    LayoutCachedTop =1020
+                    LayoutCachedWidth =5220
+                    LayoutCachedHeight =1319
+                End
+                Begin Subform
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    Left =240
+                    Top =1440
+                    Width =10080
+                    Height =1259
+                    TabIndex =2
+                    Name ="rpt_TimeDetail_Comprehensive2"
+                    SourceObject ="Report.rpt_TimeDetail_Comprehensive2"
+                    LinkChildFields ="Bill_ID"
+                    LinkMasterFields ="Bill_ID"
+                    GUID = Begin
+                        0xaab5cc86716fa04faf9f01510bef6e7c
+                    End
+
+                    LayoutCachedLeft =240
+                    LayoutCachedTop =1440
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =2699
+                End
+                Begin Subform
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    Left =5340
+                    Top =120
+                    Width =4980
+                    Height =1199
+                    TabIndex =3
+                    Name ="rptInvoiceComprPymtsAR"
+                    SourceObject ="Report.rptInvoiceComprPymtsAR"
+                    LinkChildFields ="Bill_ID"
+                    LinkMasterFields ="Bill_ID"
+                    GUID = Begin
+                        0xf72342c0e114a14dbdcdba7889e86ba5
+                    End
+
+                    LayoutCachedLeft =5340
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =1319
+                End
+                Begin Rectangle
+                    OldBorderStyle =0
+                    Left =240
+                    Top =120
+                    Width =4800
+                    Height =630
+                    BackColor =15590879
+                    Name ="Box39"
+                    GUID = Begin
+                        0x421506580ba59046afe370d24fa9b1cb
+                    End
+                    LayoutCachedLeft =240
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =5040
+                    LayoutCachedHeight =750
+                    BackThemeColorIndex =-1
+                End
+                Begin Label
+                    TextAlign =3
+                    Left =3960
+                    Top =480
+                    Width =945
+                    Height =240
+                    FontSize =8
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label16"
+                    Caption ="Fee / Charge"
+                    GUID = Begin
+                        0x9ebf1c6d53e72b42b08f6783ca988a82
+                    End
+                    LayoutCachedLeft =3960
+                    LayoutCachedTop =480
+                    LayoutCachedWidth =4905
+                    LayoutCachedHeight =720
+                    ForeTint =100.0
+                End
+                Begin Label
+                    Left =300
+                    Top =120
+                    Width =2385
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label18"
+                    Caption ="FEES and ADVANCED COSTS"
+                    GUID = Begin
+                        0x504fb79994f0cf43b4be6cb38e5af90a
+                    End
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =2685
+                    LayoutCachedHeight =405
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =3
+                    IMESentenceMode =3
+                    Left =3900
+                    Top =780
+                    Width =1094
+                    FontSize =8
+                    TabIndex =4
+                    ForeColor =0
+                    Name ="Text43"
+                    ControlSource ="Retainer"
+                    GUID = Begin
+                        0xf81a14aba4729f4db0e2202629d9d065
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =3900
+                    LayoutCachedTop =780
+                    LayoutCachedWidth =4994
+                    LayoutCachedHeight =1020
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =300
+                    Top =480
+                    Width =900
+                    Height =255
+                    FontSize =8
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label31"
+                    Caption ="Date"
+                    GUID = Begin
+                        0x3e2b12a3afb87a4db2256a24b9ac9a70
+                    End
+                    LayoutCachedLeft =300
+                    LayoutCachedTop =480
+                    LayoutCachedWidth =1200
+                    LayoutCachedHeight =735
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =1410
+                    Top =480
+                    Width =1020
+                    Height =255
+                    FontSize =8
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label105"
+                    Caption ="Description"
+                    GUID = Begin
+                        0xfb4f55569626864badb2ce870b35c0fd
+                    End
+                    LayoutCachedLeft =1410
+                    LayoutCachedTop =480
+                    LayoutCachedWidth =2430
+                    LayoutCachedHeight =735
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =240
+                    Top =780
+                    Width =1080
+                    FontSize =8
+                    FontWeight =700
+                    TabIndex =5
+                    ForeColor =0
+                    Name ="Text33"
+                    ControlSource ="CaseOpenDate"
+                    GUID = Begin
+                        0x406bcc95befeb64c80e606c2ce636a09
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =240
+                    LayoutCachedTop =780
+                    LayoutCachedWidth =1320
+                    LayoutCachedHeight =1020
+                    ForeTint =100.0
+                End
+                Begin Label
+                    Left =1425
+                    Top =795
+                    Width =1755
+                    Height =240
+                    FontSize =8
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label36"
+                    Caption ="Initial Fee (Retainer)"
+                    GUID = Begin
+                        0x9c5237aab3135d49b5aa66a649d0f55d
+                    End
+                    LayoutCachedLeft =1425
+                    LayoutCachedTop =795
+                    LayoutCachedWidth =3180
+                    LayoutCachedHeight =1035
+                    ForeTint =100.0
+                End
+                Begin Rectangle
+                    Left =5220
+                    Top =2820
+                    Width =4980
+                    Height =1560
+                    BorderColor =0
+                    Name ="Box101"
+                    GUID = Begin
+                        0xb9447e71780f40448004631a2a5eedb7
+                    End
+                    LayoutCachedLeft =5220
+                    LayoutCachedTop =2820
+                    LayoutCachedWidth =10200
+                    LayoutCachedHeight =4380
+                    BorderThemeColorIndex =0
+                    BorderShade =100.0
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    IMESentenceMode =3
+                    Left =360
+                    Top =4200
+                    Width =420
+                    Height =315
+                    TabIndex =6
+                    Name ="Text112"
+                    ControlSource ="Discount"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0xeda8573f0e9de64eaede6958d6933ca5
+                    End
+
+                    LayoutCachedLeft =360
+                    LayoutCachedTop =4200
+                    LayoutCachedWidth =780
+                    LayoutCachedHeight =4515
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =5235
+                    Top =4440
+                    Width =4965
+                    Height =210
+                    FontSize =7
+                    TabIndex =7
+                    Name ="Text84"
+                    ControlSource ="TimeNotes"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xe5a990be8363054f8ed8d0ae48f482d0
+                    End
+
+                    LayoutCachedLeft =5235
+                    LayoutCachedTop =4440
+                    LayoutCachedWidth =10200
+                    LayoutCachedHeight =4650
+                    ThemeFontIndex =-1
+                End
+                Begin Label
+                    TextAlign =1
+                    Left =5400
+                    Top =4020
+                    Width =1440
+                    Height =255
+                    FontSize =8
+                    FontWeight =700
+                    BorderColor =-2147483617
+                    ForeColor =0
+                    Name ="Label102"
+                    Caption ="Balance Due"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xfde9b6d339e2ec45bf58f2d1eac9e566
+                    End
+                    LayoutCachedLeft =5400
+                    LayoutCachedTop =4020
+                    LayoutCachedWidth =6840
+                    LayoutCachedHeight =4275
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    Left =8820
+                    Top =4035
+                    Width =1320
+                    Height =255
+                    FontSize =8
+                    FontWeight =700
+                    TabIndex =8
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="txtBalanceDue"
+                    ControlSource ="=[txtHourlyDue]+Nz([ARatClose],0)"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xe8975bdee9c6824e812d457920399fc9
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8820
+                    LayoutCachedTop =4035
+                    LayoutCachedWidth =10140
+                    LayoutCachedHeight =4290
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                    CurrencySymbol ="$"
+                End
+                Begin Label
+                    Left =5400
+                    Top =3300
+                    Width =540
+                    Height =255
+                    FontSize =8
+                    BorderColor =-2147483617
+                    ForeColor =0
+                    Name ="Label104"
+                    Caption ="Hourly"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x453ec3bdebcc0b41834c2b4a85371c79
+                    End
+                    LayoutCachedLeft =5400
+                    LayoutCachedTop =3300
+                    LayoutCachedWidth =5940
+                    LayoutCachedHeight =3555
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    Left =8880
+                    Top =3300
+                    Width =1260
+                    Height =255
+                    FontSize =8
+                    TabIndex =11
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="txtHourlyDue"
+                    ControlSource ="=[rpt_TimeDetail_Comprehensive2].[Report]![txtSumHourly]"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xcb845a9ad478fe47aa7ab3a176cbcaed
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8880
+                    LayoutCachedTop =3300
+                    LayoutCachedWidth =10140
+                    LayoutCachedHeight =3555
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    IMESentenceMode =3
+                    Left =5940
+                    Top =3300
+                    Width =660
+                    Height =255
+                    FontSize =8
+                    TabIndex =10
+                    ForeColor =-2147483617
+                    Name ="Text105"
+                    ControlSource ="IANumber"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xd7fa51ace85bf94d9f40dd45e3feab6f
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =5940
+                    LayoutCachedTop =3300
+                    LayoutCachedWidth =6600
+                    LayoutCachedHeight =3555
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Rectangle
+                    Left =5220
+                    Top =2820
+                    Width =4980
+                    Height =420
+                    BackColor =8872517
+                    Name ="Box106"
+                    GUID = Begin
+                        0x5dde82123ec4dd4abee1a54a3219654f
+                    End
+                    LayoutCachedLeft =5220
+                    LayoutCachedTop =2820
+                    LayoutCachedWidth =10200
+                    LayoutCachedHeight =3240
+                    BackThemeColorIndex =-1
+                End
+                Begin Label
+                    Left =5400
+                    Top =2940
+                    Width =1995
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    ForeColor =16777215
+                    Name ="Label107"
+                    Caption ="ACCOUNT SUMMARY"
+                    GUID = Begin
+                        0x13a4d8269376fb43b5265c9fe85b98ae
+                    End
+                    LayoutCachedLeft =5400
+                    LayoutCachedTop =2940
+                    LayoutCachedWidth =7395
+                    LayoutCachedHeight =3225
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                End
+                Begin Line
+                    BorderWidth =1
+                    Left =5400
+                    Top =3960
+                    Width =4740
+                    Name ="Line108"
+                    GUID = Begin
+                        0x1110fd8005fb8b44a1051a5e081b7869
+                    End
+                    LayoutCachedLeft =5400
+                    LayoutCachedTop =3960
+                    LayoutCachedWidth =10140
+                    LayoutCachedHeight =3960
+                End
+                Begin Label
+                    Left =5400
+                    Top =3600
+                    Width =2280
+                    Height =255
+                    FontSize =8
+                    BorderColor =-2147483617
+                    ForeColor =0
+                    Name ="Label123"
+                    Caption ="Prior Balance"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xc558ec0a2dc8bb458035dc961cd29880
+                    End
+                    LayoutCachedLeft =5400
+                    LayoutCachedTop =3600
+                    LayoutCachedWidth =7680
+                    LayoutCachedHeight =3855
+                    ThemeFontIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    Left =8820
+                    Top =3615
+                    Width =1320
+                    Height =255
+                    FontSize =8
+                    TabIndex =9
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="txtARatClose"
+                    ControlSource ="=Nz([ARatClose],0)"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xa60eb8eba985d54da6e437452d406f87
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =8820
+                    LayoutCachedTop =3615
+                    LayoutCachedWidth =10140
+                    LayoutCachedHeight =3870
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                    CurrencySymbol ="$"
+                End
+                Begin Label
+                    Left =9360
+                    Top =2940
+                    Width =480
+                    Height =270
+                    FontSize =8
+                    ForeColor =16777215
+                    Name ="Label135"
+                    Caption ="Due"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x8f0ffd679cf67e43adacfaa843577198
+                    End
+                    LayoutCachedLeft =9360
+                    LayoutCachedTop =2940
+                    LayoutCachedWidth =9840
+                    LayoutCachedHeight =3210
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                End
+            End
+        End
+        Begin PageFooter
+            Height =1005
+            Name ="PageFooterSection"
+            GUID = Begin
+                0xd793196bdeaa1549b639d9961c220fe8
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin Rectangle
+                    Left =120
+                    Top =285
+                    Width =10200
+                    Height =300
+                    BackColor =8210719
+                    Name ="Box191"
+                    GUID = Begin
+                        0x34a0f286b8361c4cbbf7fab014b17b1e
+                    End
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =285
+                    LayoutCachedWidth =10320
+                    LayoutCachedHeight =585
+                    BackThemeColorIndex =-1
+                End
+                Begin Label
+                    TextAlign =2
+                    Left =1733
+                    Top =300
+                    Width =6975
+                    Height =300
+                    FontSize =9
+                    ForeColor =16777215
+                    Name ="Label192"
+                    Caption ="2740 Chain Bridge Road, Vienna, VA 22181     703-938-5100    tatebywater.com\015"
+                        "\012"
+                    FontName ="Century Gothic"
+                    GUID = Begin
+                        0x3a99c788da632f47bdc57b6bbc8fe422
+                    End
+                    LayoutCachedLeft =1733
+                    LayoutCachedTop =300
+                    LayoutCachedWidth =8708
+                    LayoutCachedHeight =600
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =2
+                    Left =480
+                    Width =6015
+                    Height =255
+                    FontSize =8
+                    ForeColor =-2147483617
+                    Name ="Label113"
+                    Caption ="We accept cash, check, or credit card payment.  Credit card may be processed at"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xd4f709ead22272429921a39de506b47d
+                    End
+                    LayoutCachedLeft =480
+                    LayoutCachedWidth =6495
+                    LayoutCachedHeight =255
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    TextAlign =2
+                    Left =8940
+                    Width =990
+                    Height =255
+                    FontSize =8
+                    ForeColor =-2147483617
+                    Name ="Label115"
+                    Caption ="or by phone."
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xf25a962861140345adcf361a8bef7598
+                    End
+                    LayoutCachedLeft =8940
+                    LayoutCachedWidth =9930
+                    LayoutCachedHeight =255
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    FontUnderline = NotDefault
+                    TextAlign =2
+                    Left =6420
+                    Width =2550
+                    Height =270
+                    FontSize =8
+                    ForeColor =12874308
+                    Name ="Label116"
+                    Caption ="tatebywater.com/make-a-payment"
+                    FontName ="Arial"
+                    HyperlinkAddress ="www.tatebywater.com/payment"
+                    GUID = Begin
+                        0x505e8a1e3814b64daeac2f6421736355
+                    End
+                    LayoutCachedLeft =6420
+                    LayoutCachedWidth =8970
+                    LayoutCachedHeight =270
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =4
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =2
+                    BackStyle =0
+                    IMESentenceMode =3
+                    Left =3660
+                    Top =615
+                    Width =3600
+                    Height =315
+                    Name ="Text23"
+                    ControlSource ="=IIf(([Page]>1),\"Page \" & [Page] & \" of \" & [Pages],\"\")"
+                    GUID = Begin
+                        0x50e7c66a2db9f348926f36e930dd137b
+                    End
+
+                    LayoutCachedLeft =3660
+                    LayoutCachedTop =615
+                    LayoutCachedWidth =7260
+                    LayoutCachedHeight =930
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =3
+                    BackStyle =0
+                    IMESentenceMode =3
+                    Left =9180
+                    Top =615
+                    Width =1080
+                    Height =300
+                    FontSize =9
+                    TabIndex =1
+                    ForeColor =9211020
+                    Name ="Text8"
+                    ControlSource ="=Date()"
+                    Format ="Short Date"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x9388e74031e1ef40a3b7c59d07b9a48d
+                    End
+
+                    LayoutCachedLeft =9180
+                    LayoutCachedTop =615
+                    LayoutCachedWidth =10260
+                    LayoutCachedHeight =915
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    TextAlign =1
+                    Left =1740
+                    Top =600
+                    Width =1140
+                    Height =255
+                    FontSize =9
+                    TabIndex =2
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =9211020
+                    Name ="Text104"
+                    ControlSource ="=Replace([Case_Letter] & [Yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty],\"__\",\""
+                        "_\")"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xe085ea6db1e79543aedd9a2c9b75336b
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =1740
+                    LayoutCachedTop =600
+                    LayoutCachedWidth =2880
+                    LayoutCachedHeight =855
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =8100
+                    Top =615
+                    Width =960
+                    Height =255
+                    FontSize =9
+                    TabIndex =3
+                    ForeColor =9211020
+                    Name ="Text122"
+                    ControlSource ="Bill_ID"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x5fdb421a6096aa4aa63dbd6ce73130ff
+                    End
+
+                    LayoutCachedLeft =8100
+                    LayoutCachedTop =615
+                    LayoutCachedWidth =9060
+                    LayoutCachedHeight =870
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    FELineBreak = NotDefault
+                    OldBorderStyle =0
+                    TextAlign =1
+                    Left =180
+                    Top =600
+                    Width =1500
+                    Height =255
+                    FontSize =9
+                    TabIndex =4
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =9211020
+                    Name ="Text158"
+                    ControlSource ="=[Last_Name]"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0x3c834ad41537fd4aab84ad8cc5f835e2
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =180
+                    LayoutCachedTop =600
+                    LayoutCachedWidth =1680
+                    LayoutCachedHeight =855
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+            End
+        End
+        Begin FormFooter
+            KeepTogether = NotDefault
+            Height =0
+            Name ="ReportFooter"
+            GUID = Begin
+                0x59ad4757a548594c8451aaa363eb5644
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+'Private Sub Report_Open(Cancel As Integer)
+'    If Report_rptInvoiceComprehensiveTrust.Report.Recordset.EOF Then
+'        Debug.Print "Empty"
+'    End If
+'End Sub

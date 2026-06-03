@@ -1,0 +1,796 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =-1725289948
+Begin Form
+    PopUp = NotDefault
+    RecordSelectors = NotDefault
+    MaxButton = NotDefault
+    MinButton = NotDefault
+    AutoCenter = NotDefault
+    NavigationButtons = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    DefaultView =0
+    ScrollBars =0
+    BorderStyle =3
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =5415
+    DatasheetFontHeight =11
+    ItemSuffix =15
+    Left =4560
+    Top =2775
+    Right =21150
+    Bottom =15015
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0xb54fc7bb5901e540
+    End
+    GUID = Begin
+        0x012ac8309ce71243acb492f546ab8edd
+    End
+    NameMap = Begin
+        0x0acc0e550000000039dac3d4b728ee4a90e59894f070dbbc00000000e8360995 ,
+        0x2f89e64000000000000000007100720079005f00430074004e0061006d006500 ,
+        0x73005f006c006900730074005f006f007000740069006f006e00730000000000 ,
+        0x0000000000000000000000000000000000000c00000005000000000000000000 ,
+        0x0000000000000000
+    End
+    Caption ="Criminal / Traffic Status"
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    PrtDevMode = Begin
+        0x00000000000000000000000000000000404416d99c010000800316d99c010000 ,
+        0x010408019c00b4070f93010001000100ea0a6f08640001000700580201000100 ,
+        0x5802010000004c657474657200010000c079da809c0100000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000200 ,
+        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000010000000000010000 ,
+        0x0000010006000000070007000000000000000000010000010001160000000000 ,
+        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,
+        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,
+        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,
+        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,
+        0x40010000d2000000180000000000102710271027000010270000000000000000 ,
+        0x0000000002000000000002000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000100000000 ,
+        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000001146400000000000000000000000000 ,
+        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000070006d00690063006b0065006c00730065006e000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000054004100540045002d00300031003500360035002d0057005300 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000500050001000000000002000100010002000000 ,
+        0x0001010000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,
+        0x000000010000000041007200690061006c000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000001000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0001010002000000020000000100000010270000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,
+        0x0000000000000000b203000054500000bb04000050524956fbc7e5d501ff4d46 ,
+        0x432d3836393044570000000000000000
+    End
+    PrtDevNames = Begin
+        0x080023003e000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000005553 ,
+        0x42303033000000000000000000
+    End
+    AllowDatasheetView =0
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    PrtDevModeW = Begin
+        0x000078ee9c01000000000000000000000000000000000000b6a17005fa7f0000 ,
+        0x50c91cc78800000005857005fa7f000010534ff79c010000408323f69c010000 ,
+        0x01040801dc00b4070f93010001000100ea0a6f08640001000700580201000100 ,
+        0x5802010000004c006500740074006500720000000000000050c91cc788000000 ,
+        0x00090000000000000000000000000000408323f69c010000caab7005fa7f0000 ,
+        0xd8524ff79c010000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000200 ,
+        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000010000000000010000 ,
+        0x0000010006000000070007000000000000000000010000010001160000000000 ,
+        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,
+        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,
+        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,
+        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,
+        0x40010000d2000000180000000000102710271027000010270000000000000000 ,
+        0x0000000002000000000002000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000100000000 ,
+        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000001146400000000000000000000000000 ,
+        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000070006d00690063006b0065006c00730065006e000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000054004100540045002d00300031003500360035002d0057005300 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000500050001000000000002000100010002000000 ,
+        0x0001010000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,
+        0x000000010000000041007200690061006c000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000001000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0001010002000000020000000100000010270000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,
+        0x0000000000000000b203000054500000bb04000050524956fbc7e5d501ff4d46 ,
+        0x432d3836393044570000000000000000
+    End
+    PrtDevNamesW = Begin
+        0x04001f003a000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000550053004200300030003300 ,
+        0x000000000000000000000000000000000000
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Rectangle
+            SpecialEffect =3
+            BackStyle =0
+            BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Image
+            BackStyle =0
+            OldBorderStyle =0
+            BorderLineStyle =0
+            SizeMode =3
+            PictureAlignment =2
+            BorderColor =10921638
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CommandButton
+            FontSize =11
+            FontWeight =400
+            ForeColor =4210752
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            UseTheme =1
+            Shape =1
+            Gradient =12
+            BackColor =14461583
+            BackThemeColorIndex =4
+            BackTint =60.0
+            BorderLineStyle =0
+            BorderColor =14461583
+            BorderThemeColorIndex =4
+            BorderTint =60.0
+            ThemeFontIndex =1
+            HoverColor =15189940
+            HoverThemeColorIndex =4
+            HoverTint =40.0
+            PressedColor =9917743
+            PressedThemeColorIndex =4
+            PressedShade =75.0
+            HoverForeColor =4210752
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeColor =4210752
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ComboBox
+            AddColon = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
+            FontName ="Calibri"
+            GridlineColor =10921638
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin EmptyCell
+            Height =240
+            GridlineColor =10921638
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            Height =0
+            BackColor =15064278
+            Name ="FormHeader"
+            GUID = Begin
+                0x4dff8515f5bc0f48b4033e21bfe3d395
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =2
+            BackTint =20.0
+        End
+        Begin Section
+            Height =5160
+            Name ="Detail"
+            GUID = Begin
+                0xceadfa0ab58da440a6ad3511cca52118
+            End
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin Rectangle
+                    SpecialEffect =0
+                    BackStyle =1
+                    OldBorderStyle =0
+                    OverlapFlags =93
+                    Width =5400
+                    Height =1230
+                    BackColor =7633277
+                    Name ="Box18"
+                    GUID = Begin
+                        0x683ef4b8d8de5942a018700ae5b2f716
+                    End
+                    LayoutCachedWidth =5400
+                    LayoutCachedHeight =1230
+                    BackThemeColorIndex =-1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    AccessKey =70
+                    PictureType =2
+                    Left =1620
+                    Top =3720
+                    Width =2700
+                    FontSize =10
+                    FontWeight =700
+                    ForeColor =16777215
+                    Name ="cmdAttyReport"
+                    Caption ="&Filtered Report"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0xbb6c2258b311464499a2039448ebbe5a
+                    End
+                    UnicodeAccessKey =70
+                    TopPadding =0
+
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =3720
+                    LayoutCachedWidth =4320
+                    LayoutCachedHeight =4080
+                    RowStart =3
+                    RowEnd =3
+                    ColumnStart =2
+                    ColumnEnd =2
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                    Gradient =0
+                    BackColor =8872517
+                    BackThemeColorIndex =-1
+                    BackTint =100.0
+                    OldBorderStyle =0
+                    BorderWidth =1
+                    HoverColor =8872517
+                    HoverThemeColorIndex =-1
+                    HoverTint =100.0
+                    PressedColor =8872517
+                    PressedThemeColorIndex =-1
+                    PressedShade =100.0
+                    HoverForeColor =16777215
+                    HoverForeThemeColorIndex =1
+                    HoverForeTint =100.0
+                    PressedForeColor =16777215
+                    PressedForeThemeColorIndex =1
+                    PressedForeTint =100.0
+                    WebImagePaddingLeft =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    AccessKey =65
+                    PictureType =2
+                    Left =1620
+                    Top =4260
+                    Width =2700
+                    Height =480
+                    FontSize =10
+                    FontWeight =700
+                    TabIndex =1
+                    ForeColor =16777215
+                    Name ="cmdAllAttyReport"
+                    Caption ="&All Attorneys Report"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0xb67a494e2aa93a4f8c845326a0460974
+                    End
+                    UnicodeAccessKey =65
+                    TopPadding =0
+
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =4260
+                    LayoutCachedWidth =4320
+                    LayoutCachedHeight =4740
+                    RowStart =3
+                    RowEnd =3
+                    ColumnStart =4
+                    ColumnEnd =4
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                    Gradient =0
+                    BackColor =5259059
+                    BackThemeColorIndex =2
+                    BackTint =100.0
+                    BackShade =75.0
+                    OldBorderStyle =0
+                    BorderWidth =1
+                    HoverColor =5259059
+                    HoverThemeColorIndex =2
+                    HoverTint =100.0
+                    HoverShade =75.0
+                    PressedColor =5259059
+                    PressedThemeColorIndex =2
+                    HoverForeColor =16777215
+                    HoverForeThemeColorIndex =1
+                    HoverForeTint =100.0
+                    PressedForeColor =16777215
+                    PressedForeThemeColorIndex =1
+                    PressedForeTint =100.0
+                    WebImagePaddingLeft =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
+                End
+                Begin Label
+                    OverlapFlags =93
+                    Left =1620
+                    Top =1500
+                    Width =810
+                    Height =285
+                    FontSize =10
+                    ForeColor =4144959
+                    Name ="Label5"
+                    Caption ="Attorney"
+                    GUID = Begin
+                        0xb6d8f43be4af6540b5bd11f1ac1b817b
+                    End
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =1500
+                    LayoutCachedWidth =2430
+                    LayoutCachedHeight =1785
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin ComboBox
+                    RowSourceTypeInt =1
+                    OverlapFlags =215
+                    IMESentenceMode =3
+                    Left =1620
+                    Top =1770
+                    Width =1800
+                    Height =300
+                    FontSize =12
+                    TabIndex =2
+                    ForeColor =4210752
+                    GUID = Begin
+                        0x98ede8a3bb0dbb4f97765b17a0c85d4e
+                    End
+                    Name ="cmbCrAtty"
+                    RowSourceType ="Value List"
+                    RowSource ="JRT;DEB;GBF;PM;TDT;NH;RLF;CMH;BA;KDB;DK;WNE;RYR"
+                    Tag ="User Name"
+
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =1770
+                    LayoutCachedWidth =3420
+                    LayoutCachedHeight =2070
+                    ForeThemeColorIndex =0
+                    ForeTint =75.0
+                    ForeShade =100.0
+                End
+                Begin Image
+                    PictureType =2
+                    Left =120
+                    Top =180
+                    Width =1020
+                    Height =840
+                    Name ="Image4"
+                    Picture ="Logo Transparent"
+                    GUID = Begin
+                        0x7555d3848ac72b498dbf6a8c6d5225f1
+                    End
+
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =180
+                    LayoutCachedWidth =1140
+                    LayoutCachedHeight =1020
+                    TabIndex =5
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =1200
+                    Top =420
+                    Width =4215
+                    Height =795
+                    FontSize =16
+                    FontWeight =700
+                    ForeColor =16777215
+                    Name ="Label7"
+                    Caption ="CRIMINAL / TRAFFIC STATUS"
+                    GUID = Begin
+                        0xfc44e023b5de7c44bdf97d14f3b89581
+                    End
+                    LayoutCachedLeft =1200
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =5415
+                    LayoutCachedHeight =1215
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    Left =1620
+                    Top =2190
+                    Width =810
+                    Height =285
+                    FontSize =10
+                    ForeColor =4144959
+                    Name ="Label8"
+                    Caption ="Court"
+                    GUID = Begin
+                        0xbf7186082b946741bc940ceda44f37f6
+                    End
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =2190
+                    LayoutCachedWidth =2430
+                    LayoutCachedHeight =2475
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin ComboBox
+                    OverlapFlags =215
+                    IMESentenceMode =3
+                    Left =1620
+                    Top =2460
+                    Width =1800
+                    Height =300
+                    FontSize =12
+                    TabIndex =3
+                    ForeColor =4210752
+                    ColumnInfo ="\"\";\"\";\"10\";\"510\""
+                    GUID = Begin
+                        0xee7e9cd42f25054598e9a40d26da3003
+                    End
+                    Name ="cmbCrCourt"
+                    RowSourceType ="Table/Query"
+                    RowSource ="qry_CtNames_list_options"
+                    Tag ="User Name"
+
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =2460
+                    LayoutCachedWidth =3420
+                    LayoutCachedHeight =2760
+                    ForeThemeColorIndex =0
+                    ForeTint =75.0
+                    ForeShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    Left =1620
+                    Top =2880
+                    Width =810
+                    Height =285
+                    FontSize =10
+                    ForeColor =4144959
+                    Name ="Label10"
+                    Caption ="Matter"
+                    GUID = Begin
+                        0x8bc390a77d8b6c4880856f5ab1526317
+                    End
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =2880
+                    LayoutCachedWidth =2430
+                    LayoutCachedHeight =3165
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =1620
+                    Top =3240
+                    Width =2700
+                    Height =315
+                    TabIndex =4
+                    Name ="txtMatter"
+                    GUID = Begin
+                        0x52cf9b715f220e40b692d95ce9e0e646
+                    End
+
+                    LayoutCachedLeft =1620
+                    LayoutCachedTop =3240
+                    LayoutCachedWidth =4320
+                    LayoutCachedHeight =3555
+                End
+            End
+        End
+        Begin FormFooter
+            Height =0
+            Name ="FormFooter"
+            GUID = Begin
+                0xfbda95300efa17498f7e545b3f143ee9
+            End
+            AutoHeight =1
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub cmdAllAttyReport_Click()
+    DoCmd.Close acReport, "rptCriminalStatus", acSaveYes
+    DoCmd.OpenReport "rptCriminalStatus", acViewPreview
+    DoCmd.Close acForm, "frmCrimStatusReport"
+End Sub
+
+Private Sub cmdAttyReport_Click()
+    DoCmd.Close acReport, "rptCriminalStatus", acSaveYes
+    'DoCmd.OpenReport "rptCriminalStatus", acViewPreview, "", "Orig_Atty='" & Me.cmbCrAtty & "'"
+    
+    Dim strWhere As String
+    
+    If Len(Me.cmbCrAtty & "") > 0 Then
+    strWhere = "[Orig_Atty]='" & Me.cmbCrAtty & "' "
+    End If
+    
+    If Len(Me.cmbCrCourt & "") > 0 Then
+    strWhere = "[Court]='" & Me.cmbCrCourt & "' "
+    End If
+    
+    If Len(Me.txtMatter & "") > 0 Then
+    strWhere = "[Matter_Type]LIKE """ & Me.txtMatter & "*"" "
+    End If
+    
+    If strWhere <> "" Then
+    If Len(Me.txtMatter & "") <> 0 Then
+    If Len(Me.cmbCrCourt & "") <> 0 Then
+    If Len(Me.cmbCrAtty & "") <> 0 Then
+    strWhere = "[Orig_Atty] ='" & Me.cmbCrAtty & "' And [Court]='" & Me.cmbCrCourt & "' And [Matter_Type] LIKE """ & Me.txtMatter & "*"""
+    Else
+    strWhere = "[Court]='" & Me.cmbCrCourt & "'"
+    End If
+    End If
+    End If
+    End If
+    DoCmd.OpenReport "rptCriminalStatus", acViewPreview, , strWhere
+   
+    DoCmd.Close acForm, "frmCrimStatusReport"
+    
+'   WORKS FOR TWO!
+'Dim strWhere As String
+'
+'    If Len(Me.cmbCrAtty & "") > 0 Then
+'    strWhere = "[Orig_Atty]='" & Me.cmbCrAtty & "' "
+'    End If
+'
+'    If Len(Me.cmbCrCourt & "") > 0 Then
+'    strWhere = "[Court]='" & Me.cmbCrCourt & "' "
+'    End If
+'
+'    If strWhere <> "" Then
+'    If Len(Me.cmbCrCourt & "") <> 0 Then
+'    If Len(Me.cmbCrAtty & "") <> 0 Then
+'    strWhere = "[Orig_Atty] ='" & Me.cmbCrAtty & "' And [Court]='" & Me.cmbCrCourt & "'"
+'    Else
+'    strWhere = "[Court]='" & Me.cmbCrCourt & "'"
+'    End If
+'    End If
+'    End If
+'    DoCmd.OpenReport "rptCriminalStatus", acViewPreview, , strWhere
+'
+'    DoCmd.Close acForm, "frmCrimStatusReport"
+    
+'    whereStmt = ""
+'    If Not IsNull(Me.cmbCrAtty) Then
+'    whereStmt = "Orig_Atty= LIKE """ & Me.cmbCrAtty & "*"" AND "
+'    End If
+'    If Not IsNull(Me.cmbCrCourt) Then
+'    whereStmt = whereStmt & "Court LIKE """ & Me.cmbCrCourt & "*"" AND "
+'    End If
+'    If Not IsNull(Me.txtMatter) Then
+'    whereStmt = whereStmt & "[Matter_Type] LIKE """ & Me.txtMatter & "*"" AND "
+'    End If
+'    whereStmt = Left(whereStmt, Len(whereStmt) - 4)
+'    DoCmd.OpenReport "rptCriminalStatus", acViewPreview, whereStmt
+'
+'    DoCmd.Close acForm, "frmCrimStatusReport"
+    'DoCmd.OpenReport "rptCriminalStatus", acViewPreview, "", "Orig_Atty='" & Nz(Me.cmbCrAtty) & "' AND Court='" & Nz(Me.cmbCrCourt) & "' AND Matter_Type = '" & Nz(Me.txtMatter) & "'"
+    
+    
+'   On Error GoTo Error_Handler
+'
+
+    
+    
+    
+    
+    
+    
+    'docmd.openreport "MidModReport", acViewReport,, "Mod = '" & cboMod & "' AND studentID = '" cboStudent & "'".
+    'DoCmd.OpenReport "MidModReport", acViewReport,, "Mod = '" & cboMod & "' And studentID = '" & cboStudent & "'"
+    'AND Matter_Type LIKE '" & txtMatter & "'"
+    
+'Dim whereStmt As String
+
+'whereStmt = ""
+
+'If Not IsNull(Me.txtEstimator) Then
+'whereStmt = "[Estimator] = " & Me.txtEstimator & " AND "
+'End If
+'If Not IsNull(Me.txtYear) Then
+'whereStmt = whereStmt & "[SalesYear] = " & Me.txtYear & " AND "
+'End If
+
+'whereStmt = Left(whereStmt, Len(whereStmt) - 5)
+    
+    
+    
+':
+'WHEREStmt = ""
+'If Not IsNull(Me.txtEstimator) Then
+'WHEREStmt = "[Estimator] = " & Me.txtEstimator & " AND "
+'If Not IsNull(Me.txtLocator) Then
+'WHEREStmt = WHEREStmt & "[Locator] = " & Me.txtLocator & " AND "
+'If Not IsNull(Me.txtYear) Then
+'WHEREStmt = WHEREStmt & "[Year] = " & Me.txtYear & " AND "
+
+'Get rid of trailing AND statement
+'WHEREStmt = Left(WHEREStmt, Len(WHEREStmt) - 5)
+
+'DoCmd.OpenReport stDocName, acPreview, WHEREStmt
+ 
+End Sub

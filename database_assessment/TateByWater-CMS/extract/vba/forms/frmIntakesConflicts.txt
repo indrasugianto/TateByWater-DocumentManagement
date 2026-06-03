@@ -1,0 +1,923 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =-1702363593
+Begin Form
+    RecordSelectors = NotDefault
+    NavigationButtons = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =10695
+    DatasheetFontHeight =11
+    ItemSuffix =5
+    Right =19455
+    Bottom =12285
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x640f504b51f9e440
+    End
+    GUID = Begin
+        0xab5c32f68ec9b04fb4895db4988c96e4
+    End
+    NameMap = Begin
+        0x0acc0e550000000013c56a7d19de9e4786c4790f95d3155f00000000fe74c7cb ,
+        0xb25de640000000000000000054004200200049006e00740061006b0065007300 ,
+        0x0000000000001fea1bd7f3494843bb9079c9271a81260700000013c56a7d19de ,
+        0x9e4786c4790f95d3155f49004400000000000000d90d7c74cb69d64d97a251b2 ,
+        0x838e809c0700000013c56a7d19de9e4786c4790f95d3155f4700490020004c00 ,
+        0x61007300740020004e0061006d0065000000000000001dec8a5a7eb14b408f4d ,
+        0xb0116cfb747b0700000013c56a7d19de9e4786c4790f95d3155f470049002000 ,
+        0x4600690072007300740020004e0061006d006500000000000000a30a4ddfa9f1 ,
+        0xc1478a87946de710c0e30700000013c56a7d19de9e4786c4790f95d3155f4700 ,
+        0x490044004f0042000000000000002fdd833142aecd448a512e81b895c05c0700 ,
+        0x000013c56a7d19de9e4786c4790f95d3155f4700490020004d00610074007400 ,
+        0x65007200000000000000b5cee00ba02ee440b5c2ef241165176a0700000013c5 ,
+        0x6a7d19de9e4786c4790f95d3155f4700490020004f00700065006e0020004400 ,
+        0x610074006500000000000000000000000000000000000000000000000c000000 ,
+        0x050000000000000000000000000000000000
+    End
+    RecordSource ="TB Intakes"
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    PrtDevMode = Begin
+        0x004416d99c010000800316d99c010000404416d99c010000800316d99c010000 ,
+        0x010408019c00b4070f93010001000100ea0a6f08640001000700580201000100 ,
+        0x5802010000004c6574746572000000000000000000000000b6a17005fa7f0000 ,
+        0x8003000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000200 ,
+        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000010000000000010000 ,
+        0x0000010006000000070007000000000000000000010000010001160000000000 ,
+        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,
+        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,
+        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,
+        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,
+        0x40010000d2000000180000000000102710271027000010270000000000000000 ,
+        0x0000000002000000000002000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000100000000 ,
+        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000001146400000000000000000000000000 ,
+        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000050004d00690063006b0065006c00730065006e000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000050004d00490043004b004f00460043002d004800500000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000500050001000000000002000100010002000000 ,
+        0x0001010000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,
+        0x000000010000000041007200690061006c000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000001000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0001010002000000020000000100000010270000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,
+        0x0000000000000000b203000054500000bb0400005052495628c81ad601ff4d46 ,
+        0x432d3836393044570000000000000000
+    End
+    PrtDevNames = Begin
+        0x0800230047000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000055534230303300000000000000000000000000
+    End
+    AllowDatasheetView =0
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    PrtDevModeW = Begin
+        0x00001cc78800000000000000000000000000000000000000c0fd1cc788000000 ,
+        0x70e1f5adf67f000070e1f5adf67f000000000000000000000000000000000000 ,
+        0x01040801dc00b4070f93010001000100ea0a6f08640001000700580201000100 ,
+        0x5802010000004c006500740074006500720000009c01000000c91cc788000000 ,
+        0x00090000000000000000000000000000408323f69c010000caab7005fa7f0000 ,
+        0xd8524ff79c010000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000200 ,
+        0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000010000000000010000 ,
+        0x0000010006000000070007000000000000000000010000010001160000000000 ,
+        0x0000000002000000070000000000000000190000e40c000000000000b80b0000 ,
+        0x7017000000000000dc05000058020000000000000000000000000000feff0000 ,
+        0x000000000000000000000000000000000000000000000000370c0000da0c0000 ,
+        0x10270000102700001027000010270000a00a0000c2060000b80600002c040000 ,
+        0x40010000d2000000180000000000102710271027000010270000000000000000 ,
+        0x0000000002000000000002000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000100000000 ,
+        0x0000010001000100000000000000ffff00000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000001146400000000000000000000000000 ,
+        0xcccccc0000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000100010064008910000089100000bb0288040301000000001027e4040000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000050004d00690063006b0065006c00730065006e000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000050004d00490043004b004f00460043002d004800500000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000500050001000000000002000100010002000000 ,
+        0x0001010000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000024000000f5ffffff00000000000000000000000000000000 ,
+        0x000000010000000041007200690061006c000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000ffffff0001000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000001000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0001010002000000020000000100000010270000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000020000000454e474c4953480000000000 ,
+        0x0000000000000000b203000054500000bb0400005052495628c81ad601ff4d46 ,
+        0x432d3836393044570000000000000000
+    End
+    PrtDevNamesW = Begin
+        0x04001f0043000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000005500530042003000300033000000000000000000000000000000 ,
+        0x000000000000000000000000
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Line
+            BorderLineStyle =0
+            GridlineColor =10921638
+            BorderThemeColorIndex =0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CommandButton
+            FontSize =11
+            FontWeight =400
+            ForeColor =4210752
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            UseTheme =1
+            Shape =1
+            Gradient =12
+            BackColor =14461583
+            BackThemeColorIndex =4
+            BackTint =60.0
+            BorderLineStyle =0
+            BorderColor =14461583
+            BorderThemeColorIndex =4
+            BorderTint =60.0
+            ThemeFontIndex =1
+            HoverColor =15189940
+            HoverThemeColorIndex =4
+            HoverTint =40.0
+            PressedColor =9917743
+            PressedThemeColorIndex =4
+            PressedShade =75.0
+            HoverForeColor =4210752
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeColor =4210752
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            Height =1080
+            BackColor =14865828
+            Name ="FormHeader"
+            GUID = Begin
+                0xc36ee640a526cc44822d00953e52a55a
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            Begin
+                Begin Label
+                    OverlapFlags =85
+                    Left =120
+                    Top =120
+                    Width =1215
+                    Height =435
+                    FontSize =16
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label1"
+                    Caption ="INTAKES"
+                    GUID = Begin
+                        0x9401ebe70196e749bbe52578b249dd23
+                    End
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =1335
+                    LayoutCachedHeight =555
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    OverlapFlags =93
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =1320
+                    Top =604
+                    Width =2220
+                    Height =389
+                    ColumnOrder =0
+                    FontSize =9
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    Name ="txtLastGI"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0xe3a3bc885e2dbf4eac33cba2ef673382
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =1320
+                    LayoutCachedTop =604
+                    LayoutCachedWidth =3540
+                    LayoutCachedHeight =993
+                    RowStart =1
+                    RowEnd =1
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    OverlapFlags =93
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =3660
+                    Top =600
+                    Width =2190
+                    Height =389
+                    ColumnOrder =1
+                    FontSize =9
+                    TabIndex =1
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    Name ="txtFirstGI"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0x85829d65323473449080ea73d3668f8a
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =3660
+                    LayoutCachedTop =600
+                    LayoutCachedWidth =5850
+                    LayoutCachedHeight =989
+                    RowStart =1
+                    RowEnd =1
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    OverlapFlags =93
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =5940
+                    Top =600
+                    Width =1140
+                    Height =389
+                    ColumnOrder =2
+                    FontSize =8
+                    TabIndex =2
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    Name ="txtDOBGI"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0xa2e92e3fb119644ba9d1242736a97e0f
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =5940
+                    LayoutCachedTop =600
+                    LayoutCachedWidth =7080
+                    LayoutCachedHeight =989
+                    RowStart =1
+                    RowEnd =1
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    OverlapFlags =93
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =8400
+                    Top =600
+                    Width =2280
+                    Height =389
+                    ColumnOrder =3
+                    FontSize =8
+                    TabIndex =3
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    Name ="txtMatterGI"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0x18ecd94ca1fc844889b3e707ce7899dc
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =8400
+                    LayoutCachedTop =600
+                    LayoutCachedWidth =10680
+                    LayoutCachedHeight =989
+                    RowStart =1
+                    RowEnd =1
+                End
+                Begin CommandButton
+                    OverlapFlags =93
+                    AccessKey =67
+                    Left =9180
+                    Top =120
+                    Width =1515
+                    FontSize =10
+                    TabIndex =4
+                    ForeColor =855309
+                    Name ="cmbClearFilter"
+                    Caption ="   &Clear Filter"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0x7d75f243008f254b8ef68941b70d86fe
+                    End
+                    UnicodeAccessKey =67
+                    ImageData = Begin
+                        0x2800000010000000100000000100200000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000003255d6ab3255d65a0000000000000000000000000000000000000000 ,
+                        0x3255d62d3255d693000000000000000000000000000000000000000000000000 ,
+                        0x000000003255d6ae3255d6f93255d6360000000000000000000000003255d62d ,
+                        0x3255d6db3255d61e000000000000000000000000000000000000000000000000 ,
+                        0x000000003255d6153255d6db3255d6f03255d630000000003255d6303255d6ea ,
+                        0x3255d66300000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000000000003255d61b3255d6c33255d6ed3255d66f3255d6ea3255d6ae ,
+                        0x00000000000000000000000000000000000000000000000000000000727272ff ,
+                        0x727272ff727272ff000000003255d6033255d6c63255d6ff3255d6de3255d60c ,
+                        0x00000000000000000000000000000000000000000000000000000000727272ff ,
+                        0x7272727e000000003255d6153255d6ab3255d6ff3255d6cf3255d6bd3255d696 ,
+                        0x3255d609000000000000000000000000000000000000000000000000727272ff ,
+                        0x000000003255d64e3255d6ed3255d6ff3255d6b73255d60c000000003255d645 ,
+                        0x3255d6a53255d6420000000000000000000000000000000000000000727272ff ,
+                        0x000000003255d6753255d6de3255d65a00000000000000000000000000000000 ,
+                        0x000000003255d6270000000000000000000000000000000000000000727272ff ,
+                        0x7272728100000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000007272726c727272ff ,
+                        0x727272ff727272ff727272780000000000000000000000000000000000000000 ,
+                        0x00000000000000000000000000000000000000007272724e727272fc727272ff ,
+                        0x727272ff727272ff727272ff7272725a00000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000072727236727272f6727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272f972727242000000000000000000000000 ,
+                        0x00000000000000000000000072727224727272ea727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272f07272722d0000000000000000 ,
+                        0x000000000000000000000000727272d2727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272e40000000000000000 ,
+                        0x000000000000000000000000727272f0727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272ff0000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000
+                    End
+
+                    LayoutCachedLeft =9180
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =10695
+                    LayoutCachedHeight =480
+                    PictureCaptionArrangement =1
+                    ForeTint =95.0
+                    UseTheme =0
+                    Shape =0
+                    Gradient =2
+                    BackColor =13998939
+                    BackThemeColorIndex =8
+                    BackTint =100.0
+                    BorderColor =13998939
+                    BorderThemeColorIndex =8
+                    BorderTint =100.0
+                    HoverColor =14528380
+                    HoverThemeColorIndex =8
+                    HoverTint =80.0
+                    PressedColor =12746034
+                    PressedThemeColorIndex =8
+                    PressedShade =80.0
+                    HoverForeColor =16777215
+                    HoverForeThemeColorIndex =1
+                    HoverForeTint =100.0
+                    PressedForeColor =16777215
+                    PressedForeThemeColorIndex =1
+                    PressedForeTint =100.0
+                    QuickStyle =34
+                    QuickStyleMask =-513
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
+                    Overlaps =1
+                End
+                Begin Label
+                    OverlapFlags =247
+                    Left =1380
+                    Top =375
+                    Width =930
+                    Height =285
+                    FontSize =10
+                    ForeColor =0
+                    Name ="Label13"
+                    Caption ="Last Name"
+                    GUID = Begin
+                        0xe72f9ce0b0c89f4299b6984fc87f0ba6
+                    End
+                    LayoutCachedLeft =1380
+                    LayoutCachedTop =375
+                    LayoutCachedWidth =2310
+                    LayoutCachedHeight =660
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =247
+                    Left =3660
+                    Top =375
+                    Width =960
+                    Height =285
+                    FontSize =10
+                    ForeColor =0
+                    Name ="Label14"
+                    Caption ="First Name"
+                    GUID = Begin
+                        0xc172acf8d33a3a40806fedf57b26650b
+                    End
+                    LayoutCachedLeft =3660
+                    LayoutCachedTop =375
+                    LayoutCachedWidth =4620
+                    LayoutCachedHeight =660
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =247
+                    Left =6000
+                    Top =375
+                    Width =930
+                    Height =285
+                    FontSize =10
+                    ForeColor =0
+                    Name ="Label15"
+                    Caption ="DOB"
+                    GUID = Begin
+                        0xbfb6fea5e05aff41b7cd0862cb526af5
+                    End
+                    LayoutCachedLeft =6000
+                    LayoutCachedTop =375
+                    LayoutCachedWidth =6930
+                    LayoutCachedHeight =660
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    Left =7245
+                    Top =660
+                    Width =1020
+                    Height =285
+                    FontSize =10
+                    ForeColor =0
+                    Name ="Label16"
+                    Caption ="Intake Date"
+                    GUID = Begin
+                        0xc9a2192053a0c247bc4441b88bcf7bda
+                    End
+                    LayoutCachedLeft =7245
+                    LayoutCachedTop =660
+                    LayoutCachedWidth =8265
+                    LayoutCachedHeight =945
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =247
+                    Left =8415
+                    Top =375
+                    Width =930
+                    Height =285
+                    FontSize =10
+                    ForeColor =0
+                    Name ="Label17"
+                    Caption ="Matter"
+                    GUID = Begin
+                        0x7ba0cab527571048af7735be5a10e616
+                    End
+                    LayoutCachedLeft =8415
+                    LayoutCachedTop =375
+                    LayoutCachedWidth =9345
+                    LayoutCachedHeight =660
+                    ForeTint =100.0
+                End
+            End
+        End
+        Begin Section
+            Height =480
+            Name ="Detail"
+            GUID = Begin
+                0xbaac572c3922e1488408141ad2b9d95d
+            End
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    Locked = NotDefault
+                    FontUnderline = NotDefault
+                    OverlapFlags =85
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =120
+                    Top =60
+                    Width =1140
+                    Height =389
+                    FontSize =9
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =12673797
+                    Name ="IDNum"
+                    ControlSource ="ID"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0xb48159ea857d5d4ca92c1655ee1233a6
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =1260
+                    LayoutCachedHeight =449
+                    DisplayAsHyperlink =1
+                    RowStart =1
+                    RowEnd =1
+                    BorderShade =90.0
+                    ForeThemeColorIndex =10
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =1335
+                    Top =64
+                    Width =2220
+                    Height =389
+                    FontSize =9
+                    TabIndex =1
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    Name ="First_Name"
+                    ControlSource ="GI Last Name"
+                    GUID = Begin
+                        0xed25980c986197408292409a6e3fc290
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =1335
+                    LayoutCachedTop =64
+                    LayoutCachedWidth =3555
+                    LayoutCachedHeight =453
+                    RowStart =1
+                    RowEnd =1
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =3675
+                    Top =60
+                    Width =2190
+                    Height =389
+                    FontSize =9
+                    TabIndex =2
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    Name ="Text4"
+                    ControlSource ="GI First Name"
+                    GUID = Begin
+                        0x2702ca63e524c0408d08a2b8a0077f87
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =3675
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =5865
+                    LayoutCachedHeight =449
+                    RowStart =1
+                    RowEnd =1
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =5940
+                    Top =60
+                    Width =1140
+                    Height =389
+                    FontSize =8
+                    TabIndex =3
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    Name ="Text5"
+                    ControlSource ="GIDOB"
+                    GUID = Begin
+                        0xc48ac291b8837943942afa52204f1479
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =5940
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =7080
+                    LayoutCachedHeight =449
+                    RowStart =1
+                    RowEnd =1
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Left =8400
+                    Top =60
+                    Width =2280
+                    Height =389
+                    FontSize =8
+                    TabIndex =4
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    Name ="Text6"
+                    ControlSource ="GI Matter"
+                    GUID = Begin
+                        0x53ec8c432ab57c45ac3102730a9da4ae
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =8400
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =10680
+                    LayoutCachedHeight =449
+                    RowStart =1
+                    RowEnd =1
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =7140
+                    Top =45
+                    Width =1215
+                    Height =389
+                    FontSize =8
+                    TabIndex =5
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    Name ="Text12"
+                    ControlSource ="GI Open Date"
+                    GUID = Begin
+                        0x16eab74c059a6843a2d17ae9c3ae3565
+                    End
+                    BottomPadding =150
+
+                    LayoutCachedLeft =7140
+                    LayoutCachedTop =45
+                    LayoutCachedWidth =8355
+                    LayoutCachedHeight =434
+                    RowStart =1
+                    RowEnd =1
+                    BorderShade =90.0
+                End
+            End
+        End
+        Begin FormFooter
+            Height =0
+            BackColor =12428174
+            Name ="FormFooter"
+            GUID = Begin
+                0x3539c694b36ad64ca4818c97d79ed6a4
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub cmbClearFilter_Click()
+    Call FilterClear
+End Sub
+
+
+
+Private Sub Text0_Click()
+
+End Sub
+
+Private Sub IDNum_Click()
+On Error GoTo ErrHandler_IDNum_Click
+    IsDisableEvents = True
+    If CurrentProject.AllForms("Intakes").IsLoaded Then
+        DoCmd.Close acForm, "Intakes", acSaveNo
+        DoCmd.openform "Intakes", acNormal, , "[ID]=" & Me.ID
+'        Forms("Intakes").SetFocus
+    Else
+        DoCmd.openform "Intakes", acNormal, , "[ID]=" & Me.ID
+'        Forms("Intakes").SetFocus
+    End If
+ErrHandler_IDNum_Click:
+    If Err.Number <> 0 Then ShowMessage Err.Description
+End Sub
+
+
+
+
+
+Private Sub txtDOBGI_AfterUpdate()
+If Not IsNull(txtDOBGI) Then Call FilterMe
+End Sub
+
+Private Sub txtFirstGI_AfterUpdate()
+ If Not IsNull(txtFirstGI) Then Call FilterMe
+End Sub
+
+Private Sub txtLastGI_AfterUpdate()
+ If Not IsNull(txtLastGI) Then Call FilterMe
+End Sub
+
+Sub FilterMe()
+    Dim strSQL As String
+    strSQL = "1=1"
+    
+    If Not IsNull(Me.txtLastGI) Then strSQL = strSQL & " AND [GI Last Name] like '*" & Me.txtLastGI & "*'"
+    If Not IsNull(Me.txtFirstGI) Then strSQL = strSQL & " AND [GI First Name] like '*" & Me.txtFirstGI & "*'"
+    If Not IsNull(Me.txtDOBGI) Then strSQL = strSQL & " AND GIDOB like '" & Me.txtDOBGI & "*'"
+    If Not IsNull(Me.txtMatterGI) Then strSQL = strSQL & " AND [GI Matter] like '*" & Me.txtMatterGI & "*'"
+
+    Debug.Print strSQL
+    
+    Me.Filter = strSQL
+    Me.FilterOn = True
+End Sub
+
+Sub FilterClear()
+    'clear controls:
+    Me.txtLastGI = Null
+    Me.txtFirstGI = Null
+    Me.txtDOBGI = Null
+    Me.txtMatterGI = Null
+'    Me.chkPastDue = Null
+'    Me.chkNoBalance = Null
+'    Me.chkNonZero = Null
+    
+    Me.Filter = ""
+    Me.FilterOn = False
+End Sub
+
+Private Sub txtMatterGI_AfterUpdate()
+    If Not IsNull(txtMatterGI) Then Call FilterMe
+End Sub

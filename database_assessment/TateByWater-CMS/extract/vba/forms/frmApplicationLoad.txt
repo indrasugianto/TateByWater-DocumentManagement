@@ -1,0 +1,69 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =1844332633
+Begin Form
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    DefaultView =0
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridY =10
+    Width =963
+    DatasheetFontHeight =11
+    Right =18585
+    Bottom =11670
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x02bcde9b55fce440
+    End
+    GUID = Begin
+        0xe00bb2eec82ccf4f921704208c55aa4c
+    End
+    NameMap = Begin
+        0x0acc0e5500000000000000000000000000000000000000000c00000005000000 ,
+        0x0000000000000000000000000000
+    End
+    DatasheetFontName ="Calibri"
+    OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Section
+            Height =680
+            Name ="Detail"
+            GUID = Begin
+                0x9b5dc81a1db2524c8765111df759cb09
+            End
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub Form_Load()
+    DoCmd.ShowToolbar "Ribbon", acToolbarNo
+    
+    DoCmd.Close acForm, Me.Name, acSaveNo
+    DoCmd.openform "frmLogin", acNormal
+End Sub

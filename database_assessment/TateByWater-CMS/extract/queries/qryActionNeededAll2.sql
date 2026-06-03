@@ -1,0 +1,3 @@
+SELECT tblCase.CaseID, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, tblCase.ParaLegal, tblCase.Matter_type, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], [Last_Name] & ", " & [First_Name] AS Name, TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, tblCase.Action_Needed_on_Payment
+FROM tblCase LEFT JOIN TblActionNeeded ON tblCase.CaseID = TblActionNeeded.CaseID
+WHERE (((TblActionNeeded.ActionComp)=No));

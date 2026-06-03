@@ -1,0 +1,36 @@
+{
+  "reportName": "Case Sources and Revenue",
+  "dataSource": "qryCaseSourcesRPT1",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "qryCaseSourcesRPT1",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryCaseSourcesRPT1",
+      "qryCaseSourcesRPT"
+    ],
+    "terminalTables": [
+      "tblDropD",
+      "vwCaseSourcesRPT"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryCaseSourcesRPT1",
+        "to": "qryCaseSourcesRPT",
+        "type": "query"
+      },
+      {
+        "from": "qryCaseSourcesRPT1",
+        "to": "tblDropD",
+        "type": "table"
+      },
+      {
+        "from": "qryCaseSourcesRPT",
+        "to": "vwCaseSourcesRPT",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

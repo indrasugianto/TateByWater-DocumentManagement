@@ -1,0 +1,3 @@
+SELECT [Matter and AR].CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Charge, [Matter and AR].Payment, [case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty] AS [Case No], Billing.ID, Billing.[Balance Due Date], Billing.[Past Due], Billing.[Long Term Collections], Billing.chkBalanceDue, Billing.[Billing Notes]
+FROM (tblCase LEFT JOIN Billing ON tblCase.CaseID = Billing.CaseID) LEFT JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID
+WHERE ((([Matter and AR].CaseID) Is Not Null));

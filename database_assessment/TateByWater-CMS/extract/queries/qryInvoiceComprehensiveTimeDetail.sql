@@ -1,0 +1,3 @@
+SELECT qryInvoiceAttachRPT.CaseID, qryInvoiceAttachRPT.Bill_ID, TblCase.Last_Name, TblCase.First_Name, qryInvoiceAttachRPT.IANumber, qryInvoiceAttachRPT.Tdate, qryInvoiceAttachRPT.Description, qryInvoiceAttachRPT.Tatty, qryInvoiceAttachRPT.Rate, qryInvoiceAttachRPT.Time_, Nz([time_],0)*Nz([rate],0) AS Amount
+FROM qryInvoiceAttachRPT INNER JOIN TblCase ON qryInvoiceAttachRPT.CaseID = TblCase.CaseID
+ORDER BY qryInvoiceAttachRPT.Tdate;

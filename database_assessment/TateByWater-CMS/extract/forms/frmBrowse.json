@@ -1,0 +1,135 @@
+{
+  "formName": "frmBrowse",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "allowFilters": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "scrollBars": 0,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
+  "width": 6878,
+  "timerInterval": 0,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "lblMessage",
+          "left": 135,
+          "top": 645,
+          "width": 6675,
+          "height": 870,
+          "caption": "Select the file by clicking browse button.",
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "borderStyle": 1,
+          "borderColor": 8355711,
+          "textAlign": "left"
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdYes",
+          "left": 4020,
+          "top": 1620,
+          "width": 1290,
+          "height": 360,
+          "caption": "Ok",
+          "picture": "(none)",
+          "tabIndex": 1,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdNo",
+          "left": 5400,
+          "top": 1620,
+          "width": 1395,
+          "height": 360,
+          "caption": "Cancel",
+          "picture": "(none)",
+          "tabIndex": 0,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "lblTitle",
+          "left": 0,
+          "top": 0,
+          "width": 6870,
+          "height": 360,
+          "controlSource": "=GetCompanyName()",
+          "tabIndex": 2,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 6968388,
+          "borderStyle": 1,
+          "borderColor": 8355711,
+          "textAlign": "center"
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command6",
+          "left": 2400,
+          "top": 1620,
+          "width": 1470,
+          "height": 360,
+          "caption": "Browse",
+          "picture": "(none)",
+          "tabIndex": 3,
+          "tabStop": true,
+          "visible": true,
+          "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "=Form_Load(True,False)"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nDim args As String\r\n\r\nPrivate Sub cmdNo_Click()\r\n    YesNo_Value = 2\r\n    Util.CloseForm\r\nEnd Sub\r\n\r\nPrivate Sub cmdYes_Click()\r\n    SelectedPath = lblMessage.Caption\r\n    YesNo_Value = 1\r\n    Util.CloseForm\r\nEnd Sub\r\n\r\nPublic Function CodeBehind_Form_Load() As Boolean\r\n    YesNo_Value = -1\r\n    CodeBehind_Form_Load = True\r\n    args = Nz(Me.OpenArgs, \"\")\r\nEnd Function\r\n\r\nPrivate Sub Command6_Click()\r\n    Dim dbName As String\r\n    \r\n    Dim wrack As String\r\n    args = \"All Excel Files--*.xls,*.xlsx\"\r\n    If args <> \"\" Then\r\n        \r\n        Dim arr() As String\r\n        arr = Split(args, \"--\")\r\n        \r\n        dbName = BrowseDB(\"Select path for backend DB\", arr(0), arr(1))\r\n    Else\r\n        dbName = BrowseDB(\"Select path for backend DB\")\r\n    End If\r\n    \r\n    lblMessage.Caption = dbName\r\nEnd Sub"
+}

@@ -1,0 +1,3 @@
+SELECT [Matter and AR].MatterID, IIf([charge]>0 And [firmprepaid]=False,[charge],0) AS NonAdvancedCharges, IIf([charge]>0 And [firmprepaid]=True,[charge],0) AS AdvancedCharges, IIf([payment]>0 And [firmprepaid]=0,[payment],0) AS PaymentMade, [NonAdvancedCharges]+[AdvancedCharges]-[PaymentMade] AS PreBalance, [Matter and AR].CaseID
+FROM tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID
+ORDER BY [Matter and AR].OrderNr;

@@ -1,0 +1,87 @@
+{
+  "reportName": "rpt_trustee_address_label",
+  "dataSource": "Bankruptcy",
+  "caption": "Address Label",
+  "width": 4566,
+  "filterOn": false,
+  "orderByOn": false,
+  "orientation": "landscape",
+  "margins": {
+    "left": 156,
+    "right": 156,
+    "top": 128,
+    "bottom": 127
+  },
+  "paperSize": 1,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text4",
+          "left": 0,
+          "top": 435,
+          "width": 4566,
+          "height": 420,
+          "controlSource": "TrusteeAddress",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text7",
+          "left": 0,
+          "top": 870,
+          "width": 4566,
+          "height": 420,
+          "controlSource": "=[TrusteeCity] & \", \" & [TrusteeState] & \" \" & [TrusteeZip]",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "lblName",
+          "left": 0,
+          "top": 0,
+          "width": 4560,
+          "height": 420,
+          "controlSource": "Trustee",
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text14",
+          "left": 2880,
+          "top": 288,
+          "width": 1152,
+          "height": 315,
+          "controlSource": "CaseID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        }
+      ]
+    }
+  ],
+  "vbaCodeBehind": "Option Compare Database\r\n"
+}

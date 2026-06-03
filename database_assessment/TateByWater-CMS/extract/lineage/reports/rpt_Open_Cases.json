@@ -1,0 +1,77 @@
+{
+  "reportName": "rpt_Open_Cases",
+  "dataSource": "qryTakeOff",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "qryTakeOff",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryTakeOff",
+      "qryTakeOff_A"
+    ],
+    "terminalTables": [
+      "vwTakeOff_A"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryTakeOff",
+        "to": "qryTakeOff_A",
+        "type": "query"
+      },
+      {
+        "from": "qryTakeOff_A",
+        "to": "vwTakeOff_A",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "Form_Load",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3300,
+      "lineEnd": 3323,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "cmdInsertData_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3471,
+      "lineEnd": 3550,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTRUSTENTRIESCHRON",
+      "procedureName": "cmdRequery_Click",
+      "sourceFile": "extract/vba/forms/frmTRUSTENTRIESCHRON.txt",
+      "lineStart": 2480,
+      "lineEnd": 2489,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTRUSTENTRIESCHRON",
+      "procedureName": "Form_Load",
+      "sourceFile": "extract/vba/forms/frmTRUSTENTRIESCHRON.txt",
+      "lineStart": 2494,
+      "lineEnd": 2502,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    }
+  ],
+  "confidence": "medium"
+}

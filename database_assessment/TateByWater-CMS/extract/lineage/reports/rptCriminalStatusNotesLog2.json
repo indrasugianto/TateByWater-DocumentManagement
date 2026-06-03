@@ -1,0 +1,16 @@
+{
+  "reportName": "rptCriminalStatusNotesLog2",
+  "dataSource": "tblNotes",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "tblNotes",
+    "recordSourceType": "table-or-unknown",
+    "involvedQueries": [],
+    "terminalTables": [
+      "tblNotes"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [],
+  "confidence": "medium"
+}

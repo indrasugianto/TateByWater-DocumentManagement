@@ -1,0 +1,3 @@
+SELECT vw_invoices_summary.CaseID, vw_invoices_summary.Name, vw_invoices_summary.First_Name, vw_invoices_summary.Last_Name, vw_invoices_summary.Retainer, vw_invoices_summary.SumOfCharge, vw_invoices_summary.SumOfPayment, vw_invoices_summary.SumOfBalance, vw_invoices_summary.BalanceCalculated, vw_invoices_summary.BalRetCalculated, vw_invoices_summary.FileNumber, vw_invoices_summary.[Balance Due Date], vw_invoices_summary.Orig_Atty, vw_invoices_summary.HandlingAtty_Case, vw_invoices_summary.CodeVal, vw_invoices_summary.Executor
+FROM vw_invoices_summary
+ORDER BY [Balance Due Date] DESC;

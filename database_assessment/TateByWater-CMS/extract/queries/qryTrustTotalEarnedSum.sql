@@ -1,0 +1,2 @@
+SELECT vwTrustTotalEarnedSum.CaseID, vwTrustTotalEarnedSum.SumOfSumOfCredit
+FROM vwTrustTotalEarnedSum;

@@ -1,0 +1,4 @@
+SELECT vwTKClose_A.CaseID, vwTKClose_A.FileNumber, vwTKClose_A.Name, vwTKClose_A.Orig_Atty, vwTKClose_A.HandlingAtty_Case, vwTKClose_A.SumOfAdvancedAR, vwTKClose_A.CostHold, vwTKClose_A.SumOfUnclearedDeposits, vwTKClose_A.Balance, vwTKClose_A.SumOfUncashedChecks, vwTKClose_A.AvailBalance, vwTKClose_A.BankBalance, vwTKClose_A.SumOfTotal, vwTKClose_A.IANumber, vwTKClose_A.Bill_ID, vwTKClose_A.Retainer, vwTKClose_A.RetainerReimb, vwTKClose_A.RetReimbAmount, vwTKClose_A.MaxOfMatterID
+FROM vwTKClose_A
+WHERE ((([Balance]-Nz([SumOfUnclearedDeposits],0))<>0) And ((vwTKClose_A.IANumber) Is Not Null) And ((vwTKClose_A.Bill_ID) Is Not Null)) Or ((([Balance]+Nz([SumOfUncashedChecks],0))<>0)) Or (((vwTKClose_A.SumOfTotal)<>0))
+ORDER BY vwTKClose_A.Name;

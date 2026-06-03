@@ -1,0 +1,4 @@
+SELECT vw_invoice_comprehensive_trust_acc_cur_unfiltered.CaseID, vw_invoice_comprehensive_trust_acc_cur_unfiltered.OrderNr, vw_invoice_comprehensive_trust_acc_cur_unfiltered.TDate, vw_invoice_comprehensive_trust_acc_cur_unfiltered.TMatter, vw_invoice_comprehensive_trust_acc_cur_unfiltered.Debit, vw_invoice_comprehensive_trust_acc_cur_unfiltered.balance
+FROM vw_invoice_comprehensive_trust_acc_cur_unfiltered
+WHERE (((vw_invoice_comprehensive_trust_acc_cur_unfiltered.TMatter) Not Like "*Earned*" And (vw_invoice_comprehensive_trust_acc_cur_unfiltered.TMatter) Not Like "*Reimb*" And (vw_invoice_comprehensive_trust_acc_cur_unfiltered.TMatter) Not Like "*Wire*" And (vw_invoice_comprehensive_trust_acc_cur_unfiltered.TMatter) Not Like "*refund*"))
+ORDER BY vw_invoice_comprehensive_trust_acc_cur_unfiltered.OrderNr;

@@ -1,0 +1,2696 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =555014975
+Begin Form
+    NavigationButtons = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =23940
+    DatasheetFontHeight =11
+    ItemSuffix =45
+    Right =23685
+    Bottom =14040
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x3806d9c93459e540
+    End
+    GUID = Begin
+        0xd61f6ea3eca26b4a9684d70e2256b667
+    End
+    NameMap = Begin
+        0x0acc0e550000000016e5eea1ff592c429f4fbe33bde64ac400000000a32cb896 ,
+        0x2f89e6400000000000000000710072007900540061006b0065004f0066006600 ,
+        0x530074006500700032000000000000005a318e56c706d6478d9ee1c00bf5a1f1 ,
+        0x00000000a183b8962f89e64000000000000000007100720079005f0063006100 ,
+        0x73006500490044005f0063006c00690065006e0074007300000000000000a3ae ,
+        0x66076b51b14a95bb45b4928a6159000000004e1974810c3ae640000000000000 ,
+        0x0000740062006c00430061007300650000000000000089e5869241dd274e9453 ,
+        0x8efb5a82a6a707000000a3ae66076b51b14a95bb45b4928a6159480061006e00 ,
+        0x64006c0069006e00670041007400740079005f00430061007300650000000000 ,
+        0x000057c7e3dec799514babb3b2d225065b8807000000a3ae66076b51b14a95bb ,
+        0x45b4928a61594f007200690067005f004100740074007900000000000000e6e3 ,
+        0xf669debb9b4bb0c92792f995bea201000000730e8a962f89e640000000000000 ,
+        0x0000660072006d00540061006b0065004f006600660000000000000047b0a0b7 ,
+        0x73cc5e4b93d317d931eda32b06000000e6e3f669debb9b4bb0c92792f995bea2 ,
+        0x540061006b0065004f00660066004d006f006e00740068004900440000000000 ,
+        0x00005ea3d240c737ef4ca3d8769cf33d116606000000d61f6ea3eca26b4a9684 ,
+        0xd70e2256b667530075006d004d00540043006f006d00000000000000f33c5221 ,
+        0x52ebf045b2a836de061051f006000000d61f6ea3eca26b4a9684d70e2256b667 ,
+        0x530075006d004b004400420043006f006d00000000000000a0aaafa2bdca0848 ,
+        0xa6cdbd4eed8f7e3306000000d61f6ea3eca26b4a9684d70e2256b66753007500 ,
+        0x6d0052004c00460043006f006d000000000000008ba70f7bbe07d5498f7f6bd7 ,
+        0xf41633f90700000016e5eea1ff592c429f4fbe33bde64ac4460069006c006500 ,
+        0x4e0075006d00620065007200000000000000fa2b4c1debed1c43bd44ea99b19d ,
+        0xecac0700000016e5eea1ff592c429f4fbe33bde64ac44e0061006d0065000000 ,
+        0x00000000cac694fa72e909449b3845566a924d660700000016e5eea1ff592c42 ,
+        0x9f4fbe33bde64ac44f007200690067005f004100740074007900000000000000 ,
+        0x10b83b26f0a77a45a75b0c48279111510700000016e5eea1ff592c429f4fbe33 ,
+        0xbde64ac4480061006e0064006c0069006e00670041007400740079005f004300 ,
+        0x6100730065000000000000009889a0bc0c203046aa7653ae651d7e6507000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac441007600610069006c00420061006c00 ,
+        0x61006e0063006500000000000000c8272b7457067845af67072442d68cd50700 ,
+        0x000016e5eea1ff592c429f4fbe33bde64ac454006f00740061006c0041006400 ,
+        0x760061006e006300650064004100520000000000000025ba29b9b32be3478be6 ,
+        0x0ec2fc986bcb0700000016e5eea1ff592c429f4fbe33bde64ac4410064007600 ,
+        0x43006f0073007400420061006c000000000000007ebd59838aa1194988fd0d8c ,
+        0xcaaf85040700000016e5eea1ff592c429f4fbe33bde64ac454006f0074006100 ,
+        0x6c0055006e00430061007300680065006400430068006b007300000000000000 ,
+        0x947149d4bd046340a25ebd27bb8fe26c0700000016e5eea1ff592c429f4fbe33 ,
+        0xbde64ac454006f00740061006c0055006e0063006c0065006100720065006400 ,
+        0x440065007000730000000000000082f19499cfd08744b1d541afb3cc9b5b0700 ,
+        0x000016e5eea1ff592c429f4fbe33bde64ac44500610072006c00790045006100 ,
+        0x72006e00650064000000000000004599ebc5fbd1a74694a57bd78272aa890700 ,
+        0x000016e5eea1ff592c429f4fbe33bde64ac454004f004500610072006e006500 ,
+        0x6400000000000000757765c859c2bf4e9573ef605a848c3d0700000016e5eea1 ,
+        0xff592c429f4fbe33bde64ac454004f004500610072006e006500640054007200 ,
+        0x000000000000020fbcc09855bf419f9021b80d7318160700000016e5eea1ff59 ,
+        0x2c429f4fbe33bde64ac443006f00730074005200650069006d00620000000000 ,
+        0x00008c62212f339f1048a3468c10199ea5e40700000016e5eea1ff592c429f4f ,
+        0xbe33bde64ac443006f00730074005200650069006d0062005400720000000000 ,
+        0x00001303a33181071346b1e21ae2310770500700000016e5eea1ff592c429f4f ,
+        0xbe33bde64ac4430042004800520065007600000000000000e6a0357abfa63e43 ,
+        0x90f810332f94b6c60700000016e5eea1ff592c429f4fbe33bde64ac443004200 ,
+        0x480043006f006d000000000000005038b5fbd2bd1b4889afdbf4084cb9240700 ,
+        0x000016e5eea1ff592c429f4fbe33bde64ac452004c00460043006f006d000000 ,
+        0x00000000bb5e87049307ff46ab0243cdc750d1d90700000016e5eea1ff592c42 ,
+        0x9f4fbe33bde64ac44d00540043006f006d000000000000003ff484da61b8ac46 ,
+        0x931d599dd68f21d70700000016e5eea1ff592c429f4fbe33bde64ac44b004200 ,
+        0x43006f006d00000000000000fd58b171821ec54db067b0452a4b535a07000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac443006100730065004900440000000000 ,
+        0x00000d82d707733c2447ae7ec9721c85003f0700000016e5eea1ff592c429f4f ,
+        0xbe33bde64ac449006e0073006500720074006500640054007200750073007400 ,
+        0x00000000000061d634854e73f448852df1c0a04565cb06000000d61f6ea3eca2 ,
+        0x6b4a9684d70e2256b66749006e00730065007200740065006400540072007500 ,
+        0x730074000000000000005ae05eef6b6e634e8bf92a47da77852b0700000016e5 ,
+        0xeea1ff592c429f4fbe33bde64ac454006f00740061006c0048006f0075007200 ,
+        0x6c0079004f0075007400730000000000000031e48567cd88b247ae2187a966f3 ,
+        0xfa310700000016e5eea1ff592c429f4fbe33bde64ac44f00700065006e005400 ,
+        0x4b00000000000000d19d5f6cd771e64e8f5481c17e84789d0700000016e5eea1 ,
+        0xff592c429f4fbe33bde64ac4410064007600460065006500420061006c000000 ,
+        0x000000006581b9e82f4c0f408dfa9880b8b97de40700000016e5eea1ff592c42 ,
+        0x9f4fbe33bde64ac44100640076004500610072006e0065006400000000000000 ,
+        0xeb2c4ef0f35d6c4ca17dbe87b48f63a00700000016e5eea1ff592c429f4fbe33 ,
+        0xbde64ac4520065006d004500610072006e00650064000000000000002d17c965 ,
+        0x004c3347ad5eeaab32611dd50700000016e5eea1ff592c429f4fbe33bde64ac4 ,
+        0x540061006b0065004f00660066004d006f006e00740068004900440000000000 ,
+        0x000002ff614a9c9b34489f38798f72221d2d0700000016e5eea1ff592c429f4f ,
+        0xbe33bde64ac4540061006b0065004f0066006600490044000000000000000000 ,
+        0x00000000000000000000000000000c0000000500000000000000000000000000 ,
+        0x00000000
+    End
+    RecordSource ="qryTakeOffStep2"
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    PrtDevMode = Begin
+        0x003f4717fa7f0000000000000000000080a71bc788000000c0941bc788000000 ,
+        0x010403069c00e80343b7000201000900ea0a6f08640001000f00580201000100 ,
+        0x5802030001004c6574746572007f000000002cd99c01000000000000f67f0000 ,
+        0x406cd9889c010000000000000000000000000000010000000000000001000000 ,
+        0x0200000001000000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
+    End
+    PrtDevNames = Begin
+        0x08003b006c000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000005753442d36353132616564612d353334382d3435 ,
+        0x34332d393032302d363561376437343631386462000000000000000000000000 ,
+        0x00
+    End
+    AllowDatasheetView =0
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    PrtDevModeW = Begin
+        0x0000b6839c01000000002cd99c01000001000000000000000800000000000000 ,
+        0x110000000000000011000000000000000000eeee9c010000007ab6839c010000 ,
+        0x01040306dc00e80343b7000201000900ea0a6f08640001000f00580201000100 ,
+        0x5802030001004c006500740074006500720000009c0100006000000088000000 ,
+        0x01000000000000001100000000000000e05bb7839c0100000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000001000000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
+    End
+    PrtDevNamesW = Begin
+        0x0400370068000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000000000005700530044002d003600350031003200 ,
+        0x61006500640061002d0035003300340038002d0034003500340033002d003900 ,
+        0x3000320030002d00360035006100370064003700340036003100380064006200 ,
+        0x0000000000000000000000000000000000000000000000000000
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CommandButton
+            FontSize =11
+            FontWeight =400
+            ForeColor =4210752
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            UseTheme =1
+            Shape =1
+            Gradient =12
+            BackColor =14461583
+            BackThemeColorIndex =4
+            BackTint =60.0
+            BorderLineStyle =0
+            BorderColor =14461583
+            BorderThemeColorIndex =4
+            BorderTint =60.0
+            ThemeFontIndex =1
+            HoverColor =15189940
+            HoverThemeColorIndex =4
+            HoverTint =40.0
+            PressedColor =9917743
+            PressedThemeColorIndex =4
+            PressedShade =75.0
+            HoverForeColor =4210752
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeColor =4210752
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+        End
+        Begin CheckBox
+            BorderLineStyle =0
+            LabelX =230
+            LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ComboBox
+            AddColon = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
+            FontName ="Calibri"
+            GridlineColor =10921638
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            Height =1080
+            BackColor =15064278
+            Name ="FormHeader"
+            GUID = Begin
+                0x977f54ca94c88241ac4a9596f76db6f4
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =2
+            BackTint =20.0
+            Begin
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =20475
+                    Top =420
+                    Width =1080
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label18"
+                    Caption ="CMH Comm"
+                    GUID = Begin
+                        0x8f37fdd1092c6743816595f7fb812903
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =20475
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =21555
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =18180
+                    Top =420
+                    Width =1080
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label16"
+                    Caption ="RLF Comm"
+                    GUID = Begin
+                        0xdd4e47118b865546842c736292b60a50
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =18180
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =19260
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =22755
+                    Top =420
+                    Width =1080
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label15"
+                    Caption ="MT Comm"
+                    GUID = Begin
+                        0x14fe4b7358ffbf4b8ce25f6a68da12fe
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =22755
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =23835
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =21600
+                    Top =420
+                    Width =1080
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label14"
+                    Caption ="KDB Comm"
+                    GUID = Begin
+                        0x048181ff0d9b854eb5df36b91b191a6f
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =21600
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =22680
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =19320
+                    Top =420
+                    Width =1080
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label10"
+                    Caption ="CMH Rev"
+                    GUID = Begin
+                        0x9fffaecefed21344b02ac0b41f22ae0c
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =19320
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =20400
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =1
+                    Left =12600
+                    Top =720
+                    Width =1140
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label9"
+                    Caption ="Earned"
+                    GUID = Begin
+                        0x8de8e3fdedbf8941bbed6d2bd9c268e4
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =12600
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =13740
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =2
+                    Left =11400
+                    Top =540
+                    Width =1140
+                    Height =480
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label8"
+                    Caption ="Early \015\012Take Off"
+                    GUID = Begin
+                        0x58fae553d651e440b5786ac17463e54f
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =11400
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =12540
+                    LayoutCachedHeight =1020
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =2
+                    Left =4080
+                    Top =420
+                    Width =540
+                    Height =239
+                    FontSize =8
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label7"
+                    Caption ="Assoc"
+                    GUID = Begin
+                        0x7a187bcaf9e9bd4f96163a64c63b19b7
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =4080
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =4620
+                    LayoutCachedHeight =659
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =2
+                    Left =7890
+                    Top =60
+                    Width =15
+                    Height =480
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label6"
+                    Caption ="Chks Uncashed"
+                    GUID = Begin
+                        0xc52e3269643e70498e653cc51222d89e
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =7890
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =7905
+                    LayoutCachedHeight =540
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =95
+                    TextAlign =1
+                    Left =7080
+                    Top =540
+                    Width =1320
+                    Height =465
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label5"
+                    Caption ="Advanced Cost Balance"
+                    GUID = Begin
+                        0x599e2c13b1aa5647bf605eb793a3620d
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =7080
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =8400
+                    LayoutCachedHeight =1005
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =3
+                    Left =6000
+                    Top =540
+                    Width =1065
+                    Height =464
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label4"
+                    Caption ="Cost\015\012Reserve Bal"
+                    GUID = Begin
+                        0x0e2fa6122e266146921c1f207ee8d2f1
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =6000
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =7065
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =87
+                    TextAlign =1
+                    Left =3480
+                    Top =240
+                    Width =600
+                    Height =464
+                    FontSize =8
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label2"
+                    Caption ="Orig \015\012Atty"
+                    GUID = Begin
+                        0xff061614b098ea45bbe15ad4f86b566a
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =3480
+                    LayoutCachedTop =240
+                    LayoutCachedWidth =4080
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =2
+                    Left =4665
+                    Top =540
+                    Width =1230
+                    Height =465
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label24"
+                    Caption ="Avail \015\012Trust Balance"
+                    GUID = Begin
+                        0x6ee72074a319304bb78169448efaf734
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =4665
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =5895
+                    LayoutCachedHeight =1005
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =960
+                    Top =420
+                    Width =2160
+                    Height =284
+                    FontSize =8
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label3"
+                    Caption ="Name"
+                    GUID = Begin
+                        0x25bf05d74c0a0744861cb40128606b5e
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =960
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =3120
+                    LayoutCachedHeight =704
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =1
+                    Left =60
+                    Top =720
+                    Width =960
+                    Height =284
+                    FontSize =8
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label0"
+                    Caption ="File No."
+                    GUID = Begin
+                        0x9170582d9aa1a74b9d2a668acd7a7b06
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =60
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =1020
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =1
+                    Left =16890
+                    Top =720
+                    Width =300
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label98"
+                    Caption ="Tr"
+                    GUID = Begin
+                        0x6536859b16bf184eac85b79711c5e4d1
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =16890
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =17190
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =1
+                    Left =15660
+                    Top =720
+                    Width =300
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label96"
+                    Caption ="Tr"
+                    GUID = Begin
+                        0x38542a78bcf055419b48ecb3a10d3f82
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =15660
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =15960
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =223
+                    TextAlign =1
+                    Left =15900
+                    Top =720
+                    Width =1230
+                    Height =284
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label95"
+                    Caption ="Cost Reimb"
+                    GUID = Begin
+                        0x0ebff3e03039d2408b345da989cf8ccb
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =15900
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =17130
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =2
+                    Left =9720
+                    Top =60
+                    Width =30
+                    Height =480
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label112"
+                    Caption ="Uncl Deposits"
+                    GUID = Begin
+                        0x19d5aa522238ed4bbb7ddc1fea3d5d8d
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =9720
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =9750
+                    LayoutCachedHeight =540
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =2
+                    Left =17310
+                    Top =540
+                    Width =840
+                    Height =480
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label154"
+                    Caption ="Populate Trust"
+                    GUID = Begin
+                        0x08c7e410ebf26c47bc7259cc433b8009
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =17310
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =18150
+                    LayoutCachedHeight =1020
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin CheckBox
+                    TripleState = NotDefault
+                    OverlapFlags =215
+                    OldBorderStyle =0
+                    Left =16680
+                    Top =540
+                    Width =340
+                    Height =220
+                    ColumnOrder =1
+                    BorderColor =15066597
+                    Name ="chkCostReimb"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0x253e250ee5e01d4890ecd8c040671196
+                    End
+
+                    LayoutCachedLeft =16680
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =17020
+                    LayoutCachedHeight =760
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    TripleState = NotDefault
+                    OverlapFlags =215
+                    OldBorderStyle =0
+                    Left =13320
+                    Top =780
+                    Width =340
+                    Height =220
+                    ColumnOrder =2
+                    TabIndex =1
+                    BorderColor =15066597
+                    Name ="chkEarned"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0x5e27cfd43dcfac4d8fbfd57ca2436587
+                    End
+
+                    LayoutCachedLeft =13320
+                    LayoutCachedTop =780
+                    LayoutCachedWidth =13660
+                    LayoutCachedHeight =1000
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    TripleState = NotDefault
+                    OverlapFlags =215
+                    OldBorderStyle =0
+                    Left =8040
+                    Top =600
+                    Width =340
+                    Height =220
+                    ColumnOrder =3
+                    TabIndex =2
+                    BorderColor =15066597
+                    Name ="chkAR"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0x873baa584dfb4b4eb502c910b80eff54
+                    End
+
+                    LayoutCachedLeft =8040
+                    LayoutCachedTop =600
+                    LayoutCachedWidth =8380
+                    LayoutCachedHeight =820
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    Visible = NotDefault
+                    TripleState = NotDefault
+                    OverlapFlags =85
+                    OldBorderStyle =0
+                    Left =8310
+                    Top =60
+                    Width =200
+                    Height =220
+                    ColumnOrder =4
+                    TabIndex =3
+                    BorderColor =15066597
+                    Name ="chkUnclearedDep"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0xa0f21e6ae7e3364580b427feee3d0b14
+                    End
+
+                    LayoutCachedLeft =8310
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =8510
+                    LayoutCachedHeight =280
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    Visible = NotDefault
+                    TripleState = NotDefault
+                    OverlapFlags =85
+                    OldBorderStyle =0
+                    Left =7950
+                    Top =60
+                    Width =245
+                    Height =220
+                    ColumnOrder =5
+                    TabIndex =4
+                    BorderColor =15066597
+                    Name ="chkUncashed"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0xb356526f1ee3284cae3b7579177bf119
+                    End
+
+                    LayoutCachedLeft =7950
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =8195
+                    LayoutCachedHeight =280
+                    BorderShade =90.0
+                End
+                Begin ComboBox
+                    LimitToList = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =215
+                    IMESentenceMode =3
+                    ColumnCount =2
+                    ListWidth =2268
+                    Left =960
+                    Top =720
+                    Width =2520
+                    Height =330
+                    ColumnOrder =6
+                    FontSize =8
+                    TabIndex =5
+                    BorderColor =15066597
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"4\";\"4\""
+                    GUID = Begin
+                        0x63d3959b78d26041886f1265171483b5
+                    End
+                    Name ="cmbClients"
+                    RowSourceType ="Table/Query"
+                    RowSource ="qry_caseID_clients"
+                    ColumnWidths ="0;2268"
+                    AfterUpdate ="[Event Procedure]"
+
+                    LayoutCachedLeft =960
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =3480
+                    LayoutCachedHeight =1050
+                    BorderShade =90.0
+                End
+                Begin ComboBox
+                    LimitToList = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    ColumnCount =2
+                    ListWidth =720
+                    Left =4140
+                    Top =720
+                    Width =480
+                    Height =330
+                    ColumnOrder =7
+                    FontSize =9
+                    TabIndex =6
+                    BorderColor =15066597
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"510\""
+                    GUID = Begin
+                        0x1288d1cdf814b94890e00839b3e2cb27
+                    End
+                    Name ="cmbAssoc"
+                    RowSourceType ="Table/Query"
+                    RowSource ="SELECT tblCase.HandlingAtty_Case FROM tblCase GROUP BY tblCase.HandlingAtty_Case"
+                        " HAVING (((tblCase.HandlingAtty_Case) Is Not Null)); "
+                    ColumnWidths ="432;0"
+                    AfterUpdate ="[Event Procedure]"
+
+                    LayoutCachedLeft =4140
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =4620
+                    LayoutCachedHeight =1050
+                    BorderShade =90.0
+                End
+                Begin ComboBox
+                    LimitToList = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    ColumnCount =2
+                    ListWidth =720
+                    Left =3540
+                    Top =720
+                    Width =540
+                    Height =330
+                    ColumnOrder =8
+                    FontSize =8
+                    TabIndex =7
+                    BorderColor =15066597
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"510\""
+                    GUID = Begin
+                        0x7737e653d0894648bb3f1da86795b6d9
+                    End
+                    Name ="cmbOrigAtty"
+                    RowSourceType ="Table/Query"
+                    RowSource ="SELECT tblCase.Orig_Atty FROM tblCase GROUP BY tblCase.Orig_Atty HAVING (((tblCa"
+                        "se.Orig_Atty) Is Not Null)); "
+                    ColumnWidths ="432;0"
+                    AfterUpdate ="[Event Procedure]"
+
+                    LayoutCachedLeft =3540
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =4080
+                    LayoutCachedHeight =1050
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =14580
+                    Top =60
+                    Width =1200
+                    Height =255
+                    ColumnOrder =9
+                    FontSize =8
+                    TabIndex =8
+                    BorderColor =15066597
+                    Name ="SumCostReimb"
+                    ControlSource ="=fncTakeOffSums(\"SumOfCostReimb\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    GUID = Begin
+                        0xfa9607007905f347acdbda3557f7914b
+                    End
+
+                    LayoutCachedLeft =14580
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =15780
+                    LayoutCachedHeight =315
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =13320
+                    Top =60
+                    Width =1200
+                    Height =255
+                    ColumnOrder =10
+                    FontSize =8
+                    TabIndex =9
+                    BorderColor =15066597
+                    Name ="SumTOEarned"
+                    ControlSource ="=fncTakeOffSums(\"SumOfTOEarned\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    GUID = Begin
+                        0x596474eff9a71042ade644b91d8eb205
+                    End
+
+                    LayoutCachedLeft =13320
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =14520
+                    LayoutCachedHeight =315
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =10800
+                    Top =60
+                    Width =1200
+                    Height =255
+                    ColumnOrder =11
+                    FontSize =8
+                    TabIndex =10
+                    BorderColor =15066597
+                    Name ="SumEarlyEarned"
+                    ControlSource ="=fncTakeOffSums(\"SumOfEarlyEarned\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    GUID = Begin
+                        0x72152fea61aedc45af27d0c14c9a0796
+                    End
+
+                    LayoutCachedLeft =10800
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =12000
+                    LayoutCachedHeight =315
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =16095
+                    Top =60
+                    Width =3165
+                    ColumnOrder =12
+                    FontSize =8
+                    TabIndex =11
+                    BorderColor =15066597
+                    Name ="TotalCommissions"
+                    ControlSource ="=[SumMTCom]+[SumKDBCom]+[SumRLFCom]"
+                    GUID = Begin
+                        0x3441633ec347184890888f85611720f5
+                    End
+
+                    LayoutCachedLeft =16095
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =19260
+                    LayoutCachedHeight =300
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =12075
+                    Top =60
+                    Width =1200
+                    Height =255
+                    ColumnOrder =13
+                    FontSize =8
+                    TabIndex =12
+                    BorderColor =15066597
+                    Name ="TOEarlyandEarned"
+                    ControlSource ="=fncTakeOffSums(\"SumOfTOEarlyAndEarned\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    GUID = Begin
+                        0xe29a48945062b14082120a41872ff6a6
+                    End
+
+                    LayoutCachedLeft =12075
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =13275
+                    LayoutCachedHeight =315
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =21600
+                    Top =720
+                    Width =1080
+                    Height =315
+                    ColumnOrder =14
+                    FontSize =10
+                    TabIndex =13
+                    BorderColor =15066597
+                    Name ="SumKDBCom"
+                    ControlSource ="=fncTakeOffSums(\"SumOfKBCom\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0xf33c522152ebf045b2a836de061051f0
+                    End
+
+                    LayoutCachedLeft =21600
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =22680
+                    LayoutCachedHeight =1035
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =22755
+                    Top =720
+                    Width =1065
+                    Height =315
+                    ColumnOrder =15
+                    FontSize =10
+                    TabIndex =14
+                    BorderColor =15066597
+                    Name ="SumMTCom"
+                    ControlSource ="=fncTakeOffSums(\"SumOfMTCom\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0x5ea3d240c737ef4ca3d8769cf33d1166
+                    End
+
+                    LayoutCachedLeft =22755
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =23820
+                    LayoutCachedHeight =1035
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =18180
+                    Top =720
+                    Width =1065
+                    Height =315
+                    ColumnOrder =16
+                    FontSize =10
+                    TabIndex =15
+                    BorderColor =15066597
+                    Name ="SumRLFCom"
+                    ControlSource ="=fncTakeOffSums(\"SumOfRLFCom\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0xa0aaafa2bdca0848a6cdbd4eed8f7e33
+                    End
+
+                    LayoutCachedLeft =18180
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =19245
+                    LayoutCachedHeight =1035
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =20475
+                    Top =720
+                    Width =1065
+                    Height =315
+                    ColumnOrder =18
+                    FontSize =10
+                    TabIndex =16
+                    BorderColor =15066597
+                    Name ="SumCBHCom"
+                    ControlSource ="=fncTakeOffSums(\"SumOfCBHCom\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0x00027c143c26804ca2c3bc771a8dfc3a
+                    End
+
+                    LayoutCachedLeft =20475
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =21540
+                    LayoutCachedHeight =1035
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =19320
+                    Top =720
+                    Width =1080
+                    Height =315
+                    ColumnOrder =19
+                    FontSize =10
+                    TabIndex =17
+                    BorderColor =15066597
+                    Name ="SumCBHRev"
+                    ControlSource ="=fncTakeOffSums(\"SumOfCBHRev\",[Forms]![frmTakeOff]![TakeOffMonthID])"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0xccc9a6b48a29c740b203fae36a1498d4
+                    End
+
+                    LayoutCachedLeft =19320
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =20400
+                    LayoutCachedHeight =1035
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    AccessKey =67
+                    Left =22200
+                    Width =1575
+                    Height =345
+                    FontSize =10
+                    TabIndex =18
+                    ForeColor =855309
+                    Name ="cmdClearFilter"
+                    Caption ="   &Clear Filter"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0xb86175a0a4936d429cf27b27618b8a63
+                    End
+                    UnicodeAccessKey =67
+                    ImageData = Begin
+                        0x2800000010000000100000000100200000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000003255d6ab3255d65a0000000000000000000000000000000000000000 ,
+                        0x3255d62d3255d693000000000000000000000000000000000000000000000000 ,
+                        0x000000003255d6ae3255d6f93255d6360000000000000000000000003255d62d ,
+                        0x3255d6db3255d61e000000000000000000000000000000000000000000000000 ,
+                        0x000000003255d6153255d6db3255d6f03255d630000000003255d6303255d6ea ,
+                        0x3255d66300000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000000000003255d61b3255d6c33255d6ed3255d66f3255d6ea3255d6ae ,
+                        0x00000000000000000000000000000000000000000000000000000000727272ff ,
+                        0x727272ff727272ff000000003255d6033255d6c63255d6ff3255d6de3255d60c ,
+                        0x00000000000000000000000000000000000000000000000000000000727272ff ,
+                        0x7272727e000000003255d6153255d6ab3255d6ff3255d6cf3255d6bd3255d696 ,
+                        0x3255d609000000000000000000000000000000000000000000000000727272ff ,
+                        0x000000003255d64e3255d6ed3255d6ff3255d6b73255d60c000000003255d645 ,
+                        0x3255d6a53255d6420000000000000000000000000000000000000000727272ff ,
+                        0x000000003255d6753255d6de3255d65a00000000000000000000000000000000 ,
+                        0x000000003255d6270000000000000000000000000000000000000000727272ff ,
+                        0x7272728100000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000007272726c727272ff ,
+                        0x727272ff727272ff727272780000000000000000000000000000000000000000 ,
+                        0x00000000000000000000000000000000000000007272724e727272fc727272ff ,
+                        0x727272ff727272ff727272ff7272725a00000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000072727236727272f6727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272f972727242000000000000000000000000 ,
+                        0x00000000000000000000000072727224727272ea727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272f07272722d0000000000000000 ,
+                        0x000000000000000000000000727272d2727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272e40000000000000000 ,
+                        0x000000000000000000000000727272f0727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272ff0000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000
+                    End
+
+                    LayoutCachedLeft =22200
+                    LayoutCachedWidth =23775
+                    LayoutCachedHeight =345
+                    PictureCaptionArrangement =1
+                    ForeTint =95.0
+                    UseTheme =0
+                    Shape =0
+                    Gradient =2
+                    BackColor =13998939
+                    BackThemeColorIndex =8
+                    BackTint =100.0
+                    BorderColor =13998939
+                    BorderThemeColorIndex =8
+                    BorderTint =100.0
+                    HoverColor =14528380
+                    HoverThemeColorIndex =8
+                    HoverTint =80.0
+                    PressedColor =12746034
+                    PressedThemeColorIndex =8
+                    PressedShade =80.0
+                    HoverForeColor =16777215
+                    HoverForeThemeColorIndex =1
+                    HoverForeTint =100.0
+                    PressedForeColor =16777215
+                    PressedForeThemeColorIndex =1
+                    PressedForeTint =100.0
+                    QuickStyle =34
+                    QuickStyleMask =-513
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
+                    Overlaps =1
+                End
+                Begin CheckBox
+                    TripleState = NotDefault
+                    OverlapFlags =215
+                    OldBorderStyle =0
+                    Left =6150
+                    Top =540
+                    Width =340
+                    Height =220
+                    ColumnOrder =20
+                    TabIndex =19
+                    BorderColor =15066597
+                    Name ="chkCostHold"
+                    AfterUpdate ="[Event Procedure]"
+                    GUID = Begin
+                        0xb030886db6debc49af5948c93a06a4fd
+                    End
+
+                    LayoutCachedLeft =6150
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =6490
+                    LayoutCachedHeight =760
+                    BorderShade =90.0
+                End
+                Begin Label
+                    OverlapFlags =93
+                    TextAlign =1
+                    Left =10080
+                    Top =480
+                    Width =1230
+                    Height =524
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label26"
+                    Caption ="Hourly\015\012Outstanding"
+                    GUID = Begin
+                        0xec56e057c4f2a645835f67f19a4b0d88
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =10080
+                    LayoutCachedTop =480
+                    LayoutCachedWidth =11310
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin CheckBox
+                    Visible = NotDefault
+                    TripleState = NotDefault
+                    OverlapFlags =215
+                    OldBorderStyle =0
+                    Left =10815
+                    Top =540
+                    Width =245
+                    Height =220
+                    ColumnOrder =0
+                    TabIndex =20
+                    BorderColor =15066597
+                    Name ="Check29"
+                    GUID = Begin
+                        0x8df0446993adf247a67004e46037151d
+                    End
+
+                    LayoutCachedLeft =10815
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =11060
+                    LayoutCachedHeight =760
+                    BorderShade =90.0
+                End
+                Begin Label
+                    OverlapFlags =223
+                    TextAlign =2
+                    Left =9480
+                    Top =480
+                    Width =600
+                    Height =524
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label30"
+                    Caption ="Open\015\012TK"
+                    GUID = Begin
+                        0xb87ad46d0fa5d743977a034155686aa2
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =9480
+                    LayoutCachedTop =480
+                    LayoutCachedWidth =10080
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =87
+                    TextAlign =1
+                    Left =8400
+                    Top =540
+                    Width =1080
+                    Height =465
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label34"
+                    Caption ="Advanced \015\012Fee Balance"
+                    GUID = Begin
+                        0x713267d0f368084c93208fb7d5afa6fd
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =8400
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =9480
+                    LayoutCachedHeight =1005
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =13920
+                    Top =540
+                    Width =720
+                    Height =464
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label39"
+                    Caption ="Adv \015\012Earned"
+                    GUID = Begin
+                        0xffe31efd26168645929428b128fd0225
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =13920
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =14640
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    TextAlign =1
+                    Left =14700
+                    Top =540
+                    Width =720
+                    Height =464
+                    FontSize =10
+                    LeftMargin =44
+                    TopMargin =22
+                    RightMargin =44
+                    BottomMargin =22
+                    BorderColor =15066597
+                    ForeColor =0
+                    Name ="Label40"
+                    Caption ="Rem\015\012Earned"
+                    GUID = Begin
+                        0x1d343e4a2649e3469b1007477055ad5c
+                    End
+                    BottomPadding =150
+                    LayoutCachedLeft =14700
+                    LayoutCachedTop =540
+                    LayoutCachedWidth =15420
+                    LayoutCachedHeight =1004
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    ForeTint =100.0
+                End
+            End
+        End
+        Begin Section
+            Height =375
+            Name ="Detail"
+            GUID = Begin
+                0xd4c80e1df7421c4ba54d1f0be66ed73d
+            End
+            AlternateBackColor =13421772
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =80.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    Locked = NotDefault
+                    FontUnderline = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Top =60
+                    Width =960
+                    Height =315
+                    FontSize =8
+                    TabIndex =10
+                    BorderColor =15066597
+                    ForeColor =12673797
+                    Name ="CaseNum"
+                    ControlSource ="FileNumber"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0x1237f61d57c6884c8d2b87cfa12e9aef
+                    End
+
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =960
+                    LayoutCachedHeight =375
+                    DisplayAsHyperlink =1
+                    BorderShade =90.0
+                    ForeThemeColorIndex =10
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =1020
+                    Top =60
+                    Width =2460
+                    Height =315
+                    FontSize =8
+                    TabIndex =11
+                    BorderColor =15066597
+                    Name ="Name"
+                    ControlSource ="Name"
+                    GUID = Begin
+                        0xde63a46552a2914ba9cd3d2f1e682354
+                    End
+
+                    LayoutCachedLeft =1020
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =3480
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =3540
+                    Top =60
+                    Width =540
+                    Height =315
+                    FontSize =8
+                    TabIndex =12
+                    BorderColor =15066597
+                    Name ="OrigAtty"
+                    ControlSource ="Orig_Atty"
+                    GUID = Begin
+                        0x4d4ca8c60dfe5d408f5658705cf3fd66
+                    End
+
+                    LayoutCachedLeft =3540
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =4080
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =4140
+                    Top =60
+                    Width =435
+                    Height =315
+                    FontSize =8
+                    TabIndex =13
+                    BorderColor =15066597
+                    Name ="Assoc"
+                    ControlSource ="HandlingAtty_Case"
+                    GUID = Begin
+                        0xcf6267a745b0604a8401eca708dd78b2
+                    End
+
+                    LayoutCachedLeft =4140
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =4575
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =4620
+                    Top =60
+                    Height =315
+                    FontSize =10
+                    TabIndex =14
+                    BorderColor =15066597
+                    Name ="Text122"
+                    ControlSource ="AvailBalance"
+                    GUID = Begin
+                        0x362045de2d326d488173c82d5248ad2d
+                    End
+
+                    LayoutCachedLeft =4620
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =6060
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =6120
+                    Top =60
+                    Width =900
+                    Height =315
+                    FontSize =10
+                    TabIndex =15
+                    BorderColor =15066597
+                    Name ="txtCostReserve"
+                    ControlSource ="TotalAdvancedAR"
+                    GUID = Begin
+                        0x137a0269b266f0428796ebf398ab802c
+                    End
+
+                    LayoutCachedLeft =6120
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =7020
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =7080
+                    Top =60
+                    Width =1140
+                    Height =315
+                    FontSize =10
+                    TabIndex =16
+                    BorderColor =15066597
+                    Name ="txtAdvCostBal"
+                    ControlSource ="AdvCostBal"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    DefaultValue ="0"
+                    GUID = Begin
+                        0x276f08fc752a78429fd464725dd2b63d
+                    End
+
+                    LayoutCachedLeft =7080
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =8220
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    Locked = NotDefault
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =9765
+                    Top =60
+                    Width =75
+                    Height =315
+                    TabIndex =17
+                    BorderColor =15066597
+                    Name ="Text125"
+                    ControlSource ="TotalUnCashedChks"
+                    GUID = Begin
+                        0xe708fea446a24c48b7d8b091744eb667
+                    End
+
+                    LayoutCachedLeft =9765
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =9840
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    Locked = NotDefault
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =10455
+                    Top =60
+                    Width =75
+                    Height =315
+                    FontSize =10
+                    TabIndex =18
+                    BorderColor =15066597
+                    Name ="Text126"
+                    ControlSource ="TotalUnclearedDeps"
+                    GUID = Begin
+                        0x6f9e502321a21948aad208787df35f04
+                    End
+
+                    LayoutCachedLeft =10455
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =10530
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =11460
+                    Top =60
+                    Width =960
+                    Height =315
+                    FontSize =10
+                    BorderColor =15066597
+                    Name ="txtEarlyEarned"
+                    ControlSource ="EarlyEarned"
+                    GUID = Begin
+                        0xa222b6853c210544b6165a4a58d82c74
+                    End
+
+                    LayoutCachedLeft =11460
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =12420
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =12480
+                    Top =60
+                    Width =1200
+                    Height =315
+                    FontSize =10
+                    TabIndex =1
+                    BorderColor =15066597
+                    Name ="txtEarned"
+                    ControlSource ="TOEarned"
+                    GUID = Begin
+                        0x7acfcfada5c12d429d1c4750b1667e5e
+                    End
+
+                    LayoutCachedLeft =12480
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =13680
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    OverlapFlags =93
+                    Left =15750
+                    Top =60
+                    Width =240
+                    Height =300
+                    TabIndex =2
+                    BorderColor =15066597
+                    Name ="chkTOEarnedTr"
+                    ControlSource ="TOEarnedTr"
+                    GUID = Begin
+                        0xed1bf30d0510bb41b2304c91ff51c732
+                    End
+
+                    LayoutCachedLeft =15750
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =15990
+                    LayoutCachedHeight =360
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =255
+                    IMESentenceMode =3
+                    Left =15960
+                    Top =60
+                    Width =960
+                    Height =315
+                    FontSize =10
+                    TabIndex =3
+                    BorderColor =15066597
+                    Name ="txtCostReimb"
+                    ControlSource ="CostReimb"
+                    GUID = Begin
+                        0x1005da28d2244d438142f782583ea6df
+                    End
+
+                    LayoutCachedLeft =15960
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =16920
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    OverlapFlags =93
+                    Left =16965
+                    Top =60
+                    Width =360
+                    Height =300
+                    TabIndex =4
+                    BorderColor =15066597
+                    Name ="chkCostReimbTr"
+                    ControlSource ="CostReimbTr"
+                    GUID = Begin
+                        0x2917006fbf0698479e035e5a4e0d7d66
+                    End
+
+                    LayoutCachedLeft =16965
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =17325
+                    LayoutCachedHeight =360
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =19335
+                    Top =60
+                    Width =1215
+                    Height =315
+                    FontSize =10
+                    TabIndex =5
+                    BorderColor =15066597
+                    Name ="txtCBHRev"
+                    ControlSource ="CBHRev"
+                    GUID = Begin
+                        0x92ad92053d889a43ab6568a3a653ec30
+                    End
+
+                    LayoutCachedLeft =19335
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =20550
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =20490
+                    Top =60
+                    Width =1050
+                    Height =315
+                    FontSize =10
+                    TabIndex =6
+                    BorderColor =15066597
+                    Name ="txtCBHCom"
+                    ControlSource ="CBHCom"
+                    GUID = Begin
+                        0x8be89ade2ccf8f41b87d0bbb4dd1852d
+                    End
+
+                    LayoutCachedLeft =20490
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =21540
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =18195
+                    Top =60
+                    Width =1050
+                    Height =315
+                    FontSize =10
+                    TabIndex =7
+                    BorderColor =15066597
+                    Name ="txtMKCom"
+                    ControlSource ="RLFCom"
+                    GUID = Begin
+                        0xbd0408a08f037c45a1dc57d0584c4296
+                    End
+
+                    LayoutCachedLeft =18195
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =19245
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =22770
+                    Top =60
+                    Width =1050
+                    Height =315
+                    FontSize =10
+                    TabIndex =8
+                    BorderColor =15066597
+                    Name ="txtMTCom"
+                    ControlSource ="MTCom"
+                    GUID = Begin
+                        0x05cfcc179ec87e469ee984ec71008273
+                    End
+
+                    LayoutCachedLeft =22770
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =23820
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =21615
+                    Top =60
+                    Width =1065
+                    Height =315
+                    FontSize =10
+                    TabIndex =9
+                    BorderColor =15066597
+                    Name ="txtKDBCom"
+                    ControlSource ="KBCom"
+                    GUID = Begin
+                        0x5ebb106a55419f4c9aac9fed5c0cd0a3
+                    End
+
+                    LayoutCachedLeft =21615
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =22680
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin CommandButton
+                    Visible = NotDefault
+                    Enabled = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =247
+                    Left =18722
+                    Width =705
+                    Height =285
+                    FontSize =10
+                    TabIndex =19
+                    Name ="cmdInsertIntoTA"
+                    Caption ="Trust"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0xe80bf187e81b8944bbae20cce4b4d2af
+                    End
+
+                    LayoutCachedLeft =18722
+                    LayoutCachedWidth =19427
+                    LayoutCachedHeight =285
+                    BorderColor =15066597
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =90.0
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
+                    Overlaps =1
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =16560
+                    Top =60
+                    Width =300
+                    Height =315
+                    FontSize =10
+                    TabIndex =20
+                    Name ="CaseID"
+                    ControlSource ="CaseID"
+                    GUID = Begin
+                        0x7b4a08e0e758e1489720138ecaab8b0f
+                    End
+
+                    LayoutCachedLeft =16560
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =16860
+                    LayoutCachedHeight =375
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    Locked = NotDefault
+                    OverlapFlags =255
+                    IMESentenceMode =3
+                    Left =2220
+                    Width =360
+                    FontSize =9
+                    TabIndex =21
+                    BorderColor =15066597
+                    Name ="txtCaseID"
+                    ControlSource ="CaseID"
+                    GUID = Begin
+                        0x396534c195b78345a25ad7c2edd9979c
+                    End
+
+                    LayoutCachedLeft =2220
+                    LayoutCachedWidth =2580
+                    LayoutCachedHeight =240
+                    BorderShade =90.0
+                End
+                Begin CheckBox
+                    Visible = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =255
+                    Left =17220
+                    Top =120
+                    ColumnWidth =1665
+                    TabIndex =22
+                    Name ="InsertedTrust"
+                    ControlSource ="InsertedTrust"
+                    GUID = Begin
+                        0x61d634854e73f448852df1c0a04565cb
+                    End
+
+                    LayoutCachedLeft =17220
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =17480
+                    LayoutCachedHeight =360
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FontUnderline = NotDefault
+                    TabStop = NotDefault
+                    SpecialEffect =1
+                    BorderWidth =3
+                    OverlapFlags =247
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =17280
+                    Top =45
+                    Width =890
+                    Height =315
+                    FontSize =10
+                    TabIndex =23
+                    BackColor =15917518
+                    ForeColor =12673797
+                    Name ="txtTrustButton"
+                    ControlSource ="=\"Trust\""
+                    OnClick ="[Event Procedure]"
+                    ConditionalFormat = Begin
+                        0x0100000082000000010000000100000000000000000000001000000001000000 ,
+                        0xbfbfbf00ececec00000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x5b0049006e00730065007200740065006400540072007500730074005d000000 ,
+                        0x0000
+                    End
+                    GUID = Begin
+                        0x234705d268834c4e80882d63eb2a9a83
+                    End
+
+                    LayoutCachedLeft =17280
+                    LayoutCachedTop =45
+                    LayoutCachedWidth =18170
+                    LayoutCachedHeight =360
+                    DisplayAsHyperlink =1
+                    BackThemeColorIndex =-1
+                    ForeThemeColorIndex =10
+                    ForeTint =100.0
+                    ConditionalFormat14 = Begin
+                        0x010001000000010000000000000001000000bfbfbf00ececec000f0000005b00 ,
+                        0x49006e00730065007200740065006400540072007500730074005d0000000000 ,
+                        0x0000000000000000000000000000000000
+                    End
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =10095
+                    Top =60
+                    Width =1275
+                    Height =315
+                    FontSize =10
+                    TabIndex =24
+                    BorderColor =15066597
+                    Name ="Text27"
+                    ControlSource ="TotalHourlyOuts"
+                    GUID = Begin
+                        0x7769a3484ada0246901990027a766f10
+                    End
+
+                    LayoutCachedLeft =10095
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =11370
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =9480
+                    Top =60
+                    Width =540
+                    Height =315
+                    FontSize =10
+                    TabIndex =25
+                    BorderColor =15066597
+                    Name ="Text31"
+                    ControlSource ="OpenTK"
+                    GUID = Begin
+                        0x885195282ea49846aa106fdfd88a84d0
+                    End
+
+                    LayoutCachedLeft =9480
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =10020
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =8280
+                    Top =60
+                    Width =1140
+                    Height =315
+                    FontSize =10
+                    TabIndex =26
+                    BorderColor =15066597
+                    Name ="txtAdvFeeBal"
+                    ControlSource ="AdvFeeBal"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    DefaultValue ="0"
+                    GUID = Begin
+                        0xfc66e4bac53d7a44bedd504ad9f71c71
+                    End
+
+                    LayoutCachedLeft =8280
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =9420
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =13740
+                    Top =60
+                    Width =960
+                    Height =315
+                    FontSize =8
+                    TabIndex =27
+                    BorderColor =15066597
+                    Name ="txtAdvEarned"
+                    ControlSource ="AdvEarned"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0x43b89fb3b40ba4409060d151cf16eafc
+                    End
+
+                    LayoutCachedLeft =13740
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =14700
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =14760
+                    Top =60
+                    Width =960
+                    Height =315
+                    FontSize =8
+                    TabIndex =28
+                    BorderColor =15066597
+                    Name ="txtRemEarned"
+                    ControlSource ="RemEarned"
+                    Format ="$#,##0.00;($#,##0.00)"
+                    GUID = Begin
+                        0x174bb51ad92b624e80d5366d42d22cf9
+                    End
+
+                    LayoutCachedLeft =14760
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =15720
+                    LayoutCachedHeight =375
+                    BorderShade =90.0
+                    CurrencySymbol ="$"
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    Locked = NotDefault
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =2580
+                    Width =240
+                    FontSize =9
+                    TabIndex =29
+                    BorderColor =15066597
+                    Name ="TakeOffMonthID"
+                    ControlSource ="TakeOffMonthID"
+                    GUID = Begin
+                        0xc462bb3deca88f4197e689102edfb19e
+                    End
+
+                    LayoutCachedLeft =2580
+                    LayoutCachedWidth =2820
+                    LayoutCachedHeight =240
+                    BorderShade =90.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =2880
+                    Width =1140
+                    FontSize =9
+                    TabIndex =30
+                    BorderColor =15066597
+                    Name ="TakeOffID"
+                    ControlSource ="TakeOffID"
+                    GUID = Begin
+                        0xa2ba064ba67d674eb0229fdb552a9a6d
+                    End
+
+                    LayoutCachedLeft =2880
+                    LayoutCachedWidth =4020
+                    LayoutCachedHeight =240
+                    BorderShade =90.0
+                End
+            End
+        End
+        Begin FormFooter
+            Height =0
+            Name ="FormFooter"
+            GUID = Begin
+                0x73754d060c5f004182090f5f864baca6
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub chkAR_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub chkCostHold_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub chkCostReimb_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub chkEarned_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub chkUncashed_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub chkUnclearedDep_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub cmbAssoc_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub cmbClients_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Private Sub CmbOrigAtty_AfterUpdate()
+    Call FilterMe
+End Sub
+
+Sub FilterMe()
+    Dim strSQL As String
+    strSQL = "1=1"
+   
+    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & " AND CaseID = " & Me.cmbClients
+    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & " AND Orig_Atty = '" & Me.cmbOrigAtty & "'"
+    If Not IsNull(Me.cmbAssoc) Then strSQL = strSQL & " AND HandlingAtty_Case = '" & Me.cmbAssoc & "'"
+    If Not IsNull(Me.chkAR) Then
+        If chkAR Then
+            strSQL = strSQL & " AND SumOfAdvancedAR >0 "
+        Else
+            strSQL = strSQL & " AND SumOfAdvancedAR =0 "
+        End If
+    End If
+    If Not IsNull(Me.chkCostHold) Then
+        If chkCostHold Then
+            strSQL = strSQL & " AND CostHold >0 "
+        Else
+            strSQL = strSQL & " AND CostHold =0 "
+        End If
+    End If
+    If Not IsNull(Me.ChkUncashed) Then
+        If ChkUncashed Then
+            strSQL = strSQL & " AND SumOfUncashedChecks >0 "
+        Else
+            strSQL = strSQL & " AND SumOfUncashedChecks =0 "
+        End If
+    End If
+    If Not IsNull(Me.chkUnclearedDep) Then
+        If chkUnclearedDep Then
+            strSQL = strSQL & " AND SumOfUnclearedDeposits >0 "
+        Else
+            strSQL = strSQL & " AND SumOfUnclearedDeposits =0 "
+        End If
+    End If
+    If Not IsNull(Me.chkEarned) Then
+        If chkEarned Then
+            strSQL = strSQL & " AND TOEarned >0 "
+        Else
+            strSQL = strSQL & " AND TOEarned =0 "
+        End If
+    End If
+    If Not IsNull(Me.chkCostReimb) Then
+        If chkCostReimb Then
+            strSQL = strSQL & " AND CostReimb >0 "
+        Else
+            strSQL = strSQL & " AND CostReimb =0 "
+        End If
+    End If
+
+    Debug.Print strSQL
+    
+    Me.Filter = strSQL
+    Me.FilterOn = True
+    
+End Sub
+
+
+Sub FilterClear()
+  
+Me.cmbClients = Null
+Me.cmbAssoc = Null
+Me.cmbOrigAtty = Null
+Me.chkCostHold = Null
+Me.chkAR = Null
+Me.ChkUncashed = Null
+Me.chkUnclearedDep = Null
+Me.chkEarned = Null
+Me.chkCostReimb = Null
+
+    
+    Me.Filter = ""
+    Me.FilterOn = False
+End Sub
+
+Private Sub cmdClearFilter_Click()
+    Call FilterClear
+End Sub
+
+Private Sub CaseNum_Click()
+On Error GoTo ErrHandler_CaseNum_Click
+
+    'intCaseID = Split(Me.FileNumber, "-")(1)
+    intCaseID = Me.txtCaseID
+
+    IsDisableEvents = True
+    If CurrentProject.AllForms("frmClientLedger").IsLoaded Then
+        DoCmd.Close acForm, "frmClientLedger", acSaveNo
+        DoCmd.openform "frmClientLedger", acNormal, , "[CaseID]=" & intCaseID, , , Me.CaseID
+        Forms("frmClientLedger").SetFocus
+    Else
+        DoCmd.openform "frmClientLedger", acNormal, , "[CaseID]=" & intCaseID, , , Me.CaseID
+        Forms("frmClientLedger").SetFocus
+    End If
+ErrHandler_CaseNum_Click:
+    If Err.Number <> 0 Then ShowMessage Err.Description
+End Sub
+
+Private Sub cmdInsertIntoTA_Click()
+Dim bk As Variant
+Dim rs As Recordset
+Dim sFileNumber As String
+
+        sFileNumber = Me.FileNumber
+        
+        bk = Me.CurrentRecord
+        DoCmd.RunCommand acCmdSaveRecord
+        Me.Requery
+        Me.Recordset.FindFirst "FileNumber = " & pcaAddQuotes(sFileNumber)
+        Me.Refresh
+
+'    If Me.txtEarned > 0 Then
+''        If IsNull(txtTakeOffDate) Then
+''            MsgBox "Please input the date"
+''            Exit Sub
+''        End If
+'        Dim strSQL As String
+'        strSQL = "Insert into [Trust Account] (CaseID, Credit, TDate, TMatter)"
+'        strSQL = strSQL & " values (" & _
+'                          Me.txtCaseID & ", " & _
+'                          Nz(Me.txtEarned, 0) & ", #" & _
+'                          Form_frmTakeOff.txtTakeOffDate & "#, 'Earned Fee')"
+'        Debug.Print strSQL
+'        CurrentDb.Execute strSQL
+'        i = 1
+'    End If
+
+      
+    If Me.txtAdvEarned > 0 Then
+        Dim strSQL As String
+        strSQL = "Insert into [Trust Account] (CaseID, Credit, TDate, TMatter, AdvFee)"
+        strSQL = strSQL & " values (" & _
+                          Me.txtCaseID & ", " & _
+                          Nz(Me.txtAdvEarned, 0) & ", #" & _
+                          Form_frmTakeOff.txtTakeOffDate & "#, 'Earned Fee (ADV)', -1)"
+        Debug.Print strSQL
+        CurrentDb.Execute strSQL, dbSeeChanges
+        i = 1
+    End If
+    
+    If Nz(Me.txtRemEarned, 0) > 0 Then
+        Dim strSQL4 As String
+        strSQL4 = "Insert into [Trust Account] (CaseID, Credit, TDate, TMatter)"
+        strSQL4 = strSQL4 & " values (" & _
+                          Me.txtCaseID & ", " & _
+                          Nz(Me.txtRemEarned, 0) & ", #" & _
+                          Form_frmTakeOff.txtTakeOffDate & "#, 'Earned Fee')"
+        Debug.Print strSQL4
+        CurrentDb.Execute strSQL4, dbSeeChanges
+        i = 1
+    End If
+    
+    If Nz(Me.txtCostReimb, 0) > 0 Then
+'        If IsNull(txtTakeOffDate) Then
+'            MsgBox "Please input the date"
+'            Exit Sub
+'        End If
+        Dim strSQL3 As String
+        strSQL3 = "Insert into [Trust Account] (CaseID, Credit, TDate, TMatter, CostReimb)"
+        strSQL3 = strSQL3 & " values (" & Me.txtCaseID & ", " & Me.txtCostReimb & ", #" & Form_frmTakeOff.txtTakeOffDate & "#, 'Cost Reimb', -1)"
+        Debug.Print strSQL3
+        CurrentDb.Execute strSQL3, dbSeeChanges
+        i = 1
+        answer = MsgBox("Do you want to insert Cost Reimbursement Credit in AR?", vbYesNo, "TB CMS")
+        If answer = vbYes Then
+        Dim strSQL5 As String
+        strSQL5 = "Insert into [Matter and AR] (CaseID, Payment, Date2, Pay_Outlay)"
+        strSQL5 = strSQL5 & " values (" & Me.txtCaseID & ", " & Me.txtCostReimb & ", #" & Form_frmTakeOff.txtTakeOffDate & "#, 'Cost Reimb from Trust')"
+        Debug.Print strSQL5
+        CurrentDb.Execute strSQL5, dbSeeChanges
+        End If
+        
+    End If
+    
+    If i >= 1 Then
+'        Me.Form.Recordset.Edit
+'        Me.Form.Recordset("InsertedTrust") = -1
+'        Me.Form.Recordset.Update
+        Me.InsertedTrust = True
+        DoCmd.RunCommand acCmdSaveRecord
+        Me.Requery
+        Me.Recordset.FindFirst "FileNumber = " & pcaAddQuotes(sFileNumber)
+        Me.Refresh
+    
+    End If
+    
+'    Select Case i
+'        Case 1
+'            MsgBox "Added an Earned Fee"
+'        Case 2
+'            MsgBox "Added a Cost Reimbursement"
+'        Case 3
+'            MsgBox "Added Earned Fee and Cost Reimbursement"
+'        Case Else
+'            MsgBox "Please input an Earned Fee or Cost Reimbursement"
+'    End Select
+    'Me.Requery
+End Sub
+
+
+'Private Sub Form_Current()
+'    Me.cmdInsertIntoTA.Enabled = Not Me.Form.Recordset("InsertedTrust")
+'End Sub
+
+'Private Sub Detail_Paint()
+'    Me.cmdInsertIntoTA.Enabled = Not Nz(Me.InsertedTrust, -1) 'Not Me.Form.Recordset("InsertedTrust")
+'End Sub
+
+Private Sub txtTrustButton_Click()
+Dim bk As Variant
+Dim rs As Recordset
+    If Me.InsertedTrust = 0 Then
+        Call cmdInsertIntoTA_Click
+    End If
+End Sub
+
+'Private Sub Form_Load() NOT WORKING!
+'    txtTrustButton.MousePointer = 99
+'    'txtTrustButton.MouseIcon = path("d:\! Jobs\Paul Mickelsen - Access Lawyer Application\Link.cur")
+'    txtTrustButton.MouseIcon = "d:\! Jobs\Paul Mickelsen - Access Lawyer Application\Link.cur"
+'End Sub

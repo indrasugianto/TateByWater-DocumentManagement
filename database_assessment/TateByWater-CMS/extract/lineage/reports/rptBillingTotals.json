@@ -1,0 +1,43 @@
+{
+  "reportName": "rptBillingTotals",
+  "dataSource": "SELECT vwBillingTracker2.Tatty, Sum(vwBillingTracker2.Time_) AS SumOfTime_, Sum(vwBillingTracker2.Billed) AS SumOfBilled, [forms]![frm_Billing_Tracker2]![txtFrom] AS StartDate, [forms]![frm_Billing_Tracker2]![txtTo] AS EndDate FROM vwBillingTracker2 WHERE (((vwBillingTracker2.Tdate) Between [forms]![frm_Billing_Tracker2]![txtFrom] And [forms]![frm_Billing_Tracker2]![txtTo])) GROUP BY vwBillingTracker2.Tatty ORDER BY vwBillingTracker2.Tatty DESC; ",
+  "triggerPaths": [
+    {
+      "formName": "frm_Billing_Tracker2",
+      "controlName": "cmdAttyReport",
+      "eventName": "onClick",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frm_Billing_Tracker2.txt",
+      "lineStart": 6959,
+      "lineEnd": 6966,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "SELECT vwBillingTracker2.Tatty, Sum(vwBillingTracker2.Time_) AS SumOfTime_, Sum(vwBillingTracker2.Billed) AS SumOfBilled, [forms]![frm_Billing_Tracker2]![txtFrom] AS StartDate, [forms]![frm_Billing_Tracker2]![txtTo] AS EndDate FROM vwBillingTracker2 WHERE (((vwBillingTracker2.Tdate) Between [forms]![frm_Billing_Tracker2]![txtFrom] And [forms]![frm_Billing_Tracker2]![txtTo])) GROUP BY vwBillingTracker2.Tatty ORDER BY vwBillingTracker2.Tatty DESC;",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [],
+    "terminalTables": [
+      "vwBillingTracker2"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frm_Billing_Tracker2",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frm_Billing_Tracker2.txt",
+      "lineStart": 6959,
+      "lineEnd": 6966,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    }
+  ],
+  "confidence": "high"
+}

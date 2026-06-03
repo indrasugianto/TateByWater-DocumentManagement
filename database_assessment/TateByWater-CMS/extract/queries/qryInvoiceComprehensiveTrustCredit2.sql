@@ -1,0 +1,2 @@
+SELECT qryInvoiceComprehensiveTrustCredit.TDate, qryInvoiceComprehensiveTrustCredit.TMatter, qryInvoiceComprehensiveTrustCredit.Credit, qryInvoiceComprehensiveTrustCredit.OrderNr, [TB Time Keeping].Bill_ID, [TB Time Keeping].CaseID, [TB Time Keeping].[BilL Closed Date]
+FROM [TB Time Keeping] INNER JOIN qryInvoiceComprehensiveTrustCredit ON [TB Time Keeping].CaseID = qryInvoiceComprehensiveTrustCredit.CaseID;

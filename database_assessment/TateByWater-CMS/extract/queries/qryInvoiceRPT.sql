@@ -1,0 +1,2 @@
+SELECT vwInvoiceRPT.CaseID, vwInvoiceRPT.MatterID, vwInvoiceRPT.Date2, vwInvoiceRPT.Pay_Outlay, vwInvoiceRPT.Charge, vwInvoiceRPT.Payment, vwInvoiceRPT.[Case No], vwInvoiceRPT.ID, vwInvoiceRPT.[Balance Due Date], vwInvoiceRPT.[Past Due], vwInvoiceRPT.[Long Term Collections], vwInvoiceRPT.chkBalanceDue, vwInvoiceRPT.[Billing Notes]
+FROM vwInvoiceRPT;

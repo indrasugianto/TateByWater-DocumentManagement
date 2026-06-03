@@ -1,0 +1,105 @@
+{
+  "reportName": "rpt_address_labelEx",
+  "dataSource": "tblCase",
+  "caption": "Address Label",
+  "width": 4566,
+  "filterOn": false,
+  "orderByOn": false,
+  "orientation": "landscape",
+  "margins": {
+    "left": 156,
+    "right": 156,
+    "top": 128,
+    "bottom": 127
+  },
+  "paperSize": 1,
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 1305,
+      "keepTogether": true,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text4",
+          "left": 0,
+          "top": 660,
+          "width": 4566,
+          "height": 315,
+          "controlSource": "Address",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text7",
+          "left": 0,
+          "top": 990,
+          "width": 4566,
+          "height": 315,
+          "controlSource": "=[City] & \", \" & [State] & \" \" & [Zip]",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "lblName",
+          "left": 0,
+          "top": 330,
+          "width": 4560,
+          "height": 315,
+          "controlSource": "=IIf([Last_Name] Is Not Null And [First_Name] Is Null,[Last_Name],Nz([First_Name])+\" \"+Nz([Last_Name]))",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text14",
+          "left": 3456,
+          "top": 576,
+          "width": 1008,
+          "height": 315,
+          "controlSource": "tblcase.caseID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text16",
+          "left": 0,
+          "top": 0,
+          "width": 4560,
+          "height": 315,
+          "controlSource": "Executor",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        }
+      ]
+    }
+  ],
+  "vbaCodeBehind": "Option Compare Database\r\n"
+}

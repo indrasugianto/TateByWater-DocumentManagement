@@ -1,0 +1,39 @@
+{
+  "reportName": "rptCriminalStatusActionNeeded",
+  "dataSource": "SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, TblActionNeeded.CaseID, TblActionNeeded.DateComp, TblActionNeeded.DateComp1 FROM TblActionNeeded WHERE (((TblActionNeeded.ActionComp)=No)); ",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "SELECT TblActionNeeded.ActionNeededDet, TblActionNeeded.ActionComp, TblActionNeeded.CaseID, TblActionNeeded.DateComp, TblActionNeeded.DateComp1 FROM TblActionNeeded WHERE (((TblActionNeeded.ActionComp)=No));",
+    "recordSourceType": "inline-sql",
+    "involvedQueries": [],
+    "terminalTables": [
+      "TblActionNeeded"
+    ],
+    "queryEdges": []
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmActionNeededAll",
+      "procedureName": "cmdActionNeededDone_Click",
+      "sourceFile": "extract/vba/forms/frmActionNeededAll.txt",
+      "lineStart": 7130,
+      "lineEnd": 7160,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmActionNeededAll",
+      "procedureName": "Text26_DblClick",
+      "sourceFile": "extract/vba/forms/frmActionNeededAll.txt",
+      "lineStart": 7203,
+      "lineEnd": 7252,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": []
+    }
+  ],
+  "confidence": "medium"
+}

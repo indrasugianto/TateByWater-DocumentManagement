@@ -1,0 +1,97 @@
+{
+  "reportName": "rptCriminalStatusChargeNos",
+  "dataSource": "tbl_CtCaseNumbers",
+  "width": 4740,
+  "filterOn": false,
+  "orderByOn": false,
+  "orientation": "portrait",
+  "margins": {
+    "left": 360,
+    "right": 360,
+    "top": 360,
+    "bottom": 360
+  },
+  "paperSize": 1,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "MatterCharge",
+          "left": 0,
+          "top": 0,
+          "width": 2520,
+          "height": 314,
+          "controlSource": "Matter_Charge",
+          "fontName": "Calibri",
+          "fontSize": 7,
+          "borderStyle": 1,
+          "borderColor": 14277081
+        },
+        {
+          "type": "TextBox",
+          "name": "CtNumber",
+          "left": 2580,
+          "top": 0,
+          "width": 2040,
+          "height": 315,
+          "controlSource": "CtNumber",
+          "fontName": "Calibri",
+          "fontSize": 7,
+          "borderStyle": 1,
+          "borderColor": 14277081,
+          "textAlign": "center"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text0",
+          "left": 2760,
+          "top": 60,
+          "width": 300,
+          "height": 240,
+          "controlSource": "CtCaseNoID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "type": "ReportHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 0,
+          "top": 60,
+          "width": 720,
+          "height": 315,
+          "caption": "Charge",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 3180,
+          "top": 60,
+          "width": 900,
+          "height": 240,
+          "caption": "Case No.",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        }
+      ]
+    }
+  ],
+  "vbaCodeBehind": "Version =21\r\nVersionRequired =20\r\nPublishOption =1\r\nChecksum =-1911561920\r\nBegin Report\r\n    LayoutForPrint = NotDefault\r\n    DividingLines = NotDefault\r\n    AllowDesignChanges = NotDefault\r\n    DateGrouping =1\r\n    GrpKeepTogether =1\r\n    PictureAlignment =2\r\n    DatasheetGridlinesBehavior =3\r\n    GridX =24\r\n    GridY =24\r\n    Width =4740\r\n    DatasheetFontHeight =11\r\n    ItemSuffix =2\r\n    Left =4830\r\n    Top =3345\r\n    Right =9330\r\n    Bottom =5010\r\n    DatasheetGridlinesColor =15132391\r\n    RecSrcDt = Begin\r\n        0xed9ca1ba0c74e540\r\n    End\r\n    GUID = Begin\r\n        0x603510a34a05a646acfd0461636548ae\r\n    End\r\n    NameMap = Begin\r\n        0x0acc0e550000000009c3457ba0c701419868a896d532044600000000f15832ca ,\r\n        0xb25de6400000000000000000740062006c005f00430074004300610073006500 ,\r\n        0x4e0075006d006200650072007300000000000000579ea2f3765e38439f9c60b0 ,\r\n        0x8a9b90350700000009c3457ba0c701419868a896d53204464d00610074007400 ,\r\n        0x650072005f004300680061007200670065000000000000005d9719efd65c5d4f ,\r\n        0xaec359717238bc1f0700000009c3457ba0c701419868a896d532044643007400 ,\r\n        0x4e0075006d00620065007200000000000000bdcb871c52cb6b489616cb6e0077 ,\r\n        0x493c0700000009c3457ba0c701419868a896d532044643007400430061007300 ,\r\n        0x65004e006f004900440000000000000000000000000000000000000000000000 ,\r\n        0x0c000000050000000000000000000000000000000000\r\n    End\r\n    RecordSource =\"tbl_CtCaseNumbers\"\r\n    DatasheetFontName =\"Calibri\"\r\n    PrtMip = Begin\r\n        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,\r\n        0x010000006801000000000000a10700000100000001000000\r\n    End\r\n    PrtDevMode = Begin\r\n        0x009e1bc78800000040d321aef67f00002046f1adf67f00002000000000000000 ,\r\n        0x010403069c00e80343b7000201000100ea0a6f08640001000f00580201000100 ,\r\n        0x5802030001004c6574746572000000000500000000000000b0911bc788000000 ,\r\n        0x90971bc788000000000000000000000000000000010000000000000001000000 ,\r\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\r\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\r\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\r\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\r\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\r\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\r\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\r\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\r\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\r\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\r\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\r\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\r\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\r\n        0x00000000\r\n    End\r\n    PrtDevNames = Begin\r\n        0x08003b006c000100000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,\r\n        0x35362d626536332d33376332313832623061383600\r\n    End\r\n    FilterOnLoad =0\r\n    FitToPage =1\r\n    DisplayOnSharePointSite =1\r\n    DatasheetAlternateBackColor =15921906\r\n    DatasheetGridlinesColor12 =0\r\n    FitToScreen =1\r\n    DatasheetBackThemeColorIndex =1\r\n    BorderThemeColorIndex =3\r\n    ThemeFontIndex =1\r\n    ForeThemeColorIndex =0\r\n    AlternateBackThemeColorIndex =1\r\n    AlternateBackShade =95.0\r\n    PrtDevModeW = Begin\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,\r\n        0x01040306dc00e80343b7000201000100ea0a6f08640001000f00580201000100 ,\r\n        0x5802030001004c00650074007400650072000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000010000000000000001000000 ,\r\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\r\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\r\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\r\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\r\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\r\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\r\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\r\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\r\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\r\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\r\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\r\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\r\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\r\n        0x00000000\r\n    End\r\n    PrtDevNamesW = Begin\r\n        0x0400370068000100000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\r\n        0x000000000000000000000000000000005700530044002d003800310066003100 ,\r\n        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,\r\n        0x6500360033002d00330037006300320031003800320062003000610038003600 ,\r\n        0x0000\r\n    End\r\n    NoSaveCTIWhenDisabled =1\r\n    Begin\r\n        Begin Label\r\n            BackStyle =0\r\n            FontSize =11\r\n            BorderColor =8355711\r\n            ForeColor =8355711\r\n            FontName =\"Calibri\"\r\n            GridlineColor =10921638\r\n            ThemeFontIndex =1\r\n            BackThemeColorIndex =1\r\n            BorderThemeColorIndex =0\r\n            BorderTint =50.0\r\n            ForeThemeColorIndex =0\r\n            ForeTint =50.0\r\n            GridlineThemeColorIndex =1\r\n            GridlineShade =65.0\r\n        End\r\n        Begin CheckBox\r\n            BorderLineStyle =0\r\n            LabelX =230\r\n            LabelY =-30\r\n            BorderColor =10921638\r\n            GridlineColor =10921638\r\n            BorderThemeColorIndex =1\r\n            BorderShade =65.0\r\n            GridlineThemeColorIndex =1\r\n            GridlineShade =65.0\r\n        End\r\n        Begin TextBox\r\n            AddColon = NotDefault\r\n            FELineBreak = NotDefault\r\n            BorderLineStyle =0\r\n            LabelX =-1800\r\n            FontSize =11\r\n            BorderColor =10921638\r\n            ForeColor =4210752\r\n            FontName =\"Calibri\"\r\n            AsianLineBreak =1\r\n            GridlineColor =10921638\r\n            ShowDatePicker =0\r\n            BackThemeColorIndex =1\r\n            BorderThemeColorIndex =1\r\n            BorderShade =65.0\r\n            ThemeFontIndex =1\r\n            ForeThemeColorIndex =0\r\n            ForeTint =75.0\r\n            GridlineThemeColorIndex =1\r\n            GridlineShade =65.0\r\n        End\r\n        Begin FormHeader\r\n            KeepTogether = NotDefault\r\n            Height =420\r\n            BackColor =15064278\r\n            Name =\"ReportHeader\"\r\n            GUID = Begin\r\n                0x8d7c61af4cc3094288159b2f855a3d35\r\n            End\r\n            AlternateBackThemeColorIndex =1\r\n            AlternateBackShade =95.0\r\n            BackThemeColorIndex =2\r\n            BackTint =20.0\r\n            Begin\r\n                Begin Label\r\n                    Top =60\r\n                    Width =720\r\n                    Height =315\r\n                    FontWeight =700\r\n                    ForeColor =0\r\n                    Name =\"Label0\"\r\n                    Caption =\"Charge\"\r\n                    GUID = Begin\r\n                        0xf6829f3d61432a47844088466fdfb13f\r\n                    End\r\n                    LayoutCachedTop =60\r\n                    LayoutCachedWidth =720\r\n                    LayoutCachedHeight =375\r\n                    ForeTint =100.0\r\n                End\r\n                Begin Label\r\n                    Left =3180\r\n                    Top =60\r\n                    Width =900\r\n                    Height =240\r\n                    ForeColor =0\r\n                    Name =\"Label1\"\r\n                    Caption =\"Case No.\"\r\n                    GUID = Begin\r\n                        0xf61d40aabc8ee940948b5313ef32bda4\r\n                    End\r\n                    LayoutCachedLeft =3180\r\n                    LayoutCachedTop =60\r\n                    LayoutCachedWidth =4080\r\n                    LayoutCachedHeight =300\r\n                    ForeTint =100.0\r\n                End\r\n            End\r\n        End\r\n        Begin Section\r\n            KeepTogether = NotDefault\r\n            Height =420\r\n            Name =\"Detail\"\r\n            GUID = Begin\r\n                0x24ca588cc222d145bd6f412720cdb6b8\r\n            End\r\n            AlternateBackColor =15921906\r\n            AlternateBackThemeColorIndex =1\r\n            AlternateBackShade =95.0\r\n            BackThemeColorIndex =1\r\n            Begin\r\n                Begin TextBox\r\n                    IMESentenceMode =3\r\n                    Width =2520\r\n                    Height =314\r\n                    FontSize =7\r\n                    BorderColor =14277081\r\n                    ForeColor =0\r\n                    Name =\"MatterCharge\"\r\n                    ControlSource =\"Matter_Charge\"\r\n                    GUID = Begin\r\n                        0x19d1f46b6f525443a6a0e3c520a302bf\r\n                    End\r\n                    ShowDatePicker =1\r\n\r\n                    LayoutCachedWidth =2520\r\n                    LayoutCachedHeight =314\r\n                    BorderShade =85.0\r\n                    ForeTint =100.0\r\n                End\r\n                Begin TextBox\r\n                    TextAlign =2\r\n                    IMESentenceMode =3\r\n                    Left =2580\r\n                    Width =2040\r\n                    Height =315\r\n                    FontSize =7\r\n                    TabIndex =1\r\n                    BorderColor =14277081\r\n                    ForeColor =0\r\n                    Name =\"CtNumber\"\r\n                    ControlSource =\"CtNumber\"\r\n                    GUID = Begin\r\n                        0xd1ce271f16272e41936e5344dd29d240\r\n                    End\r\n                    ShowDatePicker =1\r\n\r\n                    LayoutCachedLeft =2580\r\n                    LayoutCachedWidth =4620\r\n                    LayoutCachedHeight =315\r\n                    BorderShade =85.0\r\n                    ForeTint =100.0\r\n                End\r\n                Begin TextBox\r\n                    Visible = NotDefault\r\n                    IMESentenceMode =3\r\n                    Left =2760\r\n                    Top =60\r\n                    Width =300\r\n                    TabIndex =2\r\n                    Name =\"Text0\"\r\n                    ControlSource =\"CtCaseNoID\"\r\n                    GUID = Begin\r\n                        0xb3bbd5002e4ca84cbb7a60b8a08006ac\r\n                    End\r\n                    ShowDatePicker =1\r\n\r\n                    LayoutCachedLeft =2760\r\n                    LayoutCachedTop =60\r\n                    LayoutCachedWidth =3060\r\n                    LayoutCachedHeight =300\r\n                End\r\n            End\r\n        End\r\n        Begin FormFooter\r\n            KeepTogether = NotDefault\r\n            Height =0\r\n            Name =\"ReportFooter\"\r\n            GUID = Begin\r\n                0x7061b726143d504db231e237b1405a76\r\n            End\r\n            AlternateBackThemeColorIndex =1\r\n            AlternateBackShade =95.0\r\n            BackThemeColorIndex =1\r\n        End\r\n    End\r\nEnd"
+}

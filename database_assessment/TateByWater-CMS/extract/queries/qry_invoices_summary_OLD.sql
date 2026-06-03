@@ -1,0 +1,5 @@
+SELECT qryInvoiceRPT1.CaseID, [Last_Name] & ", " & [First_Name] AS Name, qryInvoiceRPT1.First_Name, qryInvoiceRPT1.Last_Name, qryInvoiceRPT1.Retainer, Sum(qryInvoiceRPT1.Charge) AS SumOfCharge, Sum(qryInvoiceRPT1.Payment) AS SumOfPayment, qryInvoiceRPT1.Balance, Sum([charge]-[payment]) AS BalanceCalculated, [BalanceCalculated]+[qryInvoiceRPT1].[Retainer] AS BalRetCalculated, [Balance]+[qryInvoiceRPT1].[Retainer] AS BalRet, qryInvoiceRPT1.[Past Due], qryInvoiceRPT1.chkBalanceDue, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_") AS FileNumber, qryInvoiceRPT1.[Balance Due Date], qryInvoiceRPT1.[Long Term Collections]
+FROM qryInvoiceRPT1
+GROUP BY qryInvoiceRPT1.CaseID, [Last_Name] & ", " & [First_Name], qryInvoiceRPT1.First_Name, qryInvoiceRPT1.Last_Name, qryInvoiceRPT1.Retainer, qryInvoiceRPT1.Balance, qryInvoiceRPT1.[Past Due], qryInvoiceRPT1.chkBalanceDue, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_"), qryInvoiceRPT1.[Balance Due Date], qryInvoiceRPT1.[Long Term Collections]
+HAVING ((([Balance]+[qryInvoiceRPT1].[Retainer])>0))
+ORDER BY qryInvoiceRPT1.[Balance Due Date] DESC;

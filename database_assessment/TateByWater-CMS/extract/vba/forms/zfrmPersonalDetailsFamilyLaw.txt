@@ -1,0 +1,1247 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =-1632551722
+Begin Form
+    RecordSelectors = NotDefault
+    MaxButton = NotDefault
+    MinButton = NotDefault
+    ControlBox = NotDefault
+    NavigationButtons = NotDefault
+    CloseButton = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    DefaultView =0
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =11160
+    DatasheetFontHeight =11
+    ItemSuffix =29
+    Right =24525
+    Bottom =11670
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x67489f627af7e440
+    End
+    GUID = Begin
+        0x1712660da81fb84ba195639e9a93b3e6
+    End
+    NameMap = Begin
+        0x0acc0e5500000000a3ae66076b51b14a95bb45b4928a6159000000004e197481 ,
+        0x0c3ae6400000000000000000740062006c004300610073006500000000000000 ,
+        0x4c5499880604744ebe022a085b799ce307000000a3ae66076b51b14a95bb45b4 ,
+        0x928a6159410064006400720065007300730000000000000038f697bc3534a945 ,
+        0xbccae82d78b28a6e07000000a3ae66076b51b14a95bb45b4928a615943006900 ,
+        0x74007900000000000000070b7a68aa2f4e4bb0956e0f46b2770b07000000a3ae ,
+        0x66076b51b14a95bb45b4928a6159530074006100740065000000000000007cec ,
+        0xace9248c1342b45cb3968ba918ee07000000a3ae66076b51b14a95bb45b4928a ,
+        0x61595a0069007000000000000000449797c3c5b2c44eab88b14d32a788280700 ,
+        0x0000a3ae66076b51b14a95bb45b4928a615948006d00500068006f006e006500 ,
+        0x000000000000dbf546c3b87b0541b9387d77e4673a5c07000000a3ae66076b51 ,
+        0xb14a95bb45b4928a615957006b00500068006f006e00650000000000000013b4 ,
+        0xa56e821fc74d979403814f527bee07000000a3ae66076b51b14a95bb45b4928a ,
+        0x61594f007400680065007200500068006f006e006500000000000000d9095519 ,
+        0x9f88fe479c99261032c7c5e307000000a3ae66076b51b14a95bb45b4928a6159 ,
+        0x530053004e00000000000000d13a06b2695b9d47a1b51b0f2c16295c07000000 ,
+        0xa3ae66076b51b14a95bb45b4928a615957006b00410064006400720065007300 ,
+        0x7300000000000000fdff283ee8e27345ac619be859957f1f07000000a3ae6607 ,
+        0x6b51b14a95bb45b4928a615957006b004300690074007900000000000000ceec ,
+        0x165d9b506a4aab5658df672d4b5c07000000a3ae66076b51b14a95bb45b4928a ,
+        0x615957006b0053007400610074006500000000000000e2293be75ce1a649b7ae ,
+        0xc1ef686f43e707000000a3ae66076b51b14a95bb45b4928a615957006b005a00 ,
+        0x69007000000000000000bee815becccdb644ac8fc9408825ba9507000000a3ae ,
+        0x66076b51b14a95bb45b4928a615945006d00610069006c00000000000000dcff ,
+        0x0e046580e54ca9c60094f3c6fcdd07000000a3ae66076b51b14a95bb45b4928a ,
+        0x615944004f004200000000000000375cac92ea4cac4b8d181764c00b352f0700 ,
+        0x0000a3ae66076b51b14a95bb45b4928a615945006d0070006c006f0079006500 ,
+        0x720020004e0061006d0065000000000000000000000000000000000000000000 ,
+        0x00000c000000050000000000000000000000000000000000
+    End
+    RecordSource ="tblCase"
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    PrtDevMode = Begin
+        0x00000000000000003cac6d05fa7f0000040000009c0100000000000000000000 ,
+        0x010403069c00040643b7000201000900ea0a6f08640001000f00580201000100 ,
+        0x5802030001004c65747465720000000001000000000000001d1f6f05fa7f0000 ,
+        0x0000000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000012010000ffffffff0000000000000000000000000000000044494e55 ,
+        0x22006803c4054000e26097690000000000000000000000000000000000000000 ,
+        0x00000000000000001e0000000000000000000000000000000000000001000000 ,
+        0x0000000000000400000000000000000001000100000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000068030000534d544a ,
+        0x0000000010005803000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x400000004d534458010000000000000000000000000000000000000000000000 ,
+        0x0000000000000000fc0f02000000000000000000010000000000000000000000
+    End
+    PrtDevNames = Begin
+        0x08002c0050000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000048504c617365724a657450726f4d4650 ,
+        0x4d3132356e77000000000000000000000000000000000000000000
+    End
+    OnLoad ="[Event Procedure]"
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    PrtDevModeW = Begin
+        0x00000000000000000000eeee9c01000000dbd0ee9c010000e15d7205fa7f0000 ,
+        0x00c91cc7880000005001eeee9c01000000c81cc7880000000000000000000000 ,
+        0x01040306dc00040643b7000201000900ea0a6f08640001000f00580201000100 ,
+        0x5802030001004c00650074007400650072000000000000003b00000000000000 ,
+        0x5001eeee9c010000360000000000000000000000000000000805eeee9c010000 ,
+        0x3600000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000012010000ffffffff0000000000000000000000000000000044494e55 ,
+        0x22006803c4054000e26097690000000000000000000000000000000000000000 ,
+        0x00000000000000001e0000000000000000000000000000000000000001000000 ,
+        0x0000000000000400000000000000000001000100000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000068030000534d544a ,
+        0x0000000010005803000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x400000004d534458010000000000000000000000000000000000000000000000 ,
+        0x0000000000000000fc0f02000000000000000000010000000000000000000000
+    End
+    PrtDevNamesW = Begin
+        0x040028004c000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000000000000000000000000000480050004c006100 ,
+        0x7300650072004a0065007400500072006f004d00460050004d00310032003500 ,
+        0x6e00770000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Rectangle
+            SpecialEffect =3
+            BackStyle =0
+            BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CheckBox
+            BorderLineStyle =0
+            LabelX =230
+            LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Section
+            Height =1740
+            Name ="Detail"
+            GUID = Begin
+                0xa22481bc44dc6f4d88582ce4c897b6cc
+            End
+            AlternateBackColor =16777215
+            AlternateBackThemeColorIndex =1
+            BackThemeColorIndex =1
+            Begin
+                Begin Rectangle
+                    BackStyle =1
+                    OverlapFlags =93
+                    Left =6060
+                    Width =5040
+                    Height =1680
+                    BackColor =15592953
+                    Name ="Box383"
+                    GUID = Begin
+                        0x97f4959911346c4eae5b303bcdec9ff9
+                    End
+                    LayoutCachedLeft =6060
+                    LayoutCachedWidth =11100
+                    LayoutCachedHeight =1680
+                    BackThemeColorIndex =-1
+                End
+                Begin Rectangle
+                    BackStyle =1
+                    OverlapFlags =93
+                    Width =6000
+                    Height =1680
+                    BackColor =15266810
+                    Name ="Box382"
+                    GUID = Begin
+                        0xdb751c52aefa3e4389e9203c93581689
+                    End
+                    LayoutCachedWidth =6000
+                    LayoutCachedHeight =1680
+                    BackThemeColorIndex =-1
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =2355
+                    Top =120
+                    Width =3420
+                    FontSize =8
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text2"
+                    ControlSource ="Address"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xd701ab735f220443bdf611be4d433a93
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =2355
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =5775
+                    LayoutCachedHeight =360
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =2355
+                    Top =420
+                    Width =1620
+                    FontSize =8
+                    TabIndex =1
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text3"
+                    ControlSource ="City"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xeaa1351fba369b4e81d3629c0a035189
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =2355
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =3975
+                    LayoutCachedHeight =660
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =4035
+                    Top =420
+                    Width =720
+                    FontSize =8
+                    TabIndex =2
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text4"
+                    ControlSource ="State"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xf97525cfda075445a2825efdac53d66d
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =4035
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =4755
+                    LayoutCachedHeight =660
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =4815
+                    Top =420
+                    Width =960
+                    FontSize =8
+                    TabIndex =3
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text5"
+                    ControlSource ="Zip"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x28d28059df27d340a3de3c5e3d597801
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =4815
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =5775
+                    LayoutCachedHeight =660
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =2355
+                    Top =720
+                    Width =1260
+                    FontSize =8
+                    TabIndex =4
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text6"
+                    ControlSource ="HmPhone"
+                    FontName ="MS Sans Serif"
+                    InputMask ="!\\(999\") \"000\\-0000;0;_"
+                    Tag ="Home Phone"
+                    GUID = Begin
+                        0x0feed72368d3344c8bf2ce9882cdee97
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =2355
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =3615
+                    LayoutCachedHeight =960
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =7560
+                    Top =1290
+                    Width =1380
+                    FontSize =8
+                    TabIndex =5
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text7"
+                    ControlSource ="WkPhone"
+                    FontName ="MS Sans Serif"
+                    InputMask ="!\\(999\") \"000\\-0000;0;_"
+                    GUID = Begin
+                        0xd18f5d45a382f04dacfe9be4f8402d0f
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =7560
+                    LayoutCachedTop =1290
+                    LayoutCachedWidth =8940
+                    LayoutCachedHeight =1530
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =4515
+                    Top =720
+                    Width =1260
+                    FontSize =8
+                    TabIndex =6
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text8"
+                    ControlSource ="OtherPhone"
+                    FontName ="MS Sans Serif"
+                    InputMask ="!\\(999\") \"000\\-0000;0;_"
+                    GUID = Begin
+                        0x118f804691dae84787fcaed4856d491a
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =4515
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =5775
+                    LayoutCachedHeight =960
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =1215
+                    Top =720
+                    Width =1050
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label9"
+                    Caption ="Phone"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xb056a156512bf644a0f70b78c4d13032
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =1215
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =2265
+                    LayoutCachedHeight =930
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =6405
+                    Top =1290
+                    Width =975
+                    Height =240
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label10"
+                    Caption ="Work Phone"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xcd8891a65f77694082c77190efd51a4b
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =6405
+                    LayoutCachedTop =1290
+                    LayoutCachedWidth =7380
+                    LayoutCachedHeight =1530
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =3735
+                    Top =720
+                    Width =720
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label11"
+                    Caption ="Other Ph"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xb83f7248701e9443bfdd0577647a5597
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =3735
+                    LayoutCachedTop =720
+                    LayoutCachedWidth =4455
+                    LayoutCachedHeight =930
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =135
+                    Top =60
+                    Width =1020
+                    Height =405
+                    FontSize =8
+                    FontWeight =600
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label12"
+                    Caption ="Personal  Information:"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x75dc4526839d9e4282b20a74f11734a0
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =135
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =1155
+                    LayoutCachedHeight =465
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =1215
+                    Top =120
+                    Width =690
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label13"
+                    Caption ="Address"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x712bf0c2b5d6424f9e558c91eda7d627
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =1215
+                    LayoutCachedTop =120
+                    LayoutCachedWidth =1905
+                    LayoutCachedHeight =330
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =1215
+                    Top =420
+                    Width =1080
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label14"
+                    Caption ="City/State/Zip"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x0407f31ed217ee4cb1e6165ae2765df1
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =1215
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =2295
+                    LayoutCachedHeight =630
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =4260
+                    Top =1320
+                    Width =1515
+                    FontSize =8
+                    TabIndex =7
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text15"
+                    ControlSource ="SSN"
+                    FontName ="MS Sans Serif"
+                    InputMask ="000\\-00\\-0000;0;_"
+                    GUID = Begin
+                        0x9e49be5adf100844b56dff0d4b012071
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =4260
+                    LayoutCachedTop =1320
+                    LayoutCachedWidth =5775
+                    LayoutCachedHeight =1560
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =3780
+                    Top =1320
+                    Width =360
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label16"
+                    Caption ="SSN"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xa1c957e378c851429aa62f18fcf795be
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =3780
+                    LayoutCachedTop =1320
+                    LayoutCachedWidth =4140
+                    LayoutCachedHeight =1530
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =1215
+                    Top =1020
+                    Width =600
+                    Height =240
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label17"
+                    Caption ="Email"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x03e37f4a3f994a4fa47e43e95487ab66
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =1215
+                    LayoutCachedTop =1020
+                    LayoutCachedWidth =1815
+                    LayoutCachedHeight =1260
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =7560
+                    Top =690
+                    Width =3360
+                    FontSize =8
+                    TabIndex =8
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text18"
+                    ControlSource ="WkAddress"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x006a963ca21f264dbec1e5def6b2e11b
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =7560
+                    LayoutCachedTop =690
+                    LayoutCachedWidth =10920
+                    LayoutCachedHeight =930
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =7560
+                    Top =990
+                    Width =1620
+                    FontSize =8
+                    TabIndex =9
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text19"
+                    ControlSource ="WkCity"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xd73fa39e83997e4c8194dccc79ee2418
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =7560
+                    LayoutCachedTop =990
+                    LayoutCachedWidth =9180
+                    LayoutCachedHeight =1230
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =9240
+                    Top =990
+                    Width =720
+                    FontSize =8
+                    TabIndex =10
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text20"
+                    ControlSource ="WkState"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x5eed7ba028ebe2448fcd20271440d5bc
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =9240
+                    LayoutCachedTop =990
+                    LayoutCachedWidth =9960
+                    LayoutCachedHeight =1230
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =10020
+                    Top =990
+                    Width =900
+                    FontSize =8
+                    TabIndex =11
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text21"
+                    ControlSource ="WkZip"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xd6be0f4a45634d4fb1dcb38032eb5d4b
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =10020
+                    LayoutCachedTop =990
+                    LayoutCachedWidth =10920
+                    LayoutCachedHeight =1230
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =6300
+                    Top =990
+                    Width =1080
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label22"
+                    Caption ="City/State/Zip"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xd31322168a8688449fd1240a0907ccd1
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =6300
+                    LayoutCachedTop =990
+                    LayoutCachedWidth =7380
+                    LayoutCachedHeight =1200
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =2355
+                    Top =1020
+                    Width =3420
+                    FontSize =8
+                    TabIndex =12
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text23"
+                    ControlSource ="Email"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x1affd0cd23b72049b3fda593fb623bf5
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =2355
+                    LayoutCachedTop =1020
+                    LayoutCachedWidth =5775
+                    LayoutCachedHeight =1260
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    FELineBreak = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    Left =2355
+                    Top =1320
+                    Width =1260
+                    FontSize =8
+                    TabIndex =13
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text24"
+                    ControlSource ="DOB"
+                    Format ="Short Date"
+                    FontName ="MS Sans Serif"
+                    InputMask ="99/99/0000;0;_"
+                    GUID = Begin
+                        0x715a0f0d1854e546a2aad49258603c45
+                    End
+                    AsianLineBreak =0
+                    GridlineColor =0
+
+                    LayoutCachedLeft =2355
+                    LayoutCachedTop =1320
+                    LayoutCachedWidth =3615
+                    LayoutCachedHeight =1560
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =1215
+                    Top =1320
+                    Width =480
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label25"
+                    Caption ="DOB"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x719a0ceb7b7b014e8b63f2b2b64b54e5
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =1215
+                    LayoutCachedTop =1320
+                    LayoutCachedWidth =1695
+                    LayoutCachedHeight =1530
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =6300
+                    Top =690
+                    Width =1080
+                    Height =210
+                    FontSize =8
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label26"
+                    Caption ="Work Address"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x42744f7925adb048a5401f48cabbfa22
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =6300
+                    LayoutCachedTop =690
+                    LayoutCachedWidth =7380
+                    LayoutCachedHeight =900
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+                Begin TextBox
+                    Locked = NotDefault
+                    SpecialEffect =2
+                    OverlapFlags =215
+                    IMESentenceMode =3
+                    Left =7560
+                    Top =390
+                    Width =3360
+                    FontSize =8
+                    TabIndex =14
+                    BackColor =-2147483643
+                    BorderColor =0
+                    ForeColor =-2147483640
+                    Name ="Text27"
+                    ControlSource ="Employer Name"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0x4409c996bbf86242ba05f48db3b33a25
+                    End
+                    GridlineColor =0
+
+                    LayoutCachedLeft =7560
+                    LayoutCachedTop =390
+                    LayoutCachedWidth =10920
+                    LayoutCachedHeight =630
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderShade =100.0
+                    ThemeFontIndex =-1
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                    Begin
+                        Begin Label
+                            OverlapFlags =215
+                            Left =6150
+                            Top =390
+                            Width =1230
+                            Height =240
+                            FontSize =8
+                            BackColor =-2147483633
+                            BorderColor =0
+                            ForeColor =-2147483630
+                            Name ="Label28"
+                            Caption ="Employer Name"
+                            FontName ="MS Sans Serif"
+                            GUID = Begin
+                                0x588dd6f8fa8f024b9fc6ed8462cc3101
+                            End
+                            GridlineColor =0
+                            LayoutCachedLeft =6150
+                            LayoutCachedTop =390
+                            LayoutCachedWidth =7380
+                            LayoutCachedHeight =630
+                            ThemeFontIndex =-1
+                            BackThemeColorIndex =-1
+                            BorderThemeColorIndex =-1
+                            BorderTint =100.0
+                            ForeThemeColorIndex =-1
+                            ForeTint =100.0
+                            GridlineThemeColorIndex =-1
+                            GridlineShade =100.0
+                        End
+                    End
+                End
+                Begin Label
+                    OverlapFlags =215
+                    TextAlign =3
+                    Left =7680
+                    Top =60
+                    Width =1635
+                    Height =240
+                    FontSize =8
+                    FontWeight =700
+                    BackColor =-2147483633
+                    BorderColor =0
+                    ForeColor =-2147483630
+                    Name ="Label384"
+                    Caption ="Work Information"
+                    FontName ="MS Sans Serif"
+                    GUID = Begin
+                        0xc1a0e8328151724e8ff2e556c62bb0d4
+                    End
+                    GridlineColor =0
+                    LayoutCachedLeft =7680
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =9315
+                    LayoutCachedHeight =300
+                    ThemeFontIndex =-1
+                    BackThemeColorIndex =-1
+                    BorderThemeColorIndex =-1
+                    BorderTint =100.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                    GridlineThemeColorIndex =-1
+                    GridlineShade =100.0
+                End
+            End
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub Form_Load()
+    'Me.Family_Law.DefaultValue = True
+End Sub

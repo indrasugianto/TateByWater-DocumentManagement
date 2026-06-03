@@ -1,0 +1,397 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =-1691451414
+Begin Report
+    LayoutForPrint = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    DateGrouping =1
+    GrpKeepTogether =1
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =6420
+    DatasheetFontHeight =11
+    ItemSuffix =11
+    Right =14400
+    Bottom =11445
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x734d4653f673e540
+    End
+    GUID = Begin
+        0xb67bad3e59e56b469c8188bb32a75aba
+    End
+    NameMap = Begin
+        0x0acc0e5500000000ba44670239a9b74484cf1a8fe687d4a100000000722d32ca ,
+        0xb25de6400000000000000000740062006c004e006f0074006500730000000000 ,
+        0x000042128b9dc917834086567398ea4dbcda07000000ba44670239a9b74484cf ,
+        0x1a8fe687d4a1430061007300650049004400000000000000010c85d014724a45 ,
+        0x994f9dd7a130578e07000000ba44670239a9b74484cf1a8fe687d4a14e006f00 ,
+        0x7400650044006100740065000000000000002ff89be7e6fef74d8251bc1a1421 ,
+        0x509c07000000ba44670239a9b74484cf1a8fe687d4a14e006f00740065005000 ,
+        0x6500720073006f006e00000000000000b8974436a0fe734b8849cb68f7d4fb56 ,
+        0x07000000ba44670239a9b74484cf1a8fe687d4a14e006f007400650044006500 ,
+        0x73006300720069007000740069006f006e00000000000000b106ca45d59aec48 ,
+        0xad735f1d54b3f80507000000ba44670239a9b74484cf1a8fe687d4a14e006f00 ,
+        0x74006500540069006d0065000000000000006272be5c6c57884facdfe708f066 ,
+        0xda9a07000000ba44670239a9b74484cf1a8fe687d4a1490044004e006f007400 ,
+        0x6500730000000000000000000000000000000000000000000000070000000000 ,
+        0x00000000000000000000000000004500760065006e0074004400610074006500 ,
+        0x000000000000000000000000000000000000000000000c000000050000000000 ,
+        0x000000000000000000000000
+    End
+    RecordSource ="SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePerson, tblNotes.NoteDes"
+        "cription, tblNotes.NoteTime, tblNotes.CaseID, tblNotes.IDNotes FROM tblNotes; "
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x680100006801000068010000680100000000000014190000d002000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    PrtDevMode = Begin
+        0x009e1bc78800000040d321aef67f00002046f1adf67f00002000000000000000 ,
+        0x010403069c00e8030f93010001000100ea0a6f08640001000700ffff01000100 ,
+        0xffff030000004c6574746572000000000500000000000000b0911bc788000000 ,
+        0x90971bc788000000000000000000000000000000010000000000000001000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
+    End
+    PrtDevNames = Begin
+        0x08003b006c000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,
+        0x35362d626536332d33376332313832623061383600
+    End
+    FilterOnLoad =0
+    FitToPage =1
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    PrtDevModeW = Begin
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,
+        0x01040306dc00e8030f93010001000100ea0a6f08640001000700ffff01000100 ,
+        0xffff030000004c00650074007400650072000000000000003b00000000000000 ,
+        0x5001eeee9c010000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000100000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
+    End
+    PrtDevNamesW = Begin
+        0x0400370068000100000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000000000005700530044002d003800310066003100 ,
+        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,
+        0x6500360033002d00330037006300320031003800320062003000610038003600 ,
+        0x0000
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            ShowDatePicker =0
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin BreakLevel
+            SortOrder = NotDefault
+            ControlSource ="EventDate"
+        End
+        Begin FormHeader
+            KeepTogether = NotDefault
+            Height =720
+            Name ="ReportHeader"
+            GUID = Begin
+                0x4f571674766a074eb2922802cc4fe7d3
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            Begin
+                Begin Label
+                    Width =600
+                    Height =300
+                    FontSize =10
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label1"
+                    Caption ="Date"
+                    GUID = Begin
+                        0x66e6cec0b552c34b8476fc841ad0790e
+                    End
+                    LayoutCachedWidth =600
+                    LayoutCachedHeight =300
+                    ForeTint =100.0
+                End
+                Begin Label
+                    Left =1140
+                    Top =360
+                    Width =1995
+                    Height =300
+                    FontSize =10
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label2"
+                    Caption ="Description"
+                    GUID = Begin
+                        0xf8a28909cbf06b419983a4116de93f5d
+                    End
+                    LayoutCachedLeft =1140
+                    LayoutCachedTop =360
+                    LayoutCachedWidth =3135
+                    LayoutCachedHeight =660
+                    ForeTint =100.0
+                End
+                Begin Label
+                    Top =300
+                    Width =915
+                    Height =285
+                    FontSize =10
+                    FontWeight =700
+                    ForeColor =0
+                    Name ="Label5"
+                    Caption ="Atty/Staff"
+                    GUID = Begin
+                        0x835e003cbd7963419eb79de499a070b3
+                    End
+                    LayoutCachedTop =300
+                    LayoutCachedWidth =915
+                    LayoutCachedHeight =585
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    IMESentenceMode =3
+                    Left =4500
+                    Top =180
+                    Width =1260
+                    Height =315
+                    ColumnOrder =0
+                    Name ="Text9"
+                    ControlSource ="Expr1000"
+                    GUID = Begin
+                        0x3e79aaf148a6ff418d96e46393d65e2b
+                    End
+
+                    LayoutCachedLeft =4500
+                    LayoutCachedTop =180
+                    LayoutCachedWidth =5760
+                    LayoutCachedHeight =495
+                End
+            End
+        End
+        Begin Section
+            KeepTogether = NotDefault
+            Height =720
+            Name ="Detail"
+            GUID = Begin
+                0x3be1dc6c88d1eb459f89021ce0530fdf
+            End
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Width =1080
+                    Height =315
+                    FontSize =10
+                    BorderColor =14277081
+                    Name ="Text3"
+                    ControlSource ="NoteDate"
+                    GUID = Begin
+                        0x9d4d3bb6b68b6647897eee7ef9c88b16
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedWidth =1080
+                    LayoutCachedHeight =315
+                    BorderShade =85.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    IMESentenceMode =3
+                    Left =1140
+                    Width =5220
+                    Height =660
+                    FontSize =10
+                    TabIndex =1
+                    BorderColor =14277081
+                    Name ="Text5"
+                    ControlSource ="NoteDescription"
+                    GUID = Begin
+                        0x663d49edf102f942a22f5fdfd0864e30
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =1140
+                    LayoutCachedWidth =6360
+                    LayoutCachedHeight =660
+                    BorderShade =85.0
+                End
+                Begin TextBox
+                    OldBorderStyle =0
+                    TextAlign =1
+                    IMESentenceMode =3
+                    Top =360
+                    Width =1080
+                    Height =315
+                    FontSize =10
+                    TabIndex =2
+                    BorderColor =14277081
+                    Name ="Text4"
+                    ControlSource ="NotePerson"
+                    GUID = Begin
+                        0x8b2ea83abf00104a90ae73f005b21b29
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedTop =360
+                    LayoutCachedWidth =1080
+                    LayoutCachedHeight =675
+                    BorderShade =85.0
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    IMESentenceMode =3
+                    Left =4920
+                    Top =180
+                    Width =900
+                    Height =315
+                    TabIndex =3
+                    Name ="Text6"
+                    ControlSource ="IDNotes"
+                    GUID = Begin
+                        0x526245393d49434eaf77f73358ceacf4
+                    End
+                    ShowDatePicker =1
+
+                    LayoutCachedLeft =4920
+                    LayoutCachedTop =180
+                    LayoutCachedWidth =5820
+                    LayoutCachedHeight =495
+                End
+            End
+        End
+        Begin FormFooter
+            KeepTogether = NotDefault
+            Height =0
+            Name ="ReportFooter"
+            GUID = Begin
+                0xd96d9c6b08bdd74688278db461c4ba6c
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End

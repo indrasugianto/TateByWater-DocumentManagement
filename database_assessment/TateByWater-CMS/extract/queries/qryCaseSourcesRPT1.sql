@@ -1,0 +1,3 @@
+SELECT qryCaseSourcesRPT.CaseID, TblCase.[Individual Referrer], TblCase.Referral, qryCaseSourcesRPT.[Total Earned Fee] AS Expr2, qryCaseSourcesRPT.Case_Letter, qryCaseSourcesRPT.Number_, qryCaseSourcesRPT.Orig_Atty, qryCaseSourcesRPT.Matter_type, qryCaseSourcesRPT.CaseOpenDate, qryCaseSourcesRPT.CaseNo, qryCaseSourcesRPT.yr, TblCase.Last_Name, TblCase.First_Name, tblDropD.codeval, qryCaseSourcesRPT.Clsdate
+FROM (TblCase INNER JOIN qryCaseSourcesRPT ON TblCase.CaseID = qryCaseSourcesRPT.CaseID) LEFT JOIN tblDropD ON TblCase.Case_Letter = tblDropD.Code
+WHERE (((qryCaseSourcesRPT.CaseOpenDate)>#8/31/2014#));

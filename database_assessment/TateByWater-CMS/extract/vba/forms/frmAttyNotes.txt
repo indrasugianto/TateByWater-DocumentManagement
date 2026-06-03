@@ -1,0 +1,637 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =1922567973
+Begin Form
+    RecordSelectors = NotDefault
+    NavigationButtons = NotDefault
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridX =24
+    GridY =24
+    Width =6000
+    DatasheetFontHeight =11
+    ItemSuffix =11
+    Left =14505
+    Top =5370
+    Right =20475
+    Bottom =10950
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x6691623f2f5ee540
+    End
+    GUID = Begin
+        0xec2203a814fddb4a973a10bbc33aba72
+    End
+    NameMap = Begin
+        0x0acc0e5500000000ba44670239a9b74484cf1a8fe687d4a100000000722d32ca ,
+        0xb25de6400000000000000000740062006c004e006f0074006500730000000000 ,
+        0x00006272be5c6c57884facdfe708f066da9a07000000ba44670239a9b74484cf ,
+        0x1a8fe687d4a1490044004e006f0074006500730000000000000042128b9dc917 ,
+        0x834086567398ea4dbcda07000000ba44670239a9b74484cf1a8fe687d4a14300 ,
+        0x61007300650049004400000000000000010c85d014724a45994f9dd7a130578e ,
+        0x07000000ba44670239a9b74484cf1a8fe687d4a14e006f007400650044006100 ,
+        0x740065000000000000002ff89be7e6fef74d8251bc1a1421509c07000000ba44 ,
+        0x670239a9b74484cf1a8fe687d4a14e006f007400650050006500720073006f00 ,
+        0x6e00000000000000b8974436a0fe734b8849cb68f7d4fb5607000000ba446702 ,
+        0x39a9b74484cf1a8fe687d4a14e006f0074006500440065007300630072006900 ,
+        0x7000740069006f006e00000000000000b106ca45d59aec48ad735f1d54b3f805 ,
+        0x07000000ba44670239a9b74484cf1a8fe687d4a14e006f007400650054006900 ,
+        0x6d006500000000000000770ce171904e0940bd621e288aab999607000000ba44 ,
+        0x670239a9b74484cf1a8fe687d4a1530053004d0041005f00540069006d006500 ,
+        0x5300740061006d00700000000000000000000000000000000000000000000000 ,
+        0x0c000000050000000000000000000000000000000000
+    End
+    RecordSource ="SELECT tblNotes.IDNotes, tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePerson"
+        ", tblNotes.NoteDescription, tblNotes.NoteTime, tblNotes.SSMA_TimeStamp FROM tblN"
+        "otes ORDER BY tblNotes.NoteDate; "
+    DatasheetFontName ="Calibri"
+    AllowDatasheetView =0
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin CommandButton
+            FontSize =11
+            FontWeight =400
+            ForeColor =4210752
+            FontName ="Calibri"
+            GridlineColor =10921638
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            UseTheme =1
+            Shape =1
+            Gradient =12
+            BackColor =14461583
+            BackThemeColorIndex =4
+            BackTint =60.0
+            BorderLineStyle =0
+            BorderColor =14461583
+            BorderThemeColorIndex =4
+            BorderTint =60.0
+            ThemeFontIndex =1
+            HoverColor =15189940
+            HoverThemeColorIndex =4
+            HoverTint =40.0
+            PressedColor =9917743
+            PressedThemeColorIndex =4
+            PressedShade =75.0
+            HoverForeColor =4210752
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeColor =4210752
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
+            FontName ="Calibri"
+            AsianLineBreak =1
+            GridlineColor =10921638
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ComboBox
+            AddColon = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
+            FontName ="Calibri"
+            GridlineColor =10921638
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            Height =420
+            BackColor =11830108
+            Name ="FormHeader"
+            GUID = Begin
+                0x72f768d79ad7094e95411ac28a9ee267
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            Begin
+                Begin Label
+                    OverlapFlags =85
+                    Left =120
+                    Top =60
+                    Width =660
+                    Height =300
+                    FontWeight =700
+                    ForeColor =16777215
+                    Name ="Label0"
+                    Caption ="DATE"
+                    GUID = Begin
+                        0xf2a9756159ca2f43b9034080d03b60df
+                    End
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =780
+                    LayoutCachedHeight =360
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                End
+                Begin Label
+                    OverlapFlags =85
+                    Left =1440
+                    Top =75
+                    Width =990
+                    Height =300
+                    FontWeight =700
+                    ForeColor =16777215
+                    Name ="Label1"
+                    Caption ="Atty/Staff"
+                    GUID = Begin
+                        0x99edd8ddcfb5754090a74f2fb4dced2a
+                    End
+                    LayoutCachedLeft =1440
+                    LayoutCachedTop =75
+                    LayoutCachedWidth =2430
+                    LayoutCachedHeight =375
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =5520
+                    Top =60
+                    Width =420
+                    Height =300
+                    FontSize =8
+                    ForeColor =855309
+                    Name ="cmdPrintNotes"
+                    OnClick ="[Event Procedure]"
+                    GUID = Begin
+                        0xf7c8757e1526a349b58b83e72fdd7b98
+                    End
+                    ImageData = Begin
+                        0x2800000010000000100000000100200000000000000000000000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272ff0000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000727272ffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffff727272ff0000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000727272ffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffff727272ff0000000000000000 ,
+                        0x00000000000000007272726f727272ea727272ff727272ff727272ffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffff727272ff727272ff727272ff ,
+                        0x727272ea7272726c727272fc727272ff727272ff727272ff727272ffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffff727272ff727272ff00000000 ,
+                        0x727272ff727272f6727272ff727272ff727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272ff727272ff727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ff727272de7272726672727218000000007272721872727266 ,
+                        0x727272de727272ff727272ff727272ff727272ff727272ff727272ff727272ff ,
+                        0x727272ff727272ba7272720c90a4686c90a468c390a468ed90a468c390a4686c ,
+                        0x7272720c727272ba727272ff727272ff727272ff727272ff727272ff727272ff ,
+                        0x727272de787c700f90a468bd90a468ff90a468ff90a468ff90a468ff90a468ff ,
+                        0x90a468bd787c700f727272fc727272ff727272ff000000000000000000000000 ,
+                        0x0000000090a4687590a468ff93a76df8e2e7d8ff9daf7aff90a468ff90a468ff ,
+                        0x90a468ff90a4687572727284727272fc727272ff00000000727272ff727272ff ,
+                        0x7272721b94a86ee792a66bfee2e7d8ffeef1e8ffe7ecdfff93a66cff90a468ff ,
+                        0x90a468ff90a468de00000000000000000000000000000000727272f0ffffffff ,
+                        0xffffff0691a569fbb5c29affdee4d3ff93a66cffdde3d1ffd1dac1ff90a468ff ,
+                        0x90a468ff90a468f900000000000000000000000000000000727272f0ffffffff ,
+                        0xffffff1b93a76de590a468ff90a468ff90a468ff98aa73fff2f4edffbac6a1ff ,
+                        0x90a468ff90a468de00000000000000000000000000000000727272f0ffffffff ,
+                        0xffffff6c90a4688490a468ff90a468ff90a468ff90a468ffa8b788ffe7ecdfff ,
+                        0x90a468ff90a4688400000000000000000000000000000000727272ff727272ff ,
+                        0x727272e17e866e1790a468cc90a468ff90a468ff90a468ff90a468ff90a468ff ,
+                        0x93a66cd190a46809000000000000000000000000000000000000000000000000 ,
+                        0x000000000000000090a4680690a4688190a468d590a468ff90a468d590a46881 ,
+                        0x90a4680600000000
+                    End
+
+                    LayoutCachedLeft =5520
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =5940
+                    LayoutCachedHeight =360
+                    PictureCaptionArrangement =5
+                    ForeTint =95.0
+                    UseTheme =0
+                    Shape =0
+                    Gradient =0
+                    BackColor =15132391
+                    BackThemeColorIndex =3
+                    BackTint =100.0
+                    BorderColor =12566463
+                    BorderThemeColorIndex =1
+                    BorderTint =100.0
+                    BorderShade =75.0
+                    HoverColor =15983578
+                    HoverTint =20.0
+                    PressedColor =14083579
+                    PressedThemeColorIndex =5
+                    PressedTint =20.0
+                    PressedShade =100.0
+                    HoverForeColor =16777215
+                    HoverForeThemeColorIndex =1
+                    HoverForeTint =100.0
+                    PressedForeColor =16777215
+                    PressedForeThemeColorIndex =1
+                    PressedForeTint =100.0
+                    QuickStyle =34
+                    QuickStyleMask =-1009
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
+                End
+                Begin Label
+                    FontItalic = NotDefault
+                    OverlapFlags =85
+                    TextAlign =3
+                    Left =2880
+                    Top =60
+                    Width =990
+                    Height =300
+                    FontWeight =700
+                    ForeColor =16777215
+                    Name ="Label9"
+                    Caption ="Time"
+                    GUID = Begin
+                        0x37e3adae8f35c04495ae2f8c2025fd70
+                    End
+                    LayoutCachedLeft =2880
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =3870
+                    LayoutCachedHeight =360
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =4155
+                    Top =30
+                    Width =180
+                    Height =315
+                    ColumnOrder =0
+                    FontSize =9
+                    TabIndex =1
+                    BorderColor =14277081
+                    Name ="Text10"
+                    ControlSource ="CaseID"
+                    GUID = Begin
+                        0x0e16ca12f8f6b94e9f9fa88825ce7252
+                    End
+
+                    LayoutCachedLeft =4155
+                    LayoutCachedTop =30
+                    LayoutCachedWidth =4335
+                    LayoutCachedHeight =345
+                    BorderShade =85.0
+                End
+            End
+        End
+        Begin Section
+            Height =1500
+            Name ="Detail"
+            GUID = Begin
+                0x869432fcee459548977486014b71bed9
+            End
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =60
+                    Top =60
+                    Width =1260
+                    Height =315
+                    FontSize =9
+                    BorderColor =14277081
+                    Name ="NoteDate"
+                    ControlSource ="NoteDate"
+                    GUID = Begin
+                        0x7bd7a6ce65b8c84d9d74fb79fc9b2ffc
+                    End
+
+                    LayoutCachedLeft =60
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =1320
+                    LayoutCachedHeight =375
+                    BorderShade =85.0
+                End
+                Begin ComboBox
+                    RowSourceTypeInt =1
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    ListRows =19
+                    Left =1440
+                    Top =60
+                    Width =1080
+                    Height =315
+                    FontSize =9
+                    TabIndex =1
+                    BorderColor =14277081
+                    GUID = Begin
+                        0x38f5204f82be8f4eba5017af846877fa
+                    End
+                    Name ="cmbNotePerson"
+                    ControlSource ="NotePerson"
+                    RowSourceType ="Value List"
+                    RowSource ="JRT;DEB;PM;TDT;NH;RLF;CMH;BA;KDB;RRL;WNE;HG;IQ;AO;KP;JO;KM"
+
+                    LayoutCachedLeft =1440
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =2520
+                    LayoutCachedHeight =375
+                    BorderShade =85.0
+                End
+                Begin TextBox
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =60
+                    Top =420
+                    Width =5880
+                    Height =1020
+                    FontSize =8
+                    TabIndex =3
+                    BorderColor =14277081
+                    Name ="NoteDescription"
+                    ControlSource ="NoteDescription"
+                    GUID = Begin
+                        0x250044baf3881b48a7625a33f205683d
+                    End
+
+                    LayoutCachedLeft =60
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =5940
+                    LayoutCachedHeight =1440
+                    BorderShade =85.0
+                End
+                Begin CommandButton
+                    TabStop = NotDefault
+                    OverlapFlags =119
+                    Left =5574
+                    Top =60
+                    Width =366
+                    Height =306
+                    TabIndex =2
+                    ForeColor =16777215
+                    Name ="cmdDelete"
+                    Caption ="Command19"
+                    ControlTipText ="Delete Record"
+                    GUID = Begin
+                        0x86a84b9a705893498525b96c9c10ba38
+                    End
+                    LeftPadding =105
+                    TopPadding =60
+                    RightPadding =120
+                    BottomPadding =165
+                    OnClickEmMacro = Begin
+                        Version =196611
+                        ColumnsShown =10
+                        Begin
+                            Action ="OnError"
+                            Argument ="0"
+                        End
+                        Begin
+                            Action ="GoToControl"
+                            Argument ="=[Screen].[PreviousControl].[Name]"
+                        End
+                        Begin
+                            Action ="ClearMacroError"
+                        End
+                        Begin
+                            Condition ="Not [Form].[NewRecord]"
+                            Action ="RunCommand"
+                            Argument ="223"
+                        End
+                        Begin
+                            Condition ="[Form].[NewRecord] And Not [Form].[Dirty]"
+                            Action ="Beep"
+                        End
+                        Begin
+                            Condition ="[Form].[NewRecord] And [Form].[Dirty]"
+                            Action ="RunCommand"
+                            Argument ="292"
+                        End
+                        Begin
+                            Condition ="[MacroError]<>0"
+                            Action ="MsgBox"
+                            Argument ="=[MacroError].[Description]"
+                            Argument ="-1"
+                            Argument ="0"
+                        End
+                        Begin
+                            Comment ="_AXL:<?xml version=\"1.0\" encoding=\"UTF-16\" standalone=\"no\"?>\015\012<UserI"
+                                "nterfaceMacro For=\"cmdDelete\" xmlns=\"http://schemas.microsoft.com/office/acce"
+                                "ssservices/2009/11/application\"><Statements><Action Name=\"OnError\"/><Action N"
+                                "ame=\"GoToControl\"><Argument Nam"
+                        End
+                        Begin
+                            Comment ="_AXL:e=\"ControlName\">=[Screen].[PreviousControl].[Name]</Argument></Action><Ac"
+                                "tion Name=\"ClearMacroError\"/><ConditionalBlock><If><Condition>Not [Form].[NewR"
+                                "ecord]</Condition><Statements><Action Name=\"DeleteRecord\"/></Statements></If><"
+                                "/ConditionalBlock><"
+                        End
+                        Begin
+                            Comment ="_AXL:ConditionalBlock><If><Condition>[Form].[NewRecord] And Not [Form].[Dirty]</"
+                                "Condition><Statements><Action Name=\"Beep\"/></Statements></If></ConditionalBloc"
+                                "k><ConditionalBlock><If><Condition>[Form].[NewRecord] And [Form].[Dirty]</Condit"
+                                "ion><Statements"
+                        End
+                        Begin
+                            Comment ="_AXL:><Action Name=\"UndoRecord\"/></Statements></If></ConditionalBlock><Conditi"
+                                "onalBlock><If><Condition>[MacroError]&lt;&gt;0</Condition><Statements><Action Na"
+                                "me=\"MessageBox\"><Argument Name=\"Message\">=[MacroError].[Description]</Argume"
+                                "nt></Action></State"
+                        End
+                        Begin
+                            Comment ="_AXL:ments></If></ConditionalBlock></Statements></UserInterfaceMacro>"
+                        End
+                    End
+                    ImageData = Begin
+                        0x2800000010000000100000000100200000000000000000000000000000000000 ,
+                        0x00000000000000000000000000000000000000008080803980808096868686d6 ,
+                        0x828282f7808080ff828282f8868686d68585859c808080390000000000000000 ,
+                        0x0000000000000000000000000000000000000000808080ff808080ff808080ff ,
+                        0x808080ff808080ff808080ff808080ff808080ff808080ff0000000000000000 ,
+                        0x0000000000000000000000000000000080808006818181fbcbcbcbffe6e6e6ff ,
+                        0xf9f9f9fffffffffff9f9f9ffe6e6e6ffcbcbcbff808080ff0000000000000000 ,
+                        0x000000000000000000000000000000008080801e898989edffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffff868686fc8080801500000000 ,
+                        0x0000000000000000000000000000000080808036939393e6ffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffff929292fc8080802d00000000 ,
+                        0x00000000000000000000000000000000808080519f9f9fe3ffffffffe0e5d4ff ,
+                        0x90a468ff90a468ff90a468ffdce2cfffffffffffa0a0a0fe8383834400000000 ,
+                        0x0000000000000000000000000000000080808069afafafe5ffffffffadbc8fff ,
+                        0xcfd7bdffffffffffd8dfcaffa6b686fffefefdffadadadff9393936a00000000 ,
+                        0x0000000000000000000000000000000080808081bebebeecfffffffff6f8f3ff ,
+                        0xa0b17dffc2cdacff9eb07cfff3f5efffffffffffb9b9b9ff9999998e00000000 ,
+                        0x000000000000000000000000000000008080809ccececef9ffffffffffffffff ,
+                        0xeff2eaffbbc7a3ffebefe4ffffffffffffffffffc5c5c5ff979797ad00000000 ,
+                        0x00000000000000000000000000000000838383b8ddddddffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffcfcfcfff969696c700000000 ,
+                        0x00000000000000000000000000000000848484d3e9e9e9ffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffddddddff929292dc00000000 ,
+                        0x00000000000000000000000000000000838383edccccccff9b9b9bff808080ff ,
+                        0x808080ff808080ff808080ff808080ff9b9b9bffc2c2c2ff8d8d8ded00000000 ,
+                        0x00000000000000000000000080808003808080ffa4a4a4ffdededeffffffffff ,
+                        0xffffffffffffffffffffffffffffffffdededeffa4a4a4ff808080ff00000000 ,
+                        0x00000000000000000000000000000000808080ff9c9c9ccddbdbdbe7ffffffff ,
+                        0xffffffffffffffffffffffffffffffffddddddf4a4a4a4dd808080ff00000000 ,
+                        0x00000000000000000000000000000000000000008080804e808080bd808080ff ,
+                        0x808080ff808080ff808080ff808080ff808080bd8080804e0000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000
+                    End
+
+                    LayoutCachedLeft =5574
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =5940
+                    LayoutCachedHeight =366
+                    ForeThemeColorIndex =1
+                    ForeTint =100.0
+                    Gradient =0
+                    BackColor =16777215
+                    BackThemeColorIndex =1
+                    BackTint =100.0
+                    OldBorderStyle =0
+                    BorderColor =0
+                    BorderThemeColorIndex =0
+                    BorderTint =100.0
+                    HoverColor =3355443
+                    HoverThemeColorIndex =0
+                    HoverTint =80.0
+                    PressedColor =0
+                    PressedThemeColorIndex =0
+                    PressedShade =80.0
+                    HoverForeColor =16777215
+                    HoverForeThemeColorIndex =1
+                    HoverForeTint =100.0
+                    PressedForeColor =16777215
+                    PressedForeThemeColorIndex =1
+                    PressedForeTint =100.0
+                    Shadow =-1
+                    QuickStyle =36
+                    QuickStyleMask =-369
+                    WebImagePaddingLeft =1
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =3
+                    Overlaps =1
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    TextAlign =3
+                    IMESentenceMode =3
+                    Left =2580
+                    Top =60
+                    Width =1260
+                    Height =315
+                    FontSize =9
+                    TabIndex =4
+                    BorderColor =14277081
+                    Name ="=NoteTime"
+                    ControlSource ="NoteTime"
+                    EventProcPrefix ="Ctl_NoteTime"
+                    GUID = Begin
+                        0xdc7e959944bf394f990c6c1ee0cd9d4a
+                    End
+
+                    LayoutCachedLeft =2580
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =3840
+                    LayoutCachedHeight =375
+                    BorderShade =85.0
+                End
+            End
+        End
+        Begin FormFooter
+            Height =0
+            Name ="FormFooter"
+            GUID = Begin
+                0x030b35a16080af4e9ab236c22e639697
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub cmdPrintNotes_Click()
+    
+    Dim sExistingReportName As String
+    Dim sAttachmentName As String
+ 
+    sExistingReportName = "rptClientNotes"
+    sAttachmentName = Nz(First_Name) & " " & Nz(Last_Name) & " - " & "Notes" & " " & Date
+  
+    On Error GoTo ErrHandler_cmdInvoice
+
+    DoCmd.Close acReport, sExistingReportName, acSaveYes
+    DoCmd.OpenReport sExistingReportName, acViewPreview, , "[CaseID]=" & Nz(Me.CaseID, 0)
+    Reports(sExistingReportName).Caption = sAttachmentName
+ErrHandler_cmdInvoice:
+    If Err.Number = 2501 Then
+        ShowMessage "No records found!"
+    ElseIf Err.Number <> 0 Then
+        ShowMessage Err.Description
+    End If
+
+End Sub
