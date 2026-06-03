@@ -25,8 +25,9 @@ Attribute VB_Name = "DropboxService"
 '     - HTTP transport (WinHttp, namespace-header injection)
 '     - JSON + URL helpers (ExtractJsonString, ExtractJsonLong, UrlEncode,
 '       ExtractQueryParam)
-'     - PowerShell HttpListener on :8765 for OAuth callback capture,
-'       with manual-paste fallback gated by USE_LOCAL_LISTENER
+'     - OAuth callback capture gated by USE_LOCAL_LISTENER: manual-paste
+'       InputBox is the default (2026-06-03, G27); PowerShell HttpListener
+'       on :8765 retained but off by default (unusable on locked-down PCs)
 '     - AuthenticateUser (full code-exchange flow), ExchangeCodeForToken,
 '       GetCurrentAccountEmail (/users/get_current_account)
 '     - IsAccountRevoked (queries SQL tblDropboxRevocationList; fail-open)
@@ -46,10 +47,24 @@ Attribute VB_Name = "DropboxService"
 '     - Phase3c_SmokeTest (no user input) +
 '       Phase3c_OpenDocumentTest (interactive — pass a real path)
 '
+'   Phase 3d (gated write API ops) — COMPLETE (Section 24): UploadFile,
+'     UploadLargeFile, MoveFile, CopyFile, DeleteFile, CreateFolder; every
+'     entrypoint calls GuardWritesEnabled first. Phase3d_SmokeTest +
+'     Phase4d_UploadSmokeTest (Section 25b).
+'   Phase 3e (startup-form wiring) — COMPLETE (Section 26): StartupBootstrap /
+'     StartupShutdown wired into frmHome Form_Open / Form_Unload.
+'   Phase 4b (local-synced-root) — Section 27, SUPERSEDED (desktop client is no
+'     longer a deployment prerequisite; helpers compile but are unwired).
+'
+'   2026-06-03 OAuth hardening for locked-down / no-admin workstations (G27):
+'     USE_LOCAL_LISTENER defaults to False (manual-paste flow — no PowerShell,
+'     no port bind); OpenBrowser launches via explorer.exe (not the
+'     AppLocker/SmartScreen-blocked powershell.exe path, no admin). The
+'     PowerShell HttpListener (Section 14) is retained but off by default.
+'
 ' PENDING:
-'   3d — Write API ops (files/upload, files/upload_session/*, files/move_v2,
-'        files/copy_v2, files/delete_v2, files/create_folder_v2)
-'   3e — Startup-form wiring (Form_Open hook)
+'   - Deliverable #7: tblDropboxVerificationReport population script (Phase 6.5
+'     gate) — see the migration plan's NEXT SESSION block. Read-only (GetMetadata).
 '
 ' KILL-SWITCH:
 '   ALLOW_DROPBOX_WRITES = False in this build (TBCMS_Test.accde).
@@ -96,7 +111,12 @@ Private Const LISTENER_TIMEOUT_S As Long = 120
 ' Flip to False if PowerShell ExecutionPolicy / port 8765 are blocked.
 ' False routes the OAuth callback through the manual-paste InputBox fallback
 ' (requires http://localhost — no port — registered in the Dropbox App Console).
-Public Const USE_LOCAL_LISTENER As Boolean = True
+'
+' Phase 4x: set to False — on locked-down workstations (no admin) Windows
+' security blocks powershell.exe and System.Net.HttpListener cannot bind a
+' port without admin/URL-ACL rights, so the listener path is unusable there.
+' The manual-paste fallback launches no PowerShell and binds no port.
+Public Const USE_LOCAL_LISTENER As Boolean = False
 
 ' Upload routing thresholds (Phase 3d). Dropbox /files/upload single-shot cap
 ' is 150 MB; files above that use the upload_session three-phase flow with
@@ -1356,7 +1376,21 @@ Private Function EnsureOAuthTempDir() As String
 End Function
 
 Private Sub OpenBrowser(ByVal url As String)
-    Application.FollowHyperlink url, , True   ' True = new window
+    ' LEGACY (pre-Phase 4x): Application.FollowHyperlink raised runtime error 5
+    ' on the long OAuth URL; a ShellExecute("open", ...) attempt was also
+    ' unreliable on this locked-down workstation. To roll back, comment the
+    ' active line and uncomment:
+    '   Application.FollowHyperlink url, , True   ' True = new window
+    '
+    ' Active (Phase 4x): hand the URL to explorer.exe, which opens it in the
+    ' default browser (Edge). explorer.exe is the running shell process, so it
+    ' is NOT subject to the AppLocker / SmartScreen policy that blocks
+    ' powershell.exe on this machine, needs no admin rights, and is not routed
+    ' through cmd.exe (so '&' in the query string is safe inside the quotes).
+    On Error Resume Next
+    Shell "explorer.exe """ & url & """", vbNormalFocus
+    Err.Clear
+    On Error GoTo 0
 End Sub
 
 ' Non-blocking sleep — DoEvents loop until elapsed.
@@ -2094,8 +2128,9 @@ End Sub
 ' --- 21.1 OpenDocument: download to %TEMP%, launch in native app ----------
 '
 ' Downloads the Dropbox file to %TEMP%\TBCMS\<GUID>_<filename> and opens it
-' via Application.FollowHyperlink (default file association). Returns the
-' local temp path on success, "" on failure.
+' in its associated app via explorer.exe (default file association; see G27 —
+' replaced FollowHyperlink, which can raise Err 5 on locked-down PCs). Returns
+' the local temp path on success, "" on failure.
 '
 ' Edits made in the launched app are NOT auto-re-uploaded — see plan G10.
 ' Users must save changes back via the Save flow.
@@ -2130,10 +2165,18 @@ Public Function OpenDocument(ByVal dropboxPath As String) As String
     On Error GoTo 0
 
     ' Hand off to the OS default handler.
+    ' LEGACY (pre-2026-06-03): Application.FollowHyperlink can raise runtime
+    ' error 5 on locked-down workstations where the file/hyperlink association
+    ' is restricted. To roll back, comment the explorer.exe line and uncomment:
+    '   Application.FollowHyperlink tempPath, , True   ' True = new window
+    ' Active (G27): launch via explorer.exe, which opens the local file in its
+    ' associated app (equivalent to double-click) using the running shell
+    ' process — not AppLocker/SmartScreen-blocked, no admin, and not routed
+    ' through cmd.exe (so '&' in the filename is safe inside the quotes).
     On Error Resume Next
-    Application.FollowHyperlink tempPath, , True
+    Shell "explorer.exe """ & tempPath & """", vbNormalFocus
     If Err.Number <> 0 Then
-        LogLocal CALLER, "Error", "FollowHyperlink failed for " & tempPath & _
+        LogLocal CALLER, "Error", "explorer.exe launch failed for " & tempPath & _
                  ": Err=" & Err.Number & " " & Err.Description
         Err.Clear
     End If
@@ -3129,10 +3172,15 @@ Public Function StartupBootstrap() As String
     Exit Function
 
 HandleError:
+    ' Capture Err.* into locals BEFORE LogLocal runs — LogLocal ends with
+    ' Err.Clear, which would otherwise blank out the description below.
+    Dim errNum As Long, errDesc As String
+    errNum = Err.Number
+    errDesc = Err.Description
     LogLocal CALLER, "Error", "Failed at step '" & stepName & "': Err=" & _
-        Err.Number & " " & Err.Description
+        errNum & " " & errDesc
     StartupBootstrap = "Dropbox session could not be initialized at step '" & _
-        stepName & "': " & Err.Description
+        stepName & "': " & errDesc
 End Function
 
 ' Form_Unload hook. Sweeps %TEMP%\TBCMS\ so downloaded documents don't

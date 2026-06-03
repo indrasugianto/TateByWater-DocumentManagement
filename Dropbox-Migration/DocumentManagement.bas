@@ -9,7 +9,8 @@ Dim foo
 '   Phase 4a — Read-flow rewire (DONE):
 '     OpenDocumentFile     -> DropboxService.OpenDocument
 '                             (download to %TEMP%\TBCMS\ + native-app launch)
-'     OpenDocumentFolder   -> Dropbox web URL (Application.FollowHyperlink)
+'     OpenDocumentFolder   -> Dropbox web URL (explorer.exe; see G27 —
+'                             replaced FollowHyperlink on 2026-06-03)
 '
 '   Phase 4b — Config layer + local-synced-root routing (SUPERSEDED):
 '     The Dropbox desktop client is no longer a deployment prerequisite,
@@ -997,7 +998,16 @@ Dim apiOk As Boolean
                 ' prefix; expect a cosmetic "Unsupported path provided" banner
                 ' from Dropbox for team-namespace deep links.
                 webUrl = "https://www.dropbox.com/work" & FolderName
-                Application.FollowHyperlink webUrl
+                ' LEGACY (pre-2026-06-03): Application.FollowHyperlink raises
+                ' runtime error 5 on long URLs and on locked-down workstations
+                ' where the protocol/hyperlink association is restricted. To roll
+                ' back, comment the explorer.exe line and uncomment:
+                '   Application.FollowHyperlink webUrl
+                ' Active (G27): launch via explorer.exe, which opens the URL in
+                ' the default browser. It is the running shell process (not
+                ' AppLocker/SmartScreen-blocked, no admin) and is not routed
+                ' through cmd.exe, so '&' in the URL is safe inside the quotes.
+                Shell "explorer.exe """ & webUrl & """", vbNormalFocus
             End If
         End If
     End If
@@ -1049,8 +1059,8 @@ End Function
 
 ' --- Phase 4a rewire --------------------------------------------------------
 ' Document open: route through DropboxService.OpenDocument, which downloads
-' the file to %TEMP%\TBCMS\<GUID>_<filename> and hands the local path to
-' Application.FollowHyperlink so the document opens in its native app.
+' the file to %TEMP%\TBCMS\<GUID>_<filename> and opens the local path via
+' explorer.exe (see G27) so the document opens in its native app.
 '
 ' Behavioral change vs. legacy S:\ flow (call out in user runbook): edits
 ' made in the launched app are NOT auto-re-uploaded. Users must save
