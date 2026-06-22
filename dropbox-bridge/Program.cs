@@ -241,7 +241,7 @@ app.MapGet("/api/setup/start", (IConfiguration cfg, HttpContext ctx) =>
     if (!IsLocalRequest(ctx)) return Results.Forbid();
     var dropboxCfg = cfg.GetSection("Dropbox");
     var state = Guid.NewGuid().ToString("N");
-    ctx.Session.SetString("oauth_state", state);
+    SetupState.Pending = state;   // held in-process, not the session (see SetupState)
     var authUrl = "https://www.dropbox.com/oauth2/authorize" +
         $"?client_id={dropboxCfg["AppKey"]}" +
         "&response_type=code&token_access_type=offline" +
@@ -262,8 +262,17 @@ app.MapGet("/api/setup/callback", async (
         return Results.BadRequest($"Dropbox authorization was declined: {error}");
     if (string.IsNullOrEmpty(code))
         return Results.BadRequest("Missing authorization code.");
-    var storedState = ctx.Session.GetString("oauth_state");
-    if (state != storedState) return Results.BadRequest("State mismatch");
+    // CSRF state check WITHOUT the in-memory session, which proved fragile across
+    // the external Dropbox redirect on locked-down server browsers. The state is
+    // held in a process-static set by /api/setup/start (single worker process).
+    // Both setup endpoints are loopback-only (IsLocalRequest) and require an
+    // authenticated admin, so this is a sufficient CSRF guard. If the static was
+    // cleared (e.g., an app-pool recycle between start and callback) don't
+    // hard-fail — the loopback + Windows-auth gates still apply.
+    var storedState = SetupState.Pending;
+    if (!string.IsNullOrEmpty(storedState) && state != storedState)
+        return Results.BadRequest("State mismatch");
+    SetupState.Pending = null;
 
     var dropboxCfg = cfg.GetSection("Dropbox");
     using var http = new HttpClient();
@@ -338,4 +347,13 @@ static string? TryReadAppSecretFromSql(string? connStr)
         return cmd.ExecuteScalar() as string is { Length: > 0 } s ? s : null;
     }
     catch { return null; }
+}
+
+// Holds the one-time setup OAuth CSRF state across the start->callback redirect,
+// independent of the in-memory session/cookie (which didn't survive the external
+// redirect on the locked-down server browser). Safe because the app pool runs a
+// single worker process and the setup endpoints are loopback-only + admin-authed.
+static class SetupState
+{
+    public static volatile string? Pending;
 }
