@@ -1430,15 +1430,20 @@ End Function
 ' Windows Integrated Auth (NTLM). VBA sends NO Dropbox tokens or headers; the
 ' bridge owns all credentials and injects the namespace header server-side.
 
-' Applies authentication to a bridge WinHttp request. Default is silent Windows
-' SSO (AutoLogonPolicy_Always) — the production path on domain-joined PCs. If
-' explicit domain credentials have been captured (off-domain dev/test, see
-' PromptBridgeCredentials), they are supplied too so WinHttp can answer the
-' server's NTLM/Negotiate 401 challenge instead of failing.
+' Applies authentication to a bridge WinHttp request. These two paths are
+' MUTUALLY EXCLUSIVE on purpose:
+'   - Domain-joined PC (no explicit creds): AutoLogonPolicy_Always = silent
+'     Windows SSO. This is the production path.
+'   - Off-domain (explicit creds captured): supply ONLY SetCredentials. We must
+'     NOT also enable AutoLogonPolicy_Always — it makes WinHttp auto-send the
+'     machine's (untrusted) default credentials, which can pre-empt the explicit
+'     ones and 401 even though the typed credentials are valid.
 Private Sub PrepBridgeAuth(ByVal http As Object)
-    http.SetAutoLogonPolicy 0      ' AutoLogonPolicy_Always
-    If m_BridgeHasCreds Then _
+    If m_BridgeHasCreds Then
         http.SetCredentials m_BridgeUser, m_BridgePwd, 0   ' 0 = ..._FOR_SERVER
+    Else
+        http.SetAutoLogonPolicy 0      ' AutoLogonPolicy_Always (domain SSO)
+    End If
 End Sub
 
 ' Prompts once per session for domain credentials when the bridge rejects this
@@ -1559,13 +1564,15 @@ Private Function BridgeRequest( _
     EnsureConfigLoaded CALLER
 
     Dim http As Object
-    Dim attempt As Integer
+    Dim credPromptsLeft As Integer
     On Error GoTo HttpError
 
-    ' Up to 2 attempts: attempt 1 uses whatever auth is cached (silent SSO on
-    ' domain PCs). If it 401s on an off-domain machine with no creds yet, prompt
-    ' for domain credentials and retry once.
-    For attempt = 1 To 2
+    ' On a 401 we (re-)prompt for off-domain credentials and retry, up to a few
+    ' times, so a typo doesn't dead-end the call — the user gets another prompt
+    ' in the same flow rather than having to reopen the form. Domain-joined PCs
+    ' never see this: silent SSO returns 2xx on the first attempt.
+    credPromptsLeft = 3
+    Do
         Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
         http.Open method, m_BridgeUrl & endpoint, False    ' synchronous
         PrepBridgeAuth http
@@ -1581,13 +1588,14 @@ Private Function BridgeRequest( _
         outStatus = http.Status
         outResponse = http.ResponseText
 
-        If outStatus = 401 And attempt = 1 And Not m_BridgeHasCreds Then
-            If Not PromptBridgeCredentials() Then Exit For   ' user cancelled
-            ' else loop: attempt 2 sends the entered credentials
-        Else
-            Exit For
-        End If
-    Next attempt
+        If outStatus <> 401 Then Exit Do        ' success, or a non-auth error
+        ' Auth rejected — discard any cached (wrong) creds so the next attempt
+        ' re-prompts, keeping m_BridgeUser as the dialog seed.
+        m_BridgeHasCreds = False
+        If credPromptsLeft <= 0 Then Exit Do    ' give up after several tries
+        credPromptsLeft = credPromptsLeft - 1
+        If Not PromptBridgeCredentials() Then Exit Do   ' user cancelled
+    Loop
 
     BridgeRequest = (outStatus >= 200 And outStatus < 300)
     Exit Function
