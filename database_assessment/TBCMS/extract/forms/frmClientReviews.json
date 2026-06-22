@@ -1,0 +1,477 @@
+{
+  "formName": "frmClientReviews",
+  "caption": "Client Reviews",
+  "recordSource": "SELECT tblCase.Last_Name, tblCase.First_Name, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, tblCase.ReviewFollowUp, tblCase.ReviewReceivedDate, tblCase.ReviewReq, tblCase.Reviewable, tblCase.ReviewReceived, [case_Letter] & [yr] & \"-\" & [Number_] & \"-\" & [Orig_Atty] AS [Case No], [Last_Name] & \", \" & [First_Name] AS Name, tblCase.CaseID, tblCase.ParaLegal, tblCase.Testimonial, tblCase.Stars, tblCase.[Review Source] FROM tblCase WHERE (((tblCase.Reviewable)=True)) ORDER BY tblCase.ReviewReq DESC; ",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": true,
+  "navigationButtons": true,
+  "width": 19500,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "OrigAtty",
+          "left": 5220,
+          "top": 49,
+          "width": 840,
+          "height": 299,
+          "controlSource": "Orig_Atty",
+          "format": "Currency",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "HandlingAtty",
+          "left": 6150,
+          "top": 45,
+          "width": 840,
+          "height": 299,
+          "controlSource": "HandlingAtty_Case",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "CaseNo",
+          "left": 90,
+          "top": 45,
+          "width": 1253,
+          "height": 314,
+          "controlSource": "Case No",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "Paralegal",
+          "left": 7080,
+          "top": 45,
+          "width": 660,
+          "height": 299,
+          "controlSource": "Paralegal",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Name",
+          "left": 1440,
+          "top": 60,
+          "width": 3720,
+          "height": 299,
+          "controlSource": "Name",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Check1014",
+          "left": 8160,
+          "top": 60,
+          "width": 300,
+          "height": 300,
+          "controlSource": "Reviewable",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "Check1023",
+          "left": 10320,
+          "top": 60,
+          "width": 300,
+          "height": 300,
+          "controlSource": "ReviewReceived",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text22",
+          "left": 8820,
+          "top": 60,
+          "width": 1140,
+          "height": 255,
+          "controlSource": "ReviewReq",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text27",
+          "left": 9960,
+          "top": 60,
+          "width": 360,
+          "height": 315,
+          "controlSource": "CaseID",
+          "tabIndex": 8,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text29",
+          "left": 12960,
+          "top": 60,
+          "width": 6540,
+          "height": 840,
+          "controlSource": "Testimonial",
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text35",
+          "left": 12180,
+          "top": 45,
+          "width": 660,
+          "height": 255,
+          "controlSource": "Stars",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Combo45",
+          "left": 10860,
+          "top": 0,
+          "width": 1200,
+          "height": 299,
+          "controlSource": "Review Source",
+          "rowSource": "Google;Yelp;Avvo;Martindale;Facebook;Email;Letter",
+          "tabIndex": 11,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label17",
+          "left": 120,
+          "top": 1650,
+          "width": 793,
+          "height": 284,
+          "caption": "File No.",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 5220,
+          "top": 1380,
+          "width": 1080,
+          "height": 315,
+          "caption": "Orig. Atty",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label65",
+          "left": 6150,
+          "top": 1381,
+          "width": 780,
+          "height": 314,
+          "caption": "Assoc",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "CmbOrigAtty",
+          "left": 5220,
+          "top": 1649,
+          "width": 840,
+          "height": 300,
+          "rowSource": "JRT;DEB;GBF;PM;TDT;NH;RLF;CMH;KDB;RRL;WNE;RYR;TB",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbAssoc",
+          "left": 6150,
+          "top": 1650,
+          "width": 840,
+          "height": 299,
+          "rowSource": "CMH;BA;KDB;RRL;WNE;RYR",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label20",
+          "left": 7080,
+          "top": 1381,
+          "width": 795,
+          "height": 314,
+          "caption": "Par",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbPar",
+          "left": 7080,
+          "top": 1650,
+          "width": 585,
+          "height": 299,
+          "rowSource": "AO;HG;IQ;KP;LV;JI",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 1440,
+          "top": 1050,
+          "width": 1230,
+          "height": 314,
+          "caption": "Client",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbClients",
+          "left": 1440,
+          "top": 1650,
+          "width": 3660,
+          "height": 299,
+          "rowSource": "qry_caseID_clients",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label40",
+          "left": 1320,
+          "top": 240,
+          "width": 6840,
+          "height": 900,
+          "caption": "CLIENT REVIEWS",
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image36",
+          "left": 180,
+          "top": 240,
+          "width": 1020,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdclose",
+          "left": 17040,
+          "top": 300,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "cmbHome",
+          "left": 18360,
+          "top": 330,
+          "width": 480,
+          "height": 345,
+          "visible": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClearFilter",
+          "left": 17040,
+          "top": 780,
+          "width": 1800,
+          "height": 360,
+          "caption": "   &Clear Filter",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "txtClient",
+          "left": 1440,
+          "top": 1290,
+          "width": 3660,
+          "height": 299,
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label24",
+          "left": 8940,
+          "top": 1680,
+          "width": 1320,
+          "height": 315,
+          "caption": "Requested",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label25",
+          "left": 7800,
+          "top": 1680,
+          "width": 1005,
+          "height": 315,
+          "caption": "Reviewable",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label26",
+          "left": 9960,
+          "top": 1680,
+          "width": 810,
+          "height": 285,
+          "caption": "Received",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label30",
+          "left": 12960,
+          "top": 1680,
+          "width": 2970,
+          "height": 315,
+          "caption": "Testimonial",
+          "visible": true
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkReviewReceived",
+          "left": 10320,
+          "top": 1440,
+          "width": 300,
+          "height": 300,
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label34",
+          "left": 12255,
+          "top": 1680,
+          "width": 600,
+          "height": 315,
+          "caption": "Stars",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label41",
+          "left": 10860,
+          "top": 1410,
+          "width": 1320,
+          "height": 315,
+          "caption": "Source",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbSource",
+          "left": 10860,
+          "top": 1650,
+          "width": 1200,
+          "height": 299,
+          "rowSource": "Google;Yelp;Avvo;Martindale;Facebook;Email;Letter",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormFooter",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text36",
+          "left": 10080,
+          "top": 120,
+          "width": 660,
+          "height": 315,
+          "controlSource": "=Abs(Sum([ReviewReceived]))",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label37",
+          "left": 8460,
+          "top": 135,
+          "width": 1560,
+          "height": 285,
+          "caption": "Reviews Received",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub CaseNo_Click()\r\nOn Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub chkReviewReceived_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub chkSource_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbAssoc_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbHome_Click()\r\n    DoCmd.openform \"frmhome\", acNormal\r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbPar_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbSource_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.cmbAssoc) Then strSQL = strSQL & \" AND HandlingAtty_Case = '\" & Me.cmbAssoc & \"'\"\r\n    If Not IsNull(Me.cmbPar) Then strSQL = strSQL & \" AND Paralegal = '\" & Me.cmbPar & \"'\"\r\n    If Not IsNull(Me.cmbSource) Then strSQL = strSQL & \" AND [Review Source] = '\" & Me.cmbSource & \"'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '\" & Me.txtClient & \"*'\"\r\n    If Not IsNull(Me.chkReviewReceived) Then strSQL = strSQL & \" AND Reviewreceived = \" & IIf(Me.chkReviewReceived, 1, 0)\r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n\r\n    Me.cmbClients = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.cmbAssoc = Null\r\n    Me.cmbPar = Null\r\n    Me.txtClient = Null\r\n    Me.chkReviewReceived = Null\r\n    Me.cmbSource = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub\r\n"
+}

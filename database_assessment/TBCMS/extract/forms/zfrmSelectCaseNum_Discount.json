@@ -1,0 +1,67 @@
+{
+  "formName": "zfrmSelectCaseNum_Discount",
+  "caption": "Open Report",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 4020,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "ComboBox",
+          "name": "cboCaseNum",
+          "left": 600,
+          "top": 660,
+          "width": 2580,
+          "height": 315,
+          "rowSource": "SELECT tblCase.CaseID, [TblCase].Last_Name AS [Last Name], [TblCase].First_Name AS [First Name], tblCase.CaseOpenDate AS [Case Open Date], tblCase.Case_Letter AS [Case Letter], tblCase.Number_ AS Num, tblCase.Orig_Atty, tblCase.CourtCaseNo AS [Court Case No], tblYearMap.YearNum AS [Case Year] FROM tblCase LEFT JOIN tblYearMap ON tblCase.yr = tblYearMap.YearID ORDER BY tblCase.CaseID, tblYearMap.YearNum; ",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 600,
+          "top": 240,
+          "width": 2580,
+          "height": 300,
+          "caption": "Select Case No.",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "CmdOpenInvoiceAttachReport",
+          "left": 600,
+          "top": 1320,
+          "width": 2580,
+          "height": 360,
+          "caption": "&Open Report",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box4",
+          "left": 60,
+          "top": 60,
+          "width": 3900,
+          "height": 1785,
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub CmdOpenInvoiceAttachReport_Click()\r\nOn Error GoTo ErrHnd\r\nMe.Visible = False\r\nIf Nz(Me.cboCaseNum, \"\") <> \"\" Then\r\n    DoCmd.OpenReport \"Invoice Attach - Hourly w Discount\", acViewPreview, , \"CaseID=\" & Me.cboCaseNum, acWindowNormal\r\n\r\nElse\r\n    DoCmd.OpenReport \"Invoice Attach - Hourly w Discount\", acViewPreview, , , acWindowNormal\r\nEnd If\r\n    'DoCmd.Close acForm, \"frmSelectCaseNum\", acSaveNo\r\n\r\nExit Sub\r\nErrHnd:\r\n    If Err.Number = 2501 Then\r\n        ShowMessage \"No records found\"\r\n    ElseIf Err.Number <> 0 Then\r\n        ErrMsg \"CmdOpenInvoiceAttachReport\"\r\n    End If\r\nEnd Sub\r\n\r\n\r\n\r\n"
+}

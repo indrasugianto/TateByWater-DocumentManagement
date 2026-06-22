@@ -1,0 +1,159 @@
+{
+  "formName": "frmCaseList",
+  "caption": "Case List",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 20295,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Unknown_123",
+          "name": "tabControl",
+          "left": 15,
+          "top": 0,
+          "width": 20285,
+          "height": 11000,
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true
+        },
+        {
+          "type": "Unknown_124",
+          "name": "Page420",
+          "left": 70,
+          "top": 480,
+          "width": 20180,
+          "height": 10470,
+          "caption": "OPEN",
+          "visible": true,
+          "enabled": true
+        },
+        {
+          "type": "SubForm",
+          "name": "frmCaseListOpen",
+          "left": 90,
+          "top": 495,
+          "width": 20130,
+          "height": 10305,
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmCaseListOpen"
+        },
+        {
+          "type": "Unknown_124",
+          "name": "Page421",
+          "left": 70,
+          "top": 480,
+          "width": 20180,
+          "height": 10470,
+          "caption": "CLOSED",
+          "visible": true,
+          "enabled": true
+        },
+        {
+          "type": "SubForm",
+          "name": "frmCaseListClosed",
+          "left": 105,
+          "top": 495,
+          "width": 20055,
+          "height": 10425,
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmCaseListClosed"
+        },
+        {
+          "type": "Unknown_124",
+          "name": "Page427",
+          "left": 70,
+          "top": 480,
+          "width": 20180,
+          "height": 10470,
+          "caption": "ALL",
+          "visible": true,
+          "enabled": true
+        },
+        {
+          "type": "SubForm",
+          "name": "frmCaseListAll",
+          "left": 105,
+          "top": 510,
+          "width": 19995,
+          "height": 10410,
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "sourceObject": "frmCaseListAll"
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label7",
+          "left": 1560,
+          "top": 210,
+          "width": 3120,
+          "height": 900,
+          "caption": "CASE LIST",
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image36",
+          "left": 360,
+          "top": 180,
+          "width": 1020,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmbclose",
+          "left": 17400,
+          "top": 240,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "cmbHome",
+          "left": 18720,
+          "top": 240,
+          "width": 480,
+          "height": 345,
+          "visible": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmbclose_Click()\r\nDoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmbHome_Click()\r\nDoCmd.openform \"frmhome\", acNormal\r\nEnd Sub",
+  "subformReferences": [
+    "frmCaseListAll",
+    "frmCaseListClosed",
+    "frmCaseListOpen"
+  ]
+}

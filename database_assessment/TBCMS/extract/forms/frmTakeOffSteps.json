@@ -1,0 +1,209 @@
+{
+  "formName": "frmTakeOffSteps",
+  "caption": "Take Off Steps",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": true,
+  "width": 18840,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "CommandButton",
+          "name": "cmdTrsutChron",
+          "left": 300,
+          "top": 1740,
+          "width": 1980,
+          "height": 900,
+          "caption": "Trust Account Entries \r\nChronological",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdTakeOff",
+          "left": 300,
+          "top": 5100,
+          "width": 3960,
+          "height": 900,
+          "caption": "Take Off",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdRecon",
+          "left": 300,
+          "top": 3420,
+          "width": 3960,
+          "height": 900,
+          "caption": "Reconciliation",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdAttyFeesCost",
+          "left": 300,
+          "top": 7410,
+          "width": 3960,
+          "height": 900,
+          "caption": "Attorney Fees and \r\nCost Reimbursements",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 4620,
+          "top": 1800,
+          "width": 11400,
+          "height": 900,
+          "caption": "2) Reconcile each transaction in the Trust Account with the WF Trust and NMI. Check the box on any uncashed checks and uncleared deposits.                                                                                                                                                                                                                                         3) Uncheck any checks/deposits which have since cleared",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 4620,
+          "top": 3480,
+          "width": 11400,
+          "height": 1140,
+          "caption": "4) In the Reconciliation form enter in Actual Balances from TBFMT Wells Fargo, JMB (Dale), and TD Bank (Somerfield) accounts.                  5) If accounts reconcile, check the Reconciled box and press \"Insert Data\" (be sure to press it only once). ",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 4620,
+          "top": 5100,
+          "width": 11400,
+          "height": 2265,
+          "caption": "6) In the Take Off form, press the print button to create a Reconciliation Report.  Save as a PDF and store in SUpdegraff's Takeoff folder.    7) Input early take off amounts for each relevant client.                                                                                                                                                     8) Generate each attorney's list of client trust accounts and email to attorneys. Don't send one to Paul.                                                                                                                                                                                                                                                   9) As attorneys return numbers, enter fees and cost reimb. into respective columns.                                                                                                   10) Enter commissions on each file line (total commission will sum automatically). MT and KDB: 50% of all earned fees.                                                                                                                                                                                                                                                11) Managing Partner will make individual client transfers in the WF account and check the Tr. box next to Earned Fee or Cost Reimb as each transfer is made.  MP will also press the Populate Trust button for each transfer.                                                                                         12)  Clear all filters on the form and press \"Insert Fee Data\".",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 4620,
+          "top": 7410,
+          "width": 11400,
+          "height": 1140,
+          "caption": "14)The Take Off Attorneys Fees and Cost Reimbursements form shows fees and reimbursements by take off date.",
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdUncashed",
+          "left": 2460,
+          "top": 1740,
+          "width": 1815,
+          "height": 900,
+          "caption": "Uncashed Checks and Uncleared Deposits",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdAdvanced",
+          "left": 300,
+          "top": 300,
+          "width": 3960,
+          "height": 900,
+          "caption": "Advanced Client Expenses",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label6",
+          "left": 4620,
+          "top": 300,
+          "width": 11400,
+          "height": 900,
+          "caption": "1) In the Advanced Client Expenses form or the Clients form make sure advanced costs are correctly marked as checked for purposes of Cost Reimbursement. ",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label7",
+          "left": 4620,
+          "top": 8670,
+          "width": 11400,
+          "height": 390,
+          "caption": "15) Uncheck Advance Client Expenses in the Clients Form where Cost Reimbursement has occurred. ",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Auto_Header0",
+          "left": 3540,
+          "top": 140,
+          "width": 6180,
+          "height": 460,
+          "caption": "Reconciliation and Take Off (Steps)",
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image97",
+          "left": 120,
+          "top": 75,
+          "width": 3312,
+          "height": 576,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClose",
+          "left": 14880,
+          "top": 120,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmdAdvanced_Click()\r\n    DoCmd.openform \"frm_advanced_payments\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdAttyFeesCost_Click()\r\n    DoCmd.openform \"frmattyfeegeneration\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\nDoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdRecon_Click()\r\n    DoCmd.openform \"frmtakeoffreconciliation\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTakeOff_Click()\r\n    DoCmd.openform \"frmtakeoff\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdTrsutChron_Click()\r\n    DoCmd.openform \"frmtrustentrieschron\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdUncashed_Click()\r\n    DoCmd.openform \"frm_uncashed_trust_checks\"\r\nEnd Sub"
+}

@@ -1,0 +1,2275 @@
+{
+  "queries": [
+    {
+      "name": "qry_advanced_nonadvanced_payments",
+      "sqlFile": "extract/queries/qry_advanced_nonadvanced_payments.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_advanced_payments",
+      "sqlFile": "extract/queries/qry_advanced_payments.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_advanced_payments"
+      ],
+      "referencedQueries": [
+        "qryTrustAccountBalanceTotals"
+      ]
+    },
+    {
+      "name": "qry_advanced_payments_OLD",
+      "sqlFile": "extract/queries/qry_advanced_payments_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_advanced_totals",
+      "sqlFile": "extract/queries/qry_advanced_totals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_advanced_totals_SUM",
+      "sqlFile": "extract/queries/qry_advanced_totals_SUM.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_advanced_totals_SUM"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_advanced_totals_SUM_OLD",
+      "sqlFile": "extract/queries/qry_advanced_totals_SUM_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qry_advanced_totals"
+      ]
+    },
+    {
+      "name": "qry_caseID_clients",
+      "sqlFile": "extract/queries/qry_caseID_clients.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_client_names",
+      "sqlFile": "extract/queries/qry_client_names.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_client_names_TK",
+      "sqlFile": "extract/queries/qry_client_names_TK.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_CtNames_list_options",
+      "sqlFile": "extract/queries/qry_CtNames_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_CtType_list_options",
+      "sqlFile": "extract/queries/qry_CtType_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_current_invoice",
+      "sqlFile": "extract/queries/qry_current_invoice.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_current_invoice"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_current_invoice_OLD",
+      "sqlFile": "extract/queries/qry_current_invoice_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Billing",
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_disposition_closingSheet",
+      "sqlFile": "extract/queries/qry_disposition_closingSheet.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Disposition",
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_file_numbers",
+      "sqlFile": "extract/queries/qry_file_numbers.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_find_table_by_field_name",
+      "sqlFile": "extract/queries/qry_find_table_by_field_name.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblFields"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_FLChildCustodian_list_options",
+      "sqlFile": "extract/queries/qry_FLChildCustodian_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_FLCompltMethod_list_options",
+      "sqlFile": "extract/queries/qry_FLCompltMethod_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_FLDivorceGrounds_list_options",
+      "sqlFile": "extract/queries/qry_FLDivorceGrounds_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_FLLengthSeparation_list_options",
+      "sqlFile": "extract/queries/qry_FLLengthSeparation_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_FLNOHMethod_list_options",
+      "sqlFile": "extract/queries/qry_FLNOHMethod_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_FLNumberChildren_list_options",
+      "sqlFile": "extract/queries/qry_FLNumberChildren_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_get_MatterID_from_zero_balance",
+      "sqlFile": "extract/queries/qry_get_MatterID_from_zero_balance.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryNewInvoice_01"
+      ]
+    },
+    {
+      "name": "qry_get_time_keeping_numbers",
+      "sqlFile": "extract/queries/qry_get_time_keeping_numbers.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_HearingType_list_options",
+      "sqlFile": "extract/queries/qry_HearingType_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_invoice_comprehensive_trust_acc_cur",
+      "sqlFile": "extract/queries/qry_invoice_comprehensive_trust_acc_cur.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_invoice_comprehensive_trust_acc_cur_unfiltered"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_invoice_comprehensive_trust_acc_cur_OLD",
+      "sqlFile": "extract/queries/qry_invoice_comprehensive_trust_acc_cur_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_invoice_comprehensive_trust_acc_cur_unfiltered",
+      "sqlFile": "extract/queries/qry_invoice_comprehensive_trust_acc_cur_unfiltered.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_invoice_comprehensive_trust_acc_cur_unfiltered"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_invoice_comprehensive_trust_acc_cur_unfiltered_old",
+      "sqlFile": "extract/queries/qry_invoice_comprehensive_trust_acc_cur_unfiltered_old.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_InvoiceAR_curr",
+      "sqlFile": "extract/queries/qry_InvoiceAR_curr.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qry_current_invoice"
+      ]
+    },
+    {
+      "name": "qry_InvoicePymts_curr",
+      "sqlFile": "extract/queries/qry_InvoicePymts_curr.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qry_current_invoice"
+      ]
+    },
+    {
+      "name": "qry_invoices_summary",
+      "sqlFile": "extract/queries/qry_invoices_summary.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_invoices_summary"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_invoices_summary_OLD",
+      "sqlFile": "extract/queries/qry_invoices_summary_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryInvoiceRPT1"
+      ]
+    },
+    {
+      "name": "qry_invoices_summaryRPT",
+      "sqlFile": "extract/queries/qry_invoices_summaryRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": [
+        "qryInvoiceRPT1"
+      ]
+    },
+    {
+      "name": "qry_last_invoice_sent",
+      "sqlFile": "extract/queries/qry_last_invoice_sent.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_last_invoice_sent"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_last_invoice_sent_OLD",
+      "sqlFile": "extract/queries/qry_last_invoice_sent_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tbl_InvoiceSent"
+      ],
+      "referencedQueries": [
+        "qry_invoices_summary"
+      ]
+    },
+    {
+      "name": "qry_LastINV",
+      "sqlFile": "extract/queries/qry_LastINV.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tbl_InvoiceSent"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_matterAR_pay_putlay_list_options",
+      "sqlFile": "extract/queries/qry_matterAR_pay_putlay_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_max_matterID_by_orderNr",
+      "sqlFile": "extract/queries/qry_max_matterID_by_orderNr.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_max_matterID_by_orderNr"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_max_matterID_by_orderNr_OLD",
+      "sqlFile": "extract/queries/qry_max_matterID_by_orderNr_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_orig_atty",
+      "sqlFile": "extract/queries/qry_orig_atty.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_orig_atty_filter",
+      "sqlFile": "extract/queries/qry_orig_atty_filter.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_OrigAtty_list_options",
+      "sqlFile": "extract/queries/qry_OrigAtty_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_RetBalSums_by_PastDue",
+      "sqlFile": "extract/queries/qry_RetBalSums_by_PastDue.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryOutstandingARRPT1"
+      ]
+    },
+    {
+      "name": "qry_TA_uncashed_checks",
+      "sqlFile": "extract/queries/qry_TA_uncashed_checks.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase",
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_take_off_step2_attorney_sums",
+      "sqlFile": "extract/queries/qry_take_off_step2_attorney_sums.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTakeOffMonth"
+      ],
+      "referencedQueries": [
+        "qryTakeOffStep2"
+      ]
+    },
+    {
+      "name": "qry_take_off_step2_sums",
+      "sqlFile": "extract/queries/qry_take_off_step2_sums.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_take_off_step2_sums"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_take_off_step2_sums_OLD",
+      "sqlFile": "extract/queries/qry_take_off_step2_sums_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTakeOffMonth"
+      ],
+      "referencedQueries": [
+        "qryTakeOffStep2"
+      ]
+    },
+    {
+      "name": "qry_takeOff_year_month",
+      "sqlFile": "extract/queries/qry_takeOff_year_month.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTakeOffMonth"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_tblUsers",
+      "sqlFile": "extract/queries/qry_tblUsers.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblAccessType",
+        "tblUsers"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_time_table_totals",
+      "sqlFile": "extract/queries/qry_time_table_totals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTTAmount"
+      ]
+    },
+    {
+      "name": "qry_time_table_totals_atty",
+      "sqlFile": "extract/queries/qry_time_table_totals_atty.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTTAmountAtty"
+      ]
+    },
+    {
+      "name": "qry_time_table_totals_atty_SUM",
+      "sqlFile": "extract/queries/qry_time_table_totals_atty_SUM.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_time_table_totals_atty_SUM"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_time_table_totals_atty_SUM_OLD",
+      "sqlFile": "extract/queries/qry_time_table_totals_atty_SUM_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qry_time_table_totals_atty"
+      ]
+    },
+    {
+      "name": "qry_time_table_totals_hours",
+      "sqlFile": "extract/queries/qry_time_table_totals_hours.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTTAmount"
+      ]
+    },
+    {
+      "name": "qry_time_table_totals_hours_sum",
+      "sqlFile": "extract/queries/qry_time_table_totals_hours_sum.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTTAmount"
+      ]
+    },
+    {
+      "name": "qry_time_table_totals_SUM",
+      "sqlFile": "extract/queries/qry_time_table_totals_SUM.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vw_time_table_totals_SUM"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_time_table_totals_SUM_OLD",
+      "sqlFile": "extract/queries/qry_time_table_totals_SUM_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qry_time_table_totals_atty"
+      ]
+    },
+    {
+      "name": "qry_TimeKeeping_bill_totals",
+      "sqlFile": "extract/queries/qry_TimeKeeping_bill_totals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_TimeKeeping_CaseID_totals",
+      "sqlFile": "extract/queries/qry_TimeKeeping_CaseID_totals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qry_TimeKeeping_bill_totals"
+      ]
+    },
+    {
+      "name": "qry_tmatter_list_options",
+      "sqlFile": "extract/queries/qry_tmatter_list_options.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qry_trustStatements",
+      "sqlFile": "extract/queries/qry_trustStatements.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryTakeOff_trust_account"
+      ]
+    },
+    {
+      "name": "qry_uncashed_trust_checks",
+      "sqlFile": "extract/queries/qry_uncashed_trust_checks.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase",
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryActionNeededAll",
+      "sqlFile": "extract/queries/qryActionNeededAll.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblActionNeeded",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryActionNeededAll2",
+      "sqlFile": "extract/queries/qryActionNeededAll2.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblActionNeeded",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryActionNeededAll3",
+      "sqlFile": "extract/queries/qryActionNeededAll3.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblActionNeeded",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryActionNeededAllNEW",
+      "sqlFile": "extract/queries/qryActionNeededAllNEW.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblActionNeeded",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryAdvLegalFees",
+      "sqlFile": "extract/queries/qryAdvLegalFees.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryAdvLegalFeesSum",
+      "sqlFile": "extract/queries/qryAdvLegalFeesSum.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwAdvLegalFeesSum"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryAdvLegalFeesSum_OLD",
+      "sqlFile": "extract/queries/qryAdvLegalFeesSum_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryAdvLegalFees"
+      ]
+    },
+    {
+      "name": "qryARCredits",
+      "sqlFile": "extract/queries/qryARCredits.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryARCreditsSum",
+      "sqlFile": "extract/queries/qryARCreditsSum.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwARCreditsSum"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryARCreditsSum_OLD",
+      "sqlFile": "extract/queries/qryARCreditsSum_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryARCredits"
+      ]
+    },
+    {
+      "name": "qryAttyTrustAcctsTOff",
+      "sqlFile": "extract/queries/qryAttyTrustAcctsTOff.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblTakeOff"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryBillingTotals",
+      "sqlFile": "extract/queries/qryBillingTotals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryBillingTracker",
+      "sqlFile": "extract/queries/qryBillingTracker.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryBillingTracker2",
+      "sqlFile": "extract/queries/qryBillingTracker2.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwBillingTracker2"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryBillingTracker2_OLD",
+      "sqlFile": "extract/queries/qryBillingTracker2_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryBillList",
+      "sqlFile": "extract/queries/qryBillList.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCalendarCheck",
+      "sqlFile": "extract/queries/qryCalendarCheck.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblHearingDate"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseIDclientsAll",
+      "sqlFile": "extract/queries/qryCaseIDclientsAll.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseIDclientsClosed",
+      "sqlFile": "extract/queries/qryCaseIDclientsClosed.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseIDclientsclosednotscanned",
+      "sqlFile": "extract/queries/qryCaseIDclientsclosednotscanned.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseList",
+      "sqlFile": "extract/queries/qryCaseList.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseListAll",
+      "sqlFile": "extract/queries/qryCaseListAll.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseListClosed",
+      "sqlFile": "extract/queries/qryCaseListClosed.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseListOpen",
+      "sqlFile": "extract/queries/qryCaseListOpen.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwCaseListOpen"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseListOpen_OLD",
+      "sqlFile": "extract/queries/qryCaseListOpen_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Personal Injury",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseSourcesRPT",
+      "sqlFile": "extract/queries/qryCaseSourcesRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwCaseSourcesRPT"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseSourcesRPT_OLD",
+      "sqlFile": "extract/queries/qryCaseSourcesRPT_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Disposition",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCaseSourcesRPT1",
+      "sqlFile": "extract/queries/qryCaseSourcesRPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": [
+        "qryCaseSourcesRPT"
+      ]
+    },
+    {
+      "name": "qryClosing RPT1",
+      "sqlFile": "extract/queries/qryClosing_RPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": [
+        "qryClosingRPT"
+      ]
+    },
+    {
+      "name": "qryClosingRPT",
+      "sqlFile": "extract/queries/qryClosingRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Billing",
+        "Disposition",
+        "Matter and AR",
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCmbCaseClientFile",
+      "sqlFile": "extract/queries/qryCmbCaseClientFile.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCmbCaseClientFileFamilyLaw",
+      "sqlFile": "extract/queries/qryCmbCaseClientFileFamilyLaw.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Family Law - Divorce",
+        "TB Time Keeping"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCostReimb",
+      "sqlFile": "extract/queries/qryCostReimb.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCostReimbSUM",
+      "sqlFile": "extract/queries/qryCostReimbSUM.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwCostReimbSUM"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryCostReimbSUM_OLD",
+      "sqlFile": "extract/queries/qryCostReimbSUM_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryCostReimb"
+      ]
+    },
+    {
+      "name": "qryCrimStatus",
+      "sqlFile": "extract/queries/qryCrimStatus.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryDispoFilter",
+      "sqlFile": "extract/queries/qryDispoFilter.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Disposition"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryDispos",
+      "sqlFile": "extract/queries/qryDispos.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwDispos"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryDispos_OLD",
+      "sqlFile": "extract/queries/qryDispos_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Disposition",
+        "Personal Injury",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryDispos1",
+      "sqlFile": "extract/queries/qryDispos1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Disposition",
+        "Personal Injury",
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryEarnedAdvLegal",
+      "sqlFile": "extract/queries/qryEarnedAdvLegal.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryEarnedAdvLegalSUM",
+      "sqlFile": "extract/queries/qryEarnedAdvLegalSUM.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwEarnedAdvLegalSUM"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryEarnedAdvLegalSUM_OLD",
+      "sqlFile": "extract/queries/qryEarnedAdvLegalSUM_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryEarnedAdvLegal"
+      ]
+    },
+    {
+      "name": "qryFamilyLaw",
+      "sqlFile": "extract/queries/qryFamilyLaw.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Family Law - Divorce",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryFileFolderLabel",
+      "sqlFile": "extract/queries/qryFileFolderLabel.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblHearingDate"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceAttachComp",
+      "sqlFile": "extract/queries/qryInvoiceAttachComp.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceAttachRPT",
+      "sqlFile": "extract/queries/qryInvoiceAttachRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceAttachRPT1",
+      "sqlFile": "extract/queries/qryInvoiceAttachRPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": [
+        "qryInvoiceAttachRPT"
+      ]
+    },
+    {
+      "name": "qryInvoiceComprehensiveTimeDetail",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTimeDetail.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": [
+        "qryInvoiceAttachRPT"
+      ]
+    },
+    {
+      "name": "qryInvoiceComprehensiveTimeDetail2",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTimeDetail2.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryInvoiceAttachRPT"
+      ]
+    },
+    {
+      "name": "qryInvoiceComprehensiveTrust",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTrust.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwInvoiceComprehensiveTrust"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceComprehensiveTrust_OLD",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTrust_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryTrustAccount"
+      ]
+    },
+    {
+      "name": "qryInvoiceComprehensiveTrustCredit",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTrustCredit.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceComprehensiveTrustCredit2",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTrustCredit2.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qryInvoiceComprehensiveTrustCredit"
+      ]
+    },
+    {
+      "name": "qryInvoiceComprehensiveTrustCredit3",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTrustCredit3.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qryInvoiceComprehensiveTrustCredit2"
+      ]
+    },
+    {
+      "name": "qryInvoiceComprehensiveTrustCredit4",
+      "sqlFile": "extract/queries/qryInvoiceComprehensiveTrustCredit4.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceRPT",
+      "sqlFile": "extract/queries/qryInvoiceRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwInvoiceRPT"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceRPT_OLD",
+      "sqlFile": "extract/queries/qryInvoiceRPT_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Billing",
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceRPT1",
+      "sqlFile": "extract/queries/qryInvoiceRPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwInvoiceRPT1"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryInvoiceRPT1_OLD",
+      "sqlFile": "extract/queries/qryInvoiceRPT1_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryMatter"
+      ]
+    },
+    {
+      "name": "qryInvoiceTrustCostBillDate",
+      "sqlFile": "extract/queries/qryInvoiceTrustCostBillDate.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qryInvoiceComprehensiveTrustCredit"
+      ]
+    },
+    {
+      "name": "qryMatter",
+      "sqlFile": "extract/queries/qryMatter.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwMatter"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryMatter_OLD",
+      "sqlFile": "extract/queries/qryMatter_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryMatterBalanceTotals",
+      "sqlFile": "extract/queries/qryMatterBalanceTotals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwMatterBalanceTotals"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryMatterBalanceTotals_OLD",
+      "sqlFile": "extract/queries/qryMatterBalanceTotals_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryMatter"
+      ]
+    },
+    {
+      "name": "qryMatterSums",
+      "sqlFile": "extract/queries/qryMatterSums.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryMatter"
+      ]
+    },
+    {
+      "name": "qryMergeTest",
+      "sqlFile": "extract/queries/qryMergeTest.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tbl_CtCaseNumbers"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryNewInvoice_01",
+      "sqlFile": "extract/queries/qryNewInvoice_01.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryInvoiceRPT1"
+      ]
+    },
+    {
+      "name": "qryNewInvoice_02",
+      "sqlFile": "extract/queries/qryNewInvoice_02.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryNewInvoice_01"
+      ]
+    },
+    {
+      "name": "qryNewInvoice02Comp",
+      "sqlFile": "extract/queries/qryNewInvoice02Comp.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryNewInvoice_01"
+      ]
+    },
+    {
+      "name": "qryNewTrustComp",
+      "sqlFile": "extract/queries/qryNewTrustComp.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwNewTrustComp"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryNewTrustComp_OLD",
+      "sqlFile": "extract/queries/qryNewTrustComp_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryTrustAccount"
+      ]
+    },
+    {
+      "name": "qryOutstandingARRPT",
+      "sqlFile": "extract/queries/qryOutstandingARRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Billing"
+      ],
+      "referencedQueries": [
+        "qryMatter"
+      ]
+    },
+    {
+      "name": "qryOutstandingARRPT1",
+      "sqlFile": "extract/queries/qryOutstandingARRPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": [
+        "qryOutstandingARRPT"
+      ]
+    },
+    {
+      "name": "qryPersInjStatus",
+      "sqlFile": "extract/queries/qryPersInjStatus.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Personal Injury",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryReceipt",
+      "sqlFile": "extract/queries/qryReceipt.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryReconciliation_sumOfBalances",
+      "sqlFile": "extract/queries/qryReconciliation_sumOfBalances.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_trust_account"
+      ]
+    },
+    {
+      "name": "qryReconciliation_sumOfCredit",
+      "sqlFile": "extract/queries/qryReconciliation_sumOfCredit.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_unchashed_checks"
+      ]
+    },
+    {
+      "name": "qryReconciliation_sumOfUnclearedDeposits",
+      "sqlFile": "extract/queries/qryReconciliation_sumOfUnclearedDeposits.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_uncleared_deposits"
+      ]
+    },
+    {
+      "name": "qryReconciliationWFBankBalance",
+      "sqlFile": "extract/queries/qryReconciliationWFBankBalance.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryRunningSum",
+      "sqlFile": "extract/queries/qryRunningSum.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryInvoiceRPT1"
+      ]
+    },
+    {
+      "name": "qrySOL",
+      "sqlFile": "extract/queries/qrySOL.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Personal Injury",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryStmtTrustRPT",
+      "sqlFile": "extract/queries/qryStmtTrustRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwStmtTrustRPT"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryStmtTrustRPT_OLD",
+      "sqlFile": "extract/queries/qryStmtTrustRPT_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryStmtTrustRPT1",
+      "sqlFile": "extract/queries/qryStmtTrustRPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwStmtTrustRPT1"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryStmtTrustRPT1_OLD",
+      "sqlFile": "extract/queries/qryStmtTrustRPT1_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryTrustAccount"
+      ]
+    },
+    {
+      "name": "qrySumofPayments",
+      "sqlFile": "extract/queries/qrySumofPayments.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff",
+      "sqlFile": "extract/queries/qryTakeOff.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_A"
+      ]
+    },
+    {
+      "name": "qryTakeOff_A",
+      "sqlFile": "extract/queries/qryTakeOff_A.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTakeOff_A"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff_A_OLD",
+      "sqlFile": "extract/queries/qryTakeOff_A_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryAdvLegalFeesSum",
+        "qryCostReimbSUM",
+        "qryEarnedAdvLegalSUM",
+        "qryTakeOff_advanced_AR",
+        "qryTakeOff_cost_hold",
+        "qryTakeOff_trust_account",
+        "qryTakeOff_unchashed_checks",
+        "qryTakeOff_uncleared_deposits",
+        "qryTrustCostsExpendedTotals",
+        "qry_TimeKeeping_CaseID_totals",
+        "qry_advanced_totals_SUM"
+      ]
+    },
+    {
+      "name": "qryTakeOff_advanced_AR",
+      "sqlFile": "extract/queries/qryTakeOff_advanced_AR.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Matter and AR",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff_cost_hold",
+      "sqlFile": "extract/queries/qryTakeOff_cost_hold.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff_trust_account",
+      "sqlFile": "extract/queries/qryTakeOff_trust_account.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTakeOff_trust_Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff_trust_account_OLD",
+      "sqlFile": "extract/queries/qryTakeOff_trust_account_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff_unchashed_checks",
+      "sqlFile": "extract/queries/qryTakeOff_unchashed_checks.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff_uncleared_deposits",
+      "sqlFile": "extract/queries/qryTakeOff_uncleared_deposits.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOff2",
+      "sqlFile": "extract/queries/qryTakeOff2.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_advanced_AR",
+        "qryTakeOff_cost_hold",
+        "qryTakeOff_trust_account",
+        "qryTakeOff_unchashed_checks",
+        "qryTakeOff_uncleared_deposits",
+        "qry_TimeKeeping_CaseID_totals"
+      ]
+    },
+    {
+      "name": "qryTakeOffDate",
+      "sqlFile": "extract/queries/qryTakeOffDate.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTakeOff",
+        "tblTakeOffMonth"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOffStep2",
+      "sqlFile": "extract/queries/qryTakeOffStep2.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTakeOffStep2"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTakeOffStep2_OLD",
+      "sqlFile": "extract/queries/qryTakeOffStep2_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblTakeOff"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTimeKeeping",
+      "sqlFile": "extract/queries/qryTimeKeeping.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTimeKeepingClosed",
+      "sqlFile": "extract/queries/qryTimeKeepingClosed.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTimeKeepingClosed"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTimeKeepingClosed_Old",
+      "sqlFile": "extract/queries/qryTimeKeepingClosed_Old.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qry_time_table_totals"
+      ]
+    },
+    {
+      "name": "qryTimeKeepingOpen",
+      "sqlFile": "extract/queries/qryTimeKeepingOpen.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTimeKeepingOpen"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTimeKeepingOpen_OLD",
+      "sqlFile": "extract/queries/qryTimeKeepingOpen_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qry_time_table_totals"
+      ]
+    },
+    {
+      "name": "qryTimeTableRunTot",
+      "sqlFile": "extract/queries/qryTimeTableRunTot.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTTAmount"
+      ]
+    },
+    {
+      "name": "qryTKClose",
+      "sqlFile": "extract/queries/qryTKClose.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTKClose_A"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTKClose_A",
+      "sqlFile": "extract/queries/qryTKClose_A.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTKClose_A"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTKClose_A_OLD",
+      "sqlFile": "extract/queries/qryTKClose_A_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_advanced_AR",
+        "qryTakeOff_trust_account",
+        "qryTakeOff_unchashed_checks",
+        "qryTakeOff_uncleared_deposits",
+        "qry_TimeKeeping_CaseID_totals",
+        "qry_max_matterID_by_orderNr"
+      ]
+    },
+    {
+      "name": "qryTKClose_OLD",
+      "sqlFile": "extract/queries/qryTKClose_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_advanced_AR",
+        "qryTakeOff_cost_hold",
+        "qryTakeOff_trust_account",
+        "qryTakeOff_unchashed_checks",
+        "qryTakeOff_uncleared_deposits",
+        "qry_TimeKeeping_CaseID_totals"
+      ]
+    },
+    {
+      "name": "qryTKClose1",
+      "sqlFile": "extract/queries/qryTKClose1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTKClose_A"
+      ]
+    },
+    {
+      "name": "qryToBeClosed",
+      "sqlFile": "extract/queries/qryToBeClosed.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryToBeScanned",
+      "sqlFile": "extract/queries/qryToBeScanned.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustAccount",
+      "sqlFile": "extract/queries/qryTrustAccount.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTrustAccount"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustAccount_OLD",
+      "sqlFile": "extract/queries/qryTrustAccount_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustAccountBalanceTotals",
+      "sqlFile": "extract/queries/qryTrustAccountBalanceTotals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTrustAccountBalanceTotals"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustAccountBalanceTotals_OLD",
+      "sqlFile": "extract/queries/qryTrustAccountBalanceTotals_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTrustAccount"
+      ]
+    },
+    {
+      "name": "qryTrustCostsExpended",
+      "sqlFile": "extract/queries/qryTrustCostsExpended.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustCostsExpendedTotals",
+      "sqlFile": "extract/queries/qryTrustCostsExpendedTotals.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTrustCostsExpendedTotals"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustCostsExpendedTotals_OLD",
+      "sqlFile": "extract/queries/qryTrustCostsExpendedTotals_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTrustCostsExpended"
+      ]
+    },
+    {
+      "name": "qryTrustEntriesChron",
+      "sqlFile": "extract/queries/qryTrustEntriesChron.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChron65",
+      "sqlFile": "extract/queries/qryTrustEntriesChron65.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT35",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT35.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT35D",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT35D.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT35W",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT35W.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT65D",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT65D.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT65W",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT65W.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT95",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT95.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT95D",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT95D.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustEntriesChronRPT95W",
+      "sqlFile": "extract/queries/qryTrustEntriesChronRPT95W.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustReportRPT",
+      "sqlFile": "extract/queries/qryTrustReportRPT.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTrustReportRPT"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustReportRPT_OLD",
+      "sqlFile": "extract/queries/qryTrustReportRPT_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustReportRPT1",
+      "sqlFile": "extract/queries/qryTrustReportRPT1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTrustReportRPT1"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustReportRPT1_OLD",
+      "sqlFile": "extract/queries/qryTrustReportRPT1_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryTrustAccount"
+      ]
+    },
+    {
+      "name": "qryTrustTotalEarned",
+      "sqlFile": "extract/queries/qryTrustTotalEarned.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustTotalEarnedSum",
+      "sqlFile": "extract/queries/qryTrustTotalEarnedSum.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTrustTotalEarnedSum"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTrustTotalEarnedSum_OLD",
+      "sqlFile": "extract/queries/qryTrustTotalEarnedSum_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": [
+        "qryTrustTotalEarned"
+      ]
+    },
+    {
+      "name": "qryTTAmount",
+      "sqlFile": "extract/queries/qryTTAmount.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountAtty",
+      "sqlFile": "extract/queries/qryTTAmountAtty.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountHours",
+      "sqlFile": "extract/queries/qryTTAmountHours.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountHours_SUM",
+      "sqlFile": "extract/queries/qryTTAmountHours_SUM.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountHours_SUM_byAtty",
+      "sqlFile": "extract/queries/qryTTAmountHours_SUM_byAtty.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblTimeTableDetail"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountHours_SUM_byAtty_TotalCaseID",
+      "sqlFile": "extract/queries/qryTTAmountHours_SUM_byAtty_TotalCaseID.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTTAmountHours_SUM_byAtty_TotalCaseID"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountHours_SUM_byAtty_TotalCaseID_OLD",
+      "sqlFile": "extract/queries/qryTTAmountHours_SUM_byAtty_TotalCaseID_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qryTTAmountHours_SUM_byAtty"
+      ]
+    },
+    {
+      "name": "qryTTAmountHours_TotalCaseID",
+      "sqlFile": "extract/queries/qryTTAmountHours_TotalCaseID.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "vwTTAmountHours_TotalCaseID"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryTTAmountHours_TotalCaseID_OLD",
+      "sqlFile": "extract/queries/qryTTAmountHours_TotalCaseID_OLD.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "TB Time Keeping"
+      ],
+      "referencedQueries": [
+        "qryTTAmountHours_SUM"
+      ]
+    },
+    {
+      "name": "qryUpcomingHearings",
+      "sqlFile": "extract/queries/qryUpcomingHearings.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase",
+        "tblHearingDate"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "qryUpdateattyEmail",
+      "sqlFile": "extract/queries/qryUpdateattyEmail.sql",
+      "type": "update",
+      "parameters": [],
+      "referencedTables": [
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "Query1",
+      "sqlFile": "extract/queries/Query1.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "Trust Account",
+        "tblCase"
+      ],
+      "referencedQueries": []
+    },
+    {
+      "name": "Sele",
+      "sqlFile": "extract/queries/Sele.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [
+        "tblDropD"
+      ],
+      "referencedQueries": []
+    }
+  ]
+}

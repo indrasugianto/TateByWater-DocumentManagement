@@ -1,0 +1,234 @@
+{
+  "reportName": "rptPIStatusSOL",
+  "dataSource": "qryAttyTrustAcctsTOff",
+  "triggerPaths": [],
+  "dataLineage": {
+    "recordSource": "qryAttyTrustAcctsTOff",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryAttyTrustAcctsTOff"
+    ],
+    "terminalTables": [
+      "tblCase",
+      "tblTakeOff"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryAttyTrustAcctsTOff",
+        "to": "tblCase",
+        "type": "table"
+      },
+      {
+        "from": "qryAttyTrustAcctsTOff",
+        "to": "tblTakeOff",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmail_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16628,
+      "lineEnd": 16658,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmailESP_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16659,
+      "lineEnd": 16689,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmbFileNumbers_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17559,
+      "lineEnd": 17696,
+      "usesDoCmd": [
+        "GoToRecord",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17741,
+      "lineEnd": 17751,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "cmdInsertData_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3471,
+      "lineEnd": 3550,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmAttyFeeGeneration",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
+      "lineStart": 8493,
+      "lineEnd": 8505,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 4379,
+      "lineEnd": 4453,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 4890,
+      "lineEnd": 4945,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff.txt",
+      "lineStart": 4946,
+      "lineEnd": 5010,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 692,
+      "lineEnd": 766,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "cmdShowReportTDT_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1140,
+      "lineEnd": 1214,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOff2",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
+      "lineStart": 1215,
+      "lineEnd": 1279,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 692,
+      "lineEnd": 766,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "cmbInsertFees_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1161,
+      "lineEnd": 1214,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffTest",
+      "procedureName": "fncRecordExists",
+      "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
+      "lineStart": 1215,
+      "lineEnd": 1279,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8087,
+      "lineEnd": 8117,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8143,
+      "lineEnd": 8147,
+      "usesDoCmd": [],
+      "usesSql": false
+    }
+  ],
+  "confidence": "medium"
+}

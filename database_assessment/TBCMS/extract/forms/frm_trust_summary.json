@@ -1,0 +1,399 @@
+{
+  "formName": "frm_trust_summary",
+  "caption": "Trust Accounts",
+  "recordSource": "qry_trustStatements",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": true,
+  "width": 16860,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Name",
+          "left": 3495,
+          "top": 4,
+          "width": 4125,
+          "height": 359,
+          "controlSource": "Name",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "CaseNum",
+          "left": 0,
+          "top": 0,
+          "width": 1643,
+          "height": 356,
+          "controlSource": "FileNumber",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "Orig_Atty",
+          "left": 7680,
+          "top": 0,
+          "width": 960,
+          "height": 360,
+          "controlSource": "Orig_Atty",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "SumofBalance",
+          "left": 1740,
+          "top": 0,
+          "width": 1680,
+          "height": 360,
+          "controlSource": "Balance",
+          "format": "Currency",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdPrintStmtTrust",
+          "left": 14790,
+          "top": 0,
+          "width": 390,
+          "height": 390,
+          "caption": "   &Print",
+          "tabIndex": 5,
+          "visible": false,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdPreviewTrustStmt",
+          "left": 14580,
+          "top": 0,
+          "width": 450,
+          "height": 390,
+          "caption": "   Previe&w",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmbAddressLabel",
+          "left": 15780,
+          "top": 0,
+          "width": 390,
+          "height": 390,
+          "caption": "   &Print",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "Matter",
+          "left": 9720,
+          "top": 0,
+          "width": 4320,
+          "height": 359,
+          "controlSource": "Matter_type",
+          "format": "Currency",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text8",
+          "left": 14160,
+          "top": 0,
+          "width": 480,
+          "height": 315,
+          "controlSource": "CaseID",
+          "tabIndex": 8,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text10",
+          "left": 15900,
+          "top": 60,
+          "width": 600,
+          "height": 315,
+          "controlSource": "Executor",
+          "tabIndex": 9,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text14",
+          "left": 8700,
+          "top": 0,
+          "width": 900,
+          "height": 360,
+          "controlSource": "Case_Letter",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": true
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 540,
+          "top": 1980,
+          "width": 540,
+          "height": 284,
+          "caption": "File",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 3480,
+          "top": 1335,
+          "width": 1230,
+          "height": 284,
+          "caption": "Name",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label24",
+          "left": 1740,
+          "top": 1980,
+          "width": 855,
+          "height": 285,
+          "caption": "Balance",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label72",
+          "left": 15360,
+          "top": 1980,
+          "width": 1303,
+          "height": 329,
+          "caption": "Address Label",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbClients",
+          "left": 3500,
+          "top": 1959,
+          "width": 4125,
+          "height": 270,
+          "rowSource": "qry_caseID_clients",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label93",
+          "left": 12750,
+          "top": 900,
+          "width": 885,
+          "height": 240,
+          "caption": "Non Zero",
+          "visible": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkNonZero",
+          "left": 12540,
+          "top": 960,
+          "width": 340,
+          "height": 220,
+          "tabIndex": 1,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label102",
+          "left": 14100,
+          "top": 1980,
+          "width": 1305,
+          "height": 285,
+          "caption": "Statement",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 9720,
+          "top": 1980,
+          "width": 1620,
+          "height": 240,
+          "caption": "Matter",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label4",
+          "left": 7710,
+          "top": 1680,
+          "width": 898,
+          "height": 329,
+          "caption": "Orig Atty",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbOrigAtty",
+          "left": 7680,
+          "top": 1965,
+          "width": 960,
+          "height": 270,
+          "rowSource": "JRT;DEB;PM;TDT;RLF;CMH;BA;KDB;RYR;DJB;TB",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label40",
+          "left": 1320,
+          "top": 240,
+          "width": 5520,
+          "height": 930,
+          "caption": "TRUST ACCOUNTS",
+          "visible": true
+        },
+        {
+          "type": "Image",
+          "name": "Image36",
+          "left": 180,
+          "top": 240,
+          "width": 1020,
+          "height": 840,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdclose",
+          "left": 14640,
+          "top": 360,
+          "width": 1140,
+          "height": 345,
+          "caption": "&Close",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Image",
+          "name": "cmdhome",
+          "left": 15960,
+          "top": 390,
+          "width": 480,
+          "height": 345,
+          "visible": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdClearFilter",
+          "left": 14640,
+          "top": 840,
+          "width": 1800,
+          "height": 360,
+          "caption": "   &Clear Filter",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "txtClient",
+          "left": 3480,
+          "top": 1620,
+          "width": 4140,
+          "height": 270,
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label12",
+          "left": 8700,
+          "top": 1440,
+          "width": 883,
+          "height": 569,
+          "caption": "Practice \r\nArea",
+          "visible": true
+        },
+        {
+          "type": "ComboBox",
+          "name": "cmbPracticeArea",
+          "left": 8700,
+          "top": 1965,
+          "width": 900,
+          "height": 270,
+          "rowSource": "SELECT Code, codeVal, sortOrder FROM tblDropD WHERE FieldName='Case_letter' ORDER BY SortOrder; ",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub CaseNum_Click()\r\nOn Error GoTo ErrHandler_CaseNum_Click\r\n    IsDisableEvents = True\r\n    If CurrentProject.AllForms(\"frmClientLedger\").IsLoaded Then\r\n        DoCmd.Close acForm, \"frmClientLedger\", acSaveNo\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    Else\r\n        DoCmd.openform \"frmClientLedger\", acNormal, , \"[CaseID]=\" & Me.CaseID, , , Me.CaseID\r\n        Forms(\"frmClientLedger\").SetFocus\r\n    End If\r\nErrHandler_CaseNum_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub chkNonZero_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbAddressLabel_Click()\r\nOn Error GoTo ErrHandler_cmdPrintLabelP_Click\r\n    \r\n    If IsNull(Me.Executor) Then\r\n    \r\n    answer = MsgBox(\"Would you like to print this label?\", vbYesNo, \"TB CMS: Direct Print\")\r\n    If answer = vbYes Then\r\n        If CurrentProject.AllReports(\"rpt_address_label\").IsLoaded Then\r\n            DoCmd.Close acReport, \"rpt_address_label\", acSaveNo\r\n        End If\r\n        \r\n        DoCmd.OpenReport \"rpt_address_label\", acNormal, , \"[CaseID]=\" & Me.CaseID\r\n    End If\r\n    End If\r\n   \r\n    If Not IsNull(Me.Executor) Then\r\n    \r\n    answer = MsgBox(\"Would you like to print this label?\", vbYesNo, \"TB CMS: Direct Print\")\r\n    If answer = vbYes Then\r\n        If CurrentProject.AllReports(\"rpt_address_labelEx\").IsLoaded Then\r\n            DoCmd.Close acReport, \"rpt_address_labelEx\", acSaveNo\r\n        End If\r\n        \r\n        DoCmd.OpenReport \"rpt_address_labelEx\", acNormal, , \"[CaseID]=\" & Me.CaseID\r\n    End If\r\n    End If\r\nErrHandler_cmdPrintLabelP_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\n\r\nPrivate Sub cmbHome_Click()\r\n    \r\nEnd Sub\r\n\r\nPrivate Sub CmbOrigAtty_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmbPracticeArea_Click()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nPrivate Sub cmdClose_Click()\r\n    DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdHome_Click()\r\n    DoCmd.openform \"frmhome\", acNormal\r\nEnd Sub\r\n\r\nPrivate Sub cmdPreviewTrustStmt_Click()\r\n \r\nOn Error GoTo ErrHandler_PreviewTrustStmt_Click\r\n    \r\n    If CurrentProject.AllReports(\"Statement of Trust Account\").IsLoaded Then\r\n        DoCmd.Close acReport, \"Statement of Trust Account\", acSaveYes\r\n    End If\r\n    StatementofTrustAccount_Filter = True\r\n    DoCmd.OpenReport \"Statement of Trust Account\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0)\r\n    \r\nErrHandler_PreviewTrustStmt_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\n\r\n\r\n' On Error GoTo ErrHanlder_cmdStatementrustAccount\r\n'        StatementofTrustAccount_Filter = True\r\n'        DoCmd.OpenReport \"Statement of Trust Account\", acViewPreview, , \"[CaseID]=\" & Nz(Me.CaseID, 0)\r\n'ErrHanlder_cmdStatementrustAccount:\r\n'    If Err.Number = 2501 Then\r\n'        ShowMessage \"No records found!\"\r\n'    ElseIf Err.Number <> 0 Then\r\n'        ShowMessage Err.Description\r\n'    End If\r\n'End Sub\r\n\r\nPrivate Sub cmdPrintStmtTrust_Click()\r\nOn Error GoTo ErrHandler_cmdPrintInvoice_Click\r\n    \r\n    answer = MsgBox(\"Would you like to print this report?\", vbYesNo, \"TB CMS: Direct Print\")\r\n    If answer = vbYes Then\r\n        If CurrentProject.AllReports(\"Statement of Trust Account\").IsLoaded Then\r\n            DoCmd.Close acReport, \"Statement of Trust Account\", acSaveNo\r\n        End If\r\n        \r\n        DoCmd.OpenReport \"Statement of Trust Account\", acNormal, , \"[CaseID]=\" & Me.CaseID\r\n    End If\r\n    \r\nErrHandler_cmdPrintInvoice_Click:\r\n    If Err.Number <> 0 Then ShowMessage Err.Description\r\nEnd Sub\r\n\r\nPrivate Sub cmbClients_AfterUpdate()\r\n    Call FilterMe\r\nEnd Sub\r\n\r\nSub FilterMe()\r\n    Dim strSQL As String\r\n    strSQL = \"1=1\"\r\n    \r\n    If Not IsNull(Me.cmbClients) Then strSQL = strSQL & \" AND CaseID = \" & Me.cmbClients\r\n    If Not IsNull(Me.cmbOrigAtty) Then strSQL = strSQL & \" AND Orig_Atty = '\" & Me.cmbOrigAtty & \"'\"\r\n    If Not IsNull(Me.txtClient) Then strSQL = strSQL & \" AND Name like '\" & Me.txtClient & \"*'\"\r\n    If Not IsNull(Me.cmbPracticeArea) Then strSQL = strSQL & \" AND Case_Letter like '\" & Me.cmbPracticeArea & \"*'\"\r\n    \r\n    If Not IsNull(Me.chkNonZero) Then\r\n        If chkNonZero Then\r\n            strSQL = strSQL & \" AND Balance >0 \"\r\n        Else\r\n            strSQL = strSQL & \" AND Balance =0 \"\r\n        End If\r\n    End If\r\n    \r\n    Debug.Print strSQL\r\n    \r\n    Me.Filter = strSQL\r\n    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub cmdClearFilter_Click()\r\n    Call FilterClear\r\nEnd Sub\r\n\r\nSub FilterClear()\r\n    'clear controls:\r\n    Me.cmbClients = Null\r\n    Me.chkNonZero = Null\r\n    Me.cmbOrigAtty = Null\r\n    Me.txtClient = Null\r\n    Me.cmbPracticeArea = Null\r\n    \r\n    Me.Filter = \"\"\r\n    Me.FilterOn = False\r\nEnd Sub\r\n\r\nPrivate Sub Combo13_Click()\r\n    \r\nEnd Sub\r\n\r\nPrivate Sub Form_Load()\r\n'    Me.filter = \"Balance > 0 or Balance < 0\"\r\n'    Me.FilterOn = True\r\nEnd Sub\r\n\r\nPrivate Sub txtClient_AfterUpdate()\r\n    If Not IsNull(txtClient) Then Call FilterMe\r\nEnd Sub"
+}

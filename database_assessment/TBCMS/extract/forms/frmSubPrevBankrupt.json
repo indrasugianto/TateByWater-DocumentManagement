@@ -1,0 +1,142 @@
+{
+  "formName": "frmSubPrevBankrupt",
+  "recordSource": "SELECT tblPrevBank.IDPrevBank, tblPrevBank.IDBankruptcy, tblPrevBank.PrevDate, tblPrevBank.PrevCaseNumber, tblPrevBank.PrevLocation, tblPrevBank.PChapter FROM tblPrevBank; ",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 7080,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "PrevCaseNun",
+          "left": 5880,
+          "top": 0,
+          "width": 1170,
+          "height": 345,
+          "controlSource": "PrevCaseNumber",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "DateFiled",
+          "left": 510,
+          "top": 30,
+          "width": 1110,
+          "height": 345,
+          "controlSource": "PrevDate",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "PrevLocation",
+          "left": 2580,
+          "top": 15,
+          "width": 3180,
+          "height": 345,
+          "controlSource": "PrevLocation",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdDelete",
+          "left": 0,
+          "top": 0,
+          "width": 441,
+          "height": 366,
+          "caption": "Command19",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "PChapter",
+          "left": 1665,
+          "top": 15,
+          "width": 855,
+          "height": 345,
+          "controlSource": "PChapter",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Auto_Header0",
+          "left": 150,
+          "top": 30,
+          "width": 2700,
+          "height": 300,
+          "caption": "PREVIOUS BANKRUPTCIES",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label6",
+          "left": 5910,
+          "top": 375,
+          "width": 720,
+          "height": 300,
+          "caption": "Case #",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label12",
+          "left": 2640,
+          "top": 360,
+          "width": 1500,
+          "height": 285,
+          "caption": "Location",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label9",
+          "left": 480,
+          "top": 375,
+          "width": 915,
+          "height": 285,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label13",
+          "left": 1680,
+          "top": 375,
+          "width": 915,
+          "height": 285,
+          "caption": "Chapter",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =-54162707\nBegin Form\n    RecordSelectors = NotDefault\n    NavigationButtons = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =7080\n    DatasheetFontHeight =11\n    ItemSuffix =18\n    Left =825\n    Top =2385\n    Right =7980\n    Bottom =4155\n    DatasheetGridlinesColor =15132391\n    RecSrcDt = Begin\n        0x56ace08a2f89e640\n    End\n    GUID = Begin\n        0x055db1b5ef1fe14792e443ab6a439f98\n    End\n    NameMap = Begin\n        0x0acc0e5500000000f3f52ba072da2f40bd75ece591cf881f0000000026437bca ,\n        0xb25de6400000000000000000740062006c005000720065007600420061006e00 ,\n        0x6b000000000000002799f3fa54fdf24da29eb6bdc014b74807000000f3f52ba0 ,\n        0x72da2f40bd75ece591cf881f490044005000720065007600420061006e006b00 ,\n        0x00000000000055126523204b7f46987e7336cdfab22d07000000f3f52ba072da ,\n        0x2f40bd75ece591cf881f49004400420061006e006b0072007500700074006300 ,\n        0x7900000000000000c151ec8f580b1b4bb2b06296ae3774b307000000f3f52ba0 ,\n        0x72da2f40bd75ece591cf881f5000720065007600440061007400650000000000 ,\n        0x000006ffc0eea7fb0c40ba1026880d9a6df407000000f3f52ba072da2f40bd75 ,\n        0xece591cf881f500072006500760043006100730065004e0075006d0062006500 ,\n        0x72000000000000008ea1fde181accf4494323820a633dfca07000000f3f52ba0 ,\n        0x72da2f40bd75ece591cf881f50007200650076004c006f006300610074006900 ,\n        0x6f006e00000000000000893ceeb18bd89545866244d1858ef65a07000000f3f5 ,\n        0x2ba072da2f40bd75ece591cf881f500043006800610070007400650072000000 ,\n        0x00000000000000000000000000000000000000000c0000000500000000000000 ,\n        0x00000000000000000000\n    End\n    RecordSource =\"SELECT tblPrevBank.IDPrevBank, tblPrevBank.IDBankruptcy, tblPrevBank.PrevDate, t\"\n        \"blPrevBank.PrevCaseNumber, tblPrevBank.PrevLocation, tblPrevBank.PChapter FROM t\"\n        \"blPrevBank; \"\n    DatasheetFontName =\"Calibri\"\n    AllowDatasheetView =0\n    FilterOnLoad =0\n    ShowPageMargins =0\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            BorderColor =8355711\n            ForeColor =8355711\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Line\n            BorderLineStyle =0\n            GridlineColor =10921638\n            BorderThemeColorIndex =0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin CommandButton\n            FontSize =11\n            FontWeight =400\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n            UseTheme =1\n            Shape =1\n            Gradient =12\n            BackColor =14461583\n            BackThemeColorIndex =4\n            BackTint =60.0\n            BorderLineStyle =0\n            BorderColor =14461583\n            BorderThemeColorIndex =4\n            BorderTint =60.0\n            ThemeFontIndex =1\n            HoverColor =15189940\n            HoverThemeColorIndex =4\n            HoverTint =40.0\n            PressedColor =9917743\n            PressedThemeColorIndex =4\n            PressedShade =75.0\n            HoverForeColor =4210752\n            HoverForeThemeColorIndex =0\n            HoverForeTint =75.0\n            PressedForeColor =4210752\n            PressedForeThemeColorIndex =0\n            PressedForeTint =75.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            GridlineColor =10921638\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin EmptyCell\n            Height =240\n            GridlineColor =10921638\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin FormHeader\n            Height =675\n            BackColor =15064278\n            Name =\"FormHeader\"\n            GUID = Begin\n                0x53250fbc72b8e342a8b42bc02df9eb46\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =2\n            BackTint =20.0\n            Begin\n                Begin Label\n                    OverlapFlags =85\n                    TextAlign =1\n                    Left =150\n                    Top =30\n                    Width =2700\n                    Height =300\n                    FontSize =12\n                    FontWeight =700\n                    BorderColor =6968388\n                    ForeColor =0\n                    Name =\"Auto_Header0\"\n                    Caption =\"PREVIOUS BANKRUPTCIES\"\n                    GUID = Begin\n                        0x986f5538934f51439e06646a669f25b1\n                    End\n                    GroupTable =1\n                    LayoutCachedLeft =150\n                    LayoutCachedTop =30\n                    LayoutCachedWidth =2850\n                    LayoutCachedHeight =330\n                    LayoutGroup =1\n                    BorderThemeColorIndex =2\n                    BorderTint =100.0\n                    ForeTint =100.0\n                    GroupTable =1\n                End\n                Begin Label\n                    OverlapFlags =85\n                    TextAlign =1\n                    Left =5910\n                    Top =375\n                    Width =720\n                    Height =300\n                    FontSize =8\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    ForeColor =0\n                    Name =\"Label6\"\n                    Caption =\"Case #\"\n                    GUID = Begin\n                        0xee129ea2971cb0418317e6a65b9dd499\n                    End\n                    BottomPadding =150\n                    LayoutCachedLeft =5910\n                    LayoutCachedTop =375\n                    LayoutCachedWidth =6630\n                    LayoutCachedHeight =675\n                    RowStart =2\n                    RowEnd =2\n                    ForeTint =100.0\n                End\n                Begin Label\n                    OverlapFlags =85\n                    TextAlign =1\n                    Left =2640\n                    Top =360\n                    Width =1500\n                    Height =285\n                    FontSize =8\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    ForeColor =0\n                    Name =\"Label12\"\n                    Caption =\"Location\"\n                    GUID = Begin\n                        0xc4b7f5c879147846ae7cf50f780693cd\n                    End\n                    BottomPadding =150\n                    LayoutCachedLeft =2640\n                    LayoutCachedTop =360\n                    LayoutCachedWidth =4140\n                    LayoutCachedHeight =645\n                    RowStart =4\n                    RowEnd =4\n                    ForeTint =100.0\n                End\n                Begin Label\n                    OverlapFlags =85\n                    TextAlign =1\n                    Left =480\n                    Top =375\n                    Width =915\n                    Height =285\n                    FontSize =8\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    ForeColor =0\n                    Name =\"Label9\"\n                    Caption =\"Date\"\n                    GUID = Begin\n                        0x229159823c7bca4982b66398b3b80142\n                    End\n                    BottomPadding =150\n                    LayoutCachedLeft =480\n                    LayoutCachedTop =375\n                    LayoutCachedWidth =1395\n                    LayoutCachedHeight =660\n                    RowStart =3\n                    RowEnd =3\n                    ForeTint =100.0\n                End\n                Begin Label\n                    OverlapFlags =85\n                    TextAlign =1\n                    Left =1680\n                    Top =375\n                    Width =915\n                    Height =285\n                    FontSize =8\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    ForeColor =0\n                    Name =\"Label13\"\n                    Caption =\"Chapter\"\n                    GUID = Begin\n                        0xe60f39cb7b421845a5a4f3da0730df65\n                    End\n                    BottomPadding =150\n                    LayoutCachedLeft =1680\n                    LayoutCachedTop =375\n                    LayoutCachedWidth =2595\n                    LayoutCachedHeight =660\n                    RowStart =3\n                    RowEnd =3\n                    ForeTint =100.0\n                End\n            End\n        End\n        Begin Section\n            Height =420\n            Name =\"Detail\"\n            GUID = Begin\n                0x985de65ea26a1c49bd6392b735bf18b2\n            End\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    OverlapFlags =85\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =5880\n                    Width =1170\n                    Height =345\n                    FontSize =9\n                    TabIndex =3\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =15066597\n                    ForeColor =0\n                    Name =\"PrevCaseNun\"\n                    ControlSource =\"PrevCaseNumber\"\n                    GUID = Begin\n                        0x1d8b4f4f2b4fd141858a61bc61e8515f\n                    End\n                    BottomPadding =150\n\n                    LayoutCachedLeft =5880\n                    LayoutCachedWidth =7050\n                    LayoutCachedHeight =345\n                    RowStart =2\n                    RowEnd =2\n                    ColumnStart =1\n                    ColumnEnd =1\n                    BorderShade =90.0\n                    ForeTint =100.0\n                End\n                Begin TextBox\n                    OverlapFlags =93\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =510\n                    Top =30\n                    Width =1110\n                    Height =345\n                    FontSize =9\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =15066597\n                    ForeColor =0\n                    Name =\"DateFiled\"\n                    ControlSource =\"PrevDate\"\n                    GUID = Begin\n                        0xd5e7254b74bbc142a767093bc3762e98\n                    End\n                    BottomPadding =150\n\n                    LayoutCachedLeft =510\n                    LayoutCachedTop =30\n                    LayoutCachedWidth =1620\n                    LayoutCachedHeight =375\n                    RowStart =3\n                    RowEnd =3\n                    ColumnStart =1\n                    ColumnEnd =1\n                    BorderShade =90.0\n                    ForeTint =100.0\n                End\n                Begin TextBox\n                    OverlapFlags =85\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =2580\n                    Top =15\n                    Width =3180\n                    Height =345\n                    FontSize =9\n                    TabIndex =2\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =15066597\n                    ForeColor =0\n                    Name =\"PrevLocation\"\n                    ControlSource =\"PrevLocation\"\n                    GUID = Begin\n                        0xb74da21cc7175a4bb5feb003ca6f1e38\n                    End\n                    BottomPadding =150\n\n                    LayoutCachedLeft =2580\n                    LayoutCachedTop =15\n                    LayoutCachedWidth =5760\n                    LayoutCachedHeight =360\n                    RowStart =4\n                    RowEnd =4\n                    ColumnStart =1\n                    ColumnEnd =1\n                    BorderShade =90.0\n                    ForeTint =100.0\n                End\n                Begin CommandButton\n                    TabStop = NotDefault\n                    OverlapFlags =119\n                    Width =441\n                    Height =366\n                    FontSize =8\n                    TabIndex =4\n                    ForeColor =16777215\n                    Name =\"cmdDelete\"\n                    Caption =\"Command19\"\n                    ControlTipText =\"Delete Record\"\n                    GUID = Begin\n                        0xdf389f7e8a12d145a33b0302cc2e7940\n                    End\n                    LeftPadding =105\n                    TopPadding =60\n                    RightPadding =120\n                    BottomPadding =165\n                    OnClickEmMacro = Begin\n                        Version =196611\n                        ColumnsShown =10\n                        Begin\n                            Action =\"OnError\"\n                            Argument =\"0\"\n                        End\n                        Begin\n                            Action =\"GoToControl\"\n                            Argument =\"=[Screen].[PreviousControl].[Name]\"\n                        End\n                        Begin\n                            Action =\"ClearMacroError\"\n                        End\n                        Begin\n                            Condition =\"Not [Form].[NewRecord]\"\n                            Action =\"RunCommand\"\n                            Argument =\"223\"\n                        End\n                        Begin\n                            Condition =\"[Form].[NewRecord] And Not [Form].[Dirty]\"\n                            Action =\"Beep\"\n                        End\n                        Begin\n                            Condition =\"[Form].[NewRecord] And [Form].[Dirty]\"\n                            Action =\"RunCommand\"\n                            Argument =\"292\"\n                        End\n                        Begin\n                            Condition =\"[MacroError]<>0\"\n                            Action =\"MsgBox\"\n                            Argument =\"=[MacroError].[Description]\"\n                            Argument =\"-1\"\n                            Argument =\"0\"\n                        End\n                        Begin\n                            Comment =\"_AXL:<?xml version=\\\"1.0\\\" encoding=\\\"UTF-16\\\" standalone=\\\"no\\\"?>\\015\\012<UserI\"\n                                \"nterfaceMacro For=\\\"cmdDelete\\\" xmlns=\\\"http://schemas.microsoft.com/office/acce\"\n                                \"ssservices/2009/11/application\\\"><Statements><Action Name=\\\"OnError\\\"/><Action N\"\n                                \"ame=\\\"GoToControl\\\"><Argument Nam\"\n                        End\n                        Begin\n                            Comment =\"_AXL:e=\\\"ControlName\\\">=[Screen].[PreviousControl].[Name]</Argument></Action><Ac\"\n                                \"tion Name=\\\"ClearMacroError\\\"/><ConditionalBlock><If><Condition>Not [Form].[NewR\"\n                                \"ecord]</Condition><Statements><Action Name=\\\"DeleteRecord\\\"/></Statements></If><\"\n                                \"/ConditionalBlock><\"\n                        End\n                        Begin\n                            Comment =\"_AXL:ConditionalBlock><If><Condition>[Form].[NewRecord] And Not [Form].[Dirty]</\"\n                                \"Condition><Statements><Action Name=\\\"Beep\\\"/></Statements></If></ConditionalBloc\"\n                                \"k><ConditionalBlock><If><Condition>[Form].[NewRecord] And [Form].[Dirty]</Condit\"\n                                \"ion><Statements\"\n                        End\n                        Begin\n                            Comment =\"_AXL:><Action Name=\\\"UndoRecord\\\"/></Statements></If></ConditionalBlock><Conditi\"\n                                \"onalBlock><If><Condition>[MacroError]&lt;&gt;0</Condition><Statements><Action Na\"\n                                \"me=\\\"MessageBox\\\"><Argument Name=\\\"Message\\\">=[MacroError].[Description]</Argume\"\n                                \"nt></Action></State\"\n                        End\n                        Begin\n                            Comment =\"_AXL:ments></If></ConditionalBlock></Statements></UserInterfaceMacro>\"\n                        End\n                    End\n                    ImageData = Begin\n                        0x2800000010000000100000000100200000000000000000000000000000000000 ,\n                        0x00000000000000000000000000000000000000008080803980808096868686d6 ,\n                        0x828282f7808080ff828282f8868686d68585859c808080390000000000000000 ,\n                        0x0000000000000000000000000000000000000000808080ff808080ff808080ff ,\n                        0x808080ff808080ff808080ff808080ff808080ff808080ff0000000000000000 ,\n                        0x0000000000000000000000000000000080808006818181fbcbcbcbffe6e6e6ff ,\n                        0xf9f9f9fffffffffff9f9f9ffe6e6e6ffcbcbcbff808080ff0000000000000000 ,\n                        0x000000000000000000000000000000008080801e898989edffffffffffffffff ,\n                        0xffffffffffffffffffffffffffffffffffffffff868686fc8080801500000000 ,\n                        0x0000000000000000000000000000000080808036939393e6ffffffffffffffff ,\n                        0xffffffffffffffffffffffffffffffffffffffff929292fc8080802d00000000 ,\n                        0x00000000000000000000000000000000808080519f9f9fe3ffffffffe0e5d4ff ,\n                        0x90a468ff90a468ff90a468ffdce2cfffffffffffa0a0a0fe8383834400000000 ,\n                        0x0000000000000000000000000000000080808069afafafe5ffffffffadbc8fff ,\n                        0xcfd7bdffffffffffd8dfcaffa6b686fffefefdffadadadff9393936a00000000 ,\n                        0x0000000000000000000000000000000080808081bebebeecfffffffff6f8f3ff ,\n                        0xa0b17dffc2cdacff9eb07cfff3f5efffffffffffb9b9b9ff9999998e00000000 ,\n                        0x000000000000000000000000000000008080809ccececef9ffffffffffffffff ,\n                        0xeff2eaffbbc7a3ffebefe4ffffffffffffffffffc5c5c5ff979797ad00000000 ,\n                        0x00000000000000000000000000000000838383b8ddddddffffffffffffffffff ,\n                        0xffffffffffffffffffffffffffffffffffffffffcfcfcfff969696c700000000 ,\n                        0x00000000000000000000000000000000848484d3e9e9e9ffffffffffffffffff ,\n                        0xffffffffffffffffffffffffffffffffffffffffddddddff929292dc00000000 ,\n                        0x00000000000000000000000000000000838383edccccccff9b9b9bff808080ff ,\n                        0x808080ff808080ff808080ff808080ff9b9b9bffc2c2c2ff8d8d8ded00000000 ,\n                        0x00000000000000000000000080808003808080ffa4a4a4ffdededeffffffffff ,\n                        0xffffffffffffffffffffffffffffffffdededeffa4a4a4ff808080ff00000000 ,\n                        0x00000000000000000000000000000000808080ff9c9c9ccddbdbdbe7ffffffff ,\n                        0xffffffffffffffffffffffffffffffffddddddf4a4a4a4dd808080ff00000000 ,\n                        0x00000000000000000000000000000000000000008080804e808080bd808080ff ,\n                        0x808080ff808080ff808080ff808080ff808080bd8080804e0000000000000000 ,\n                        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n                        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n                        0x0000000000000000\n                    End\n\n                    LayoutCachedWidth =441\n                    LayoutCachedHeight =366\n                    ForeThemeColorIndex =1\n                    ForeTint =100.0\n                    Gradient =0\n                    BackColor =16777215\n                    BackThemeColorIndex =1\n                    BackTint =100.0\n                    OldBorderStyle =0\n                    BorderColor =0\n                    BorderThemeColorIndex =0\n                    BorderTint =100.0\n                    HoverColor =3355443\n                    HoverThemeColorIndex =0\n                    HoverTint =80.0\n                    PressedColor =0\n                    PressedThemeColorIndex =0\n                    PressedShade =80.0\n                    HoverForeColor =16777215\n                    HoverForeThemeColorIndex =1\n                    HoverForeTint =100.0\n                    PressedForeColor =16777215\n                    PressedForeThemeColorIndex =1\n                    PressedForeTint =100.0\n                    Shadow =-1\n                    QuickStyle =36\n                    QuickStyleMask =-369\n                    WebImagePaddingLeft =1\n                    WebImagePaddingRight =2\n                    WebImagePaddingBottom =3\n                    Overlaps =1\n                End\n                Begin TextBox\n                    OverlapFlags =85\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =1665\n                    Top =15\n                    Width =855\n                    Height =345\n                    FontSize =9\n                    TabIndex =1\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    BorderColor =15066597\n                    ForeColor =0\n                    Name =\"PChapter\"\n                    ControlSource =\"PChapter\"\n                    GUID = Begin\n                        0x36880fbec2b2a14b993e63072fe6fb4e\n                    End\n                    BottomPadding =150\n\n                    LayoutCachedLeft =1665\n                    LayoutCachedTop =15\n                    LayoutCachedWidth =2520\n                    LayoutCachedHeight =360\n                    RowStart =3\n                    RowEnd =3\n                    ColumnStart =1\n                    ColumnEnd =1\n                    BorderShade =90.0\n                    ForeTint =100.0\n                End\n            End\n        End\n        Begin FormFooter\n            Height =0\n            Name =\"FormFooter\"\n            GUID = Begin\n                0xd9d567e53ff57e41af9851684ea0d611\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n    End\nEnd"
+}

@@ -1,0 +1,245 @@
+{
+  "reportName": "rptInvoiceComprehensiveAR",
+  "dataSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Charge, [Matter and AR].Payment, tblCase.Retainer, tblCase.CaseOpenDate FROM tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID ORDER BY [Matter and AR].Date2; ",
+  "width": 10320,
+  "orientation": "portrait",
+  "margins": {
+    "left": 360,
+    "right": 360,
+    "top": 240,
+    "bottom": 240
+  },
+  "groupLevels": [
+    {
+      "fieldExpression": "CaseID",
+      "sortOrder": "ascending",
+      "groupHeader": true,
+      "groupFooter": true
+    }
+  ],
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 300,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Payment",
+          "left": 8400,
+          "top": 0,
+          "width": 1559,
+          "height": 240,
+          "controlSource": "Payment",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "format": "Currency",
+          "textAlign": "right"
+        },
+        {
+          "type": "TextBox",
+          "name": "Charge",
+          "left": 6600,
+          "top": 0,
+          "width": 1560,
+          "height": 240,
+          "controlSource": "Charge",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "format": "Currency",
+          "textAlign": "right"
+        },
+        {
+          "type": "TextBox",
+          "name": "Pay_Outlay",
+          "left": 1500,
+          "top": 0,
+          "width": 4860,
+          "height": 240,
+          "controlSource": "Pay_Outlay",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text30",
+          "left": 0,
+          "top": 0,
+          "width": 1380,
+          "height": 240,
+          "controlSource": "Date2",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "format": "Short Date",
+          "textAlign": "center"
+        }
+      ]
+    },
+    {
+      "type": "GroupHeader",
+      "groupIndex": 0,
+      "groupField": "CaseID",
+      "height": 960,
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label17",
+          "left": 9120,
+          "top": 360,
+          "width": 795,
+          "height": 255,
+          "caption": "Payment",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
+        },
+        {
+          "type": "Label",
+          "name": "Label16",
+          "left": 7020,
+          "top": 360,
+          "width": 1155,
+          "height": 255,
+          "caption": "Fee / Charge",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "TextBox",
+          "name": "Text52",
+          "left": 9120,
+          "top": 0,
+          "width": 720,
+          "height": 315,
+          "controlSource": "CaseID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        },
+        {
+          "type": "Label",
+          "name": "Label18",
+          "left": 0,
+          "top": 0,
+          "width": 4620,
+          "height": 285,
+          "caption": "FEES and ADVANCED COSTS",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "TextBox",
+          "name": "Text43",
+          "left": 6540,
+          "top": 660,
+          "width": 1559,
+          "height": 240,
+          "controlSource": "Retainer",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "textAlign": "right"
+        },
+        {
+          "type": "Label",
+          "name": "Label44",
+          "left": 1500,
+          "top": 660,
+          "width": 3000,
+          "height": 240,
+          "caption": "Initial Fee",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label31",
+          "left": 0,
+          "top": 360,
+          "width": 1320,
+          "height": 255,
+          "caption": "Date",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
+        },
+        {
+          "type": "Label",
+          "name": "Label32",
+          "left": 1500,
+          "top": 360,
+          "width": 1020,
+          "height": 255,
+          "caption": "Description",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text33",
+          "left": 0,
+          "top": 660,
+          "width": 1320,
+          "height": 240,
+          "controlSource": "CaseOpenDate",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "fontBold": true,
+          "borderColor": 10921638,
+          "textAlign": "center"
+        },
+        {
+          "type": "Label",
+          "name": "Label35",
+          "left": 8400,
+          "top": 660,
+          "width": 1560,
+          "height": 240,
+          "caption": "***      ",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
+        }
+      ]
+    },
+    {
+      "type": "GroupFooter",
+      "groupIndex": 0,
+      "groupField": "CaseID",
+      "height": 60,
+      "controls": []
+    }
+  ],
+  "vbaCodeBehind": "Option Compare Database\r\n"
+}

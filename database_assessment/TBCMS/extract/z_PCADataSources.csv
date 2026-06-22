@@ -1,0 +1,3 @@
+PCADataSourceName,ApplicationStatus,DataSourceType,DataSourceConnectString,TablePrefix,TableSuffix,VisibleInSetupForm,MustBeConnectedForAppToRun,SQLServerName
+TateByWater,Development,ODBC_MSSQL,Provider=MSOLEDBSQL;Server=awsql2022dev;Database=TateByWater;UID=TateBywaterSQLUser;PWD=tatebywater1234;,,,0,0,awsql2022dev
+TateByWater,Production,ODBC_MSSQL,Provider=SQLOLEDB;Data Source=tbf-cms;Initial Catalog=TateByWater;UID=TateBywaterSQLUser;PWD=tatebywater1234;,,,0,0,tbf-cms

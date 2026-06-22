@@ -1,0 +1,403 @@
+{
+  "formName": "frmTimeTableDetail",
+  "recordSource": "SELECT vwTimeTableDetail.Time_ID, vwTimeTableDetail.Tdate, vwTimeTableDetail.Description, vwTimeTableDetail.Tatty, vwTimeTableDetail.Rate, vwTimeTableDetail.Time_, vwTimeTableDetail.Bill_ID, vwTimeTableDetail.Amount FROM vwTimeTableDetail ORDER BY vwTimeTableDetail.Tdate; ",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 14700,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Tdate",
+          "left": 60,
+          "top": 60,
+          "width": 1155,
+          "height": 315,
+          "controlSource": "Tdate",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Tatty",
+          "left": 9540,
+          "top": 60,
+          "width": 735,
+          "height": 334,
+          "controlSource": "Tatty",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder\r\nFROM tblDropD\r\nWHERE (((tblDropD.FieldName)=\"TimeTableAtty\"))\r\nORDER BY tblDropD.SortOrder;\r\n",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Time_",
+          "left": 10440,
+          "top": 60,
+          "width": 900,
+          "height": 334,
+          "controlSource": "Time_",
+          "format": "Standard",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Rate",
+          "left": 11418,
+          "top": 60,
+          "width": 1170,
+          "height": 334,
+          "controlSource": "Rate",
+          "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder\r\nFROM tblDropD\r\nWHERE (((tblDropD.FieldName)=\"Rate\"))\r\nORDER BY tblDropD.SortOrder;\r\n",
+          "format": "Currency",
+          "tabIndex": 4,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtAmount",
+          "left": 12678,
+          "top": 60,
+          "width": 1245,
+          "height": 334,
+          "controlSource": "Amount",
+          "format": "Currency",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": false,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "TxtRunningTotal",
+          "left": 13794,
+          "top": 60,
+          "width": 150,
+          "height": 334,
+          "controlSource": "=IIf(IsNull([TIME_ID]),Nz(DLast(\"RUN_TOTAL\",\"qryTimeTableRunTot\",\"Bill_ID=\" & GETBILL_ID()),0),[TEXT36])",
+          "format": "Currency",
+          "tabIndex": 6,
+          "visible": false,
+          "enabled": false,
+          "locked": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdDelete",
+          "left": 14025,
+          "top": 60,
+          "width": 576,
+          "height": 334,
+          "caption": "Command44",
+          "tabIndex": 7,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "Text36",
+          "left": 4740,
+          "top": 180,
+          "width": 840,
+          "height": 241,
+          "format": "Currency",
+          "tabIndex": 9,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Time_ID",
+          "left": 13980,
+          "top": 420,
+          "width": 660,
+          "height": 241,
+          "controlSource": "Time_ID",
+          "tabIndex": 8,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text39",
+          "left": 360,
+          "top": 433,
+          "width": 750,
+          "height": 210,
+          "controlSource": "Time_ID",
+          "tabIndex": 10,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Description",
+          "left": 1320,
+          "top": 60,
+          "width": 8100,
+          "height": 855,
+          "controlSource": "Description",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box299",
+          "left": 7500,
+          "top": 0,
+          "width": 1800,
+          "height": 1080,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label300",
+          "left": 7620,
+          "top": 60,
+          "width": 480,
+          "height": 285,
+          "caption": "TK",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "txttenths",
+          "left": 2460,
+          "top": 120,
+          "width": 3015,
+          "height": 615,
+          "caption": ".1 = 1-6 m           .4 = 19-24 m       .7 = 37-42 m\r\n.2 = 7-12 m        .5 = 25-30 m       .8 = 43-48 m\r\n.3 = 13-18 m     .6 = 31-36 m       .9 = 49-54 m\r\n  \r\n\r\n\r\n\r\n\r\n\r\n",
+          "visible": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdTenths",
+          "left": 11640,
+          "top": 180,
+          "width": 660,
+          "height": 240,
+          "caption": "Tenths",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "Label48",
+          "left": 9562,
+          "top": 285,
+          "width": 658,
+          "height": 479,
+          "caption": "Atty /\r\nStaff",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label5",
+          "left": 10455,
+          "top": 300,
+          "width": 825,
+          "height": 480,
+          "caption": "Time\r\n(0.00)\r\n",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text303",
+          "left": 8280,
+          "top": 360,
+          "width": 900,
+          "height": 240,
+          "controlSource": "=DSum(\"[Time_]\",\"vwTimeTableDetail\",\"Bill_ID= \" & Nz([Bill_ID],0) & \" And Tatty='\" & [Forms]![frmClientLedger]![Time Keeping].[Form]![cmbTAtty] & \"'\")",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label301",
+          "left": 7620,
+          "top": 360,
+          "width": 600,
+          "height": 240,
+          "caption": "Hours",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label4",
+          "left": 11598,
+          "top": 525,
+          "width": 750,
+          "height": 240,
+          "caption": "Rate",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label37",
+          "left": 12768,
+          "top": 525,
+          "width": 945,
+          "height": 240,
+          "caption": "Amount",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label38",
+          "left": 13848,
+          "top": 525,
+          "width": 15,
+          "height": 240,
+          "caption": "Running Total",
+          "visible": false
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 120,
+          "top": 540,
+          "width": 1095,
+          "height": 270,
+          "caption": "Date",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 1290,
+          "top": 540,
+          "width": 1123,
+          "height": 329,
+          "caption": "Description",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text305",
+          "left": 8280,
+          "top": 660,
+          "width": 900,
+          "height": 240,
+          "controlSource": "=DSum(\"[Amount]\",\"vwTimeTableDetail\",\"Bill_ID= \" & Nz([Bill_ID],0) & \" And Tatty='\" & [Forms]![frmClientLedger]![Time Keeping].[Form]![cmbTAtty] & \"'\")",
+          "format": "Currency",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label302",
+          "left": 7620,
+          "top": 690,
+          "width": 600,
+          "height": 240,
+          "caption": "Billed",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text55",
+          "left": 5700,
+          "top": 540,
+          "width": 1080,
+          "height": 315,
+          "controlSource": "Bill_ID",
+          "tabIndex": 3,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormFooter",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text52",
+          "left": 10440,
+          "top": 0,
+          "width": 900,
+          "height": 314,
+          "controlSource": "=Sum(Nz([time_],0))",
+          "format": "Standard",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label53",
+          "left": 11460,
+          "top": 0,
+          "width": 1005,
+          "height": 315,
+          "caption": "Total Bill:",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "txtSumOfAmount",
+          "left": 12480,
+          "top": 0,
+          "width": 1653,
+          "height": 315,
+          "controlSource": "=Sum(Nz([time_],0)*Nz([rate],0))",
+          "format": "Currency",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Label",
+          "name": "Label46",
+          "left": 9420,
+          "top": 0,
+          "width": 1005,
+          "height": 315,
+          "caption": "Total Time:",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub Form_BeforeDelConfirm(Cancel As Integer, Response As Integer)\r\n    If Form_Time_Keeping.TKLocked = True Then\r\n        answer = InputBox(\"Please input the admin password\", \"Admin pass required\")\r\n        If answer <> \"tb2740\" Then\r\n            Cancel = True  'Cancel the deletion\r\n            Beep\r\n        End If\r\n    End If\r\n    \r\n   'Response = 0\r\n    'If MsgBox(\"Are you sure you want to delete this record?\", vbQuestion + vbYesNo, \"TB CMS\") = vbNo Then Cancel = True\r\n    \r\nEnd Sub\r\n   \r\n   \r\n\r\n\r\n'Private Sub Tdate_BeforeUpdate(Cancel As Integer)\r\n'    If Not IsNull(Me.TDate) Then\r\n'        If Me.TDate > Me.Parent.Bill_Sent Then\r\n'            Mbox \"Date\", 2\r\n'            Cancel = True\r\n'        End If\r\n'    Else\r\n'        Mbox \"Date\", 1\r\n'        Cancel = True\r\n'    End If\r\n'End Sub\r\n'\r\n'Private Sub Time__AfterUpdate()\r\n'    Me.Recalc\r\n'    Me.Rate.SetFocus\r\n'End Sub\r\n'Private Sub Rate_AfterUpdate()\r\n'    Me.Recalc\r\n'    Me.Tatty.SetFocus\r\n'End Sub\r\n\r\n'Private Sub Form_AfterDelConfirm(Status As Integer)\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Form_AfterInsert()\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Form_AfterUpdate()\r\n'    MsgBox \"Refresh forms AAAA\"\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Form_Delete(Cancel As Integer)\r\n'    Call RefreshForms\r\n'End Sub\r\n\r\n'Sub RefreshForms()\r\n'    'MsgBox \"Refresh forms\"\r\n'\r\n'    'Me.Recalc\r\n'    '[Form_Time Keeping].Recalc\r\n'\r\n'    '[Forms]![Form_Time Keeping].Refresh\r\n'\r\n'    '[Form_Time Keeping].Requery\r\n'    'Forms![frmProject].[Form].[txtTotalTime].Requery\r\n'\r\n'\r\n'    Me.Requery\r\n'    [Form_Time Keeping].Requery\r\n'\r\n'End Sub\r\n'\r\n'Private Sub TxtRunningTotal_AfterUpdate()\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub TxtRunningTotal_BeforeUpdate(Cancel As Integer)\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub TxtRunningTotal_Change()\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Rate_AfterUpdate()\r\n'    Call RefreshForms\r\n'End Sub\r\n\r\nPrivate Sub Form_Timer()\r\n    Me![txttenths].Visible = False      'make the Text Box invisible after 5 secs\r\n    Me.TimerInterval = 0              'disable the Timer\r\nEnd Sub\r\n\r\nPrivate Sub Form_BeforeInsert(Cancel As Integer)\r\n    If IsNull([Form_Time Keeping].CaseID) Then\r\n        MsgBox \"Please select an existing TK or add a new TK\", , \"TB CMS\"\r\n        [Form_Time Keeping].cmbBills.SetFocus\r\n        Cancel = True\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdTenths_Click()\r\n    Me![txttenths].Visible = True     'make Text Box invisible\r\n    Me.TimerInterval = 10000         'set Timer Interval to 10 seconds\r\nEnd Sub\r\n\r\nPrivate Sub Tatty_AfterUpdate()\r\n    If Me.Tatty = \"JRT\" Then\r\n    Rate = 400\r\n    End If\r\n    If Me.Tatty = \"DEB\" Then\r\n    Rate = 400\r\n    End If\r\n    If Me.Tatty = \"JF\" Then\r\n    Rate = 400\r\n     End If\r\n    If Me.Tatty = \"PM\" Then\r\n    Rate = 400\r\n    End If\r\n    If Me.Tatty = \"TDT\" Then\r\n    Rate = 400\r\n    End If\r\n    If Me.Tatty = \"IQ\" Then\r\n    Rate = 175\r\n     End If\r\n    If Me.Tatty = \"HG\" Then\r\n    Rate = 175\r\n     End If\r\n    If Me.Tatty = \"AO\" Then\r\n    TRate = 175\r\n     End If\r\n    If Me.Tatty = \"RRL\" Then\r\n    Rate = 300\r\n     End If\r\n     If Me.Tatty = \"JN\" Then\r\n    Rate = 175\r\n     End If\r\n     If Me.Tatty = \"KP\" Then\r\n    Rate = 175\r\n     End If\r\n      If Me.Tatty = \"CMH\" Then\r\n    Rate = 400\r\n     End If\r\n     If Me.Tatty = \"DJB\" Then\r\n    Rate = 350\r\n     End If\r\n     If Me.Tatty = \"RLF\" Then\r\n    Rate = 400\r\n     End If\r\n     If Me.Tatty = \"BA\" Then\r\n    Rate = 400\r\n     End If\r\n     If Me.Tatty = \"WNE\" Then\r\n    Rate = 300\r\n     End If\r\n     If Me.Tatty = \"RYR\" Then\r\n    Rate = 300\r\n     End If\r\n     If Me.Tatty = \"JI\" Then\r\n    Rate = 175\r\n     End If\r\n     If Me.Tatty = \"LV\" Then\r\n    Rate = 175\r\n     End If\r\nEnd Sub\r\n\r\nPrivate Sub Form_MouseWheel(ByVal Page As Boolean, ByVal Count As Long)\r\n\r\n If Not Me.Dirty Then\r\n\r\n   If (Count < 0) And (Me.CurrentRecord > 1) Then\r\n\r\n     DoCmd.GoToRecord , , acPrevious\r\n\r\n   ElseIf (Count > 0) And (Me.CurrentRecord <= Me.Recordset.RecordCount) Then\r\n\r\n        DoCmd.GoToRecord , , acNext\r\n\r\n   End If\r\n\r\n Else\r\n\r\n   MsgBox \"The record has changed. Save the current record before moving to another record.\", , \"TB CMS\"\r\n\r\n End If\r\n\r\nEnd Sub\r\n"
+}

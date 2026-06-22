@@ -1,0 +1,253 @@
+{
+  "reportName": "rpt_Matter_Closing",
+  "dataSource": "SELECT vw_rpt_Matter_Closing.CaseID, vw_rpt_Matter_Closing.MatterID, vw_rpt_Matter_Closing.Date2, vw_rpt_Matter_Closing.Pay_Outlay, vw_rpt_Matter_Closing.Charge, vw_rpt_Matter_Closing.Payment, vw_rpt_Matter_Closing.Balance, vw_rpt_Matter_Closing.RunningDebit, vw_rpt_Matter_Closing.RunningCredit, vw_rpt_Matter_Closing.RunningBalance, vw_rpt_Matter_Closing.Retainer, vw_rpt_Matter_Closing.RetBal, vw_rpt_Matter_Closing.OrderNr FROM vw_rpt_Matter_Closing ORDER BY vw_rpt_Matter_Closing.MatterID; ",
+  "width": 7320,
+  "orientation": "portrait",
+  "margins": {
+    "left": 360,
+    "right": 360,
+    "top": 240,
+    "bottom": 240
+  },
+  "groupLevels": [
+    {
+      "fieldExpression": "CaseID",
+      "sortOrder": "ascending",
+      "groupHeader": true,
+      "groupFooter": true
+    },
+    {
+      "fieldExpression": "Date2",
+      "sortOrder": "ascending",
+      "groupHeader": false,
+      "groupFooter": false
+    }
+  ],
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 300,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Payment",
+          "left": 4710,
+          "top": 0,
+          "width": 1065,
+          "height": 240,
+          "controlSource": "Payment",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "format": "Currency",
+          "textAlign": "right"
+        },
+        {
+          "type": "TextBox",
+          "name": "Charge",
+          "left": 3615,
+          "top": 0,
+          "width": 1050,
+          "height": 240,
+          "controlSource": "Charge",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "format": "Currency",
+          "textAlign": "right"
+        },
+        {
+          "type": "TextBox",
+          "name": "Date2",
+          "left": 120,
+          "top": 0,
+          "width": 900,
+          "height": 240,
+          "controlSource": "Date2",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "textAlign": "left"
+        },
+        {
+          "type": "TextBox",
+          "name": "Pay_Outlay",
+          "left": 1140,
+          "top": 0,
+          "width": 2430,
+          "height": 240,
+          "controlSource": "Pay_Outlay",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "MatterID",
+          "left": 0,
+          "top": 0,
+          "width": 300,
+          "height": 210,
+          "controlSource": "MatterID",
+          "fontName": "Calibri Light",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        },
+        {
+          "type": "TextBox",
+          "name": "OrderNr",
+          "left": 3705,
+          "top": 0,
+          "width": 240,
+          "height": 240,
+          "controlSource": "OrderNr",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtBalance",
+          "left": 5820,
+          "top": 0,
+          "width": 1440,
+          "height": 240,
+          "controlSource": "=fncGetMatterARBalanceWithCaseID([OrderNr],[caseID])",
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "format": "Currency",
+          "textAlign": "right"
+        }
+      ]
+    },
+    {
+      "type": "GroupHeader",
+      "groupIndex": 0,
+      "groupField": "CaseID",
+      "height": 255,
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label19",
+          "left": 6360,
+          "top": 0,
+          "width": 705,
+          "height": 255,
+          "caption": "Balance",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
+        },
+        {
+          "type": "Label",
+          "name": "Label17",
+          "left": 4620,
+          "top": 0,
+          "width": 795,
+          "height": 255,
+          "caption": "Payment",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
+        },
+        {
+          "type": "Label",
+          "name": "Label16",
+          "left": 3660,
+          "top": 0,
+          "width": 675,
+          "height": 255,
+          "caption": "Charge",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label11",
+          "left": 1140,
+          "top": 0,
+          "width": 1140,
+          "height": 255,
+          "caption": "Description",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label29",
+          "left": 165,
+          "top": 0,
+          "width": 855,
+          "height": 255,
+          "caption": "Date",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        }
+      ]
+    },
+    {
+      "type": "GroupFooter",
+      "groupIndex": 0,
+      "groupField": "CaseID",
+      "height": 330,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "TotalAR",
+          "left": 5805,
+          "top": 45,
+          "width": 1440,
+          "height": 285,
+          "controlSource": "=Nz(DLookUp(\"SumofBalance\",\"qryMatterBalanceTotals\",\"CaseID=\" & [CaseID]),0)+Nz([retainer],0)",
+          "fontName": "Arial",
+          "fontSize": 10,
+          "fontBold": true,
+          "borderWidth": 1,
+          "borderColor": 10921638,
+          "format": "Currency"
+        },
+        {
+          "type": "Label",
+          "name": "Label28",
+          "left": 4500,
+          "top": 0,
+          "width": 1200,
+          "height": 255,
+          "caption": "Total Balance:",
+          "fontName": "Arial",
+          "fontSize": 8,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        }
+      ]
+    }
+  ],
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =-1225115914\nBegin Report\n    LayoutForPrint = NotDefault\n    DividingLines = NotDefault\n    AllowAdditions = NotDefault\n    AllowDesignChanges = NotDefault\n    DateGrouping =1\n    GrpKeepTogether =1\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =7320\n    DatasheetFontHeight =11\n    ItemSuffix =30\n    Left =450\n    Top =5850\n    Right =8115\n    Bottom =7515\n    DatasheetGridlinesColor =15132391\n    RecSrcDt = Begin\n        0x54994f8b2f89e640\n    End\n    GUID = Begin\n        0x8330d5f2ecff7a488950fa42a5c6197f\n    End\n    NameMap = Begin\n        0x0acc0e55000000008f4a9ddc2cb55840b23f7d009ecec4f800000000de97967a ,\n        0x8d86e6400000000000000000760077005f007200700074005f004d0061007400 ,\n        0x7400650072005f0043006c006f00730069006e0067000000000000009482d47f ,\n        0xe9ad544b97de6088ee1f1998070000008f4a9ddc2cb55840b23f7d009ecec4f8 ,\n        0x43006100730065004900440000000000000062cec0c826357645989ecab04736 ,\n        0x21ac070000008f4a9ddc2cb55840b23f7d009ecec4f84d006100740074006500 ,\n        0x720049004400000000000000bac73aaf4c9d5e47ad11b26b1069785607000000 ,\n        0x8f4a9ddc2cb55840b23f7d009ecec4f844006100740065003200000000000000 ,\n        0x9d8fabe4e3d5124e8b0944351d1fddc0070000008f4a9ddc2cb55840b23f7d00 ,\n        0x9ecec4f85000610079005f004f00750074006c00610079000000000000007372 ,\n        0x65f20af49744859ded0dd789fb08070000008f4a9ddc2cb55840b23f7d009ece ,\n        0xc4f84300680061007200670065000000000000008d66cbcfa495f4479a2120c7 ,\n        0xc2eb893b070000008f4a9ddc2cb55840b23f7d009ecec4f85000610079006d00 ,\n        0x65006e0074000000000000000d70335129f7a34e89cdb8703919788807000000 ,\n        0x8f4a9ddc2cb55840b23f7d009ecec4f8420061006c0061006e00630065000000 ,\n        0x000000000fdc811e4c6c4c4582796761f912f03f070000008f4a9ddc2cb55840 ,\n        0xb23f7d009ecec4f8520075006e006e0069006e00670044006500620069007400 ,\n        0x00000000000093df73a8e0c9094787b79141017571dd070000008f4a9ddc2cb5 ,\n        0x5840b23f7d009ecec4f8520075006e006e0069006e0067004300720065006400 ,\n        0x69007400000000000000c8bbd9e46e5b1b4b836756ccf2a14a60070000008f4a ,\n        0x9ddc2cb55840b23f7d009ecec4f8520075006e006e0069006e00670042006100 ,\n        0x6c0061006e0063006500000000000000df4ffe32910a87478340215c7c1e5d92 ,\n        0x070000008f4a9ddc2cb55840b23f7d009ecec4f8520065007400610069006e00 ,\n        0x650072000000000000003d8e6322d562fc49959c777a1e83400e070000008f4a ,\n        0x9ddc2cb55840b23f7d009ecec4f8520065007400420061006c00000000000000 ,\n        0x5c72ed310d73c64e82f64a90f4fd49e1070000008f4a9ddc2cb55840b23f7d00 ,\n        0x9ecec4f84f0072006400650072004e00720000000000000082ae358c3b862146 ,\n        0xa3e1bf44c82db5aa060000008330d5f2ecff7a488950fa42a5c6197f4f007200 ,\n        0x6400650072004e00720000000000000000000000000000000000000000000000 ,\n        0x0c000000050000000000000000000000000000000000\n    End\n    RecordSource =\"SELECT vw_rpt_Matter_Closing.CaseID, vw_rpt_Matter_Closing.MatterID, vw_rpt_Matt\"\n        \"er_Closing.Date2, vw_rpt_Matter_Closing.Pay_Outlay, vw_rpt_Matter_Closing.Charge\"\n        \", vw_rpt_Matter_Closing.Payment, vw_rpt_Matter_Closing.Balance, vw_rpt_Matter_Cl\"\n        \"osing.RunningDebit, vw_rpt_Matter_Closing.RunningCredit, vw_rpt_Matter_Closing.R\"\n        \"unningBalance, vw_rpt_Matter_Closing.Retainer, vw_rpt_Matter_Closing.RetBal, vw_\"\n        \"rpt_Matter_Closing.OrderNr FROM vw_rpt_Matter_Closing ORDER BY vw_rpt_Matter_Clo\"\n        \"sing.MatterID; \"\n    DatasheetFontName =\"Calibri\"\n    PrtMip = Begin\n        0x68010000f000000068010000f000000000000000241800002c01000001000000 ,\n        0x010000006801000000000000a10700000100000001000000\n    End\n    PrtDevMode = Begin\n        0x009e1bc78800000040d321aef67f00002046f1adf67f00002000000000000000 ,\n        0x010403069c00e80353ef800101000100ea0a6f08640001000f00580202000100 ,\n        0x5802030001004c6574746572000000000500000000000000b0911bc788000000 ,\n        0x90971bc788000000000000000000000000000000010000000000000001000000 ,\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\n        0x00000000\n    End\n    PrtDevNames = Begin\n        0x08003b006c000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,\n        0x35362d626536332d33376332313832623061383600\n    End\n    FilterOnLoad =0\n    FitToPage =1\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    PrtDevModeW = Begin\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,\n        0x01040306dc00e80353ef800101000100ea0a6f08640001000f00580202000100 ,\n        0x5802030001004c00650074007400650072000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000000000000001000000 ,\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\n        0x00000000\n    End\n    PrtDevNamesW = Begin\n        0x0400370068000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000000000005700530044002d003800310066003100 ,\n        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,\n        0x6500360033002d00330037006300320031003800320062003000610038003600 ,\n        0x0000\n    End\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            BorderColor =8355711\n            ForeColor =8355711\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Line\n            BorderLineStyle =0\n            GridlineColor =10921638\n            BorderThemeColorIndex =0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            GridlineColor =10921638\n            ShowDatePicker =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin BreakLevel\n            GroupHeader = NotDefault\n            GroupFooter = NotDefault\n            ControlSource =\"CaseID\"\n        End\n        Begin BreakLevel\n            ControlSource =\"Date2\"\n        End\n        Begin BreakHeader\n            KeepTogether = NotDefault\n            CanGrow = NotDefault\n            CanShrink = NotDefault\n            Height =255\n            Name =\"GroupHeader0\"\n            GUID = Begin\n                0xdb0f77a5b0922c44beb8eea35b31cc3e\n            End\n            AlternateBackColor =16777215\n            AlternateBackThemeColorIndex =1\n            BackThemeColorIndex =1\n            Begin\n                Begin Label\n                    TextAlign =3\n                    Left =6360\n                    Width =705\n                    Height =255\n                    FontSize =8\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label19\"\n                    Caption =\"Balance\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x1a8238baf2131443af24fb9d8cae6277\n                    End\n                    LayoutCachedLeft =6360\n                    LayoutCachedWidth =7065\n                    LayoutCachedHeight =255\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                End\n                Begin Label\n                    TextAlign =3\n                    Left =4620\n                    Width =795\n                    Height =255\n                    FontSize =8\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label17\"\n                    Caption =\"Payment\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0xa6aa772fb0de3e45ad66367624a1c476\n                    End\n                    LayoutCachedLeft =4620\n                    LayoutCachedWidth =5415\n                    LayoutCachedHeight =255\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =3660\n                    Width =675\n                    Height =255\n                    FontSize =8\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label16\"\n                    Caption =\"Charge\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x7c7a6c212604da479a1e2e4d487466a8\n                    End\n                    LayoutCachedLeft =3660\n                    LayoutCachedWidth =4335\n                    LayoutCachedHeight =255\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =1140\n                    Width =1140\n                    Height =255\n                    FontSize =8\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label11\"\n                    Caption =\"Description\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0x204994b53ece2d4c81ecab68a29b27a0\n                    End\n                    LayoutCachedLeft =1140\n                    LayoutCachedWidth =2280\n                    LayoutCachedHeight =255\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =165\n                    Width =855\n                    Height =255\n                    FontSize =8\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label29\"\n                    Caption =\"Date\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0xbd33823e9a7ed1429a14a08b563a5bba\n                    End\n                    LayoutCachedLeft =165\n                    LayoutCachedWidth =1020\n                    LayoutCachedHeight =255\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                End\n            End\n        End\n        Begin Section\n            KeepTogether = NotDefault\n            CanGrow = NotDefault\n            Height =300\n            Name =\"Detail\"\n            GUID = Begin\n                0xbfbaf1c7fad678478efad49cc28aa4cd\n            End\n            AlternateBackColor =14277081\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =85.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    OldBorderStyle =0\n                    TextAlign =3\n                    IMESentenceMode =3\n                    Left =4710\n                    Width =1065\n                    FontSize =8\n                    ForeColor =0\n                    Name =\"Payment\"\n                    ControlSource =\"Payment\"\n                    Format =\"$#,##0.00;($#,##0.00)\"\n                    GUID = Begin\n                        0x7cfcf88279a3964fb73228c47e830617\n                    End\n\n                    LayoutCachedLeft =4710\n                    LayoutCachedWidth =5775\n                    LayoutCachedHeight =240\n                    ForeTint =100.0\n                    CurrencySymbol =\"$\"\n                    ColLCID =1033\n                End\n                Begin TextBox\n                    OldBorderStyle =0\n                    TextAlign =3\n                    IMESentenceMode =3\n                    Left =3615\n                    Width =1050\n                    FontSize =8\n                    TabIndex =1\n                    ForeColor =0\n                    Name =\"Charge\"\n                    ControlSource =\"Charge\"\n                    Format =\"$#,##0.00;($#,##0.00)\"\n                    GUID = Begin\n                        0x25cd503bee9c5444bed17e41a5599e97\n                    End\n\n                    LayoutCachedLeft =3615\n                    LayoutCachedWidth =4665\n                    LayoutCachedHeight =240\n                    ForeTint =100.0\n                    CurrencySymbol =\"$\"\n                    ColLCID =1033\n                End\n                Begin TextBox\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =120\n                    Width =900\n                    FontSize =8\n                    TabIndex =2\n                    ForeColor =0\n                    Name =\"Date2\"\n                    ControlSource =\"Date2\"\n                    GUID = Begin\n                        0x3c08792a6d4db14f913f1a7dbad36372\n                    End\n\n                    LayoutCachedLeft =120\n                    LayoutCachedWidth =1020\n                    LayoutCachedHeight =240\n                    ForeTint =100.0\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =1140\n                    Width =2430\n                    FontSize =8\n                    TabIndex =3\n                    ForeColor =0\n                    Name =\"Pay_Outlay\"\n                    ControlSource =\"Pay_Outlay\"\n                    GUID = Begin\n                        0x97d1da689260fa498c06ff48f9aaec31\n                    End\n\n                    LayoutCachedLeft =1140\n                    LayoutCachedWidth =3570\n                    LayoutCachedHeight =240\n                    ForeTint =100.0\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    TabStop = NotDefault\n                    IMESentenceMode =3\n                    Width =300\n                    Height =210\n                    FontSize =9\n                    TabIndex =4\n                    LeftMargin =44\n                    TopMargin =22\n                    RightMargin =44\n                    BottomMargin =22\n                    Name =\"MatterID\"\n                    ControlSource =\"MatterID\"\n                    FontName =\"Calibri Light\"\n                    GUID = Begin\n                        0x581dda7d7b25b8469ad021f46d3a8e4f\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedWidth =300\n                    LayoutCachedHeight =210\n                    RowStart =1\n                    RowEnd =1\n                    ThemeFontIndex =0\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    IMESentenceMode =3\n                    Left =3705\n                    Width =240\n                    TabIndex =5\n                    Name =\"OrderNr\"\n                    ControlSource =\"OrderNr\"\n                    GUID = Begin\n                        0x82ae358c3b862146a3e1bf44c82db5aa\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =3705\n                    LayoutCachedWidth =3945\n                    LayoutCachedHeight =240\n                End\n                Begin TextBox\n                    TabStop = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =3\n                    IMESentenceMode =3\n                    Left =5820\n                    FontSize =8\n                    TabIndex =6\n                    BorderColor =15066597\n                    Name =\"txtBalance\"\n                    ControlSource =\"=fncGetMatterARBalanceWithCaseID([OrderNr],[caseID])\"\n                    Format =\"$#,##0.00;($#,##0.00)\"\n                    GUID = Begin\n                        0xe83f617406eb3644bcf4d194795e39db\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =5820\n                    LayoutCachedWidth =7260\n                    LayoutCachedHeight =240\n                    BorderShade =90.0\n                    CurrencySymbol =\"$\"\n                End\n            End\n        End\n        Begin BreakFooter\n            KeepTogether = NotDefault\n            CanGrow = NotDefault\n            CanShrink = NotDefault\n            Height =330\n            Name =\"GroupFooter1\"\n            GUID = Begin\n                0x580ed2a39738f545a09d983fdf2d8986\n            End\n            AlternateBackColor =10921638\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =65.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    OldBorderStyle =0\n                    BorderWidth =1\n                    IMESentenceMode =3\n                    Left =5805\n                    Top =45\n                    Height =285\n                    FontSize =10\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"TotalAR\"\n                    ControlSource =\"=Nz(DLookUp(\\\"SumofBalance\\\",\\\"qryMatterBalanceTotals\\\",\\\"CaseID=\\\" & [CaseID]),\"\n                        \"0)+Nz([retainer],0)\"\n                    Format =\"$#,##0.00;($#,##0.00)\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0xaede04c1bd55f24eb80a28da3ed6a0a9\n                    End\n\n                    LayoutCachedLeft =5805\n                    LayoutCachedTop =45\n                    LayoutCachedWidth =7245\n                    LayoutCachedHeight =330\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                    CurrencySymbol =\"$\"\n                End\n                Begin Label\n                    Left =4500\n                    Width =1200\n                    Height =255\n                    FontSize =8\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label28\"\n                    Caption =\"Total Balance:\"\n                    FontName =\"Arial\"\n                    GUID = Begin\n                        0xc5eaa401529cb44d9f5e4679fd368acd\n                    End\n                    LayoutCachedLeft =4500\n                    LayoutCachedWidth =5700\n                    LayoutCachedHeight =255\n                    ThemeFontIndex =-1\n                    ForeTint =100.0\n                End\n            End\n        End\n    End\nEnd"
+}

@@ -1,0 +1,60 @@
+{
+  "formName": "frmScanLocation",
+  "recordSource": "tblScans",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 6000,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text0",
+          "left": 2700,
+          "top": 60,
+          "width": 3300,
+          "height": 285,
+          "controlSource": "ScanLocation",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Text2",
+          "left": 4980,
+          "top": 60,
+          "width": 900,
+          "height": 315,
+          "controlSource": "CaseID",
+          "tabIndex": 1,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Combo2",
+          "left": 0,
+          "top": 60,
+          "width": 2520,
+          "height": 270,
+          "controlSource": "TypeofScan",
+          "rowSource": "SELECT tblDropD.Code, tblDropD.CodeVal, tblDropD.SortOrder, tblDropD.FieldName FROM tblDropD WHERE (((tblDropD.FieldName)=\"ScanType\")) ORDER BY tblDropD.SortOrder; ",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =222783695\nBegin Form\n    RecordSelectors = NotDefault\n    NavigationButtons = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =6000\n    DatasheetFontHeight =11\n    ItemSuffix =4\n    Left =10950\n    Top =3270\n    Right =17235\n    Bottom =4695\n    DatasheetGridlinesColor =15132391\n    RecSrcDt = Begin\n        0x4e47c5cd5419e540\n    End\n    GUID = Begin\n        0x2c178a138c5ef2488a25f5608fcc05b9\n    End\n    NameMap = Begin\n        0x0acc0e5500000000b7110bc23018c248a39b7be5475f362300000000461d30ca ,\n        0xb25de6400000000000000000740062006c005300630061006e00730000000000 ,\n        0x000059ef2b8fae5b2947a8fc5faf9281581a07000000b7110bc23018c248a39b ,\n        0x7be5475f36235300630061006e004c006f0063006100740069006f006e000000 ,\n        0x00000000fa8157e38f4a704db51ba4b4b3c732e107000000b7110bc23018c248 ,\n        0xa39b7be5475f36234300610073006500490044000000000000003415b40ec0d6 ,\n        0xe84eb01d91736ef2a76007000000b7110bc23018c248a39b7be5475f36235400 ,\n        0x7900700065006f0066005300630061006e00000000000000b9176e80f27cb640 ,\n        0x87b8fff285f65b4f000000004e1974810c3ae640000000000000000074006200 ,\n        0x6c00440072006f00700044000000000000005bef6e020eebdd439485dc88f112 ,\n        0x0d9707000000b9176e80f27cb64087b8fff285f65b4f43006f00640065000000 ,\n        0x000000003b3f23c40f5ec74fa9650a307e0a701107000000b9176e80f27cb640 ,\n        0x87b8fff285f65b4f43006f0064006500560061006c0000000000000006e31c3c ,\n        0xf829d04c8f4779442c3aa06907000000b9176e80f27cb64087b8fff285f65b4f ,\n        0x53006f00720074004f007200640065007200000000000000287ac41c516aef46 ,\n        0x86a664fd026f5f9b07000000b9176e80f27cb64087b8fff285f65b4f46006900 ,\n        0x65006c0064004e0061006d006500000000000000000000000000000000000000 ,\n        0x000000000c000000050000000000000000000000000000000000\n    End\n    RecordSource =\"tblScans\"\n    DatasheetFontName =\"Calibri\"\n    AllowDatasheetView =0\n    FilterOnLoad =0\n    ShowPageMargins =0\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            BorderColor =8355711\n            ForeColor =8355711\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            GridlineColor =10921638\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin ComboBox\n            AddColon = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =3484194\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            AllowValueListEdits =1\n            InheritValueList =1\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ForeThemeColorIndex =2\n            ForeShade =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Section\n            Height =375\n            Name =\"Detail\"\n            GUID = Begin\n                0xce049e60d8eedf41872cbd45ee983986\n            End\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    FontUnderline = NotDefault\n                    OverlapFlags =93\n                    IMESentenceMode =3\n                    Left =2700\n                    Top =60\n                    Width =3300\n                    Height =285\n                    FontSize =10\n                    BorderColor =13421772\n                    ForeColor =12673797\n                    Name =\"Text0\"\n                    ControlSource =\"ScanLocation\"\n                    GUID = Begin\n                        0xe8c476f002b9084ca9b38c828739304e\n                    End\n\n                    LayoutCachedLeft =2700\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =6000\n                    LayoutCachedHeight =345\n                    BorderShade =80.0\n                    ForeThemeColorIndex =10\n                    ForeTint =100.0\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    OverlapFlags =247\n                    IMESentenceMode =3\n                    Left =4980\n                    Top =60\n                    Width =900\n                    Height =315\n                    TabIndex =1\n                    Name =\"Text2\"\n                    ControlSource =\"CaseID\"\n                    GUID = Begin\n                        0x7f4ceb60cc551643b84375096779304c\n                    End\n\n                    LayoutCachedLeft =4980\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =5880\n                    LayoutCachedHeight =375\n                End\n                Begin ComboBox\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    ColumnCount =2\n                    ListWidth =2880\n                    Top =60\n                    Width =2520\n                    Height =270\n                    FontSize =10\n                    TabIndex =2\n                    BorderColor =13421772\n                    ColumnInfo =\"\\\"\\\";\\\"\\\";\\\"\\\";\\\"\\\";\\\"10\\\";\\\"510\\\"\"\n                    GUID = Begin\n                        0x2d1f0010b1c60f4b806d8bdbe5f9a4fe\n                    End\n                    Name =\"Combo2\"\n                    ControlSource =\"TypeofScan\"\n                    RowSourceType =\"Table/Query\"\n                    RowSource =\"SELECT tblDropD.Code, tblDropD.CodeVal, tblDropD.SortOrder, tblDropD.FieldName F\"\n                        \"ROM tblDropD WHERE (((tblDropD.FieldName)=\\\"ScanType\\\")) ORDER BY tblDropD.SortO\"\n                        \"rder; \"\n                    ColumnWidths =\"576;1872\"\n\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =2520\n                    LayoutCachedHeight =330\n                    BorderShade =80.0\n                End\n            End\n        End\n    End\nEnd"
+}

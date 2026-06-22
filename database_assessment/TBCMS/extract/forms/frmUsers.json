@@ -1,0 +1,151 @@
+{
+  "formName": "frmUsers",
+  "recordSource": "SELECT * FROM tblUsers; ",
+  "defaultView": 1,
+  "allowEdits": false,
+  "allowAdditions": false,
+  "allowDeletions": false,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 11550,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "ID",
+          "left": 0,
+          "top": 20,
+          "width": 2880,
+          "height": 288,
+          "controlSource": "ID",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "events": {
+            "onClick": "=OnclickEdit('frmUsers_Edit', ID)"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "UserID",
+          "left": 2890,
+          "top": 20,
+          "width": 2880,
+          "height": 288,
+          "controlSource": "UserID",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "PWD",
+          "left": 5780,
+          "top": 20,
+          "width": 2880,
+          "height": 288,
+          "controlSource": "PWD",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "ComboBox",
+          "name": "Access",
+          "left": 8670,
+          "top": 20,
+          "width": 2880,
+          "height": 315,
+          "controlSource": "Access",
+          "rowSource": "SELECT tblAccessType.AccessType, tblAccessType.AccessDescription, * FROM tblAccessType; ",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    },
+    {
+      "type": "FormHeader",
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 0,
+          "top": 480,
+          "width": 2880,
+          "height": 288,
+          "caption": "ID",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 2890,
+          "top": 480,
+          "width": 2880,
+          "height": 288,
+          "caption": "UserID",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label4",
+          "left": 5780,
+          "top": 480,
+          "width": 2880,
+          "height": 288,
+          "caption": "PWD",
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label6",
+          "left": 8670,
+          "top": 480,
+          "width": 2880,
+          "height": 288,
+          "caption": "Access",
+          "visible": true
+        },
+        {
+          "type": "TextBox",
+          "name": "lblTitle",
+          "left": 2820,
+          "top": 0,
+          "width": 5820,
+          "height": 360,
+          "controlSource": "=GetCompanyName()",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "Command11",
+          "left": 11100,
+          "top": 120,
+          "width": 306,
+          "height": 246,
+          "caption": "Cancel",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        }
+      ]
+    }
+  ],
+  "formEvents": {
+    "onLoad": "[Event Procedure]"
+  },
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub Form_Load()\r\n\r\n    Dim passed As Boolean\r\n\r\n    passed = FormUtils.Form_Load_New(Me, True)\r\n    \r\n    On Error Resume Next\r\n    If passed = False Then DoCmd.Close acForm, Me.Name\r\n\r\nEnd Sub"
+}

@@ -1,0 +1,231 @@
+{
+  "reportName": "rptPersInjuryStatus",
+  "dataSource": "qryPersInjStatus",
+  "triggerPaths": [
+    {
+      "formName": "frmPersInjuryStatusReport",
+      "controlName": "cmdAttyReport",
+      "eventName": "onClick",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
+      "lineStart": 589,
+      "lineEnd": 594,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmPersInjuryStatusReport",
+      "controlName": "cmdAllAttyReport",
+      "eventName": "onClick",
+      "procedureName": "cmdAllAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
+      "lineStart": 583,
+      "lineEnd": 588,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmOpenReport",
+      "controlName": "cmdAttyReport",
+      "eventName": "onClick",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmOpenReport.txt",
+      "lineStart": 631,
+      "lineEnd": 636,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    },
+    {
+      "formName": "frmPersonalInjury",
+      "controlName": "CrStatusRep",
+      "eventName": "onClick",
+      "procedureName": "CrStatusRep_Click",
+      "sourceFile": "extract/vba/forms/frmPersonalInjury.txt",
+      "lineStart": 3818,
+      "lineEnd": 3837,
+      "confidence": "high",
+      "reportMentionType": "literal"
+    }
+  ],
+  "dataLineage": {
+    "recordSource": "qryPersInjStatus",
+    "recordSourceType": "saved-query",
+    "involvedQueries": [
+      "qryPersInjStatus"
+    ],
+    "terminalTables": [
+      "Personal Injury",
+      "tblCase"
+    ],
+    "queryEdges": [
+      {
+        "from": "qryPersInjStatus",
+        "to": "Personal Injury",
+        "type": "table"
+      },
+      {
+        "from": "qryPersInjStatus",
+        "to": "tblCase",
+        "type": "table"
+      }
+    ]
+  },
+  "relatedVbaProcedures": [
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmail_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16628,
+      "lineEnd": 16658,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmdClientReviewEmailESP_Click",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 16659,
+      "lineEnd": 16689,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "cmbFileNumbers_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17559,
+      "lineEnd": 17696,
+      "usesDoCmd": [
+        "GoToRecord",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmClientLedger",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmClientLedger.txt",
+      "lineStart": 17741,
+      "lineEnd": 17751,
+      "usesDoCmd": [],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmPersInjuryStatusReport",
+      "procedureName": "cmdAllAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
+      "lineStart": 583,
+      "lineEnd": 588,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmPersInjuryStatusReport",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
+      "lineStart": 589,
+      "lineEnd": 594,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmOpenReport",
+      "procedureName": "cmdAllAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmOpenReport.txt",
+      "lineStart": 625,
+      "lineEnd": 630,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmOpenReport",
+      "procedureName": "cmdAttyReport_Click",
+      "sourceFile": "extract/vba/forms/frmOpenReport.txt",
+      "lineStart": 631,
+      "lineEnd": 636,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmPersonalInjury",
+      "procedureName": "CrStatusRep_Click",
+      "sourceFile": "extract/vba/forms/frmPersonalInjury.txt",
+      "lineStart": 3818,
+      "lineEnd": 3837,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8087,
+      "lineEnd": 8117,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8143,
+      "lineEnd": 8147,
+      "usesDoCmd": [],
+      "usesSql": false
+    }
+  ],
+  "confidence": "high"
+}

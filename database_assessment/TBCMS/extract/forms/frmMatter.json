@@ -1,0 +1,261 @@
+{
+  "formName": "frmMatter",
+  "recordSource": "SELECT vwMatterAndAR.MatterID, vwMatterAndAR.CaseID, vwMatterAndAR.Date2, vwMatterAndAR.Pay_Outlay, vwMatterAndAR.Charge, vwMatterAndAR.Payment, vwMatterAndAR.FirmPrepaid, vwMatterAndAR.OrderNr, vwMatterAndAR.InsertPymt, vwMatterAndAR.AdvancedLegal, vwMatterAndAR.SumOfCharge, vwMatterAndAR.SumOfPayment, vwMatterAndAR.Retainer, vwMatterAndAR.Balance, vwMatterAndAR.Creimb FROM vwMatterAndAR ORDER BY vwMatterAndAR.CaseID, vwMatterAndAR.OrderNr; ",
+  "defaultView": 1,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 9000,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "OrderNr",
+          "left": 3420,
+          "top": 60,
+          "width": 615,
+          "height": 315,
+          "controlSource": "[Matter and AR].OrderNr",
+          "tabIndex": 11,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtRetainer",
+          "left": 2760,
+          "top": 120,
+          "width": 1590,
+          "height": 270,
+          "controlSource": "=GetRetainer(GetCaseID())+Nz(DSum(\"charge\",\"[matter and ar]\",\"Date2<=\" & [Date2] & \" and MatterID<=\" & [MatterID] & \" and caseID=\" & GetCaseID()),0)-Nz(DSum(\"payment\",\"[matter and ar]\",\"Date2<=\" & [Date2] & \" and MatterID<=\" & Nz([MatterID],0) & \" and caseID=\" & GetCaseID()),0)",
+          "format": "Currency",
+          "tabIndex": 8,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtCaseID",
+          "left": 2280,
+          "top": 60,
+          "width": 360,
+          "height": 315,
+          "controlSource": "CaseID",
+          "tabIndex": 13,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdInsertIntoTA",
+          "left": 2100,
+          "top": 120,
+          "width": 705,
+          "height": 285,
+          "caption": "Trust",
+          "tabIndex": 4,
+          "visible": false,
+          "enabled": false,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "ComboBox",
+          "name": "Pay_Outlay",
+          "left": 1560,
+          "top": 60,
+          "width": 2820,
+          "height": 359,
+          "controlSource": "Pay_Outlay",
+          "rowSource": "qry_matterAR_pay_putlay_list_options",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "insertpymt",
+          "left": 3240,
+          "top": 180,
+          "width": 240,
+          "height": 240,
+          "controlSource": "InsertPymt",
+          "tabIndex": 14,
+          "visible": false,
+          "enabled": true,
+          "locked": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Date2",
+          "left": 420,
+          "top": 60,
+          "width": 1083,
+          "height": 360,
+          "controlSource": "Date2",
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Charge",
+          "left": 4380,
+          "top": 60,
+          "width": 1083,
+          "height": 360,
+          "controlSource": "Charge",
+          "format": "Currency",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "Payment",
+          "left": 5523,
+          "top": 60,
+          "width": 1143,
+          "height": 360,
+          "controlSource": "Payment",
+          "format": "Currency",
+          "tabIndex": 3,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "CheckBox",
+          "name": "FirmPrepaid",
+          "left": 8610,
+          "top": 30,
+          "width": 180,
+          "height": 240,
+          "controlSource": "FirmPrepaid",
+          "tabIndex": 5,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdDelete",
+          "left": 45,
+          "top": 60,
+          "width": 306,
+          "height": 366,
+          "caption": "Command19",
+          "tabIndex": 9,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Embedded Macro]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "txtBalance",
+          "left": 6720,
+          "top": 60,
+          "width": 1380,
+          "height": 360,
+          "controlSource": "Balance",
+          "format": "Currency",
+          "tabIndex": 10,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "txtTransPymtTrust",
+          "left": 8145,
+          "top": 90,
+          "width": 230,
+          "height": 270,
+          "controlSource": "=\"D\"",
+          "tabIndex": 12,
+          "visible": true,
+          "enabled": true,
+          "locked": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdReceipt",
+          "left": 8385,
+          "top": 60,
+          "width": 180,
+          "height": 300,
+          "caption": "R",
+          "tabIndex": 15,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkAdvancedLegal",
+          "left": 8820,
+          "top": 120,
+          "width": 180,
+          "height": 240,
+          "controlSource": "AdvancedLegal",
+          "tabIndex": 6,
+          "visible": true,
+          "enabled": true,
+          "locked": false,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CheckBox",
+          "name": "CostReimb",
+          "left": 8610,
+          "top": 240,
+          "width": 180,
+          "height": 240,
+          "controlSource": "Creimb",
+          "tabIndex": 16,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "TextBox",
+          "name": "MatterID",
+          "left": 6480,
+          "top": 120,
+          "width": 780,
+          "height": 285,
+          "controlSource": "MatterID",
+          "tabIndex": 7,
+          "visible": false,
+          "enabled": true,
+          "locked": false
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\n'Dim OldDate 'As Date\r\n'Dim OldMatterID As Long\r\n'Dim OldPay_Outlay As String\r\n'Dim OldPayment As String\r\n'Dim OldCharge As Currency\r\n'Dim OldFirmPrepaid As Boolean\r\n\r\n'Private Sub Charge_AfterUpdate()\r\n'    Text39.Requery\r\n'End Sub\r\n'\r\n'Private Sub Payment_AfterUpdate()\r\n'    Text39.Requery\r\n'End Sub\r\n\r\nPrivate Sub Charge_AfterUpdate()\r\n    'Me.Recalc\r\n    If Me.Dirty Then Me.Dirty = False\r\n    'Me.Payment.SetFocus\r\n    If IsNull(Me.Date2) Then\r\n        MsgBox \"Please input the date\", , \"TB CMS\"\r\n        Date2.SetFocus\r\n        Exit Sub\r\n    End If\r\n    'Me.Refresh\r\n    'Form_frmClientLedger.Requery\r\n    Form_frmClientLedger.Current_Balance.Requery\r\n    'Me.Payment.SetFocus\r\n    'Form_frmClientLedger.Requery\r\nEnd Sub\r\n\r\nPrivate Sub chkAdvancedLegal_Click()\r\nIf Me.AdvancedLegal = True Then\r\n    Me.FirmPrepaid.value = False\r\nEnd If\r\n\r\n\r\nIf Me.AdvancedLegal = False Then\r\n    Me.FirmPrepaid.value = False\r\nEnd If\r\n\r\nMe.Refresh\r\nEnd Sub\r\n\r\n\r\nPrivate Sub chkAdvancedLegal_LostFocus()\r\n    'Call reorderByDateMatter(Me.CaseID)\r\n    'Debug.Print \"aaaaaaaaaaaaaaaaaaaaaaa\" & Form_frmClientLedger.CaseID\r\n    Call reorderByDateMatter(Form_frmClientLedger.CaseID)\r\n    Me.Requery\r\n    Form_frmClientLedger.txtTrustBalance.Requery\r\n    DoCmd.GoToRecord , , acNewRec\r\n'    Dim strBookmark As String\r\n'    strBookmark = Me.Form.Bookmark\r\n'    Me.Form.Requery\r\n'    Me.Form.Bookmark = strBookmark\r\nEnd Sub\r\n\r\nPrivate Sub cmdReceipt_Click()\r\n\r\n'     If CurrentProject.AllReports(\"rptReceipt\").IsLoaded Then\r\n'        DoCmd.Close acReport, \"rptReceipt\", acSaveNo\r\n'        End If\r\n    If Me.Payment > 0 Then\r\n    If CurrentProject.AllReports(\"rptReceiptC\").IsLoaded Then\r\n        DoCmd.Close acReport, \"rptReceiptC\", acSaveNo\r\n    End If\r\n        DoCmd.OpenReport \"rptReceiptC\", acViewPreview, , \"[MatterID]=\" & Me.MatterID\r\n    End If\r\n'    If Me.Pay_Outlay Like \"*Cash*\" Then\r\n'    Reports!rptreceipt!OptionCash.value = True\r\n'    End If\r\n'    If Me.Pay_Outlay Like \"*CC*\" Then\r\n'    Reports!rptreceipt!OptionCC.value = True\r\n'    End If\r\n'    If Me.Pay_Outlay Like \"*Check*\" Then\r\n'    Reports!rptreceipt!OptionCheck.value = True\r\n'    End If\r\n\r\nEnd Sub\r\n\r\nPrivate Sub FirmPrepaid_Click()\r\n   \r\nIf Me.FirmPrepaid = True Then\r\n    Me.AdvancedLegal.value = False\r\nEnd If\r\n\r\n\r\nIf Me.FirmPrepaid = False Then\r\n    Me.AdvancedLegal.value = False\r\nEnd If\r\n\r\nMe.Refresh\r\n      \r\nEnd Sub\r\n\r\n\r\n\r\nPrivate Sub Form_AfterUpdate()\r\n    Call reorderByDateMatter(Form_frmClientLedger.CaseID)\r\n    Form_frmClientLedger.Current_Balance.Requery\r\nEnd Sub\r\n\r\nPrivate Sub Pay_Outlay_LostFocus()\r\n    If Me.Pay_Outlay Like \"Payment*\" Then\r\n    Payment.SetFocus\r\n    End If\r\n'    If Me.Pay_Outlay = \"Payment (Cash)\" Then\r\n'    Payment.SetFocus\r\n'    End If\r\n'    If Me.Pay_Outlay Like \"Payment*\" Then\r\n'    Payment.SetFocus\r\n'    End If\r\nEnd Sub\r\n\r\nPrivate Sub Payment_AfterUpdate()\r\n    'Me.Recalc\r\n    If Me.Dirty Then Me.Dirty = False\r\n    'Me.FirmPrepaid.SetFocus\r\n    If IsNull(Me.Date2) Then\r\n        MsgBox \"Please input the date\", , \"TB CMS\"\r\n        Date2.SetFocus\r\n        Exit Sub\r\n    End If\r\n    'Me.Refresh\r\n    'Form_frmClientLedger.Requery\r\n    Form_frmClientLedger.Current_Balance.Requery\r\n    'Me.FirmPrepaid.SetFocus\r\n    Me.txtTransPymtTrust.SetFocus\r\nEnd Sub\r\n\r\n'Private Sub Date2_Enter()\r\n'    OldDate = Me.Date2\r\n'    OldMatterID = Nz(Me.MatterID, 0)\r\n'    OldPay_Outlay = Nz(Me.Pay_Outlay, 0)\r\n'    OldCharge = Me.Charge\r\n'    OldPayment = Me.Payment\r\n'    OldFirmPrepaid = Me.FirmPrepaid\r\n'End Sub\r\n\r\nPrivate Sub Date2_AfterUpdate()\r\n    \r\n'    If OldDate <> Me.Date2 Then\r\n'        'MsgBox \"New date\"\r\n'        CurrentDb.Execute \"delete * from [Matter and AR] where MatterID = \" & OldMatterID\r\n'        strInsert = \"insert into [Matter and AR] (CaseID,Date2,Pay_Outlay,Charge,Payment,FirmPrepaid) \" & _\r\n'                    \" values(\" & Form_frmClientLedger.CaseID & \",#\" & OldDate & \"#,'\" & OldPay_Outlay & \"', \" & OldCharge & \",\" & OldPayment & \",\" & OldFirmPrepaid & \")\"\r\n'        Debug.Print strInsert\r\n'        CurrentDb.Execute strInsert\r\n'    End If\r\n    \r\n    'Form_frmClientLedger.Requery\r\n    'MsgBox dateOldVal\r\n    'Form_frmClientLedger.Current_Balance.Requery\r\n'    Me.Refresh\r\n    'Dim lMatterID As Integer\r\n    \r\n    'lMatterID = Nz(Me.MatterID, 0)\r\n    \r\n    'DoCmd.RunCommand acCmdSaveRecord\r\n    'Call reorderByDateMatter(Form_frmClientLedger.CaseID)\r\n    \r\n    'Me.Requery\r\n    'Me.Refresh\r\n\r\n    \r\n    \r\n    'Me.Recordset.FindFirst \"MatterID = \" & CStr(lMatterID)\r\n    'DoCmd.GoToControl \"Pay_Outlay\"\r\n    \r\n'    Dim crId As Integer\r\n'    crId = Me.CurrentRecord\r\n'    Me.Requery\r\n'    DoCmd.GoToRecord , , acGoTo, crId\r\n    \r\n'    Dim strBookmark As String\r\n'    strBookmark = Me.Bookmark\r\n'    Me.Requery\r\n'    Me.Bookmark = strBookmark\r\n    \r\n    \r\n    \r\n    \r\n    'Me.Requery\r\n    \r\n    'Me.Recalc\r\n    'Form_frmClientLedger.Recordset.MoveNext\r\n    'Form_frmClientLedger.Recordset.MovePrevious\r\n    'Me.Refresh\r\nEnd Sub\r\n\r\n\r\n\r\nPrivate Sub txtTransPymtTrust_Click()\r\n    If Me.InsertPymt = 0 Then\r\n        Call cmdInsertIntoTA_Click\r\n    End If\r\nEnd Sub\r\n\r\nSub reorderByDateMatter(lngCaseID As Long)\r\n    Dim rs As Recordset\r\n    \r\n    strSQL = \"select * from [Matter and AR] where CaseID = \" & lngCaseID & \" order by Date2, Charge desc\"\r\n    Debug.Print strSQL\r\n    \r\n    Set rs = CurrentDb.OpenRecordset(strSQL, dbOpenDynaset, dbSeeChanges)\r\n    Dim i As Integer\r\n    i = 0\r\n    Do Until rs.EOF\r\n        i = i + 1\r\n        'Take off table:\r\n        strSQL = \"Update [Matter and AR] set OrderNr = \" & i & \" where MatterID =\" & rs(\"MatterID\")\r\n        Debug.Print \"Date is: \" & rs(\"date2\")\r\n        Debug.Print strSQL\r\n        CurrentDb.Execute strSQL, dbSeeChanges\r\n        \r\n        rs.MoveNext\r\n    Loop\r\n    'MsgBox \"Done\", , \"TB CMS\"\r\nEnd Sub\r\n\r\nPrivate Sub cmdInsertIntoTA_Click()\r\n    Dim strSQL As String\r\n    \r\n    If Me.Payment > 0 Then\r\n        If Me.Pay_Outlay Like (\"Payment (Cash*\") And Me.Payment > 0 Then\r\n            strSQL = \"Insert into [Trust Account] (CaseID, Debit, TDate, TMatter)\"\r\n            strSQL = strSQL & \" values (\" & _\r\n                              Me.txtCaseID & \", \" & _\r\n                              Nz(Me.Payment, 0) & \", #\" & _\r\n                              Date2 & \"#, 'Deposit (Cash)')\"\r\n        End If\r\n        \r\n        If Me.Pay_Outlay Like (\"Payment (Chk*\") And Me.Payment > 0 Then\r\n            strSQL = \"Insert into [Trust Account] (CaseID, Debit, TDate, TMatter)\"\r\n            strSQL = strSQL & \" values (\" & _\r\n                              Me.txtCaseID & \", \" & _\r\n                              Nz(Me.Payment, 0) & \", #\" & _\r\n                              Date2 & \"#, 'Deposit (Chk)')\"\r\n        End If\r\n                \r\n        If Me.Pay_Outlay = \"Payment (CC)\" Then\r\n            strSQL = \"Insert into [Trust Account] (CaseID, Debit, TDate, TMatter)\"\r\n            strSQL = strSQL & \" values (\" & _\r\n                              Me.txtCaseID & \", \" & _\r\n                              Nz(Me.Payment, 0) & \", #\" & _\r\n                              Date2 & \"#, 'Deposit (CC)')\"\r\n        End If\r\n    End If\r\n        \r\n    Debug.Print strSQL\r\n    If Len(strSQL) > 10 Then\r\n        CurrentDb.Execute strSQL\r\n        i = 1\r\n    End If\r\n    \r\n    Me.InsertPymt = -1\r\n    'Me.Form.Recordset.Edit\r\n    'Me.Form.Recordset(\"InsertPymt\") = -1\r\n    'Me.Form.Recordset.Update\r\n    Me.Dirty = False\r\n    \r\n    Form_frmTrustAccount.reorderByDateTrustAccount\r\n    \r\n    Form_frmTrustAccount.Requery\r\n    Form_frmClientLedger.txtTrustBalance.Requery\r\n    Me.Requery\r\n    Me.Refresh\r\n    DoCmd.GoToRecord , , acNewRec\r\nEnd Sub\r\n"
+}

@@ -1,0 +1,108 @@
+{
+  "formName": "frmHomeAdminLogin",
+  "caption": "Admin Login",
+  "defaultView": 0,
+  "allowEdits": true,
+  "allowAdditions": true,
+  "allowDeletions": true,
+  "dataEntry": false,
+  "navigationButtons": false,
+  "width": 6240,
+  "sections": [
+    {
+      "type": "Detail",
+      "controls": [
+        {
+          "type": "Rectangle",
+          "name": "Box16",
+          "left": 0,
+          "top": 0,
+          "width": 6240,
+          "height": 870,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box18",
+          "left": 0,
+          "top": 870,
+          "width": 6240,
+          "height": 210,
+          "visible": true
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdYes",
+          "left": 2880,
+          "top": 1800,
+          "width": 1380,
+          "height": 360,
+          "caption": "&Submit",
+          "tabIndex": 1,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "CommandButton",
+          "name": "cmdNo",
+          "left": 4380,
+          "top": 1800,
+          "width": 1395,
+          "height": 360,
+          "caption": "&Cancel",
+          "tabIndex": 2,
+          "visible": true,
+          "enabled": true,
+          "events": {
+            "onClick": "[Event Procedure]"
+          }
+        },
+        {
+          "type": "TextBox",
+          "name": "txtpwd",
+          "left": 2160,
+          "top": 1260,
+          "width": 3660,
+          "height": 420,
+          "tabIndex": 0,
+          "visible": true,
+          "enabled": true,
+          "locked": false
+        },
+        {
+          "type": "Image",
+          "name": "Image15",
+          "left": 0,
+          "top": 180,
+          "width": 6240,
+          "height": 900,
+          "visible": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "Box17",
+          "left": 0,
+          "top": 0,
+          "width": 1080,
+          "height": 870,
+          "visible": true
+        },
+        {
+          "type": "Label",
+          "name": "Label23",
+          "left": 540,
+          "top": 1305,
+          "width": 1560,
+          "height": 420,
+          "caption": "Admin Pasword",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "formEvents": {},
+  "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub cmdNo_Click()\r\n     DoCmd.Close acForm, Me.Name\r\nEnd Sub\r\n\r\nPrivate Sub cmdYes_KeyPress(KeyAscii As Integer)\r\n    If KeyAscii = 13 Then cmdYes_Click\r\nEnd Sub\r\n\r\nPrivate Sub cmdYes_Click()\r\n\r\nOn Error GoTo errorhandler\r\nIf Me.txtpwd = \"27admin40\" Then\r\nDoCmd.openform \"frmHomeAdmin\", , , stlinkcriteria\r\nDoCmd.Close acForm, Me.Name\r\nForms(\"frmHomeAdmin\").SetFocus\r\nElse\r\nDoCmd.Close acForm, Me.Name\r\nMsgBox \"Sorry, the password is incorrect.\", , \"TB CMS\"\r\nEnd If\r\nExit Sub\r\nerrorhandler:\r\nMsgBox Err.Description, vbCritical, \"Error #\" & Err.Number\r\n\r\nEnd Sub\r\n\r\n\r\n"
+}

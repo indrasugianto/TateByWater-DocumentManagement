@@ -1,0 +1,165 @@
+{
+  "reportName": "rptPersInjStatusDemand",
+  "dataSource": "tblPersInjDemand",
+  "width": 3480,
+  "orientation": "portrait",
+  "margins": {
+    "left": 360,
+    "right": 360,
+    "top": 360,
+    "bottom": 360
+  },
+  "groupLevels": [
+    {
+      "fieldExpression": "DemandDate",
+      "sortOrder": "ascending",
+      "groupHeader": false,
+      "groupFooter": false
+    }
+  ],
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 315,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "DemandDate",
+          "left": 660,
+          "top": 0,
+          "width": 1080,
+          "height": 315,
+          "controlSource": "DemandDate",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "format": "Short Date",
+          "textAlign": "center"
+        },
+        {
+          "type": "TextBox",
+          "name": "Amount",
+          "left": 1860,
+          "top": 0,
+          "width": 1620,
+          "height": 315,
+          "controlSource": "DemandAmount",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "textAlign": "center"
+        },
+        {
+          "type": "TextBox",
+          "name": "Text5",
+          "left": 60,
+          "top": 0,
+          "width": 480,
+          "height": 270,
+          "controlSource": "DemandParty",
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "format": "Short Date",
+          "textAlign": "left"
+        }
+      ]
+    },
+    {
+      "type": "ReportHeader",
+      "height": 570,
+      "controls": [
+        {
+          "type": "Label",
+          "name": "Label0",
+          "left": 0,
+          "top": 0,
+          "width": 3135,
+          "height": 285,
+          "caption": "DEMAND (SETTLEMENT) HISTORY",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label1",
+          "left": 60,
+          "top": 300,
+          "width": 540,
+          "height": 270,
+          "caption": "Party",
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label2",
+          "left": 960,
+          "top": 300,
+          "width": 780,
+          "height": 270,
+          "caption": "Date",
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "Label",
+          "name": "Label3",
+          "left": 2160,
+          "top": 300,
+          "width": 1290,
+          "height": 270,
+          "caption": "Amount ($)",
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
+        },
+        {
+          "type": "TextBox",
+          "name": "Text13",
+          "left": 1500,
+          "top": 60,
+          "width": 540,
+          "height": 120,
+          "controlSource": "ID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "type": "ReportFooter",
+      "height": 0,
+      "controls": []
+    },
+    {
+      "type": "PageHeader",
+      "height": 0,
+      "controls": []
+    },
+    {
+      "type": "PageFooter",
+      "height": 0,
+      "controls": []
+    }
+  ],
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =1039101780\nBegin Report\n    LayoutForPrint = NotDefault\n    DividingLines = NotDefault\n    OrderByOn = NotDefault\n    AllowDesignChanges = NotDefault\n    DateGrouping =1\n    GrpKeepTogether =1\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =3480\n    DatasheetFontHeight =11\n    ItemSuffix =6\n    Left =11010\n    Top =5205\n    Right =14175\n    Bottom =6270\n    DatasheetGridlinesColor =15132391\n    OrderBy =\"DemandDate\"\n    RecSrcDt = Begin\n        0x6d38b6425b01e540\n    End\n    GUID = Begin\n        0x630f2bf1e7a6fc4cbc90e057f61aa490\n    End\n    NameMap = Begin\n        0x0acc0e55000000007b1cf5b75a61814da0797a5516f184cc0000000041206fca ,\n        0xb25de6400000000000000000740062006c00500065007200730049006e006a00 ,\n        0x440065006d0061006e0064000000000000002bfc090d9ee60142aad9102bd9c3 ,\n        0xabae06000000630f2bf1e7a6fc4cbc90e057f61aa490440065006d0061006e00 ,\n        0x64004400610074006500000000000000dceb9a365a1815479c8f8cfb7a42e51b ,\n        0x070000007b1cf5b75a61814da0797a5516f184cc49004400000000000000d535 ,\n        0xaee678ed8742a11bebf1b42dd7fd070000007b1cf5b75a61814da0797a5516f1 ,\n        0x84cc440065006d0061006e006400440061007400650000000000000015cabc9a ,\n        0xc95bc34ba4e8644c8298c81e070000007b1cf5b75a61814da0797a5516f184cc ,\n        0x440065006d0061006e00640041006d006f0075006e0074000000000000003243 ,\n        0x3cce2ebd194fb29c793843a274d2070000007b1cf5b75a61814da0797a5516f1 ,\n        0x84cc440065006d0061006e006400500061007200740079000000000000000000 ,\n        0x00000000000000000000000000000c0000000500000000000000000000000000 ,\n        0x00000000\n    End\n    RecordSource =\"tblPersInjDemand\"\n    DatasheetFontName =\"Calibri\"\n    PrtMip = Begin\n        0x6801000068010000680100006801000000000000000f00003b01000001000000 ,\n        0x010000006801000000000000a10700000100000001000000\n    End\n    PrtDevMode = Begin\n        0x009e1bc78800000040d321aef67f00002046f1adf67f00002000000000000000 ,\n        0x010403069c00e8030f93010001000100ea0a6f08640001000700ffff01000100 ,\n        0xffff030000004c6574746572000000000500000000000000b0911bc788000000 ,\n        0x90971bc788000000000000000000000000000000010000000000000001000000 ,\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\n        0x00000000\n    End\n    PrtDevNames = Begin\n        0x08003b006c000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,\n        0x35362d626536332d33376332313832623061383600\n    End\n    FilterOnLoad =0\n    FitToPage =1\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    PrtDevModeW = Begin\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,\n        0x01040306dc00e8030f93010001000100ea0a6f08640001000700ffff01000100 ,\n        0xffff030000004c006500740074006500720000009c0100000000000000000000 ,\n        0x701227829c010000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000000000000001000000 ,\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\n        0x00000000\n    End\n    PrtDevNamesW = Begin\n        0x0400370068000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000000000005700530044002d003800310066003100 ,\n        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,\n        0x6500360033002d00330037006300320031003800320062003000610038003600 ,\n        0x0000\n    End\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            BorderColor =8355711\n            ForeColor =8355711\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            GridlineColor =10921638\n            ShowDatePicker =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin ComboBox\n            AddColon = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =3484194\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            AllowValueListEdits =1\n            InheritValueList =1\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ForeThemeColorIndex =2\n            ForeShade =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin BreakLevel\n            ControlSource =\"DemandDate\"\n        End\n        Begin FormHeader\n            KeepTogether = NotDefault\n            Height =570\n            Name =\"ReportHeader\"\n            GUID = Begin\n                0x67c98800b1d24749918c90e2e39a7e0e\n            End\n            AutoHeight =1\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            Begin\n                Begin Label\n                    Width =3135\n                    Height =285\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label0\"\n                    Caption =\"DEMAND (SETTLEMENT) HISTORY\"\n                    GUID = Begin\n                        0x33f96e67353bd445a23bbf803c8ecf9f\n                    End\n                    LayoutCachedWidth =3135\n                    LayoutCachedHeight =285\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =60\n                    Top =300\n                    Width =540\n                    Height =270\n                    FontSize =9\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label1\"\n                    Caption =\"Party\"\n                    GUID = Begin\n                        0xf4afddf66f0f8c49a6ccd670b1f343af\n                    End\n                    LayoutCachedLeft =60\n                    LayoutCachedTop =300\n                    LayoutCachedWidth =600\n                    LayoutCachedHeight =570\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =960\n                    Top =300\n                    Width =780\n                    Height =270\n                    FontSize =9\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label2\"\n                    Caption =\"Date\"\n                    GUID = Begin\n                        0x4c1f7a23cca00e4495af7b56366d3713\n                    End\n                    LayoutCachedLeft =960\n                    LayoutCachedTop =300\n                    LayoutCachedWidth =1740\n                    LayoutCachedHeight =570\n                    ForeTint =100.0\n                End\n                Begin Label\n                    Left =2160\n                    Top =300\n                    Width =1290\n                    Height =270\n                    FontSize =9\n                    FontWeight =700\n                    ForeColor =0\n                    Name =\"Label3\"\n                    Caption =\"Amount ($)\"\n                    GUID = Begin\n                        0xc687a15147863848bc64b24f598b326c\n                    End\n                    LayoutCachedLeft =2160\n                    LayoutCachedTop =300\n                    LayoutCachedWidth =3450\n                    LayoutCachedHeight =570\n                    ForeTint =100.0\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    IMESentenceMode =3\n                    Left =1500\n                    Top =60\n                    Width =540\n                    Height =120\n                    ColumnOrder =0\n                    Name =\"Text13\"\n                    ControlSource =\"ID\"\n                    GUID = Begin\n                        0x261ffd040d640f47b193b48107a44b0e\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =1500\n                    LayoutCachedTop =60\n                    LayoutCachedWidth =2040\n                    LayoutCachedHeight =180\n                End\n            End\n        End\n        Begin PageHeader\n            Height =0\n            Name =\"PageHeaderSection\"\n            GUID = Begin\n                0x969a5788c7adbf42b82bb0712f049e32\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n        Begin Section\n            KeepTogether = NotDefault\n            Height =315\n            Name =\"Detail\"\n            GUID = Begin\n                0xcbce3656072cde4fb8cef8bc8de261ff\n            End\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    OldBorderStyle =0\n                    TextAlign =2\n                    IMESentenceMode =3\n                    Left =660\n                    Width =1080\n                    Height =315\n                    FontSize =10\n                    BorderColor =15066597\n                    Name =\"DemandDate\"\n                    ControlSource =\"DemandDate\"\n                    Format =\"Short Date\"\n                    GUID = Begin\n                        0x2bfc090d9ee60142aad9102bd9c3abae\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =660\n                    LayoutCachedWidth =1740\n                    LayoutCachedHeight =315\n                    BorderShade =90.0\n                End\n                Begin TextBox\n                    OldBorderStyle =0\n                    TextAlign =2\n                    IMESentenceMode =3\n                    Left =1860\n                    Width =1620\n                    Height =315\n                    FontSize =10\n                    TabIndex =1\n                    BorderColor =15066597\n                    Name =\"Amount\"\n                    ControlSource =\"DemandAmount\"\n                    GUID = Begin\n                        0x16f89a54b5f79a4a815c8a394b9184cd\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =1860\n                    LayoutCachedWidth =3480\n                    LayoutCachedHeight =315\n                    BorderShade =90.0\n                End\n                Begin TextBox\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Left =60\n                    Width =480\n                    Height =270\n                    FontSize =10\n                    TabIndex =2\n                    BorderColor =15066597\n                    Name =\"Text5\"\n                    ControlSource =\"DemandParty\"\n                    Format =\"Short Date\"\n                    GUID = Begin\n                        0xf46396c640db214e9bb0c1cf12d73784\n                    End\n                    ShowDatePicker =1\n\n                    LayoutCachedLeft =60\n                    LayoutCachedWidth =540\n                    LayoutCachedHeight =270\n                    BorderShade =90.0\n                End\n            End\n        End\n        Begin PageFooter\n            Height =0\n            Name =\"PageFooterSection\"\n            GUID = Begin\n                0xe767967b83a8494daca6ea4b09a4ad8d\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n        Begin FormFooter\n            KeepTogether = NotDefault\n            Height =0\n            Name =\"ReportFooter\"\n            GUID = Begin\n                0x9f8039bda2c4284eb0d0796e9cd28fd2\n            End\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n    End\nEnd"
+}

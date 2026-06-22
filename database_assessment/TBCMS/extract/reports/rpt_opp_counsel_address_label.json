@@ -1,0 +1,101 @@
+{
+  "reportName": "rpt_opp_counsel_address_label",
+  "dataSource": "tblCase",
+  "width": 4566,
+  "caption": "Opp Counsel Address",
+  "orientation": "landscape",
+  "margins": {
+    "left": 240,
+    "right": 240,
+    "top": 341,
+    "bottom": 341
+  },
+  "sections": [
+    {
+      "type": "Detail",
+      "height": 1350,
+      "controls": [
+        {
+          "type": "TextBox",
+          "name": "Text4",
+          "left": 0,
+          "top": 360,
+          "width": 4566,
+          "height": 345,
+          "controlSource": "Firm",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text7",
+          "left": 0,
+          "top": 720,
+          "width": 4566,
+          "height": 285,
+          "controlSource": "[OC Address]",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "lblName",
+          "left": 0,
+          "top": 0,
+          "width": 4560,
+          "height": 345,
+          "controlSource": "OCounsel",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text14",
+          "left": 0,
+          "top": 1020,
+          "width": 4566,
+          "height": 330,
+          "controlSource": "=[OC City] & \", \" & [OC State] & \" \" & [OC Zip]",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left",
+          "canGrow": true,
+          "canShrink": true
+        },
+        {
+          "type": "TextBox",
+          "name": "Text15",
+          "left": 3168,
+          "top": 576,
+          "width": 1296,
+          "height": 315,
+          "controlSource": "CaseID",
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "visible": false
+        }
+      ]
+    }
+  ],
+  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =2107242851\nBegin Report\n    LayoutForPrint = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    DefaultView =0\n    DateGrouping =1\n    GrpKeepTogether =1\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridY =10\n    Width =4566\n    DatasheetFontHeight =11\n    ItemSuffix =14\n    Right =17340\n    Bottom =10125\n    DatasheetGridlinesColor =15132391\n    RecSrcDt = Begin\n        0xc99e3eff4ff9e440\n    End\n    GUID = Begin\n        0x33c82505a8ac694185b320c866cbf16a\n    End\n    NameMap = Begin\n        0x0acc0e5500000000a3ae66076b51b14a95bb45b4928a6159000000004e197481 ,\n        0x0c3ae6400000000000000000740062006c004300610073006500000000000000 ,\n        0x4a8a359bf7cab542b223c49f6ed3803a07000000a3ae66076b51b14a95bb45b4 ,\n        0x928a61594600690072006d00000000000000eefde6a9479c7142b1b0792a145d ,\n        0x281207000000a3ae66076b51b14a95bb45b4928a61594f004300200041006400 ,\n        0x64007200650073007300000000000000cd35fd0c8a8c33429d4da19787e6744e ,\n        0x07000000a3ae66076b51b14a95bb45b4928a61594f0043006f0075006e007300 ,\n        0x65006c000000000000008cc0c28e08dc30469e76e1557acccc0c07000000a3ae ,\n        0x66076b51b14a95bb45b4928a61594f0043002000430069007400790000000000 ,\n        0x00005f220b7caf92014a95c498c30b38411807000000a3ae66076b51b14a95bb ,\n        0x45b4928a61594f00430020005300740061007400650000000000000051bfc508 ,\n        0x70ce824b9babfc2937a25b1107000000a3ae66076b51b14a95bb45b4928a6159 ,\n        0x4f00430020005a0069007000000000000000bd7c65c1dfce1f478904fb194f23 ,\n        0xc44a07000000a3ae66076b51b14a95bb45b4928a615943006100730065004900 ,\n        0x4400000000000000000000000000000000000000000000000c00000005000000 ,\n        0x0000000000000000000000000000\n    End\n    RecordSource =\"tblCase\"\n    Caption =\"Opp Counsel Address\"\n    DatasheetFontName =\"Calibri\"\n    PrtMip = Begin\n        0x9c000000800000009c0000007f00000000000000d61100004605000001000000 ,\n        0x010000006801000000000000a10700000100000001000000\n    End\n    PrtDevMode = Begin\n        0x003f4717fa7f0000000000000000000090a71bc788000000d0941bc788000000 ,\n        0x010403069c00e80343bf000202000100ea0a6f08640001000601ffff02000100 ,\n        0xffff030001004c6574746572007f000000002cd99c01000000000000f67f0000 ,\n        0x10ace0f69c010000000000000000000000000000010000000000000001000000 ,\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\n        0x00000000\n    End\n    PrtDevNames = Begin\n        0x08003b006c000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,\n        0x35362d626536332d33376332313832623061383600\n    End\n    FilterOnLoad =0\n    FitToPage =1\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    PrtDevModeW = Begin\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,\n        0x01040306dc00e80343bf000202000100ea0a6f08640001000601ffff02000100 ,\n        0xffff030001004c00650074007400650072000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000010000000000000001000000 ,\n        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,\n        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,\n        0x00000000000000000c0000000100000000000000000000000000010000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000100000000000000000000000000000000000000 ,\n        0x00000000000000000000000000000000000000000000000070010000534d544a ,\n        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,\n        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,\n        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,\n        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,\n        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,\n        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,\n        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,\n        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,\n        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,\n        0x00000000\n    End\n    PrtDevNamesW = Begin\n        0x0400370068000100000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x0000000000000000000000000000000000000000000000000000000000000000 ,\n        0x000000000000000000000000000000005700530044002d003800310066003100 ,\n        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,\n        0x6500360033002d00330037006300320031003800320062003000610038003600 ,\n        0x0000\n    End\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            BorderColor =8355711\n            ForeColor =8355711\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Rectangle\n            BorderLineStyle =0\n            Width =850\n            Height =850\n            BorderColor =10921638\n            GridlineColor =10921638\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            Width =1701\n            LabelX =-1701\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            GridlineColor =10921638\n            ShowDatePicker =0\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin EmptyCell\n            Height =240\n            GridlineColor =10921638\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin Section\n            KeepTogether = NotDefault\n            CanGrow = NotDefault\n            Height =1350\n            Name =\"Detail\"\n            GUID = Begin\n                0x1efa2b0dcc9cfe49af5e418fed932abf\n            End\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Top =360\n                    Width =4566\n                    Height =345\n                    Name =\"Text4\"\n                    ControlSource =\"Firm\"\n                    GUID = Begin\n                        0xfe8e9ccc09caeb469f259a287e5116a9\n                    End\n\n                    LayoutCachedTop =360\n                    LayoutCachedWidth =4566\n                    LayoutCachedHeight =705\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Top =720\n                    Width =4566\n                    Height =285\n                    TabIndex =1\n                    Name =\"Text7\"\n                    ControlSource =\"[OC Address]\"\n                    GUID = Begin\n                        0x989bfa820320c44a89e38dac9548773a\n                    End\n\n                    LayoutCachedTop =720\n                    LayoutCachedWidth =4566\n                    LayoutCachedHeight =1005\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Width =4560\n                    Height =345\n                    TabIndex =2\n                    Name =\"lblName\"\n                    ControlSource =\"OCounsel\"\n                    GUID = Begin\n                        0x7a24861d68063142863a3f394b46cef4\n                    End\n\n                    LayoutCachedWidth =4560\n                    LayoutCachedHeight =345\n                End\n                Begin TextBox\n                    CanGrow = NotDefault\n                    CanShrink = NotDefault\n                    OldBorderStyle =0\n                    TextAlign =1\n                    IMESentenceMode =3\n                    Top =1020\n                    Width =4566\n                    Height =330\n                    TabIndex =3\n                    Name =\"Text14\"\n                    ControlSource =\"=[OC City] & \\\", \\\" & [OC State] & \\\" \\\" & [OC Zip]\"\n                    GUID = Begin\n                        0x5c3ab07c597de448b7e7a6fdbbd7fed6\n                    End\n\n                    LayoutCachedTop =1020\n                    LayoutCachedWidth =4566\n                    LayoutCachedHeight =1350\n                End\n                Begin TextBox\n                    Visible = NotDefault\n                    IMESentenceMode =3\n                    Left =3168\n                    Top =576\n                    Width =1296\n                    Height =315\n                    TabIndex =4\n                    Name =\"Text15\"\n                    ControlSource =\"CaseID\"\n                    GUID = Begin\n                        0x3ea4180f09b8374381d5923916b2eadd\n                    End\n\n                    LayoutCachedLeft =3168\n                    LayoutCachedTop =576\n                    LayoutCachedWidth =4464\n                    LayoutCachedHeight =891\n                End\n            End\n        End\n    End\nEnd"
+}
