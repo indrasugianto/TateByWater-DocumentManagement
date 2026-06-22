@@ -13,6 +13,34 @@
 > `claude/ms-access-dropbox-auth-udqa7w` branch was already merged via PR #1
 > — do **not** keep working on it.)
 
+> ## ▶ Implementation status (2026-06-22)
+>
+> Phases **A–C + F** are implemented on branch `claude/dropbox-bridge`:
+> - **Phase A** — Section 9 appended to the SQL installer (`BridgeUrl` column +
+>   `tblDropboxServiceToken`), idempotent. *Not yet applied to the dev DB —
+>   `sqlcmd` was unavailable in the implementing session; run the installer
+>   (or just Section 9) against `awsql2022dev` as a deploy step.*
+> - **Phase B** — `dropbox-bridge/` ASP.NET Core 8 project builds clean
+>   (`dotnet build`, 0 warnings). Includes the extra **`/api/file/download`**
+>   proxy endpoint (see G34 decision below), 429/Retry-After handling (G33),
+>   `list_folder` pagination (G38), and Dropbox→HTTP error translation (B.7).
+> - **Phase C** — `DropboxService.bas` rewired to the bridge. The pre-bridge
+>   OAuth/DPAPI/token code is preserved in-place behind the module directive
+>   `#Const PREBRIDGE_LEGACY = False`; flipping it to `True` restores the
+>   original behaviour (this is the bridge-era form of the project's
+>   "comment-out the LEGACY block" rollback convention). `OpenDocument` uses
+>   the bridge proxy; `EnsureValidToken` is a True-returning shim (still called
+>   by `DocumentManagement.bas`).
+> - **Phase F** — `Phase3a`/`Phase3e` smoke tests rewritten for the bridge;
+>   `PhaseBridge_ConnectivityTest` added; legacy Phase 3b tests retired behind
+>   the directive.
+>
+> **Not done (deployment / hardware-dependent):** Phases **D (IIS deploy)** and
+> **E (one-time OAuth setup)** are manual server actions; **VBA was not
+> compiled** (no MS Access in the implementing session — import into
+> `TBCMS_Test.accde` and run Phase F). The real `AppSecret` and the production
+> SQL host still need to go into `appsettings.Production.json` on the server.
+
 ---
 
 ## Why we're doing this (problem recap)
@@ -1550,7 +1578,7 @@ section.
 | G31 | `OpenDocument` temp-link download | **Corrected — NOT a one-liner.** `HttpDownloadBinary` POSTs with `Authorization` + `Dropbox-API-Path-Root` + `Dropbox-API-Arg` headers; a CDN temp link needs a header-free **GET**. Add a real GET branch when the token arg is empty (see the note under `OpenDocument` in C.4), or adopt G34 and proxy the download through the bridge. |
 | G32 | Large file upload to bridge | Files >150 MB route through `UploadFile`→`BridgeUpload`; the bridge runs Dropbox `upload_session` internally. `BridgeUpload` now sets `SetTimeouts 0, 60000, 300000, 300000` (default 30s aborts big files). **Also raised TWO body caps** — `IISServerOptions.MaxRequestBodySize` in Program.cs (the in-process knob; `ConfigureKestrel` is a no-op under in-process hosting) **and** IIS request filtering `<requestLimits maxAllowedContentLength>` in web.config (default ~28.6 MB → otherwise HTTP 404.13 before the app sees the request). Both are required for uploads >~28.6 MB. Both VBA and bridge buffer the whole file in memory today; consider streaming if multi-GB files are expected. |
 | G33 | Deliverable #7 rate limiting | The verification script calls `GetMetadata` ~30,000 times — via the bridge this is one authenticated server making 30,000 Dropbox calls. Dropbox limit ≈ 1,000 req/min per app. Add a ~70 ms sleep in the (not-yet-written) Deliverable #7 loop, **and** have the bridge honor `Retry-After` on HTTP 429 (retry with backoff) rather than failing the document — neither is implemented yet. Note also that `/api/status` now calls `users/get_current_account` on **every** VBA startup (`VerifyLiveAccountEmailAsync`), so a morning login wave adds one Dropbox call per user — well under the limit, but `/status` is no longer free. |
-| G34 | **Download path: direct CDN vs. proxy** | **⚠ BLOCKING — resolve before writing Phase C `OpenDocument`/`GetTemporaryLink`.** `OpenDocument` (C.4) downloads directly from `uc.dropboxusercontent.com`; uploads go through the bridge. If locked-down workstations are firewalled from Dropbox domains (**plausible — that firewalling is the very premise of this bridge**), downloads break while uploads work — and `OpenDocument` is the most-used operation. The C.4 `OpenDocument` design and the G31 GET-branch surgery on `HttpDownloadBinary` are provisional until this is settled. **Decide with IT first:** keep direct-CDN (requires workstation outbound HTTPS to `*.dropboxusercontent.com`) or add a bridge `/api/file/download` that streams bytes back (uniform trust/network model, no per-workstation internet). |
+| G34 | **Download path: direct CDN vs. proxy** | **RESOLVED → bridge proxy (2026-06-22).** Implemented `POST /api/file/download` (Program.cs / `DropboxApiClient.DownloadAsync`, content API + path-root header) and a `BridgeDownload` WinHttp helper in VBA; `OpenDocument` streams bytes through the bridge over Windows Integrated Auth and never contacts `*.dropboxusercontent.com`. This matches the locked-down premise (no per-workstation internet egress required) and made the G31 GET-branch surgery on `HttpDownloadBinary` unnecessary (that helper is now LEGACY-blocked). `GetTemporaryLink` is retained (bridge `/file/link`) for link-distribution scenarios only. **Confirm with IT** the bridge host itself has outbound HTTPS to Dropbox (it does the CDN fetch now). |
 | G35 | **Per-environment DB / token isolation** | The bridge owns a real Dropbox service-account token. Test and production are separate deployments with separate `appsettings.Production.json`, separate SQL hosts (`awsql2022dev` vs `tbf-cms`), and a separately-provisioned `tblDropboxServiceToken` row each. A bridge pointed at the wrong DB violates "two environments, never mix." **Also:** the test bridge's token can write to the real production `/Company` — `Bridge:AllowWrites=false` on test is the guard (G37). |
 | G36 | **HTTP vs HTTPS on the LAN** | VBA→bridge is plaintext HTTP/80: document bytes, 4-hour unauthenticated temp links, and NTLM all cross the LAN in clear. For a law firm handling confidential client documents, recommend HTTPS with an internal/AD-CS cert and update `tblDropboxConfig.BridgeUrl` to `https://`. Decision needed before production cutover. |
 | G37 | **Server-side write guard + access scope** | Implemented `Bridge:AllowWrites` (`GuardWrites` in Program.cs) as the bridge-side mirror of `ALLOW_DROPBOX_WRITES` — the VBA flag alone protects nothing once the bridge exists. Open item: the bridge gates only on Windows auth, so **any** TBCMS-domain user can read/temp-link/delete **any** `/Company` path via a direct HTTP call, and Dropbox-native audit shows only the service account (SQL `tblDropboxAuditLog` retains the real user). Accept this risk or add per-path / per-operation authorization. |
