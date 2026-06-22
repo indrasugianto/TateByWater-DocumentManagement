@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>TBCMSDropboxBridge</RootNamespace>
+    <AssemblyName>TBCMSDropboxBridge</AssemblyName>
+    <!-- The bridge is Windows-only by design (IIS in-process host + machine-scope
+         DPAPI key protection). CA1416 flags ProtectKeysWithDpapi as Windows-only;
+         that is intended, so suppress the platform-compatibility warning. -->
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- SQL Server access for tblDropboxServiceToken. Data Protection and the
+         in-process IIS server (IISServerDefaults / IISServerOptions) are part of
+         the Microsoft.AspNetCore.App shared framework — no package needed. -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>

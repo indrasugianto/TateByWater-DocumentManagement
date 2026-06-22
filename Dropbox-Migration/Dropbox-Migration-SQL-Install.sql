@@ -2240,10 +2240,93 @@ print N'    SECTION 8 done.';
 go
 
 
+-- #############################################################################
+-- SECTION 9 — DROPBOX BRIDGE SERVICE OBJECTS (Phase A of the bridge plan)
+-- #############################################################################
+--   Adds the two SQL objects the TBCMSDropboxBridge service depends on:
+--     9.1  tblDropboxConfig.BridgeUrl  — VBA reads the bridge URL from here at
+--          startup so it can change without recompiling the .accde.
+--     9.2  tblDropboxServiceToken      — singleton row holding the one service-
+--          account OAuth token (Data-Protection-encrypted by the bridge). VBA
+--          never touches this table; the bridge reads and UPSERTs it.
+--   Both are idempotent (IF NOT EXISTS guarded).
+--
+--   RE-RUN CAVEAT: SECTION 1.2 DROP/CREATEs tblDropboxConfig, so a destructive
+--   re-run drops the BridgeUrl column; 9.1 (running later in the same pass)
+--   re-adds and re-seeds it to the placeholder URL — IT must re-apply the real
+--   URL afterward, exactly as for AppSecret.
+-- #############################################################################
+
+print N'';
+print N'>>> SECTION 9: Dropbox Bridge service objects';
+go
+
+-- ---------------------------------------------------------------------------
+-- 9.1 — BridgeUrl column on tblDropboxConfig
+-- ---------------------------------------------------------------------------
+if not exists
+(
+    select 1
+    from sys.columns
+    where object_id = object_id('dbo.tblDropboxConfig')
+          and name = 'BridgeUrl'
+)
+begin
+    alter table dbo.tblDropboxConfig
+        add BridgeUrl nvarchar(500) null;
+
+    -- separate batch needed before the column is referenceable in this script
+    exec ('update dbo.tblDropboxConfig
+           set    BridgeUrl = N''http://tbcms-bridge.tatebywater.local/api''
+           where  ConfigID = 1;');
+
+    print N'    SECTION 9.1: BridgeUrl column added and seeded (placeholder URL).';
+end;
+else
+    print N'    SECTION 9.1: BridgeUrl already present — skipped.';
+go
+
+-- ---------------------------------------------------------------------------
+-- 9.2 — tblDropboxServiceToken (singleton service-account token row)
+-- ---------------------------------------------------------------------------
+if not exists
+(
+    select 1
+    from sys.tables
+    where object_id = object_id('dbo.tblDropboxServiceToken')
+)
+begin
+    create table dbo.tblDropboxServiceToken
+    (
+        TokenID int not null primary key,                 -- always 1 (singleton)
+        AccessToken nvarchar(max) not null,               -- Data-Protection-encrypted (machine scope)
+        RefreshToken nvarchar(max) not null,              -- Data-Protection-encrypted (machine scope)
+        ExpiresAtUtc datetime2 not null,
+        AccountEmail nvarchar(200) null,
+        UpdatedAtUtc datetime2 not null
+            constraint DF_DropboxServiceToken_UpdatedAtUtc
+                default (sysutcdatetime()),
+        SetupByUser nvarchar(200) null,                   -- Windows login that ran setup
+        -- Single-row guarantee — mirrors tblDropboxConfig's CK_..._SingleRow.
+        -- The bridge UPSERTs TokenID = 1; it must never accumulate rows.
+        constraint CK_DropboxServiceToken_SingleRow check (TokenID = 1)
+    );
+
+    print N'    SECTION 9.2: tblDropboxServiceToken created.';
+end;
+else
+    print N'    SECTION 9.2: tblDropboxServiceToken already present — skipped.';
+go
+
+print N'    SECTION 9 done.';
+go
+
+
 print N'';
 print N'================================================================================';
 print N'INSTALL_all.sql — complete.';
 print N'  Don''t forget: UPDATE dbo.tblDropboxConfig SET AppSecret = N''<real>'' WHERE ConfigID = 1;';
+print N'  Bridge: UPDATE dbo.tblDropboxConfig SET BridgeUrl = N''http://<server>/api'' WHERE ConfigID = 1;';
 print N'  Review SECTION 7 output for B-4, B-6, B-7, B-8, B-9 triage decisions.';
 print N'================================================================================';
 go

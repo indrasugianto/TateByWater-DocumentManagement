@@ -56,3 +56,12 @@ Thumbs.db
 
 # Ad-hoc scratch dumps (e.g., one-off SP/table snapshots from SSMS)
 Dropbox-Migration/_temp/
+
+# .NET — Dropbox Bridge service (dropbox-bridge/)
+[Bb]in/
+[Oo]bj/
+publish/
+
+# Bridge secrets / per-environment overrides — MUST NOT be committed.
+# Holds the real Dropbox AppSecret and the production SQL connection string.
+**/appsettings.Production.json
