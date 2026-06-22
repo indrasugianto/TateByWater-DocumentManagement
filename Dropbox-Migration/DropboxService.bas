@@ -175,6 +175,14 @@ Private Const UPLOAD_CHUNK_BYTES As Long = 104857600           ' 100 * 1024 * 10
 Private m_BridgeUrl         As String   ' from tblDropboxConfig.BridgeUrl
 Private m_ConfigLoaded      As Boolean
 
+' Explicit bridge credentials — used ONLY when this workstation is NOT on the
+' TBF-CMS domain (dev/test). Domain-joined production PCs leave these empty and
+' authenticate silently via Windows SSO; they are populated on demand when the
+' bridge returns 401 (see PromptBridgeCredentials / PrepBridgeAuth).
+Private m_BridgeUser        As String
+Private m_BridgePwd         As String
+Private m_BridgeHasCreds    As Boolean
+
 #If PREBRIDGE_LEGACY Then
 ' Pre-bridge config cache (loaded from tblDropboxConfig + tblDropboxRootConfig).
 Private m_AppKey            As String
@@ -242,6 +250,46 @@ Private Declare Function StringFromGUID2 Lib "ole32.dll" ( _
     ByRef rguid As GUID, _
     ByVal lpsz As Long, _
     ByVal cchMax As Long) As Long
+#End If
+
+' --- Native masked credential prompt (credui.dll) -------------------------
+' Used by PromptBridgeCredentials so the off-domain password entry is masked
+' (the VBA InputBox cannot mask). pUiInfo is passed NULL — the dialog uses the
+' target-name string for its prompt, which avoids marshalling a CREDUI_INFO
+' struct (whose cbSize differs 32- vs 64-bit and is an easy thing to get wrong).
+Private Const CREDUI_MAX_USERNAME_LENGTH As Long = 513
+Private Const CREDUI_MAX_PASSWORD_LENGTH As Long = 256
+Private Const CREDUI_FLAGS_DO_NOT_PERSIST As Long = &H2
+Private Const CREDUI_FLAGS_EXCLUDE_CERTIFICATES As Long = &H8
+Private Const NO_ERROR As Long = 0
+Private Const ERROR_CANCELLED As Long = 1223
+
+#If VBA7 Then
+Private Declare PtrSafe Function CredUIPromptForCredentials Lib "credui.dll" _
+    Alias "CredUIPromptForCredentialsW" ( _
+    ByVal pUiInfo As LongPtr, _
+    ByVal pszTargetName As LongPtr, _
+    ByVal Reserved As LongPtr, _
+    ByVal dwAuthError As Long, _
+    ByVal pszUserName As LongPtr, _
+    ByVal ulUserNameMaxChars As Long, _
+    ByVal pszPassword As LongPtr, _
+    ByVal ulPasswordMaxChars As Long, _
+    ByRef pfSave As Long, _
+    ByVal dwFlags As Long) As Long
+#Else
+Private Declare Function CredUIPromptForCredentials Lib "credui.dll" _
+    Alias "CredUIPromptForCredentialsW" ( _
+    ByVal pUiInfo As Long, _
+    ByVal pszTargetName As Long, _
+    ByVal Reserved As Long, _
+    ByVal dwAuthError As Long, _
+    ByVal pszUserName As Long, _
+    ByVal ulUserNameMaxChars As Long, _
+    ByVal pszPassword As Long, _
+    ByVal ulPasswordMaxChars As Long, _
+    ByRef pfSave As Long, _
+    ByVal dwFlags As Long) As Long
 #End If
 
 #If PREBRIDGE_LEGACY Then
@@ -1382,6 +1430,118 @@ End Function
 ' Windows Integrated Auth (NTLM). VBA sends NO Dropbox tokens or headers; the
 ' bridge owns all credentials and injects the namespace header server-side.
 
+' Applies authentication to a bridge WinHttp request. Default is silent Windows
+' SSO (AutoLogonPolicy_Always) — the production path on domain-joined PCs. If
+' explicit domain credentials have been captured (off-domain dev/test, see
+' PromptBridgeCredentials), they are supplied too so WinHttp can answer the
+' server's NTLM/Negotiate 401 challenge instead of failing.
+Private Sub PrepBridgeAuth(ByVal http As Object)
+    http.SetAutoLogonPolicy 0      ' AutoLogonPolicy_Always
+    If m_BridgeHasCreds Then _
+        http.SetCredentials m_BridgeUser, m_BridgePwd, 0   ' 0 = ..._FOR_SERVER
+End Sub
+
+' Prompts once per session for domain credentials when the bridge rejects this
+' machine's auto-sent logon (i.e. running off the TBF-CMS domain). Returns False
+' if the user cancels. On domain-joined production PCs this never fires because
+' SSO succeeds on the first attempt.
+' The password is entered in the native Windows credential dialog (masked). If
+' credui.dll is somehow unavailable the unmasked InputBox is used as a fallback.
+' For unattended runs call SetBridgeCredentials from the Immediate window.
+Private Function PromptBridgeCredentials() As Boolean
+    Dim u As String, p As String, rc As Long
+    rc = CredUiPrompt(u, p)
+    Select Case rc
+        Case NO_ERROR
+            If LenB(Trim$(u)) = 0 Then Exit Function   ' blank user name
+            SetBridgeCredentials Trim$(u), p
+            PromptBridgeCredentials = True
+        Case ERROR_CANCELLED
+            ' user cancelled — leave PromptBridgeCredentials = False
+        Case Else
+            ' credui unavailable / unexpected error — fall back to InputBox
+            LogLocal "PromptBridgeCredentials", "Warn", _
+                "CredUIPromptForCredentials returned " & rc & "; using InputBox fallback"
+            PromptBridgeCredentials = PromptBridgeCredentialsInputBox()
+    End Select
+End Function
+
+' Shows the native Windows credential dialog with the password masked. Returns
+' the Win32 result code (NO_ERROR on OK, ERROR_CANCELLED if cancelled, else an
+' error); on success outUser / outPwd hold the entered values.
+Private Function CredUiPrompt(ByRef outUser As String, ByRef outPwd As String) As Long
+    Const TARGET As String = "TBCMS Dropbox Bridge (enter your TBF-CMS domain login)"
+    Dim userBuf As String, pwdBuf As String, seed As String
+    Dim saveFlag As Long, flags As Long, rc As Long
+
+    ' Seed the user-name field with any value we already have, then pad both
+    ' buffers to their full length, null-terminated, so the API can write into
+    ' them in place via StrPtr.
+    seed = Left$(m_BridgeUser, CREDUI_MAX_USERNAME_LENGTH - 1)
+    userBuf = seed & String$(CREDUI_MAX_USERNAME_LENGTH - Len(seed), vbNullChar)
+    pwdBuf = String$(CREDUI_MAX_PASSWORD_LENGTH, vbNullChar)
+    flags = CREDUI_FLAGS_DO_NOT_PERSIST Or CREDUI_FLAGS_EXCLUDE_CERTIFICATES
+
+    On Error GoTo NoApi
+    rc = CredUIPromptForCredentials(0, StrPtr(TARGET), 0, 0, _
+            StrPtr(userBuf), CREDUI_MAX_USERNAME_LENGTH, _
+            StrPtr(pwdBuf), CREDUI_MAX_PASSWORD_LENGTH, _
+            saveFlag, flags)
+    On Error GoTo 0
+
+    If rc = NO_ERROR Then
+        outUser = LeftBeforeNull(userBuf)
+        outPwd = LeftBeforeNull(pwdBuf)
+    End If
+    CredUiPrompt = rc
+    Exit Function
+
+NoApi:
+    ' Declare/lib failure (credui.dll missing) — signal "use the fallback".
+    CredUiPrompt = -1
+End Function
+
+' Returns the portion of a fixed-length API buffer up to its first null char.
+Private Function LeftBeforeNull(ByVal s As String) As String
+    Dim p As Long
+    p = InStr(s, vbNullChar)
+    If p > 0 Then
+        LeftBeforeNull = Left$(s, p - 1)
+    Else
+        LeftBeforeNull = s
+    End If
+End Function
+
+' Unmasked fallback used only if the native credential dialog is unavailable.
+Private Function PromptBridgeCredentialsInputBox() As Boolean
+    Dim u As String, p As String
+    u = InputBox("The Dropbox bridge could not authenticate this computer " & _
+                 "automatically (it is not on the bridge's domain)." & vbCrLf & vbCrLf & _
+                 "Enter your domain user name as  DOMAIN\username :", _
+                 "Bridge Sign-In")
+    If LenB(Trim$(u)) = 0 Then Exit Function       ' cancelled
+    p = InputBox("Password for " & Trim$(u) & ":", "Bridge Sign-In")
+    If LenB(p) = 0 Then Exit Function              ' cancelled / blank
+    SetBridgeCredentials Trim$(u), p
+    PromptBridgeCredentialsInputBox = True
+End Function
+
+' Pre-seed bridge credentials, skipping the interactive prompt. For off-domain
+' testing from the Immediate window:
+'   SetBridgeCredentials "TATEBYWATER\you", "password"
+Public Sub SetBridgeCredentials(ByVal domainUser As String, ByVal password As String)
+    m_BridgeUser = domainUser
+    m_BridgePwd = password
+    m_BridgeHasCreds = (LenB(domainUser) > 0)
+End Sub
+
+' Clears cached bridge credentials and reverts to silent Windows SSO.
+Public Sub ClearBridgeCredentials()
+    m_BridgeUser = ""
+    m_BridgePwd = ""
+    m_BridgeHasCreds = False
+End Sub
+
 ' JSON request/response over the bridge. Returns True on HTTP 2xx.
 '   method      : "GET" or "POST"
 '   endpoint    : path relative to BridgeUrl, e.g. "/metadata"
@@ -1399,22 +1559,36 @@ Private Function BridgeRequest( _
     EnsureConfigLoaded CALLER
 
     Dim http As Object
-    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    Dim attempt As Integer
     On Error GoTo HttpError
 
-    http.Open method, m_BridgeUrl & endpoint, False    ' synchronous
-    http.SetAutoLogonPolicy 0      ' AutoLogonPolicy_Always — send NTLM automatically
-    http.SetRequestHeader "Content-Type", "application/json"
-    http.SetRequestHeader "Accept", "application/json"
+    ' Up to 2 attempts: attempt 1 uses whatever auth is cached (silent SSO on
+    ' domain PCs). If it 401s on an off-domain machine with no creds yet, prompt
+    ' for domain credentials and retry once.
+    For attempt = 1 To 2
+        Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+        http.Open method, m_BridgeUrl & endpoint, False    ' synchronous
+        PrepBridgeAuth http
+        http.SetRequestHeader "Content-Type", "application/json"
+        http.SetRequestHeader "Accept", "application/json"
 
-    If LenB(requestBody) > 0 Then
-        http.Send requestBody
-    Else
-        http.Send
-    End If
+        If LenB(requestBody) > 0 Then
+            http.Send requestBody
+        Else
+            http.Send
+        End If
 
-    outStatus = http.Status
-    outResponse = http.ResponseText
+        outStatus = http.Status
+        outResponse = http.ResponseText
+
+        If outStatus = 401 And attempt = 1 And Not m_BridgeHasCreds Then
+            If Not PromptBridgeCredentials() Then Exit For   ' user cancelled
+            ' else loop: attempt 2 sends the entered credentials
+        Else
+            Exit For
+        End If
+    Next attempt
+
     BridgeRequest = (outStatus >= 200 And outStatus < 300)
     Exit Function
 
@@ -1442,7 +1616,7 @@ Private Function BridgeUpload( _
     On Error GoTo HttpError
 
     http.Open "POST", m_BridgeUrl & "/file/upload", False
-    http.SetAutoLogonPolicy 0
+    PrepBridgeAuth http
     ' Large uploads stream synchronously VBA -> bridge -> Dropbox; the default
     ' WinHttp send/receive timeout is 30s and aborts big files (G32). Args:
     ' resolve, connect, send, receive (ms); 0 = infinite resolve.
@@ -1480,7 +1654,7 @@ Private Function BridgeDownload( _
     On Error GoTo HttpError
 
     http.Open "POST", m_BridgeUrl & "/file/download", False
-    http.SetAutoLogonPolicy 0
+    PrepBridgeAuth http
     ' Large documents can take a while; raise send/receive timeouts (G32).
     http.SetTimeouts 0, 60000, 300000, 300000
     http.SetRequestHeader "Content-Type", "application/json"
