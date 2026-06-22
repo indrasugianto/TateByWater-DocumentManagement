@@ -15,6 +15,8 @@
 
 ## ▶ NEXT SESSION: START HERE (paused 2026-06-04 — OAuth fix + create-folder feature both committed & verified; next = Deliverable #7)
 
+> ⚠ **Direction may be changing — read [.docs/dropbox-bridge-plan.md](dropbox-bridge-plan.md) first.** A Dropbox Bridge Service plan has been drafted (committed to `main`, Phase B) that **supersedes the VBA-direct OAuth approach** (G27) by moving all Dropbox auth/token handling into an internal REST service the VBA calls via Windows Integrated Auth. Its Phases A–G are **not yet implemented** (the `.bas` modules still contain the OAuth/DPAPI code). Review/adopt that plan before continuing. Deliverable #7 (below) is unchanged under either approach.
+
 **Phases 0–5 are complete and the write path is verified end-to-end. Both work items from the prior session are now committed and verified: (1) the OAuth startup hardening for locked-down workstations (commit `ea945a3`); and (2) the user-facing create-on-demand folder feature (commit `c225db3`, with the original TBCMS extract tracked in `45026f4`). The next concrete step is Deliverable #7 — the `tblDropboxVerificationReport` population script (Phase 6.5 acceptance-gate prerequisite). See the "Next concrete step" section below.**
 
 > ✅ **Working tree is clean.** `ALLOW_DROPBOX_WRITES` is `False` on disk (correct). Nothing uncommitted.
