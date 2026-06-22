@@ -4,7 +4,34 @@ Attribute VB_Name = "DropboxService"
 ' Purpose: Production Dropbox API integration for TBCMS. Phase 3 of the
 '          Dropbox migration plan.
 '
-' CURRENTLY IMPLEMENTED:
+' ============================================================================
+' BRIDGE REWRITE (see .docs/dropbox-bridge-plan.md, Phase C)
+' ----------------------------------------------------------------------------
+'   This module no longer talks to Dropbox directly. All Dropbox API calls now
+'   go through the internal TBCMSDropboxBridge REST service over Windows
+'   Integrated Auth. VBA holds NO secrets (no AppKey/AppSecret/OAuth tokens/
+'   DPAPI). The bridge owns one server-side service-account token.
+'
+'   Bridge (Phase B):
+'     - BridgeRequest / BridgeUpload / BridgeDownload (WinHttp, Windows
+'       Integrated Auth) replace the direct Dropbox HTTP transport
+'     - InitializeDropboxConfig simplified to load BridgeUrl only
+'     - OAuth, DPAPI, token management removed (see PREBRIDGE_LEGACY below)
+'     - OpenDocument downloads via the bridge proxy (/api/file/download), not
+'       the Dropbox CDN (G34 resolved -> bridge proxy)
+'     - StartupBootstrap simplified to ping /api/status
+'     - All public function signatures unchanged
+'
+'   ROLLBACK: the pre-bridge OAuth/DPAPI/token code is preserved in-place,
+'   gated by the module compiler directive  #Const PREBRIDGE_LEGACY = False
+'   (just below). Setting it True re-enables every legacy block and swaps the
+'   rewired functions back to their original bodies (this is the bridge-era
+'   equivalent of the project''s "comment-out the LEGACY block" convention;
+'   the directive does the same job en masse without breaking compilation).
+'   The bridge-era code requires PREBRIDGE_LEGACY = False.
+' ============================================================================
+'
+' CURRENTLY IMPLEMENTED (pre-bridge — see BRIDGE REWRITE above for what changed):
 '   Phase 3a (foundation):
 '     - Module-level config state + accessors
 '     - SQL config load (tblDropboxConfig + tblDropboxRootConfig)
@@ -77,6 +104,17 @@ Option Compare Database
 Option Explicit
 
 ' ----------------------------------------------------------------------------
+' BRIDGE ROLLBACK DIRECTIVE
+' ----------------------------------------------------------------------------
+' False  = bridge era (current). VBA proxies every Dropbox call through the
+'          TBCMSDropboxBridge service; all OAuth/DPAPI/token blocks below are
+'          compiled OUT and the rewired functions use their bridge bodies.
+' True   = pre-bridge rollback. Re-enables the legacy OAuth/DPAPI/token code
+'          and the original function bodies. (Also re-add the now-removed
+'          tblDropboxConfig columns the legacy InitializeDropboxConfig reads.)
+#Const PREBRIDGE_LEGACY = False
+
+' ----------------------------------------------------------------------------
 ' COMPILE-TIME CONSTANTS
 ' ----------------------------------------------------------------------------
 
@@ -94,8 +132,10 @@ Private Const OAUTH_BASE As String = "https://api.dropboxapi.com/oauth2"
 Private Const LOG_TABLE As String = "tblDropboxLog"
 Private Const TEMP_SUBDIR As String = "TBCMS"
 
+#If PREBRIDGE_LEGACY Then
 ' Sentinel value the installer seeds for AppSecret. Must be replaced post-
 ' install before InitializeDropboxConfig succeeds.
+' (Bridge era: the bridge owns the AppSecret server-side; VBA never reads it.)
 Private Const APPSECRET_PLACEHOLDER As String = _
     "REPLACE_WITH_APP_SECRET_FROM_DROPBOX_APP_CONSOLE"
 
@@ -117,6 +157,7 @@ Private Const LISTENER_TIMEOUT_S As Long = 120
 ' port without admin/URL-ACL rights, so the listener path is unusable there.
 ' The manual-paste fallback launches no PowerShell and binds no port.
 Public Const USE_LOCAL_LISTENER As Boolean = False
+#End If
 
 ' Upload routing thresholds (Phase 3d). Dropbox /files/upload single-shot cap
 ' is 150 MB; files above that use the upload_session three-phase flow with
@@ -129,12 +170,19 @@ Private Const UPLOAD_CHUNK_BYTES As Long = 104857600           ' 100 * 1024 * 10
 ' MODULE-LEVEL CONFIG CACHE (populated by InitializeDropboxConfig)
 ' ----------------------------------------------------------------------------
 
+' Bridge era: the only config VBA caches is the bridge service URL. Everything
+' else (AppKey/AppSecret/Namespace/tokens) now lives server-side in the bridge.
+Private m_BridgeUrl         As String   ' from tblDropboxConfig.BridgeUrl
+Private m_ConfigLoaded      As Boolean
+
+#If PREBRIDGE_LEGACY Then
+' Pre-bridge config cache (loaded from tblDropboxConfig + tblDropboxRootConfig).
 Private m_AppKey            As String
 Private m_AppSecret         As String
 Private m_RedirectUri       As String
 Private m_NamespaceId       As String
 Private m_TeamRootPath      As String
-Private m_ConfigLoaded      As Boolean
+#End If
 
 ' Set later by 3b's identity validation; declared here so audit logging
 ' can fetch it via GetDropboxAccountEmail without forward references.
@@ -147,6 +195,7 @@ Private m_DropboxAccountEmail As String
 ' workflows + Explorer folder-open require it.
 Private m_LocalSyncedRoot       As String
 
+#If PREBRIDGE_LEGACY Then
 ' --- Phase 3b pass 1: OAuth state + token cache ---
 
 ' Per-session CSRF guard for OAuth authorization-code flow. Set by
@@ -160,11 +209,43 @@ Private m_CurrentAccessToken    As String
 Private m_CurrentRefreshToken   As String
 Private m_CurrentExpiresAt      As Date
 Private m_TokenLoaded           As Boolean
+#End If
 
 ' ----------------------------------------------------------------------------
-' WINDOWS DPAPI DECLARATIONS (Crypt32.dll)
+' WINDOWS API DECLARATIONS
 ' ----------------------------------------------------------------------------
+' GUID generation (CoCreateGuid + StringFromGUID2) stays active — NewGuid()
+' uses it for temp-file names. The DPAPI declarations are pre-bridge only
+' (token encryption moved server-side to the bridge's machine-scope Data
+' Protection) and compile only under PREBRIDGE_LEGACY.
 
+Private Type GUID
+    Data1 As Long
+    Data2 As Integer
+    Data3 As Integer
+    Data4(0 To 7) As Byte
+End Type
+
+#If VBA7 Then
+Private Declare PtrSafe Function CoCreateGuid Lib "ole32.dll" ( _
+    ByRef pGuid As GUID) As Long
+
+Private Declare PtrSafe Function StringFromGUID2 Lib "ole32.dll" ( _
+    ByRef rguid As GUID, _
+    ByVal lpsz As LongPtr, _
+    ByVal cchMax As Long) As Long
+#Else
+Private Declare Function CoCreateGuid Lib "ole32.dll" ( _
+    ByRef pGuid As GUID) As Long
+
+Private Declare Function StringFromGUID2 Lib "ole32.dll" ( _
+    ByRef rguid As GUID, _
+    ByVal lpsz As Long, _
+    ByVal cchMax As Long) As Long
+#End If
+
+#If PREBRIDGE_LEGACY Then
+' --- DPAPI (pre-bridge token encryption; Crypt32.dll) ---
 Private Type DATA_BLOB
     cbData As Long
 #If VBA7 Then
@@ -172,13 +253,6 @@ Private Type DATA_BLOB
 #Else
     pbData As Long
 #End If
-End Type
-
-Private Type GUID
-    Data1 As Long
-    Data2 As Integer
-    Data3 As Integer
-    Data4(0 To 7) As Byte
 End Type
 
 #If VBA7 Then
@@ -207,14 +281,6 @@ Private Declare PtrSafe Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _
     Destination As Any, _
     Source As Any, _
     ByVal Length As LongPtr)
-
-Private Declare PtrSafe Function CoCreateGuid Lib "ole32.dll" ( _
-    ByRef pGuid As GUID) As Long
-
-Private Declare PtrSafe Function StringFromGUID2 Lib "ole32.dll" ( _
-    ByRef rguid As GUID, _
-    ByVal lpsz As LongPtr, _
-    ByVal cchMax As Long) As Long
 #Else
 Private Declare Function CryptProtectData Lib "Crypt32.dll" ( _
     pDataIn As DATA_BLOB, _
@@ -241,14 +307,7 @@ Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _
     Destination As Any, _
     Source As Any, _
     ByVal Length As Long)
-
-Private Declare Function CoCreateGuid Lib "ole32.dll" ( _
-    ByRef pGuid As GUID) As Long
-
-Private Declare Function StringFromGUID2 Lib "ole32.dll" ( _
-    ByRef rguid As GUID, _
-    ByVal lpsz As Long, _
-    ByVal cchMax As Long) As Long
+#End If
 #End If
 
 ' ============================================================================
@@ -262,6 +321,7 @@ Private Declare Function StringFromGUID2 Lib "ole32.dll" ( _
 ' Should be called once at startup from the application's startup form
 ' (Form_Open). All other public entrypoints in this module assume the config
 ' has already been loaded.
+#If PREBRIDGE_LEGACY Then
 Public Sub InitializeDropboxConfig()
     Const CALLER As String = "InitializeDropboxConfig"
 
@@ -340,10 +400,73 @@ HandleError:
     LogLocal CALLER, "Error", "Err=" & errNum & " " & errDesc
     Err.Raise errNum, CALLER, errDesc
 End Sub
+#Else
+' Bridge era: load ONLY the bridge service URL. No AppKey/AppSecret/Namespace —
+' those live server-side in the bridge. Idempotent; raises if BridgeUrl missing.
+Public Sub InitializeDropboxConfig()
+    Const CALLER As String = "InitializeDropboxConfig"
+
+    If m_ConfigLoaded Then Exit Sub
+
+    Dim cn As ADODB.Connection
+    Dim rs As ADODB.Recordset
+    Set cn = New ADODB.Connection
+
+    On Error GoTo HandleError
+
+    cn.Open PcaGetConnnectionString()
+    Set rs = New ADODB.Recordset
+    rs.Open "SELECT BridgeUrl FROM dbo.tblDropboxConfig WHERE ConfigID = 1", _
+            cn, adOpenForwardOnly, adLockReadOnly
+    If rs.EOF Then
+        Err.Raise vbObjectError + 6010, CALLER, _
+            "dbo.tblDropboxConfig row ConfigID=1 not found. " & _
+            "Run Dropbox-Migration-SQL-Install.sql against this database."
+    End If
+    m_BridgeUrl = Nz(rs!BridgeUrl, "")
+    rs.Close
+    cn.Close
+    Set rs = Nothing
+    Set cn = Nothing
+
+    If LenB(m_BridgeUrl) = 0 Then
+        Err.Raise vbObjectError + 6011, CALLER, _
+            "tblDropboxConfig.BridgeUrl is empty. Run: " & _
+            "UPDATE dbo.tblDropboxConfig SET BridgeUrl = N'http://<server>/api' " & _
+            "WHERE ConfigID = 1;"
+    End If
+
+    m_ConfigLoaded = True
+    LogLocal CALLER, "Info", "Config loaded; BridgeUrl=" & m_BridgeUrl
+    Exit Sub
+
+HandleError:
+    Dim errNum As Long, errDesc As String
+    errNum = Err.Number
+    errDesc = Err.Description
+    If Not rs Is Nothing Then
+        If rs.State = adStateOpen Then rs.Close
+        Set rs = Nothing
+    End If
+    If Not cn Is Nothing Then
+        If cn.State = adStateOpen Then cn.Close
+        Set cn = Nothing
+    End If
+    LogLocal CALLER, "Error", "Err=" & errNum & " " & errDesc
+    Err.Raise errNum, CALLER, errDesc
+End Sub
+#End If
+
+' Accessor used by the bridge HTTP helpers.
+Public Function GetBridgeUrl() As String
+    EnsureConfigLoaded "GetBridgeUrl"
+    GetBridgeUrl = m_BridgeUrl
+End Function
 
 ' Read-only accessors for the cached config.
 ' Callers must call InitializeDropboxConfig at startup before using these.
 
+#If PREBRIDGE_LEGACY Then
 Public Function GetAppKey() As String
     EnsureConfigLoaded "GetAppKey"
     GetAppKey = m_AppKey
@@ -368,7 +491,11 @@ Public Function GetTeamRootPath() As String
     EnsureConfigLoaded "GetTeamRootPath"
     GetTeamRootPath = m_TeamRootPath
 End Function
+#End If
 
+' Kept active in the bridge era: audit logging (LogAuditEvent) and
+' DocumentManagement.bas read the Dropbox account email through this. In the
+' bridge era VBA no longer learns the service-account email, so it stays "".
 Public Function GetDropboxAccountEmail() As String
     ' Populated by Phase 3b identity validation. Empty until then.
     GetDropboxAccountEmail = m_DropboxAccountEmail
@@ -416,11 +543,13 @@ End Sub
 ' Dropbox-API-Path-Root header pointing at the team namespace, or the call
 ' resolves against the user's empty personal home namespace instead of
 ' /Company. Phase 3c/3d HTTP-request helpers will inject this header.
+#If PREBRIDGE_LEGACY Then
 Public Function DropboxPathRootHeader() As String
     EnsureConfigLoaded "DropboxPathRootHeader"
     DropboxPathRootHeader = _
         "{""" & ".tag"" : ""namespace_id"", ""namespace_id"": """ & m_NamespaceId & """}"
 End Function
+#End If
 
 ' ============================================================================
 ' SECTION 4 — DPAPI ENCRYPT / DECRYPT
@@ -433,6 +562,7 @@ End Function
 ' Output is base64-encoded so the ciphertext can be stored in a TEXT/MEMO
 ' column without binary-marshalling concerns.
 
+#If PREBRIDGE_LEGACY Then
 Public Function EncryptDPAPI(plaintext As String) As String
     Const CALLER As String = "EncryptDPAPI"
     Dim plainBytes() As Byte
@@ -516,6 +646,7 @@ Private Function Base64ToBytes(s As String) As Byte()
     node.Text = s
     Base64ToBytes = node.nodeTypedValue
 End Function
+#End If
 
 ' ============================================================================
 ' SECTION 5 — AUDIT LOG (SQL Server, via spLogDropboxAuditEvent)
@@ -666,14 +797,13 @@ End Function
 Public Function Phase3a_SmokeTest() As String
     On Error GoTo HandleError
 
-    ' (1) Config load
+    ' (1) Config load — bridge era loads only BridgeUrl (no AppSecret / namespace
+    '     in VBA anymore; those live server-side in the bridge).
     InitializeDropboxConfig
-    If LenB(GetAppKey()) = 0 Then Err.Raise vbObjectError + 6090, , "AppKey empty after load"
-    If GetAppSecret() = APPSECRET_PLACEHOLDER Then _
-        Err.Raise vbObjectError + 6091, , "AppSecret is the placeholder"
-    If LenB(GetNamespaceId()) = 0 Then Err.Raise vbObjectError + 6092, , "NamespaceId empty"
+    If LenB(GetBridgeUrl()) = 0 Then _
+        Err.Raise vbObjectError + 6090, , "BridgeUrl empty after load"
 
-    ' (2) Kill-switch
+    ' (2) Kill-switch — writes remain guarded in this (test) build
     Dim killSwitchFired As Boolean
     On Error Resume Next
     GuardWritesEnabled "Phase3a_SmokeTest"
@@ -683,27 +813,11 @@ Public Function Phase3a_SmokeTest() As String
     If Not killSwitchFired Then _
         Err.Raise vbObjectError + 6093, , "ALLOW_DROPBOX_WRITES is True; expected False in test build"
 
-    ' (3) Namespace header shape
-    Dim hdr As String
-    hdr = DropboxPathRootHeader()
-    If InStr(hdr, GetNamespaceId()) = 0 Then _
-        Err.Raise vbObjectError + 6094, , "Namespace header missing NamespaceId"
-    If InStr(hdr, "namespace_id") = 0 Then _
-        Err.Raise vbObjectError + 6095, , "Namespace header malformed"
-
-    ' (4) DPAPI round-trip
-    Dim plain As String, roundTrip As String
-    plain = "Test plaintext " & Now() & " " & Rnd()
-    roundTrip = DecryptDPAPI(EncryptDPAPI(plain))
-    If roundTrip <> plain Then _
-        Err.Raise vbObjectError + 6096, , _
-            "DPAPI round-trip mismatch. Sent [" & plain & "] got [" & roundTrip & "]"
-
-    ' (5) Audit log insert (via SP) — verify via SELECT @@IDENTITY or row count
+    ' (3) Audit log insert (via SP)
     LogAuditEvent "Upload", "Success", Null, "Phase3a-Test", "/Company/__smoke_test__", _
         "Phase3a_SmokeTest at " & Now()
 
-    ' (6) Local log
+    ' (4) Local log
     LogLocal "Phase3a_SmokeTest", "Info", "Smoke test completed at " & Now()
 
     Phase3a_SmokeTest = "OK"
@@ -726,6 +840,7 @@ End Function
 ' and replaces IsActive with TokenStatus (TEXT 20). This upgrade is
 ' idempotent and safe to call on every startup.
 
+#If PREBRIDGE_LEGACY Then
 Public Sub UpgradeTokenTableSchema()
     Const TABLE_NAME As String = "tblDropboxTokens"
     Const CALLER As String = "UpgradeTokenTableSchema"
@@ -865,6 +980,7 @@ Public Function GenerateOAuthState() As String
     m_OAuthState = NewGuid()
     GenerateOAuthState = m_OAuthState
 End Function
+#End If
 
 ' Returns a fresh GUID as a 36-char hex string with dashes, no braces.
 ' Uses Win32 CoCreateGuid + StringFromGUID2 — no Scriptlet.TypeLib COM
@@ -892,6 +1008,7 @@ Public Function NewGuid() As String
     NewGuid = guid
 End Function
 
+#If PREBRIDGE_LEGACY Then
 Public Function ValidateOAuthState(ByVal receivedState As String) As Boolean
     Dim expected As String
     expected = m_OAuthState
@@ -1256,6 +1373,142 @@ HandleError:
     Set http = Nothing
 End Function
 
+#End If
+
+' ============================================================================
+' SECTION 12B — BRIDGE HTTP HELPERS (replaces the LEGACY Section 12 transport)
+' ============================================================================
+' All Dropbox traffic now goes through the TBCMSDropboxBridge service via
+' Windows Integrated Auth (NTLM). VBA sends NO Dropbox tokens or headers; the
+' bridge owns all credentials and injects the namespace header server-side.
+
+' JSON request/response over the bridge. Returns True on HTTP 2xx.
+'   method      : "GET" or "POST"
+'   endpoint    : path relative to BridgeUrl, e.g. "/metadata"
+'   requestBody : JSON string ("" for GET)
+'   outStatus   : HTTP status code returned
+'   outResponse : response body (JSON)
+Private Function BridgeRequest( _
+    ByVal method As String, _
+    ByVal endpoint As String, _
+    ByVal requestBody As String, _
+    ByRef outStatus As Long, _
+    ByRef outResponse As String _
+) As Boolean
+    Const CALLER As String = "BridgeRequest"
+    EnsureConfigLoaded CALLER
+
+    Dim http As Object
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    On Error GoTo HttpError
+
+    http.Open method, m_BridgeUrl & endpoint, False    ' synchronous
+    http.SetAutoLogonPolicy 0      ' AutoLogonPolicy_Always — send NTLM automatically
+    http.SetRequestHeader "Content-Type", "application/json"
+    http.SetRequestHeader "Accept", "application/json"
+
+    If LenB(requestBody) > 0 Then
+        http.Send requestBody
+    Else
+        http.Send
+    End If
+
+    outStatus = http.Status
+    outResponse = http.ResponseText
+    BridgeRequest = (outStatus >= 200 And outStatus < 300)
+    Exit Function
+
+HttpError:
+    LogLocal CALLER, "Error", "WinHttp error " & Err.Number & ": " & Err.Description & _
+             " calling " & method & " " & endpoint
+    outStatus = 0
+    outResponse = ""
+    BridgeRequest = False
+End Function
+
+' Streams raw file bytes to the bridge upload endpoint. The Dropbox path travels
+' in the X-Dropbox-Path header; the bridge routes single-shot vs. chunked by size.
+Private Function BridgeUpload( _
+    ByVal dropboxPath As String, _
+    ByRef bytes() As Byte, _
+    ByRef outStatus As Long, _
+    ByRef outResponse As String _
+) As Boolean
+    Const CALLER As String = "BridgeUpload"
+    EnsureConfigLoaded CALLER
+
+    Dim http As Object
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    On Error GoTo HttpError
+
+    http.Open "POST", m_BridgeUrl & "/file/upload", False
+    http.SetAutoLogonPolicy 0
+    ' Large uploads stream synchronously VBA -> bridge -> Dropbox; the default
+    ' WinHttp send/receive timeout is 30s and aborts big files (G32). Args:
+    ' resolve, connect, send, receive (ms); 0 = infinite resolve.
+    http.SetTimeouts 0, 60000, 300000, 300000
+    http.SetRequestHeader "Content-Type", "application/octet-stream"
+    http.SetRequestHeader "X-Dropbox-Path", dropboxPath
+    http.Send bytes
+
+    outStatus = http.Status
+    outResponse = http.ResponseText
+    BridgeUpload = (outStatus >= 200 And outStatus < 300)
+    Exit Function
+
+HttpError:
+    LogLocal CALLER, "Error", "Upload WinHttp error " & Err.Number & ": " & Err.Description
+    outStatus = 0
+    outResponse = ""
+    BridgeUpload = False
+End Function
+
+' Downloads a Dropbox file THROUGH the bridge (G34 -> bridge proxy). The bridge
+' streams the bytes back over Windows Integrated Auth; the workstation never
+' contacts the Dropbox CDN. Returns True on HTTP 2xx with outBytes populated.
+Private Function BridgeDownload( _
+    ByVal dropboxPath As String, _
+    ByRef outBytes() As Byte, _
+    ByRef outStatus As Long, _
+    ByRef outError As String _
+) As Boolean
+    Const CALLER As String = "BridgeDownload"
+    EnsureConfigLoaded CALLER
+
+    Dim http As Object
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+    On Error GoTo HttpError
+
+    http.Open "POST", m_BridgeUrl & "/file/download", False
+    http.SetAutoLogonPolicy 0
+    ' Large documents can take a while; raise send/receive timeouts (G32).
+    http.SetTimeouts 0, 60000, 300000, 300000
+    http.SetRequestHeader "Content-Type", "application/json"
+    http.Send "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+
+    outStatus = http.Status
+    If outStatus >= 200 And outStatus < 300 Then
+        outBytes = http.ResponseBody
+        BridgeDownload = True
+    Else
+        outError = http.ResponseText
+        BridgeDownload = False
+    End If
+    Exit Function
+
+HttpError:
+    LogLocal CALLER, "Error", "Download WinHttp error " & Err.Number & ": " & Err.Description
+    outStatus = 0
+    outError = ""
+    BridgeDownload = False
+End Function
+
+' Extracts a JSON boolean for a key. ExtractJsonString (Section 13) handles
+' strings only; the bridge returns "found": true/false as a real boolean.
+Private Function ExtractJsonBool(ByVal json As String, ByVal key As String) As Boolean
+    ExtractJsonBool = (InStr(json, """" & key & """:true") > 0)
+End Function
+
 ' ============================================================================
 ' SECTION 13 — JSON + URL HELPERS (Phase 3b pass 2)
 ' ============================================================================
@@ -1368,6 +1621,7 @@ End Function
 ' Dropbox's OAuth redirect automatically. Manual-paste fallback is retained
 ' via USE_LOCAL_LISTENER = False (see constants at top of module).
 
+#If PREBRIDGE_LEGACY Then
 Private Function EnsureOAuthTempDir() As String
     Dim dirPath As String
     dirPath = Environ$("TEMP") & "\TBCMS"
@@ -1831,6 +2085,16 @@ Public Function EnsureValidToken() As Boolean
     End If
     EnsureValidToken = (LenB(GetCurrentAccessToken()) > 0)
 End Function
+#Else
+' Bridge era: the bridge owns and refreshes the service-account token, so VBA
+' has no token to validate. Kept as a True-returning shim so existing callers
+' (DocumentManagement.bas preflight + the smoke tests) still compile and behave.
+' Actual token validity is enforced per-call by the bridge — a revoked/expired
+' token surfaces as an HTTP error from BridgeRequest/BridgeUpload/BridgeDownload.
+Public Function EnsureValidToken() As Boolean
+    EnsureValidToken = True
+End Function
+#End If
 
 ' ============================================================================
 ' SECTION 18 — PHASE 3b PASS-2 SMOKE TESTS
@@ -1843,6 +2107,7 @@ End Function
 '   Phase3b_Pass2_AuthFlowTest  — REQUIRES BROWSER + INTERNET. Runs the full
 '                                 OAuth code-exchange flow end-to-end.
 
+#If PREBRIDGE_LEGACY Then
 Public Function Phase3b_Pass2_UnitTest() As String
     On Error GoTo HandleError
     Dim stepName As String
@@ -1976,6 +2241,8 @@ HandleError:
     Phase3b_Pass2_AuthFlowTest = "FAIL: Err=" & Err.Number & " " & Err.Description
 End Function
 
+#End If
+
 ' ============================================================================
 ' SECTION 19 — PATH + FILE UTILITIES (Phase 3c)
 ' ============================================================================
@@ -2023,9 +2290,19 @@ End Function
 ' don't collide; user-profile-scoped via %TEMP%.
 Private Function BuildLocalTempPath(ByVal dropboxPath As String) As String
     Dim tempDir As String, baseName As String
-    tempDir = EnsureOAuthTempDir()   ' %TEMP%\TBCMS\ — shared with OAuth artifacts
+    tempDir = EnsureTempDir()   ' %TEMP%\TBCMS\
     baseName = SanitizeWindowsFilename(DropboxBaseName(dropboxPath))
     BuildLocalTempPath = tempDir & "\" & NewGuid() & "_" & baseName
+End Function
+
+' Ensures %TEMP%\TBCMS\ exists and returns its path. (Bridge-era replacement
+' for the LEGACY-blocked EnsureOAuthTempDir — the temp dir no longer holds any
+' OAuth artifacts, only downloaded documents.)
+Private Function EnsureTempDir() As String
+    Dim dirPath As String
+    dirPath = Environ$("TEMP") & "\TBCMS"
+    If Dir$(dirPath, vbDirectory) = "" Then MkDir dirPath
+    EnsureTempDir = dirPath
 End Function
 
 ' Writes a byte array to disk via ADODB.Stream (binary mode).
@@ -2047,6 +2324,7 @@ End Sub
 ' Returns True on 2xx; populates outBytes from ResponseBody. Non-2xx
 ' captures the JSON error in outErrorText (ResponseText).
 
+#If PREBRIDGE_LEGACY Then
 Private Function HttpDownloadBinary( _
     ByVal url As String, _
     ByVal bearerToken As String, _
@@ -2083,6 +2361,7 @@ HandleError:
     HttpDownloadBinary = False
     Set http = Nothing
 End Function
+#End If
 
 ' Deletes every file in %TEMP%\TBCMS\ (subdirectories not recursed).
 ' Called from Form_Open at session start and Form_Unload at session end
@@ -2135,6 +2414,7 @@ End Sub
 ' Edits made in the launched app are NOT auto-re-uploaded — see plan G10.
 ' Users must save changes back via the Save flow.
 
+#If PREBRIDGE_LEGACY Then
 Public Function OpenDocument(ByVal dropboxPath As String) As String
     Const CALLER As String = "OpenDocument"
     Const DOWNLOAD_URL As String = "https://content.dropboxapi.com/2/files/download"
@@ -2190,6 +2470,50 @@ WriteError:
     LogLocal CALLER, "Error", "Failed writing temp file " & tempPath & _
              ": Err=" & Err.Number & " " & Err.Description
 End Function
+#Else
+' Bridge proxy (G34): the bridge streams the file bytes back over Windows
+' Integrated Auth; the workstation never contacts the Dropbox CDN directly.
+Public Function OpenDocument(ByVal dropboxPath As String) As String
+    Const CALLER As String = "OpenDocument"
+
+    EnsureConfigLoaded CALLER
+
+    Dim status As Long, errText As String
+    Dim bytes() As Byte
+    If Not BridgeDownload(dropboxPath, bytes, status, errText) Then
+        LogLocal CALLER, "Error", "Bridge /file/download failed: HTTP " & status & _
+                 " path=" & dropboxPath & " body=" & Left$(errText, 300)
+        Exit Function
+    End If
+
+    Dim tempPath As String
+    tempPath = BuildLocalTempPath(dropboxPath)
+
+    On Error GoTo WriteError
+    WriteBytesToFile tempPath, bytes
+    On Error GoTo 0
+
+    ' Hand off to the OS default handler via explorer.exe (G27: not
+    ' AppLocker/SmartScreen-blocked, no admin, and '&' in the filename is safe
+    ' inside the quotes).
+    On Error Resume Next
+    Shell "explorer.exe """ & tempPath & """", vbNormalFocus
+    If Err.Number <> 0 Then
+        LogLocal CALLER, "Error", "explorer.exe launch failed for " & tempPath & _
+                 ": Err=" & Err.Number & " " & Err.Description
+        Err.Clear
+    End If
+    On Error GoTo 0
+
+    LogLocal CALLER, "Info", "Opened " & dropboxPath & " -> " & tempPath
+    OpenDocument = tempPath
+    Exit Function
+
+WriteError:
+    LogLocal CALLER, "Error", "Failed writing temp file " & tempPath & _
+             ": Err=" & Err.Number & " " & Err.Description
+End Function
+#End If
 
 ' --- 21.2 GetMetadata: check if a path exists in Dropbox ------------------
 '
@@ -2203,6 +2527,7 @@ End Function
 ' returns False on transport / auth failure where we genuinely don't know
 ' the path's state.
 
+#If PREBRIDGE_LEGACY Then
 Public Function GetMetadata( _
     ByVal dropboxPath As String, _
     ByRef outFound As Boolean, _
@@ -2245,12 +2570,48 @@ Public Function GetMetadata( _
         LogLocal CALLER, "Error", "Transport failure for " & dropboxPath & ": " & outErrorDetail
     End If
 End Function
+#Else
+' Bridge /metadata returns HTTP 200 with {"found":bool,"errorSummary":..,
+' "rawJson":..} (path-not-found is found:false, NOT an HTTP error), so the
+' Found/NotFound/transport-failure tristate is preserved. Returns False only on
+' transport/auth failure where the path's state is genuinely unknown.
+Public Function GetMetadata( _
+    ByVal dropboxPath As String, _
+    ByRef outFound As Boolean, _
+    ByRef outErrorDetail As String, _
+    ByRef outJson As String _
+) As Boolean
+    Const CALLER As String = "GetMetadata"
+    EnsureConfigLoaded CALLER
+    outFound = False
+    outErrorDetail = ""
+    outJson = ""
+
+    Dim body As String, status As Long, resp As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+    If Not BridgeRequest("POST", "/metadata", body, status, resp) Then
+        outErrorDetail = "Bridge transport failure: HTTP " & status & " " & Left$(resp, 300)
+        GetMetadata = False
+        LogLocal CALLER, "Error", "Transport failure for " & dropboxPath & ": " & outErrorDetail
+        Exit Function
+    End If
+
+    outFound = ExtractJsonBool(resp, "found")
+    outErrorDetail = ExtractJsonString(resp, "errorSummary")
+    ' Note: rawJson is the Dropbox response embedded as an escaped JSON string;
+    ' ExtractJsonString returns it un-unescaped. Callers rely on outFound — the
+    ' raw body is informational only.
+    outJson = ExtractJsonString(resp, "rawJson")
+    GetMetadata = True
+End Function
+#End If
 
 ' --- 21.3 ListFolder ------------------------------------------------------
 '
 ' Calls /2/files/list_folder. Returns the response JSON string (caller parses
 ' entries with ExtractJsonString); empty on failure.
 
+#If PREBRIDGE_LEGACY Then
 Public Function ListFolder(ByVal dropboxPath As String) As String
     Const CALLER As String = "ListFolder"
     Const URL As String = "https://api.dropboxapi.com/2/files/list_folder"
@@ -2270,6 +2631,23 @@ Public Function ListFolder(ByVal dropboxPath As String) As String
     End If
     ListFolder = response
 End Function
+#Else
+' Bridge /folder/list returns the (paginated, fully-concatenated) Dropbox
+' list_folder JSON. Empty string on failure.
+Public Function ListFolder(ByVal dropboxPath As String) As String
+    Const CALLER As String = "ListFolder"
+    EnsureConfigLoaded CALLER
+
+    Dim body As String, status As Long, resp As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+    If Not BridgeRequest("POST", "/folder/list", body, status, resp) Then
+        LogLocal CALLER, "Error", "Bridge /folder/list failed: HTTP " & status & _
+                 " path=" & dropboxPath & " body=" & Left$(resp, 300)
+        Exit Function
+    End If
+    ListFolder = resp
+End Function
+#End If
 
 ' --- 21.4 GetTemporaryLink ------------------------------------------------
 '
@@ -2278,6 +2656,7 @@ End Function
 ' native-app launch). GetTemporaryLink is retained for future
 ' link-distribution scenarios (e.g., emailed links to opposing counsel).
 
+#If PREBRIDGE_LEGACY Then
 Public Function GetTemporaryLink(ByVal dropboxPath As String) As String
     Const CALLER As String = "GetTemporaryLink"
     Const URL As String = "https://api.dropboxapi.com/2/files/get_temporary_link"
@@ -2307,6 +2686,34 @@ Public Function GetTemporaryLink(ByVal dropboxPath As String) As String
     LogAuditEvent "LinkGenerate", "Success", , , dropboxPath, ""
     GetTemporaryLink = link
 End Function
+#Else
+' Bridge /file/link returns {"temporaryLink":"https://uc.dropboxusercontent.com/..."}.
+' Retained for link-distribution scenarios; the routine document-open path uses
+' OpenDocument (bridge proxy download).
+Public Function GetTemporaryLink(ByVal dropboxPath As String) As String
+    Const CALLER As String = "GetTemporaryLink"
+    EnsureConfigLoaded CALLER
+
+    Dim body As String, status As Long, resp As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+    If Not BridgeRequest("POST", "/file/link", body, status, resp) Then
+        LogAuditEvent "LinkGenerate", "Failure", , , dropboxPath, _
+            "Bridge HTTP " & status & " " & Left$(resp, 300)
+        LogLocal CALLER, "Error", "Bridge /file/link failed: HTTP " & status & " path=" & dropboxPath
+        Exit Function
+    End If
+
+    Dim link As String
+    link = ExtractJsonString(resp, "temporaryLink")
+    If LenB(link) = 0 Then
+        LogLocal CALLER, "Error", "No temporaryLink in response: " & Left$(resp, 300)
+        Exit Function
+    End If
+
+    LogAuditEvent "LinkGenerate", "Success", , , dropboxPath, ""
+    GetTemporaryLink = link
+End Function
+#End If
 
 ' ============================================================================
 ' SECTION 22 — PHASE 3c SMOKE TESTS
@@ -2486,6 +2893,7 @@ End Function
 ' POSTs `bytes` to a content.dropboxapi.com endpoint with the Dropbox-API-Arg
 ' header (JSON-encoded args), the namespace header, and the bearer token.
 ' Returns True on 2xx; populates outStatus + outResponse on every path.
+#If PREBRIDGE_LEGACY Then
 Private Function HttpUploadBinary( _
     ByVal url As String, _
     ByVal bearerToken As String, _
@@ -2517,6 +2925,7 @@ HandleError:
     HttpUploadBinary = False
     Set http = Nothing
 End Function
+#End If
 
 ' ============================================================================
 ' SECTION 24 — GATED WRITE API OPERATIONS (Phase 3d)
@@ -2549,6 +2958,7 @@ End Function
 ' Uploads localPath -> dropboxPath via /2/files/upload. Files > 150 MB are
 ' rejected with an audit-logged failure; caller must route to UploadLargeFile.
 
+#If PREBRIDGE_LEGACY Then
 Public Function UploadFile(ByVal localPath As String, _
                             ByVal dropboxPath As String, _
                             Optional ByVal caseID As Variant, _
@@ -2605,6 +3015,38 @@ Public Function UploadFile(ByVal localPath As String, _
              " bytes) to " & dropboxPath
     UploadFile = True
 End Function
+#Else
+' Bridge era: read the file bytes and POST them to the bridge, which routes
+' single-shot vs. chunked by size and injects the namespace header server-side.
+Public Function UploadFile(ByVal localPath As String, _
+                            ByVal dropboxPath As String, _
+                            Optional ByVal caseID As Variant, _
+                            Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "UploadFile"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+
+    Dim bytes() As Byte
+    If Not ReadAllBytes(localPath, bytes) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Failed to read source file: " & localPath
+        Exit Function
+    End If
+
+    Dim status As Long, resp As String
+    If Not BridgeUpload(dropboxPath, bytes, status, resp) Then
+        LogAuditEvent "Upload", "Failure", caseID, documentType, dropboxPath, _
+            "Bridge HTTP " & status & ": " & Left$(resp, 300)
+        LogLocal CALLER, "Error", "Upload failed: HTTP " & status & " path=" & dropboxPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Upload", "Success", caseID, documentType, dropboxPath, ""
+    LogLocal CALLER, "Info", "Uploaded " & localPath & " to " & dropboxPath
+    UploadFile = True
+End Function
+#End If
 
 ' --- 24.2 UploadLargeFile (chunked, > UPLOAD_CHUNK_BYTES) -----------------
 '
@@ -2617,6 +3059,7 @@ End Function
 ' both start and finish always have data to send (avoids the zero-byte
 ' edge case). Caller routes by fileSize > 150 MB per plan.
 
+#If PREBRIDGE_LEGACY Then
 Public Function UploadLargeFile(ByVal localPath As String, _
                                  ByVal dropboxPath As String, _
                                  Optional ByVal caseID As Variant, _
@@ -2727,6 +3170,17 @@ Public Function UploadLargeFile(ByVal localPath As String, _
              CStr(fileSize) & " bytes) -> " & dropboxPath
     UploadLargeFile = True
 End Function
+#Else
+' Bridge era: the bridge routes single-shot vs. chunked by file size, so VBA no
+' longer needs a separate large-file path. Kept for signature compatibility;
+' delegates to UploadFile.
+Public Function UploadLargeFile(ByVal localPath As String, _
+                                 ByVal dropboxPath As String, _
+                                 Optional ByVal caseID As Variant, _
+                                 Optional ByVal documentType As String = "") As Boolean
+    UploadLargeFile = UploadFile(localPath, dropboxPath, caseID, documentType)
+End Function
+#End If
 
 ' --- 24.3 MoveFile -------------------------------------------------------
 '
@@ -2735,6 +3189,7 @@ End Function
 ' this to relocate the whole case folder via one API call. Plan G2's
 ' spMoveDocumentFolder is invoked by the caller AFTER the move succeeds.
 
+#If PREBRIDGE_LEGACY Then
 Public Function MoveFile(ByVal fromPath As String, _
                           ByVal toPath As String, _
                           Optional ByVal caseID As Variant, _
@@ -2772,6 +3227,42 @@ Public Function MoveFile(ByVal fromPath As String, _
     LogLocal CALLER, "Info", "Moved " & fromPath & " -> " & toPath
     MoveFile = True
 End Function
+#Else
+' Bridge /file/move (autorename=false server-side). A Dropbox to/conflict comes
+' back as HTTP 409 — distinct from a transport/other failure (500) — so the
+' caller can tell "already exists at destination" apart from "the call failed".
+Public Function MoveFile(ByVal fromPath As String, _
+                          ByVal toPath As String, _
+                          Optional ByVal caseID As Variant, _
+                          Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "MoveFile"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+
+    Dim body As String, status As Long, resp As String
+    body = "{""fromPath"":""" & JsonEscapePath(fromPath) & """," & _
+           """toPath"":""" & JsonEscapePath(toPath) & """}"
+    If Not BridgeRequest("POST", "/file/move", body, status, resp) Then
+        Dim detail As String
+        If status = 409 Then
+            detail = "Conflict at destination (409): " & Left$(resp, 300)
+        Else
+            detail = "Bridge HTTP " & status & ": " & Left$(resp, 300)
+        End If
+        LogAuditEvent "Move", "Failure", caseID, documentType, _
+            fromPath & " -> " & toPath, detail
+        LogLocal CALLER, "Error", "Move failed: " & detail & " " & _
+                 fromPath & " -> " & toPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Move", "Success", caseID, documentType, _
+        fromPath & " -> " & toPath, ""
+    LogLocal CALLER, "Info", "Moved " & fromPath & " -> " & toPath
+    MoveFile = True
+End Function
+#End If
 
 ' --- 24.4 CopyFile -------------------------------------------------------
 '
@@ -2779,6 +3270,7 @@ End Function
 ' the Closed File Scans copy before the main move (Phase 5 step 4 optional
 ' first step). Works for files OR folders.
 
+#If PREBRIDGE_LEGACY Then
 Public Function CopyFile(ByVal fromPath As String, _
                           ByVal toPath As String, _
                           Optional ByVal caseID As Variant, _
@@ -2816,6 +3308,41 @@ Public Function CopyFile(ByVal fromPath As String, _
     LogLocal CALLER, "Info", "Copied " & fromPath & " -> " & toPath
     CopyFile = True
 End Function
+#Else
+' Bridge /file/copy (autorename=false server-side). As with MoveFile, a Dropbox
+' to/conflict surfaces as HTTP 409, distinct from a transport/other failure.
+Public Function CopyFile(ByVal fromPath As String, _
+                          ByVal toPath As String, _
+                          Optional ByVal caseID As Variant, _
+                          Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "CopyFile"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+
+    Dim body As String, status As Long, resp As String
+    body = "{""fromPath"":""" & JsonEscapePath(fromPath) & """," & _
+           """toPath"":""" & JsonEscapePath(toPath) & """}"
+    If Not BridgeRequest("POST", "/file/copy", body, status, resp) Then
+        Dim detail As String
+        If status = 409 Then
+            detail = "Conflict at destination (409): " & Left$(resp, 300)
+        Else
+            detail = "Bridge HTTP " & status & ": " & Left$(resp, 300)
+        End If
+        LogAuditEvent "Copy", "Failure", caseID, documentType, _
+            fromPath & " -> " & toPath, detail
+        LogLocal CALLER, "Error", "Copy failed: " & detail & " " & _
+                 fromPath & " -> " & toPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Copy", "Success", caseID, documentType, _
+        fromPath & " -> " & toPath, ""
+    LogLocal CALLER, "Info", "Copied " & fromPath & " -> " & toPath
+    CopyFile = True
+End Function
+#End If
 
 ' --- 24.5 DeleteFile -----------------------------------------------------
 '
@@ -2823,6 +3350,7 @@ End Function
 ' invokes this after an upload+SP failure to remove the orphan upload.
 ' Works for files OR folders.
 
+#If PREBRIDGE_LEGACY Then
 Public Function DeleteFile(ByVal dropboxPath As String, _
                             Optional ByVal caseID As Variant, _
                             Optional ByVal documentType As String = "") As Boolean
@@ -2853,6 +3381,30 @@ Public Function DeleteFile(ByVal dropboxPath As String, _
     LogLocal CALLER, "Info", "Deleted " & dropboxPath
     DeleteFile = True
 End Function
+#Else
+' Bridge /file/delete.
+Public Function DeleteFile(ByVal dropboxPath As String, _
+                            Optional ByVal caseID As Variant, _
+                            Optional ByVal documentType As String = "") As Boolean
+    Const CALLER As String = "DeleteFile"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+
+    Dim body As String, status As Long, resp As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+    If Not BridgeRequest("POST", "/file/delete", body, status, resp) Then
+        LogAuditEvent "Delete", "Failure", caseID, documentType, dropboxPath, _
+            "Bridge HTTP " & status & ": " & Left$(resp, 300)
+        LogLocal CALLER, "Error", "Delete failed: HTTP " & status & " " & dropboxPath
+        Exit Function
+    End If
+
+    LogAuditEvent "Delete", "Success", caseID, documentType, dropboxPath, ""
+    LogLocal CALLER, "Info", "Deleted " & dropboxPath
+    DeleteFile = True
+End Function
+#End If
 
 ' --- 24.6 CreateFolder ---------------------------------------------------
 '
@@ -2864,6 +3416,7 @@ End Function
 ' Per plan: no audit log entry — local debug log only. CreateFolder runs
 ' during workflow setup, not as an end-user action.
 
+#If PREBRIDGE_LEGACY Then
 Public Function CreateFolder(ByVal dropboxPath As String) As Boolean
     Const CALLER As String = "CreateFolder"
     Const URL As String = "https://api.dropboxapi.com/2/files/create_folder_v2"
@@ -2901,6 +3454,27 @@ Public Function CreateFolder(ByVal dropboxPath As String) As Boolean
     LogLocal CALLER, "Error", "Create folder failed: HTTP " & status & _
              " path=" & dropboxPath & " body=" & Left$(response, 300)
 End Function
+#Else
+' Bridge /folder/create. The bridge treats Dropbox path/conflict/folder
+' ("already exists") as success and returns 200, preserving the legacy
+' idempotency the callers rely on. No audit row — local debug log only.
+Public Function CreateFolder(ByVal dropboxPath As String) As Boolean
+    Const CALLER As String = "CreateFolder"
+
+    GuardWritesEnabled CALLER
+    EnsureConfigLoaded CALLER
+
+    Dim body As String, status As Long, resp As String
+    body = "{""path"":""" & JsonEscapePath(dropboxPath) & """}"
+    CreateFolder = BridgeRequest("POST", "/folder/create", body, status, resp)
+    If CreateFolder Then
+        LogLocal CALLER, "Info", "Created folder (or already existed): " & dropboxPath
+    Else
+        LogLocal CALLER, "Error", "Create folder failed: HTTP " & status & _
+                 " path=" & dropboxPath & " body=" & Left$(resp, 300)
+    End If
+End Function
+#End If
 
 ' ============================================================================
 ' SECTION 25 — PHASE 3d SMOKE TEST
@@ -3180,6 +3754,7 @@ End Function
 ' first step that failed. Caller surfaces the error via MsgBox; the form
 ' MUST NOT crash on a bootstrap failure (the user may still want to look
 ' at the app and retry).
+#If PREBRIDGE_LEGACY Then
 Public Function StartupBootstrap() As String
     Const CALLER As String = "StartupBootstrap"
     On Error GoTo HandleError
@@ -3262,6 +3837,72 @@ HandleError:
     StartupBootstrap = "Dropbox session could not be initialized at step '" & _
         stepName & "': " & errDesc
 End Function
+#Else
+' Bridge era: no OAuth at startup. Load BridgeUrl, ping /api/status, and surface
+' a clear message if the bridge is unreachable or not yet configured. Returns
+' "OK" on success or a user-facing message (frmHome surfaces it via MsgBox).
+Public Function StartupBootstrap() As String
+    Const CALLER As String = "StartupBootstrap"
+    On Error GoTo HandleError
+
+    Dim stepName As String
+
+    stepName = "InitializeDropboxConfig"
+    InitializeDropboxConfig    ' loads BridgeUrl from SQL
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    stepName = "BridgeStatus"
+    Dim status As Long, resp As String
+    If Not BridgeRequest("GET", "/status", "", status, resp) Then
+        LogLocal CALLER, "Error", "Bridge unreachable: HTTP " & status
+        StartupBootstrap = "Could not reach the Dropbox Bridge service." & vbCrLf & _
+            "URL: " & m_BridgeUrl & vbCrLf & _
+            "HTTP status: " & status & vbCrLf & _
+            "Contact IT if this persists."
+        Exit Function
+    End If
+
+    Dim bridgeStatus As String
+    bridgeStatus = ExtractJsonString(resp, "status")
+
+    If bridgeStatus = "needs_setup" Then
+        LogLocal CALLER, "Error", "Bridge returned needs_setup"
+        StartupBootstrap = "The Dropbox Bridge service has not been configured yet." & vbCrLf & _
+            "Ask IT to complete setup at: " & m_BridgeUrl & "/setup/start"
+        Exit Function
+    ElseIf bridgeStatus <> "ok" Then
+        LogLocal CALLER, "Warn", "Bridge status=" & bridgeStatus
+        StartupBootstrap = "Dropbox Bridge returned an unexpected status: " & bridgeStatus & _
+            vbCrLf & ExtractJsonString(resp, "errorDetail")
+        Exit Function
+    End If
+    LogLocal CALLER, "Info", "Step OK: " & stepName & " (bridge ok)"
+
+    ' Non-fatal housekeeping (read-only flows work regardless).
+    stepName = "CleanupTempFiles"
+    CleanupTempFiles
+    LogLocal CALLER, "Info", "Step OK: " & stepName
+
+    stepName = "ResolveLocalSyncedRoot"
+    Dim syncedOk As Boolean
+    syncedOk = ResolveLocalSyncedRoot()
+    LogLocal CALLER, "Info", "Step " & IIf(syncedOk, "OK", "skipped (desktop client unresolved)") & ": " & stepName
+
+    LogLocal CALLER, "Info", "StartupBootstrap complete; bridge reachable and ready " & _
+        "(writes guarded by ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES & ")"
+    StartupBootstrap = "OK"
+    Exit Function
+
+HandleError:
+    Dim errNum As Long, errDesc As String
+    errNum = Err.Number
+    errDesc = Err.Description
+    LogLocal CALLER, "Error", "Failed at step '" & stepName & "': Err=" & _
+        errNum & " " & errDesc
+    StartupBootstrap = "Dropbox session could not be initialized at step '" & _
+        stepName & "': " & errDesc
+End Function
+#End If
 
 ' Form_Unload hook. Sweeps %TEMP%\TBCMS\ so downloaded documents don't
 ' survive the session. Idempotent and silent on error.
@@ -3277,6 +3918,7 @@ End Sub
 ' window (the bootstrap is idempotent, so re-running is safe).
 '
 ' Usage:  ? DropboxService.Phase3e_SmokeTest
+#If PREBRIDGE_LEGACY Then
 Public Function Phase3e_SmokeTest() As String
     Dim result As String
     result = StartupBootstrap()
@@ -3299,6 +3941,52 @@ Public Function Phase3e_SmokeTest() As String
 
     Phase3e_SmokeTest = "OK — bootstrap complete; IsTokenLoaded = True; " & _
         "email = " & email & "; ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES
+End Function
+#Else
+' Bridge era: token state lives server-side, so the bootstrap just confirms the
+' bridge is reachable and returns "ok".
+Public Function Phase3e_SmokeTest() As String
+    Dim result As String
+    result = StartupBootstrap()
+    If Left$(result, 2) <> "OK" Then
+        Phase3e_SmokeTest = "FAIL: " & result
+        Exit Function
+    End If
+    Phase3e_SmokeTest = "OK — bootstrap complete; bridge reachable; " & _
+        "ALLOW_DROPBOX_WRITES = " & ALLOW_DROPBOX_WRITES
+End Function
+#End If
+
+' ============================================================================
+' SECTION 26b — BRIDGE CONNECTIVITY TEST (replaces obsolete Phase 3b OAuth tests)
+' ============================================================================
+' Run from the Immediate window:  ? DropboxService.PhaseBridge_ConnectivityTest
+' Confirms config loads (BridgeUrl present), the bridge is reachable over
+' Windows Integrated Auth, and /api/status reports "ok".
+Public Function PhaseBridge_ConnectivityTest() As String
+    On Error GoTo HandleError
+    Dim stepName As String
+
+    stepName = "1.ConfigLoad"
+    InitializeDropboxConfig
+    If LenB(GetBridgeUrl()) = 0 Then _
+        Err.Raise vbObjectError + 6300, , "BridgeUrl empty"
+
+    stepName = "2.StatusPing"
+    Dim status As Long, resp As String
+    If Not BridgeRequest("GET", "/status", "", status, resp) Then _
+        Err.Raise vbObjectError + 6301, , "Bridge /status HTTP " & status
+
+    stepName = "3.StatusValue"
+    If ExtractJsonString(resp, "status") <> "ok" Then _
+        Err.Raise vbObjectError + 6302, , "Bridge status=" & _
+            ExtractJsonString(resp, "status")
+
+    PhaseBridge_ConnectivityTest = "OK — bridge reachable, status=ok"
+    Exit Function
+HandleError:
+    PhaseBridge_ConnectivityTest = "FAIL at " & stepName & ": " & _
+        Err.Number & " " & Err.Description
 End Function
 
 ' ============================================================================
