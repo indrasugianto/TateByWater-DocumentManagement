@@ -200,9 +200,10 @@ Delete the generated `WeatherForecast.cs` and `Controllers/WeatherForecastContro
 > - `Microsoft.AspNetCore.DataProtection` is part of the ASP.NET Core **shared
 >   framework** for `net8.0` — no `dotnet add package` needed (the earlier draft
 >   listed it; harmless but unnecessary).
-> - Because Windows auth uses the **IIS** scheme (`IISDefaults`, see Program.cs),
->   the `Microsoft.AspNetCore.Authentication.Negotiate` package is **not**
->   required. Only add Negotiate if you switch to out-of-process/Kestrel hosting.
+> - Because Windows auth uses the in-process **IIS** scheme (`IISServerDefaults`,
+>   see Program.cs B.6), the `Microsoft.AspNetCore.Authentication.Negotiate`
+>   package is **not** required. Only add Negotiate if you switch to
+>   out-of-process/Kestrel hosting.
 
 ### B.2 — `appsettings.json`
 
@@ -329,9 +330,12 @@ Implementation notes:
   `INSERT` a new row on every refresh.
 - On `GetValidAccessTokenAsync`: load the row, decrypt `AccessToken`. If
   `ExpiresAtUtc - 5 minutes < UtcNow`, call `RefreshAsync` first, then decrypt
-  the newly saved `AccessToken`. **Serialize concurrent refreshes** (e.g. a
-  `SemaphoreSlim` around the refresh+save) so simultaneous near-expiry requests
-  don't double-refresh / race on the SQL write.
+  the newly saved `AccessToken`. **Serialize concurrent refreshes** with a
+  `SemaphoreSlim` around the refresh+save so simultaneous near-expiry requests
+  don't double-refresh / race on the SQL write. The semaphore **must be
+  `static`** (or held by a singleton): `DropboxTokenService` is registered
+  **scoped** (Program.cs), so a per-instance `SemaphoreSlim` field gives every
+  request its own instance and serializes nothing.
 - `RefreshAsync` calls `https://api.dropboxapi.com/oauth2/token` with
   `grant_type=refresh_token` and saves the result via `SaveTokensAsync`. It MUST
   preserve the existing `AccountEmail` (load it from the current row) — do not
@@ -380,8 +384,13 @@ private async Task RefreshAsync(string refreshToken, CancellationToken ct)
 
 ### B.5 — `Services/DropboxApiClient.cs`
 
-Thin wrapper over the Dropbox API.  Inject `IDropboxTokenService` and
-`IHttpClientFactory`.
+Thin wrapper over the Dropbox API.  Inject `IDropboxTokenService` (`_tokens`),
+an `HttpClient` (`_http`, from `IHttpClientFactory`), and the bound `Dropbox`
+options (`_cfg`). The samples below use `_cfg.AppKey` / `_cfg.AppSecret` /
+`_cfg.NamespaceId`, so register the options once:
+`builder.Services.Configure<DropboxOptions>(builder.Configuration.GetSection("Dropbox"))`
+and inject `IOptions<DropboxOptions>` (this binding is assumed but never shown in
+Program.cs — add it).
 
 Key pattern — all API helpers follow this shape:
 
@@ -729,6 +738,17 @@ HTTP status codes that VBA can test:
 > endpoint returns `200` with `found:false` so VBA's `outFound` tristate works.
 > The 404 row above applies to other endpoints that genuinely cannot proceed
 > without the path.
+
+> **The 404 / 401 rows are a contract the shown code does not yet fulfill.** The
+> handler below only produces 503 / 403 / 401 / 500, and the `DropboxApiClient`
+> methods (B.5) don't translate Dropbox errors. For **401** to fire, each method
+> must call `resp.EnsureSuccessStatusCode()` (which populates
+> `HttpRequestException.StatusCode`). And Dropbox returns **HTTP 409** with a
+> `path/not_found` `error_summary` — *not* 404 — for missing paths, so "path not
+> found → 404" requires the client to parse the error body and throw a
+> 404-mapped exception. Implement that translation in `DropboxApiClient`, or the
+> table's finer-grained statuses never reach VBA (everything non-503/403 lands
+> on 500).
 
 Register the exception-handling middleware **immediately after `app.Build()`**,
 before `UseAuthentication`/route registration, and map exception types to the
@@ -1337,6 +1357,15 @@ Copy the `../publish/bridge/` folder to the server, e.g.
       <add name="aspNetCore" path="*" verb="*"
            modules="AspNetCoreModuleV2" resourceType="Unspecified"/>
     </handlers>
+    <security>
+      <requestFiltering>
+        <!-- IIS request filtering caps request size at ~28.6 MB by default;
+             raise it or large uploads fail with HTTP 404.13 BEFORE reaching the
+             app. This is SEPARATE from IISServerOptions.MaxRequestBodySize and
+             is the in-process knob that actually gates upload size. -->
+        <requestLimits maxAllowedContentLength="2147483648"/>
+      </requestFiltering>
+    </security>
     <aspNetCore processPath="dotnet"
                 arguments=".\TBCMSDropboxBridge.dll"
                 stdoutLogEnabled="true"
@@ -1519,14 +1548,14 @@ section.
 | G29 | Bridge server hostname | Confirm the IIS server name and whether internal DNS resolves it.  Update `tblDropboxConfig.BridgeUrl` and the Dropbox App Console redirect URI accordingly. |
 | G30 | `RedirectUri` for setup OAuth | **Resolved → run setup entirely on localhost.** Register `http://localhost/api/setup/callback` in the Dropbox App Console. Dropbox **rejects non-localhost `http://` redirect URIs** (they must be `https://`), and the session-cookie + loopback checks require the same host throughout — so do NOT use the `.local` hostname for the callback. See Phase E. |
 | G31 | `OpenDocument` temp-link download | **Corrected — NOT a one-liner.** `HttpDownloadBinary` POSTs with `Authorization` + `Dropbox-API-Path-Root` + `Dropbox-API-Arg` headers; a CDN temp link needs a header-free **GET**. Add a real GET branch when the token arg is empty (see the note under `OpenDocument` in C.4), or adopt G34 and proxy the download through the bridge. |
-| G32 | Large file upload to bridge | Files >150 MB route through `UploadFile`→`BridgeUpload`; the bridge runs Dropbox `upload_session` internally. `BridgeUpload` now sets `SetTimeouts 0, 60000, 300000, 300000` (default 30s aborts big files). **Also raised the server body cap** (`MaxRequestBodySize`, default ~30 MB) in Program.cs — without it any upload >30 MB returns HTTP 413. Both VBA and bridge buffer the whole file in memory today; consider streaming if multi-GB files are expected. |
-| G33 | Deliverable #7 rate limiting | The verification script calls `GetMetadata` ~30,000 times — via the bridge this is one authenticated server making 30,000 Dropbox calls. Dropbox limit ≈ 1,000 req/min per app. Add a ~70 ms sleep in the (not-yet-written) Deliverable #7 loop, **and** have the bridge honor `Retry-After` on HTTP 429 (retry with backoff) rather than failing the document — neither is implemented yet. |
+| G32 | Large file upload to bridge | Files >150 MB route through `UploadFile`→`BridgeUpload`; the bridge runs Dropbox `upload_session` internally. `BridgeUpload` now sets `SetTimeouts 0, 60000, 300000, 300000` (default 30s aborts big files). **Also raised TWO body caps** — `IISServerOptions.MaxRequestBodySize` in Program.cs (the in-process knob; `ConfigureKestrel` is a no-op under in-process hosting) **and** IIS request filtering `<requestLimits maxAllowedContentLength>` in web.config (default ~28.6 MB → otherwise HTTP 404.13 before the app sees the request). Both are required for uploads >~28.6 MB. Both VBA and bridge buffer the whole file in memory today; consider streaming if multi-GB files are expected. |
+| G33 | Deliverable #7 rate limiting | The verification script calls `GetMetadata` ~30,000 times — via the bridge this is one authenticated server making 30,000 Dropbox calls. Dropbox limit ≈ 1,000 req/min per app. Add a ~70 ms sleep in the (not-yet-written) Deliverable #7 loop, **and** have the bridge honor `Retry-After` on HTTP 429 (retry with backoff) rather than failing the document — neither is implemented yet. Note also that `/api/status` now calls `users/get_current_account` on **every** VBA startup (`VerifyLiveAccountEmailAsync`), so a morning login wave adds one Dropbox call per user — well under the limit, but `/status` is no longer free. |
 | G34 | **Download path: direct CDN vs. proxy** | **⚠ BLOCKING — resolve before writing Phase C `OpenDocument`/`GetTemporaryLink`.** `OpenDocument` (C.4) downloads directly from `uc.dropboxusercontent.com`; uploads go through the bridge. If locked-down workstations are firewalled from Dropbox domains (**plausible — that firewalling is the very premise of this bridge**), downloads break while uploads work — and `OpenDocument` is the most-used operation. The C.4 `OpenDocument` design and the G31 GET-branch surgery on `HttpDownloadBinary` are provisional until this is settled. **Decide with IT first:** keep direct-CDN (requires workstation outbound HTTPS to `*.dropboxusercontent.com`) or add a bridge `/api/file/download` that streams bytes back (uniform trust/network model, no per-workstation internet). |
 | G35 | **Per-environment DB / token isolation** | The bridge owns a real Dropbox service-account token. Test and production are separate deployments with separate `appsettings.Production.json`, separate SQL hosts (`awsql2022dev` vs `tbf-cms`), and a separately-provisioned `tblDropboxServiceToken` row each. A bridge pointed at the wrong DB violates "two environments, never mix." **Also:** the test bridge's token can write to the real production `/Company` — `Bridge:AllowWrites=false` on test is the guard (G37). |
 | G36 | **HTTP vs HTTPS on the LAN** | VBA→bridge is plaintext HTTP/80: document bytes, 4-hour unauthenticated temp links, and NTLM all cross the LAN in clear. For a law firm handling confidential client documents, recommend HTTPS with an internal/AD-CS cert and update `tblDropboxConfig.BridgeUrl` to `https://`. Decision needed before production cutover. |
 | G37 | **Server-side write guard + access scope** | Implemented `Bridge:AllowWrites` (`GuardWrites` in Program.cs) as the bridge-side mirror of `ALLOW_DROPBOX_WRITES` — the VBA flag alone protects nothing once the bridge exists. Open item: the bridge gates only on Windows auth, so **any** TBCMS-domain user can read/temp-link/delete **any** `/Company` path via a direct HTTP call, and Dropbox-native audit shows only the service account (SQL `tblDropboxAuditLog` retains the real user). Accept this risk or add per-path / per-operation authorization. |
 | G38 | `ListFolder` pagination | Neither the bridge `ListFolderAsync` nor the legacy VBA appears to handle `has_more` / `list_folder/continue`. Folders with >~2000 entries truncate silently. Confirm no document folder exceeds this, or implement continuation in the bridge and return the concatenated result. |
-| G39 | Concurrent token refresh | Multiple simultaneous VBA requests near token expiry can trigger concurrent refreshes + racing SQL writes. Serialize refresh in `DropboxTokenService` (e.g. `SemaphoreSlim`). Noted in B.4. |
+| G39 | Concurrent token refresh | Multiple simultaneous VBA requests near token expiry can trigger concurrent refreshes + racing SQL writes. Serialize refresh in `DropboxTokenService` with a **`static`** `SemaphoreSlim` — the service is scoped, so a per-instance semaphore serializes nothing (see B.4). |
 | G40 | Data Protection key-ring scope | `ProtectKeysWithDpapi(protectToLocalMachine: true)` is now set in Program.cs. Without it the key ring is bound to the app-pool identity's profile — re-introducing the G27 profile-binding failure server-side. Back up `C:\ProgramData\TBCMSBridge\dpkeys` and keep the app-pool identity stable; losing the ring means re-running Phase E setup. |
 
 ---
