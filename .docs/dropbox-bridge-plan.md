@@ -151,13 +151,16 @@ IF NOT EXISTS (
 )
 BEGIN
     CREATE TABLE dbo.tblDropboxServiceToken (
-        TokenID        int           IDENTITY(1,1) PRIMARY KEY,
-        AccessToken    nvarchar(max) NOT NULL,   -- DPAPI-encrypted (machine scope)
-        RefreshToken   nvarchar(max) NOT NULL,   -- DPAPI-encrypted (machine scope)
+        TokenID        int           NOT NULL PRIMARY KEY,   -- always 1 (singleton)
+        AccessToken    nvarchar(max) NOT NULL,   -- Data-Protection-encrypted (machine scope)
+        RefreshToken   nvarchar(max) NOT NULL,   -- Data-Protection-encrypted (machine scope)
         ExpiresAtUtc   datetime2     NOT NULL,
         AccountEmail   nvarchar(200) NULL,
         UpdatedAtUtc   datetime2     NOT NULL DEFAULT GETUTCDATE(),
-        SetupByUser    nvarchar(200) NULL        -- Windows login that ran setup
+        SetupByUser    nvarchar(200) NULL,       -- Windows login that ran setup
+        -- Single-row guarantee — mirrors tblDropboxConfig's CK_..._SingleRow.
+        -- The bridge UPSERTs TokenID = 1; it must never accumulate rows.
+        CONSTRAINT CK_DropboxServiceToken_SingleRow CHECK (TokenID = 1)
     );
 
     PRINT 'Section 9.2: tblDropboxServiceToken created.';
@@ -179,10 +182,17 @@ repo root.
 dotnet new webapi -n TBCMSDropboxBridge -o dropbox-bridge --framework net8.0
 cd dropbox-bridge
 dotnet add package Microsoft.Data.SqlClient        # SQL Server access
-dotnet add package Microsoft.AspNetCore.DataProtection  # token encryption
 ```
 
 Delete the generated `WeatherForecast.cs` and `Controllers/WeatherForecastController.cs`.
+
+> **Package notes:**
+> - `Microsoft.AspNetCore.DataProtection` is part of the ASP.NET Core **shared
+>   framework** for `net8.0` — no `dotnet add package` needed (the earlier draft
+>   listed it; harmless but unnecessary).
+> - Because Windows auth uses the **IIS** scheme (`IISDefaults`, see Program.cs),
+>   the `Microsoft.AspNetCore.Authentication.Negotiate` package is **not**
+>   required. Only add Negotiate if you switch to out-of-process/Kestrel hosting.
 
 ### B.2 — `appsettings.json`
 
@@ -196,12 +206,13 @@ Delete the generated `WeatherForecast.cs` and `Controllers/WeatherForecastContro
     "AppKey":      "dqleswbnux8k3m5",
     "AppSecret":   "REPLACE_WITH_REAL_SECRET",
     "NamespaceId": "14334595683",
-    "RedirectUri": "http://localhost/tbcms-bridge/setup/callback"
+    "RedirectUri": "http://localhost/api/setup/callback"
   },
   "ConnectionStrings": {
     "TateByWater": "Server=awsql2022dev;Database=TateByWater;Integrated Security=True;TrustServerCertificate=True;"
   },
   "Bridge": {
+    "AllowWrites": false,
     "AllowedAdGroups": [ "Domain\\TBCMSUsers", "Domain\\IT" ],
     "SetupAllowedFrom": [ "127.0.0.1", "::1" ]
   },
@@ -210,6 +221,28 @@ Delete the generated `WeatherForecast.cs` and `Controllers/WeatherForecastContro
   }
 }
 ```
+
+> **`Bridge:AllowWrites`** is the server-side equivalent of the VBA
+> `ALLOW_DROPBOX_WRITES` kill-switch (see Program.cs `GuardWrites`). Keep it
+> `false` in the committed `appsettings.json` and in every **test** deployment —
+> the test environment treats `/Company` as read-only, and the VBA flag alone
+> does NOT protect Dropbox once the bridge exists (any domain user can POST a
+> write endpoint directly). Set it `true` only in the production deployment's
+> `appsettings.Production.json`.
+
+> **`RedirectUri` must exactly match** (a) the route (`/api/setup/callback`) and
+> (b) what is registered in the Dropbox App Console. The whole setup round-trip
+> runs on `localhost` (Phase E) so this is `http://localhost/api/setup/callback`
+> — Dropbox permits `http://localhost` redirect URIs but **rejects non-localhost
+> `http://` URIs** (they must be `https://`). See G30.
+
+> **Connection string is per-environment.** This dev value (`awsql2022dev` /
+> `TateByWater`) is correct for the **test** bridge only. The production bridge
+> must point at the production SQL host (`tbf-cms`) in its
+> `appsettings.Production.json`, and `tblDropboxServiceToken` + its token row
+> must be provisioned **separately** in each database. A production bridge
+> pointed at the dev DB would violate the "two environments, never mix" rule
+> (CLAUDE.md). See G35.
 
 > **Security note:** `AppSecret` must be set in `appsettings.Production.json`
 > (which is gitignored) or via an environment variable
@@ -256,17 +289,32 @@ public interface IDropboxTokenService
                          int expiresInSeconds, string accountEmail,
                          string setupByUser, CancellationToken ct = default);
     Task<bool> HasTokenAsync(CancellationToken ct = default);
+    Task<string?> GetAccountEmailAsync(CancellationToken ct = default);
 }
 ```
 
 Implementation notes:
 - Use `IDataProtector` (injected via `IDataProtectionProvider`) with purpose
-  string `"TBCMSDropboxBridge.ServiceToken"` — machine-scope by default in IIS.
-- On `GetValidAccessTokenAsync`: load row from SQL, decrypt `AccessToken`.  If
+  string `"TBCMSDropboxBridge.ServiceToken"`. Encryption-at-rest scope is set in
+  `Program.cs` via `ProtectKeysWithDpapi(protectToLocalMachine: true)` — do not
+  rely on the per-user default (see G27 / the Program.cs note).
+- **Single-row semantics.** `tblDropboxServiceToken` must hold exactly one row.
+  `SaveTokensAsync` is an **UPSERT** (update the existing row if present, else
+  insert), and every read is `SELECT TOP 1 ... ORDER BY UpdatedAtUtc DESC`. The
+  schema (Section 9.2) enforces this with a single-row CHECK constraint. Do not
+  `INSERT` a new row on every refresh.
+- On `GetValidAccessTokenAsync`: load the row, decrypt `AccessToken`. If
   `ExpiresAtUtc - 5 minutes < UtcNow`, call `RefreshAsync` first, then decrypt
-  the newly saved `AccessToken`.
+  the newly saved `AccessToken`. **Serialize concurrent refreshes** (e.g. a
+  `SemaphoreSlim` around the refresh+save) so simultaneous near-expiry requests
+  don't double-refresh / race on the SQL write.
 - `RefreshAsync` calls `https://api.dropboxapi.com/oauth2/token` with
-  `grant_type=refresh_token` and saves the result via `SaveTokensAsync`.
+  `grant_type=refresh_token` and saves the result via `SaveTokensAsync`. It MUST
+  preserve the existing `AccountEmail` (load it from the current row) — do not
+  pass `""`, which would wipe the stored email on every refresh.
+- `GetAccountEmailAsync` returns the stored `AccountEmail`. For the `/api/status`
+  liveness guarantee it may instead make a fresh `users/get_current_account`
+  call so a revoked token surfaces as an error rather than a stale "ok".
 - Wrap the SQL connection in the injected `SqlConnection` (registered as scoped
   with the connection string from config).
 - Raise `InvalidOperationException("Bridge not configured — run setup first")`
@@ -292,10 +340,12 @@ private async Task RefreshAsync(string refreshToken, CancellationToken ct)
     var json = await resp.Content.ReadFromJsonAsync<JsonElement>(ct);
     var newAccess    = json.GetProperty("access_token").GetString()!;
     var newExpiresIn = json.GetProperty("expires_in").GetInt32();
-    // keep existing refresh token (Dropbox rotates only when offline_access issues)
+    // keep existing refresh token (Dropbox does not rotate refresh tokens for
+    // offline_access grants) AND preserve the stored account email — passing ""
+    // here wipes it on every refresh.
+    var existingEmail = await GetAccountEmailAsync(ct) ?? "";
     await SaveTokensAsync(newAccess, refreshToken, newExpiresIn,
-                          /* accountEmail: load from existing row */ "",
-                          "auto-refresh", ct);
+                          existingEmail, "auto-refresh", ct);
 }
 ```
 
@@ -307,18 +357,38 @@ Thin wrapper over the Dropbox API.  Inject `IDropboxTokenService` and
 Key pattern — all API helpers follow this shape:
 
 ```csharp
+// Build the path-root header value WITHOUT hand-escaping — serialize a real
+// object so the JSON is guaranteed valid. The required shape is exactly:
+//   {".tag":"namespace_id","namespace_id":"14334595683"}
+// (matches DropboxPathRootHeader() in DropboxService.bas). Note the key is
+// ".tag" — earlier drafts of this plan had a mis-escaped ".\.tag" that Dropbox
+// rejects.
+private string PathRootHeader() =>
+    JsonSerializer.Serialize(new Dictionary<string, string>
+    {
+        [".tag"]        = "namespace_id",
+        ["namespace_id"] = _cfg.NamespaceId,
+    });
+
 private async Task<HttpResponseMessage> ApiPostAsync(
     string url, object body, CancellationToken ct)
 {
     var token = await _tokens.GetValidAccessTokenAsync(ct);
     using var req = new HttpRequestMessage(HttpMethod.Post, url);
     req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-    req.Headers.Add("Dropbox-API-Path-Root",
-        $"{{\".\\.tag\": \"namespace_id\", \"namespace_id\": \"{_cfg.NamespaceId}\"}}");
+    req.Headers.Add("Dropbox-API-Path-Root", PathRootHeader());
     req.Content = JsonContent.Create(body);
     return await _http.SendAsync(req, ct);
 }
 ```
+
+> **Note — uploads do not use `ApiPostAsync`.** The content API
+> (`content.dropboxapi.com/2/files/upload`) needs `Content-Type:
+> application/octet-stream`, the path supplied via a JSON-encoded
+> `Dropbox-API-Arg` header (not the body), **and** the same
+> `Dropbox-API-Path-Root` header. `UploadAsync` / `UploadLargeAsync` must build
+> their own `HttpRequestMessage` — reuse `PathRootHeader()` but set the raw byte
+> content and `Dropbox-API-Arg` explicitly.
 
 Methods to implement (one per public VBA function being replaced):
 
@@ -347,10 +417,23 @@ Every method must:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-// Data protection — machine-scope key ring persisted to configured path
+// Data protection — key ring persisted to configured path AND protected at rest
+// with MACHINE-scope DPAPI. Without protectToLocalMachine:true the ring is
+// encrypted to the app-pool identity's profile, which re-introduces exactly the
+// profile-binding failure (G27) this whole service exists to escape: change the
+// app-pool identity or lose its profile and the stored tokens become
+// undecryptable, forcing a full re-setup.
 builder.Services.AddDataProtection()
     .PersistKeysToFileSystem(
-        new DirectoryInfo(builder.Configuration["DataProtection:KeyStorePath"]!));
+        new DirectoryInfo(builder.Configuration["DataProtection:KeyStorePath"]!))
+    .ProtectKeysWithDpapi(protectToLocalMachine: true)
+    .SetApplicationName("TBCMSDropboxBridge");   // stable across redeploys
+
+// Raise the request-body cap — default is ~30 MB, but uploads (incl. the
+// >150 MB UploadLargeFile path) post raw file bytes through this service.
+// Set BOTH the Kestrel/generic limit and the IIS in-process limit.
+builder.Services.Configure<IISServerOptions>(o => o.MaxRequestBodySize = 2_147_483_648); // 2 GB
+builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = 2_147_483_648);
 
 // SQL client
 builder.Services.AddScoped(_ =>
@@ -362,17 +445,44 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDropboxTokenService, DropboxTokenService>();
 builder.Services.AddScoped<DropboxApiClient>();
 
-// Windows auth (IIS handles the NTLM handshake; we just enable it here)
-builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-    .AddNegotiate();
+// Session — REQUIRED for the OAuth state param in the setup flow.
+// (Earlier drafts called a non-existent app.AddSession(); these are the real
+// registrations.) Note the setup flow keeps the entire round-trip on localhost
+// so the session cookie survives the Dropbox redirect — see Phase E.
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(o =>
+{
+    o.Cookie.Name = "TBCMSBridge.Setup";
+    o.Cookie.HttpOnly = true;
+    o.IdleTimeout = TimeSpan.FromMinutes(10);
+});
+
+// Windows auth. IMPORTANT: D.2 specifies in-process IIS hosting
+// (hostingModel="inprocess"), so Windows auth is forwarded by IIS — use the
+// IIS scheme, NOT AddNegotiate() (that is for Kestrel / out-of-process only).
+builder.Services.AddAuthentication(IISDefaults.AuthenticationScheme);
 builder.Services.AddAuthorization(opts =>
     opts.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .Build());
 
 var app = builder.Build();
+app.UseSession();           // before endpoints; needed by setup flow
 app.UseAuthentication();
 app.UseAuthorization();
+
+// --- Server-side write guard (mirrors VBA ALLOW_DROPBOX_WRITES) -------------
+// The VBA kill-switch protects nothing once the bridge exists: any domain user
+// can POST /api/file/delete directly. This flag is the bridge's equivalent
+// boundary and MUST be false in every non-production deployment (test env
+// treats /Company as read-only). Read from config: "Bridge:AllowWrites".
+bool allowWrites = builder.Configuration.GetValue<bool>("Bridge:AllowWrites");
+void GuardWrites()
+{
+    if (!allowWrites)
+        throw new InvalidOperationException(
+            "Writes are disabled on this bridge (Bridge:AllowWrites=false).");
+}
 
 // --- Operational endpoints (Windows Auth required) -------------------------
 
@@ -396,12 +506,17 @@ app.MapPost("/api/folder/list", async (FolderListRequest req, DropboxApiClient d
 
 app.MapPost("/api/folder/create", async (FolderCreateRequest req, DropboxApiClient db) =>
 {
+    GuardWrites();
+    // CreateFolderAsync MUST treat Dropbox 409 path/conflict/folder
+    // ("already exists") as success — the legacy VBA CreateFolder relies on
+    // this idempotency (DropboxService.bas ~2889) and a Phase test asserts it.
     await db.CreateFolderAsync(req.Path);
     return Results.Ok();
 });
 
 app.MapPost("/api/file/upload", async (HttpRequest httpReq, DropboxApiClient db) =>
 {
+    GuardWrites();
     var path  = httpReq.Headers["X-Dropbox-Path"].ToString();
     var bytes = await BinaryBody(httpReq);
     if (bytes.Length > 157_286_400)   // 150 MB
@@ -413,18 +528,21 @@ app.MapPost("/api/file/upload", async (HttpRequest httpReq, DropboxApiClient db)
 
 app.MapPost("/api/file/move", async (MoveRequest req, DropboxApiClient db) =>
 {
+    GuardWrites();
     await db.MoveAsync(req.FromPath, req.ToPath);
     return Results.Ok();
 });
 
 app.MapPost("/api/file/copy", async (CopyRequest req, DropboxApiClient db) =>
 {
+    GuardWrites();
     await db.CopyAsync(req.FromPath, req.ToPath);
     return Results.Ok();
 });
 
 app.MapPost("/api/file/delete", async (DeleteRequest req, DropboxApiClient db) =>
 {
+    GuardWrites();
     await db.DeleteAsync(req.Path);
     return Results.Ok();
 });
@@ -435,8 +553,12 @@ app.MapGet("/api/status", async (IDropboxTokenService tokens) =>
         return Results.Ok(new StatusResponse("needs_setup", null, null));
     try
     {
-        var _ = await tokens.GetValidAccessTokenAsync();
-        return Results.Ok(new StatusResponse("ok", null, null));
+        // GetValidAccessTokenAsync may return a CACHED token without contacting
+        // Dropbox, so "ok" alone does not prove the token is still valid (it
+        // could have been revoked admin-side). GetAccountEmailAsync should make
+        // a cheap users/get_current_account call so "ok" means genuinely live.
+        var email = await tokens.GetAccountEmailAsync();
+        return Results.Ok(new StatusResponse("ok", email, null));
     }
     catch (Exception ex)
     {
@@ -448,6 +570,9 @@ app.MapGet("/api/status", async (IDropboxTokenService tokens) =>
 
 app.MapGet("/api/setup/start", (IConfiguration cfg, HttpContext ctx) =>
 {
+    // Loopback-only is enforced in-code (IsLocalRequest). There is no
+    // "LocalOnly" auth policy — earlier drafts referenced one that was never
+    // defined and would have thrown at startup.
     if (!IsLocalRequest(ctx)) return Results.Forbid();
     var dropboxCfg = cfg.GetSection("Dropbox");
     var state = Guid.NewGuid().ToString("N");
@@ -458,7 +583,7 @@ app.MapGet("/api/setup/start", (IConfiguration cfg, HttpContext ctx) =>
         $"&state={state}" +
         $"&redirect_uri={Uri.EscapeDataString(dropboxCfg["RedirectUri"]!)}";
     return Results.Redirect(authUrl);
-}).RequireAuthorization(new AuthorizeAttribute { Policy = "LocalOnly" });
+});
 
 app.MapGet("/api/setup/callback", async (
     string code, string state,
@@ -489,12 +614,28 @@ app.MapGet("/api/setup/callback", async (
     var refresh    = json.GetProperty("refresh_token").GetString()!;
     var expiresIn  = json.GetProperty("expires_in").GetInt32();
 
-    await tokens.SaveTokensAsync(access, refresh, expiresIn, "",
+    // Capture the account email now (the only place we have a fresh token in a
+    // known-good state). It is surfaced by /api/status and the acceptance
+    // criteria expect it; the previous "" placeholder left it permanently null.
+    string accountEmail = "";
+    using (var who = new HttpClient())
+    {
+        who.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", access);
+        var acctResp = await who.PostAsync(
+            "https://api.dropboxapi.com/2/users/get_current_account", null);
+        if (acctResp.IsSuccessStatusCode)
+        {
+            var acct = await acctResp.Content.ReadFromJsonAsync<JsonElement>();
+            accountEmail = acct.GetProperty("email").GetString() ?? "";
+        }
+    }
+
+    await tokens.SaveTokensAsync(access, refresh, expiresIn, accountEmail,
                                  ctx.User.Identity?.Name ?? "setup", default);
     return Results.Text("Setup complete. You can close this browser tab.");
 });
 
-app.AddSession();  // needed for OAuth state param in setup flow
 app.Run();
 ```
 
@@ -527,18 +668,38 @@ HTTP status codes that VBA can test:
 |---|---|---|
 | Success | 200 | Parse response |
 | Bridge not yet set up | 503 | Surface "Contact IT" message |
+| Writes disabled on this bridge | 403 | Surface "writes disabled" (test env) |
 | Dropbox path not found | 404 | Treated as `outFound = False` |
 | Dropbox auth failure | 401 | Log + show "Dropbox auth error — contact IT" |
 | Any other error | 500 | Log detail; surface generic error |
 
-Add a minimal exception-handling middleware at the top of `Program.cs` before
-route registration:
+> **Note on `/api/metadata`:** path-not-found is NOT surfaced as HTTP 404 — the
+> endpoint returns `200` with `found:false` so VBA's `outFound` tristate works.
+> The 404 row above applies to other endpoints that genuinely cannot proceed
+> without the path.
+
+Register the exception-handling middleware **immediately after `app.Build()`**,
+before `UseAuthentication`/route registration, and map exception types to the
+statuses above (the previous version collapsed everything to 500, so VBA could
+never distinguish "not configured" / "writes disabled" / "auth failure"):
 
 ```csharp
 app.UseExceptionHandler(errApp => errApp.Run(async ctx =>
 {
-    ctx.Response.StatusCode = 500;
     var ex = ctx.Features.Get<IExceptionHandlerFeature>()?.Error;
+    ctx.Response.StatusCode = ex switch
+    {
+        // "Bridge not configured — run setup first"
+        InvalidOperationException ioe when ioe.Message.Contains("not configured")
+            => StatusCodes.Status503ServiceUnavailable,
+        // "Writes are disabled on this bridge" (GuardWrites)
+        InvalidOperationException ioe when ioe.Message.Contains("Writes are disabled")
+            => StatusCodes.Status403Forbidden,
+        // Dropbox auth failures bubble up as HttpRequestException w/ 401
+        HttpRequestException hre when hre.StatusCode == HttpStatusCode.Unauthorized
+            => StatusCodes.Status401Unauthorized,
+        _   => StatusCodes.Status500InternalServerError,
+    };
     await ctx.Response.WriteAsJsonAsync(new { error = ex?.Message });
 }));
 ```
@@ -714,6 +875,10 @@ Private Function BridgeUpload( _
 
     http.Open "POST", m_BridgeUrl & "/file/upload", False
     http.SetAutoLogonPolicy 0
+    ' Large uploads stream synchronously VBA -> bridge -> Dropbox; the default
+    ' WinHttp send/receive timeout is 30s and will abort big files (G32).
+    ' Args: resolve, connect, send, receive (ms). 0 = infinite resolve.
+    http.SetTimeouts 0, 60000, 300000, 300000
     http.SetRequestHeader "Content-Type",  "application/octet-stream"
     http.SetRequestHeader "X-Dropbox-Path", dropboxPath
     http.Send bytes
@@ -800,9 +965,29 @@ WriteError:
 End Function
 ```
 
-Note: `HttpDownloadBinary` is being reused here with an empty token string —
-update that function to skip the `Authorization` header when the token arg is
-empty.  One-line change inside the existing function.
+> **⚠ Reusing `HttpDownloadBinary` for a temp link is NOT a one-liner (corrects
+> G31).** The existing `HttpDownloadBinary` (DropboxService.bas ~2050) is built
+> for the Dropbox *content* API: it issues a **POST**, and unconditionally sends
+> `Authorization`, `Dropbox-API-Path-Root`, and `Dropbox-API-Arg` headers. A
+> `uc.dropboxusercontent.com` temp link is a plain **GET** URL that takes none of
+> those headers — POSTing with Dropbox headers will not download it correctly.
+> You must add a real branch (or a separate `HttpDownloadFromUrl` helper) that
+> does a header-free `GET` when the token arg is empty:
+> ```vba
+> If LenB(bearerToken) = 0 Then
+>     http.Open "GET", url, False          ' CDN temp link: no auth, no Dropbox headers
+>     http.Send
+> Else
+>     http.Open "POST", url, False         ' content API path (unchanged)
+>     http.SetRequestHeader "Authorization", "Bearer " & bearerToken
+>     http.SetRequestHeader "Dropbox-API-Path-Root", DropboxPathRootHeader()
+>     http.SetRequestHeader "Dropbox-API-Arg", dropboxArgJson
+>     http.Send
+> End If
+> ```
+> **Alternative worth weighing (see G34):** proxy the download through the
+> bridge instead, so workstations never need direct outbound access to the
+> Dropbox CDN.
 
 #### `GetMetadata(dropboxPath, outFound, outErrorDetail, outJson)` → bridge `/metadata`
 
@@ -817,7 +1002,7 @@ Public Function GetMetadata(...) As Boolean
         GetMetadata = False
         Exit Function
     End If
-    outFound       = (ExtractJsonString(resp, "found") = "true")  ' or parse as bool
+    outFound       = ExtractJsonBool(resp, "found")  ' see ExtractJsonBool helper below
     outErrorDetail = ExtractJsonString(resp, "errorSummary")
     outJson        = ExtractJsonString(resp, "rawJson")
     GetMetadata    = True
@@ -928,6 +1113,14 @@ End Function
 #### `CopyFile(fromPath, toPath)` → bridge `/file/copy`
 
 Same pattern as `MoveFile`, endpoint `/file/copy`.
+
+> **Preserve conflict semantics.** The legacy `MoveFile`/`CopyFile` run
+> `autorename=false` and deliberately "surface conflicts to the caller for
+> explicit resolution" (DropboxService.bas ~2537). Collapsing the bridge result
+> to a bare `True/False` loses the distinction between a transport failure and a
+> Dropbox `to/conflict`. Have the bridge return the Dropbox error tag (or a
+> dedicated 409 status) so the VBA caller can still tell "already exists at
+> destination" apart from "the call failed", matching pre-bridge behavior.
 
 #### `DeleteFile(dropboxPath)` → bridge `/file/delete`
 
@@ -1046,8 +1239,17 @@ Copy the `../publish/bridge/` folder to the server, e.g.
 1. Open IIS Manager on the target server.
 2. **Application Pool:** Create `TBCMSBridge`
    - .NET CLR version: **No Managed Code**
-   - Identity: **Network Service** (or a dedicated service account with SQL read
-     access to `TateByWater`)
+   - Identity: a **dedicated domain service account** is recommended.
+     - The bridge **reads AND writes** `tblDropboxServiceToken` (token refresh
+       UPSERTs it) — grant `SELECT, INSERT, UPDATE` on that table (the earlier
+       "read access" note was wrong).
+     - With `Integrated Security=True`, SQL sees this account's identity. If you
+       keep **Network Service**, SQL sees the **machine account**
+       (`DOMAIN\<bridgehost>$`) and that login must be created with the same
+       rights. A dedicated account avoids this and is portable if the bridge
+       moves hosts.
+     - Whichever identity you pick must also have **Modify** rights on the Data
+       Protection key folder (step 6).
 3. **Site or Application:** Point root to `C:\inetpub\wwwroot\tbcms-bridge\`
    - Binding: HTTP on port 80, host header `tbcms-bridge.tatebywater.local`
      (or use an IP-based binding if there is no internal DNS)
@@ -1089,10 +1291,20 @@ Copy the `../publish/bridge/` folder to the server, e.g.
     "AppSecret": "<real secret from Dropbox App Console>"
   },
   "ConnectionStrings": {
-    "TateByWater": "Server=awsql2022dev;Database=TateByWater;Integrated Security=True;TrustServerCertificate=True;"
+    "TateByWater": "Server=tbf-cms;Database=<prod-db>;Integrated Security=True;TrustServerCertificate=True;"
+  },
+  "Bridge": {
+    "AllowWrites": true
   }
 }
 ```
+
+> This is the **production** override: it points at the production SQL host
+> (`tbf-cms`, NOT the dev `awsql2022dev`) and is the **only** place
+> `Bridge:AllowWrites` is `true`. A test/staging deployment keeps the dev
+> connection string and `AllowWrites:false`. `tblDropboxServiceToken` and its
+> one token row must exist in each target database independently (run Phase E
+> setup once per environment). See G35.
 
 ### D.3 — Smoke test the IIS deployment
 
@@ -1106,6 +1318,14 @@ Expected response (before setup): `{"status":"needs_setup","accountEmail":null,"
 
 ## Phase E — One-time setup (IT admin action)
 
+> **The entire setup round-trip must stay on `localhost`** (run a browser
+> *on the IIS server itself*). Two reasons: (a) the OAuth `state` is held in a
+> session cookie scoped to the host you started on — if Dropbox redirects to a
+> different hostname the cookie isn't sent and the state check fails with
+> "State mismatch"; (b) the callback re-checks `IsLocalRequest`. So the
+> registered redirect URI is `http://localhost/api/setup/callback`, which is
+> also the only `http://` (non-https) URI Dropbox will accept (see G30).
+
 1. On the IIS server, open Edge/Chrome and navigate to:
    ```
    http://localhost/api/setup/start
@@ -1117,8 +1337,9 @@ Expected response (before setup): `{"status":"needs_setup","accountEmail":null,"
 3. Sign in with the firm's **Dropbox Business admin account** (or the dedicated
    service account).  Click **Allow**.
 
-4. Dropbox redirects to `http://tbcms-bridge.tatebywater.local/api/setup/callback?code=...`.
-   The service exchanges the code, saves the tokens to `tblDropboxServiceToken`,
+4. Dropbox redirects back to `http://localhost/api/setup/callback?code=...`.
+   The service validates `state`, exchanges the code, fetches the account email
+   (`users/get_current_account`), saves everything to `tblDropboxServiceToken`,
    and returns "Setup complete."
 
 5. Verify: navigate to `http://localhost/api/status`.
@@ -1226,10 +1447,17 @@ section.
 |---|---|---|
 | G28 | AD group name for Windows Auth | Confirm with IT the exact `DOMAIN\GroupName` values for `AllowedAdGroups` in `appsettings.json`.  If the firm has no AD groups, allow all authenticated domain users (remove group check). |
 | G29 | Bridge server hostname | Confirm the IIS server name and whether internal DNS resolves it.  Update `tblDropboxConfig.BridgeUrl` and the Dropbox App Console redirect URI accordingly. |
-| G30 | `RedirectUri` for setup OAuth | The Dropbox App Console must have `http://<bridge-host>/api/setup/callback` registered.  Currently only `http://localhost` is registered.  IT must add the bridge host before running setup. |
-| G31 | `HttpDownloadBinary` token-skip | When called from `OpenDocument` in the bridge model, the token arg will be `""`.  Add a one-line guard in `HttpDownloadBinary`: `If LenB(token) > 0 Then http.SetRequestHeader "Authorization", "Bearer " & token`. |
-| G32 | Large file upload to bridge | Files >150 MB are routed to `UploadLargeFile` which now delegates to `UploadFile` and `BridgeUpload`.  The bridge then calls Dropbox upload_session internally.  WinHttp has a default 30-second timeout.  For large files set the timeout: `http.SetTimeouts 0, 60000, 300000, 300000`. |
-| G33 | Deliverable #7 rate limiting | The verification script calls `GetMetadata` ~30,000 times.  Via the bridge this is effectively one authenticated server making 30,000 Dropbox API calls.  Dropbox rate limit is 1,000 req/min per app.  Add a 70ms sleep between calls in the VBA loop (same as the original plan's guidance). |
+| G30 | `RedirectUri` for setup OAuth | **Resolved → run setup entirely on localhost.** Register `http://localhost/api/setup/callback` in the Dropbox App Console. Dropbox **rejects non-localhost `http://` redirect URIs** (they must be `https://`), and the session-cookie + loopback checks require the same host throughout — so do NOT use the `.local` hostname for the callback. See Phase E. |
+| G31 | `OpenDocument` temp-link download | **Corrected — NOT a one-liner.** `HttpDownloadBinary` POSTs with `Authorization` + `Dropbox-API-Path-Root` + `Dropbox-API-Arg` headers; a CDN temp link needs a header-free **GET**. Add a real GET branch when the token arg is empty (see the note under `OpenDocument` in C.4), or adopt G34 and proxy the download through the bridge. |
+| G32 | Large file upload to bridge | Files >150 MB route through `UploadFile`→`BridgeUpload`; the bridge runs Dropbox `upload_session` internally. `BridgeUpload` now sets `SetTimeouts 0, 60000, 300000, 300000` (default 30s aborts big files). **Also raised the server body cap** (`MaxRequestBodySize`, default ~30 MB) in Program.cs — without it any upload >30 MB returns HTTP 413. Both VBA and bridge buffer the whole file in memory today; consider streaming if multi-GB files are expected. |
+| G33 | Deliverable #7 rate limiting | The verification script calls `GetMetadata` ~30,000 times — via the bridge this is one authenticated server making 30,000 Dropbox calls. Dropbox limit ≈ 1,000 req/min per app. Keep the 70 ms VBA sleep, **and** the bridge should honor `Retry-After` on HTTP 429 (retry with backoff) rather than failing the document — not yet implemented. |
+| G34 | **Download path: direct CDN vs. proxy** | `OpenDocument` downloads directly from `uc.dropboxusercontent.com`; uploads go through the bridge. If locked-down workstations are firewalled from Dropbox domains (plausible — that's the premise), downloads break while uploads work. **Decide:** keep direct-CDN (requires workstation outbound HTTPS to Dropbox) or add a bridge `/api/file/download` that streams bytes back (uniform trust/network model, no per-workstation internet). Confirm workstation egress rules with IT. |
+| G35 | **Per-environment DB / token isolation** | The bridge owns a real Dropbox service-account token. Test and production are separate deployments with separate `appsettings.Production.json`, separate SQL hosts (`awsql2022dev` vs `tbf-cms`), and a separately-provisioned `tblDropboxServiceToken` row each. A bridge pointed at the wrong DB violates "two environments, never mix." **Also:** the test bridge's token can write to the real production `/Company` — `Bridge:AllowWrites=false` on test is the guard (G37). |
+| G36 | **HTTP vs HTTPS on the LAN** | VBA→bridge is plaintext HTTP/80: document bytes, 4-hour unauthenticated temp links, and NTLM all cross the LAN in clear. For a law firm handling confidential client documents, recommend HTTPS with an internal/AD-CS cert and update `tblDropboxConfig.BridgeUrl` to `https://`. Decision needed before production cutover. |
+| G37 | **Server-side write guard + access scope** | Implemented `Bridge:AllowWrites` (`GuardWrites` in Program.cs) as the bridge-side mirror of `ALLOW_DROPBOX_WRITES` — the VBA flag alone protects nothing once the bridge exists. Open item: the bridge gates only on Windows auth, so **any** TBCMS-domain user can read/temp-link/delete **any** `/Company` path via a direct HTTP call, and Dropbox-native audit shows only the service account (SQL `tblDropboxAuditLog` retains the real user). Accept this risk or add per-path / per-operation authorization. |
+| G38 | `ListFolder` pagination | Neither the bridge `ListFolderAsync` nor the legacy VBA appears to handle `has_more` / `list_folder/continue`. Folders with >~2000 entries truncate silently. Confirm no document folder exceeds this, or implement continuation in the bridge and return the concatenated result. |
+| G39 | Concurrent token refresh | Multiple simultaneous VBA requests near token expiry can trigger concurrent refreshes + racing SQL writes. Serialize refresh in `DropboxTokenService` (e.g. `SemaphoreSlim`). Noted in B.4. |
+| G40 | Data Protection key-ring scope | `ProtectKeysWithDpapi(protectToLocalMachine: true)` is now set in Program.cs. Without it the key ring is bound to the app-pool identity's profile — re-introducing the G27 profile-binding failure server-side. Back up `C:\ProgramData\TBCMSBridge\dpkeys` and keep the app-pool identity stable; losing the ring means re-running Phase E setup. |
 
 ---
 
@@ -1257,4 +1485,8 @@ section.
 - [ ] `Phase5_E2E_HappyPathTest(30405)` passes end-to-end
 - [ ] A new staff member (no prior token) opens Access → no OAuth prompt → Dropbox features work immediately
 - [ ] `ALLOW_DROPBOX_WRITES = False` in committed source
+- [ ] `Bridge:AllowWrites = false` in committed `appsettings.json`, and a direct `POST /api/file/delete` against the **test** bridge returns **403** (server-side guard, G37)
+- [ ] Test and production bridges point at different SQL hosts, each with its own `tblDropboxServiceToken` row (G35)
+- [ ] HTTP-vs-HTTPS decision made for VBA→bridge traffic before cutover (G36)
+- [ ] Download path decision made (direct CDN vs. bridge proxy) and workstation egress to Dropbox confirmed with IT if staying direct (G34)
 - [ ] `tblDropboxTokens` table is no longer written to (token storage moved to `tblDropboxServiceToken` on the server)
