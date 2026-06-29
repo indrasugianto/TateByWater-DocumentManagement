@@ -9,22 +9,27 @@ Dim foo
 '   Phase 4a — Read-flow rewire (DONE):
 '     OpenDocumentFile     -> DropboxService.OpenDocument
 '                             (download to %TEMP%\TBCMS\ + native-app launch)
-'     OpenDocumentFolder   -> Dropbox web URL via explorer.exe (G27); now also
-'                             restores legacy create-on-demand — on a confirmed-
-'                             missing folder it prompts and calls
+'     OpenDocumentFolder   -> Explorer-first open (Phase 4e, G24): opens the
+'                             Dropbox-client local mount in Windows Explorer
+'                             when available, else falls back to the Dropbox
+'                             web URL via explorer.exe (G27). Also restores
+'                             legacy create-on-demand — on a confirmed-missing
+'                             folder it prompts and calls
 '                             DropboxService.CreateFolder (write op, gated by
 '                             ALLOW_DROPBOX_WRITES) before opening
 '
-'   Phase 4b — Config layer + local-synced-root routing (SUPERSEDED):
-'     The Dropbox desktop client is no longer a deployment prerequisite,
-'     so the local-synced-root routing introduced here has been removed
-'     from the live caller paths. Current behavior:
-'       OpenDocumentFolder   -> Dropbox web URL (no Explorer/local-sync
-'                               routing). Users accept the cosmetic
-'                               "Unsupported path provided" banner Dropbox
-'                               emits for /work/ team-namespace deep-links.
+'   Phase 4b — Config layer + local-synced-root routing (PARTLY REVIVED in 4e):
+'     The Dropbox desktop client is not a hard deployment prerequisite; the code
+'     degrades gracefully without it. As of Phase 4e the local-synced-root
+'     helpers are wired back into folder-open (Explorer-first); the remaining
+'     helpers stay dormant. Current behavior:
+'       OpenDocumentFolder   -> Explorer (local mount) when the desktop client
+'                               is present and the folder has synced, else the
+'                               Dropbox web URL. Web deep-links to /work/ team-
+'                               namespace paths still show Dropbox's cosmetic
+'                               "Unsupported path provided" banner.
 '                               (2026-06-03: create-on-demand re-added on top
-'                               of the web-open — see Phase 4a note above.)
+'                               of the open — see Phase 4a note above.)
 '       GetDocumentRootFolder -> reads tblDropboxRootConfig.TeamRootPath +
 '                                DropboxService.DropboxPathToLocalPath.
 '                                Zero callers (kept for contract stability);
@@ -33,9 +38,9 @@ Dim foo
 '                               opens at the user's last-used folder.
 '                               Two callers: Intakes.cmdScan_Click +
 '                               frmClientLedger scan flow.
-'     DropboxService.DropboxPathToLocalPath / LocalPathToDropboxPath /
-'     ResolveLocalSyncedRoot remain in place for future use but are no
-'     longer invoked from the active DocumentManagement flows.
+'     DropboxService.DropboxPathToLocalPath + ResolveLocalSyncedRoot are now
+'     invoked again by OpenDocumentFolder (Phase 4e); LocalPathToDropboxPath
+'     remains in place for future ingest use.
 '
 '   Phase 4c — Stored procedure rewrites (DONE in Dropbox-Migration-SQL-
 '              Install.sql Section 8). Live on awsql2022dev/TateByWater.
@@ -966,7 +971,6 @@ Public Function OpenDocumentFolder(ByVal CaseID As Variant, ByVal DocumentType A
 On Error GoTo Err_Handler
 Dim rv As Boolean
 Dim FolderName As String
-Dim webUrl As String
 Dim pathForCheck As String
 Dim found As Boolean
 Dim errDetail As String
@@ -1023,20 +1027,20 @@ Dim doOpen As Boolean
             End If
 
             If doOpen Then
-                ' /work/ is the team-content prefix; expect a cosmetic
-                ' "Unsupported path provided" banner from Dropbox for team-
-                ' namespace deep links.
-                webUrl = "https://www.dropbox.com/work" & FolderName
-                ' LEGACY (pre-2026-06-03): Application.FollowHyperlink raises
-                ' runtime error 5 on long URLs and on locked-down workstations
-                ' where the protocol/hyperlink association is restricted. To roll
-                ' back, comment the explorer.exe line and uncomment:
-                '   Application.FollowHyperlink webUrl
-                ' Active (G27): launch via explorer.exe, which opens the URL in
-                ' the default browser. It is the running shell process (not
-                ' AppLocker/SmartScreen-blocked, no admin) and is not routed
-                ' through cmd.exe, so '&' in the URL is safe inside the quotes.
-                Shell "explorer.exe """ & webUrl & """", vbNormalFocus
+                ' Phase 4e (G24): prefer Windows Explorer (the firm's preferred
+                ' view), fall back to the Dropbox web URL. Both args are SP-
+                ' resolved — pathForCheck (trailing "/" stripped) drives the
+                ' local mapping + on-disk probe; FolderName keeps the prior web
+                ' deep-link form. VBA never builds a path; it only maps one.
+                OpenFolderInExplorerOrWeb pathForCheck, FolderName
+
+                ' LEGACY (Phase 4a/4b web-only open — pre-Phase 4e). To roll
+                ' back to web-only, comment the call above and uncomment:
+                '   webUrl = "https://www.dropbox.com/work" & FolderName
+                '   Shell "explorer.exe """ & webUrl & """", vbNormalFocus
+                ' (explorer.exe opens the URL in the default browser; it is the
+                ' running shell process — no admin, not routed via cmd.exe, so
+                ' '&' in the URL is safe inside the quotes.)
             End If
         End If
     End If
@@ -1045,17 +1049,153 @@ Exit_Handler:
     OpenDocumentFolder = rv
     Exit Function
 Err_Handler:
-    rv = False
     If Err.Number = vbObjectError + 6001 Then
         ' GuardWritesEnabled — test environment, writes disabled. The folder
         ' open itself is read-only; this fires only on the create branch.
+        ' Return True so the caller does NOT also pop its generic
+        ' "Failed to open folder..." box — we've already shown a clear message.
         MsgBox "Dropbox writes are disabled in this test build " & _
                "(ALLOW_DROPBOX_WRITES = False). The folder was not created.", _
                vbInformation, "TB CMS — test environment"
+        rv = True
     Else
+        rv = False
         foo = pcaStdErrMsg(Err, Error)
     End If
     Resume Exit_Handler
+End Function
+
+
+' ============================================================================
+' OpenFolderInExplorerOrWeb   (Phase 4e — Explorer-first folder open; G24/G27)
+' ----------------------------------------------------------------------------
+' Opens an SP-resolved Dropbox folder, preferring Windows Explorer (the firm's
+' preferred, more familiar environment) and falling back to the Dropbox web UI
+' when the desktop client is absent or the folder has not synced locally yet.
+'
+'   dropboxPath - SP-resolved /Company/... path, trailing "/" stripped
+'                 (used for the local mapping + the on-disk existence probe)
+'   webPathRaw  - SP-resolved path as-is (used to build the web deep-link;
+'                 preserves the existing trailing-slash web behavior)
+'
+' Team-space layout (important): Dropbox's info.json reports the MEMBER folder
+' (e.g. ...\Tate Bywater Dropbox\Indra Sugianto), but the bridge addresses
+' everything through the TEAM namespace, and on the desktop client team folders
+' (/Company, ...) are mounted at the TEAM-SPACE root (...\Tate Bywater Dropbox\
+' Company) — i.e. the PARENT of the member folder, not under it. So we try the
+' team-space root first, then the member root, and open whichever exists.
+'
+' Decision order:
+'   1. Resolve the desktop-client (member) root via DropboxService; lazy-resolve
+'      once if not known this session.
+'   2. Pick the sync root under which the top-level team folder (e.g. \Company)
+'      actually exists on disk — the team-space root (parent of the member
+'      folder) first, then the member root. (Team folders live at the team-space
+'      root, NOT under the member folder.)
+'   3. Open the requested folder in Explorer. If it has not synced down yet,
+'      walk up to the NEAREST already-synced ancestor (never above the team
+'      folder) and open that instead — so a large initial sync still lands the
+'      user in Explorer near the target rather than bouncing to the browser.
+'   4. If no sync root is found (no client, or the team folder not synced at
+'      all), fall back to the Dropbox web URL (prior behavior).
+'
+' Existence is probed with GetAttr (robust for Dropbox online-only placeholder
+' folders). Default-safe: with no client / nothing synced the routine behaves
+' exactly as the pre-4e web-only open. VBA never builds a Dropbox path; both
+' inputs are stored-proc output — this only maps an existing path to its local
+' mount and shells the OS.
+' ----------------------------------------------------------------------------
+Private Sub OpenFolderInExplorerOrWeb(ByVal dropboxPath As String, _
+                                      ByVal webPathRaw As String)
+    Const CALLER As String = "OpenFolderInExplorerOrWeb"
+    Dim memberRoot As String
+    Dim parentRoot As String
+    Dim rel As String
+    Dim firstSeg As String
+    Dim topFolder As String
+    Dim syncRoot As String
+    Dim full As String
+    Dim best As String
+    Dim pos As Long
+    Dim webUrl As String
+
+    On Error Resume Next        ' any mapping/probe/shell hiccup => web fallback
+
+    ' 1. Resolve the Dropbox desktop-client (member) root.
+    memberRoot = DropboxService.GetLocalSyncedRoot()
+    If LenB(memberRoot) = 0 Then
+        If DropboxService.ResolveLocalSyncedRoot() Then _
+            memberRoot = DropboxService.GetLocalSyncedRoot()
+    End If
+
+    If LenB(memberRoot) > 0 And Left$(dropboxPath, 1) = "/" Then
+        rel = Replace(dropboxPath, "/", "\")            ' "/Company/X" -> "\Company\X"
+        pos = InStr(2, rel, "\")
+        If pos > 0 Then firstSeg = Left$(rel, pos - 1) Else firstSeg = rel   ' "\Company"
+
+        ' 2. Pick the root under which the top team folder (\Company) exists:
+        '    team-space root (parent of member) first, then the member root.
+        If InStrRev(memberRoot, "\") > 0 Then
+            parentRoot = Left$(memberRoot, InStrRev(memberRoot, "\") - 1)
+        End If
+        If LenB(parentRoot) > 0 Then
+            If LocalFolderExists(parentRoot & firstSeg) Then syncRoot = parentRoot
+        End If
+        If LenB(syncRoot) = 0 Then
+            If LocalFolderExists(memberRoot & firstSeg) Then syncRoot = memberRoot
+        End If
+
+        If LenB(syncRoot) > 0 Then
+            topFolder = syncRoot & firstSeg             ' exists; never go above this
+            full = syncRoot & rel
+
+            ' 3. Open the exact folder, else the nearest synced ancestor.
+            best = full
+            Do While Len(best) > Len(topFolder)
+                If LocalFolderExists(best) Then Exit Do
+                pos = InStrRev(best, "\")
+                If pos <= 0 Then Exit Do
+                best = Left$(best, pos - 1)
+            Loop
+            If Not LocalFolderExists(best) Then best = topFolder
+
+            If StrComp(best, full, vbTextCompare) = 0 Then
+                DropboxService.LogLocal CALLER, "Info", "Explorer open: " & best
+            Else
+                DropboxService.LogLocal CALLER, "Info", _
+                    "Explorer open (nearest synced ancestor): " & best & " for " & full
+                ' Don't open a parent silently — the exact folder isn't on this
+                ' PC yet (still syncing, or it was deleted and the server view
+                ' lags). Tell the user which folder we're actually opening.
+                MsgBox "This case's exact folder isn't on your PC yet — it may " & _
+                       "still be syncing from Dropbox." & vbCrLf & vbCrLf & _
+                       "Opening the closest available folder in Windows Explorer:" & _
+                       vbCrLf & "    " & best, _
+                       vbInformation, "TB CMS"
+            End If
+            Shell "explorer.exe """ & best & """", vbNormalFocus
+            Exit Sub
+        End If
+    End If
+
+    ' 4. Fall back to the Dropbox web UI (client absent, or the team folder is
+    '    not synced down at all yet).
+    webUrl = "https://www.dropbox.com/work" & webPathRaw
+    DropboxService.LogLocal CALLER, "Info", "Explorer unavailable; web open: " & webUrl
+    Shell "explorer.exe """ & webUrl & """", vbNormalFocus
+End Sub
+
+
+' Robust local-folder existence probe. Uses GetAttr rather than Dir because it
+' reads the directory entry without hydrating Dropbox online-only placeholders
+' and is reliable for cloud-backed folders. Returns False on any error
+' (not found / bad path).
+Private Function LocalFolderExists(ByVal p As String) As Boolean
+    On Error Resume Next
+    Dim attrs As Long
+    attrs = GetAttr(p)
+    If Err.Number = 0 Then LocalFolderExists = ((attrs And vbDirectory) = vbDirectory)
+    Err.Clear
 End Function
 
 

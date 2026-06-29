@@ -201,7 +201,16 @@ Private m_DropboxAccountEmail As String
 ' Empty string if the desktop client is not installed / signed in — read-only
 ' workflows (document-open, VerificationReport) work without it; ingest
 ' workflows + Explorer folder-open require it.
+' NOTE: info.json's business path is the MEMBER folder (e.g.
+' ...\Tate Bywater Dropbox\Indra Sugianto), NOT where team folders live.
 Private m_LocalSyncedRoot       As String
+
+' Phase 4e: the TEAM-SPACE root — the Dropbox-named mount that actually holds
+' the team folders (/Company, ...). Team folders are mounted one level ABOVE
+' the member folder (e.g. ...\Tate Bywater Dropbox), so all team-namespace
+' path<->local mapping must go through THIS, not m_LocalSyncedRoot. Computed
+' by ResolveLocalSyncedRoot via ComputeTeamSpaceRoot.
+Private m_TeamSpaceRoot         As String
 
 #If PREBRIDGE_LEGACY Then
 ' --- Phase 3b pass 1: OAuth state + token cache ---
@@ -4207,6 +4216,7 @@ Public Function ResolveLocalSyncedRoot() As Boolean
     Dim businessBlock As String
 
     On Error GoTo HandleError
+    m_TeamSpaceRoot = ""    ' (re)derived from m_LocalSyncedRoot only on success
 
     infoPath = Environ$("LOCALAPPDATA") & "\Dropbox\info.json"
     If Dir$(infoPath) = "" Then
@@ -4250,7 +4260,10 @@ Public Function ResolveLocalSyncedRoot() As Boolean
         m_LocalSyncedRoot = Left$(m_LocalSyncedRoot, Len(m_LocalSyncedRoot) - 1)
     End If
 
-    LogLocal CALLER, "Info", "Resolved business path: " & m_LocalSyncedRoot
+    m_TeamSpaceRoot = ComputeTeamSpaceRoot(m_LocalSyncedRoot)
+
+    LogLocal CALLER, "Info", "Resolved business path: " & m_LocalSyncedRoot & _
+        " | team-space root: " & m_TeamSpaceRoot
     ResolveLocalSyncedRoot = True
     Exit Function
 
@@ -4265,22 +4278,54 @@ Public Function GetLocalSyncedRoot() As String
     GetLocalSyncedRoot = m_LocalSyncedRoot
 End Function
 
+Public Function GetTeamSpaceRoot() As String
+    GetTeamSpaceRoot = m_TeamSpaceRoot
+End Function
+
+' Derives the team-space root (the Dropbox-named mount that holds the team
+' folders) from the member path info.json reports. Walks up from the member
+' path and returns the deepest ancestor whose folder name contains "Dropbox"
+' (e.g. "Tate Bywater Dropbox"); falls back to the member path if none is
+' found. Handles both the team layout (...\<Team> Dropbox\<Member>) and a
+' plain personal "...\Dropbox" layout (no member sub-folder).
+Private Function ComputeTeamSpaceRoot(ByVal memberPath As String) As String
+    Dim p As String
+    Dim seg As String
+    Dim pos As Long
+
+    p = memberPath
+    Do While LenB(p) > 0
+        pos = InStrRev(p, "\")
+        If pos <= 0 Then Exit Do
+        seg = Mid$(p, pos + 1)
+        If InStr(1, seg, "Dropbox", vbTextCompare) > 0 Then
+            ComputeTeamSpaceRoot = p
+            Exit Function
+        End If
+        p = Left$(p, pos - 1)
+    Loop
+    ComputeTeamSpaceRoot = memberPath
+End Function
+
 ' Converts a Windows local path (e.g. C:\Users\jdoe\Tate Bywater Dropbox\
-' John Doe\Company\COMMON\_SCANNER\scan_20260514.pdf) into its Dropbox API
-' equivalent (/Company/COMMON/_SCANNER/scan_20260514.pdf). Returns "" if
-' localPath is not under m_LocalSyncedRoot, or if m_LocalSyncedRoot has
-' not been resolved — caller surfaces a clear error.
+' Company\COMMON\_SCANNER\scan_20260514.pdf) into its Dropbox API equivalent
+' (/Company/COMMON/_SCANNER/scan_20260514.pdf). Maps against the TEAM-SPACE
+' root (where team folders live), NOT the member folder. Returns "" if
+' localPath is not under the team-space root, or if it has not been resolved.
 Public Function LocalPathToDropboxPath(ByVal localPath As String) As String
-    If LenB(m_LocalSyncedRoot) = 0 Then Exit Function
-    If LenB(localPath) <= Len(m_LocalSyncedRoot) Then Exit Function
+    Dim root As String
+    root = m_TeamSpaceRoot
+    If LenB(root) = 0 Then root = m_LocalSyncedRoot   ' fallback if not yet computed
+    If LenB(root) = 0 Then Exit Function
+    If LenB(localPath) <= Len(root) Then Exit Function
 
     ' Case-insensitive prefix match (Windows paths are case-insensitive).
-    If StrComp(Left$(localPath, Len(m_LocalSyncedRoot)), m_LocalSyncedRoot, vbTextCompare) <> 0 Then
+    If StrComp(Left$(localPath, Len(root)), root, vbTextCompare) <> 0 Then
         Exit Function
     End If
 
     Dim relative As String
-    relative = Mid$(localPath, Len(m_LocalSyncedRoot) + 1)
+    relative = Mid$(localPath, Len(root) + 1)
     relative = Replace(relative, "\", "/")
     If Left$(relative, 1) <> "/" Then
         relative = "/" & relative
@@ -4291,20 +4336,24 @@ End Function
 
 ' Reverse direction: converts a Dropbox API path (e.g. /Company/COMMON/PM/
 ' _CLIENTS/Criminal/Zand, Ayla Gilan C26-177-PM/) to its local-synced
-' Windows equivalent. Returns "" if m_LocalSyncedRoot is not resolved or
-' dropboxPath isn't a /-rooted path. Caller checks Dir(result, vbDirectory)
-' before launching Explorer (file/folder may not have synced yet).
+' Windows equivalent under the TEAM-SPACE root. Returns "" if the team-space
+' root is not resolved or dropboxPath isn't a /-rooted path. Caller checks
+' Dir/GetAttr on the result before launching Explorer (the folder may not
+' have synced down yet).
 Public Function DropboxPathToLocalPath(ByVal dropboxPath As String) As String
-    If LenB(m_LocalSyncedRoot) = 0 Then Exit Function
+    Dim root As String
+    root = m_TeamSpaceRoot
+    If LenB(root) = 0 Then root = m_LocalSyncedRoot   ' fallback if not yet computed
+    If LenB(root) = 0 Then Exit Function
     If LenB(dropboxPath) = 0 Then Exit Function
     If Left$(dropboxPath, 1) <> "/" Then Exit Function
 
     Dim relative As String
     relative = Replace(dropboxPath, "/", "\")
-    ' relative starts with "\" — drop it so the join with m_LocalSyncedRoot is clean.
+    ' relative starts with "\" — drop it so the join with root is clean.
     relative = Mid$(relative, 2)
 
-    DropboxPathToLocalPath = m_LocalSyncedRoot & "\" & relative
+    DropboxPathToLocalPath = root & "\" & relative
 End Function
 
 ' ----------------------------------------------------------------------------
@@ -4419,7 +4468,8 @@ Public Function Phase4b_SmokeTest() As String
         onDisk = "no (desktop client may not have synced this path yet)"
     End If
 
-    Phase4b_SmokeTest = "OK — m_LocalSyncedRoot = " & root & _
+    Phase4b_SmokeTest = "OK — member root = " & root & _
+        "; team-space root = " & GetTeamSpaceRoot() & _
         "; round-trip: " & dropboxPath & " <-> " & localPath & _
         "; folder on disk: " & onDisk
     Exit Function
