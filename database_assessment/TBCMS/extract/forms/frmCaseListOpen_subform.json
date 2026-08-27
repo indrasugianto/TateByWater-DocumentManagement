@@ -6,9 +6,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 11520,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -22,9 +28,15 @@
           "height": 315,
           "controlSource": "CaseID",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -34,7 +46,12 @@
           "width": 1440,
           "height": 330,
           "caption": "CaseID",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -45,9 +62,15 @@
           "height": 330,
           "controlSource": "CaseOpenDate",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -57,7 +80,12 @@
           "width": 1440,
           "height": 330,
           "caption": "CaseOpenDate",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -68,9 +96,15 @@
           "height": 330,
           "controlSource": "ClientName",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -80,7 +114,12 @@
           "width": 1440,
           "height": 330,
           "caption": "ClientName",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -91,9 +130,15 @@
           "height": 600,
           "controlSource": "Case_Letter",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -103,7 +148,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Case_Letter",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -114,9 +164,15 @@
           "height": 600,
           "controlSource": "yr",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -126,7 +182,12 @@
           "width": 1440,
           "height": 330,
           "caption": "yr",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -137,9 +198,15 @@
           "height": 330,
           "controlSource": "Number_",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -149,7 +216,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Number_",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -160,9 +232,15 @@
           "height": 600,
           "controlSource": "Orig_Atty",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -172,7 +250,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Orig_Atty",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -183,9 +266,15 @@
           "height": 600,
           "controlSource": "Extended_Ledger",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -195,7 +284,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Extended_Ledger",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -206,9 +300,15 @@
           "height": 600,
           "controlSource": "Court",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -218,7 +318,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Court",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -229,9 +334,15 @@
           "height": 600,
           "controlSource": "Matter_type",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -241,7 +352,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Matter_type",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -252,9 +368,15 @@
           "height": 330,
           "controlSource": "FileNumber",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -264,7 +386,12 @@
           "width": 1440,
           "height": 330,
           "caption": "FileNumber",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -275,9 +402,16 @@
           "height": 330,
           "controlSource": "Scan Location",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontUnderline": true,
+          "foreColor": 1279872587,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -287,7 +421,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Scan Location",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -297,10 +436,17 @@
           "width": 4170,
           "height": 600,
           "controlSource": "HandlingAtty_Case",
+          "statusBarText": "case specific field",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -310,7 +456,12 @@
           "width": 1440,
           "height": 330,
           "caption": "HandlingAtty_Case",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -321,9 +472,12 @@
           "height": 240,
           "controlSource": "Closed",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -333,7 +487,12 @@
           "width": 1440,
           "height": 330,
           "caption": "Closed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -344,9 +503,15 @@
           "height": 600,
           "controlSource": "CodeVal",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -356,11 +521,16 @@
           "width": 1440,
           "height": 330,
           "caption": "CodeVal",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }
   ],
   "formEvents": {},
-  "vbaCodeBehind": "﻿Version =21\nVersionRequired =20\nPublishOption =1\nChecksum =-1107959166\nBegin Form\n    AutoCenter = NotDefault\n    DividingLines = NotDefault\n    AllowDesignChanges = NotDefault\n    DefaultView =2\n    PictureAlignment =2\n    DatasheetGridlinesBehavior =3\n    GridX =24\n    GridY =24\n    Width =11520\n    DatasheetFontHeight =11\n    ItemSuffix =30\n    Right =18765\n    Bottom =12285\n    DatasheetGridlinesColor =15132391\n    RecSrcDt = Begin\n        0xa93ecce576ffe440\n    End\n    GUID = Begin\n        0x04da7b87181ef742921520d8423998ae\n    End\n    NameMap = Begin\n        0x0acc0e55000000001c6515eb78bbe440bb52018b44a7f06000000000dadda094 ,\n        0x2f89e640000000000000000071007200790043006100730065004c0069007300 ,\n        0x74004f00700065006e0000000000000064293fed6fae0b4980de3c90cfca9ad3 ,\n        0x070000001c6515eb78bbe440bb52018b44a7f060430061007300650049004400 ,\n        0x00000000000034aa63e578158d49bcb46a06ec8237f3070000001c6515eb78bb ,\n        0xe440bb52018b44a7f06043006100730065004f00700065006e00440061007400 ,\n        0x6500000000000000880d959ba7748f4fb9896a18ce4c5948070000001c6515eb ,\n        0x78bbe440bb52018b44a7f06043006c00690065006e0074004e0061006d006500 ,\n        0x00000000000070cbd4c9acced64e8ec5b11a31d36cab070000001c6515eb78bb ,\n        0xe440bb52018b44a7f06043006100730065005f004c0065007400740065007200 ,\n        0x0000000000001d86b7f9c887474da4907d0081184752070000001c6515eb78bb ,\n        0xe440bb52018b44a7f060790072000000000000001dad74061dd7e445a98e7b76 ,\n        0xa1cbfb85070000001c6515eb78bbe440bb52018b44a7f0604e0075006d006200 ,\n        0x650072005f000000000000001726f429b748884c92341fbecec04b1907000000 ,\n        0x1c6515eb78bbe440bb52018b44a7f0604f007200690067005f00410074007400 ,\n        0x79000000000000009da41a354a5f0940a85778710b82ff9a070000001c6515eb ,\n        0x78bbe440bb52018b44a7f06045007800740065006e006400650064005f004c00 ,\n        0x650064006700650072000000000000000d32a5da36ab8049b31ff617e72cb431 ,\n        0x070000001c6515eb78bbe440bb52018b44a7f06043006f007500720074000000 ,\n        0x0000000083d62322b089214592576ab8119e81cb070000001c6515eb78bbe440 ,\n        0xbb52018b44a7f0604d00610074007400650072005f0074007900700065000000 ,\n        0x000000001e97a7706248fe49a12adb82f288da0e070000001c6515eb78bbe440 ,\n        0xbb52018b44a7f060460069006c0065004e0075006d0062006500720000000000 ,\n        0x0000185181acd8428a49b8012d85e6cbd683070000001c6515eb78bbe440bb52 ,\n        0x018b44a7f0605300630061006e0020004c006f0063006100740069006f006e00 ,\n        0x0000000000006fb05e46cc929540b036985af4cf6406070000001c6515eb78bb ,\n        0xe440bb52018b44a7f060480061006e0064006c0069006e006700410074007400 ,\n        0x79005f004300610073006500000000000000cf847dd0bbbef54a97cfa2c3a80e ,\n        0x1326070000001c6515eb78bbe440bb52018b44a7f06043006c006f0073006500 ,\n        0x64000000000000000debbdd8f1158242bbaf4aa7b72416f6070000001c6515eb ,\n        0x78bbe440bb52018b44a7f06043006f0064006500560061006c00000000000000 ,\n        0x000000000000000000000000000000000c000000050000000000000000000000 ,\n        0x000000000000\n    End\n    RecordSource =\"SELECT [qryCaseListOpen].[CaseID], [qryCaseListOpen].[CaseOpenDate], [qryCaseLis\"\n        \"tOpen].[ClientName], [qryCaseListOpen].[Case_Letter], [qryCaseListOpen].[yr], [q\"\n        \"ryCaseListOpen].[Number_], [qryCaseListOpen].[Orig_Atty], [qryCaseListOpen].[Ext\"\n        \"ended_Ledger], [qryCaseListOpen].[Court], [qryCaseListOpen].[Matter_type], [qryC\"\n        \"aseListOpen].[FileNumber], [qryCaseListOpen].[Scan Location], [qryCaseListOpen].\"\n        \"[HandlingAtty_Case], [qryCaseListOpen].[Closed], [qryCaseListOpen].[CodeVal] FRO\"\n        \"M qryCaseListOpen; \"\n    Caption =\"frmCaseListOpen subform\"\n    DatasheetFontName =\"Calibri\"\n    FilterOnLoad =0\n    ShowPageMargins =0\n    DisplayOnSharePointSite =1\n    DatasheetAlternateBackColor =15921906\n    DatasheetGridlinesColor12 =0\n    FitToScreen =1\n    DatasheetBackThemeColorIndex =1\n    BorderThemeColorIndex =3\n    ThemeFontIndex =1\n    ForeThemeColorIndex =0\n    AlternateBackThemeColorIndex =1\n    AlternateBackShade =95.0\n    NoSaveCTIWhenDisabled =1\n    Begin\n        Begin Label\n            BackStyle =0\n            FontSize =11\n            BorderColor =8355711\n            ForeColor =8355711\n            FontName =\"Calibri\"\n            GridlineColor =10921638\n            ThemeFontIndex =1\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =0\n            BorderTint =50.0\n            ForeThemeColorIndex =0\n            ForeTint =50.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin CheckBox\n            BorderLineStyle =0\n            LabelX =230\n            LabelY =-30\n            BorderColor =10921638\n            GridlineColor =10921638\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin TextBox\n            AddColon = NotDefault\n            FELineBreak = NotDefault\n            BorderLineStyle =0\n            LabelX =-1800\n            FontSize =11\n            BorderColor =10921638\n            ForeColor =4210752\n            FontName =\"Calibri\"\n            AsianLineBreak =1\n            GridlineColor =10921638\n            BackThemeColorIndex =1\n            BorderThemeColorIndex =1\n            BorderShade =65.0\n            ThemeFontIndex =1\n            ForeThemeColorIndex =0\n            ForeTint =75.0\n            GridlineThemeColorIndex =1\n            GridlineShade =65.0\n        End\n        Begin FormHeader\n            Height =0\n            BackColor =15064278\n            Name =\"FormHeader\"\n            GUID = Begin\n                0x7fe784040d29a94f8374ebd4f64da7e7\n            End\n            AutoHeight =1\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =2\n            BackTint =20.0\n        End\n        Begin Section\n            Height =8370\n            Name =\"Detail\"\n            GUID = Begin\n                0x1ffbff3b07db6a4eaf9094e9b4de7fd8\n            End\n            AutoHeight =1\n            AlternateBackColor =15921906\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n            Begin\n                Begin TextBox\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =360\n                    Height =315\n                    ColumnWidth =1440\n                    Name =\"CaseID\"\n                    ControlSource =\"CaseID\"\n                    GUID = Begin\n                        0x916f71fa36b93743a60dd7dfb293c318\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =360\n                    LayoutCachedWidth =3330\n                    LayoutCachedHeight =675\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =360\n                            Width =1440\n                            Height =330\n                            Name =\"CaseID_Label\"\n                            Caption =\"CaseID\"\n                            GUID = Begin\n                                0x762764c47f8ae94eaab5cd518b2bb423\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =360\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =690\n                        End\n                    End\n                End\n                Begin TextBox\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =780\n                    Width =1620\n                    Height =330\n                    ColumnWidth =1620\n                    TabIndex =1\n                    Name =\"CaseOpenDate\"\n                    ControlSource =\"CaseOpenDate\"\n                    GUID = Begin\n                        0x31d1a2892459f4419f1a096f187c2ab8\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =780\n                    LayoutCachedWidth =3510\n                    LayoutCachedHeight =1110\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =780\n                            Width =1440\n                            Height =330\n                            Name =\"CaseOpenDate_Label\"\n                            Caption =\"CaseOpenDate\"\n                            GUID = Begin\n                                0x48826c9f38c2704c9653aeab4fdd8b41\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =780\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =1110\n                        End\n                    End\n                End\n                Begin TextBox\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =1200\n                    Width =3660\n                    Height =330\n                    ColumnWidth =3000\n                    TabIndex =2\n                    Name =\"ClientName\"\n                    ControlSource =\"ClientName\"\n                    GUID = Begin\n                        0xfea792acba303147bd46a9e658a7f390\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =1200\n                    LayoutCachedWidth =5550\n                    LayoutCachedHeight =1530\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =1200\n                            Width =1440\n                            Height =330\n                            Name =\"ClientName_Label\"\n                            Caption =\"ClientName\"\n                            GUID = Begin\n                                0x7939dad8a359034d9e2f926a246ea28a\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =1200\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =1530\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =1620\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =3\n                    Name =\"Case_Letter\"\n                    ControlSource =\"Case_Letter\"\n                    GUID = Begin\n                        0x4df82a59284daa48bd1c4902e698e1c7\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =1620\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =2220\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =1620\n                            Width =1440\n                            Height =330\n                            Name =\"Case_Letter_Label\"\n                            Caption =\"Case_Letter\"\n                            GUID = Begin\n                                0xed92b3213ac2364196f388a52d0faed6\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =1620\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =1950\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =2340\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =4\n                    Name =\"yr\"\n                    ControlSource =\"yr\"\n                    GUID = Begin\n                        0x45d9c71d1618924e9caefc6cd9f76442\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =2340\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =2940\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =2340\n                            Width =1440\n                            Height =330\n                            Name =\"yr_Label\"\n                            Caption =\"yr\"\n                            GUID = Begin\n                                0x1ce08c02a7eac8439bc319caf687ca3f\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =2340\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =2670\n                        End\n                    End\n                End\n                Begin TextBox\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =3060\n                    Width =1530\n                    Height =330\n                    ColumnWidth =1530\n                    TabIndex =5\n                    Name =\"Number_\"\n                    ControlSource =\"Number_\"\n                    GUID = Begin\n                        0x5fa0ef7a57a64d4882adc6ff1f044a8a\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =3060\n                    LayoutCachedWidth =3420\n                    LayoutCachedHeight =3390\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =3060\n                            Width =1440\n                            Height =330\n                            Name =\"Number__Label\"\n                            Caption =\"Number_\"\n                            GUID = Begin\n                                0x4dbf6994ee87af4bb9b0074f55e1f4b0\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =3060\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =3390\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =3480\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =6\n                    Name =\"Orig_Atty\"\n                    ControlSource =\"Orig_Atty\"\n                    GUID = Begin\n                        0x9b553a48de470642a632c655dace85b8\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =3480\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =4080\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =3480\n                            Width =1440\n                            Height =330\n                            Name =\"Orig_Atty_Label\"\n                            Caption =\"Orig_Atty\"\n                            GUID = Begin\n                                0xad67880762a090469111c5d9d26a00a9\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =3480\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =3810\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =4200\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =7\n                    Name =\"Extended_Ledger\"\n                    ControlSource =\"Extended_Ledger\"\n                    GUID = Begin\n                        0xb30d4a2deba87942856b623b8ef548c4\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =4200\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =4800\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =4200\n                            Width =1440\n                            Height =330\n                            Name =\"Extended_Ledger_Label\"\n                            Caption =\"Extended_Ledger\"\n                            GUID = Begin\n                                0x7665d8055146dc43af66a6ef7232b7d2\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =4200\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =4530\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =4920\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =8\n                    Name =\"Court\"\n                    ControlSource =\"Court\"\n                    GUID = Begin\n                        0x0417266005890f4ab3da8795dfb2826a\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =4920\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =5520\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =4920\n                            Width =1440\n                            Height =330\n                            Name =\"Court_Label\"\n                            Caption =\"Court\"\n                            GUID = Begin\n                                0x3bac0ee4f3db2b4e8d7eb302b4f0af0a\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =4920\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =5250\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =5640\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =9\n                    Name =\"Matter_type\"\n                    ControlSource =\"Matter_type\"\n                    GUID = Begin\n                        0xea5af040a496924c84f7acbe236e97ba\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =5640\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =6240\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =5640\n                            Width =1440\n                            Height =330\n                            Name =\"Matter_type_Label\"\n                            Caption =\"Matter_type\"\n                            GUID = Begin\n                                0x542218b91159934992902f92958235e9\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =5640\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =5970\n                        End\n                    End\n                End\n                Begin TextBox\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =6360\n                    Width =3660\n                    Height =330\n                    ColumnWidth =3000\n                    TabIndex =10\n                    Name =\"FileNumber\"\n                    ControlSource =\"FileNumber\"\n                    GUID = Begin\n                        0xc056df5bdf5ba146a777768631f39b02\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =6360\n                    LayoutCachedWidth =5550\n                    LayoutCachedHeight =6690\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =6360\n                            Width =1440\n                            Height =330\n                            Name =\"FileNumber_Label\"\n                            Caption =\"FileNumber\"\n                            GUID = Begin\n                                0xc55607687c0d2244bb8898881e4dd125\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =6360\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =6690\n                        End\n                    End\n                End\n                Begin TextBox\n                    FontUnderline = NotDefault\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =6780\n                    Width =3660\n                    Height =330\n                    ColumnWidth =3000\n                    TabIndex =11\n                    ForeColor =1279872587\n                    Name =\"Scan Location\"\n                    ControlSource =\"Scan Location\"\n                    EventProcPrefix =\"Scan_Location\"\n                    GUID = Begin\n                        0x59f7b00e0855f84c94c98a4e34f0f024\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =6780\n                    LayoutCachedWidth =5550\n                    LayoutCachedHeight =7110\n                    ForeThemeColorIndex =-1\n                    ForeTint =100.0\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =6780\n                            Width =1440\n                            Height =330\n                            Name =\"Scan Location_Label\"\n                            Caption =\"Scan Location\"\n                            EventProcPrefix =\"Scan_Location_Label\"\n                            GUID = Begin\n                                0x7be7eb02b61ac5429769512e22a4d4b4\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =6780\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =7110\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =1890\n                    Top =7200\n                    Width =4170\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =12\n                    Name =\"HandlingAtty_Case\"\n                    ControlSource =\"HandlingAtty_Case\"\n                    StatusBarText =\"case specific field\"\n                    GUID = Begin\n                        0x3109715b7ca5654292b1f22bc23fc01b\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =7200\n                    LayoutCachedWidth =6060\n                    LayoutCachedHeight =7800\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =7200\n                            Width =1440\n                            Height =330\n                            Name =\"HandlingAtty_Case_Label\"\n                            Caption =\"HandlingAtty_Case\"\n                            GUID = Begin\n                                0xd38aaba041482849a372d147e5b4c3d1\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =7200\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =7530\n                        End\n                    End\n                End\n                Begin CheckBox\n                    OverlapFlags =85\n                    Left =1890\n                    Top =7920\n                    TabIndex =13\n                    Name =\"Closed\"\n                    ControlSource =\"Closed\"\n                    GUID = Begin\n                        0x976d8cd4e9da4f4192d7dd3ede3393d3\n                    End\n\n                    LayoutCachedLeft =1890\n                    LayoutCachedTop =7920\n                    LayoutCachedWidth =2150\n                    LayoutCachedHeight =8160\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =360\n                            Top =7920\n                            Width =1440\n                            Height =330\n                            Name =\"Closed_Label\"\n                            Caption =\"Closed\"\n                            GUID = Begin\n                                0xc03105388a6fce48b615fb9d8700bba0\n                            End\n                            LayoutCachedLeft =360\n                            LayoutCachedTop =7920\n                            LayoutCachedWidth =1800\n                            LayoutCachedHeight =8250\n                        End\n                    End\n                End\n                Begin TextBox\n                    EnterKeyBehavior = NotDefault\n                    ScrollBars =2\n                    OverlapFlags =85\n                    IMESentenceMode =3\n                    Left =7770\n                    Top =360\n                    Width =3690\n                    Height =600\n                    ColumnWidth =3000\n                    TabIndex =14\n                    Name =\"CodeVal\"\n                    ControlSource =\"CodeVal\"\n                    GUID = Begin\n                        0x35791a94c743d84a9e9cf3af67d8b46f\n                    End\n\n                    LayoutCachedLeft =7770\n                    LayoutCachedTop =360\n                    LayoutCachedWidth =11460\n                    LayoutCachedHeight =960\n                    Begin\n                        Begin Label\n                            OverlapFlags =85\n                            Left =6240\n                            Top =360\n                            Width =1440\n                            Height =330\n                            Name =\"CodeVal_Label\"\n                            Caption =\"CodeVal\"\n                            GUID = Begin\n                                0xbc51c408307fdb47a4e5da0dc7275bbd\n                            End\n                            LayoutCachedLeft =6240\n                            LayoutCachedTop =360\n                            LayoutCachedWidth =7680\n                            LayoutCachedHeight =690\n                        End\n                    End\n                End\n            End\n        End\n        Begin FormFooter\n            Height =0\n            Name =\"FormFooter\"\n            GUID = Begin\n                0x3a2e5cf2266cfa45abba6f9db940cf69\n            End\n            AutoHeight =1\n            AlternateBackThemeColorIndex =1\n            AlternateBackShade =95.0\n            BackThemeColorIndex =1\n        End\n    End\nEnd"
+  "vbaCodeBehind": "Version =20\r\nVersionRequired =20\r\nPublishOption =1\r\nChecksum =1694120785\r\nBegin Form\r\n    AutoCenter = NotDefault\r\n    DividingLines = NotDefault\r\n    AllowDesignChanges = NotDefault\r\n    DefaultView =2\r\n    PictureAlignment =2\r\n    DatasheetGridlinesBehavior =3\r\n    GridX =24\r\n    GridY =24\r\n    Width =11520\r\n    DatasheetFontHeight =11\r\n    ItemSuffix =30\r\n    Right =18765\r\n    Bottom =12285\r\n    DatasheetGridlinesColor =15461355\r\n    RecSrcDt = Begin\r\n        0xa93ecce576ffe440\r\n    End\r\n    GUID = Begin\r\n        0x1a2f4c323cc5ac449ff1b460c1ed64ac\r\n    End\r\n    NameMap = Begin\r\n        0x0acc0e5500000000a60e6698b7717d41856a07395d66735c00000000922641e9 ,\r\n        0x76ffe440000000000000000071007200790043006100730065004c0069007300 ,\r\n        0x74004f00700065006e00000000000000989c609ff03f454397ebec0d976a28ff ,\r\n        0x07000000a60e6698b7717d41856a07395d66735c430061007300650049004400 ,\r\n        0x000000000000649dfe7af83c7647ad6fb14ec9ee619e07000000a60e6698b771 ,\r\n        0x7d41856a07395d66735c43006100730065004f00700065006e00440061007400 ,\r\n        0x6500000000000000f458d47c5f78cc4aab4ecd8b71e0fcd907000000a60e6698 ,\r\n        0xb7717d41856a07395d66735c43006c00690065006e0074004e0061006d006500 ,\r\n        0x000000000000e1985d5f655f6f469b50b95b7e2374fd07000000a60e6698b771 ,\r\n        0x7d41856a07395d66735c43006100730065005f004c0065007400740065007200 ,\r\n        0x0000000000001e747bb16a7b964aa2e9346e0e4778e507000000a60e6698b771 ,\r\n        0x7d41856a07395d66735c79007200000000000000b8fc5cca7aa30142a0f88e22 ,\r\n        0xf0441d4f07000000a60e6698b7717d41856a07395d66735c4e0075006d006200 ,\r\n        0x650072005f000000000000007dca2456c5564b428ed35f53c943152e07000000 ,\r\n        0xa60e6698b7717d41856a07395d66735c4f007200690067005f00410074007400 ,\r\n        0x79000000000000003e2fbfcb6ee621488df88db784249c7607000000a60e6698 ,\r\n        0xb7717d41856a07395d66735c45007800740065006e006400650064005f004c00 ,\r\n        0x65006400670065007200000000000000e6d5bf64b7851445b7d37529ecfa96b4 ,\r\n        0x07000000a60e6698b7717d41856a07395d66735c43006f007500720074000000 ,\r\n        0x0000000099ca0f87017b60479039882a08e4814007000000a60e6698b7717d41 ,\r\n        0x856a07395d66735c4d00610074007400650072005f0074007900700065000000 ,\r\n        0x0000000051e3856afe204e488e9bce2e73dcaa4607000000a60e6698b7717d41 ,\r\n        0x856a07395d66735c460069006c0065004e0075006d0062006500720000000000 ,\r\n        0x0000f001949e67d486499cc10187baca3cb707000000a60e6698b7717d41856a ,\r\n        0x07395d66735c5300630061006e0020004c006f0063006100740069006f006e00 ,\r\n        0x0000000000009fb70ccc41f4714695559101df2e748c07000000a60e6698b771 ,\r\n        0x7d41856a07395d66735c480061006e0064006c0069006e006700410074007400 ,\r\n        0x79005f004300610073006500000000000000473cd49f76e2964893db1e2ec773 ,\r\n        0x73ca07000000a60e6698b7717d41856a07395d66735c43006c006f0073006500 ,\r\n        0x64000000000000005f99c0a9001f3d4f94debab9eb62669307000000a60e6698 ,\r\n        0xb7717d41856a07395d66735c43006f0064006500560061006c00000000000000 ,\r\n        0x000000000000000000000000000000000c000000050000000000000000000000 ,\r\n        0x000000000000\r\n    End\r\n    RecordSource =\"SELECT [qryCaseListOpen].[CaseID], [qryCaseListOpen].[CaseOpenDate], [qryCaseLis\"\r\n        \"tOpen].[ClientName], [qryCaseListOpen].[Case_Letter], [qryCaseListOpen].[yr], [q\"\r\n        \"ryCaseListOpen].[Number_], [qryCaseListOpen].[Orig_Atty], [qryCaseListOpen].[Ext\"\r\n        \"ended_Ledger], [qryCaseListOpen].[Court], [qryCaseListOpen].[Matter_type], [qryC\"\r\n        \"aseListOpen].[FileNumber], [qryCaseListOpen].[Scan Location], [qryCaseListOpen].\"\r\n        \"[HandlingAtty_Case], [qryCaseListOpen].[Closed], [qryCaseListOpen].[CodeVal] FRO\"\r\n        \"M qryCaseListOpen; \"\r\n    Caption =\"frmCaseListOpen subform\"\r\n    DatasheetFontName =\"Trebuchet MS\"\r\n    FilterOnLoad =0\r\n    ShowPageMargins =0\r\n    DisplayOnSharePointSite =1\r\n    DatasheetAlternateBackColor =15921906\r\n    DatasheetGridlinesColor12 =0\r\n    FitToScreen =1\r\n    DatasheetBackThemeColorIndex =1\r\n    BorderThemeColorIndex =3\r\n    ThemeFontIndex =1\r\n    ForeThemeColorIndex =0\r\n    AlternateBackThemeColorIndex =1\r\n    AlternateBackShade =95.0\r\n    NoSaveCTIWhenDisabled =1\r\n    Begin\r\n        Begin Label\r\n            BackStyle =0\r\n            FontSize =11\r\n            FontName =\"Calibri\"\r\n            ThemeFontIndex =1\r\n            BackThemeColorIndex =1\r\n            BorderThemeColorIndex =0\r\n            BorderTint =50.0\r\n            ForeThemeColorIndex =0\r\n            ForeTint =50.0\r\n            GridlineThemeColorIndex =1\r\n            GridlineShade =65.0\r\n        End\r\n        Begin CheckBox\r\n            BorderLineStyle =0\r\n            LabelX =230\r\n            LabelY =-30\r\n            BorderThemeColorIndex =1\r\n            BorderShade =65.0\r\n            GridlineThemeColorIndex =1\r\n            GridlineShade =65.0\r\n        End\r\n        Begin TextBox\r\n            AddColon = NotDefault\r\n            FELineBreak = NotDefault\r\n            BorderLineStyle =0\r\n            LabelX =-1800\r\n            FontSize =11\r\n            FontName =\"Calibri\"\r\n            AsianLineBreak =1\r\n            BackThemeColorIndex =1\r\n            BorderThemeColorIndex =1\r\n            BorderShade =65.0\r\n            ThemeFontIndex =1\r\n            ForeThemeColorIndex =0\r\n            ForeTint =75.0\r\n            GridlineThemeColorIndex =1\r\n            GridlineShade =65.0\r\n        End\r\n        Begin FormHeader\r\n            Height =0\r\n            BackColor =14670543\r\n            Name =\"FormHeader\"\r\n            GUID = Begin\r\n                0xff6b39f933d267458a1fc0552b3e1aa5\r\n            End\r\n            AutoHeight =1\r\n            AlternateBackThemeColorIndex =1\r\n            AlternateBackShade =95.0\r\n            BackThemeColorIndex =2\r\n            BackTint =20.0\r\n        End\r\n        Begin Section\r\n            Height =8370\r\n            Name =\"Detail\"\r\n            GUID = Begin\r\n                0xa2c4d283944d844a9822a4dc5de87559\r\n            End\r\n            AutoHeight =1\r\n            AlternateBackColor =15921906\r\n            AlternateBackThemeColorIndex =1\r\n            AlternateBackShade =95.0\r\n            BackThemeColorIndex =1\r\n            Begin\r\n                Begin TextBox\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =360\r\n                    Height =315\r\n                    ColumnWidth =1440\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"CaseID\"\r\n                    ControlSource =\"CaseID\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x0888d1979634da4eb977a3ad7df385f0\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =360\r\n                    LayoutCachedWidth =3330\r\n                    LayoutCachedHeight =675\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =360\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"CaseID_Label\"\r\n                            Caption =\"CaseID\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0xc1e421fdb0f9b645ac1e7d3ed32cdda9\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =360\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =690\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =780\r\n                    Width =1620\r\n                    Height =330\r\n                    ColumnWidth =1620\r\n                    TabIndex =1\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"CaseOpenDate\"\r\n                    ControlSource =\"CaseOpenDate\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0xaf61b586c2a0ed4288da825abe150fa5\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =780\r\n                    LayoutCachedWidth =3510\r\n                    LayoutCachedHeight =1110\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =780\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"CaseOpenDate_Label\"\r\n                            Caption =\"CaseOpenDate\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x4a8ad28dbab02342b48c78aed88f3d2f\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =780\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =1110\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =1200\r\n                    Width =3660\r\n                    Height =330\r\n                    ColumnWidth =3000\r\n                    TabIndex =2\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"ClientName\"\r\n                    ControlSource =\"ClientName\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x1848080a7d33c14b8d1d23263b42d3ae\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =1200\r\n                    LayoutCachedWidth =5550\r\n                    LayoutCachedHeight =1530\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =1200\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"ClientName_Label\"\r\n                            Caption =\"ClientName\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0xb98f92c5f0e02947af9f791f86c66865\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =1200\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =1530\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =1620\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =3\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"Case_Letter\"\r\n                    ControlSource =\"Case_Letter\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0xb879d85bdad3c242b2257ee70ea22688\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =1620\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =2220\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =1620\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Case_Letter_Label\"\r\n                            Caption =\"Case_Letter\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x95239e825a558e4883357159a7c7007d\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =1620\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =1950\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =2340\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =4\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"yr\"\r\n                    ControlSource =\"yr\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x5d654332907095458b44afa27ef3aa1d\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =2340\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =2940\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =2340\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"yr_Label\"\r\n                            Caption =\"yr\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x7a7343e6be17694881ee372c1a571b27\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =2340\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =2670\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =3060\r\n                    Width =1530\r\n                    Height =330\r\n                    ColumnWidth =1530\r\n                    TabIndex =5\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"Number_\"\r\n                    ControlSource =\"Number_\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x016e78a979f5064d90208339ce1ae5d4\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =3060\r\n                    LayoutCachedWidth =3420\r\n                    LayoutCachedHeight =3390\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =3060\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Number__Label\"\r\n                            Caption =\"Number_\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x8105460c186d4342bde4d0a39551710a\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =3060\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =3390\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =3480\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =6\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"Orig_Atty\"\r\n                    ControlSource =\"Orig_Atty\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0xbba2af00c000f746a12b3c0a11572097\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =3480\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =4080\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =3480\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Orig_Atty_Label\"\r\n                            Caption =\"Orig_Atty\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x6435e231b273464aaaa2395886b4e94f\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =3480\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =3810\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =4200\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =7\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"Extended_Ledger\"\r\n                    ControlSource =\"Extended_Ledger\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x8d75f504d17e194ea524c3f843b16e27\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =4200\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =4800\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =4200\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Extended_Ledger_Label\"\r\n                            Caption =\"Extended_Ledger\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x019f433e00da394a8341eb66837f60fb\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =4200\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =4530\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =4920\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =8\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"Court\"\r\n                    ControlSource =\"Court\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0xdc6d4d14ca756249964873d2cc597e27\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =4920\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =5520\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =4920\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Court_Label\"\r\n                            Caption =\"Court\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0xc68ae0fd0b968d42ad179cca769c1c91\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =4920\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =5250\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =5640\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =9\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"Matter_type\"\r\n                    ControlSource =\"Matter_type\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0xd009428585387345b52a9d67a7b7a0af\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =5640\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =6240\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =5640\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Matter_type_Label\"\r\n                            Caption =\"Matter_type\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x65fdec030eb6ba45ab68b7c4fad79507\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =5640\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =5970\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =6360\r\n                    Width =3660\r\n                    Height =330\r\n                    ColumnWidth =3000\r\n                    TabIndex =10\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"FileNumber\"\r\n                    ControlSource =\"FileNumber\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0xb08a9cc7ad3b094a806fe4d0b8f43d8d\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =6360\r\n                    LayoutCachedWidth =5550\r\n                    LayoutCachedHeight =6690\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =6360\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"FileNumber_Label\"\r\n                            Caption =\"FileNumber\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x6079606b6a4bf841b819318400e5d8e1\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =6360\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =6690\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    FontUnderline = NotDefault\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =6780\r\n                    Width =3660\r\n                    Height =330\r\n                    ColumnWidth =3000\r\n                    TabIndex =11\r\n                    BorderColor =10921638\r\n                    ForeColor =1279872587\r\n                    Name =\"Scan Location\"\r\n                    ControlSource =\"Scan Location\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    EventProcPrefix =\"Scan_Location\"\r\n                    GUID = Begin\r\n                        0x36e005d9ef233e448170e25d847fe608\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =6780\r\n                    LayoutCachedWidth =5550\r\n                    LayoutCachedHeight =7110\r\n                    ForeThemeColorIndex =-1\r\n                    ForeTint =100.0\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =6780\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Scan Location_Label\"\r\n                            Caption =\"Scan Location\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            EventProcPrefix =\"Scan_Location_Label\"\r\n                            GUID = Begin\r\n                                0x5c700b38e5226f439e96af0d080457fd\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =6780\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =7110\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =1890\r\n                    Top =7200\r\n                    Width =4170\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =12\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"HandlingAtty_Case\"\r\n                    ControlSource =\"HandlingAtty_Case\"\r\n                    StatusBarText =\"case specific field\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x8a97a91f3dcbeb44ab41b55c6277e867\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =7200\r\n                    LayoutCachedWidth =6060\r\n                    LayoutCachedHeight =7800\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =7200\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"HandlingAtty_Case_Label\"\r\n                            Caption =\"HandlingAtty_Case\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x0cca5a2af7e10e48ad172ddd695677f9\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =7200\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =7530\r\n                        End\r\n                    End\r\n                End\r\n                Begin CheckBox\r\n                    OverlapFlags =85\r\n                    Left =1890\r\n                    Top =7920\r\n                    TabIndex =13\r\n                    BorderColor =10921638\r\n                    Name =\"Closed\"\r\n                    ControlSource =\"Closed\"\r\n                    GUID = Begin\r\n                        0x83babad50fa856448999b87b4669c1b6\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =1890\r\n                    LayoutCachedTop =7920\r\n                    LayoutCachedWidth =2150\r\n                    LayoutCachedHeight =8160\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =360\r\n                            Top =7920\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"Closed_Label\"\r\n                            Caption =\"Closed\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x81a0b991f3686b45802b367631d1ed16\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =360\r\n                            LayoutCachedTop =7920\r\n                            LayoutCachedWidth =1800\r\n                            LayoutCachedHeight =8250\r\n                        End\r\n                    End\r\n                End\r\n                Begin TextBox\r\n                    EnterKeyBehavior = NotDefault\r\n                    ScrollBars =2\r\n                    OverlapFlags =85\r\n                    IMESentenceMode =3\r\n                    Left =7770\r\n                    Top =360\r\n                    Width =3690\r\n                    Height =600\r\n                    ColumnWidth =3000\r\n                    TabIndex =14\r\n                    BorderColor =10921638\r\n                    ForeColor =4210752\r\n                    Name =\"CodeVal\"\r\n                    ControlSource =\"CodeVal\"\r\n                    FontName =\"Trebuchet MS\"\r\n                    GUID = Begin\r\n                        0x09145252cf653e4f8094836bd547c110\r\n                    End\r\n                    GridlineColor =10921638\r\n\r\n                    LayoutCachedLeft =7770\r\n                    LayoutCachedTop =360\r\n                    LayoutCachedWidth =11460\r\n                    LayoutCachedHeight =960\r\n                    Begin\r\n                        Begin Label\r\n                            OverlapFlags =85\r\n                            Left =6240\r\n                            Top =360\r\n                            Width =1440\r\n                            Height =330\r\n                            BorderColor =8355711\r\n                            ForeColor =8355711\r\n                            Name =\"CodeVal_Label\"\r\n                            Caption =\"CodeVal\"\r\n                            FontName =\"Trebuchet MS\"\r\n                            GUID = Begin\r\n                                0x7aa0915b1ed611409f52e18e53b2db14\r\n                            End\r\n                            GridlineColor =10921638\r\n                            LayoutCachedLeft =6240\r\n                            LayoutCachedTop =360\r\n                            LayoutCachedWidth =7680\r\n                            LayoutCachedHeight =690\r\n                        End\r\n                    End\r\n                End\r\n            End\r\n        End\r\n        Begin FormFooter\r\n            Height =0\r\n            Name =\"FormFooter\"\r\n            GUID = Begin\r\n                0x3c1aaa3d1ed335498307fe45557ae23b\r\n            End\r\n            AutoHeight =1\r\n            AlternateBackThemeColorIndex =1\r\n            AlternateBackShade =95.0\r\n            BackThemeColorIndex =1\r\n        End\r\n    End\r\nEnd"
 }

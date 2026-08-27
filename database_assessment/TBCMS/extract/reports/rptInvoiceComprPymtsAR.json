@@ -2,6 +2,8 @@
   "reportName": "rptInvoiceComprPymtsAR",
   "dataSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Payment, tblCase.CaseOpenDate, [Matter and AR].OrderNr, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Bill_ID FROM (tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID) INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([Matter and AR].Date2)<=[Bill Closed Date]) AND (([Matter and AR].Pay_Outlay) Not Like \"Adjustment\") AND (([Matter and AR].Payment)>0)) ORDER BY [Matter and AR].Date2; ",
   "width": 5100,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 360,
@@ -9,6 +11,7 @@
     "top": 240,
     "bottom": 240
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -27,6 +30,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -95,6 +99,7 @@
       "groupField": "CaseID",
       "height": 615,
       "backColor": 15590879,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -192,6 +197,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 315,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

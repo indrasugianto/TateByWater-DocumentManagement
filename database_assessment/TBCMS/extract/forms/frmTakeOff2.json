@@ -6,9 +6,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 25620,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +27,13 @@
           "width": 25620,
           "height": 7920,
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmTakeOffSubForm3",
           "linkMasterFields": [
             "TakeOffMonthID"
@@ -45,7 +55,13 @@
           "width": 1245,
           "height": 435,
           "caption": "Take Off",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri Light",
+          "fontSize": 16,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 6968388,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -57,9 +73,16 @@
           "controlSource": "tblTakeOffMonth.TakeOffDate",
           "format": "General Date",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -69,7 +92,12 @@
           "width": 660,
           "height": 420,
           "caption": "Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "CommandButton",
@@ -79,9 +107,17 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -95,9 +131,15 @@
           "height": 315,
           "controlSource": "TakeOffMonthID",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -107,7 +149,12 @@
           "width": 1620,
           "height": 315,
           "caption": "TakeOffMonthID",
-          "visible": false
+          "visible": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Image",
@@ -116,7 +163,10 @@
           "top": 120,
           "width": 660,
           "height": 540,
-          "visible": true
+          "picture": "Logo Transparent",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -126,9 +176,17 @@
           "width": 1140,
           "height": 345,
           "caption": "&Refresh",
+          "picture": "(none)",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 16777215,
+          "backColor": 10319446,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }

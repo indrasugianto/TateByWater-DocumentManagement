@@ -2,6 +2,9 @@
   "reportName": "Accounts Receivable",
   "dataSource": "qry_invoices_summaryRPT",
   "width": 14040,
+  "filter": "Orig_Atty='TDT' And BalRetCalculated <> 0",
+  "filterOn": true,
+  "orderByOn": false,
   "orientation": "landscape",
   "margins": {
     "left": 720,
@@ -9,6 +12,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "Balance Due Date",
@@ -21,6 +25,7 @@
     {
       "type": "Detail",
       "height": 480,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -210,6 +215,7 @@
     {
       "type": "ReportHeader",
       "height": 975,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -251,6 +257,7 @@
     {
       "type": "ReportFooter",
       "height": 540,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

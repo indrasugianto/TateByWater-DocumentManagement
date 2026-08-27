@@ -31,77 +31,96 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16628,
-      "lineEnd": 16658,
+      "lineStart": 18432,
+      "lineEnd": 18462,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16659,
-      "lineEnd": 16689,
+      "lineStart": 18463,
+      "lineEnd": 18493,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17559,
-      "lineEnd": 17696,
+      "lineStart": 19363,
+      "lineEnd": 19500,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17741,
-      "lineEnd": 17751,
+      "lineStart": 19545,
+      "lineEnd": 19555,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8066,
+      "lineEnd": 8096,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql",
+        "setWarnings"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8122,
+      "lineEnd": 8126,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
       "objectName": "frmDispositions",
       "procedureName": "FilterMe",
       "sourceFile": "extract/vba/forms/frmDispositions.txt",
-      "lineStart": 7360,
-      "lineEnd": 7390,
+      "lineStart": 7428,
+      "lineEnd": 7458,
       "usesDoCmd": [],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmHomeAdmin",
-      "procedureName": "cmdDispositions_Click",
-      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6225,
-      "lineEnd": 6228,
-      "usesDoCmd": [
-        "openform"
-      ],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmHomeAdmin",
-      "procedureName": "Command119_Click",
-      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6469,
-      "lineEnd": 6472,
-      "usesDoCmd": [
-        "openform"
-      ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -113,7 +132,8 @@
       "usesDoCmd": [
         "openform"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -125,54 +145,106 @@
       "usesDoCmd": [
         "openform"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
       "objectName": "Intakes",
       "procedureName": "cmdClose_Click",
       "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7636,
-      "lineEnd": 7688,
+      "lineStart": 7608,
+      "lineEnd": 7660,
       "usesDoCmd": [
         "Close"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "Intakes",
       "procedureName": "cmdCreateOpen_Click",
       "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7751,
-      "lineEnd": 7798,
+      "lineStart": 7723,
+      "lineEnd": 7770,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdSubmitToFamilyLaw_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8087,
-      "lineEnd": 8117,
+      "objectName": "frmHomeAdmin",
+      "procedureName": "cmdDispositions_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6225,
+      "lineEnd": 6228,
       "usesDoCmd": [
-        "RunCommand",
-        "RunSQL",
-        "SetWarnings",
         "openform"
       ],
-      "usesSql": true
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "CaseOpenDate_AfterUpdate",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8143,
-      "lineEnd": 8147,
+      "objectName": "frmHomeAdmin",
+      "procedureName": "Command119_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6469,
+      "lineEnd": 6472,
+      "usesDoCmd": [
+        "openform"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "modGaz",
+      "procedureName": "fncGetTABalanceWithCaseID",
+      "sourceFile": "extract/vba/modules/modGaz.txt",
+      "lineStart": 167,
+      "lineEnd": 179,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "modGaz",
+      "procedureName": "get_remaining_AdvancedChargesBalance",
+      "sourceFile": "extract/vba/modules/modGaz.txt",
+      "lineStart": 351,
+      "lineEnd": 398,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "modGaz",
+      "procedureName": "fncGetMatterARBalanceWithCaseID",
+      "sourceFile": "extract/vba/modules/modGaz.txt",
+      "lineStart": 406,
+      "lineEnd": 418,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "Module1",
+      "procedureName": "GetRetainer",
+      "sourceFile": "extract/vba/modules/Module1.txt",
+      "lineStart": 20,
+      "lineEnd": 23,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
     }
   ],
   "confidence": "medium"

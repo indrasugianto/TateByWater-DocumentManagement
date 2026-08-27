@@ -1,19 +1,23 @@
 {
   "reportName": "rpt_ftrustee_address_label",
   "dataSource": "Bankruptcy",
-  "width": 4566,
   "caption": "Address Label",
+  "width": 4566,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "landscape",
   "margins": {
-    "left": 240,
-    "right": 240,
-    "top": 341,
-    "bottom": 341
+    "left": 187,
+    "right": 187,
+    "top": 187,
+    "bottom": 187
   },
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
       "height": 1290,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

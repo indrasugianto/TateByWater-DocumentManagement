@@ -1,8 +1,11 @@
 {
   "reportName": "rpt_TKTotalAdvance",
   "dataSource": "qryInvoiceAttachRPT1",
-  "width": 10800,
   "caption": "Hourly Invoice - Total Advanced",
+  "width": 10800,
+  "filter": "[Bill_ID]=10",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -10,18 +13,10 @@
     "top": 720,
     "bottom": 720
   },
-  "groupLevels": [
-    {
-      "fieldExpression": "CaseID",
-      "sortOrder": "ascending",
-      "groupHeader": true,
-      "groupFooter": true
-    }
-  ],
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
-      "height": 720,
       "controls": [
         {
           "type": "TextBox",
@@ -113,19 +108,7 @@
       ]
     },
     {
-      "type": "ReportHeader",
-      "height": 0,
-      "backColor": 15064278,
-      "controls": []
-    },
-    {
-      "type": "ReportFooter",
-      "height": 0,
-      "controls": []
-    },
-    {
       "type": "PageHeader",
-      "height": 3600,
       "controls": [
         {
           "type": "Line",
@@ -202,9 +185,9 @@
         {
           "type": "Image",
           "name": "Image0",
-          "left": 330,
+          "left": 336,
           "top": 60,
-          "width": 4575,
+          "width": 4572,
           "height": 780,
           "borderColor": 10921638
         },
@@ -307,9 +290,9 @@
           "type": "Label",
           "name": "Label38",
           "left": 780,
-          "top": 870,
+          "top": 876,
           "width": 4155,
-          "height": 315,
+          "height": 312,
           "caption": "ATTORNEYS AT LAW",
           "fontName": "Californian FB",
           "fontSize": 11,
@@ -443,7 +426,6 @@
     },
     {
       "type": "PageFooter",
-      "height": 1080,
       "controls": [
         {
           "type": "TextBox",
@@ -508,8 +490,6 @@
     {
       "type": "GroupHeader",
       "groupIndex": 0,
-      "groupField": "CaseID",
-      "height": 720,
       "controls": [
         {
           "type": "Rectangle",
@@ -613,8 +593,6 @@
     {
       "type": "GroupFooter",
       "groupIndex": 0,
-      "groupField": "CaseID",
-      "height": 1500,
       "controls": [
         {
           "type": "Rectangle",

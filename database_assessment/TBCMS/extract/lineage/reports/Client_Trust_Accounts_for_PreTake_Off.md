@@ -10,8 +10,8 @@
 - Terminal Tables: vwTakeOff_A
 
 ## Related VBA Procedures
-- form frmTakeOffReconciliation::cmdAttyReport_Click [3272-3299]
+- form frmTakeOffReconciliation::cmdAttyReport_Click [3272-3299] [runSql]
 - form frmTakeOffReconciliation::Form_Load [3300-3323]
-- form frmTakeOffReconciliation::cmdInsertData_Click [3471-3550]
+- form frmTakeOffReconciliation::cmdInsertData_Click [3471-3550] [runSql]
 - form frmTRUSTENTRIESCHRON::cmdRequery_Click [2480-2489]
 - form frmTRUSTENTRIESCHRON::Form_Load [2494-2502]

@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 11160,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -19,7 +25,10 @@
           "top": 0,
           "width": 5040,
           "height": 1680,
-          "visible": true
+          "visible": true,
+          "backColor": 15592953,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -28,7 +37,10 @@
           "top": 0,
           "width": 6000,
           "height": 1680,
-          "visible": true
+          "visible": true,
+          "backColor": 15266810,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -39,9 +51,15 @@
           "height": 240,
           "controlSource": "Address",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -52,9 +70,15 @@
           "height": 240,
           "controlSource": "City",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -65,9 +89,15 @@
           "height": 240,
           "controlSource": "State",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -78,9 +108,15 @@
           "height": 240,
           "controlSource": "Zip",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -90,10 +126,16 @@
           "width": 1260,
           "height": 240,
           "controlSource": "HmPhone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -103,10 +145,17 @@
           "width": 1380,
           "height": 240,
           "controlSource": "WkPhone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -116,10 +165,17 @@
           "width": 1260,
           "height": 240,
           "controlSource": "OtherPhone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -129,7 +185,12 @@
           "width": 1050,
           "height": 210,
           "caption": "Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -139,7 +200,12 @@
           "width": 975,
           "height": 240,
           "caption": "Work Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -149,7 +215,12 @@
           "width": 720,
           "height": 210,
           "caption": "Other Ph",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -159,7 +230,12 @@
           "width": 1020,
           "height": 405,
           "caption": "Personal  Information:",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -169,7 +245,12 @@
           "width": 690,
           "height": 210,
           "caption": "Address",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -179,7 +260,12 @@
           "width": 1080,
           "height": 210,
           "caption": "City/State/Zip",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -189,10 +275,17 @@
           "width": 1515,
           "height": 240,
           "controlSource": "SSN",
+          "inputMask": "000\\-00\\-0000;0;_",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -202,7 +295,12 @@
           "width": 360,
           "height": 210,
           "caption": "SSN",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -212,7 +310,12 @@
           "width": 600,
           "height": 240,
           "caption": "Email",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -223,9 +326,15 @@
           "height": 240,
           "controlSource": "WkAddress",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -236,9 +345,15 @@
           "height": 240,
           "controlSource": "WkCity",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -249,9 +364,15 @@
           "height": 240,
           "controlSource": "WkState",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -262,9 +383,15 @@
           "height": 240,
           "controlSource": "WkZip",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -274,7 +401,12 @@
           "width": 1080,
           "height": 210,
           "caption": "City/State/Zip",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -285,9 +417,15 @@
           "height": 240,
           "controlSource": "Email",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -298,10 +436,17 @@
           "height": 240,
           "controlSource": "DOB",
           "format": "Short Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -311,7 +456,12 @@
           "width": 480,
           "height": 210,
           "caption": "DOB",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -321,7 +471,12 @@
           "width": 1080,
           "height": 210,
           "caption": "Work Address",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -332,9 +487,15 @@
           "height": 240,
           "controlSource": "Employer Name",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -344,7 +505,12 @@
           "width": 1230,
           "height": 240,
           "caption": "Employer Name",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -354,7 +520,14 @@
           "width": 1635,
           "height": 240,
           "caption": "Work Information",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "fontBold": true,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent",
+          "textAlign": "right"
         }
       ]
     }

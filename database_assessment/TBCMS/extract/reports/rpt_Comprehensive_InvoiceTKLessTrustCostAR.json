@@ -1,8 +1,11 @@
 {
   "reportName": "rpt_Comprehensive_InvoiceTKLessTrustCostAR",
   "dataSource": "SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IANumber, [TB Time Keeping].Bill_ID, [TB Time Keeping].TrustatClose, tblCase.CaseID, tblCase.Last_Name, tblCase.First_Name, tblCase.CaseOpenDate, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Address, tblCase.City, tblCase.State, tblCase.Zip, tblCase.Matter_type, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].TimeNotes, tblCase.Retainer FROM tblCase INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([TB Time Keeping].Bill_ID)=75) AND ((tblCase.CaseID)=14879)); ",
-  "width": 10320,
   "caption": "Comprehensive Invoice - TK Less Trust (Cost Replenish)",
+  "width": 10320,
+  "filter": "Bill_ID=75",
+  "filterOn": true,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -10,10 +13,12 @@
     "top": 864,
     "bottom": 864
   },
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
       "height": 5820,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -113,8 +118,10 @@
           "resolvedReport": {
             "reportName": "rptInvoiceComprehensiveAR2",
             "dataSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Charge, tblCase.Retainer, tblCase.CaseOpenDate, [Matter and AR].OrderNr, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Bill_ID FROM (tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID) INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([Matter and AR].Date2)<=[Bill Closed Date]) AND (([Matter and AR].Charge)<>0)) ORDER BY [Matter and AR].Date2; ",
-            "width": 4920,
             "caption": "TK-1: Baltazar Gorospe -  4/3/2018",
+            "width": 4920,
+            "filterOn": false,
+            "orderByOn": false,
             "orientation": "portrait",
             "margins": {
               "left": 360,
@@ -122,6 +129,7 @@
               "top": 240,
               "bottom": 240
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -140,6 +148,7 @@
               {
                 "type": "Detail",
                 "height": 300,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -206,6 +215,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 60,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -229,6 +239,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 360,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -297,6 +308,8 @@
             "reportName": "rptInvoiceComprehensiveTrust2",
             "dataSource": "qryInvoiceComprehensiveTrustCredit4",
             "width": 5100,
+            "filterOn": false,
+            "orderByOn": false,
             "orientation": "portrait",
             "margins": {
               "left": 360,
@@ -304,6 +317,7 @@
               "top": 240,
               "bottom": 240
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -322,6 +336,7 @@
               {
                 "type": "Detail",
                 "height": 240,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -387,6 +402,7 @@
                 "groupField": "CaseID",
                 "height": 675,
                 "backColor": 15590879,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -510,6 +526,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 435,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -573,6 +590,10 @@
             "reportName": "rpt_TimeDetail_Comprehensive2",
             "dataSource": "qryInvoiceComprehensiveTimeDetail2",
             "width": 10320,
+            "filter": "([qryInvoiceComprehensiveTimeDetail2].[Bill_ID]=75)",
+            "filterOn": false,
+            "orderBy": "TDate",
+            "orderByOn": true,
             "orientation": "portrait",
             "margins": {
               "left": 720,
@@ -580,6 +601,7 @@
               "top": 720,
               "bottom": 720
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -598,6 +620,7 @@
               {
                 "type": "Detail",
                 "height": 420,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -686,11 +709,13 @@
                 "type": "ReportHeader",
                 "height": 0,
                 "backColor": 15064278,
+                "keepTogether": true,
                 "controls": []
               },
               {
                 "type": "ReportFooter",
                 "height": 0,
+                "keepTogether": true,
                 "controls": []
               },
               {
@@ -709,6 +734,8 @@
                 "groupField": "CaseID",
                 "height": 675,
                 "backColor": 14148063,
+                "forceNewPage": 1,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Label",
@@ -848,6 +875,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 480,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -913,6 +941,8 @@
             "reportName": "rptInvoiceComprPymtsAR",
             "dataSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Payment, tblCase.CaseOpenDate, [Matter and AR].OrderNr, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Bill_ID FROM (tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID) INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([Matter and AR].Date2)<=[Bill Closed Date]) AND (([Matter and AR].Pay_Outlay) Not Like \"Adjustment\") AND (([Matter and AR].Payment)>0)) ORDER BY [Matter and AR].Date2; ",
             "width": 5100,
+            "filterOn": false,
+            "orderByOn": false,
             "orientation": "portrait",
             "margins": {
               "left": 360,
@@ -920,6 +950,7 @@
               "top": 240,
               "bottom": 240
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -938,6 +969,7 @@
               {
                 "type": "Detail",
                 "height": 300,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1006,6 +1038,7 @@
                 "groupField": "CaseID",
                 "height": 615,
                 "backColor": 15590879,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Label",
@@ -1103,6 +1136,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 315,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1438,6 +1472,7 @@
     {
       "type": "ReportHeader",
       "height": 2460,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -1640,6 +1675,7 @@
     {
       "type": "ReportFooter",
       "height": 1320,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",

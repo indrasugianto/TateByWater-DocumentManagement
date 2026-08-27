@@ -2,6 +2,10 @@
   "reportName": "Invoice - No Balance Due",
   "dataSource": "qryInvoiceRPT1",
   "width": 10485,
+  "filter": "[CaseID]=23347",
+  "filterOn": false,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -9,6 +13,7 @@
     "top": 1008,
     "bottom": 1008
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -21,6 +26,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -119,6 +125,7 @@
     {
       "type": "ReportHeader",
       "height": 4320,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -492,6 +499,7 @@
     {
       "type": "ReportFooter",
       "height": 960,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -522,7 +530,8 @@
           "foreColor": 12349952,
           "backStyle": "transparent",
           "borderColor": 8355711,
-          "textAlign": "center"
+          "textAlign": "center",
+          "hyperlinkAddress": "www.tatebywater.com/make-a-payment"
         },
         {
           "type": "Label",
@@ -784,6 +793,8 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 0,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": []
     },
     {
@@ -791,6 +802,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 1440,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

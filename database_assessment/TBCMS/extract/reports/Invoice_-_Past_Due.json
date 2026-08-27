@@ -2,6 +2,10 @@
   "reportName": "Invoice - Past Due",
   "dataSource": "qryInvoiceRPT1",
   "width": 10500,
+  "filter": "[CaseID]=29854",
+  "filterOn": true,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -9,18 +13,10 @@
     "top": 1008,
     "bottom": 1008
   },
-  "groupLevels": [
-    {
-      "fieldExpression": "CaseID",
-      "sortOrder": "ascending",
-      "groupHeader": true,
-      "groupFooter": true
-    }
-  ],
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
-      "height": 300,
       "controls": [
         {
           "type": "TextBox",
@@ -104,7 +100,6 @@
     },
     {
       "type": "ReportHeader",
-      "height": 4260,
       "controls": [
         {
           "type": "TextBox",
@@ -480,7 +475,6 @@
     },
     {
       "type": "ReportFooter",
-      "height": 1020,
       "controls": [
         {
           "type": "Label",
@@ -511,7 +505,8 @@
           "foreColor": 12349952,
           "backStyle": "transparent",
           "borderColor": 8355711,
-          "textAlign": "center"
+          "textAlign": "center",
+          "hyperlinkAddress": "www.tatebywater.com/make-a-payment"
         },
         {
           "type": "Label",
@@ -547,7 +542,6 @@
     },
     {
       "type": "PageHeader",
-      "height": 660,
       "controls": [
         {
           "type": "Rectangle",
@@ -664,7 +658,6 @@
     },
     {
       "type": "PageFooter",
-      "height": 750,
       "controls": [
         {
           "type": "Rectangle",
@@ -754,17 +747,8 @@
       ]
     },
     {
-      "type": "GroupHeader",
-      "groupIndex": 0,
-      "groupField": "CaseID",
-      "height": 0,
-      "controls": []
-    },
-    {
       "type": "GroupFooter",
       "groupIndex": 0,
-      "groupField": "CaseID",
-      "height": 1560,
       "controls": [
         {
           "type": "TextBox",

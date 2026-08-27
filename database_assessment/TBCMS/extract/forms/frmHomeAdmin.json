@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 22320,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,9 +26,16 @@
           "width": 3120,
           "height": 1020,
           "caption": "Take Off Steps",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 11830108,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -35,9 +48,16 @@
           "width": 3120,
           "height": 1020,
           "caption": "Source Analytics",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 7500402,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -50,9 +70,16 @@
           "width": 3120,
           "height": 1020,
           "caption": "Trust Account (Chron)",
+          "picture": "(none)",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 1643706,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -65,9 +92,17 @@
           "width": 3120,
           "height": 1020,
           "caption": "Reconciliation",
+          "picture": "(none)",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 8210719,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -80,9 +115,16 @@
           "width": 3120,
           "height": 1020,
           "caption": "TK CLOSE",
+          "picture": "(none)",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 5026082,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -95,7 +137,13 @@
           "width": 1740,
           "height": 720,
           "caption": "ADMIN",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 26,
+          "fontBold": true,
+          "foreColor": 8210719,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CommandButton",
@@ -105,9 +153,16 @@
           "width": 3105,
           "height": 1020,
           "caption": "Take Off\r\nTransfer",
+          "picture": "(none)",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backColor": 2344189,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -119,7 +174,10 @@
           "top": 240,
           "width": 4020,
           "height": 1440,
-          "visible": true
+          "picture": "TB 2019 Attorneys, color_png",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         }
       ]
     },
@@ -134,9 +192,17 @@
           "width": 120,
           "height": 300,
           "caption": "Delete all data in the database",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -149,9 +215,17 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -160,10 +234,13 @@
           "type": "Image",
           "name": "cmdHome",
           "left": 16980,
-          "top": 330,
+          "top": 336,
           "width": 480,
-          "height": 345,
+          "height": 348,
+          "picture": "Home Button.ico",
           "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -181,7 +258,13 @@
           "width": 4260,
           "height": 315,
           "caption": "Client Management System (vers. 1.0.0 - SQL)",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         }
       ]
     }

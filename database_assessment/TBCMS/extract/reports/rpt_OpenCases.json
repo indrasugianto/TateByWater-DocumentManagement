@@ -1,8 +1,11 @@
 {
   "reportName": "rpt_OpenCases",
   "dataSource": "qryCaseListOpen",
-  "width": 10680,
   "caption": "Open Cases Report",
+  "width": 10680,
+  "filter": "Orig_Atty='NH'",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -10,10 +13,12 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
       "height": 480,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -140,6 +145,7 @@
     {
       "type": "ReportHeader",
       "height": 1380,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -181,6 +187,7 @@
     {
       "type": "ReportFooter",
       "height": 720,
+      "keepTogether": true,
       "controls": []
     },
     {

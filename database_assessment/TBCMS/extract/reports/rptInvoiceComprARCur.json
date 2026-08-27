@@ -2,6 +2,9 @@
   "reportName": "rptInvoiceComprARCur",
   "dataSource": "SELECT * FROM qry_InvoiceAR_curr; ",
   "width": 4920,
+  "filterOn": false,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
     "left": 360,
@@ -9,6 +12,7 @@
     "top": 240,
     "bottom": 240
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -21,6 +25,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -87,6 +92,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 660,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -164,6 +170,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 600,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

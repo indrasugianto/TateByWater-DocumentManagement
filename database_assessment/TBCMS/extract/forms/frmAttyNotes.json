@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 6000,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +27,15 @@
           "height": 315,
           "controlSource": "NoteDate",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "ComboBox",
@@ -34,10 +46,22 @@
           "height": 315,
           "controlSource": "NotePerson",
           "rowSource": "JRT;DEB;PM;TDT;NH;RLF;CMH;BA;KDB;RRL;WNE;HG;IQ;AO;KP;JO;KM",
+          "rowSourceType": "Value List",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 3484194,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "TextBox",
@@ -48,9 +72,15 @@
           "height": 1020,
           "controlSource": "NoteDescription",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "CommandButton",
@@ -60,9 +90,15 @@
           "width": 366,
           "height": 306,
           "caption": "Command19",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 2,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -76,9 +112,16 @@
           "height": 315,
           "controlSource": "NoteTime",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081,
+          "textAlign": "right"
         }
       ]
     },
@@ -93,7 +136,13 @@
           "width": 660,
           "height": 300,
           "caption": "DATE",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -103,7 +152,13 @@
           "width": 990,
           "height": 300,
           "caption": "Atty/Staff",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CommandButton",
@@ -112,9 +167,17 @@
           "top": 60,
           "width": 420,
           "height": 300,
+          "picture": "(image)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 855309,
+          "backColor": 15132391,
+          "borderStyle": 1,
+          "borderColor": 12566463,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -127,7 +190,15 @@
           "width": 990,
           "height": 300,
           "caption": "Time",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "fontItalic": true,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "TextBox",
@@ -138,9 +209,15 @@
           "height": 315,
           "controlSource": "CaseID",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         }
       ]
     }

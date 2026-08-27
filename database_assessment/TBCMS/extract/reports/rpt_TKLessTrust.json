@@ -1,8 +1,11 @@
 {
   "reportName": "rpt_TKLessTrust",
   "dataSource": "qryInvoiceAttachRPT1",
-  "width": 10740,
   "caption": "Hourly Statement - No Balance Due",
+  "width": 10740,
+  "filter": "[Bill_ID]=31",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -10,6 +13,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -22,6 +26,7 @@
     {
       "type": "Detail",
       "height": 720,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -116,11 +121,13 @@
       "type": "ReportHeader",
       "height": 0,
       "backColor": 15064278,
+      "keepTogether": true,
       "controls": []
     },
     {
       "type": "ReportFooter",
       "height": 0,
+      "keepTogether": true,
       "controls": []
     },
     {
@@ -463,6 +470,8 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 720,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -568,6 +577,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 3060,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -806,6 +816,8 @@
             "reportName": "rptInvoiceComprehensiveTrust2",
             "dataSource": "qryInvoiceComprehensiveTrustCredit4",
             "width": 5100,
+            "filterOn": false,
+            "orderByOn": false,
             "orientation": "portrait",
             "margins": {
               "left": 360,
@@ -813,6 +825,7 @@
               "top": 240,
               "bottom": 240
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -831,6 +844,7 @@
               {
                 "type": "Detail",
                 "height": 240,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -896,6 +910,7 @@
                 "groupField": "CaseID",
                 "height": 675,
                 "backColor": 15590879,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1019,6 +1034,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 435,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",

@@ -1,8 +1,10 @@
 {
   "reportName": "rptInvoiceComprehensiveAR2",
   "dataSource": "SELECT tblCase.CaseID, [Matter and AR].MatterID, [Matter and AR].Date2, [Matter and AR].Pay_Outlay, [Matter and AR].Charge, tblCase.Retainer, tblCase.CaseOpenDate, [Matter and AR].OrderNr, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].Bill_ID FROM (tblCase INNER JOIN [Matter and AR] ON tblCase.CaseID = [Matter and AR].CaseID) INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID WHERE ((([Matter and AR].Date2)<=[Bill Closed Date]) AND (([Matter and AR].Charge)<>0)) ORDER BY [Matter and AR].Date2; ",
-  "width": 4920,
   "caption": "TK-1: Baltazar Gorospe -  4/3/2018",
+  "width": 4920,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 360,
@@ -10,6 +12,7 @@
     "top": 240,
     "bottom": 240
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -28,6 +31,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -94,6 +98,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 60,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -117,6 +122,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 360,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

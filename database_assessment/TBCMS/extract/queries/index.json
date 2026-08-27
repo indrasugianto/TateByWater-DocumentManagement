@@ -1691,7 +1691,18 @@
       "name": "qryTakeOff2",
       "sqlFile": "extract/queries/qryTakeOff2.sql",
       "type": "select",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "[SumOfUnclearedDeposits]",
+          "dataType": "10",
+          "source": "dao"
+        },
+        {
+          "name": "[SumOfUncashedChecks]",
+          "dataType": "10",
+          "source": "dao"
+        }
+      ],
       "referencedTables": [],
       "referencedQueries": [
         "qryTakeOff_advanced_AR",
@@ -1838,7 +1849,18 @@
       "name": "qryTKClose_OLD",
       "sqlFile": "extract/queries/qryTKClose_OLD.sql",
       "type": "select",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "[SumOfUnclearedDeposits]",
+          "dataType": "10",
+          "source": "dao"
+        },
+        {
+          "name": "[SumOfUncashedChecks]",
+          "dataType": "10",
+          "source": "dao"
+        }
+      ],
       "referencedTables": [],
       "referencedQueries": [
         "qryTakeOff_advanced_AR",
@@ -2095,7 +2117,13 @@
       "name": "qryTrustReportRPT1_OLD",
       "sqlFile": "extract/queries/qryTrustReportRPT1_OLD.sql",
       "type": "select",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "qryTrustReportRPT.Balance",
+          "dataType": "10",
+          "source": "dao"
+        }
+      ],
       "referencedTables": [
         "tblCase"
       ],

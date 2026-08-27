@@ -6,9 +6,16 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filter": "1=1 AND Tatty = 'MK'",
+  "filterOn": false,
+  "orderByOn": false,
   "width": 7200,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -22,9 +29,15 @@
           "height": 284,
           "controlSource": "Tdate",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -35,9 +48,15 @@
           "height": 240,
           "controlSource": "Time_",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -48,9 +67,15 @@
           "height": 240,
           "controlSource": "Tatty",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderColor": 15066597,
+          "textAlign": "center"
         }
       ]
     },
@@ -65,7 +90,11 @@
           "width": 1290,
           "height": 330,
           "caption": "Atty / Staff",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "ComboBox",
@@ -75,10 +104,23 @@
           "width": 1290,
           "height": 374,
           "rowSource": "JRT;DEB;GBF;PM;TDT;NH;RLF;CMH;KDB;MT;KV;LG;NT;BF;SL;AC;SU",
+          "rowSourceType": "Value List",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnWidths": "432;0",
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "720",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -88,7 +130,13 @@
           "width": 3330,
           "height": 750,
           "caption": "BILLING TRACKER",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 22,
+          "fontBold": true,
+          "foreColor": 8210719,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Image",
@@ -97,7 +145,10 @@
           "top": 285,
           "width": 1020,
           "height": 840,
-          "visible": true
+          "picture": "Logo Transparent",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -107,9 +158,16 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backColor": 15527148,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -118,10 +176,13 @@
           "type": "Image",
           "name": "cmbHome",
           "left": 6360,
-          "top": 440,
+          "top": 432,
           "width": 480,
-          "height": 350,
+          "height": 348,
+          "picture": "Home Button.ico",
           "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -134,9 +195,17 @@
           "width": 1740,
           "height": 360,
           "caption": "   &Clear Filter",
+          "picture": "(image)",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 855309,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -149,9 +218,17 @@
           "width": 495,
           "height": 360,
           "caption": "   &Filter",
+          "picture": "(image)",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 855309,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -164,7 +241,12 @@
           "width": 555,
           "height": 315,
           "caption": "From",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -175,9 +257,15 @@
           "height": 299,
           "format": "Short Date",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -187,7 +275,12 @@
           "width": 315,
           "height": 315,
           "caption": "To",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -198,9 +291,15 @@
           "height": 284,
           "format": "Short Date",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "OptionGroup",
@@ -209,10 +308,15 @@
           "top": 1452,
           "width": 2462,
           "height": 1003,
+          "defaultValue": "1",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "backStyle": "transparent",
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -222,7 +326,11 @@
           "width": 855,
           "height": 315,
           "caption": "Date(s):",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backColor": 15064278,
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -233,9 +341,15 @@
           "height": 374,
           "controlSource": "=Sum([Time_])",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "fontBold": true,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -245,7 +359,13 @@
           "width": 1290,
           "height": 315,
           "caption": "Total Hours:",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         }
       ]
     }

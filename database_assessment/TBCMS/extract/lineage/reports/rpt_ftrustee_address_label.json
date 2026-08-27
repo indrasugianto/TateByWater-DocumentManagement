@@ -8,10 +8,11 @@
       "eventName": "onClick",
       "procedureName": "cmdPrintForeLabel_Click",
       "sourceFile": "extract/vba/forms/frmBankruptcy.txt",
-      "lineStart": 2431,
-      "lineEnd": 2446,
+      "lineStart": 2481,
+      "lineEnd": 2496,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     }
   ],
   "dataLineage": {
@@ -29,13 +30,14 @@
       "objectName": "frmBankruptcy",
       "procedureName": "cmdPrintForeLabel_Click",
       "sourceFile": "extract/vba/forms/frmBankruptcy.txt",
-      "lineStart": 2431,
-      "lineEnd": 2446,
+      "lineStart": 2481,
+      "lineEnd": 2496,
       "usesDoCmd": [
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -45,7 +47,10 @@
       "lineStart": 7847,
       "lineEnd": 7871,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": [
+        "createObject"
+      ]
     }
   ],
   "confidence": "high"

@@ -6,9 +6,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 5940,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -22,9 +28,15 @@
           "height": 331,
           "controlSource": "ChildName",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15921906
         },
         {
           "type": "TextBox",
@@ -35,9 +47,15 @@
           "height": 331,
           "controlSource": "Child_ID",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -47,9 +65,16 @@
           "width": 576,
           "height": 331,
           "caption": "Command24",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 2,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "borderColor": 3243501,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -62,10 +87,17 @@
           "width": 1440,
           "height": 331,
           "controlSource": "DOB_child",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15921906
         }
       ]
     },
@@ -80,7 +112,12 @@
           "width": 718,
           "height": 314,
           "caption": "CHILD ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri Light",
+          "fontSize": 11,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -90,7 +127,11 @@
           "width": 1440,
           "height": 300,
           "caption": "Date of Birth",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri Light",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -100,7 +141,11 @@
           "width": 2085,
           "height": 270,
           "caption": "Name (First Middle Last)",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }

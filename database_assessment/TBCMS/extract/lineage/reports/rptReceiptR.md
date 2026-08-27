@@ -10,5 +10,5 @@
 - Terminal Tables: tblReceipts
 
 ## Related VBA Procedures
-- form frmReceipt::cmdGenerateReceipt_Click [1205-1232]
-- form frmReceipt::Command26_Click [1233-1240]
+- form frmReceipt::cmdGenerateReceipt_Click [1219-1246]
+- form frmReceipt::Command26_Click [1247-1254]

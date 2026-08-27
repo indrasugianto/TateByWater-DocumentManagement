@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 15780,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +27,15 @@
           "height": 210,
           "controlSource": "Time_ID",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -34,9 +46,15 @@
           "height": 91,
           "controlSource": "Time_ID",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -47,9 +65,15 @@
           "height": 554,
           "controlSource": "Description",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "TextBox",
@@ -61,9 +85,15 @@
           "controlSource": "Time_",
           "format": "Standard",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "ComboBox",
@@ -74,10 +104,22 @@
           "height": 334,
           "controlSource": "Tatty",
           "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder\r\nFROM tblDropD\r\nWHERE (((tblDropD.FieldName)=\"TimeTableAtty\"))\r\nORDER BY tblDropD.SortOrder;\r\n",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "TextBox",
@@ -89,9 +131,16 @@
           "controlSource": "=Nz([time_],0)*Nz([rate],0)",
           "format": "Currency",
           "tabIndex": 5,
+          "tabStop": false,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "backColor": 14277081,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -103,9 +152,15 @@
           "controlSource": "=Nz(DLookUp(\"Run_total\",\"qryTimeTableRunTot\",\"Time_ID=\" & Nz([Time_ID],0)),0)",
           "format": "Currency",
           "tabIndex": 9,
+          "tabStop": false,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -117,9 +172,16 @@
           "controlSource": "=IIf(IsNull([TIME_ID]),Nz(DLast(\"RUN_TOTAL\",\"qryTimeTableRunTot\",\"Bill_ID=\" & GETBILL_ID()),0),[TEXT36])",
           "format": "Currency",
           "tabIndex": 6,
+          "tabStop": false,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "backColor": 14277081,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "CommandButton",
@@ -129,9 +191,16 @@
           "width": 576,
           "height": 334,
           "caption": "Command44",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 7,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "borderColor": 15066597,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -144,10 +213,17 @@
           "width": 1155,
           "height": 315,
           "controlSource": "Tdate",
+          "defaultValue": "=Date()",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "ComboBox",
@@ -158,10 +234,22 @@
           "height": 334,
           "controlSource": "Rate",
           "rowSource": "SELECT tblDropD.CodeVal, tblDropD.FieldName, tblDropD.SortOrder\r\nFROM tblDropD\r\nWHERE (((tblDropD.FieldName)=\"Rate\"))\r\nORDER BY tblDropD.SortOrder;\r\n",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         }
       ]
     },
@@ -176,7 +264,12 @@
           "width": 1095,
           "height": 270,
           "caption": "Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -186,7 +279,12 @@
           "width": 1123,
           "height": 329,
           "caption": "Description",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -196,7 +294,13 @@
           "width": 750,
           "height": 240,
           "caption": "Rate",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -206,7 +310,13 @@
           "width": 825,
           "height": 480,
           "caption": "Time\r\n(0.00)\r\n",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -216,7 +326,13 @@
           "width": 945,
           "height": 240,
           "caption": "Amount",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -226,7 +342,13 @@
           "width": 1365,
           "height": 240,
           "caption": "Running Total",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -236,7 +358,13 @@
           "width": 658,
           "height": 479,
           "caption": "Atty /\r\nStaff",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -246,7 +374,12 @@
           "width": 3015,
           "height": 615,
           "caption": ".1 = 1-6 m           .4 = 19-24 m       .7 = 37-42 m\r\n.2 = 7-12 m        .5 = 25-30 m       .8 = 43-48 m\r\n.3 = 13-18 m     .6 = 31-36 m       .9 = 49-54 m\r\n  \r\n\r\n\r\n\r\n\r\n\r\n",
-          "visible": false
+          "visible": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4144959,
+          "backColor": 13017476,
+          "borderColor": 8355711
         },
         {
           "type": "CommandButton",
@@ -256,9 +389,16 @@
           "width": 660,
           "height": 240,
           "caption": "Tenths",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 16777215,
+          "backColor": 7633277,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -277,9 +417,15 @@
           "height": 315,
           "controlSource": "=Sum(Nz([time_],0)*Nz([rate],0))",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -289,11 +435,18 @@
           "width": 690,
           "height": 315,
           "caption": "Total:",
-          "visible": false
+          "visible": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }
   ],
-  "formEvents": {},
+  "formEvents": {
+    "onTimer": "[Event Procedure]"
+  },
   "vbaCodeBehind": "Option Compare Database\r\n\r\nPrivate Sub Form_BeforeDelConfirm(Cancel As Integer, Response As Integer)\r\n    Response = 0\r\n    If MsgBox(\"Are you sure you want to delete this record?\", vbQuestion + vbYesNo, \"TB CMS\") = vbNo Then Cancel = True\r\nEnd Sub\r\n\r\n'Private Sub Tdate_BeforeUpdate(Cancel As Integer)\r\n'    If Not IsNull(Me.TDate) Then\r\n'        If Me.TDate > Me.Parent.Bill_Sent Then\r\n'            Mbox \"Date\", 2\r\n'            Cancel = True\r\n'        End If\r\n'    Else\r\n'        Mbox \"Date\", 1\r\n'        Cancel = True\r\n'    End If\r\n'End Sub\r\n'\r\n'Private Sub Time__AfterUpdate()\r\n'    Me.Recalc\r\n'    Me.Rate.SetFocus\r\n'End Sub\r\n'Private Sub Rate_AfterUpdate()\r\n'    Me.Recalc\r\n'    Me.Tatty.SetFocus\r\n'End Sub\r\n\r\n'Private Sub Form_AfterDelConfirm(Status As Integer)\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Form_AfterInsert()\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Form_AfterUpdate()\r\n'    MsgBox \"Refresh forms AAAA\"\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Form_Delete(Cancel As Integer)\r\n'    Call RefreshForms\r\n'End Sub\r\n\r\n'Sub RefreshForms()\r\n'    'MsgBox \"Refresh forms\"\r\n'\r\n'    'Me.Recalc\r\n'    '[Form_Time Keeping].Recalc\r\n'\r\n'    '[Forms]![Form_Time Keeping].Refresh\r\n'\r\n'    '[Form_Time Keeping].Requery\r\n'    'Forms![frmProject].[Form].[txtTotalTime].Requery\r\n'\r\n'\r\n'    Me.Requery\r\n'    [Form_Time Keeping].Requery\r\n'\r\n'End Sub\r\n'\r\n'Private Sub TxtRunningTotal_AfterUpdate()\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub TxtRunningTotal_BeforeUpdate(Cancel As Integer)\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub TxtRunningTotal_Change()\r\n'    Call RefreshForms\r\n'End Sub\r\n'\r\n'Private Sub Rate_AfterUpdate()\r\n'    Call RefreshForms\r\n'End Sub\r\n\r\nPrivate Sub Form_Timer()\r\n    Me![txttenths].Visible = False      'make the Text Box invisible after 5 secs\r\n    Me.TimerInterval = 0              'disable the Timer\r\nEnd Sub\r\n\r\nPrivate Sub Form_BeforeInsert(Cancel As Integer)\r\n    If IsNull([Form_Time Keeping].CaseID) Then\r\n        MsgBox \"Please select an existing TK or add a new TK\", , \"TB CMS\"\r\n        [Form_Time Keeping].cmbBills.SetFocus\r\n        Cancel = True\r\n    End If\r\nEnd Sub\r\n\r\nPrivate Sub cmdTenths_Click()\r\n    Me![txttenths].Visible = True     'make Text Box invisible\r\n    Me.TimerInterval = 10000         'set Timer Interval to 10 seconds\r\nEnd Sub"
 }

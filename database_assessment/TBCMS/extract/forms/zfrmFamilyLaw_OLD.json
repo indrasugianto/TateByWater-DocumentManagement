@@ -6,9 +6,16 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filter": "[Family Law - Divorce].CaseID = 48",
+  "filterOn": false,
+  "orderByOn": false,
   "width": 19080,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,7 +27,10 @@
           "top": 396,
           "width": 11673,
           "height": 2409,
-          "visible": true
+          "visible": true,
+          "backColor": 14211288,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -29,7 +39,10 @@
           "top": 10515,
           "width": 6054,
           "height": 4032,
-          "visible": true
+          "visible": true,
+          "backColor": 4754549,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -38,7 +51,10 @@
           "top": 3315,
           "width": 6048,
           "height": 10239,
-          "visible": true
+          "visible": true,
+          "backColor": 12428174,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -47,7 +63,10 @@
           "top": 7635,
           "width": 6048,
           "height": 7056,
-          "visible": true
+          "visible": true,
+          "backColor": 10319446,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -56,7 +75,10 @@
           "top": 3315,
           "width": 6048,
           "height": 4044,
-          "visible": true
+          "visible": true,
+          "backColor": 14211288,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -67,9 +89,16 @@
           "height": 120,
           "controlSource": "ID",
           "tabIndex": 1,
+          "tabStop": false,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -80,9 +109,16 @@
           "height": 360,
           "controlSource": "C Length at Residence",
           "tabIndex": 0,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -93,9 +129,16 @@
           "height": 360,
           "controlSource": "C Prior Address",
           "tabIndex": 2,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -106,9 +149,16 @@
           "height": 360,
           "controlSource": "C Length at Prior Address",
           "tabIndex": 3,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -119,9 +169,16 @@
           "height": 360,
           "controlSource": "C Length in VA",
           "tabIndex": 4,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -132,9 +189,16 @@
           "height": 360,
           "controlSource": "C Birthplace",
           "tabIndex": 5,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -145,9 +209,16 @@
           "height": 360,
           "controlSource": "C Primary Education",
           "tabIndex": 6,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -158,9 +229,16 @@
           "height": 360,
           "controlSource": "C College",
           "tabIndex": 7,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -171,9 +249,16 @@
           "height": 360,
           "controlSource": "C Marriage Number",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -184,9 +269,16 @@
           "height": 360,
           "controlSource": "D Address",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -197,9 +289,16 @@
           "height": 360,
           "controlSource": "D City",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -210,9 +309,16 @@
           "height": 360,
           "controlSource": "D State",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -223,9 +329,16 @@
           "height": 360,
           "controlSource": "D Zip",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -236,9 +349,16 @@
           "height": 360,
           "controlSource": "D Home Phone",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -249,9 +369,16 @@
           "height": 360,
           "controlSource": "D Other Phone",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -262,9 +389,16 @@
           "height": 360,
           "controlSource": "D Email",
           "tabIndex": 15,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -274,10 +408,18 @@
           "width": 3420,
           "height": 360,
           "controlSource": "D DOB",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 16,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -288,9 +430,16 @@
           "height": 360,
           "controlSource": "D SSN",
           "tabIndex": 17,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -301,9 +450,16 @@
           "height": 360,
           "controlSource": "D Employer",
           "tabIndex": 18,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -314,9 +470,16 @@
           "height": 360,
           "controlSource": "D Work Address",
           "tabIndex": 19,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -327,9 +490,16 @@
           "height": 360,
           "controlSource": "D Work City",
           "tabIndex": 20,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -340,9 +510,16 @@
           "height": 360,
           "controlSource": "D Work State",
           "tabIndex": 21,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -353,9 +530,16 @@
           "height": 360,
           "controlSource": "D Work Zip",
           "tabIndex": 22,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -366,9 +550,16 @@
           "height": 360,
           "controlSource": "D Work Phone",
           "tabIndex": 23,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -379,9 +570,16 @@
           "height": 360,
           "controlSource": "D Primary Education",
           "tabIndex": 24,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -392,9 +590,16 @@
           "height": 360,
           "controlSource": "D College",
           "tabIndex": 25,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -405,9 +610,16 @@
           "height": 360,
           "controlSource": "D Marriage Number",
           "tabIndex": 26,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -417,10 +629,18 @@
           "width": 3060,
           "height": 360,
           "controlSource": "Date of Marriage",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 27,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -431,9 +651,16 @@
           "height": 360,
           "controlSource": "Place of Marriage",
           "tabIndex": 28,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -443,10 +670,18 @@
           "width": 3060,
           "height": 360,
           "controlSource": "Date of Separation",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 29,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -457,9 +692,16 @@
           "height": 360,
           "controlSource": "Length of Separation",
           "tabIndex": 30,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -470,9 +712,16 @@
           "height": 360,
           "controlSource": "Wife Maiden Name",
           "tabIndex": 31,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -483,9 +732,16 @@
           "height": 360,
           "controlSource": "Number of Children",
           "tabIndex": 32,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -496,9 +752,16 @@
           "height": 360,
           "controlSource": "Child Custodian",
           "tabIndex": 33,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -509,9 +772,16 @@
           "height": 360,
           "controlSource": "C Title",
           "tabIndex": 34,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -522,9 +792,16 @@
           "height": 360,
           "controlSource": "D Title",
           "tabIndex": 35,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -535,9 +812,16 @@
           "height": 360,
           "controlSource": "Place of Last Cohabit",
           "tabIndex": 36,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -548,9 +832,16 @@
           "height": 360,
           "controlSource": "Divorce Grounds",
           "tabIndex": 37,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -561,9 +852,16 @@
           "height": 360,
           "controlSource": "FL Court Case No",
           "tabIndex": 38,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -573,10 +871,18 @@
           "width": 3480,
           "height": 360,
           "controlSource": "Complaint Filed Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 39,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -586,10 +892,18 @@
           "width": 3480,
           "height": 360,
           "controlSource": "Complaint Serve Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 40,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -600,9 +914,16 @@
           "height": 360,
           "controlSource": "Complaint Serve Method",
           "tabIndex": 41,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -612,10 +933,18 @@
           "width": 3480,
           "height": 360,
           "controlSource": "NOH Serve Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 42,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -626,9 +955,16 @@
           "height": 360,
           "controlSource": "NOH Serve Method",
           "tabIndex": 43,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -639,9 +975,16 @@
           "height": 360,
           "controlSource": "Witness",
           "tabIndex": 44,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -651,7 +994,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Length at Current Residence",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -661,7 +1009,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Prior Address (Full)",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -671,7 +1024,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Length at Prior Address",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -681,7 +1039,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Length in VA",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -691,7 +1054,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Birthplace",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -701,7 +1069,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Primary Education",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -711,7 +1084,12 @@
           "width": 2458,
           "height": 360,
           "caption": "College",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -721,7 +1099,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Plaintiff Marriage Number",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -731,7 +1114,12 @@
           "width": 2173,
           "height": 360,
           "caption": "Address",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -741,7 +1129,12 @@
           "width": 2173,
           "height": 360,
           "caption": "City",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -751,7 +1144,12 @@
           "width": 2173,
           "height": 360,
           "caption": "State, ZIP",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -761,7 +1159,12 @@
           "width": 2158,
           "height": 360,
           "caption": " Home Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -771,7 +1174,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Other Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -781,7 +1189,12 @@
           "width": 2158,
           "height": 360,
           "caption": " Email",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -791,7 +1204,12 @@
           "width": 2158,
           "height": 360,
           "caption": " DOB",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -801,7 +1219,12 @@
           "width": 2158,
           "height": 360,
           "caption": " SSN",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -811,7 +1234,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Employer",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -821,7 +1249,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Work Address",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -831,7 +1264,12 @@
           "width": 2158,
           "height": 360,
           "caption": "City",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -841,7 +1279,12 @@
           "width": 2158,
           "height": 360,
           "caption": "State, ZIP",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -851,7 +1294,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Work Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -861,7 +1309,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Primary Education",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -871,7 +1324,12 @@
           "width": 2158,
           "height": 360,
           "caption": "College",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -881,7 +1339,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Defendant Marriage Number",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -891,7 +1354,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Date of Marriage",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -901,7 +1369,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Place of Marriage",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -911,7 +1384,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Date of Separation",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -921,7 +1399,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Length of Separation",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -931,7 +1414,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Wife Maiden Name",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -941,7 +1429,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Number of Children",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -951,7 +1444,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Child Custodian",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -961,7 +1459,12 @@
           "width": 2458,
           "height": 360,
           "caption": "C Title",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -971,7 +1474,12 @@
           "width": 2458,
           "height": 360,
           "caption": "D Title",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -981,7 +1489,12 @@
           "width": 2458,
           "height": 360,
           "caption": "Place of Last Cohabit",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -991,7 +1504,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Divorce Grounds",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1001,7 +1519,12 @@
           "width": 2158,
           "height": 360,
           "caption": "FL Court Case No",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1011,7 +1534,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Complaint Filed Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1021,7 +1549,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Complaint Serve Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1031,7 +1564,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Complaint Serve Method",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1041,7 +1579,12 @@
           "width": 2158,
           "height": 360,
           "caption": "NOH Serve Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1051,7 +1594,12 @@
           "width": 2158,
           "height": 360,
           "caption": "NOH Serve Method",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1061,7 +1609,12 @@
           "width": 2443,
           "height": 360,
           "caption": "Witness",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "SubForm",
@@ -1071,9 +1624,13 @@
           "width": 6120,
           "height": 2820,
           "tabIndex": 45,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmChild",
           "linkMasterFields": [
             "ID"
@@ -1090,7 +1647,11 @@
           "width": 2580,
           "height": 375,
           "caption": "Children Details",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -1100,7 +1661,13 @@
           "width": 4110,
           "height": 300,
           "caption": "Additional Client (Plaintiff) Information",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "fontBold": true,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -1110,7 +1677,12 @@
           "width": 3075,
           "height": 300,
           "caption": "Divorce Information",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -1121,9 +1693,15 @@
           "height": 300,
           "controlSource": "D_First_Name",
           "tabIndex": 46,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1134,9 +1712,15 @@
           "height": 300,
           "controlSource": "D_Last_Name",
           "tabIndex": 47,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -1146,7 +1730,13 @@
           "width": 2205,
           "height": 270,
           "caption": "Spouse Last Name",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": -2147483617,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1156,7 +1746,13 @@
           "width": 2190,
           "height": 270,
           "caption": "Spouse First Name",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": -2147483617,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -1166,7 +1762,12 @@
           "width": 3960,
           "height": 300,
           "caption": "Spouse (Defendant) Address, Bio",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -1176,7 +1777,12 @@
           "width": 4995,
           "height": 300,
           "caption": "Spouse (Dependent) Employment Information",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -1186,7 +1792,12 @@
           "width": 3300,
           "height": 300,
           "caption": "Court / Complaint Information",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -1197,9 +1808,16 @@
           "height": 360,
           "controlSource": "D_Birthplace",
           "tabIndex": 48,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -1209,7 +1827,12 @@
           "width": 2158,
           "height": 360,
           "caption": "Birthplace",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "ComboBox",
@@ -1219,10 +1842,24 @@
           "width": 2565,
           "height": 330,
           "rowSource": "qryCmbCaseClientFileFamilyLaw",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 3,
+          "columnWidths": "0;2268;1701",
+          "columnHeads": false,
+          "limitToList": true,
+          "listWidth": "3969",
           "tabIndex": 49,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "fontBold": true,
+          "foreColor": 3484194,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1232,7 +1869,12 @@
           "width": 885,
           "height": 300,
           "caption": "CLIENT",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -1242,10 +1884,18 @@
           "width": 1710,
           "height": 360,
           "controlSource": "Date of PSA",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 50,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -1255,10 +1905,18 @@
           "width": 1200,
           "height": 360,
           "controlSource": "Waiver Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 51,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -1268,10 +1926,18 @@
           "width": 1680,
           "height": 360,
           "controlSource": "Publish Dates",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 52,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -1281,10 +1947,18 @@
           "width": 1200,
           "height": 360,
           "controlSource": "Publish Return Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 53,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -1294,7 +1968,12 @@
           "width": 1138,
           "height": 360,
           "caption": "Date of MSA",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -1304,7 +1983,12 @@
           "width": 1153,
           "height": 360,
           "caption": "Waiver Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -1314,7 +1998,12 @@
           "width": 1738,
           "height": 360,
           "caption": "Publish Dates",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -1324,7 +2013,12 @@
           "width": 1738,
           "height": 360,
           "caption": "Publish Return Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "CheckBox",
@@ -1334,9 +2028,12 @@
           "width": 180,
           "height": 240,
           "tabIndex": 54,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1346,7 +2043,12 @@
           "width": 1710,
           "height": 315,
           "caption": "Divorce with MSA",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -1356,9 +2058,12 @@
           "width": 180,
           "height": 240,
           "tabIndex": 55,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1368,7 +2073,12 @@
           "width": 2025,
           "height": 315,
           "caption": "Divorce without MSA",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -1378,9 +2088,12 @@
           "width": 180,
           "height": 240,
           "tabIndex": 56,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1390,7 +2103,12 @@
           "width": 2385,
           "height": 315,
           "caption": "Uncontested by Affidavit",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -1400,9 +2118,12 @@
           "width": 180,
           "height": 240,
           "tabIndex": 57,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1412,7 +2133,13 @@
           "width": 1695,
           "height": 315,
           "caption": "Waiver of Service",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontUnderline": true,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -1422,9 +2149,12 @@
           "width": 180,
           "height": 240,
           "tabIndex": 58,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1434,7 +2164,13 @@
           "width": 2115,
           "height": 315,
           "caption": "Service by Publication",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontUnderline": true,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -1444,9 +2180,12 @@
           "width": 180,
           "height": 240,
           "tabIndex": 59,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -1456,7 +2195,13 @@
           "width": 1425,
           "height": 315,
           "caption": "Sheriff Service",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontUnderline": true,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -1466,7 +2211,12 @@
           "width": 3135,
           "height": 300,
           "caption": "Uncontested Divorce",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -1476,7 +2226,12 @@
           "width": 3420,
           "height": 300,
           "caption": "Marital Separation Agreement",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483617,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Rectangle",
@@ -1485,7 +2240,10 @@
           "top": 930,
           "width": 5040,
           "height": 1680,
-          "visible": true
+          "visible": true,
+          "backColor": 15592953,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -1494,7 +2252,10 @@
           "top": 930,
           "width": 6000,
           "height": 1680,
-          "visible": true
+          "visible": true,
+          "backColor": 15266810,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -1505,9 +2266,15 @@
           "height": 240,
           "controlSource": "Address",
           "tabIndex": 60,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1518,9 +2285,15 @@
           "height": 240,
           "controlSource": "City",
           "tabIndex": 61,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1531,9 +2304,15 @@
           "height": 240,
           "controlSource": "State",
           "tabIndex": 62,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1544,9 +2323,15 @@
           "height": 240,
           "controlSource": "Zip",
           "tabIndex": 63,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1556,10 +2341,16 @@
           "width": 1260,
           "height": 240,
           "controlSource": "HmPhone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 64,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1569,10 +2360,17 @@
           "width": 1380,
           "height": 240,
           "controlSource": "WkPhone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 65,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1582,10 +2380,17 @@
           "width": 1260,
           "height": 240,
           "controlSource": "OtherPhone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 66,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -1595,7 +2400,12 @@
           "width": 1050,
           "height": 210,
           "caption": "Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1605,7 +2415,12 @@
           "width": 975,
           "height": 240,
           "caption": "Work Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1615,7 +2430,12 @@
           "width": 720,
           "height": 210,
           "caption": "Other Ph",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1625,7 +2445,12 @@
           "width": 1020,
           "height": 405,
           "caption": "Personal  Information:",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1635,7 +2460,12 @@
           "width": 690,
           "height": 210,
           "caption": "Address",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1645,7 +2475,12 @@
           "width": 1080,
           "height": 210,
           "caption": "City/State/Zip",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -1655,10 +2490,17 @@
           "width": 1515,
           "height": 240,
           "controlSource": "SSN",
+          "inputMask": "000\\-00\\-0000;0;_",
           "tabIndex": 67,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -1668,7 +2510,12 @@
           "width": 360,
           "height": 210,
           "caption": "SSN",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1678,7 +2525,12 @@
           "width": 600,
           "height": 240,
           "caption": "Email",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -1689,9 +2541,15 @@
           "height": 240,
           "controlSource": "WkAddress",
           "tabIndex": 68,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1702,9 +2560,15 @@
           "height": 240,
           "controlSource": "WkCity",
           "tabIndex": 69,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1715,9 +2579,15 @@
           "height": 240,
           "controlSource": "WkState",
           "tabIndex": 70,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1728,9 +2598,15 @@
           "height": 240,
           "controlSource": "WkZip",
           "tabIndex": 71,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -1740,7 +2616,12 @@
           "width": 1080,
           "height": 210,
           "caption": "City/State/Zip",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -1751,9 +2632,15 @@
           "height": 240,
           "controlSource": "Email",
           "tabIndex": 72,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "TextBox",
@@ -1764,10 +2651,17 @@
           "height": 240,
           "controlSource": "DOB",
           "format": "Short Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 73,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -1777,7 +2671,12 @@
           "width": 480,
           "height": 210,
           "caption": "DOB",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1787,7 +2686,12 @@
           "width": 1080,
           "height": 210,
           "caption": "Work Address",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -1798,9 +2702,15 @@
           "height": 240,
           "controlSource": "Employer Name",
           "tabIndex": 74,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "borderStyle": 1
         },
         {
           "type": "Label",
@@ -1810,7 +2720,12 @@
           "width": 1230,
           "height": 240,
           "caption": "Employer Name",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -1820,7 +2735,14 @@
           "width": 1635,
           "height": 240,
           "caption": "Work Information",
-          "visible": true
+          "visible": true,
+          "fontName": "MS Sans Serif",
+          "fontSize": 8,
+          "fontBold": true,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent",
+          "textAlign": "right"
         }
       ]
     },
@@ -1835,7 +2757,14 @@
           "width": 4545,
           "height": 435,
           "caption": "Family Law Form",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 15,
+          "fontUnderline": true,
+          "foreColor": 6108695,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Image",
@@ -1844,7 +2773,10 @@
           "top": 150,
           "width": 4176,
           "height": 576,
-          "visible": true
+          "picture": "TateBywater_Final_Logo_Navy",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -1854,9 +2786,18 @@
           "width": 1380,
           "height": 360,
           "caption": "&Save",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -1869,9 +2810,18 @@
           "width": 1380,
           "height": 360,
           "caption": "&Add New",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -1884,9 +2834,18 @@
           "width": 1380,
           "height": 360,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }

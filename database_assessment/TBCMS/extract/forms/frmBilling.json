@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 4500,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,7 +26,13 @@
           "width": 1033,
           "height": 569,
           "caption": "Long Term\r\nCollection",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 7434614,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -30,7 +42,12 @@
           "width": 883,
           "height": 329,
           "caption": "Past Due",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 7434614,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -40,7 +57,13 @@
           "width": 2278,
           "height": 420,
           "caption": "BALANCE DUE DATE",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 13,
+          "fontBold": true,
+          "foreColor": 7434614,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CheckBox",
@@ -50,10 +73,14 @@
           "width": 315,
           "height": 300,
           "controlSource": "Long Term Collections",
+          "defaultValue": "0",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CheckBox",
@@ -63,10 +90,14 @@
           "width": 255,
           "height": 300,
           "controlSource": "Past Due",
+          "defaultValue": "0",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -77,9 +108,15 @@
           "height": 360,
           "controlSource": "Balance Due Date",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 12,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "TextBox",
@@ -90,9 +127,16 @@
           "height": 59,
           "controlSource": "ID",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "CheckBox",
@@ -103,9 +147,12 @@
           "height": 240,
           "controlSource": "chkBalanceDue",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -115,7 +162,12 @@
           "width": 1183,
           "height": 329,
           "caption": "Balance Due",
-          "visible": false
+          "visible": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 7434614,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -126,9 +178,14 @@
           "height": 720,
           "controlSource": "Billing Notes",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -138,7 +195,12 @@
           "width": 3360,
           "height": 315,
           "caption": "Invoice Notes (bottom of the bill)",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 7434614,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -148,7 +210,14 @@
           "width": 928,
           "height": 329,
           "caption": "Write Off",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontItalic": true,
+          "foreColor": 7434614,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "CheckBox",
@@ -158,10 +227,14 @@
           "width": 255,
           "height": 300,
           "controlSource": "WriteOff",
+          "defaultValue": "0",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -172,9 +245,14 @@
           "height": 240,
           "controlSource": "CaseID",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 5,
+          "foreColor": 4210752,
+          "borderColor": 10921638
         }
       ]
     }

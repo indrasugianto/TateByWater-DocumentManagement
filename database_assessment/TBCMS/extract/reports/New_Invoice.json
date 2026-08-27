@@ -1,8 +1,12 @@
 {
   "reportName": "New Invoice",
   "dataSource": "qry_current_invoice",
-  "width": 10500,
   "caption": "Current Invoice",
+  "width": 10500,
+  "filter": "[CaseID]=14664",
+  "filterOn": true,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -10,6 +14,7 @@
     "top": 1008,
     "bottom": 1008
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "[Matter and AR].CaseID",
@@ -22,6 +27,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -92,6 +98,7 @@
     {
       "type": "ReportHeader",
       "height": 4380,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -153,9 +160,9 @@
         {
           "type": "Image",
           "name": "Image0",
-          "left": 470,
-          "top": 30,
-          "width": 4580,
+          "left": 468,
+          "top": 36,
+          "width": 4572,
           "height": 780,
           "borderColor": 10921638
         },
@@ -339,6 +346,7 @@
     {
       "type": "ReportFooter",
       "height": 1380,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -588,6 +596,8 @@
       "groupIndex": 0,
       "groupField": "[Matter and AR].CaseID",
       "height": 0,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": []
     },
     {
@@ -595,6 +605,7 @@
       "groupIndex": 0,
       "groupField": "[Matter and AR].CaseID",
       "height": 1380,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

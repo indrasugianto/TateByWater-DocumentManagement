@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 18840,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,9 +26,17 @@
           "width": 1980,
           "height": 900,
           "caption": "Trust Account Entries \r\nChronological",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -35,9 +49,17 @@
           "width": 3960,
           "height": 900,
           "caption": "Take Off",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -50,9 +72,17 @@
           "width": 3960,
           "height": 900,
           "caption": "Reconciliation",
+          "picture": "(none)",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -65,9 +95,17 @@
           "width": 3960,
           "height": 900,
           "caption": "Attorney Fees and \r\nCost Reimbursements",
+          "picture": "(none)",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -80,7 +118,11 @@
           "width": 11400,
           "height": 900,
           "caption": "2) Reconcile each transaction in the Trust Account with the WF Trust and NMI. Check the box on any uncashed checks and uncleared deposits.                                                                                                                                                                                                                                         3) Uncheck any checks/deposits which have since cleared",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -90,7 +132,11 @@
           "width": 11400,
           "height": 1140,
           "caption": "4) In the Reconciliation form enter in Actual Balances from TBFMT Wells Fargo, JMB (Dale), and TD Bank (Somerfield) accounts.                  5) If accounts reconcile, check the Reconciled box and press \"Insert Data\" (be sure to press it only once). ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -100,7 +146,11 @@
           "width": 11400,
           "height": 2265,
           "caption": "6) In the Take Off form, press the print button to create a Reconciliation Report.  Save as a PDF and store in SUpdegraff's Takeoff folder.    7) Input early take off amounts for each relevant client.                                                                                                                                                     8) Generate each attorney's list of client trust accounts and email to attorneys. Don't send one to Paul.                                                                                                                                                                                                                                                   9) As attorneys return numbers, enter fees and cost reimb. into respective columns.                                                                                                   10) Enter commissions on each file line (total commission will sum automatically). MT and KDB: 50% of all earned fees.                                                                                                                                                                                                                                                11) Managing Partner will make individual client transfers in the WF account and check the Tr. box next to Earned Fee or Cost Reimb as each transfer is made.  MP will also press the Populate Trust button for each transfer.                                                                                         12)  Clear all filters on the form and press \"Insert Fee Data\".",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -110,7 +160,11 @@
           "width": 11400,
           "height": 1140,
           "caption": "14)The Take Off Attorneys Fees and Cost Reimbursements form shows fees and reimbursements by take off date.",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CommandButton",
@@ -120,9 +174,17 @@
           "width": 1815,
           "height": 900,
           "caption": "Uncashed Checks and Uncleared Deposits",
+          "picture": "(none)",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -135,9 +197,17 @@
           "width": 3960,
           "height": 900,
           "caption": "Advanced Client Expenses",
+          "picture": "(none)",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 12349952,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -150,7 +220,11 @@
           "width": 11400,
           "height": 900,
           "caption": "1) In the Advanced Client Expenses form or the Clients form make sure advanced costs are correctly marked as checked for purposes of Cost Reimbursement. ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -160,7 +234,11 @@
           "width": 11400,
           "height": 390,
           "caption": "15) Uncheck Advance Client Expenses in the Clients Form where Cost Reimbursement has occurred. ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     },
@@ -171,11 +249,18 @@
           "type": "Label",
           "name": "Auto_Header0",
           "left": 3540,
-          "top": 140,
+          "top": 132,
           "width": 6180,
-          "height": 460,
+          "height": 456,
           "caption": "Reconciliation and Take Off (Steps)",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri Light",
+          "fontSize": 16,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 6968388,
+          "textAlign": "left"
         },
         {
           "type": "Image",
@@ -184,7 +269,10 @@
           "top": 75,
           "width": 3312,
           "height": 576,
-          "visible": true
+          "picture": "TateBywater_Final_Logo_Navy",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -194,9 +282,17 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }

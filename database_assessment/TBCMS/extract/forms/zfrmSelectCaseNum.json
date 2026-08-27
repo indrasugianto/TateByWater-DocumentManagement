@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 0,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 3960,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,10 +26,24 @@
           "width": 2580,
           "height": 315,
           "rowSource": "SELECT tblCase.CaseID, [TblCase].Last_Name AS [Last Name], [TblCase].First_Name AS [First Name], tblCase.CaseOpenDate AS [Case Open Date], tblCase.Case_Letter AS [Case Letter], tblCase.Number_ AS Num, tblCase.Orig_Atty, tblCase.CourtCaseNo AS [Court Case No], tblYearMap.YearNum AS [Case Year] FROM tblCase LEFT JOIN tblYearMap ON tblCase.yr = tblYearMap.YearID ORDER BY tblCase.CaseID, tblYearMap.YearNum; ",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 8,
+          "columnWidths": "1440;1440;1440;1440;720;720;720;720",
+          "columnHeads": true,
+          "limitToList": true,
+          "listWidth": "6480",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 3484194,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -33,7 +53,14 @@
           "width": 2580,
           "height": 300,
           "caption": "Select Case No.",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "fontUnderline": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "CommandButton",
@@ -43,9 +70,17 @@
           "width": 2580,
           "height": 360,
           "caption": "&Open Report",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -57,7 +92,10 @@
           "top": 0,
           "width": 3960,
           "height": 1860,
-          "visible": true
+          "visible": true,
+          "backStyle": "transparent",
+          "borderStyle": 1,
+          "borderWidth": 2
         }
       ]
     }

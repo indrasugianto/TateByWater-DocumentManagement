@@ -4,9 +4,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 963,
+  "timerInterval": 0,
   "sections": [],
   "formEvents": {
     "onLoad": "[Event Procedure]"

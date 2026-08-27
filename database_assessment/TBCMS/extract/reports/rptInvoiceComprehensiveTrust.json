@@ -2,6 +2,8 @@
   "reportName": "rptInvoiceComprehensiveTrust",
   "dataSource": "qryInvoiceComprehensiveTrustCredit",
   "width": 10860,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 360,
@@ -9,6 +11,7 @@
     "top": 240,
     "bottom": 240
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -21,6 +24,7 @@
     {
       "type": "Detail",
       "height": 315,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -70,6 +74,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 675,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -166,6 +171,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 435,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

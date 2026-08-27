@@ -8,10 +8,11 @@
       "eventName": "onClick",
       "procedureName": "cmdPastDueInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17411,
-      "lineEnd": 17438,
+      "lineStart": 19215,
+      "lineEnd": 19242,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frmClientLedger",
@@ -19,10 +20,11 @@
       "eventName": "onClick",
       "procedureName": "cmdEmailPastDue_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17115,
-      "lineEnd": 17141,
+      "lineStart": 18919,
+      "lineEnd": 18945,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frm_invoices_summary",
@@ -33,7 +35,8 @@
       "lineStart": 8224,
       "lineEnd": 8239,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frm_invoices_summary",
@@ -44,7 +47,8 @@
       "lineStart": 8191,
       "lineEnd": 8207,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frm_invoices_summary",
@@ -55,18 +59,20 @@
       "lineStart": 8472,
       "lineEnd": 8530,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
-      "formName": "frmHomeAdmin",
-      "controlName": "cmdDeleteAll",
+      "formName": "zClient Ledger OLD",
+      "controlName": "cmdPastDueInvoice",
       "eventName": "onClick",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6313,
-      "lineEnd": 6450,
+      "procedureName": "cmdPastDueInvoice_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7946,
+      "lineEnd": 7964,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frmHome",
@@ -77,7 +83,8 @@
       "lineStart": 1868,
       "lineEnd": 2005,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frmInvoiceSent",
@@ -85,21 +92,23 @@
       "eventName": "onClick",
       "procedureName": "cmdRecondSentPDInvoice_Click",
       "sourceFile": "extract/vba/forms/frmInvoiceSent.txt",
-      "lineStart": 1015,
-      "lineEnd": 1077,
+      "lineStart": 1012,
+      "lineEnd": 1074,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
-      "formName": "zClient Ledger OLD",
-      "controlName": "cmdPastDueInvoice",
+      "formName": "frmHomeAdmin",
+      "controlName": "cmdDeleteAll",
       "eventName": "onClick",
-      "procedureName": "cmdPastDueInvoice_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7967,
-      "lineEnd": 7985,
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6313,
+      "lineEnd": 6450,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     }
   ],
   "dataLineage": {
@@ -125,25 +134,27 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdEmailPastDue_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17115,
-      "lineEnd": 17141,
+      "lineStart": 18919,
+      "lineEnd": 18945,
       "usesDoCmd": [
         "OpenReport",
         "SendObject"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": []
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmdPastDueInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17411,
-      "lineEnd": 17438,
+      "lineStart": 19215,
+      "lineEnd": 19242,
       "usesDoCmd": [
         "OpenReport"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -156,7 +167,8 @@
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -169,7 +181,8 @@
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -182,7 +195,8 @@
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -195,7 +209,8 @@
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -209,22 +224,25 @@
         "OpenReport",
         "OutputTo"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
-      "objectName": "frmHomeAdmin",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6313,
-      "lineEnd": 6450,
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdPastDueInvoice_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7946,
+      "lineEnd": 7964,
       "usesDoCmd": [
         "Close",
-        "OpenReport",
-        "Quit",
-        "openform"
+        "OpenReport"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -239,34 +257,46 @@
         "Quit",
         "openform"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmInvoiceSent",
       "procedureName": "cmdRecondSentPDInvoice_Click",
       "sourceFile": "extract/vba/forms/frmInvoiceSent.txt",
-      "lineStart": 1015,
-      "lineEnd": 1077,
+      "lineStart": 1012,
+      "lineEnd": 1074,
       "usesDoCmd": [
         "Close",
         "OpenReport",
         "OutputTo"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdPastDueInvoice_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7967,
-      "lineEnd": 7985,
+      "objectName": "frmHomeAdmin",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6313,
+      "lineEnd": 6450,
       "usesDoCmd": [
         "Close",
-        "OpenReport"
+        "OpenReport",
+        "Quit",
+        "openform"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     }
   ],
   "confidence": "high"

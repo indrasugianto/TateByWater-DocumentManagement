@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 9999,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +27,15 @@
           "height": 156,
           "controlSource": "=Nz(DSum(\"debit\",\"[Trust Account]\",\"TrustAccountID<=\" & Nz([TrustAccountID],0) & \" and caseID=\" & GetCaseID()),0)-Nz(DSum(\"credit\",\"[Trust Account]\",\"TrustAccountID<=\" & Nz([TrustAccountID],0) & \" and caseID=\" & GetCaseID()),0)",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -34,9 +46,14 @@
           "height": 359,
           "controlSource": "CheckNumber",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -48,9 +65,24 @@
           "controlSource": "Credit",
           "format": "Currency",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "foreColor": 1117824,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "right",
+          "formatConditions": [
+            {
+              "type": 1,
+              "expression1": "[Reconciled]=True",
+              "foreColor": 1643706,
+              "backColor": 16777215
+            }
+          ]
         },
         {
           "type": "CheckBox",
@@ -60,10 +92,14 @@
           "width": 234,
           "height": 225,
           "controlSource": "CheckCashed",
+          "defaultValue": "0",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -75,9 +111,24 @@
           "controlSource": "Debit",
           "format": "Currency",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "foreColor": 8210719,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "right",
+          "formatConditions": [
+            {
+              "type": 1,
+              "expression1": "[Reconciled]=True",
+              "foreColor": 6108695,
+              "backColor": 16777215
+            }
+          ]
         },
         {
           "type": "TextBox",
@@ -88,9 +139,15 @@
           "height": 359,
           "controlSource": "TDate",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -101,9 +158,15 @@
           "height": 240,
           "controlSource": "TrustAccountID",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CheckBox",
@@ -113,10 +176,17 @@
           "width": 234,
           "height": 225,
           "controlSource": "DepCleared",
+          "defaultValue": "0",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "events": {
+            "onLostFocus": "[Event Procedure]"
+          }
         },
         {
           "type": "ComboBox",
@@ -127,10 +197,21 @@
           "height": 359,
           "controlSource": "TMatter",
           "rowSource": "qry_tmatter_list_options",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "CommandButton",
@@ -140,9 +221,15 @@
           "width": 330,
           "height": 150,
           "caption": "Command19",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 12,
+          "tabStop": false,
           "visible": false,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -156,9 +243,15 @@
           "height": 315,
           "controlSource": "OrderNr",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -170,9 +263,15 @@
           "controlSource": "Balance",
           "format": "Currency",
           "tabIndex": 4,
+          "tabStop": false,
           "visible": true,
           "enabled": false,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "right"
         },
         {
           "type": "CheckBox",
@@ -183,9 +282,12 @@
           "height": 240,
           "controlSource": "Reconciled",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CheckBox",
@@ -196,9 +298,12 @@
           "height": 180,
           "controlSource": "CostReimb",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CheckBox",
@@ -209,9 +314,12 @@
           "height": 180,
           "controlSource": "AdvFee",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -221,7 +329,11 @@
           "width": 180,
           "height": 240,
           "caption": "C",
-          "visible": false
+          "visible": false,
+          "fontName": "Calibri",
+          "fontSize": 7,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -231,7 +343,11 @@
           "width": 180,
           "height": 240,
           "caption": "L",
-          "visible": false
+          "visible": false,
+          "fontName": "Calibri",
+          "fontSize": 7,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }

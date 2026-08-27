@@ -6,9 +6,16 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filter": "1=1 AND tblTakeOffMonth.TakeOffDate >= #2/1/2019#",
+  "filterOn": false,
+  "orderByOn": false,
   "width": 22560,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -23,9 +30,14 @@
           "controlSource": "JRTFees",
           "format": "Currency",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -37,9 +49,14 @@
           "controlSource": "DEBFees",
           "format": "Currency",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -51,9 +68,14 @@
           "controlSource": "GBFFees",
           "format": "Currency",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -65,9 +87,14 @@
           "controlSource": "PMFees",
           "format": "Currency",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -79,9 +106,14 @@
           "controlSource": "TDTFees",
           "format": "Currency",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -93,9 +125,14 @@
           "controlSource": "CBHFees",
           "format": "Currency",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -107,9 +144,14 @@
           "controlSource": "MKFees",
           "format": "Currency",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -121,9 +163,14 @@
           "controlSource": "KDBFees",
           "format": "Currency",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -134,9 +181,14 @@
           "height": 315,
           "controlSource": "tblTakeOffMonth.TakeOffDate",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -148,9 +200,15 @@
           "controlSource": "NHFees",
           "format": "Currency",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -162,9 +220,15 @@
           "controlSource": "RLFFees",
           "format": "Currency",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -176,9 +240,14 @@
           "controlSource": "=[JRTFees]*0.25",
           "format": "Currency",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -190,9 +259,14 @@
           "controlSource": "=[DEBFees]*0.5",
           "format": "Currency",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -204,9 +278,14 @@
           "controlSource": "=[GBFFees]*0.25",
           "format": "Currency",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -218,9 +297,14 @@
           "controlSource": "=([PMFees]*0.25)",
           "format": "Currency",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -232,9 +316,14 @@
           "controlSource": "=[TDTFees]*0.25",
           "format": "Currency",
           "tabIndex": 15,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -246,9 +335,14 @@
           "controlSource": "=[NHFees]*0.25",
           "format": "Currency",
           "tabIndex": 16,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -260,9 +354,14 @@
           "controlSource": "=[RLFFees]*0.25",
           "format": "Currency",
           "tabIndex": 17,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -273,9 +372,15 @@
           "height": 315,
           "controlSource": "TotalCBHRev",
           "tabIndex": 18,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -287,9 +392,15 @@
           "controlSource": "JFFees",
           "format": "Currency",
           "tabIndex": 19,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -301,9 +412,14 @@
           "controlSource": "=[JFFees]*0.5",
           "format": "Currency",
           "tabIndex": 20,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 8355711,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -315,9 +431,14 @@
           "controlSource": "WNEFees",
           "format": "Currency",
           "tabIndex": 21,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         }
       ]
     },
@@ -328,11 +449,18 @@
           "type": "Label",
           "name": "Auto_Header0",
           "left": 960,
-          "top": 200,
+          "top": 192,
           "width": 3600,
-          "height": 440,
+          "height": 432,
           "caption": "Attorney Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri Light",
+          "fontSize": 16,
+          "fontBold": true,
+          "foreColor": 6968388,
+          "backStyle": "transparent",
+          "borderColor": 6968388,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -342,7 +470,12 @@
           "width": 1170,
           "height": 255,
           "caption": "From",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -353,9 +486,15 @@
           "height": 315,
           "format": "Short Date",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -365,7 +504,12 @@
           "width": 1170,
           "height": 255,
           "caption": "To",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -376,9 +520,15 @@
           "height": 315,
           "format": "Short Date",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "OptionGroup",
@@ -387,10 +537,15 @@
           "top": 120,
           "width": 4562,
           "height": 478,
+          "defaultValue": "1",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "backStyle": "transparent",
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -400,7 +555,11 @@
           "width": 540,
           "height": 360,
           "caption": "Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backColor": 15064278,
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -410,7 +569,11 @@
           "width": 1230,
           "height": 285,
           "caption": "Take Off Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -420,7 +583,12 @@
           "width": 838,
           "height": 329,
           "caption": "JRT Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -430,7 +598,12 @@
           "width": 898,
           "height": 329,
           "caption": "DEB Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -440,7 +613,12 @@
           "width": 898,
           "height": 329,
           "caption": "GBF Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -450,7 +628,12 @@
           "width": 853,
           "height": 329,
           "caption": "PM Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -460,7 +643,12 @@
           "width": 883,
           "height": 329,
           "caption": "TDT Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -470,7 +658,12 @@
           "width": 973,
           "height": 329,
           "caption": "CMH Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -480,7 +673,12 @@
           "width": 793,
           "height": 329,
           "caption": "BA Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -490,7 +688,12 @@
           "width": 913,
           "height": 329,
           "caption": "KDB Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "CommandButton",
@@ -500,9 +703,17 @@
           "width": 1575,
           "height": 360,
           "caption": "   &Filter",
+          "picture": "(image)",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 855309,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -515,9 +726,17 @@
           "width": 1575,
           "height": 360,
           "caption": "   &Clear Filter",
+          "picture": "(image)",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 855309,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -530,9 +749,17 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -544,7 +771,10 @@
           "top": 120,
           "width": 780,
           "height": 600,
-          "visible": true
+          "picture": "Logo Transparent",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "Image",
@@ -553,7 +783,10 @@
           "top": 180,
           "width": 480,
           "height": 345,
+          "picture": "Home Button.ico",
           "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -566,7 +799,12 @@
           "width": 823,
           "height": 329,
           "caption": "NH Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -576,7 +814,12 @@
           "width": 1350,
           "height": 330,
           "caption": "RLF Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -586,7 +829,13 @@
           "width": 1035,
           "height": 330,
           "caption": "Guaranteed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -596,7 +845,13 @@
           "width": 1035,
           "height": 330,
           "caption": "Guaranteed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -606,7 +861,13 @@
           "width": 1035,
           "height": 330,
           "caption": "Guaranteed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -616,7 +877,13 @@
           "width": 1035,
           "height": 330,
           "caption": "Guaranteed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -626,7 +893,13 @@
           "width": 1035,
           "height": 330,
           "caption": "Guaranteed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -636,7 +909,13 @@
           "width": 1035,
           "height": 330,
           "caption": "Guaranteed",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -646,7 +925,13 @@
           "width": 1350,
           "height": 330,
           "caption": "Guaranteed ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -656,7 +941,12 @@
           "width": 733,
           "height": 329,
           "caption": "JF Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -666,7 +956,13 @@
           "width": 1350,
           "height": 285,
           "caption": "Guaranteed ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -676,7 +972,12 @@
           "width": 973,
           "height": 329,
           "caption": "WNE Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         }
       ]
     },
@@ -693,9 +994,14 @@
           "controlSource": "=Sum([JRTFees])",
           "format": "Currency",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -707,9 +1013,14 @@
           "controlSource": "=Sum([DEBFees])",
           "format": "Currency",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -721,9 +1032,14 @@
           "controlSource": "=Sum([GBFFees])",
           "format": "Currency",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -735,9 +1051,14 @@
           "controlSource": "=Sum([PMFees])",
           "format": "Currency",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -749,9 +1070,14 @@
           "controlSource": "=Sum([TDTFees])",
           "format": "Currency",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -763,9 +1089,14 @@
           "controlSource": "=Sum([CBHFees])",
           "format": "Currency",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -777,9 +1108,14 @@
           "controlSource": "=Sum([MKFees])",
           "format": "Currency",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -791,9 +1127,14 @@
           "controlSource": "=Sum([KDBFees])",
           "format": "Currency",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Label",
@@ -803,7 +1144,12 @@
           "width": 1140,
           "height": 240,
           "caption": "SUM:",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "Label",
@@ -813,7 +1159,12 @@
           "width": 1500,
           "height": 300,
           "caption": "JRT Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -823,7 +1174,12 @@
           "width": 1500,
           "height": 300,
           "caption": "DEB Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -833,7 +1189,12 @@
           "width": 1500,
           "height": 300,
           "caption": "GBF Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -843,7 +1204,12 @@
           "width": 1500,
           "height": 300,
           "caption": "PM Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -853,7 +1219,12 @@
           "width": 1500,
           "height": 300,
           "caption": "TDT Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -863,7 +1234,12 @@
           "width": 973,
           "height": 329,
           "caption": "CMH Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -873,7 +1249,12 @@
           "width": 793,
           "height": 329,
           "caption": "BA Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -883,7 +1264,12 @@
           "width": 913,
           "height": 329,
           "caption": "KDB Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -893,7 +1279,13 @@
           "width": 1515,
           "height": 300,
           "caption": "TOTAL",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -905,9 +1297,14 @@
           "controlSource": "=[Text12]+[Text13]+[Text14]+[Text15]+[Text16]+[Text17]+[Text58]+[Text59]+[Text91]+[Text18]+[Text20]+[Text21]+[Text100]",
           "format": "Currency",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Label",
@@ -917,7 +1314,12 @@
           "width": 1035,
           "height": 315,
           "caption": "%:",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "right"
         },
         {
           "type": "TextBox",
@@ -929,9 +1331,15 @@
           "controlSource": "=[Text13]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -943,9 +1351,15 @@
           "controlSource": "=[Text14]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -957,9 +1371,15 @@
           "controlSource": "=[Text15]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -971,9 +1391,15 @@
           "controlSource": "=[Text16]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -985,9 +1411,15 @@
           "controlSource": "=[Text17]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -999,9 +1431,15 @@
           "controlSource": "=[Text18]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1013,9 +1451,15 @@
           "controlSource": "=[Text20]/[[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 15,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1027,9 +1471,15 @@
           "controlSource": "=[Text21]/[txtAssocTotals]",
           "format": "Percent",
           "tabIndex": 16,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -1039,7 +1489,13 @@
           "width": 1875,
           "height": 300,
           "caption": "TOTAL PARTNER FEES",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1051,9 +1507,14 @@
           "controlSource": "=[Text13]+[Text14]+[Text15]+[Text16]+[Text17]+[Text58]+[Text59]+[Text18]+[Text20]",
           "format": "Currency",
           "tabIndex": 17,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Label",
@@ -1063,7 +1524,13 @@
           "width": 2175,
           "height": 300,
           "caption": "TOTAL ASSOC / OC FEES",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1075,9 +1542,14 @@
           "controlSource": "=[Text100]+[Text91]+[Text21]",
           "format": "Currency",
           "tabIndex": 18,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Line",
@@ -1086,7 +1558,9 @@
           "top": 0,
           "width": 0,
           "height": 1500,
-          "visible": true
+          "visible": true,
+          "borderStyle": 1,
+          "borderWidth": 2
         },
         {
           "type": "TextBox",
@@ -1098,9 +1572,14 @@
           "controlSource": "=Sum(Nz([NHFees],0))",
           "format": "Currency",
           "tabIndex": 19,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -1112,9 +1591,14 @@
           "controlSource": "=Sum(Nz([RLFFees],0))",
           "format": "Currency",
           "tabIndex": 20,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Label",
@@ -1124,7 +1608,12 @@
           "width": 1515,
           "height": 300,
           "caption": "NH Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -1134,7 +1623,12 @@
           "width": 1515,
           "height": 300,
           "caption": "RLF Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1146,9 +1640,15 @@
           "controlSource": "=[Text58]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 21,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1160,9 +1660,15 @@
           "controlSource": "=[Text59]/[txtPartnerTotals]",
           "format": "Percent",
           "tabIndex": 22,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1173,9 +1679,15 @@
           "height": 315,
           "controlSource": "=Sum([TotalCBHRev])",
           "tabIndex": 23,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -1187,9 +1699,14 @@
           "controlSource": "=Sum(Nz([JFFees],0))",
           "format": "Currency",
           "tabIndex": 24,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Label",
@@ -1199,7 +1716,12 @@
           "width": 733,
           "height": 329,
           "caption": "JF Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1211,9 +1733,15 @@
           "controlSource": "=[Text91]/[txtAssocTotals]",
           "format": "Percent",
           "tabIndex": 25,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1225,9 +1753,14 @@
           "controlSource": "=Sum([WNEFees])",
           "format": "Currency",
           "tabIndex": 26,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "Label",
@@ -1237,7 +1770,12 @@
           "width": 973,
           "height": 329,
           "caption": "WNE Fees",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -1249,9 +1787,15 @@
           "controlSource": "=[Text100]/[txtAssocTotals]",
           "format": "Percent",
           "tabIndex": 27,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         }
       ]
     }

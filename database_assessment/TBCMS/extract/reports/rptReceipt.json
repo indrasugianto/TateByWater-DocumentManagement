@@ -1,8 +1,10 @@
 {
   "reportName": "rptReceipt",
   "dataSource": "qryReceipt",
-  "width": 10500,
   "caption": "Receipt - Client",
+  "width": 10500,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -10,11 +12,13 @@
     "top": 1008,
     "bottom": 1008
   },
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
       "height": 4140,
       "visible": false,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -348,6 +352,7 @@
     {
       "type": "ReportHeader",
       "height": 2235,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -416,6 +421,7 @@
     {
       "type": "ReportFooter",
       "height": 0,
+      "keepTogether": true,
       "controls": []
     },
     {

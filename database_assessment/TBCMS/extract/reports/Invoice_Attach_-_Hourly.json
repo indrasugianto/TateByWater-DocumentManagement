@@ -1,8 +1,11 @@
 {
   "reportName": "Invoice Attach - Hourly",
   "dataSource": "qryInvoiceAttachRPT1",
-  "width": 10800,
   "caption": "Statement - Hourly Detail",
+  "width": 10800,
+  "filter": "[Bill_ID]=64",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -10,6 +13,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -28,6 +32,7 @@
     {
       "type": "Detail",
       "height": 765,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -121,6 +126,7 @@
     {
       "type": "ReportHeader",
       "height": 3300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -398,6 +404,7 @@
     {
       "type": "ReportFooter",
       "height": 0,
+      "keepTogether": true,
       "controls": []
     },
     {
@@ -554,6 +561,8 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 660,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -659,6 +668,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 1260,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",

@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 20295,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -15,22 +21,31 @@
         {
           "type": "Unknown_123",
           "name": "tabControl",
-          "left": 15,
+          "left": 12,
           "top": 0,
-          "width": 20285,
-          "height": 11000,
+          "width": 20283,
+          "height": 10995,
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
-          "enabled": true
+          "enabled": true,
+          "fontName": "Arial",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 8210719,
+          "borderStyle": 1,
+          "borderColor": 11573124
         },
         {
           "type": "Unknown_124",
           "name": "Page420",
-          "left": 70,
-          "top": 480,
-          "width": 20180,
-          "height": 10470,
+          "left": 72,
+          "top": 492,
+          "width": 20160,
+          "height": 10440,
           "caption": "OPEN",
+          "picture": "(none)",
           "visible": true,
           "enabled": true
         },
@@ -42,19 +57,24 @@
           "width": 20130,
           "height": 10305,
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmCaseListOpen"
         },
         {
           "type": "Unknown_124",
           "name": "Page421",
-          "left": 70,
-          "top": 480,
-          "width": 20180,
-          "height": 10470,
+          "left": 72,
+          "top": 492,
+          "width": 20160,
+          "height": 10440,
           "caption": "CLOSED",
+          "picture": "(none)",
           "visible": true,
           "enabled": true
         },
@@ -66,19 +86,24 @@
           "width": 20055,
           "height": 10425,
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmCaseListClosed"
         },
         {
           "type": "Unknown_124",
           "name": "Page427",
-          "left": 70,
-          "top": 480,
-          "width": 20180,
-          "height": 10470,
+          "left": 72,
+          "top": 492,
+          "width": 20160,
+          "height": 10440,
           "caption": "ALL",
+          "picture": "(none)",
           "visible": true,
           "enabled": true
         },
@@ -90,9 +115,13 @@
           "width": 19995,
           "height": 10410,
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmCaseListAll"
         }
       ]
@@ -104,11 +133,18 @@
           "type": "Label",
           "name": "Label7",
           "left": 1560,
-          "top": 210,
+          "top": 216,
           "width": 3120,
           "height": 900,
           "caption": "CASE LIST",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 36,
+          "fontBold": true,
+          "foreColor": 8210719,
+          "backStyle": "transparent",
+          "borderColor": 6968388,
+          "textAlign": "left"
         },
         {
           "type": "Image",
@@ -117,7 +153,10 @@
           "top": 180,
           "width": 1020,
           "height": 840,
-          "visible": true
+          "picture": "Logo Transparent",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -127,9 +166,16 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backColor": 15527148,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -141,7 +187,10 @@
           "top": 240,
           "width": 480,
           "height": 345,
+          "picture": "Home Button.ico",
           "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }

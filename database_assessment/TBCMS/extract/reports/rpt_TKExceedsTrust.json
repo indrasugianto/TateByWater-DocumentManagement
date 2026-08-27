@@ -1,8 +1,11 @@
 {
   "reportName": "rpt_TKExceedsTrust",
   "dataSource": "qryInvoiceAttachRPT1",
-  "width": 10800,
   "caption": "Hourly Invoice - TK Exceeds Trust",
+  "width": 10800,
+  "filter": "[Bill_ID]=46",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -10,6 +13,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -22,6 +26,7 @@
     {
       "type": "Detail",
       "height": 720,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -116,11 +121,13 @@
       "type": "ReportHeader",
       "height": 0,
       "backColor": 15064278,
+      "keepTogether": true,
       "controls": []
     },
     {
       "type": "ReportFooter",
       "height": 0,
+      "keepTogether": true,
       "controls": []
     },
     {
@@ -495,6 +502,8 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 720,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -600,6 +609,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 1920,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",

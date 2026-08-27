@@ -1,7 +1,7 @@
 # Report Lineage: rpt_Trust_Closing
 
 ## Trigger Paths
-- No trigger path could be inferred from extracted forms/VBA.
+- No trigger path could be inferred from extracted forms/macros/VBA.
 
 ## Data Lineage
 - RecordSource: `qryStmtTrustRPT1`

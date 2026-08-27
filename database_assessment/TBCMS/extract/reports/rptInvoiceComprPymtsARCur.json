@@ -2,13 +2,17 @@
   "reportName": "rptInvoiceComprPymtsARCur",
   "dataSource": "qry_InvoicePymts_curr",
   "width": 5100,
+  "filterOn": false,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
-    "left": 341,
-    "right": 341,
-    "top": 240,
-    "bottom": 240
+    "left": 187,
+    "right": 187,
+    "top": 187,
+    "bottom": 187
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -21,6 +25,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -88,6 +93,7 @@
       "groupField": "CaseID",
       "height": 615,
       "backColor": 15590879,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -155,6 +161,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 315,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

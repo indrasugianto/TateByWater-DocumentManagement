@@ -146,6 +146,25 @@ Err_SetProperties:
     End If
 End Function
 
+Function SetBypassProperty(blnState As Boolean)
+
+    Const DB_Boolean As Long = 1
+    Dim db As DAO.Database
+    Dim prp As DAO.Property
+
+    Set db = CurrentDb
+
+    On Error GoTo AddProp
+
+    db.Properties("AllowBypassKey") = blnState
+    Exit Function
+
+AddProp:
+    Set prp = db.CreateProperty("AllowBypassKey", DB_Boolean, blnState)
+    db.Properties.Append prp
+
+End Function
+
 
 Public Sub DisableProperties()
     'disable all properties
@@ -167,7 +186,7 @@ Public Sub DisableProperties()
 '    SetProperties "AllowToolbarChanges", dbBoolean, False
 '    SetProperties "AllowBuiltInToolbars", dbBoolean, False
 '
-    SetProperties "AllowBypassKey", dbBoolean, False
+    'SetProperties "AllowBypassKey", dbBoolean, False
     SetProperties "AllowBreakIntoCode", dbBoolean, False
 '
 '    Application.SetOption "ShowWindowsInTaskbar", False
@@ -194,7 +213,7 @@ Public Function EnableProperties()
 '    SetProperties "AllowToolbarChanges", dbBoolean, True
 '    SetProperties "AllowBuiltInToolbars", dbBoolean, True
 '
-    SetProperties "AllowBypassKey", dbBoolean, True
+    'SetProperties "AllowBypassKey", dbBoolean, True
     SetProperties "AllowBreakIntoCode", dbBoolean, True
 '
 '    Exit Function

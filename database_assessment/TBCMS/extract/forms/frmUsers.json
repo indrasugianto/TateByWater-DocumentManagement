@@ -5,9 +5,15 @@
   "allowEdits": false,
   "allowAdditions": false,
   "allowDeletions": false,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 11550,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +27,16 @@
           "height": 288,
           "controlSource": "ID",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontUnderline": true,
+          "foreColor": 13395968,
+          "borderStyle": 1,
+          "borderColor": 10921638,
           "events": {
             "onClick": "=OnclickEdit('frmUsers_Edit', ID)"
           }
@@ -37,9 +50,15 @@
           "height": 288,
           "controlSource": "UserID",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -49,10 +68,17 @@
           "width": 2880,
           "height": 288,
           "controlSource": "PWD",
+          "inputMask": "Password",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "ComboBox",
@@ -63,10 +89,23 @@
           "height": 315,
           "controlSource": "Access",
           "rowSource": "SELECT tblAccessType.AccessType, tblAccessType.AccessDescription, * FROM tblAccessType; ",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 2,
+          "columnWidths": "0;2880",
+          "columnHeads": true,
+          "limitToList": true,
+          "listWidth": "0",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         }
       ]
     },
@@ -81,7 +120,14 @@
           "width": 2880,
           "height": 288,
           "caption": "ID",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 16751001,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -91,7 +137,14 @@
           "width": 2880,
           "height": 288,
           "caption": "UserID",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 16751001,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -101,7 +154,14 @@
           "width": 2880,
           "height": 288,
           "caption": "PWD",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 16751001,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -111,7 +171,14 @@
           "width": 2880,
           "height": 288,
           "caption": "Access",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 16751001,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -122,9 +189,16 @@
           "height": 360,
           "controlSource": "=GetCompanyName()",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 6968388,
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "CommandButton",
@@ -134,9 +208,16 @@
           "width": 306,
           "height": 246,
           "caption": "Cancel",
+          "controlTipText": "Undo Record",
+          "picture": "(image)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backColor": 12874308,
+          "borderColor": 12874308,
           "events": {
             "onClick": "[Embedded Macro]"
           }

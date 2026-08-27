@@ -1,7 +1,7 @@
 # Report Lineage: rpt_MergeInvTimeDetail
 
 ## Trigger Paths
-- No trigger path could be inferred from extracted forms/VBA.
+- No trigger path could be inferred from extracted forms/macros/VBA.
 
 ## Data Lineage
 - RecordSource: `tblTimeTableDetail`
@@ -10,4 +10,4 @@
 - Terminal Tables: tblTimeTableDetail
 
 ## Related VBA Procedures
-- form Time Keeping::cmdInsertTime_Click [4687-4710]
+- form Time Keeping::cmdInsertTime_Click [4688-4711] [runSql]

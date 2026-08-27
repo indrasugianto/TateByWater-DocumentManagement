@@ -5,9 +5,16 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "orderBy": "IIf(Not IsNull([TKDate]) And IsNull([InvSent]), 0, 1), IIf(Not IsNull([TKDate]) And IsNull([InvSent]), [TKDate], [InvSent])",
+  "filterOn": false,
+  "orderByOn": true,
   "width": 11820,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +28,16 @@
           "height": 315,
           "controlSource": "InvSent",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -35,9 +49,16 @@
           "controlSource": "InvBalance",
           "format": "Currency",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "CheckBox",
@@ -48,9 +69,12 @@
           "height": 240,
           "controlSource": "TK Sent",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -61,9 +85,16 @@
           "height": 315,
           "controlSource": "TKNumber",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -74,9 +105,15 @@
           "height": 315,
           "controlSource": "InvSentNotes",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -88,9 +125,16 @@
           "controlSource": "TKDate",
           "format": "Short Date",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -102,9 +146,16 @@
           "controlSource": "TKBalance",
           "format": "Currency",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "CommandButton",
@@ -114,9 +165,15 @@
           "width": 426,
           "height": 366,
           "caption": "Command19",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 7,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -134,7 +191,12 @@
           "width": 3420,
           "height": 420,
           "caption": "INVOICE, COLLECTION HISTORY",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 13,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -144,7 +206,12 @@
           "width": 1155,
           "height": 300,
           "caption": "Inv. Sent",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -154,7 +221,12 @@
           "width": 1335,
           "height": 300,
           "caption": "AR Balance",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -164,7 +236,11 @@
           "width": 315,
           "height": 315,
           "caption": "TK",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -174,7 +250,11 @@
           "width": 420,
           "height": 300,
           "caption": "TK#",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -184,7 +264,11 @@
           "width": 960,
           "height": 300,
           "caption": "Notes",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "CommandButton",
@@ -194,9 +278,17 @@
           "width": 2115,
           "height": 390,
           "caption": "Record Sent Invoice",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 10319446,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -209,7 +301,12 @@
           "width": 1155,
           "height": 300,
           "caption": "TK Sent",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "backStyle": "transparent",
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "CommandButton",
@@ -219,9 +316,16 @@
           "width": 1500,
           "height": 360,
           "caption": "Invoices",
+          "picture": "(bitmap)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -234,9 +338,17 @@
           "width": 2115,
           "height": 390,
           "caption": "Record Sent PD Invoice",
+          "picture": "(none)",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 10856415,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }

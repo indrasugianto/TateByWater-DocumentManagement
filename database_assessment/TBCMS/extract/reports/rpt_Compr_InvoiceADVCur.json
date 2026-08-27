@@ -1,8 +1,11 @@
 {
   "reportName": "rpt_Compr_InvoiceADVCur",
   "dataSource": "SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IANumber, [TB Time Keeping].Bill_ID, [TB Time Keeping].TrustatClose, tblCase.CaseID, tblCase.Last_Name, tblCase.First_Name, tblCase.CaseOpenDate, tblCase.Case_Letter, tblCase.yr, tblCase.Number_, tblCase.Orig_Atty, tblCase.Address, tblCase.City, tblCase.State, tblCase.Zip, tblCase.Matter_type, [TB Time Keeping].[BilL Closed Date], [TB Time Keeping].TimeNotes, tblCase.Retainer FROM tblCase INNER JOIN [TB Time Keeping] ON tblCase.CaseID = [TB Time Keeping].CaseID; ",
-  "width": 10380,
   "caption": "Comprehensive Invoice - Total Advanced",
+  "width": 10380,
+  "filter": "Bill_ID=48",
+  "filterOn": true,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -10,10 +13,12 @@
     "top": 864,
     "bottom": 864
   },
+  "paperSize": 1,
   "sections": [
     {
       "type": "Detail",
       "height": 4740,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -114,6 +119,10 @@
             "reportName": "rpt_TimeDetail_Comprehensive2",
             "dataSource": "qryInvoiceComprehensiveTimeDetail2",
             "width": 10320,
+            "filter": "([qryInvoiceComprehensiveTimeDetail2].[Bill_ID]=75)",
+            "filterOn": false,
+            "orderBy": "TDate",
+            "orderByOn": true,
             "orientation": "portrait",
             "margins": {
               "left": 720,
@@ -121,6 +130,7 @@
               "top": 720,
               "bottom": 720
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -139,6 +149,7 @@
               {
                 "type": "Detail",
                 "height": 420,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -227,11 +238,13 @@
                 "type": "ReportHeader",
                 "height": 0,
                 "backColor": 15064278,
+                "keepTogether": true,
                 "controls": []
               },
               {
                 "type": "ReportFooter",
                 "height": 0,
+                "keepTogether": true,
                 "controls": []
               },
               {
@@ -250,6 +263,8 @@
                 "groupField": "CaseID",
                 "height": 675,
                 "backColor": 14148063,
+                "forceNewPage": 1,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Label",
@@ -389,6 +404,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 480,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -496,6 +512,9 @@
             "reportName": "rptInvoiceComprARCur",
             "dataSource": "SELECT * FROM qry_InvoiceAR_curr; ",
             "width": 4920,
+            "filterOn": false,
+            "orderBy": "OrderNr",
+            "orderByOn": true,
             "orientation": "portrait",
             "margins": {
               "left": 360,
@@ -503,6 +522,7 @@
               "top": 240,
               "bottom": 240
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -515,6 +535,7 @@
               {
                 "type": "Detail",
                 "height": 300,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -581,6 +602,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 660,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Rectangle",
@@ -658,6 +680,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 600,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -723,13 +746,17 @@
             "reportName": "rptInvoiceComprPymtsARCur",
             "dataSource": "qry_InvoicePymts_curr",
             "width": 5100,
+            "filterOn": false,
+            "orderBy": "OrderNr",
+            "orderByOn": true,
             "orientation": "portrait",
             "margins": {
-              "left": 341,
-              "right": 341,
-              "top": 240,
-              "bottom": 240
+              "left": 187,
+              "right": 187,
+              "top": 187,
+              "bottom": 187
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -742,6 +769,7 @@
               {
                 "type": "Detail",
                 "height": 300,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -809,6 +837,7 @@
                 "groupField": "CaseID",
                 "height": 615,
                 "backColor": 15590879,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Label",
@@ -876,6 +905,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 315,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -941,6 +971,9 @@
             "reportName": "rptInvoiceComprTrustCur",
             "dataSource": "qryInvoiceComprehensiveTrustCredit",
             "width": 5100,
+            "filterOn": false,
+            "orderBy": "OrderNr",
+            "orderByOn": true,
             "orientation": "portrait",
             "margins": {
               "left": 360,
@@ -948,6 +981,7 @@
               "top": 240,
               "bottom": 240
             },
+            "paperSize": 1,
             "groupLevels": [
               {
                 "fieldExpression": "CaseID",
@@ -966,6 +1000,7 @@
               {
                 "type": "Detail",
                 "height": 300,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1031,6 +1066,7 @@
                 "groupField": "CaseID",
                 "height": 675,
                 "backColor": 13556704,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1127,6 +1163,7 @@
                 "groupIndex": 0,
                 "groupField": "CaseID",
                 "height": 435,
+                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1190,6 +1227,7 @@
     {
       "type": "ReportHeader",
       "height": 2460,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -1206,9 +1244,9 @@
         {
           "type": "Image",
           "name": "Image0",
-          "left": 390,
+          "left": 396,
           "top": 60,
-          "width": 4575,
+          "width": 4572,
           "height": 780,
           "borderColor": 10921638
         },
@@ -1286,9 +1324,9 @@
           "type": "Label",
           "name": "Label38",
           "left": 840,
-          "top": 870,
+          "top": 876,
           "width": 4155,
-          "height": 315,
+          "height": 312,
           "caption": "ATTORNEYS AT LAW",
           "fontName": "Californian FB",
           "fontSize": 11,
@@ -1408,6 +1446,7 @@
     {
       "type": "ReportFooter",
       "height": 1320,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",

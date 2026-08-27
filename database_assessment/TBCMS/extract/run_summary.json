@@ -1,0 +1,125 @@
+{
+  "appName": "TB CMS.SQL",
+  "sourceFile": "TB CMS.SQL.accdb",
+  "outputDir": "C:\\Users\\indra\\Downloads\\TBCMS",
+  "stages": [
+    {
+      "name": "schema",
+      "ok": true,
+      "elapsedSec": 39.946,
+      "error": null
+    },
+    {
+      "name": "data",
+      "ok": true,
+      "elapsedSec": 0.0,
+      "skipped": true
+    },
+    {
+      "name": "relationships",
+      "ok": true,
+      "elapsedSec": 0.016,
+      "error": null
+    },
+    {
+      "name": "queries",
+      "ok": true,
+      "elapsedSec": 3.763,
+      "error": null
+    },
+    {
+      "name": "dataMacros",
+      "ok": true,
+      "elapsedSec": 0.007,
+      "error": null
+    },
+    {
+      "name": "dbProperties",
+      "ok": true,
+      "elapsedSec": 0.052,
+      "error": null
+    },
+    {
+      "name": "vba",
+      "ok": true,
+      "elapsedSec": 27.49,
+      "error": null
+    },
+    {
+      "name": "macroAnalysis",
+      "ok": true,
+      "elapsedSec": 0.001,
+      "error": null
+    },
+    {
+      "name": "forms",
+      "ok": true,
+      "elapsedSec": 7.565,
+      "error": null
+    },
+    {
+      "name": "reports",
+      "ok": true,
+      "elapsedSec": 257.36,
+      "error": null
+    },
+    {
+      "name": "lineage",
+      "ok": true,
+      "elapsedSec": 59.61,
+      "error": null
+    },
+    {
+      "name": "tableDefs",
+      "ok": true,
+      "elapsedSec": 0.061,
+      "error": null
+    },
+    {
+      "name": "manifest",
+      "ok": true,
+      "elapsedSec": 0.031,
+      "error": null
+    },
+    {
+      "name": "docs",
+      "ok": true,
+      "elapsedSec": 1.566,
+      "error": null
+    },
+    {
+      "name": "migrationGuide",
+      "ok": true,
+      "elapsedSec": 0.027,
+      "error": null
+    }
+  ],
+  "lockErrors": [],
+  "startedAt": "2026-08-27T13:14:41Z",
+  "success": true,
+  "finishedAt": "2026-08-27T13:21:24Z",
+  "counts": {
+    "tables": 91,
+    "relationships": 0,
+    "queries": 213,
+    "forms": 94,
+    "reports": 98,
+    "dataMacroTables": 0,
+    "vbaProcedures": 216
+  },
+  "completeness": {
+    "schemaWarnings": [],
+    "dataTablesExported": 0,
+    "dataTablesFailed": [],
+    "vbaObjectsFailed": [],
+    "formErrors": [],
+    "formControlWarnings": 0,
+    "reportErrors": [
+      {
+        "report": "rpt_Billing_Closing",
+        "error": "skipped via --skip-report"
+      }
+    ],
+    "reportControlWarnings": 0
+  }
+}

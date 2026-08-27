@@ -6,9 +6,16 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": true,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filter": "[ID]=78",
+  "filterOn": false,
+  "orderByOn": false,
   "width": 15600,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,7 +27,9 @@
           "top": 0,
           "width": 15540,
           "height": 8700,
-          "visible": true
+          "visible": true,
+          "backColor": 16448250,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -29,7 +38,9 @@
           "top": 4620,
           "width": 9900,
           "height": 3840,
-          "visible": true
+          "visible": true,
+          "backColor": 16249583,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -38,7 +49,9 @@
           "top": 2040,
           "width": 4560,
           "height": 2280,
-          "visible": true
+          "visible": true,
+          "backColor": 15527148,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -47,7 +60,9 @@
           "top": 4620,
           "width": 4560,
           "height": 2880,
-          "visible": true
+          "visible": true,
+          "backColor": 16249583,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -56,7 +71,9 @@
           "top": 300,
           "width": 9960,
           "height": 4020,
-          "visible": true
+          "visible": true,
+          "backColor": 15527148,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -65,7 +82,9 @@
           "top": 300,
           "width": 4560,
           "height": 1440,
-          "visible": true
+          "visible": true,
+          "backColor": 14211288,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -76,9 +95,14 @@
           "height": 345,
           "controlSource": "GI Last Name",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "TextBox",
@@ -89,9 +113,13 @@
           "height": 345,
           "controlSource": "GI First Name",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640
         },
         {
           "type": "TextBox",
@@ -102,10 +130,17 @@
           "height": 345,
           "controlSource": "GI Open Date",
           "format": "Short Date",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 15,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -116,9 +151,14 @@
           "height": 3060,
           "controlSource": "GI Comments",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "Label",
@@ -128,7 +168,12 @@
           "width": 1200,
           "height": 360,
           "caption": "*Last Name",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -138,7 +183,12 @@
           "width": 1185,
           "height": 360,
           "caption": "*First Name",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -148,7 +198,12 @@
           "width": 1260,
           "height": 360,
           "caption": "Intake Date:",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -158,7 +213,13 @@
           "width": 1500,
           "height": 285,
           "caption": "INTAKE STATUS",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "CheckBox",
@@ -169,6 +230,7 @@
           "height": 240,
           "controlSource": "GI No Further Action",
           "tabIndex": 14,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false
@@ -181,7 +243,12 @@
           "width": 1785,
           "height": 360,
           "caption": "No Further Action",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -191,7 +258,13 @@
           "width": 1800,
           "height": 240,
           "caption": "Comments",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -203,9 +276,13 @@
           "controlSource": "GI Date",
           "format": "Short Date",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -215,10 +292,16 @@
           "width": 3300,
           "height": 345,
           "controlSource": "GI Phone",
+          "inputMask": "!\\(999\") \"000\\-0000;0;_",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "Label",
@@ -228,7 +311,12 @@
           "width": 870,
           "height": 240,
           "caption": "Phone",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "Label",
@@ -238,7 +326,13 @@
           "width": 2460,
           "height": 360,
           "caption": "Practice Area",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent",
+          "textAlign": "right"
         },
         {
           "type": "TextBox",
@@ -249,9 +343,14 @@
           "height": 255,
           "controlSource": "ID",
           "tabIndex": 21,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638
         },
         {
           "type": "ComboBox",
@@ -262,10 +361,23 @@
           "height": 345,
           "controlSource": "GI Practice Area",
           "rowSource": "SELECT Code, codeVal, sortOrder FROM tblDropD WHERE FieldName='Case_letter' ORDER BY SortOrder; ",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 2,
+          "columnWidths": "720;2160",
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "2880",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "CommandButton",
@@ -275,9 +387,18 @@
           "width": 1320,
           "height": 360,
           "caption": "&Add New",
+          "picture": "(none)",
           "tabIndex": 20,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 13998939,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -291,9 +412,14 @@
           "height": 780,
           "controlSource": "ReasonDintHire",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -303,7 +429,13 @@
           "width": 2340,
           "height": 240,
           "caption": "Reason Didn't Hire",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -313,10 +445,17 @@
           "width": 1440,
           "height": 345,
           "controlSource": "FollowUpDate",
+          "inputMask": "99/99/0000;0;_",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640,
+          "backColor": -2147483643,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -326,7 +465,13 @@
           "width": 1440,
           "height": 315,
           "caption": "Follow Up Call ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent",
+          "textAlign": "right"
         },
         {
           "type": "TextBox",
@@ -337,9 +482,14 @@
           "height": 345,
           "controlSource": "QuotedFee",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "Label",
@@ -349,7 +499,12 @@
           "width": 1050,
           "height": 315,
           "caption": "Fee Quote",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "CommandButton",
@@ -359,9 +514,17 @@
           "width": 2040,
           "height": 360,
           "caption": "&Last Week Intakes",
+          "picture": "(none)",
           "tabIndex": 19,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 3684411,
+          "backColor": 14602694,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -374,7 +537,12 @@
           "width": 585,
           "height": 300,
           "caption": "Date",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "CheckBox",
@@ -385,6 +553,7 @@
           "height": 240,
           "controlSource": "Scanned GI",
           "tabIndex": 17,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false
@@ -397,7 +566,13 @@
           "width": 720,
           "height": 240,
           "caption": "Scanned",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -408,9 +583,15 @@
           "height": 240,
           "controlSource": "Scan Location GI",
           "tabIndex": 18,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "fontUnderline": true,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "Label",
@@ -420,7 +601,12 @@
           "width": 1140,
           "height": 240,
           "caption": "File Location",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "CheckBox",
@@ -431,9 +617,11 @@
           "height": 240,
           "controlSource": "GI Open",
           "tabIndex": 16,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -443,7 +631,12 @@
           "width": 990,
           "height": 315,
           "caption": "Open",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -455,9 +648,14 @@
           "controlSource": "GIDOB",
           "format": "Short Date",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "Label",
@@ -467,7 +665,12 @@
           "width": 870,
           "height": 240,
           "caption": "*DOB",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -478,9 +681,14 @@
           "height": 345,
           "controlSource": "GI Matter",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -490,7 +698,12 @@
           "width": 825,
           "height": 315,
           "caption": "*Matter",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -500,7 +713,12 @@
           "width": 705,
           "height": 315,
           "caption": "Source",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "TextBox",
@@ -511,9 +729,14 @@
           "height": 345,
           "controlSource": "[GI Individual Referrer]",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": -2147483640,
+          "backColor": -2147483643
         },
         {
           "type": "ComboBox",
@@ -524,10 +747,22 @@
           "height": 345,
           "controlSource": "GI Referral",
           "rowSource": "SELECT tblDropD.DropID, tblDropD.CodeVal FROM tblDropD WHERE (((tblDropD.FieldName)=\"Referral\")) ORDER BY tblDropD.SortOrder; ",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 3,
+          "columnWidths": "0;1444;0",
+          "columnHeads": false,
+          "limitToList": true,
+          "listWidth": "0",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 3484194,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -537,7 +772,12 @@
           "width": 1050,
           "height": 315,
           "caption": "Individual ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backColor": -2147483633,
+          "backStyle": "transparent"
         },
         {
           "type": "ComboBox",
@@ -548,10 +788,22 @@
           "height": 345,
           "controlSource": "Attorny",
           "rowSource": "qry_OrigAtty_list_options",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 3484194,
+          "borderColor": 10921638,
+          "textAlign": "center"
         },
         {
           "type": "Label",
@@ -561,7 +813,13 @@
           "width": 2460,
           "height": 375,
           "caption": "Originating Attorney",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": -2147483630,
+          "backColor": -2147483633,
+          "backStyle": "transparent",
+          "textAlign": "right"
         },
         {
           "type": "CommandButton",
@@ -571,9 +829,18 @@
           "width": 1341,
           "height": 360,
           "caption": "Last 6 Months",
+          "controlTipText": "Apply Filter",
+          "picture": "(image)",
           "tabIndex": 22,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -586,9 +853,17 @@
           "width": 1620,
           "height": 360,
           "caption": "ALL INTAKES",
+          "picture": "(none)",
           "tabIndex": 23,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -601,9 +876,18 @@
           "width": 1560,
           "height": 780,
           "caption": "Create Open File",
+          "picture": "(none)",
           "tabIndex": 24,
+          "tabStop": true,
           "visible": false,
           "enabled": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 8210719,
+          "borderStyle": 1,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -616,9 +900,15 @@
           "width": 540,
           "height": 420,
           "caption": "Pull\r\nScan",
+          "picture": "(none)",
           "tabIndex": 25,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "backColor": 13816815,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -631,9 +921,15 @@
           "width": 540,
           "height": 420,
           "caption": "Open Intake",
+          "picture": "(none)",
           "tabIndex": 26,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "backColor": 14461583,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -650,17 +946,26 @@
           "top": 0,
           "width": 15540,
           "height": 1440,
-          "visible": true
+          "visible": true,
+          "backColor": 12428174,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
           "name": "Label7",
           "left": 1380,
-          "top": 200,
+          "top": 192,
           "width": 2625,
           "height": 900,
           "caption": "INTAKES",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 36,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 6968388,
+          "textAlign": "left"
         },
         {
           "type": "CommandButton",
@@ -670,9 +975,16 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backColor": 15527148,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -684,7 +996,10 @@
           "top": 240,
           "width": 1020,
           "height": 840,
-          "visible": true
+          "picture": "Logo Transparent",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "Image",
@@ -693,7 +1008,10 @@
           "top": 540,
           "width": 480,
           "height": 345,
+          "picture": "Home Button.ico",
           "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -710,7 +1028,9 @@
           "top": 0,
           "width": 15540,
           "height": 420,
-          "visible": true
+          "visible": true,
+          "backColor": 12428174,
+          "borderColor": 10921638
         }
       ]
     }

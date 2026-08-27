@@ -1,8 +1,11 @@
 {
   "reportName": "Client_Trust_Accounts_for_PreTake_Off",
   "dataSource": "qryTakeOff",
-  "width": 14400,
   "caption": "Pre Take Off Client Trust Accounts",
+  "width": 14400,
+  "filter": "Orig_Atty='RLF'",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "landscape",
   "margins": {
     "left": 720,
@@ -10,6 +13,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "Last_Name",
@@ -22,6 +26,7 @@
     {
       "type": "Detail",
       "height": 405,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -234,6 +239,7 @@
     {
       "type": "ReportHeader",
       "height": 1620,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -347,6 +353,7 @@
     {
       "type": "ReportFooter",
       "height": 720,
+      "keepTogether": true,
       "controls": []
     },
     {

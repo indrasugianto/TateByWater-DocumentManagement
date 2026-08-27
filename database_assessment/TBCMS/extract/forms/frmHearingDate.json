@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 7710,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -19,7 +25,10 @@
           "top": 0,
           "width": 600,
           "height": 360,
-          "visible": true
+          "picture": "Outlook trans",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -28,9 +37,18 @@
           "top": 0,
           "width": 576,
           "height": 366,
+          "controlTipText": "Find Next",
+          "picture": "(none)",
           "tabIndex": 11,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "backStyle": "transparent",
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -44,9 +62,15 @@
           "height": 90,
           "controlSource": "HearingID",
           "tabIndex": 8,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -57,9 +81,15 @@
           "height": 90,
           "controlSource": "CaseID",
           "tabIndex": 7,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -69,9 +99,15 @@
           "width": 306,
           "height": 366,
           "caption": "Command19",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 6,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -85,9 +121,15 @@
           "height": 90,
           "controlSource": "HearingID",
           "tabIndex": 9,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -98,9 +140,15 @@
           "height": 90,
           "controlSource": "CaseID",
           "tabIndex": 10,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "ComboBox",
@@ -111,10 +159,23 @@
           "height": 315,
           "controlSource": "HearingType",
           "rowSource": "qry_HearingType_list_options",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnWidths": "1440",
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "TextBox",
@@ -125,9 +186,15 @@
           "height": 315,
           "controlSource": "Hearing_Date",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "ComboBox",
@@ -138,11 +205,23 @@
           "height": 315,
           "controlSource": "HearingTime",
           "rowSource": "8:00 AM;8:30 AM;9:00 AM;9:30 AM;10:00 AM;10:30 AM;11:00 AM;11:30 AM;12:00 PM;12:30 PM;1:00 PM;1:30 PM;2:00 PM;2:30 PM;3:00 PM;3:30 PM;4:00 PM;4:30 PM;5:00 PM;5:30 PM;6:00 PM",
+          "rowSourceType": "Value List",
           "format": "Medium Time",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "CheckBox",
@@ -153,9 +232,12 @@
           "height": 240,
           "controlSource": "hrgCal",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CheckBox",
@@ -166,9 +248,12 @@
           "height": 240,
           "controlSource": "Verified",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CheckBox",
@@ -179,9 +264,12 @@
           "height": 240,
           "controlSource": "ClientPresent",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "ComboBox",
@@ -192,10 +280,24 @@
           "height": 299,
           "controlSource": "Reminder",
           "rowSource": "Called;LM;Text;Email",
+          "rowSourceType": "Value List",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnWidths": "432;0",
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "720",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 7,
+          "foreColor": 3484194,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         }
       ]
     },
@@ -210,7 +312,13 @@
           "width": 1140,
           "height": 315,
           "caption": "HRG DATE",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -220,7 +328,13 @@
           "width": 1020,
           "height": 315,
           "caption": "TYPE",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -230,7 +344,13 @@
           "width": 600,
           "height": 315,
           "caption": "TIME",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -240,7 +360,13 @@
           "width": 420,
           "height": 315,
           "caption": "Cal",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -250,7 +376,13 @@
           "width": 315,
           "height": 315,
           "caption": "CP",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -260,7 +392,13 @@
           "width": 210,
           "height": 315,
           "caption": "V",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -270,7 +408,13 @@
           "width": 720,
           "height": 285,
           "caption": "Remind",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 5855577,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }

@@ -2,6 +2,8 @@
   "reportName": "Invoice Attach - Hourly w Discount",
   "dataSource": "qryInvoiceAttachRPT1",
   "width": 10800,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -9,6 +11,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -21,6 +24,7 @@
     {
       "type": "Detail",
       "height": 705,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -188,9 +192,9 @@
         {
           "type": "Image",
           "name": "Image0",
-          "left": 330,
+          "left": 336,
           "top": 60,
-          "width": 4575,
+          "width": 4572,
           "height": 780,
           "borderColor": 10921638
         },
@@ -395,9 +399,9 @@
           "type": "Label",
           "name": "Label38",
           "left": 780,
-          "top": 870,
+          "top": 876,
           "width": 4155,
-          "height": 315,
+          "height": 312,
           "caption": "ATTORNEYS AT LAW",
           "fontName": "Californian FB",
           "fontSize": 11,
@@ -521,6 +525,8 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 660,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -626,6 +632,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 1380,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

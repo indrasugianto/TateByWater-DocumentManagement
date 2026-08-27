@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 22920,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,9 +26,12 @@
           "width": 10800,
           "height": 10320,
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmClientsConflict"
         },
         {
@@ -33,9 +42,12 @@
           "width": 11160,
           "height": 4860,
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmIntakesConflicts"
         },
         {
@@ -45,7 +57,8 @@
           "top": 120,
           "width": 0,
           "height": 10320,
-          "visible": true
+          "visible": true,
+          "borderStyle": 1
         },
         {
           "type": "SubForm",
@@ -55,9 +68,12 @@
           "width": 11160,
           "height": 5295,
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderColor": 10921638,
+          "canGrow": true,
           "sourceObject": "frmOppPartyConflict"
         }
       ]
@@ -73,7 +89,13 @@
           "width": 5340,
           "height": 840,
           "caption": "CONFLICT CHECK",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 36,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Image",
@@ -82,7 +104,10 @@
           "top": 240,
           "width": 1020,
           "height": 840,
-          "visible": true
+          "picture": "Logo Transparent",
+          "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -92,9 +117,16 @@
           "width": 1140,
           "height": 345,
           "caption": "&Close",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "backColor": 15527148,
+          "borderColor": 13998939,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -103,10 +135,13 @@
           "type": "Image",
           "name": "cmbHome",
           "left": 21480,
-          "top": 510,
+          "top": 516,
           "width": 480,
-          "height": 345,
+          "height": 348,
+          "picture": "Home Button.ico",
           "visible": true,
+          "backStyle": "transparent",
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }

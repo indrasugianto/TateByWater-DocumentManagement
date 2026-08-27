@@ -2,6 +2,10 @@
   "reportName": "Statement of Trust Account",
   "dataSource": "qryStmtTrustRPT1",
   "width": 10500,
+  "filter": "[CaseID]=23347",
+  "filterOn": false,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
     "left": 864,
@@ -9,6 +13,7 @@
     "top": 720,
     "bottom": 950
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -27,6 +32,7 @@
     {
       "type": "Detail",
       "height": 480,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -394,6 +400,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 480,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -470,6 +477,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 420,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",

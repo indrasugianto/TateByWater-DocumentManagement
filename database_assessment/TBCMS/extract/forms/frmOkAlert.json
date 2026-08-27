@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 0,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 6300,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,7 +26,11 @@
           "width": 6105,
           "height": 675,
           "caption": "No message specified!",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -30,7 +40,11 @@
           "width": 6105,
           "height": 315,
           "caption": " ",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "borderColor": 8355711,
+          "textAlign": "left"
         },
         {
           "type": "CommandButton",
@@ -40,9 +54,18 @@
           "width": 1680,
           "height": 360,
           "caption": "Ok",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -56,9 +79,17 @@
           "height": 360,
           "controlSource": "=GetCompanyName()",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 6968388,
+          "borderStyle": 1,
+          "borderColor": 8355711,
+          "textAlign": "center"
         }
       ]
     }

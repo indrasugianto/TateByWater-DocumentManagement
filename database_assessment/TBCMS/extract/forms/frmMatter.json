@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 9000,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -21,9 +27,15 @@
           "height": 315,
           "controlSource": "[Matter and AR].OrderNr",
           "tabIndex": 11,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -35,9 +47,15 @@
           "controlSource": "=GetRetainer(GetCaseID())+Nz(DSum(\"charge\",\"[matter and ar]\",\"Date2<=\" & [Date2] & \" and MatterID<=\" & [MatterID] & \" and caseID=\" & GetCaseID()),0)-Nz(DSum(\"payment\",\"[matter and ar]\",\"Date2<=\" & [Date2] & \" and MatterID<=\" & Nz([MatterID],0) & \" and caseID=\" & GetCaseID()),0)",
           "format": "Currency",
           "tabIndex": 8,
+          "tabStop": false,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -48,9 +66,15 @@
           "height": 315,
           "controlSource": "CaseID",
           "tabIndex": 13,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -60,9 +84,17 @@
           "width": 705,
           "height": 285,
           "caption": "Trust",
+          "picture": "(none)",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": false,
           "enabled": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderColor": 15066597,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -76,10 +108,24 @@
           "height": 359,
           "controlSource": "Pay_Outlay",
           "rowSource": "qry_matterAR_pay_putlay_list_options",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "events": {
+            "onLostFocus": "[Event Procedure]"
+          }
         },
         {
           "type": "CheckBox",
@@ -90,9 +136,12 @@
           "height": 240,
           "controlSource": "InsertPymt",
           "tabIndex": 14,
+          "tabStop": false,
           "visible": false,
           "enabled": true,
-          "locked": true
+          "locked": true,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -103,9 +152,15 @@
           "height": 360,
           "controlSource": "Date2",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -117,9 +172,15 @@
           "controlSource": "Charge",
           "format": "Currency",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "foreColor": 1117824,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "TextBox",
@@ -131,9 +192,15 @@
           "controlSource": "Payment",
           "format": "Currency",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 8,
+          "foreColor": 8210719,
+          "borderStyle": 1,
+          "borderColor": 15066597
         },
         {
           "type": "CheckBox",
@@ -143,10 +210,14 @@
           "width": 180,
           "height": 240,
           "controlSource": "FirmPrepaid",
+          "defaultValue": "0",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -159,9 +230,15 @@
           "width": 306,
           "height": 366,
           "caption": "Command19",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 9,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -176,9 +253,16 @@
           "controlSource": "Balance",
           "format": "Currency",
           "tabIndex": 10,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 15066597,
+          "textAlign": "right"
         },
         {
           "type": "TextBox",
@@ -189,12 +273,30 @@
           "height": 270,
           "controlSource": "=\"D\"",
           "tabIndex": 12,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "fontUnderline": true,
+          "foreColor": 12673797,
+          "backColor": 15917518,
+          "borderStyle": 1,
+          "borderWidth": 3,
+          "borderColor": 10921638,
+          "textAlign": "center",
           "events": {
             "onClick": "[Event Procedure]"
-          }
+          },
+          "formatConditions": [
+            {
+              "type": 1,
+              "expression1": "[InsertPymt]",
+              "foreColor": 9211020,
+              "backColor": 14211288
+            }
+          ]
         },
         {
           "type": "CommandButton",
@@ -204,9 +306,17 @@
           "width": 180,
           "height": 300,
           "caption": "R",
+          "picture": "(none)",
           "tabIndex": 15,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "backColor": 13816815,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -219,12 +329,17 @@
           "width": 180,
           "height": 240,
           "controlSource": "AdvancedLegal",
+          "defaultValue": "0",
           "tabIndex": 6,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
           "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638,
           "events": {
-            "onClick": "[Event Procedure]"
+            "onClick": "[Event Procedure]",
+            "onLostFocus": "[Event Procedure]"
           }
         },
         {
@@ -236,9 +351,12 @@
           "height": 240,
           "controlSource": "Creimb",
           "tabIndex": 16,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "TextBox",
@@ -249,9 +367,15 @@
           "height": 285,
           "controlSource": "MatterID",
           "tabIndex": 7,
+          "tabStop": false,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri Light",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         }
       ]
     }

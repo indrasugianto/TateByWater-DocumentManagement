@@ -34,7 +34,8 @@
       "lineStart": 3300,
       "lineEnd": 3323,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -44,7 +45,10 @@
       "lineStart": 3471,
       "lineEnd": 3550,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
@@ -54,7 +58,8 @@
       "lineStart": 2480,
       "lineEnd": 2489,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -64,7 +69,8 @@
       "lineStart": 2494,
       "lineEnd": 2502,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     }
   ],
   "confidence": "medium"

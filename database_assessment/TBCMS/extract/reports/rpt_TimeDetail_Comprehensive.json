@@ -2,6 +2,8 @@
   "reportName": "rpt_TimeDetail_Comprehensive",
   "dataSource": "qryInvoiceComprehensiveTimeDetail",
   "width": 10140,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "portrait",
   "margins": {
     "left": 720,
@@ -9,6 +11,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -21,6 +24,7 @@
     {
       "type": "Detail",
       "height": 420,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -115,11 +119,13 @@
       "type": "ReportHeader",
       "height": 0,
       "backColor": 15064278,
+      "keepTogether": true,
       "controls": []
     },
     {
       "type": "ReportFooter",
       "height": 0,
+      "keepTogether": true,
       "controls": []
     },
     {
@@ -137,6 +143,8 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 675,
+      "forceNewPage": 1,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -299,6 +307,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 480,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

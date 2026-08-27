@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 0,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 6240,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -19,7 +25,9 @@
           "top": 0,
           "width": 6240,
           "height": 870,
-          "visible": true
+          "visible": true,
+          "backColor": 14211288,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -28,7 +36,9 @@
           "top": 870,
           "width": 6240,
           "height": 210,
-          "visible": true
+          "visible": true,
+          "backColor": 8210719,
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -38,11 +48,22 @@
           "width": 1380,
           "height": 360,
           "caption": "&Submit",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 7434614,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
           "events": {
-            "onClick": "[Event Procedure]"
+            "onClick": "[Event Procedure]",
+            "onKeyPress": "[Event Procedure]"
           }
         },
         {
@@ -53,9 +74,19 @@
           "width": 1395,
           "height": 360,
           "caption": "&Cancel",
+          "picture": "(none)",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 10,
+          "fontBold": true,
+          "foreColor": 16777215,
+          "backColor": 7434614,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -67,10 +98,17 @@
           "top": 1260,
           "width": 3660,
           "height": 420,
+          "inputMask": "Password",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 14,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Image",
@@ -79,7 +117,10 @@
           "top": 180,
           "width": 6240,
           "height": 900,
-          "visible": true
+          "picture": "TB 2019 Attorneys, color_png",
+          "visible": true,
+          "backColor": 14211288,
+          "borderColor": 10921638
         },
         {
           "type": "Rectangle",
@@ -88,7 +129,9 @@
           "top": 0,
           "width": 1080,
           "height": 870,
-          "visible": true
+          "visible": true,
+          "backColor": 14211288,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -98,7 +141,11 @@
           "width": 1560,
           "height": 420,
           "caption": "Admin Pasword",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }

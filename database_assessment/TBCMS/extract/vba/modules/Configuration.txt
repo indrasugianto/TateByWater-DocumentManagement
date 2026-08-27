@@ -20,7 +20,7 @@ Const conPropNotFound = 3270
 Set db = CurrentDb()
 
 'This next line disables the shift key on startup.
-db.Properties("AllowByPassKey") = False
+'db.Properties("AllowByPassKey") = False
 
 'The function is successful.
 Exit Function
@@ -28,15 +28,15 @@ Exit Function
 errDisableShift:
 'The first part of this error routine creates the "AllowByPassKey
 'property if it does not exist.
-If Err = conPropNotFound Then
-Set prop = db.CreateProperty("AllowByPassKey", _
-dbBoolean, False)
-db.Properties.Append prop
-Resume Next
-Else
-MsgBox "Function 'ap_DisableShift' did not complete successfully."
-Exit Function
-End If
+'If Err = conPropNotFound Then
+'Set prop = db.CreateProperty("AllowByPassKey", _
+'dbBoolean, False)
+'db.Properties.Append prop
+'Resume Next
+'Else
+'MsgBox "Function 'ap_DisableShift' did not complete successfully."
+'Exit Function
+'End If
 
 End Function
 
@@ -54,7 +54,7 @@ Const conPropNotFound = 3270
 Set db = CurrentDb()
 
 'This next line of code disables the SHIFT key on startup.
-db.Properties("AllowByPassKey") = True
+'db.Properties("AllowByPassKey") = True
 
 'function successful
 Exit Function
@@ -62,14 +62,14 @@ Exit Function
 errEnableShift:
 'The first part of this error routine creates the "AllowByPassKey
 'property if it does not exist.
-If Err = conPropNotFound Then
-Set prop = db.CreateProperty("AllowByPassKey", _
-dbBoolean, True)
-db.Properties.Append prop
-Resume Next
-Else
-MsgBox "Function 'ap_DisableShift' did not complete successfully."
-Exit Function
-End If
+'If Err = conPropNotFound Then
+'Set prop = db.CreateProperty("AllowByPassKey", _
+'dbBoolean, True)
+'db.Properties.Append prop
+'Resume Next
+'Else
+'MsgBox "Function 'ap_DisableShift' did not complete successfully."
+'Exit Function
+'End If
 
 End Function

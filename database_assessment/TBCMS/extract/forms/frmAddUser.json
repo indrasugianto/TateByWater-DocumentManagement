@@ -5,9 +5,15 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 0,
+  "recordsetType": 0,
+  "filterOn": false,
+  "orderByOn": false,
   "width": 6180,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -20,9 +26,18 @@
           "width": 1590,
           "height": 360,
           "caption": "Submit",
+          "picture": "(none)",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -35,9 +50,18 @@
           "width": 1575,
           "height": 360,
           "caption": "Exit",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderWidth": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }
@@ -51,9 +75,17 @@
           "height": 360,
           "controlSource": "=GetCompanyName()",
           "tabIndex": 2,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "backColor": 6968388,
+          "borderStyle": 1,
+          "borderColor": 8355711,
+          "textAlign": "center"
         },
         {
           "type": "TextBox",
@@ -64,9 +96,15 @@
           "height": 315,
           "controlSource": "UserID",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -76,7 +114,12 @@
           "width": 690,
           "height": 315,
           "caption": "UserID",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -87,9 +130,15 @@
           "height": 315,
           "controlSource": "PWD",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "Label",
@@ -99,7 +148,12 @@
           "width": 525,
           "height": 315,
           "caption": "PWD",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "ComboBox",
@@ -110,10 +164,24 @@
           "height": 315,
           "controlSource": "Access",
           "rowSource": "SELECT tblAccessType.ID, tblAccessType.AccessType FROM tblAccessType; ",
+          "rowSourceType": "Table/Query",
+          "boundColumn": 1,
+          "columnCount": 2,
+          "columnWidths": "0;2880",
+          "columnHeads": false,
+          "limitToList": true,
+          "listWidth": "0",
           "tabIndex": 5,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 3484194,
+          "borderStyle": 1,
+          "borderColor": 10921638,
+          "textAlign": "left"
         },
         {
           "type": "Label",
@@ -123,7 +191,12 @@
           "width": 690,
           "height": 315,
           "caption": "Access",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 8355711,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Line",
@@ -132,7 +205,9 @@
           "top": 960,
           "width": 5040,
           "height": 0,
-          "visible": true
+          "visible": true,
+          "borderStyle": 1,
+          "borderColor": 6968388
         },
         {
           "type": "Label",
@@ -142,7 +217,12 @@
           "width": 1440,
           "height": 480,
           "caption": "Add User",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 18,
+          "foreColor": 6108695,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         }
       ]
     }

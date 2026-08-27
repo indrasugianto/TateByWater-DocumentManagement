@@ -5,9 +5,16 @@
   "allowEdits": true,
   "allowAdditions": true,
   "allowDeletions": true,
+  "allowFilters": true,
   "dataEntry": false,
   "navigationButtons": false,
+  "scrollBars": 3,
+  "recordsetType": 0,
+  "orderBy": "[EventDate] DESC",
+  "filterOn": false,
+  "orderByOn": true,
   "width": 8196,
+  "timerInterval": 0,
   "sections": [
     {
       "type": "Detail",
@@ -22,9 +29,15 @@
           "controlSource": "EventDate",
           "format": "Short Date",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "TextBox",
@@ -35,9 +48,15 @@
           "height": 720,
           "controlSource": "EventDescription",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "CommandButton",
@@ -47,9 +66,16 @@
           "width": 576,
           "height": 331,
           "caption": "Command24",
+          "controlTipText": "Delete Record",
+          "picture": "(image)",
           "tabIndex": 2,
+          "tabStop": false,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 16777215,
+          "borderColor": 3243501,
           "events": {
             "onClick": "[Embedded Macro]"
           }
@@ -63,10 +89,23 @@
           "height": 314,
           "controlSource": "LogParalegal",
           "rowSource": "AO;KP;JN;IQ;FM",
+          "rowSourceType": "Value List",
+          "boundColumn": 1,
+          "columnCount": 1,
+          "columnWidths": "1440",
+          "columnHeads": false,
+          "limitToList": false,
+          "listWidth": "0",
           "tabIndex": 3,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 9,
+          "foreColor": 3484194,
+          "borderStyle": 1,
+          "borderColor": 14277081
         },
         {
           "type": "TextBox",
@@ -77,9 +116,15 @@
           "height": 315,
           "controlSource": "PersInjLogID",
           "tabIndex": 4,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         }
       ]
     },
@@ -94,7 +139,12 @@
           "width": 480,
           "height": 300,
           "caption": "LOG",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "fontBold": true,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -104,7 +154,11 @@
           "width": 600,
           "height": 300,
           "caption": "DATE",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "Label",
@@ -114,7 +168,11 @@
           "width": 1995,
           "height": 300,
           "caption": "Description / Update",
-          "visible": true
+          "visible": true,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "backStyle": "transparent",
+          "borderColor": 8355711
         },
         {
           "type": "TextBox",
@@ -125,9 +183,15 @@
           "height": 315,
           "controlSource": "ID",
           "tabIndex": 0,
+          "tabStop": true,
           "visible": false,
           "enabled": true,
-          "locked": false
+          "locked": false,
+          "fontName": "Calibri",
+          "fontSize": 11,
+          "foreColor": 4210752,
+          "borderStyle": 1,
+          "borderColor": 10921638
         },
         {
           "type": "CommandButton",
@@ -137,9 +201,17 @@
           "width": 540,
           "height": 300,
           "caption": "New",
+          "picture": "(none)",
           "tabIndex": 1,
+          "tabStop": true,
           "visible": true,
           "enabled": true,
+          "fontName": "Calibri",
+          "fontSize": 8,
+          "foreColor": 4210752,
+          "backColor": 14461583,
+          "borderStyle": 1,
+          "borderColor": 14461583,
           "events": {
             "onClick": "[Event Procedure]"
           }

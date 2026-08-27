@@ -8,10 +8,11 @@
       "eventName": "onClick",
       "procedureName": "cmdPrintLabelP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16896,
-      "lineEnd": 16926,
+      "lineStart": 18700,
+      "lineEnd": 18730,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frmClientLedger",
@@ -19,10 +20,11 @@
       "eventName": "onClick",
       "procedureName": "cmdPrintLabel_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17496,
-      "lineEnd": 17548,
+      "lineStart": 19300,
+      "lineEnd": 19352,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frm_trust_summary",
@@ -33,7 +35,8 @@
       "lineStart": 6871,
       "lineEnd": 6900,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "frm_invoices_summary",
@@ -44,18 +47,8 @@
       "lineStart": 8301,
       "lineEnd": 8329,
       "confidence": "high",
-      "reportMentionType": "literal"
-    },
-    {
-      "formName": "frmTimeKeepingClosed",
-      "controlName": "cmdPrintLabel",
-      "eventName": "onClick",
-      "procedureName": "cmdPrintLabel_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7833,
-      "lineEnd": 7862,
-      "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
     },
     {
       "formName": "zClient Ledger OLD",
@@ -63,10 +56,23 @@
       "eventName": "onClick",
       "procedureName": "cmdPrintLabel_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8071,
-      "lineEnd": 8086,
+      "lineStart": 8050,
+      "lineEnd": 8065,
       "confidence": "high",
-      "reportMentionType": "literal"
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmTimeKeepingClosed",
+      "controlName": "cmdPrintLabel",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7895,
+      "lineEnd": 7924,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
     }
   ],
   "dataLineage": {
@@ -84,41 +90,50 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16628,
-      "lineEnd": 16658,
+      "lineStart": 18432,
+      "lineEnd": 18462,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16659,
-      "lineEnd": 16689,
+      "lineStart": 18463,
+      "lineEnd": 18493,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmdPrintLabelP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 16896,
-      "lineEnd": 16926,
+      "lineStart": 18700,
+      "lineEnd": 18730,
       "usesDoCmd": [
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmdPrintLabel_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17496,
-      "lineEnd": 17548,
+      "lineStart": 19300,
+      "lineEnd": 19352,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -127,30 +142,38 @@
         "SetWarnings",
         "openform"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql",
+        "setWarnings"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17559,
-      "lineEnd": 17696,
+      "lineStart": 19363,
+      "lineEnd": 19500,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 17741,
-      "lineEnd": 17751,
+      "lineStart": 19545,
+      "lineEnd": 19555,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -163,7 +186,8 @@
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
@@ -176,80 +200,138 @@
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdPrintLabel_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7833,
-      "lineEnd": 7862,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7636,
-      "lineEnd": 7688,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7751,
-      "lineEnd": 7798,
-      "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdPrintLabel_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8071,
-      "lineEnd": 8086,
+      "lineStart": 8050,
+      "lineEnd": 8065,
       "usesDoCmd": [
         "Close",
         "OpenReport"
       ],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "form",
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdSubmitToFamilyLaw_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8087,
-      "lineEnd": 8117,
+      "lineStart": 8066,
+      "lineEnd": 8096,
       "usesDoCmd": [
         "RunCommand",
         "RunSQL",
         "SetWarnings",
         "openform"
       ],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql",
+        "setWarnings"
+      ]
     },
     {
       "objectType": "form",
       "objectName": "zClient Ledger OLD",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8143,
-      "lineEnd": 8147,
+      "lineStart": 8122,
+      "lineEnd": 8126,
       "usesDoCmd": [],
-      "usesSql": false
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7608,
+      "lineEnd": 7660,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7723,
+      "lineEnd": 7770,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdPrintLabel_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7895,
+      "lineEnd": 7924,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "modGaz",
+      "procedureName": "fncGetTABalanceWithCaseID",
+      "sourceFile": "extract/vba/modules/modGaz.txt",
+      "lineStart": 167,
+      "lineEnd": 179,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "modGaz",
+      "procedureName": "get_remaining_AdvancedChargesBalance",
+      "sourceFile": "extract/vba/modules/modGaz.txt",
+      "lineStart": 351,
+      "lineEnd": 398,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "modGaz",
+      "procedureName": "fncGetMatterARBalanceWithCaseID",
+      "sourceFile": "extract/vba/modules/modGaz.txt",
+      "lineStart": 406,
+      "lineEnd": 418,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "Module1",
+      "procedureName": "GetRetainer",
+      "sourceFile": "extract/vba/modules/Module1.txt",
+      "lineStart": 20,
+      "lineEnd": 23,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
     }
   ],
   "confidence": "high"

@@ -1,7 +1,9 @@
 {
   "reportName": "rptPISOLList",
-  "width": 13080,
   "caption": "Client Trust Accounts for Take Off",
+  "width": 13080,
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "landscape",
   "margins": {
     "left": 720,
@@ -9,6 +11,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "Last_Name",
@@ -21,6 +24,7 @@
     {
       "type": "Detail",
       "height": 660,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -147,6 +151,7 @@
     {
       "type": "ReportHeader",
       "height": 1620,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -187,6 +192,7 @@
     {
       "type": "ReportFooter",
       "height": 0,
+      "keepTogether": true,
       "controls": []
     },
     {

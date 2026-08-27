@@ -2,6 +2,9 @@
   "reportName": "rptInvoiceComprTrustCur",
   "dataSource": "qryInvoiceComprehensiveTrustCredit",
   "width": 5100,
+  "filterOn": false,
+  "orderBy": "OrderNr",
+  "orderByOn": true,
   "orientation": "portrait",
   "margins": {
     "left": 360,
@@ -9,6 +12,7 @@
     "top": 240,
     "bottom": 240
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "CaseID",
@@ -27,6 +31,7 @@
     {
       "type": "Detail",
       "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -92,6 +97,7 @@
       "groupField": "CaseID",
       "height": 675,
       "backColor": 13556704,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -188,6 +194,7 @@
       "groupIndex": 0,
       "groupField": "CaseID",
       "height": 435,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

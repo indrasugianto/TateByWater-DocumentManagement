@@ -17,10 +17,13 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdInsertTime_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4687,
-      "lineEnd": 4710,
+      "lineStart": 4688,
+      "lineEnd": 4711,
       "usesDoCmd": [],
-      "usesSql": true
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
     }
   ],
   "confidence": "medium"

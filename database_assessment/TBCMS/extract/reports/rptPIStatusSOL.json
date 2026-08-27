@@ -1,8 +1,11 @@
 {
   "reportName": "rptPIStatusSOL",
   "dataSource": "qryAttyTrustAcctsTOff",
-  "width": 14400,
   "caption": "Client Trust Accounts for Take Off",
+  "width": 14400,
+  "filter": "Orig_Atty ='JRT' and TakeOffMonthID=67",
+  "filterOn": false,
+  "orderByOn": false,
   "orientation": "landscape",
   "margins": {
     "left": 720,
@@ -10,6 +13,7 @@
     "top": 720,
     "bottom": 720
   },
+  "paperSize": 1,
   "groupLevels": [
     {
       "fieldExpression": "Last_Name",
@@ -22,6 +26,7 @@
     {
       "type": "Detail",
       "height": 360,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -236,6 +241,7 @@
     {
       "type": "ReportHeader",
       "height": 1620,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -415,6 +421,7 @@
     {
       "type": "ReportFooter",
       "height": 720,
+      "keepTogether": true,
       "controls": []
     },
     {
