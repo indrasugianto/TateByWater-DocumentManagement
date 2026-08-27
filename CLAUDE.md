@@ -65,3 +65,13 @@ Section 1 Phase 2 schema (6 Dropbox tables + `spLogDropboxAuditEvent`) · 2 manu
 ## Security note
 
 Live credentials are present in tracked/untracked files in this repo: the Dropbox AppKey (`dqleswbnux8k3m5`) and namespace ID appear in the plan; SQL Server logins appear in `.claude/settings.local.json` and historically in `z_PCADataSources.csv`. The plan calls for rotating these (AppSecret + `TateBywaterSQLUser` in lockstep) before the production cutover. Do not propagate these secrets into new tracked files, and do not paste the SQL password into committed docs.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs live as GitHub issues on `indrasugianto/TateByWater-DocumentManagement`, managed via the `gh` CLI. See `.docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context, but rooted at `.docs/` (this repo's existing docs convention) instead of `docs/`: `.docs/CONTEXT.md` + `.docs/adr/`, read alongside the existing `.docs/dropbox-migration-plan.md` and `.docs/document-management-analysis.md`. See `.docs/agents/domain.md`.
