@@ -9,14 +9,21 @@
 --                                     spLogDropboxAuditEvent; seed singleton
 --                                     config rows.
 --   SECTION 2 — Manual-triage tables: CREATE-IF-MISSING the two triage tables
---                                     used by the path migration.
+--                                     used by the path migration, plus
+--                                     tblCaseDocuments_PathBackup — a
+--                                     pre-migration snapshot table for
+--                                     rolling back the SECTION 5 path
+--                                     rewrite (see SECTION 5 PART 0).
 --   SECTION 3 — DocumentTypes typo  : fix the '(customeruserentry)' typo on
 --                                     tblDocumentTypes row 30.
 --   SECTION 4 — Intake natural-key  : fix [TB Intakes] rows 183/185/193/2482
 --                                     (Phase 1b item B-5 — see plan).
---   SECTION 5 — Path migration      : rewrite S:\ paths to /Company/ across
---                                     tblCaseDocuments, tblScans, [TB Intakes]
---                                     in 11 per-category passes; quarantine
+--   SECTION 5 — Path migration      : PART 0 snapshots tblCaseDocuments into
+--                                     tblCaseDocuments_PathBackup (rollback
+--                                     safety net), then rewrites S:\ paths
+--                                     to /Company/ across tblCaseDocuments,
+--                                     tblScans, [TB Intakes] in 11
+--                                     per-category passes; quarantine
 --                                     unrewritable rows; auto-commit only if
 --                                     leftover-offender count = 0.
 --   SECTION 6 — Verification        : leftover-offender check, prefix
@@ -51,6 +58,9 @@
 --     match post-rewrite paths.
 --   - Manual-triage tables use CREATE-IF-MISSING + dedupe inserts so prior
 --     triage rows survive re-runs.
+--   - tblCaseDocuments_PathBackup is CREATE-IF-MISSING and populated by a
+--     dedupe insert keyed on CaseDocumentID, so a re-run never overwrites an
+--     already-captured original path with a post-migration value.
 --
 -- *** DESTRUCTIVE — READ BEFORE RE-RUNNING ON A NON-FRESH DATABASE ***
 --   Re-running this script DROPS the 6 Dropbox tables before recreating
@@ -62,8 +72,9 @@
 --     - tblDropboxConfig            : AppSecret reset to placeholder
 --                                     (IT must re-UPDATE after every run).
 --     - tblDropboxRootConfig        : seed values reset to plan-defaults.
---   The manual-triage tables and the source tables (tblCaseDocuments,
---   tblScans, [TB Intakes], tblDocumentTypes) are NOT dropped.
+--   The manual-triage tables, tblCaseDocuments_PathBackup (path-rollback
+--   safety net), and the source tables (tblCaseDocuments, tblScans,
+--   [TB Intakes], tblDocumentTypes) are NOT dropped.
 --
 -- POST-INSTALL ACTIONS (always required):
 --   1. UPDATE dbo.tblDropboxConfig SET AppSecret = N'<real secret from
@@ -329,7 +340,8 @@ go
 
 
 -- #############################################################################
--- SECTION 2 — MANUAL-TRIAGE TABLES (create if missing — preserved across runs)
+-- SECTION 2 — MANUAL-TRIAGE + BACKUP TABLES (create if missing — preserved
+--             across runs)
 -- #############################################################################
 
 print N'';
@@ -363,6 +375,29 @@ begin
         Reason varchar(200) not null,
         QuarantinedAt datetime not null
             default sysdatetime()
+    );
+end;
+
+-- Path-rollback safety net for SECTION 5. One row per
+-- tblCaseDocuments.CaseDocumentID, captured the first time SECTION 5 PART 0
+-- sees that row — i.e. DocumentFileName here is whatever value the row held
+-- at that moment (the pre-migration 'S:\...' value, on a fresh install),
+-- not necessarily what the live row holds today. See the commented restore
+-- script in SECTION 5 PART 0 to reverse the path rewrite from this table.
+if object_id('dbo.tblCaseDocuments_PathBackup', 'U') is null
+begin
+    create table dbo.tblCaseDocuments_PathBackup
+    (
+        BackupID int identity(1, 1) primary key,
+        CaseDocumentID int not null,
+        CaseID int not null,
+        DocumentType varchar(250) not null,
+        DocumentFileName varchar(500) not null,
+        CreatedOn datetime not null,
+        BackedUpAt datetime not null
+            default sysdatetime(),
+        constraint UQ_tblCaseDocuments_PathBackup_CaseDocumentID
+            unique (CaseDocumentID)
     );
 end;
 go
@@ -495,6 +530,45 @@ go
 
 begin try
     begin transaction MigratePathsToDropbox;
+
+    -- -----------------------------------------------------------------------
+    -- PART 0 — snapshot tblCaseDocuments into tblCaseDocuments_PathBackup
+    --   BEFORE Part A rewrites a single row. Dedupe on CaseDocumentID so a
+    --   re-run of this installer never overwrites an already-captured
+    --   original path with a post-migration value — only rows this table
+    --   has never seen (new tblCaseDocuments rows since the last run) get
+    --   backed up on subsequent runs.
+    -- -----------------------------------------------------------------------
+    declare @CaseDocumentsBackedUp int;
+
+    insert into dbo.tblCaseDocuments_PathBackup
+        (CaseDocumentID, CaseID, DocumentType, DocumentFileName, CreatedOn)
+    select c.CaseDocumentID, c.CaseID, c.DocumentType, c.DocumentFileName, c.CreatedOn
+    from dbo.tblCaseDocuments c
+    where not exists
+    (
+        select 1
+        from dbo.tblCaseDocuments_PathBackup b
+        where b.CaseDocumentID = c.CaseDocumentID
+    );
+    set @CaseDocumentsBackedUp = @@rowcount;
+
+    -- ROLLBACK SCRIPT (reference only — NOT executed by this installer).
+    -- Restores every tblCaseDocuments.DocumentFileName to the value backed
+    -- up here. Run by hand, outside this script, only after confirming the
+    -- backup table's DocumentFileName values are the ones you want back —
+    -- see the caveat in SECTION 2's comment above the CREATE TABLE:
+    --
+    --   update c
+    --   set c.DocumentFileName = b.DocumentFileName
+    --   from dbo.tblCaseDocuments c
+    --   inner join dbo.tblCaseDocuments_PathBackup b
+    --       on b.CaseDocumentID = c.CaseDocumentID;
+    --
+    -- This reverts ALL rows captured in the backup table, including any
+    -- saved through Dropbox-aware code after the migration ran — scope the
+    -- WHERE clause to specific CaseDocumentID/CaseID values for a partial
+    -- rollback instead of running it as-is.
 
     -- -----------------------------------------------------------------------
     -- PART A — tblCaseDocuments.DocumentFileName (single 'S:\…' / '#S:\…#' pass)
@@ -931,6 +1005,8 @@ begin try
     commit transaction MigratePathsToDropbox;
 
     print N'    SECTION 5 done.';
+    print N'    PART 0: tblCaseDocuments rows newly backed up to tblCaseDocuments_PathBackup='
+          + cast(@CaseDocumentsBackedUp as varchar(10));
     print N'    Per-pass counts:';
     print N'      tblCaseDocuments: before=' + cast(@CountDocsBefore as varchar(10)) + N' updated='
           + cast(@CountDocsUpdated as varchar(10));
