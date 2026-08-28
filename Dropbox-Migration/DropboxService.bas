@@ -80,8 +80,14 @@ Attribute VB_Name = "DropboxService"
 '     Phase4d_UploadSmokeTest (Section 25b).
 '   Phase 3e (startup-form wiring) — COMPLETE (Section 26): StartupBootstrap /
 '     StartupShutdown wired into frmHome Form_Open / Form_Unload.
-'   Phase 4b (local-synced-root) — Section 27, SUPERSEDED (desktop client is no
-'     longer a deployment prerequisite; helpers compile but are unwired).
+'   Phase 4b (local-synced-root) — Section 27, REVIVED by Phase 4e (2026-06-29):
+'     ResolveLocalSyncedRoot + the path-mapping helpers are wired back into
+'     DocumentManagement.OpenDocumentFolder (Explorer-first, falls back to the
+'     Dropbox web URL). 2026-08-28: firm policy now assumes the Dropbox desktop
+'     client is installed on every workstation, reversing the 2026-05-17
+'     "not a deployment prerequisite" decision this section's comments
+'     originally documented. The "absent client" fallback branches are left in
+'     place defensively but should no longer be the expected runtime path.
 '
 '   2026-06-03 OAuth hardening for locked-down / no-admin workstations (G27):
 '     USE_LOCAL_LISTENER defaults to False (manual-paste flow — no PowerShell,
@@ -201,6 +207,9 @@ Private m_DropboxAccountEmail As String
 ' Empty string if the desktop client is not installed / signed in — read-only
 ' workflows (document-open, VerificationReport) work without it; ingest
 ' workflows + Explorer folder-open require it.
+' 2026-08-28: firm policy now assumes every workstation has the desktop client
+' installed, so this should resolve non-empty in normal operation; the empty-
+' string case is kept as a defensive fallback, not an expected state.
 ' NOTE: info.json's business path is the MEMBER folder (e.g.
 ' ...\Tate Bywater Dropbox\Indra Sugianto), NOT where team folders live.
 Private m_LocalSyncedRoot       As String
@@ -4203,6 +4212,9 @@ End Function
 ' DropboxService.OpenDocument, VerificationReport) work normally without
 ' the desktop client. Workflows that pick a local file or open Explorer
 ' fall back gracefully (caller decides — see G24 in the plan).
+' 2026-08-28: per firm policy the desktop client is now expected on every
+' workstation, so this "absent" branch should be rare in production; treat
+' it as a defensive fallback rather than a normal alternate path.
 '
 ' info.json format (per Dropbox documentation):
 '   { "personal": { ... },
@@ -4422,6 +4434,10 @@ End Function
 ' round-trip cleanly. Skips with "SKIP" if the desktop client isn't
 ' installed (info.json missing) — that's a legitimate environment, not
 ' a test failure.
+' 2026-08-28: on a real staff workstation a SKIP here now suggests a
+' deployment gap (firm policy requires the desktop client everywhere) — a
+' dev/CI machine without it is still a legitimate SKIP, but a staff PC
+' returning SKIP is worth following up with IT.
 Public Function Phase4b_SmokeTest() As String
     On Error GoTo HandleError
 

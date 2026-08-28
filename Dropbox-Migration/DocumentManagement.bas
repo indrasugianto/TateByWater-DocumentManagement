@@ -19,10 +19,15 @@ Dim foo
 '                             ALLOW_DROPBOX_WRITES) before opening
 '
 '   Phase 4b — Config layer + local-synced-root routing (PARTLY REVIVED in 4e):
-'     The Dropbox desktop client is not a hard deployment prerequisite; the code
-'     degrades gracefully without it. As of Phase 4e the local-synced-root
-'     helpers are wired back into folder-open (Explorer-first); the remaining
-'     helpers stay dormant. Current behavior:
+'     The Dropbox desktop client was originally not a hard deployment
+'     prerequisite; the code degrades gracefully without it. As of Phase 4e the
+'     local-synced-root helpers are wired back into folder-open (Explorer-first);
+'     the remaining helpers stay dormant.
+'     2026-08-28: firm policy now assumes the desktop client is installed on
+'     every workstation, reversing the "not a hard prerequisite" premise below.
+'     Comments in this module still describe the graceful-degradation design;
+'     that fallback behavior is retained defensively but should no longer be
+'     the expected runtime path. Current behavior:
 '       OpenDocumentFolder   -> Explorer (local mount) when the desktop client
 '                               is present and the folder has synced, else the
 '                               Dropbox web URL. Web deep-links to /work/ team-
@@ -244,6 +249,9 @@ End Function
 ' (m_LocalSyncedRoot unresolved). Callers must tolerate "" (the existing
 ' implementation also returned "" if tblDocumentRootDirectory was empty,
 ' so this is contract-compatible).
+' 2026-08-28: under current firm policy the desktop client is expected on
+' every workstation, so this "" case should be rare in practice — this
+' function has zero live callers regardless (see below).
 '
 ' This function is currently unreferenced by other VBA in the project
 ' (Phase 4b survey: zero callers). Updated for consistency.
@@ -311,11 +319,18 @@ End Function
 
 
 ' --- Phase 4 follow-up: returns "" by design -------------------------------
-' Office.FileDialog cannot navigate Dropbox API paths, and the firm has
-' opted not to require the Dropbox desktop client — so there is no Windows
-' path to hand back. Callers (Intakes.cmdScan_Click + frmClientLedger scan
-' flow) pass "" to FileDialog.InitialFileName, which opens at the user's
-' last-used folder.
+' Office.FileDialog cannot navigate Dropbox API paths, and at the time this
+' was written the firm had opted not to require the Dropbox desktop client —
+' so there was no Windows path to hand back. Callers (Intakes.cmdScan_Click +
+' frmClientLedger scan flow) pass "" to FileDialog.InitialFileName, which
+' opens at the user's last-used folder.
+'
+' 2026-08-28: firm policy now assumes the desktop client is installed on
+' every workstation, which reopens the option this comment describes below
+' (a real Windows path via DropboxService.DropboxPathToLocalPath /
+' ResolveLocalSyncedRoot). Left as "" for now — not changed as part of this
+' pass — but this is the function to revisit if scanner-folder routing is
+' picked up as follow-up work.
 '
 ' Kept as a function (rather than deleted) so callers continue to compile.
 ' If a local-path strategy is reintroduced later (e.g. a Windows path
@@ -951,22 +966,36 @@ End Function
 ' ============================================================================
 
 
-' --- Phase 4 follow-up: web-only folder open + create-on-demand -------------
-' Open the folder via the Dropbox web URL. Pre-check existence with
-' GetMetadata: if the folder doesn't exist, offer to create it (restores the
-' legacy S:\ "Folder doesn't exist. Do you want to create it?" behavior — the
-' cmdCreateFolder / cmdCreateFolderSub buttons on frmClientLedger route here,
-' as do all the plain open-folder buttons). Creation goes through
-' DropboxService.CreateFolder against the SP-resolved path (G27).
+' --- Phase 4 follow-up: folder open + create-on-demand ----------------------
+' STALE COMMENT, corrected 2026-08-28: the paragraph below ("do NOT route
+' through Windows Explorer...") described the Phase 4b/4d web-only design.
+' It was left unupdated when Phase 4e (2026-06-29) rewired this function to
+' call OpenFolderInExplorerOrWeb (line ~1050 below), which DOES try Explorer
+' first via the local-synced root and falls back to the web URL only if the
+' desktop client/local mount isn't available. That fallback is exactly what
+' the "do NOT route through Explorer" text below no longer reflects — this
+' function has routed through Explorer-first since Phase 4e. Firm policy as
+' of 2026-08-28 also now assumes the desktop client is installed on every
+' workstation, so the Explorer branch should be the common case, not the
+' fallback. Original paragraph kept below for history; do not read it as a
+' description of current behavior.
+'
+' Pre-check existence with GetMetadata: if the folder doesn't exist, offer to
+' create it (restores the legacy S:\ "Folder doesn't exist. Do you want to
+' create it?" behavior — the cmdCreateFolder / cmdCreateFolderSub buttons on
+' frmClientLedger route here, as do all the plain open-folder buttons).
+' Creation goes through DropboxService.CreateFolder against the SP-resolved
+' path (G27).
 '
 ' Create is a write op: gated by ALLOW_DROPBOX_WRITES. In the test build it
 ' raises vbObjectError + 6001, intercepted in Err_Handler with the friendly
 ' "writes disabled" message; flip the kill-switch to exercise it for real.
 '
-' Design decision: do NOT route through Windows Explorer / the local-
-' synced folder. The Dropbox desktop client is not a deployment
-' prerequisite. Users accept the cosmetic "Unsupported path provided"
-' banner Dropbox shows for /work/ team-namespace deep links.
+' Original (now-stale) design decision, kept for history: do NOT route
+' through Windows Explorer / the local-synced folder. The Dropbox desktop
+' client is not a deployment prerequisite. Users accept the cosmetic
+' "Unsupported path provided" banner Dropbox shows for /work/ team-namespace
+' deep links.
 Public Function OpenDocumentFolder(ByVal CaseID As Variant, ByVal DocumentType As Variant) As Boolean
 On Error GoTo Err_Handler
 Dim rv As Boolean
