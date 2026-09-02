@@ -70,7 +70,7 @@ Live credentials are present in tracked/untracked files in this repo: the Dropbo
 
 ### Issue tracker
 
-Issues and PRDs live as GitHub issues on `indrasugianto/TateByWater-DocumentManagement`, managed via the `gh` CLI. See `.docs/agents/issue-tracker.md`.
+Issues and PRDs live as GitHub issues on `indrasugianto/TateByWater-CMS`, managed via the `gh` CLI. See `.docs/agents/issue-tracker.md`.
 
 ### Domain docs
 

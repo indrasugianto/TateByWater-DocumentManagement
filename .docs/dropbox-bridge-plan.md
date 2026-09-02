@@ -104,7 +104,7 @@ Dropbox Business API  (api.dropboxapi.com / content.dropboxapi.com)
 ## Repository layout (what gets added)
 
 ```
-TateByWater-DocumentManagement/
+TateByWater-CMS/
 ├── dropbox-bridge/                      ← NEW: the .NET project lives here
 │   ├── TBCMSDropboxBridge.csproj
 │   ├── appsettings.json                 ← AppKey, AppSecret, SQL conn string

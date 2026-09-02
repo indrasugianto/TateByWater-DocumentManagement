@@ -65,7 +65,7 @@ py extract_vba.py "path/to/database.accdb" "output_directory"
 ## 📊 Project Structure
 
 ```
-TateByWater-DocumentManagement/
+TateByWater-CMS/
 ├── assess_access_db.py          # Comprehensive assessment tool
 ├── extract_vba.py                # VBA extraction only
 ├── requirements.txt              # Python dependencies
@@ -275,7 +275,7 @@ Error: Access.Application COM object not found
 
 ## 📞 Support
 
-**Project Location:** `C:\GitHub\TateByWater-DocumentManagement`  
+**Project Location:** `C:\GitHub\TateByWater-CMS`  
 **Documentation:** See `docs/` directory  
 **Issues:** See `docs/tech-debt.md`
 
