@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-1910454494
+Checksum =1118659066
 Begin Form
     RecordSelectors = NotDefault
     NavigationButtons = NotDefault
@@ -21,31 +21,34 @@ Begin Form
     Right =5175
     Bottom =7545
     DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x2018b78a2f89e640
+    End
     GUID = Begin
-        0x863e55c6ec794541ab80d666d13f11e3
+        0x4ab1a6de65527d43917ba67c58ad5861
     End
     NameMap = Begin
-        0x0acc0e5500000000246d88b17005ca42b1b8b4bacbee5cf0000000000a80f144 ,
-        0x3172e5400000000000000000420069006c006c0069006e006700000000000000 ,
-        0x60fd26d44ef0924ebb44b95bbe0602a607000000246d88b17005ca42b1b8b4ba ,
-        0xcbee5cf0490044000000000000004307c717ae4f9f49813b1a269f9b69f40700 ,
-        0x0000246d88b17005ca42b1b8b4bacbee5cf04300610073006500490044000000 ,
-        0x000000008b1c9e58db9b9f4db3efd85081ff0c4f07000000246d88b17005ca42 ,
-        0xb1b8b4bacbee5cf0420061006c0061006e006300650020004400750065002000 ,
-        0x44006100740065000000000000002f3787ffe3e2214b83d4046168f01ffb0700 ,
-        0x0000246d88b17005ca42b1b8b4bacbee5cf05000610073007400200044007500 ,
-        0x6500000000000000ab44dd58d4a0b14796744eb0b5887a7107000000246d88b1 ,
-        0x7005ca42b1b8b4bacbee5cf04c006f006e00670020005400650072006d002000 ,
-        0x43006f006c006c0065006300740069006f006e0073000000000000004293d180 ,
-        0xcc86af479f4be51a2c8d79cd07000000246d88b17005ca42b1b8b4bacbee5cf0 ,
+        0x0acc0e55000000008d77170d8be0964fa35c04cb31c03e7000000000402c38ca ,
+        0xb25de6400000000000000000420069006c006c0069006e006700000000000000 ,
+        0x1940e5e659a6914f838d8982df0728bb070000008d77170d8be0964fa35c04cb ,
+        0x31c03e70490044000000000000005341f40a6fafdf4ea2451ab3ec0c0e960700 ,
+        0x00008d77170d8be0964fa35c04cb31c03e704300610073006500490044000000 ,
+        0x0000000009bd9788056b984ab0486fbffd823761070000008d77170d8be0964f ,
+        0xa35c04cb31c03e70420061006c0061006e006300650020004400750065002000 ,
+        0x44006100740065000000000000002893306ae0653348966825d75bb6e07a0700 ,
+        0x00008d77170d8be0964fa35c04cb31c03e705000610073007400200044007500 ,
+        0x65000000000000007e44f65ee51aba419a2bb0b8ec469305070000008d77170d ,
+        0x8be0964fa35c04cb31c03e704c006f006e00670020005400650072006d002000 ,
+        0x43006f006c006c0065006300740069006f006e0073000000000000004051b7fe ,
+        0x4e553c42b87526709401559a070000008d77170d8be0964fa35c04cb31c03e70 ,
         0x630068006b00420061006c0061006e0063006500440075006500000000000000 ,
-        0xcba7639cb61c4e408fbe82b3b3d9b6e707000000246d88b17005ca42b1b8b4ba ,
-        0xcbee5cf0420069006c006c0069006e00670020004e006f007400650073000000 ,
-        0x00000000bf7058316a3bb4498bb558af3891d9d007000000246d88b17005ca42 ,
-        0xb1b8b4bacbee5cf0570072006900740065004f00660066000000000000003d69 ,
-        0x1409ae663f40ab9e6fe70804b5dc07000000246d88b17005ca42b1b8b4bacbee ,
-        0x5cf043006f007300740048006f006c006400000000000000a6b4ab35e240a343 ,
-        0xa0ef374412383c5c07000000246d88b17005ca42b1b8b4bacbee5cf053005300 ,
+        0x07db2481c6b1384e90e5f503721cbb06070000008d77170d8be0964fa35c04cb ,
+        0x31c03e70420069006c006c0069006e00670020004e006f007400650073000000 ,
+        0x0000000064e28799d1706842a5fa7482b3dcbeef070000008d77170d8be0964f ,
+        0xa35c04cb31c03e70570072006900740065004f00660066000000000000002695 ,
+        0x5a7b9192984da5b9b70e7bd08fcc070000008d77170d8be0964fa35c04cb31c0 ,
+        0x3e7043006f007300740048006f006c0064000000000000008c423caaeb37f741 ,
+        0x94b6928acc68b372070000008d77170d8be0964fa35c04cb31c03e7053005300 ,
         0x4d0041005f00540069006d0065005300740061006d0070000000000000000000 ,
         0x00000000000000000000000000000c0000000500000000000000000000000000 ,
         0x00000000
@@ -59,10 +62,10 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x00000000e88a9001000088010000000020000101405efd3a00006d0100a74c62 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x010403069c00dc76032f000001000100ea0a6f08640001000f00580202000100 ,
-        0x5802030001004c65747465720000300100008801880000000000000002000000 ,
-        0x00003001c0020000000000000000000000000000010000000000000001000000 ,
+        0x5802030001004c65747465720000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000000000000001000000 ,
         0x0200000003010000ffffffff4749533400000000000000000000000044494e55 ,
         0x220000025c068070c636e58a0000000000000000000000000000000000000000 ,
         0x0000000000000000100000000000000000001c00000001000000000000001d00 ,
@@ -1020,7 +1023,7 @@ Begin Form
         0x0800260044000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000031302e302e302e333500000000000000000000000000000000000000 ,
-        0x00000000000000000000
+        0x000000000000000000000000000000000000
     End
     AllowDatasheetView =0
     FilterOnLoad =0
@@ -1036,12 +1039,12 @@ Begin Form
     AlternateBackThemeColorIndex =1
     AlternateBackShade =95.0
     PrtDevModeW = Begin
-        0x0000000030b8000020b03a380000880130b800000202000030b8000000001738 ,
-        0x0000000030b80000b8336f00b8336f012afad77730b800000000880120b03a38 ,
+        0x000000009c010000810000000000000000000000000000007d00000000000000 ,
+        0x0100000000000000f0a51cc788000000707130d99c010000910bd676fa7f0000 ,
         0x01040306dc00dc76032f000001000100ea0a6f08640001000f00580202000100 ,
-        0x5802030001004c00650074007400650072000000c5e4d77790346f0103e6d777 ,
-        0x30b8000099ead777b15bff4620b03a380000880100000000d50300d601000000 ,
-        0x0200000010b70000000000000000000000000000010000000000000001000000 ,
+        0x5802030001004c00650074007400650072000000c690000070631cc788000000 ,
+        0x0000000000000000d9c89cadf67f0000f0681cc78800000070631cc788000000 ,
+        0xf0681cc788000000000000000000000000000000010000000000000001000000 ,
         0x0200000003010000ffffffff4749533400000000000000000000000044494e55 ,
         0x220000025c068070c636e58a0000000000000000000000000000000000000000 ,
         0x0000000000000000100000000000000000001c00000001000000000000001d00 ,
@@ -2002,14 +2005,17 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x310030002e0030002e0030002e00330035000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x000000000000000000000000
+        0x00000000000000000000000000000000000000000000000000000000
     End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -2023,6 +2029,8 @@ Begin Form
             SpecialEffect =3
             BackStyle =0
             BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -2031,6 +2039,7 @@ Begin Form
         End
         Begin Line
             BorderLineStyle =0
+            GridlineColor =10921638
             BorderThemeColorIndex =0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
@@ -2041,8 +2050,8 @@ Begin Form
             BorderLineStyle =0
             SizeMode =3
             PictureAlignment =2
-            BorderColor =16777215
-            GridlineColor =16777215
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -2053,6 +2062,8 @@ Begin Form
             BorderLineStyle =0
             LabelX =230
             LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
             BorderThemeColorIndex =1
             BorderShade =65.0
             GridlineThemeColorIndex =1
@@ -2064,8 +2075,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -2077,7 +2091,7 @@ Begin Form
         End
         Begin EmptyCell
             Height =240
-            GridlineColor =12632256
+            GridlineColor =10921638
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
@@ -2086,7 +2100,7 @@ Begin Form
             BackColor =15064278
             Name ="FormHeader"
             GUID = Begin
-                0x8b9d72a1c3e45644ada3b3f1ed62c1b1
+                0x3efcc486b427d247a8b2f8203799b9f2
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -2099,7 +2113,7 @@ Begin Form
             BackColor =15788753
             Name ="Detail"
             GUID = Begin
-                0xabd9ae6a310d114ba748c4d24fdd6108
+                0xe9baae8450f10c429ed86842007a4ea3
             End
             AlternateBackColor =-2147483602
             Begin
@@ -2115,15 +2129,13 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =8355711
                     ForeColor =7434614
                     Name ="Label9"
                     Caption ="Long Term\015\012Collection"
                     GUID = Begin
-                        0xc5dc79823ec040428a3fd0c8a95204ef
+                        0x2dcacc075378e64a8e306181f6066098
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =2550
                     LayoutCachedTop =2580
                     LayoutCachedWidth =3583
@@ -2145,15 +2157,13 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =8355711
                     ForeColor =7434614
                     Name ="Label6"
                     Caption ="Past Due"
                     GUID = Begin
-                        0x1e6f8b3d3cefb6419d3510e67d385a6f
+                        0x1088eb2f3c998a4e834eed1376839228
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =780
                     LayoutCachedTop =2580
                     LayoutCachedWidth =1663
@@ -2176,15 +2186,13 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =8355711
                     ForeColor =7434614
                     Name ="Label3"
                     Caption ="BALANCE DUE DATE"
                     GUID = Begin
-                        0x0194b25dada7a24fb7877b75e09bf7e8
+                        0xc956dd26cef92749859f0aff233b6de2
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =540
                     LayoutCachedTop =105
                     LayoutCachedWidth =2818
@@ -2202,16 +2210,14 @@ Begin Form
                     Width =315
                     Height =300
                     TabIndex =4
-                    BorderColor =10921638
                     Name ="Long Term Collections"
                     ControlSource ="Long Term Collections"
                     DefaultValue ="0"
                     EventProcPrefix ="Long_Term_Collections"
                     GUID = Begin
-                        0x466ec08d93e1684f8a4ba8171390f83f
+                        0x8d5d71b5e13aa449a88a99e6cc17a5b4
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2340
                     LayoutCachedTop =2580
@@ -2229,16 +2235,14 @@ Begin Form
                     Width =255
                     Height =300
                     TabIndex =3
-                    BorderColor =10921638
                     Name ="Past Due"
                     ControlSource ="Past Due"
                     DefaultValue ="0"
                     EventProcPrefix ="Past_Due"
                     GUID = Begin
-                        0xdaead72f11babc42b73b3eaea1cf41fa
+                        0x45ffe7a82efb4d4a9f7c458a30dfb40c
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =540
                     LayoutCachedTop =2580
@@ -2263,16 +2267,13 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Balance Due Date"
                     ControlSource ="Balance Due Date"
                     EventProcPrefix ="Balance_Due_Date"
                     GUID = Begin
-                        0xf8e12bbc1628da45b586f614284180e9
+                        0xb88ab34db8194349824912a06b8a69ee
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =540
                     LayoutCachedTop =480
@@ -2296,15 +2297,12 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="ID"
                     ControlSource ="ID"
                     GUID = Begin
-                        0x708048defa2f9248952b9a0611cdecd0
+                        0x6c9e79ae3da6ec4799188316672548d6
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =3900
                     LayoutCachedWidth =4455
@@ -2318,13 +2316,11 @@ Begin Form
                     Left =2940
                     Top =2220
                     TabIndex =2
-                    BorderColor =10921638
                     Name ="chkBalanceDue"
                     ControlSource ="chkBalanceDue"
                     GUID = Begin
-                        0x667b6b7e166ef54b8a89dc87d148bfb0
+                        0xda543f94c1b2134192e4d4d851cbea01
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2940
                     LayoutCachedTop =2220
@@ -2333,7 +2329,7 @@ Begin Form
                 End
                 Begin Label
                     Visible = NotDefault
-                    OverlapFlags =119
+                    OverlapFlags =247
                     Left =3180
                     Top =2220
                     Width =1183
@@ -2343,14 +2339,12 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =8355711
                     ForeColor =7434614
                     Name ="Label33"
                     Caption ="Balance Due"
                     GUID = Begin
-                        0x89025eeb4fd98b4dae28e6f9b40243da
+                        0x222581acab2fa94697bc1223c28815b8
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =3180
                     LayoutCachedTop =2220
                     LayoutCachedWidth =4363
@@ -2369,15 +2363,12 @@ Begin Form
                     Height =720
                     FontSize =9
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Billing Notes"
                     ControlSource ="Billing Notes"
                     EventProcPrefix ="Billing_Notes"
                     GUID = Begin
-                        0xd4f5c9cb7813e74697e6b57662dd2921
+                        0x038e366c675f5c4680ad23a01c6437c2
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =540
                     LayoutCachedTop =1440
@@ -2390,14 +2381,12 @@ Begin Form
                             Top =1140
                             Width =3360
                             Height =315
-                            BorderColor =8355711
                             ForeColor =7434614
                             Name ="Label35"
                             Caption ="Invoice Notes (bottom of the bill)"
                             GUID = Begin
-                                0x53d8daf2c58a24409290e355d8ee30bc
+                                0xab0123f3250d444abe7cc16243c6c011
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =540
                             LayoutCachedTop =1140
                             LayoutCachedWidth =3900
@@ -2421,15 +2410,13 @@ Begin Form
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =8355711
                     ForeColor =7434614
                     Name ="Label36"
                     Caption ="Write Off"
                     GUID = Begin
-                        0xae96547050f3ef46903d058ca4c5cc2e
+                        0xd68cd1cbae3e8046be6b5bd5f2e5837d
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =780
                     LayoutCachedTop =3120
                     LayoutCachedWidth =1708
@@ -2447,15 +2434,13 @@ Begin Form
                     Width =255
                     Height =300
                     TabIndex =5
-                    BorderColor =10921638
                     Name ="WriteOff"
                     ControlSource ="WriteOff"
                     DefaultValue ="0"
                     GUID = Begin
-                        0x0b48c8849bc6b14286ee60083c5429f3
+                        0xd383a6ff6aefed4b93e027ed6b0eba92
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =540
                     LayoutCachedTop =3120
@@ -2475,14 +2460,11 @@ Begin Form
                     Width =480
                     FontSize =5
                     TabIndex =7
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text40"
                     ControlSource ="CaseID"
                     GUID = Begin
-                        0xcbf6db4b990fb043a7e5586d25b9f097
+                        0xf533a2ed7e226d44bf9c9bae18c05cc1
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =3780
                     LayoutCachedWidth =4260
@@ -2494,7 +2476,7 @@ Begin Form
             Height =0
             Name ="FormFooter"
             GUID = Begin
-                0xd4ce0c3cc01bba4c92f85550fa2349c1
+                0xdb9a4d5ba3b6ce40bd07e9e1602f246d
             End
             AutoHeight =1
             AlternateBackThemeColorIndex =1

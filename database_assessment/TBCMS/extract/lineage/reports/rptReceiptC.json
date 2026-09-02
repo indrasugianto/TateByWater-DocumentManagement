@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdReceipt_Click",
       "sourceFile": "extract/vba/forms/frmMatter.txt",
-      "lineStart": 1431,
-      "lineEnd": 1453,
+      "lineStart": 1430,
+      "lineEnd": 1452,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -44,8 +44,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18432,
-      "lineEnd": 18462,
+      "lineStart": 16616,
+      "lineEnd": 16646,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -58,8 +58,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18463,
-      "lineEnd": 18493,
+      "lineStart": 16647,
+      "lineEnd": 16677,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -72,8 +72,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19363,
-      "lineEnd": 19500,
+      "lineStart": 17547,
+      "lineEnd": 17684,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -88,8 +88,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19545,
-      "lineEnd": 19555,
+      "lineStart": 17729,
+      "lineEnd": 17739,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -99,8 +99,8 @@
       "objectName": "frm_advanced_payments",
       "procedureName": "FilterMe",
       "sourceFile": "extract/vba/forms/frm_advanced_payments.txt",
-      "lineStart": 6919,
-      "lineEnd": 6945,
+      "lineStart": 6918,
+      "lineEnd": 6944,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -110,8 +110,152 @@
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "txtTKButton_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3332,
-      "lineEnd": 3389,
+      "lineStart": 3356,
+      "lineEnd": 3413,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmMatter",
+      "procedureName": "cmdReceipt_Click",
+      "sourceFile": "extract/vba/forms/frmMatter.txt",
+      "lineStart": 1430,
+      "lineEnd": 1452,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmMatter",
+      "procedureName": "Date2_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmMatter.txt",
+      "lineStart": 1512,
+      "lineEnd": 1562,
+      "usesDoCmd": [
+        "GoToControl",
+        "GoToRecord",
+        "RunCommand"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmMatter",
+      "procedureName": "reorderByDateMatter",
+      "sourceFile": "extract/vba/forms/frmMatter.txt",
+      "lineStart": 1571,
+      "lineEnd": 1592,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm.txt",
+      "lineStart": 3104,
+      "lineEnd": 3204,
+      "usesDoCmd": [
+        "RunCommand"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm_OLD",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm_OLD.txt",
+      "lineStart": 2573,
+      "lineEnd": 2682,
+      "usesDoCmd": [
+        "RunCommand"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm3",
+      "procedureName": "CaseNum_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm3.txt",
+      "lineStart": 2483,
+      "lineEnd": 2605,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTKClose",
+      "procedureName": "txtTKButton_Click",
+      "sourceFile": "extract/vba/forms/frmTKClose.txt",
+      "lineStart": 2379,
+      "lineEnd": 2708,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdCreateAR_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4632,
+      "lineEnd": 4667,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -123,8 +267,8 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdSubmitToFamilyLaw_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8066,
-      "lineEnd": 8096,
+      "lineStart": 8087,
+      "lineEnd": 8117,
       "usesDoCmd": [
         "RunCommand",
         "RunSQL",
@@ -142,163 +286,19 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8122,
-      "lineEnd": 8126,
+      "lineStart": 8143,
+      "lineEnd": 8147,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffSubForm",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffSubForm.txt",
-      "lineStart": 3103,
-      "lineEnd": 3203,
-      "usesDoCmd": [
-        "RunCommand"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7608,
-      "lineEnd": 7660,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7723,
-      "lineEnd": 7770,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmMatter",
-      "procedureName": "cmdReceipt_Click",
-      "sourceFile": "extract/vba/forms/frmMatter.txt",
-      "lineStart": 1431,
-      "lineEnd": 1453,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmMatter",
-      "procedureName": "Date2_AfterUpdate",
-      "sourceFile": "extract/vba/forms/frmMatter.txt",
-      "lineStart": 1513,
-      "lineEnd": 1563,
-      "usesDoCmd": [
-        "GoToControl",
-        "GoToRecord",
-        "RunCommand"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmMatter",
-      "procedureName": "reorderByDateMatter",
-      "sourceFile": "extract/vba/forms/frmMatter.txt",
-      "lineStart": 1572,
-      "lineEnd": 1593,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdCreateAR_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4633,
-      "lineEnd": 4668,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTKClose",
-      "procedureName": "txtTKButton_Click",
-      "sourceFile": "extract/vba/forms/frmTKClose.txt",
-      "lineStart": 2378,
-      "lineEnd": 2707,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffSubForm3",
-      "procedureName": "CaseNum_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffSubForm3.txt",
-      "lineStart": 2558,
-      "lineEnd": 2680,
-      "usesDoCmd": [
-        "Close",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffSubForm_OLD",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffSubForm_OLD.txt",
-      "lineStart": 2653,
-      "lineEnd": 2762,
-      "usesDoCmd": [
-        "RunCommand"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
     },
     {
       "objectType": "report",
       "objectName": "Invoice2",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Invoice2.txt",
-      "lineStart": 2068,
-      "lineEnd": 2100,
+      "lineStart": 2044,
+      "lineEnd": 2076,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -310,8 +310,8 @@
       "objectName": "Rpt_MergeInvTK",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Rpt_MergeInvTK.txt",
-      "lineStart": 1949,
-      "lineEnd": 1981,
+      "lineStart": 1869,
+      "lineEnd": 1901,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -383,6 +383,45 @@
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "MoveDocumentByCaseStatus",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1373,
+      "lineEnd": 1585,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "GetIntakeDocumentFileName",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1682,
+      "lineEnd": 1758,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "Phase5_E2E_HappyPathTest",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1759,
+      "lineEnd": 2092,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
     },
     {
       "objectType": "module",

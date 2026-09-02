@@ -1,6 +1,8 @@
 # Table: vwTrustReportRPT *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTrustReportRPT`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTrustReportRPT`
+
+**Row count:** 50212
 
 ## Columns
 

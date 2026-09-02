@@ -43,7 +43,7 @@ Type tagOPENFILENAME
     nMaxFileTitle As Long
     strInitialDir As String
     strTitle As String
-    Flags As Long
+    flags As Long
     nFileOffset As Integer
     nFileExtension As Integer
     strDefExt As String
@@ -117,16 +117,16 @@ Function FormGetParentClientRect(f As Form, fLeft As Long, fTop As Long, fWidth 
 foo = pcaGetClientRect(pcaGetParent(f.hwnd), fLeft, fTop, fWidth, fHeight)
 End Function
 Public Function pcaGetClientRect(hwnd As Long, fLeft As Long, fTop As Long, fWidth As Long, fHeight As Long)
-Dim R As RECT
-R.Bottom = fHeight
-R.Left = fLeft
-R.Right = fWidth
-R.Top = fTop
-pcaGetClientRect = APIgetClientRect(hwnd, R)
-fLeft = R.Left '- rectParent.x1
-fTop = R.Top '- rectParent.y1
-fWidth = R.Right '- rectParent.x1 - fLeft
-fHeight = R.Bottom '- rectParent.y1 - fTop
+Dim r As RECT
+r.Bottom = fHeight
+r.Left = fLeft
+r.Right = fWidth
+r.Top = fTop
+pcaGetClientRect = APIgetClientRect(hwnd, r)
+fLeft = r.Left '- rectParent.x1
+fTop = r.Top '- rectParent.y1
+fWidth = r.Right '- rectParent.x1 - fLeft
+fHeight = r.Bottom '- rectParent.y1 - fTop
 End Function
 
 Public Function pcaGetParent(hwnd As Long) As Long
@@ -192,10 +192,10 @@ Resume Next
 Resume
 End Function
 Public Function pcaConvertSingleQuote(s As String)
-Dim POS As Integer
-POS = InStr(s, "'")
-If POS Then
-    pcaConvertSingleQuote = Mid$(s, 1, POS) & "'" & pcaConvertSingleQuote(Mid$(s, POS + 1))
+Dim pos As Integer
+pos = InStr(s, "'")
+If pos Then
+    pcaConvertSingleQuote = Mid$(s, 1, pos) & "'" & pcaConvertSingleQuote(Mid$(s, pos + 1))
 Else
     pcaConvertSingleQuote = s
 End If
@@ -220,12 +220,12 @@ pcaReplaceStr = stSource
 End Function
 
 Public Function pcaStrExtract(ByVal s As String, c As String, n As Integer) As String
-Dim POS As Integer, i As Integer, nTemp  As Integer
+Dim pos As Integer, i As Integer, nTemp  As Integer
 i = 1
 s = s & c
 Do
    If i = n Then ' we've found the proper n'th token
-      s = Mid$(s, POS + 1)
+      s = Mid$(s, pos + 1)
       nTemp = InStr(1, s, c)
       If nTemp > 0 Then
          pcaStrExtract = Left$(s, nTemp - 1)
@@ -233,23 +233,23 @@ Do
 
       Exit Function
    End If
-   POS = InStr(POS + 1, s, c, 0)
-   If POS Then
+   pos = InStr(pos + 1, s, c, 0)
+   If pos Then
       i = i + 1
    End If
-Loop While POS > 0
+Loop While pos > 0
       
 End Function
 Public Function pcaChrCount(c As String, s As String) As Integer
-Dim POS As Integer, i As Integer
+Dim pos As Integer, i As Integer
 'pos = 0
 'i = 0
 Do
-   POS = InStr(POS + 1, s, c, 0)
-   If POS Then
+   pos = InStr(pos + 1, s, c, 0)
+   If pos Then
       i = i + 1
    End If
-Loop While POS > 0
+Loop While pos > 0
 pcaChrCount = i
 End Function
 Function pcaempty(v) As Integer
@@ -989,7 +989,7 @@ Dim lngFilterIndex As Long
     If pcaempty(vDialogTitle) Then vDialogTitle = "Please select a file"
     
     rv = ahtCommonFileOpenSave(InitialDir:=vDirectory, _
-        Filter:=strFilter, FilterIndex:=lngFilterIndex, Flags:=lngFlags, _
+        Filter:=strFilter, FilterIndex:=lngFilterIndex, flags:=lngFlags, _
         DialogTitle:=vDialogTitle, FileName:=vDefaultFileName, OpenFile:=True)
     
     pcaFileSelect = rv
@@ -1036,7 +1036,7 @@ Dim lngFilterIndex As Long
     If pcaempty(vDialogTitle) Then vDialogTitle = "Please save a file as"
     
     rv = ahtCommonFileOpenSave(InitialDir:=vDirectory, _
-        Filter:=strFilter, FilterIndex:=lngFilterIndex, Flags:=lngFlags, _
+        Filter:=strFilter, FilterIndex:=lngFilterIndex, flags:=lngFlags, _
         DialogTitle:=vDialogTitle, FileName:=vDefaultFileName, OpenFile:=False)
     
     pcaFileSaveAs = rv
@@ -1100,20 +1100,20 @@ foo = pcaStdErrMsg(Err, Error)
 Resume EXIT_FUNCTION:
 Resume
 End Function
-Function pcaDeleteFile(fName As String) As Integer
+Function pcaDeleteFile(fname As String) As Integer
 On Error GoTo Err_Handler
-If fName = "" Then
+If fname = "" Then
     pcaDeleteFile = False
     Exit Function
 End If
-If Not pcaIsFile(fName) Then
+If Not pcaIsFile(fname) Then
     pcaDeleteFile = True
     Exit Function
 End If
-Kill fName
+Kill fname
 '--------------------------------------------
 EXIT_FUNCTION:
-pcaDeleteFile = Not pcaIsFile(fName)
+pcaDeleteFile = Not pcaIsFile(fname)
 Exit Function
 '--------------------------------------------
 Err_Handler:
@@ -1126,7 +1126,7 @@ Call pcaStdErrMsg(Err, Error)
 Resume EXIT_FUNCTION
 Resume
 End Function
-Function pcaGetTempFileName(ByVal DriveLetter As Integer, ByVal Prefix As String, ByVal Unique As Integer) As String
+Function pcaGetTempFileName(ByVal DriveLetter As Integer, ByVal prefix As String, ByVal Unique As Integer) As String
 'Dim buffer As String * 255, ReturnValue As Integer
 'ReturnValue = GetTempFileName(DriveLetter, Prefix, Unique, buffer)
 'fgetTempFileName = Left$(buffer, InStr(buffer, Chr$(0)) - 1)
@@ -1467,7 +1467,7 @@ Err_Handler:
 End Function
 
 Public Function ahtCommonFileOpenSave( _
-            Optional ByRef Flags As Variant, _
+            Optional ByRef flags As Variant, _
             Optional ByVal InitialDir As Variant, _
             Optional ByVal Filter As Variant, _
             Optional ByVal FilterIndex As Variant, _
@@ -1504,7 +1504,7 @@ Dim fResult As Boolean
     If IsMissing(InitialDir) Then InitialDir = CurDir
     If IsMissing(Filter) Then Filter = ""
     If IsMissing(FilterIndex) Then FilterIndex = 1
-    If IsMissing(Flags) Then Flags = 0&
+    If IsMissing(flags) Then flags = 0&
     If IsMissing(DefaultExt) Then DefaultExt = ""
     If IsMissing(FileName) Then FileName = ""
     If IsMissing(DialogTitle) Then DialogTitle = ""
@@ -1524,7 +1524,7 @@ Dim fResult As Boolean
         .strFileTitle = strFileTitle
         .nMaxFileTitle = Len(strFileTitle)
         .strTitle = DialogTitle
-        .Flags = Flags
+        .flags = flags
         .strDefExt = DefaultExt
         .strInitialDir = InitialDir
         ' Didn't think most people would want to deal with
@@ -1555,7 +1555,7 @@ Dim fResult As Boolean
         ' In this example, if you bothered to pass in a
         ' value for Flags, we'll fill it in with the outgoing
         ' Flags value.
-        If Not IsMissing(Flags) Then Flags = OFN.Flags
+        If Not IsMissing(flags) Then flags = OFN.flags
         ahtCommonFileOpenSave = TrimNull(OFN.strFile)
     Else
         ahtCommonFileOpenSave = vbNullString

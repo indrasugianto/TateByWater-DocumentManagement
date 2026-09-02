@@ -1,6 +1,8 @@
 # Table: tblScans *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblScans`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblScans`
+
+**Row count:** 4678
 
 ## Columns
 

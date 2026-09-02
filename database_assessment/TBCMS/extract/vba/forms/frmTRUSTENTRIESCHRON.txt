@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-864446833
+Checksum =28626132
 Begin Form
     DividingLines = NotDefault
     FilterOn = NotDefault
@@ -13,48 +13,48 @@ Begin Form
     Width =18420
     DatasheetFontHeight =11
     ItemSuffix =71
-    Right =23145
-    Bottom =11865
+    Right =14055
+    Bottom =13680
     DatasheetGridlinesColor =15132391
     Filter ="1=1 AND CheckCashed = 0 AND DepCleared = 0"
     RecSrcDt = Begin
         0xd0635906de02e540
     End
     GUID = Begin
-        0x6d1420eee8847944ba9fb08aa2935d1d
+        0x28e8a9b6fd14584a908b7195cb762b76
     End
     NameMap = Begin
-        0x0acc0e55000000001bb12a37f79a8242be462d35db78ac650000000001fca25e ,
-        0x926de64000000000000000007100720079005400720075007300740045006e00 ,
-        0x740072006900650073004300680072006f006e000000000000000e16efec505b ,
-        0x804f8e0b2fedc548a0d5060000006d1420eee8847944ba9fb08aa2935d1d4300 ,
-        0x6800650063006b00430061007300680065006400000000000000d4cf83177c4a ,
-        0x7c4f81c2c046623461ca060000006d1420eee8847944ba9fb08aa2935d1d4400 ,
-        0x6500700043006c00650061007200650064000000000000007d47bebc5361a74a ,
-        0x8d38c12857ec713c0000000001fca25e926de640000000000000000071007200 ,
+        0x0acc0e5500000000a5d3a0ca6d296a48a0a8d973421d050f000000001beda46e ,
+        0xd096e64000000000000000007100720079005400720075007300740045006e00 ,
+        0x740072006900650073004300680072006f006e000000000000009211454de1b3 ,
+        0xf446ab0f1872fe35b60a0600000028e8a9b6fd14584a908b7195cb762b764300 ,
+        0x6800650063006b00430061007300680065006400000000000000341a7d38e163 ,
+        0xf247a0110e286e8e27360600000028e8a9b6fd14584a908b7195cb762b764400 ,
+        0x6500700043006c0065006100720065006400000000000000fc238a97d061cb4b ,
+        0xa61f39270fc5d99900000000f605a56ed096e640000000000000000071007200 ,
         0x790043006100730065004900440063006c00690065006e007400730041006c00 ,
-        0x6c00000000000000ebb1f0d945d1a54abf45b293cfb43bd3070000001bb12a37 ,
-        0xf79a8242be462d35db78ac65540072007500730074004300680072006f006e00 ,
-        0x4d0065006d006f00000000000000cf761d41303a1145af6e06849202e2440700 ,
-        0x00001bb12a37f79a8242be462d35db78ac6543006800650063006b004e007500 ,
-        0x6d006200650072000000000000007ba968379c6955408da8123911cd3f150700 ,
-        0x00001bb12a37f79a8242be462d35db78ac654300720065006400690074000000 ,
-        0x000000002690af042f5dfa409295b2be895e51dd070000001bb12a37f79a8242 ,
-        0xbe462d35db78ac6543006800650063006b004300610073006800650064000000 ,
-        0x000000006fc46c71a77b0b4884189cdcb1e25918070000001bb12a37f79a8242 ,
-        0xbe462d35db78ac6544006500620069007400000000000000ac456e4093f2d349 ,
-        0xb96e5fb041262277070000001bb12a37f79a8242be462d35db78ac6554004d00 ,
-        0x61007400740065007200000000000000e06db8ad25059e459fc22d9479cc836b ,
-        0x070000001bb12a37f79a8242be462d35db78ac65540044006100740065000000 ,
-        0x00000000ff1a976b9552f847a2bd615a9102816a070000001bb12a37f79a8242 ,
-        0xbe462d35db78ac6544006500700043006c006500610072006500640000000000 ,
-        0x0000294069f16ba2ac47bedbe8687ca77499070000001bb12a37f79a8242be46 ,
-        0x2d35db78ac654e0061006d00650000000000000008180d464e1391488d6c970e ,
-        0x34265568070000001bb12a37f79a8242be462d35db78ac655200650063006f00 ,
-        0x6e00630069006c00650064000000000000008412e8b3a70f3849bf8b8ad6efe4 ,
-        0xc38b070000001bb12a37f79a8242be462d35db78ac654f007200690067005f00 ,
+        0x6c000000000000004ec3db33460f474c83485a936b9ebcd507000000a5d3a0ca ,
+        0x6d296a48a0a8d973421d050f540072007500730074004300680072006f006e00 ,
+        0x4d0065006d006f000000000000007a7bfc80eab120408f24f1e8a6cbfb4a0700 ,
+        0x0000a5d3a0ca6d296a48a0a8d973421d050f43006800650063006b004e007500 ,
+        0x6d006200650072000000000000009a1c0a041bb7a541b8aadb143a7016aa0700 ,
+        0x0000a5d3a0ca6d296a48a0a8d973421d050f4300720065006400690074000000 ,
+        0x0000000072cde30fb45b464d9235dcbacbdeb6a607000000a5d3a0ca6d296a48 ,
+        0xa0a8d973421d050f43006800650063006b004300610073006800650064000000 ,
+        0x00000000c4962a366bf6314cb5b5b1b02ec3a56107000000a5d3a0ca6d296a48 ,
+        0xa0a8d973421d050f4400650062006900740000000000000092c2c33704f17e48 ,
+        0x9594c10a1edf03ed07000000a5d3a0ca6d296a48a0a8d973421d050f54004d00 ,
+        0x6100740074006500720000000000000088dac42c9afbfe4ba6a40014b417e0ad ,
+        0x07000000a5d3a0ca6d296a48a0a8d973421d050f540044006100740065000000 ,
+        0x0000000010028d7d12d7044f9733cf3c89b043e807000000a5d3a0ca6d296a48 ,
+        0xa0a8d973421d050f44006500700043006c006500610072006500640000000000 ,
+        0x0000294069f16ba2ac47bedbe8687ca7749907000000a5d3a0ca6d296a48a0a8 ,
+        0xd973421d050f4e0061006d006500000000000000bd0fec70daf9c34480b90511 ,
+        0x12c3961707000000a5d3a0ca6d296a48a0a8d973421d050f5200650063006f00 ,
+        0x6e00630069006c006500640000000000000054bb59384fd498448d76b76e7fcf ,
+        0x0cae07000000a5d3a0ca6d296a48a0a8d973421d050f4f007200690067005f00 ,
         0x4100740074007900000000000000c00af62aeeb08c408ab5082151ee9e2f0700 ,
-        0x00001bb12a37f79a8242be462d35db78ac65430061007300650020004e006f00 ,
+        0x0000a5d3a0ca6d296a48a0a8d973421d050f430061007300650020004e006f00 ,
         0x000000000000000000000000000000000000000000000c000000050000000000 ,
         0x000000000000000000000000
     End
@@ -66,13 +66,13 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x00003adf460200000000000000000000a01ce9a246020000a01ce9a246020000 ,
-        0x010403069c0080040f93010001000100ea0a6f08640001000700580201000100 ,
+        0x0041b408db000000705c01000000000000000000000000000000000000000000 ,
+        0x010403069c00f0030f93010001000100ea0a6f08640001000700580201000100 ,
         0x5802030000004c65747465720000000000000000000000000000000000000000 ,
-        0xa01ce9a246020000000000000000000000000000010000000000000001000000 ,
-        0x020000000a010000ffffffff4749533400000000000000000000000044494e55 ,
-        0x2200080264041c00092ef2880000000000000000000000000000000000000000 ,
-        0x0000000000000000120000000100000000000100000000000000010000000000 ,
+        0x40f45275c3020000000000000000000000000000010000000000000001000000 ,
+        0x0200000001000000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007801d4031c00f8c150110000000000000000000000000000000000000000 ,
+        0x00000000000000000d0000000100000001000000000000000000000001000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -89,29 +89,25 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000100000000000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000008020000534d544a ,
-        0x000000001000f8017b00330039003400330031003900410036002d0037004600 ,
-        0x460035002d0034004200340031002d0041004200370041002d00360036003700 ,
-        0x4200460032004500460041004500350033007d000000496e70757442696e0041 ,
-        0x75746f53656c65637400524553444c4c00556e69726573444c4c004d65646961 ,
-        0x5479706500506c61696e00506170657253697a65004c4554544552004f726965 ,
-        0x6e746174696f6e00504f525452414954004475706c6578004e4f4e4500436f6c ,
-        0x6f724d6f6465004d6f6e6f005265736f6c7574696f6e004f7074696f6e320050 ,
-        0x6167655072696e7453657474696e670047656e6572616c00436f6c6c61746500 ,
-        0x4f4646004a6f624e5570416c6c446f63756d656e7473436f6e746967756f7573 ,
-        0x6c790031004a6f6250726573656e746174696f6e446972656374696f6e005269 ,
-        0x676874426f74746f6d00506167654272506f73746572004e6f726d616c005061 ,
-        0x676552657665727365496d616765004f66660050616765427257617465726d61 ,
-        0x726b004e6f6e65004a6f62546f6e6572536176654d6f6465004f6666004a6f62 ,
-        0x52657072696e74004f6666004a6f624272536c65657054696d65005072696e74 ,
-        0x657244656661756c740000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000078010000534d544a ,
+        0x00000000100068017b00310032004300320033003400310032002d0034003600 ,
+        0x350037002d0034003600630032002d0042004300350045002d00380044003000 ,
+        0x3700410046004300390039003700460045007d000000496e70757442696e0031 ,
+        0x00524553444c4c00556e69726573444c4c00506167654f75747075745175616c ,
+        0x697479004e6f726d616c004a6f62506167654f72646572005265766572736500 ,
+        0x4465766963654c616e67756167650050434c6d5300446f63756d656e744e5570 ,
+        0x003100436f6c6f724d6f6465004f6666004475706c6578004e4f4e4500436f6c ,
+        0x6c617465004f4e00506170657253697a65004c4554544552004f7269656e7461 ,
+        0x74696f6e00504f525452414954005265736f6c7574696f6e0036303078363030 ,
+        0x004d656469615479706500302e312e3434343000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x1c0000005634444d0100000000000000000000000000000000000000
+        0x000000000000000000000000000000001c0000005634444d0100000000000000 ,
+        0x000000000000000000000000
     End
     PrtDevNames = Begin
-        0x08002d0040000100000000000000000000000000000000000000000000000000 ,
+        0x0800220059000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x5553423030320000000000
+        0x00000000000000000000000000000000000000000000000000545330303100
     End
     OnLoad ="[Event Procedure]"
     AllowDatasheetView =0
@@ -128,15 +124,15 @@ Begin Form
     AlternateBackThemeColorIndex =1
     AlternateBackShade =95.0
     PrtDevModeW = Begin
-        0x00006000000000009fa08361f77f000010000000000000000700000000000000 ,
-        0x4070bf1a9b000000500148a1460200000000000000000000fd6bf661f77f0000 ,
-        0x01040306dc0080040f93010001000100ea0a6f08640001000700580201000100 ,
-        0x5802030000004c00650074007400650072000000460200000300000000000000 ,
-        0xe0bf5498460200000771eea6fc7f000060ba54984602000000003adf46020000 ,
-        0x0100000000000000000000000000000000000000010000000000000001000000 ,
-        0x020000000a010000ffffffff4749533400000000000000000000000044494e55 ,
-        0x2200080264041c00092ef2880000000000000000000000000000000000000000 ,
-        0x0000000000000000120000000100000000000100000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x28004800500020004f00660066006900630065006a0065007400200050000000 ,
+        0x01040306dc00f0030f93010001000100ea0a6f08640001000700580201000100 ,
+        0x5802030000004c00650074007400650072000000000000005000000000000000 ,
+        0x00002352c3020000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000001000000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007801d4031c00f8c150110000000000000000000000000000000000000000 ,
+        0x00000000000000000d0000000100000001000000000000000000000001000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -153,31 +149,28 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000100000000000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000008020000534d544a ,
-        0x000000001000f8017b00330039003400330031003900410036002d0037004600 ,
-        0x460035002d0034004200340031002d0041004200370041002d00360036003700 ,
-        0x4200460032004500460041004500350033007d000000496e70757442696e0041 ,
-        0x75746f53656c65637400524553444c4c00556e69726573444c4c004d65646961 ,
-        0x5479706500506c61696e00506170657253697a65004c4554544552004f726965 ,
-        0x6e746174696f6e00504f525452414954004475706c6578004e4f4e4500436f6c ,
-        0x6f724d6f6465004d6f6e6f005265736f6c7574696f6e004f7074696f6e320050 ,
-        0x6167655072696e7453657474696e670047656e6572616c00436f6c6c61746500 ,
-        0x4f4646004a6f624e5570416c6c446f63756d656e7473436f6e746967756f7573 ,
-        0x6c790031004a6f6250726573656e746174696f6e446972656374696f6e005269 ,
-        0x676874426f74746f6d00506167654272506f73746572004e6f726d616c005061 ,
-        0x676552657665727365496d616765004f66660050616765427257617465726d61 ,
-        0x726b004e6f6e65004a6f62546f6e6572536176654d6f6465004f6666004a6f62 ,
-        0x52657072696e74004f6666004a6f624272536c65657054696d65005072696e74 ,
-        0x657244656661756c740000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000078010000534d544a ,
+        0x00000000100068017b00310032004300320033003400310032002d0034003600 ,
+        0x350037002d0034003600630032002d0042004300350045002d00380044003000 ,
+        0x3700410046004300390039003700460045007d000000496e70757442696e0031 ,
+        0x00524553444c4c00556e69726573444c4c00506167654f75747075745175616c ,
+        0x697479004e6f726d616c004a6f62506167654f72646572005265766572736500 ,
+        0x4465766963654c616e67756167650050434c6d5300446f63756d656e744e5570 ,
+        0x003100436f6c6f724d6f6465004f6666004475706c6578004e4f4e4500436f6c ,
+        0x6c617465004f4e00506170657253697a65004c4554544552004f7269656e7461 ,
+        0x74696f6e00504f525452414954005265736f6c7574696f6e0036303078363030 ,
+        0x004d656469615479706500302e312e3434343000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x1c0000005634444d0100000000000000000000000000000000000000
+        0x000000000000000000000000000000001c0000005634444d0100000000000000 ,
+        0x000000000000000000000000
     End
     PrtDevNamesW = Begin
-        0x040029003c000100000000000000000000000000000000000000000000000000 ,
+        0x04001e0055000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000005500530042003000 ,
-        0x3000320000000000000000000000
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000540053003000300031000000
     End
     NoSaveCTIWhenDisabled =1
     Begin
@@ -354,7 +347,7 @@ Begin Form
             BackColor =15064278
             Name ="FormHeader"
             GUID = Begin
-                0x1d4019402b5c8f4faa04792963c81eb9
+                0x7657886b17399049b8776397a2c591e1
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -372,7 +365,7 @@ Begin Form
                     Name ="cmdFilter"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x3742200c1411eb478bbec2c2be0f3dea
+                        0xd3764cc81e8d8f4e8472af545b8839b7
                     End
                     ImageData = Begin
                         0x2800000010000000100000000100200000000000000000000000000000000000 ,
@@ -461,7 +454,7 @@ Begin Form
                     Caption ="Trust Account Entries "
                     FontName ="Calibri Light"
                     GUID = Begin
-                        0x8e2aee12551d9d4cb6cb71f42f0c40a7
+                        0xe4d459100b73224e94b5fb28adcb4316
                     End
                     GroupTable =1
                     LayoutCachedLeft =1020
@@ -485,7 +478,7 @@ Begin Form
                     Name ="Label1"
                     Caption ="From"
                     GUID = Begin
-                        0x8ef1ecba03555d4c91578fe725f2b4a2
+                        0x0e7dfa943201874094ac69074991ab7a
                     End
                     LayoutCachedLeft =4721
                     LayoutCachedTop =328
@@ -508,7 +501,7 @@ Begin Form
                     Name ="Label0"
                     Caption ="File No."
                     GUID = Begin
-                        0x2ae6e4d09227954f86f92c9fe824ef09
+                        0x846c60575347304b97bb31c7b8581b3e
                     End
                     BottomPadding =150
                     LayoutCachedLeft =7620
@@ -533,7 +526,7 @@ Begin Form
                     Name ="Label3"
                     Caption ="Name"
                     GUID = Begin
-                        0xb1139fd02e22a3478b4d9dd734bd83f4
+                        0xff9a80292e076445b683b9f493096e1b
                     End
                     BottomPadding =150
                     LayoutCachedLeft =1035
@@ -558,7 +551,7 @@ Begin Form
                     Name ="Label24"
                     Caption ="Uncashed\015\012Check"
                     GUID = Begin
-                        0x7cfb35721de5884d813b6bd8e357e884
+                        0x4d52e4a7c6891f48884bb0aa931d50b6
                     End
                     BottomPadding =150
                     LayoutCachedLeft =15495
@@ -582,7 +575,7 @@ Begin Form
                     Name ="Label93"
                     Caption ="Check#"
                     GUID = Begin
-                        0x415829725e1d49498cddb61efef5790d
+                        0x269014838bec574992dc8fc364291723
                     End
                     LayoutCachedLeft =13635
                     LayoutCachedTop =1320
@@ -606,7 +599,7 @@ Begin Form
                     Name ="Label2"
                     Caption ="Date"
                     GUID = Begin
-                        0x1980e22ffbb6a24699db0533006eb15b
+                        0x25299e62ef7be24f942affee4ba7a71f
                     End
                     BottomPadding =150
                     LayoutCachedLeft =8955
@@ -631,7 +624,7 @@ Begin Form
                     Name ="Label4"
                     Caption ="Deposits"
                     GUID = Begin
-                        0x21526ae637cd784989e9c2ba19ef4d43
+                        0xd1272d127debe040bfd607657dd2e2f4
                     End
                     BottomPadding =150
                     LayoutCachedLeft =10095
@@ -656,7 +649,7 @@ Begin Form
                     Name ="Label5"
                     Caption ="Withdrawal"
                     GUID = Begin
-                        0x0e4e3599f33acd40ada6a0c936e4de11
+                        0xae67f965af698f49a63e1ab8373adfed
                     End
                     BottomPadding =150
                     LayoutCachedLeft =12420
@@ -681,7 +674,7 @@ Begin Form
                     Name ="Label7"
                     Caption ="Description"
                     GUID = Begin
-                        0xb6df883c4e991549a504162e2b9a2ecc
+                        0x63c78499c8a8ef4c85830c0f3b938778
                     End
                     BottomPadding =150
                     LayoutCachedLeft =4140
@@ -706,7 +699,7 @@ Begin Form
                     Name ="Label112"
                     Caption ="Uncl Deposit"
                     GUID = Begin
-                        0xadc65089c353cb498ab7ec4cf3d39051
+                        0x78b3c40995642040887a8925a64eb8cc
                     End
                     BottomPadding =150
                     LayoutCachedLeft =14415
@@ -732,7 +725,7 @@ Begin Form
                     Name ="Label8"
                     Caption ="WF\015\012Reconciled"
                     GUID = Begin
-                        0xadfe59b20731fc49b3908e4a58f4f510
+                        0x6940e89c38c37843b2fdaa60729e9871
                     End
                     LayoutCachedLeft =11295
                     LayoutCachedTop =1380
@@ -756,7 +749,7 @@ Begin Form
                     Name ="Label12"
                     Caption ="Orig Atty"
                     GUID = Begin
-                        0x41960b47715b8141a90a48124cfcad20
+                        0x0aa61f0bfd4ab641875c08f0615f96f8
                     End
                     BottomPadding =150
                     LayoutCachedLeft =135
@@ -779,7 +772,7 @@ Begin Form
                     Caption ="   &Clear Filter"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x164c39c264db374b88b4265a0831bb84
+                        0x04f73ffd27f27a429abc33c023e06450
                     End
                     UnicodeAccessKey =67
                     ImageData = Begin
@@ -866,7 +859,7 @@ Begin Form
                     Name ="txtFrom"
                     Format ="Short Date"
                     GUID = Begin
-                        0x5fe7f103ffb4e1448344bef2de397650
+                        0x16527ca4df22a4438162fe2013ddf1ac
                     End
 
                     LayoutCachedLeft =4721
@@ -883,7 +876,7 @@ Begin Form
                     Name ="Label19"
                     Caption ="To"
                     GUID = Begin
-                        0x0f0bf6442177894d93c4a4c083c111c2
+                        0x8f13b63feb58aa46b48f1f43c648a5b0
                     End
                     LayoutCachedLeft =5973
                     LayoutCachedTop =328
@@ -901,7 +894,7 @@ Begin Form
                     Name ="Frame23"
                     DefaultValue ="1"
                     GUID = Begin
-                        0x8dae07c1890ade4abaf490ace2773a46
+                        0xff80cd7d06388346aa9e20c04512a650
                     End
 
                     LayoutCachedLeft =4620
@@ -920,7 +913,7 @@ Begin Form
                             Name ="Label25"
                             Caption ="Date"
                             GUID = Begin
-                                0xeb4f20772c81a54188603719465584e5
+                                0xa0f9907424da644a9f28918de9017623
                             End
                             LayoutCachedLeft =7200
                             LayoutCachedTop =343
@@ -945,7 +938,7 @@ Begin Form
                     Name ="txtTo"
                     Format ="Short Date"
                     GUID = Begin
-                        0x09c1ed0f7afdc74189dc39f87cf6d19b
+                        0x5fc379ea3a9dc6498f655bde9be0b736
                     End
 
                     LayoutCachedLeft =5973
@@ -966,7 +959,7 @@ Begin Form
                     FontSize =10
                     TabIndex =5
                     GUID = Begin
-                        0x71c18477345c7e409ab5798086a5b954
+                        0x421042b6b8f233468554f3756da29fc8
                     End
                     Name ="cmbOrigAtty"
                     RowSourceType ="Value List"
@@ -990,7 +983,7 @@ Begin Form
                     Name ="cmdWFReconcile"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0xda9e5fabb176e04496fb651b1ffd7bba
+                        0x107a36a0d2d9c34da215857a40340051
                     End
 
                     LayoutCachedLeft =12015
@@ -1012,7 +1005,7 @@ Begin Form
                     Caption ="&Close"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xc1ccbe5f1b9a5d4ea56d08dbc9706ad4
+                        0x16720e2805cee0488b6a811f65c2c3d6
                     End
                     UnicodeAccessKey =67
 
@@ -1067,7 +1060,7 @@ Begin Form
                     ForeColor =0
                     ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"0\""
                     GUID = Begin
-                        0xb92a90f876e81c45b3bd2f0d003bb2a6
+                        0x7bcb0e74d80bed4f8d6a8651f3d86ca8
                     End
                     Name ="cmbClients"
                     RowSourceType ="Table/Query"
@@ -1094,7 +1087,7 @@ Begin Form
                     Name ="chkUnclearedDep"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x18e59a8836b8ae4ca281571c62cbd61a
+                        0x434a571c9585d144b5f717a0c559b198
                     End
 
                     LayoutCachedLeft =15135
@@ -1112,7 +1105,7 @@ Begin Form
                     Name ="chkUncashed"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x56b8ae37a37fdf4c850ec069b2658bef
+                        0x355262fc0ce22d489404837199ceb7e3
                     End
 
                     LayoutCachedLeft =16515
@@ -1134,7 +1127,7 @@ Begin Form
                     Name ="txtCheck"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0xb2c84584c026954eaeda1d0fba4e8b2a
+                        0xfdcc71beb9d1364197b94b0e7e95c192
                     End
 
                     LayoutCachedLeft =13695
@@ -1157,7 +1150,7 @@ Begin Form
                     Name ="txtDescription"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x8f720e141cc5134f9ea8294e0d674794
+                        0xcf2a292b6b0c05458d8a89dad664c0aa
                     End
 
                     LayoutCachedLeft =4305
@@ -1180,7 +1173,7 @@ Begin Form
                     Name ="txtDep"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x30e176f3e7ad7f4fb7b3e0d85812d342
+                        0x25e5169beab82642b706b113c6b5ca02
                     End
 
                     LayoutCachedLeft =10095
@@ -1203,7 +1196,7 @@ Begin Form
                     Name ="txtWith"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x74e1aadfd520d741a14156e621291034
+                        0x724dfdf50bf49a42b89c50c1cb97035a
                     End
 
                     LayoutCachedLeft =12435
@@ -1230,7 +1223,7 @@ Begin Form
                     Name ="txt_WF_CHK"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x058c09322e0e8b4d95b5f228628865f7
+                        0x475c6bd4e339b640ae23a9aaee7a9767
                     End
                     AsianLineBreak =0
                     GridlineColor =0
@@ -1256,7 +1249,7 @@ Begin Form
                     Name ="chkNonZeroD"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x606300390b7eac4d998e491b8f3e0898
+                        0x8a00a0de704d3b4e81c068b742ece0c4
                     End
 
                     LayoutCachedLeft =11025
@@ -1275,7 +1268,7 @@ Begin Form
                     Name ="chkNonZeroW"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0xeaa987efce2b3042a86e960a6382a588
+                        0x2b79f4d25fc9c84f9e55ee128532d977
                     End
 
                     LayoutCachedLeft =13395
@@ -1298,7 +1291,7 @@ Begin Form
                     Name ="txtClient"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x3979ca555ff8fc4c9ac6071c320761ff
+                        0xcb9ff51d66105f4c9c6c5792853c2069
                     End
 
                     LayoutCachedLeft =1095
@@ -1316,7 +1309,7 @@ Begin Form
                     Name ="Image54"
                     Picture ="Wells Fargo Cropped"
                     GUID = Begin
-                        0xc573cea1bf0a7744909010bdeacc6930
+                        0x0bdd5a23d6e2be4ca6c16a57f5af5d9e
                     End
 
                     LayoutCachedLeft =11160
@@ -1339,7 +1332,7 @@ Begin Form
                     Caption ="&Requery"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xa06ef76757bbbe4180939d4a659a75a9
+                        0x810238101a14c84982f707076abf2256
                     End
                     UnicodeAccessKey =82
 
@@ -1386,7 +1379,7 @@ Begin Form
                     Name ="Image57"
                     Picture ="Logo Transparent"
                     GUID = Begin
-                        0x4e097692771e704bb203a11f3edd1bc9
+                        0xb14b6cfba8563d42a1cca0261f69a8ee
                     End
 
                     LayoutCachedLeft =60
@@ -1406,7 +1399,7 @@ Begin Form
                     Name ="chkChks"
                     AfterUpdate ="[Event Procedure]"
                     GUID = Begin
-                        0x07a8f1c07e13424ebd482ed817213c25
+                        0xab9daa8af7c3ad499347548132ccd440
                     End
 
                     LayoutCachedLeft =14250
@@ -1428,7 +1421,7 @@ Begin Form
                     Name ="Text59"
                     ControlSource ="TrustChronMemo"
                     GUID = Begin
-                        0xd5d1f69e8a623e4d84ba7f04a3f21998
+                        0x277209e826b6ec458853c16a6e86d55c
                     End
 
                     LayoutCachedLeft =7980
@@ -1447,7 +1440,7 @@ Begin Form
                             Name ="Label60"
                             Caption ="Notes:"
                             GUID = Begin
-                                0x044a5a882ddc474fb4fa74e26de16b32
+                                0x07dbf7e31cad1b49b70b728b2653979e
                             End
                             LayoutCachedLeft =7980
                             LayoutCachedTop =180
@@ -1470,7 +1463,7 @@ Begin Form
                     Caption ="35"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x1c358f53ab0b75479e8965320a5aebf1
+                        0x5a1762583ebd8d44887700cb28953854
                     End
 
                     LayoutCachedLeft =10080
@@ -1506,7 +1499,7 @@ Begin Form
                     Caption ="65"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xcda6028fd7a74b4ba9d83605a7e648b0
+                        0x8000d7ae8579c24c9985bee64763ffd8
                     End
 
                     LayoutCachedLeft =10440
@@ -1542,7 +1535,7 @@ Begin Form
                     Caption ="95"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x8172be5d8aa3a240b62ef978f0444b18
+                        0x8d7e19641477994fb52775cdf84c9d9e
                     End
 
                     LayoutCachedLeft =10800
@@ -1578,7 +1571,7 @@ Begin Form
                     Caption ="35"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x7674eeb9b04a0d44b43a6b276898694e
+                        0x4a479206e92fed4da2ddef3510563593
                     End
 
                     LayoutCachedLeft =12480
@@ -1614,7 +1607,7 @@ Begin Form
                     Caption ="65"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x86f91b1e99327145aede4fbbd44068fb
+                        0x4039acf2ca11fc458c6306a4e6bb175a
                     End
 
                     LayoutCachedLeft =12810
@@ -1650,7 +1643,7 @@ Begin Form
                     Caption ="95"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xc6882fc105e7d7409d5cdfe631aa1026
+                        0xd2add53af7210a4ea0c4d5d098b0bc74
                     End
 
                     LayoutCachedLeft =13140
@@ -1686,7 +1679,7 @@ Begin Form
                     Caption ="35"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xa885945d569bac4189782b37e3f062dc
+                        0x4e8284629ea5ba45a2ae10738cb2ed48
                     End
 
                     LayoutCachedLeft =14400
@@ -1723,7 +1716,7 @@ Begin Form
                     Caption ="65"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x4826d0c734626247bc0e32b7e9188360
+                        0x92545140cd4d9a418631895ef740e146
                     End
 
                     LayoutCachedLeft =14760
@@ -1759,7 +1752,7 @@ Begin Form
                     Caption ="95"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x589e977f8de4be45b8f3d8b457922c60
+                        0x34c59599f7db934ab5e4ef2a166d0bba
                     End
 
                     LayoutCachedLeft =15120
@@ -1793,7 +1786,7 @@ Begin Form
                     Name ="Label70"
                     Caption ="Rpt Last:"
                     GUID = Begin
-                        0xdc47c05baf16774887d8025afb79d03a
+                        0x34e5f17b3a37b14b9a6db1f5050f0b45
                     End
                     LayoutCachedLeft =13740
                     LayoutCachedTop =780
@@ -1807,7 +1800,7 @@ Begin Form
             Height =420
             Name ="Detail"
             GUID = Begin
-                0xa3ba4eb1c8a0754481c000a07520b224
+                0xc6b6040d920a6b4682df2c5115160dd4
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -1831,7 +1824,7 @@ Begin Form
                     Name ="CheckNumber"
                     ControlSource ="CheckNumber"
                     GUID = Begin
-                        0x02958035eeff9f43ba576aa1ada89014
+                        0x63cd6bb2c14b5d41ad4be648551824d5
                     End
 
                     LayoutCachedLeft =13695
@@ -1862,7 +1855,7 @@ Begin Form
                     ControlSource ="Credit"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x9090a84d876e984bb02a938138c8db8f
+                        0x4a54f4c4c70e80498ea597335afa3761
                     End
 
                     LayoutCachedLeft =12432
@@ -1886,7 +1879,7 @@ Begin Form
                     ControlSource ="CheckCashed"
                     DefaultValue ="0"
                     GUID = Begin
-                        0x0e16efec505b804f8e0b2fedc548a0d5
+                        0x9211454de1b3f446ab0f1872fe35b60a
                     End
 
                     LayoutCachedLeft =15975
@@ -1916,7 +1909,7 @@ Begin Form
                     ControlSource ="Debit"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x1a019872d3dd5049b53d7e883fc5821a
+                        0xb69f36b3f8407749ad2ab81585c948e3
                     End
 
                     LayoutCachedLeft =10020
@@ -1948,7 +1941,7 @@ Begin Form
                     Name ="TMatter"
                     ControlSource ="TMatter"
                     GUID = Begin
-                        0x235f5d7a6e589c4b93452dc38f7d9737
+                        0x8a3d3952f535074f8bf74e0771c83fae
                     End
 
                     LayoutCachedLeft =4290
@@ -1978,7 +1971,7 @@ Begin Form
                     Format ="Short Date"
                     InputMask ="99/99/0000;0;_"
                     GUID = Begin
-                        0x943c49f2ee0add4fa86b7b0caa1503df
+                        0x28041fc06bde96419fa175534995e7c7
                     End
 
                     LayoutCachedLeft =8880
@@ -2000,7 +1993,7 @@ Begin Form
                     ControlSource ="DepCleared"
                     DefaultValue ="0"
                     GUID = Begin
-                        0xd4cf83177c4a7c4f81c2c046623461ca
+                        0x341a7d38e163f247a0110e286e8e2736
                     End
 
                     LayoutCachedLeft =14895
@@ -2029,7 +2022,7 @@ Begin Form
                     Name ="Name"
                     ControlSource ="Name"
                     GUID = Begin
-                        0xfe417bbb9d801e45a168ecbe4a23765a
+                        0x1709284dce0ed74d83e50d9740d613ea
                     End
                     BottomPadding =150
 
@@ -2050,7 +2043,7 @@ Begin Form
                     Name ="Reconciled"
                     ControlSource ="Reconciled"
                     GUID = Begin
-                        0x62fb502aaa29ac4cbaff1752abc3a27f
+                        0x77f24e673def14498754b6a0887db0e0
                     End
 
                     LayoutCachedLeft =11715
@@ -2077,7 +2070,7 @@ Begin Form
                     ControlSource ="Orig_Atty"
                     InputMask ="99/99/0000;0;_"
                     GUID = Begin
-                        0x9e569b0f351e63458c7c0cfa124587e2
+                        0x92ea1c99c041164a81b9e1e9ef428026
                     End
 
                     LayoutCachedLeft =60
@@ -2107,7 +2100,7 @@ Begin Form
                     ControlSource ="Case No"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x5a51cefd034a2846b5ed906881301e60
+                        0x24c6c8c68955e4498ed187936ae186c6
                     End
 
                     LayoutCachedLeft =7654
@@ -2127,7 +2120,7 @@ Begin Form
             BackColor =15064278
             Name ="FormFooter"
             GUID = Begin
-                0xad41f3aa2c5487409b46f7f06912d5ee
+                0xba2cacbaf017fd4cba092a90357c8083
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -2145,7 +2138,7 @@ Begin Form
                     Name ="txtSumOfBalances"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x8cd8c142a81cc544b7a3bea173ea2a26
+                        0x87c45e3f323efc46b046c3b149ffd239
                     End
 
                     LayoutCachedLeft =11640
@@ -2165,7 +2158,7 @@ Begin Form
                     Name ="txtSumOfUncashed"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x3898dfc06bcea6469ab34a9bb9fd42c3
+                        0x73efe63d781c4b4f92622295efdea428
                     End
 
                     LayoutCachedLeft =15660
@@ -2186,7 +2179,7 @@ Begin Form
                     Name ="txtSumOfUnclearDeposits"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0xc81a4e9ad52acf4fa71d37f856e27b1b
+                        0x4d79fa564a121c449417c578f2f6b649
                     End
 
                     LayoutCachedLeft =14400
@@ -2211,7 +2204,7 @@ Begin Form
                     Name ="Label48"
                     Caption ="Total"
                     GUID = Begin
-                        0x9f25df5c9c0a7d41a38e5753d5674322
+                        0xd1971a02ebc2e747af46a448f0dd83b2
                     End
                     BottomPadding =150
                     LayoutCachedLeft =14619
@@ -2236,7 +2229,7 @@ Begin Form
                     Name ="Label49"
                     Caption ="Total "
                     GUID = Begin
-                        0xbd7f1a4df5896d4391d6bf31c03fe9e7
+                        0xe696ee1a2a2a8a4ea49afc2596b44b0c
                     End
                     BottomPadding =150
                     LayoutCachedLeft =15916
@@ -2259,7 +2252,7 @@ Begin Form
                     Name ="txtJMTrust"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0xbef3084d0524e0489dab86e194a52923
+                        0x3ea7ddb6e96b0748a964426c15e31d5a
                     End
 
                     LayoutCachedLeft =11640
@@ -2282,7 +2275,7 @@ Begin Form
                     Name ="txtSMTrust"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0xa16a775d9e19bc4c9909535776e8161d
+                        0xf5587a12f8b849409c73fac6cb759736
                     End
 
                     LayoutCachedLeft =11640
@@ -2478,28 +2471,63 @@ Sub FilterClear()
     Me.FilterOn = False
 End Sub
 
+' LEGACY (pre-reconciliation-fix, see .docs/reconciliation-forms-null-calculation-investigation.md)
+'Private Sub cmdRequery_Click()
+'    If Me.Dirty = True Then Me.Dirty = False
+'    Me.Requery
+'    Me.txtSMTrust = DLookup("AvailBalance", "qryTakeOff", "CaseID=12664")
+'    Me.txtSumOfBalances = DLookup("SumOfBalance", "qryReconciliation_sumOfBalances") - Nz(Me.txtSMTrust, 0)
+'    Me.txtSumOfUncashed = DLookup("SumOfCredit", "qryReconciliation_sumOfCredit")  'Not cashed! please check qyery !
+'    Me.txtSumOfUnclearDeposits = DLookup("SumOfDebit", "qryReconciliation_sumOfUnclearedDeposits")
+'    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep
+'End Sub
+
 Private Sub cmdRequery_Click()
     If Me.Dirty = True Then Me.Dirty = False
     Me.Requery
-    Me.txtSMTrust = DLookup("AvailBalance", "qryTakeOff", "CaseID=12664")
+    Me.txtSMTrust = DLookup("AvailBalance", "qryTakeOffAvailBalance", "CaseID=12664")
     Me.txtSumOfBalances = DLookup("SumOfBalance", "qryReconciliation_sumOfBalances") - Nz(Me.txtSMTrust, 0)
     Me.txtSumOfUncashed = DLookup("SumOfCredit", "qryReconciliation_sumOfCredit")  'Not cashed! please check qyery !
     Me.txtSumOfUnclearDeposits = DLookup("SumOfDebit", "qryReconciliation_sumOfUnclearedDeposits")
-    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep
+
+    If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Or IsNull(Me.txtSumOfUnclearDeposits) Then
+        MsgBox "One or more reconciliation values could not be calculated (Null)." & vbCrLf & _
+               "Do not rely on txt_WF_CHK until this is resolved.", vbExclamation, "TB CMS"
+    End If
+
+    Me.txt_WF_CHK = Nz(Me.txtSumOfBalances, 0) + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep
 End Sub
+
 
 Private Sub cmdWFReconcile_AfterUpdate()
     Call FilterMe
 End Sub
 
+' LEGACY (pre-reconciliation-fix, see .docs/reconciliation-forms-null-calculation-investigation.md)
+'Private Sub Form_Load()
+'    'Me.txtJMTrust = DLookup("AvailBalance", "qryTakeOff", "CaseID=11946")
+'    Me.txtSMTrust = DLookup("AvailBalance", "qryTakeOff", "CaseID=12664")
+'    Me.txtSumOfBalances = DLookup("SumOfBalance", "qryReconciliation_sumOfBalances") - Nz(Me.txtSMTrust, 0)
+'    Me.txtSumOfUncashed = DLookup("SumOfCredit", "qryReconciliation_sumOfCredit")  'Not cashed! please check qyery !
+'    Me.txtSumOfUnclearDeposits = DLookup("SumOfDebit", "qryReconciliation_sumOfUnclearedDeposits")
+'    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep
+'End Sub
+
 Private Sub Form_Load()
-    'Me.txtJMTrust = DLookup("AvailBalance", "qryTakeOff", "CaseID=11946")
-    Me.txtSMTrust = DLookup("AvailBalance", "qryTakeOff", "CaseID=12664")
+    'Me.txtJMTrust = DLookup("AvailBalance", "qryTakeOffAvailBalance", "CaseID=11946")
+    Me.txtSMTrust = DLookup("AvailBalance", "qryTakeOffAvailBalance", "CaseID=12664")
     Me.txtSumOfBalances = DLookup("SumOfBalance", "qryReconciliation_sumOfBalances") - Nz(Me.txtSMTrust, 0)
     Me.txtSumOfUncashed = DLookup("SumOfCredit", "qryReconciliation_sumOfCredit")  'Not cashed! please check qyery !
     Me.txtSumOfUnclearDeposits = DLookup("SumOfDebit", "qryReconciliation_sumOfUnclearedDeposits")
-    Me.txt_WF_CHK = Me.txtSumOfBalances + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep
+
+    If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Or IsNull(Me.txtSumOfUnclearDeposits) Then
+        MsgBox "One or more reconciliation values could not be calculated (Null)." & vbCrLf & _
+               "Do not rely on txt_WF_CHK until this is resolved.", vbExclamation, "TB CMS"
+    End If
+
+    Me.txt_WF_CHK = Nz(Me.txtSumOfBalances, 0) + Nz(Me.txtSumOfUncashed, 0) - Nz(Me.txtSumOfUnclearDeposits, 0) 'expwftrust+uncash-uncleardep
 End Sub
+
 
 Private Sub txtCheck_AfterUpdate()
     If Not IsNull(txtCheck) Then Call FilterMe

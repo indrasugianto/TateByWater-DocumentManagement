@@ -1,6 +1,8 @@
 # Table: vw_take_off_step2_sums *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_take_off_step2_sums`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_take_off_step2_sums`
+
+**Row count:** 111
 
 ## Columns
 

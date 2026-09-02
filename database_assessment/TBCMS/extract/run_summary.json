@@ -1,12 +1,12 @@
 {
   "appName": "TB CMS.SQL",
   "sourceFile": "TB CMS.SQL.accdb",
-  "outputDir": "C:\\Users\\indra\\Downloads\\TBCMS",
+  "outputDir": "C:\\Users\\sugianto.PCAINTERNAL\\Downloads",
   "stages": [
     {
       "name": "schema",
       "ok": true,
-      "elapsedSec": 39.946,
+      "elapsedSec": 115.729,
       "error": null
     },
     {
@@ -18,94 +18,94 @@
     {
       "name": "relationships",
       "ok": true,
-      "elapsedSec": 0.016,
+      "elapsedSec": 0.036,
       "error": null
     },
     {
       "name": "queries",
       "ok": true,
-      "elapsedSec": 3.763,
+      "elapsedSec": 7.288,
       "error": null
     },
     {
       "name": "dataMacros",
       "ok": true,
-      "elapsedSec": 0.007,
+      "elapsedSec": 0.025,
       "error": null
     },
     {
       "name": "dbProperties",
       "ok": true,
-      "elapsedSec": 0.052,
+      "elapsedSec": 0.13,
       "error": null
     },
     {
       "name": "vba",
       "ok": true,
-      "elapsedSec": 27.49,
+      "elapsedSec": 53.291,
       "error": null
     },
     {
       "name": "macroAnalysis",
       "ok": true,
-      "elapsedSec": 0.001,
+      "elapsedSec": 0.003,
       "error": null
     },
     {
       "name": "forms",
       "ok": true,
-      "elapsedSec": 7.565,
+      "elapsedSec": 669.648,
       "error": null
     },
     {
       "name": "reports",
       "ok": true,
-      "elapsedSec": 257.36,
+      "elapsedSec": 515.401,
       "error": null
     },
     {
       "name": "lineage",
       "ok": true,
-      "elapsedSec": 59.61,
+      "elapsedSec": 227.606,
       "error": null
     },
     {
       "name": "tableDefs",
       "ok": true,
-      "elapsedSec": 0.061,
+      "elapsedSec": 0.096,
       "error": null
     },
     {
       "name": "manifest",
       "ok": true,
-      "elapsedSec": 0.031,
+      "elapsedSec": 0.037,
       "error": null
     },
     {
       "name": "docs",
       "ok": true,
-      "elapsedSec": 1.566,
+      "elapsedSec": 1.823,
       "error": null
     },
     {
       "name": "migrationGuide",
       "ok": true,
-      "elapsedSec": 0.027,
+      "elapsedSec": 0.019,
       "error": null
     }
   ],
   "lockErrors": [],
-  "startedAt": "2026-08-27T13:14:41Z",
+  "startedAt": "2026-09-02T14:48:43Z",
   "success": true,
-  "finishedAt": "2026-08-27T13:21:24Z",
+  "finishedAt": "2026-09-02T15:15:33Z",
   "counts": {
-    "tables": 91,
+    "tables": 93,
     "relationships": 0,
-    "queries": 213,
+    "queries": 214,
     "forms": 94,
-    "reports": 98,
+    "reports": 99,
     "dataMacroTables": 0,
-    "vbaProcedures": 216
+    "vbaProcedures": 217
   },
   "completeness": {
     "schemaWarnings": [],
@@ -114,12 +114,7 @@
     "vbaObjectsFailed": [],
     "formErrors": [],
     "formControlWarnings": 0,
-    "reportErrors": [
-      {
-        "report": "rpt_Billing_Closing",
-        "error": "skipped via --skip-report"
-      }
-    ],
+    "reportErrors": [],
     "reportControlWarnings": 0
   }
 }

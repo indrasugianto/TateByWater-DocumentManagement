@@ -1,6 +1,8 @@
 # Table: vw_invoices_summary *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_invoices_summary`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_invoices_summary`
+
+**Row count:** 5641
 
 ## Columns
 

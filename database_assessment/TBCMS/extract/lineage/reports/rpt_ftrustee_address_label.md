@@ -10,5 +10,5 @@
 - Terminal Tables: Bankruptcy
 
 ## Related VBA Procedures
-- form frmBankruptcy::cmdPrintForeLabel_Click [2481-2496]
+- form frmBankruptcy::cmdPrintForeLabel_Click [2431-2446]
 - form frmCalls::cmdBankruptcySend_Click [7847-7871] [createObject]

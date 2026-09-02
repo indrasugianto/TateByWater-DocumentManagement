@@ -1,7 +1,7 @@
-Version =20
+Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =376602467
+Checksum =-693958646
 Begin Form
     PopUp = NotDefault
     Modal = NotDefault
@@ -26,27 +26,27 @@ Begin Form
     Top =2415
     Right =20235
     Bottom =10335
-    DatasheetGridlinesColor =15461355
+    DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0xbf1a17b7eb38e440
     End
     GUID = Begin
-        0x7d86d1621deaf240aa4d743e26741deb
+        0x7ef0109430b7da4ab35e8ef8330d796a
     End
     NameMap = Begin
         0x0acc0e5500000000000000000000000000000000000000000c00000005000000 ,
         0x0000000000000000000000000000
     End
-    DatasheetFontName ="Trebuchet MS"
+    DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x00cbde91feffffffc0336c6880d4330034e03300b0d2330082326c68044cf800 ,
+        0x0000000040010000c40216d99c01000000000000000000000800000000000000 ,
         0x01041f149c00300c034c010001000100ea0a6f08640001000700c80001000100 ,
-        0x0000040000004c65747465720034470100000000000000000200000022059319 ,
-        0x80d4330063730000000000000000000000000000000000000000000001000000 ,
+        0x0000040000004c65747465720000000000000000000000000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000001000000 ,
         0x0200000001000000020000000000000000000000000000000000000043616e6f ,
         0x6e0000008010000000000000000100000100000003060000b1045f0400600904 ,
         0x0b04430061006e006f006e0020004d0046003400340030003000200053006500 ,
@@ -151,7 +151,7 @@ Begin Form
         0x0800250052000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000005553423030310000000000000000 ,
-        0x0000000000000000000000000000000000
+        0x00000000000000000000000000000000000000000000000000
     End
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
@@ -167,12 +167,12 @@ Begin Form
     AlternateBackThemeColorIndex =1
     AlternateBackShade =95.0
     PrtDevModeW = Begin
-        0x00004c01fc65430100000000000000000200000022059319b816350063736de0 ,
-        0x80b6e20d2836641f01000000fc65430164034c01020000000100000000000000 ,
+        0x00006505fa7f0000b0bf6ff69c01000000000000000000000000000000000000 ,
+        0x407ec7f69c01000002000000000000000100000000000000f084da809c010000 ,
         0x01041f14dc00300c034c010001000100ea0a6f08640001000700c80001000100 ,
-        0x0000040000004c00650074007400650072000000fbbed7fba888fc0809000000 ,
-        0x09000000090000000000000000000000cc15350036e46c68b8163500a0233500 ,
-        0x081735008c160000000000000000000000000000000000000000000001000000 ,
+        0x0000040000004c006500740074006500720000009c0100000000000000000000 ,
+        0x387fc7f69c0100002c027105fa7f0000386ac7f69c010000906bc7f69c010000 ,
+        0x0800000000000000000000000000000000000000000000000000000001000000 ,
         0x0200000001000000020000000000000000000000000000000000000043616e6f ,
         0x6e0000008010000000000000000100000100000003060000b1045f0400600904 ,
         0x0b04430061006e006f006e0020004d0046003400340030003000200053006500 ,
@@ -280,14 +280,18 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000055005300 ,
         0x4200300030003100000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000
     End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -300,17 +304,20 @@ Begin Form
         Begin CommandButton
             FontSize =11
             FontWeight =400
+            ForeColor =4210752
             FontName ="Calibri"
+            GridlineColor =10921638
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
             Shape =1
             Gradient =12
+            BackColor =14461583
             BackThemeColorIndex =4
             BackTint =60.0
             BorderLineStyle =0
-            BorderColor =16777215
+            BorderColor =14461583
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
@@ -321,8 +328,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -334,7 +344,7 @@ Begin Form
         End
         Begin EmptyCell
             Height =240
-            GridlineColor =12632256
+            GridlineColor =10921638
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
@@ -342,7 +352,7 @@ Begin Form
             Height =2100
             Name ="Detail"
             GUID = Begin
-                0x8ec1c64fa1ea434a86d4dffba6fbfefa
+                0x3a939d40218c85488c565164706d9f19
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -358,19 +368,17 @@ Begin Form
                     Top =645
                     Width =6675
                     Height =870
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="lblMessage"
                     Caption ="The back end db is not found. Please locate the back end DB through browse butto"
                         "n."
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xa61513712d4e404b842d97ea7a332b31
+                        0x32b1522566cf7f4dad1a2bd175ea1fc5
                     End
                     LeftPadding =0
                     TopPadding =285
                     RightPadding =0
                     BottomPadding =0
-                    GridlineColor =10921638
                     LayoutCachedLeft =135
                     LayoutCachedTop =645
                     LayoutCachedWidth =6810
@@ -388,16 +396,13 @@ Begin Form
                     Top =1620
                     Width =1290
                     TabIndex =1
-                    ForeColor =4210752
                     Name ="cmdYes"
                     Caption ="Ok"
                     OnClick ="[Event Procedure]"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x7e6d2fa8afa6d146a88a597fcb49c821
+                        0xf72172a620887747b28e7fe2dc4d0c76
                     End
                     TopPadding =0
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =4020
                     LayoutCachedTop =1620
@@ -407,12 +412,11 @@ Begin Form
                     RowEnd =3
                     ColumnStart =2
                     ColumnEnd =2
-                    BackColor =7660736
                     BorderWidth =1
-                    BorderColor =7660736
                     WebImagePaddingLeft =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingTop =-1
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -420,16 +424,13 @@ Begin Form
                     Left =5400
                     Top =1620
                     Width =1395
-                    ForeColor =4210752
                     Name ="cmdNo"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xd644f2746510724188d2187a830c4701
+                        0x36ff1290956fc44181fe89e50a9db34f
                     End
                     TopPadding =0
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =5400
                     LayoutCachedTop =1620
@@ -439,12 +440,11 @@ Begin Form
                     RowEnd =3
                     ColumnStart =4
                     ColumnEnd =4
-                    BackColor =7660736
                     BorderWidth =1
-                    BorderColor =7660736
                     WebImagePaddingLeft =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingTop =-1
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin TextBox
                     Locked = NotDefault
@@ -455,20 +455,18 @@ Begin Form
                     Height =360
                     TabIndex =2
                     TopMargin =60
-                    BackColor =4406316
+                    BackColor =6968388
                     BorderColor =8355711
                     ForeColor =16777215
                     Name ="lblTitle"
                     ControlSource ="=GetCompanyName()"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x410fbd5d0beef7499356ed79db4c51a4
+                        0xe5a32e0c3c8e8f439c04e0ac69243dc4
                     End
                     LeftPadding =0
                     TopPadding =0
                     RightPadding =0
                     BottomPadding =0
-                    GridlineColor =10921638
 
                     LayoutCachedWidth =6870
                     LayoutCachedHeight =360
@@ -487,16 +485,13 @@ Begin Form
                     Top =1620
                     Width =1470
                     TabIndex =3
-                    ForeColor =4210752
                     Name ="Command6"
                     Caption ="Browse"
                     OnClick ="[Event Procedure]"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xe2aa840ce43dbc40bfcbd37186db4e2f
+                        0x7e89b050de772449805a128ff1e66dc7
                     End
                     TopPadding =0
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2400
                     LayoutCachedTop =1620
@@ -506,12 +501,11 @@ Begin Form
                     RowEnd =3
                     ColumnStart =2
                     ColumnEnd =2
-                    BackColor =7660736
                     BorderWidth =1
-                    BorderColor =7660736
                     WebImagePaddingLeft =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingTop =-1
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
             End
         End

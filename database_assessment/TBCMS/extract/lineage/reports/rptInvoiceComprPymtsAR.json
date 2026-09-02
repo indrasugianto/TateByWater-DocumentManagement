@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompCurr_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7742,
-      "lineEnd": 7790,
+      "lineStart": 7680,
+      "lineEnd": 7728,
       "confidence": "medium",
       "reportMentionType": "inferred",
       "via": "vba"
@@ -20,8 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompCurrent_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4847,
-      "lineEnd": 4900,
+      "lineStart": 4846,
+      "lineEnd": 4899,
       "confidence": "medium",
       "reportMentionType": "inferred",
       "via": "vba"
@@ -43,8 +43,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19363,
-      "lineEnd": 19500,
+      "lineStart": 17547,
+      "lineEnd": 17684,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -59,64 +59,20 @@
       "objectName": "frm_advanced_payments",
       "procedureName": "FilterMe",
       "sourceFile": "extract/vba/forms/frm_advanced_payments.txt",
-      "lineStart": 6919,
-      "lineEnd": 6945,
+      "lineStart": 6918,
+      "lineEnd": 6944,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingOpen",
-      "procedureName": "cmdAddNewTK_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
-      "lineStart": 7452,
-      "lineEnd": 7533,
-      "usesDoCmd": [
-        "Close",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
     },
     {
       "objectType": "form",
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "txtTKButton_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3332,
-      "lineEnd": 3389,
+      "lineStart": 3356,
+      "lineEnd": 3413,
       "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdCreateHourlyBill_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8008,
-      "lineEnd": 8032,
-      "usesDoCmd": [
-        "openform"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffSubForm",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffSubForm.txt",
-      "lineStart": 3103,
-      "lineEnd": 3203,
-      "usesDoCmd": [
-        "RunCommand"
-      ],
       "usesSql": true,
       "redFlags": [
         "runSql"
@@ -127,8 +83,8 @@
       "objectName": "frmMatter",
       "procedureName": "Date2_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmMatter.txt",
-      "lineStart": 1513,
-      "lineEnd": 1563,
+      "lineStart": 1512,
+      "lineEnd": 1562,
       "usesDoCmd": [
         "GoToControl",
         "GoToRecord",
@@ -144,9 +100,55 @@
       "objectName": "frmMatter",
       "procedureName": "reorderByDateMatter",
       "sourceFile": "extract/vba/forms/frmMatter.txt",
-      "lineStart": 1572,
-      "lineEnd": 1593,
+      "lineStart": 1571,
+      "lineEnd": 1592,
       "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm.txt",
+      "lineStart": 3104,
+      "lineEnd": 3204,
+      "usesDoCmd": [
+        "RunCommand"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm_OLD",
+      "procedureName": "cmdInsertIntoTA_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm_OLD.txt",
+      "lineStart": 2573,
+      "lineEnd": 2682,
+      "usesDoCmd": [
+        "RunCommand"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTakeOffSubForm3",
+      "procedureName": "CaseNum_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffSubForm3.txt",
+      "lineStart": 2483,
+      "lineEnd": 2605,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
       "usesSql": true,
       "redFlags": [
         "runSql"
@@ -157,8 +159,8 @@
       "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdCompCurr_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7742,
-      "lineEnd": 7790,
+      "lineStart": 7680,
+      "lineEnd": 7728,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -171,8 +173,8 @@
       "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdRecordShort_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7925,
-      "lineEnd": 8041,
+      "lineStart": 7863,
+      "lineEnd": 7979,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -189,8 +191,8 @@
       "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdAddNewTK_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 8062,
-      "lineEnd": 8104,
+      "lineStart": 8000,
+      "lineEnd": 8042,
       "usesDoCmd": [
         "Close",
         "openform"
@@ -205,8 +207,8 @@
       "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdRecord_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 8105,
-      "lineEnd": 8221,
+      "lineStart": 8043,
+      "lineEnd": 8159,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -220,11 +222,40 @@
     },
     {
       "objectType": "form",
+      "objectName": "frmTimeKeepingOpen",
+      "procedureName": "cmdAddNewTK_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7416,
+      "lineEnd": 7497,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTKClose",
+      "procedureName": "txtTKButton_Click",
+      "sourceFile": "extract/vba/forms/frmTKClose.txt",
+      "lineStart": 2379,
+      "lineEnd": 2708,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
       "objectName": "Time Keeping",
       "procedureName": "cmdRecordShortTK_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4238,
-      "lineEnd": 4355,
+      "lineStart": 4237,
+      "lineEnd": 4354,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -241,8 +272,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdRecordTKStatement_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4517,
-      "lineEnd": 4632,
+      "lineStart": 4516,
+      "lineEnd": 4631,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -259,8 +290,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdCreateAR_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4633,
-      "lineEnd": 4668,
+      "lineStart": 4632,
+      "lineEnd": 4667,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -272,8 +303,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdInsertTime_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4688,
-      "lineEnd": 4711,
+      "lineStart": 4687,
+      "lineEnd": 4710,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -285,8 +316,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdAddNew_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4712,
-      "lineEnd": 4733,
+      "lineStart": 4711,
+      "lineEnd": 4732,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -296,8 +327,8 @@
       "objectName": "Time Keeping",
       "procedureName": "addNewTK",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4734,
-      "lineEnd": 4789,
+      "lineStart": 4733,
+      "lineEnd": 4788,
       "usesDoCmd": [
         "GoToRecord"
       ],
@@ -311,8 +342,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdCompCurrent_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4847,
-      "lineEnd": 4900,
+      "lineStart": 4846,
+      "lineEnd": 4899,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -322,55 +353,24 @@
     },
     {
       "objectType": "form",
-      "objectName": "frmTKClose",
-      "procedureName": "txtTKButton_Click",
-      "sourceFile": "extract/vba/forms/frmTKClose.txt",
-      "lineStart": 2378,
-      "lineEnd": 2707,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffSubForm3",
-      "procedureName": "CaseNum_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffSubForm3.txt",
-      "lineStart": 2558,
-      "lineEnd": 2680,
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdCreateHourlyBill_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8029,
+      "lineEnd": 8053,
       "usesDoCmd": [
-        "Close",
         "openform"
       ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTakeOffSubForm_OLD",
-      "procedureName": "cmdInsertIntoTA_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffSubForm_OLD.txt",
-      "lineStart": 2653,
-      "lineEnd": 2762,
-      "usesDoCmd": [
-        "RunCommand"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "report",
       "objectName": "rpt_Compr_InvoiceADVCur",
       "procedureName": "Report_Open",
       "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
-      "lineStart": 1610,
-      "lineEnd": 1646,
+      "lineStart": 1528,
+      "lineEnd": 1564,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": []
@@ -380,8 +380,8 @@
       "objectName": "Invoice2",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Invoice2.txt",
-      "lineStart": 2068,
-      "lineEnd": 2100,
+      "lineStart": 2044,
+      "lineEnd": 2076,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -393,8 +393,8 @@
       "objectName": "Rpt_MergeInvTK",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Rpt_MergeInvTK.txt",
-      "lineStart": 1949,
-      "lineEnd": 1981,
+      "lineStart": 1869,
+      "lineEnd": 1901,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [

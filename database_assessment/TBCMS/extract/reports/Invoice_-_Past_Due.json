@@ -14,9 +14,19 @@
     "bottom": 1008
   },
   "paperSize": 1,
+  "groupLevels": [
+    {
+      "fieldExpression": "CaseID",
+      "sortOrder": "ascending",
+      "groupHeader": true,
+      "groupFooter": true
+    }
+  ],
   "sections": [
     {
       "type": "Detail",
+      "height": 300,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -100,6 +110,8 @@
     },
     {
       "type": "ReportHeader",
+      "height": 4260,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -475,6 +487,8 @@
     },
     {
       "type": "ReportFooter",
+      "height": 1020,
+      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -542,6 +556,7 @@
     },
     {
       "type": "PageHeader",
+      "height": 660,
       "controls": [
         {
           "type": "Rectangle",
@@ -658,6 +673,7 @@
     },
     {
       "type": "PageFooter",
+      "height": 750,
       "controls": [
         {
           "type": "Rectangle",
@@ -747,8 +763,20 @@
       ]
     },
     {
+      "type": "GroupHeader",
+      "groupIndex": 0,
+      "groupField": "CaseID",
+      "height": 0,
+      "forceNewPage": 1,
+      "keepTogether": true,
+      "controls": []
+    },
+    {
       "type": "GroupFooter",
       "groupIndex": 0,
+      "groupField": "CaseID",
+      "height": 1560,
+      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

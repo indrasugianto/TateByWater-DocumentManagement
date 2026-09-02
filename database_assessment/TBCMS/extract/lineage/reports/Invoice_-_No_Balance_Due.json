@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdBalanceInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19243,
-      "lineEnd": 19299,
+      "lineStart": 17427,
+      "lineEnd": 17483,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -20,32 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdEmailNoBalance_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18946,
-      "lineEnd": 18969,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "zClient Ledger OLD",
-      "controlName": "cmdBalanceInvoice",
-      "eventName": "onClick",
-      "procedureName": "cmdBalanceInvoice_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7965,
-      "lineEnd": 7981,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "frmHome",
-      "controlName": "cmdDeleteAll",
-      "eventName": "onClick",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1868,
-      "lineEnd": 2005,
+      "lineStart": 17130,
+      "lineEnd": 17153,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -58,6 +34,30 @@
       "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
       "lineStart": 6313,
       "lineEnd": 6450,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmHome",
+      "controlName": "cmdDeleteAll",
+      "eventName": "onClick",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1832,
+      "lineEnd": 1969,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "zClient Ledger OLD",
+      "controlName": "cmdBalanceInvoice",
+      "eventName": "onClick",
+      "procedureName": "cmdBalanceInvoice_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7986,
+      "lineEnd": 8002,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -86,8 +86,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdEmailNoBalance_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18946,
-      "lineEnd": 18969,
+      "lineStart": 17130,
+      "lineEnd": 17153,
       "usesDoCmd": [
         "OpenReport",
         "SendObject"
@@ -100,8 +100,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdBalanceInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19243,
-      "lineEnd": 19299,
+      "lineStart": 17427,
+      "lineEnd": 17483,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -125,38 +125,6 @@
     },
     {
       "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdBalanceInvoice_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7965,
-      "lineEnd": 7981,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmHome",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1868,
-      "lineEnd": 2005,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "Quit",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
       "objectName": "frmHomeAdmin",
       "procedureName": "cmdDeleteAll_Click",
       "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
@@ -172,6 +140,38 @@
       "redFlags": [
         "runSql"
       ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmHome",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1832,
+      "lineEnd": 1969,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "Quit",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdBalanceInvoice_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7986,
+      "lineEnd": 8002,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
     }
   ],
   "confidence": "high"

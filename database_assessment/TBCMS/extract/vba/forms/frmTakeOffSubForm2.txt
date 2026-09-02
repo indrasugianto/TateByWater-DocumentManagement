@@ -1,7 +1,7 @@
-Version =20
+Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-1227839923
+Checksum =-924255846
 Begin Form
     DividingLines = NotDefault
     AllowDesignChanges = NotDefault
@@ -13,77 +13,77 @@ Begin Form
     DatasheetFontHeight =11
     Right =22140
     Bottom =12285
-    DatasheetGridlinesColor =15461355
+    DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0xbc68180548fae440
     End
     GUID = Begin
-        0x1f532d871d036c4892e4b80d999d0299
+        0x6371f10b15753240bbc5debec4336e1a
     End
     NameMap = Begin
-        0x0acc0e5500000000a0ef34001c1f35004c7d2e0102000000000000008c88c5e9 ,
-        0x76ffe4400000000000000000710072007900540061006b0065004f0066006600 ,
-        0x5300740065007000320000000000000069190d7f942bbb458fa7d1583c9f705e ,
-        0x07000000a0ef34001c1f35004c7d2e01020000004d00540043006f006d000000 ,
-        0x00000000972bcc5ec21cd04ea20b665851b5b44307000000a0ef34001c1f3500 ,
-        0x4c7d2e01020000004d004b0043006f006d000000000000005b38889418758942 ,
-        0xafa073b7a0289d2007000000a0ef34001c1f35004c7d2e01020000004d004b00 ,
-        0x5200650076000000000000001710627f9ab3dc4aace46704c71cc0ca07000000 ,
-        0xa0ef34001c1f35004c7d2e010200000043004200480043006f006d0000000000 ,
-        0x000032b781db20b7b1409967a026731ebd9c060000001f532d871d036c4892e4 ,
-        0xb80d999d029974007800740043004200480052006500760000000000000022b3 ,
-        0x15ccf9b1f1428b1944ea095c129f000000004011c6e976ffe440000000000000 ,
+        0x0acc0e550000000016e5eea1ff592c429f4fbe33bde64ac400000000996ec496 ,
+        0x2f89e6400000000000000000710072007900540061006b0065004f0066006600 ,
+        0x53007400650070003200000000000000bb5e87049307ff46ab0243cdc750d1d9 ,
+        0x0700000016e5eea1ff592c429f4fbe33bde64ac44d00540043006f006d000000 ,
+        0x000000004808ee073077604a983111b091fe0a1e0700000016e5eea1ff592c42 ,
+        0x9f4fbe33bde64ac44d004b0043006f006d0000000000000044fb581dfd9fbd45 ,
+        0xbaa54f3c0f1e4c590700000016e5eea1ff592c429f4fbe33bde64ac44d004b00 ,
+        0x520065007600000000000000e6a0357abfa63e4390f810332f94b6c607000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac443004200480043006f006d0000000000 ,
+        0x00004c68490dba76cf478caaf1b7cc2cec3c060000006371f10b15753240bbc5 ,
+        0xdebec4336e1a7400780074004300420048005200650076000000000000005a31 ,
+        0x8e56c706d6478d9ee1c00bf5a1f100000000f3b2c4962f89e640000000000000 ,
         0x00007100720079005f006300610073006500490044005f0063006c0069006500 ,
-        0x6e0074007300000000000000e4abec8ad43d2c4484847b72b08b89cc00000000 ,
-        0x5087c6e976ffe44000000000000000007100720079005f006f00720069006700 ,
-        0x5f006100740074007900000000000000e31aac603224bd4c8a9bf3590fd016bf ,
-        0x07000000a0ef34001c1f35004c7d2e010200000043006f007300740052006500 ,
-        0x69006d006200000000000000e542b20ec914b34cacee45b83ff0430207000000 ,
-        0xa0ef34001c1f35004c7d2e010200000054004f004500610072006e0065006400 ,
-        0x00000000000083937a1a4957cf47957709c19f4463ce07000000a0ef34001c1f ,
-        0x35004c7d2e01020000004500610072006c0079004500610072006e0065006400 ,
-        0x000000000000b0b28ef0be2c6542a6fe76812cdb7f52060000001f532d871d03 ,
-        0x6c4892e4b80d999d0299530075006d0043004200480043006f006d0000000000 ,
-        0x000043143c1fed693841a1c53ca1bda64345060000001f532d871d036c4892e4 ,
-        0xb80d999d0299530075006d004d004b0043006f006d0000000000000028a4c95d ,
-        0xb2f34c41ba740383a2ceedc2060000001f532d871d036c4892e4b80d999d0299 ,
-        0x530075006d004d00540043006f006d00000000000000447b404382564a4faca0 ,
-        0x1aea1886dc90060000001f532d871d036c4892e4b80d999d0299530075006d00 ,
-        0x4b004400420043006f006d00000000000000f860bac05dd19d44874149521533 ,
-        0xc0c9060000001f532d871d036c4892e4b80d999d0299530075006d0045006100 ,
-        0x72006c0079004500610072006e006500640000000000000003eadb2679942e42 ,
-        0x92a2fcdb617f3902060000001f532d871d036c4892e4b80d999d029953007500 ,
-        0x6d0054004f004500610072006e0065006400000000000000491532cf7308314f ,
-        0xab1505c681b19cd907000000a0ef34001c1f35004c7d2e010200000046006900 ,
-        0x6c0065004e0075006d00620065007200000000000000a4adc6519352d84d85b6 ,
-        0x9ad6bf18222207000000a0ef34001c1f35004c7d2e01020000004e0061006d00 ,
-        0x65000000000000007dca2456c5564b428ed35f53c943152e07000000a0ef3400 ,
-        0x1c1f35004c7d2e01020000004f007200690067005f0041007400740079000000 ,
-        0x000000009fb70ccc41f4714695559101df2e748c07000000a0ef34001c1f3500 ,
-        0x4c7d2e0102000000480061006e0064006c0069006e0067004100740074007900 ,
-        0x5f0043006100730065000000000000007b5f581245bb6f4f9f882ec4999b36a8 ,
-        0x07000000a0ef34001c1f35004c7d2e010200000041007600610069006c004200 ,
-        0x61006c0061006e00630065000000000000006a676def2e48a340b958b6503d5d ,
-        0xc6ce07000000a0ef34001c1f35004c7d2e010200000043006f00730074004800 ,
-        0x6f006c0064000000000000007eb671e94c3cca4981e0e9854c785be707000000 ,
-        0xa0ef34001c1f35004c7d2e010200000054006f00740061006c00410064007600 ,
-        0x61006e006300650064004100520000000000000048d08348aa5a174983e6f7ab ,
-        0xb4699a8d07000000a0ef34001c1f35004c7d2e010200000054006f0074006100 ,
+        0x6e007400730000000000000032cf5ddf3cdf7e4c82af9b40dc42684200000000 ,
+        0xcecbc4962f89e64000000000000000007100720079005f006f00720069006700 ,
+        0x5f006100740074007900000000000000020fbcc09855bf419f9021b80d731816 ,
+        0x0700000016e5eea1ff592c429f4fbe33bde64ac443006f007300740052006500 ,
+        0x69006d0062000000000000004599ebc5fbd1a74694a57bd78272aa8907000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac454004f004500610072006e0065006400 ,
+        0x00000000000082f19499cfd08744b1d541afb3cc9b5b0700000016e5eea1ff59 ,
+        0x2c429f4fbe33bde64ac44500610072006c0079004500610072006e0065006400 ,
+        0x000000000000157e6e94cc41794b97cf75e543d88f28060000006371f10b1575 ,
+        0x3240bbc5debec4336e1a530075006d0043004200480043006f006d0000000000 ,
+        0x00002b9db355a90b3b43a041fab2d805d1da060000006371f10b15753240bbc5 ,
+        0xdebec4336e1a530075006d004d004b0043006f006d00000000000000ce6ad257 ,
+        0x37ac78419fd9c75c468d03ab060000006371f10b15753240bbc5debec4336e1a ,
+        0x530075006d004d00540043006f006d0000000000000019031a4cd73e5440a17f ,
+        0xe7e8c8e31621060000006371f10b15753240bbc5debec4336e1a530075006d00 ,
+        0x4b004400420043006f006d00000000000000888f094f2f5ee24287801db9712d ,
+        0x4209060000006371f10b15753240bbc5debec4336e1a530075006d0045006100 ,
+        0x72006c0079004500610072006e006500640000000000000076036c8bf2afa74e ,
+        0x88d9d18ca21b404c060000006371f10b15753240bbc5debec4336e1a53007500 ,
+        0x6d0054004f004500610072006e00650064000000000000008ba70f7bbe07d549 ,
+        0x8f7f6bd7f41633f90700000016e5eea1ff592c429f4fbe33bde64ac446006900 ,
+        0x6c0065004e0075006d00620065007200000000000000fa2b4c1debed1c43bd44 ,
+        0xea99b19decac0700000016e5eea1ff592c429f4fbe33bde64ac44e0061006d00 ,
+        0x6500000000000000cac694fa72e909449b3845566a924d660700000016e5eea1 ,
+        0xff592c429f4fbe33bde64ac44f007200690067005f0041007400740079000000 ,
+        0x0000000010b83b26f0a77a45a75b0c48279111510700000016e5eea1ff592c42 ,
+        0x9f4fbe33bde64ac4480061006e0064006c0069006e0067004100740074007900 ,
+        0x5f0043006100730065000000000000009889a0bc0c203046aa7653ae651d7e65 ,
+        0x0700000016e5eea1ff592c429f4fbe33bde64ac441007600610069006c004200 ,
+        0x61006c0061006e006300650000000000000057ef41f1289a3445810c0f24298b ,
+        0x6f390700000016e5eea1ff592c429f4fbe33bde64ac443006f00730074004800 ,
+        0x6f006c006400000000000000c8272b7457067845af67072442d68cd507000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac454006f00740061006c00410064007600 ,
+        0x61006e00630065006400410052000000000000007ebd59838aa1194988fd0d8c ,
+        0xcaaf85040700000016e5eea1ff592c429f4fbe33bde64ac454006f0074006100 ,
         0x6c0055006e00430061007300680065006400430068006b007300000000000000 ,
-        0x12fe4ced699d1d43903d01d1439c50e607000000a0ef34001c1f35004c7d2e01 ,
-        0x0200000054006f00740061006c0055006e0063006c0065006100720065006400 ,
-        0x44006500700073000000000000006d41af23996a164991cef96b2e32b9f20700 ,
-        0x0000a0ef34001c1f35004c7d2e010200000054004f004500610072006e006500 ,
-        0x64005400720000000000000082393a149ef7224eadf5f5433d7e7b1f07000000 ,
-        0xa0ef34001c1f35004c7d2e010200000043006f00730074005200650069006d00 ,
-        0x62005400720000000000000011ddd6eb628ee24c9e15ff0138d4f8c807000000 ,
-        0xa0ef34001c1f35004c7d2e010200000043004200480052006500760000000000 ,
-        0x00000f4301c294d64c46940f8469b49ef61407000000a0ef34001c1f35004c7d ,
-        0x2e01020000004b00420043006f006d0000000000000000000000000000000000 ,
+        0x947149d4bd046340a25ebd27bb8fe26c0700000016e5eea1ff592c429f4fbe33 ,
+        0xbde64ac454006f00740061006c0055006e0063006c0065006100720065006400 ,
+        0x4400650070007300000000000000757765c859c2bf4e9573ef605a848c3d0700 ,
+        0x000016e5eea1ff592c429f4fbe33bde64ac454004f004500610072006e006500 ,
+        0x6400540072000000000000008c62212f339f1048a3468c10199ea5e407000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac443006f00730074005200650069006d00 ,
+        0x6200540072000000000000001303a33181071346b1e21ae23107705007000000 ,
+        0x16e5eea1ff592c429f4fbe33bde64ac443004200480052006500760000000000 ,
+        0x00003ff484da61b8ac46931d599dd68f21d70700000016e5eea1ff592c429f4f ,
+        0xbe33bde64ac44b00420043006f006d0000000000000000000000000000000000 ,
         0x0000000000000c000000050000000000000000000000000000000000
     End
     RecordSource ="qryTakeOffStep2"
-    DatasheetFontName ="Trebuchet MS"
+    DatasheetFontName ="Calibri"
     AllowDatasheetView =0
     FilterOnLoad =0
     ShowPageMargins =0
@@ -102,7 +102,10 @@ Begin Form
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -115,7 +118,9 @@ Begin Form
         Begin CommandButton
             FontSize =11
             FontWeight =400
+            ForeColor =4210752
             FontName ="Calibri"
+            GridlineColor =10921638
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
@@ -123,19 +128,24 @@ Begin Form
             UseTheme =1
             Shape =1
             Gradient =12
+            BackColor =14461583
             BackThemeColorIndex =4
             BackTint =60.0
             BorderLineStyle =0
-            BorderColor =16777215
+            BorderColor =14461583
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
+            HoverColor =15189940
             HoverThemeColorIndex =4
             HoverTint =40.0
+            PressedColor =9917743
             PressedThemeColorIndex =4
             PressedShade =75.0
+            HoverForeColor =4210752
             HoverForeThemeColorIndex =0
             HoverForeTint =75.0
+            PressedForeColor =4210752
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
         End
@@ -143,6 +153,8 @@ Begin Form
             BorderLineStyle =0
             LabelX =230
             LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
             BorderThemeColorIndex =1
             BorderShade =65.0
             GridlineThemeColorIndex =1
@@ -154,8 +166,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -170,7 +185,10 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
             FontName ="Calibri"
+            GridlineColor =10921638
             AllowValueListEdits =1
             InheritValueList =1
             ThemeFontIndex =1
@@ -184,10 +202,10 @@ Begin Form
         End
         Begin FormHeader
             Height =1080
-            BackColor =14670543
+            BackColor =15064278
             Name ="FormHeader"
             GUID = Begin
-                0x774fe2fdcedd7d4bad0f3309fab62d05
+                0x232634391504ab44846a2aaef9189e6a
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -205,14 +223,11 @@ Begin Form
                     Height =315
                     ColumnOrder =0
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumKDBCom"
                     ControlSource ="=Sum([KDBCom])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x447b404382564a4faca01aea1886dc90
+                        0x19031a4cd73e5440a17fe7e8c8e31621
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =23160
                     LayoutCachedTop =720
@@ -232,14 +247,11 @@ Begin Form
                     ColumnOrder =1
                     TabIndex =1
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumMTCom"
                     ControlSource ="=Sum([MTCom])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x28a4c95db2f34c41ba740383a2ceedc2
+                        0xce6ad25737ac78419fd9c75c468d03ab
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =22020
                     LayoutCachedTop =720
@@ -259,14 +271,11 @@ Begin Form
                     ColumnOrder =2
                     TabIndex =2
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumMKCom"
                     ControlSource ="=Sum([MKCom])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x43143c1fed693841a1c53ca1bda64345
+                        0x2b9db355a90b3b43a041fab2d805d1da
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =20880
                     LayoutCachedTop =720
@@ -286,14 +295,11 @@ Begin Form
                     ColumnOrder =3
                     TabIndex =3
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumMKRev"
                     ControlSource ="=Sum([MKRev])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x0f81eb051b69974db82af2f8c2419e9f
+                        0x401616bc5d3228489717f57884c178d4
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =19740
                     LayoutCachedTop =720
@@ -313,14 +319,11 @@ Begin Form
                     ColumnOrder =4
                     TabIndex =4
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumCBHCom"
                     ControlSource ="=Sum([CBHCom])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xb0b28ef0be2c6542a6fe76812cdb7f52
+                        0x157e6e94cc41794b97cf75e543d88f28
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =18600
                     LayoutCachedTop =720
@@ -340,14 +343,11 @@ Begin Form
                     ColumnOrder =5
                     TabIndex =5
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumCBHRev"
                     ControlSource ="=Nz(Sum([txtCBHRev]))"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xa2211f10dcdd53498eb916b253bbac22
+                        0xbde5dc20bc476d4d804295511ab0965d
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =17460
                     LayoutCachedTop =720
@@ -368,14 +368,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label18"
                     Caption ="CBH Comm"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xedac11bd52a59f4c8cfe4b9c4d33a17a
+                        0xd9b47e9f2ee5ce40ad8fdb0ea81bf80c
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =18660
                     LayoutCachedTop =420
                     LayoutCachedWidth =19740
@@ -398,14 +397,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label17"
                     Caption ="MK Rev"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x0719808b15e3584e829c9cf48a24a111
+                        0x46ae7453858c004aa40155dcf76aba9d
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =19800
                     LayoutCachedTop =420
                     LayoutCachedWidth =20880
@@ -428,14 +426,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label16"
                     Caption ="MK Comm"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x38389e88360a9a44bf910c04456168fa
+                        0x5c9a475bd3b8b14caa66acd9ab2bccc4
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =20940
                     LayoutCachedTop =420
                     LayoutCachedWidth =22020
@@ -458,14 +455,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label15"
                     Caption ="MT Comm"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x10c3fb29528e6340b7915f7d3b00d16e
+                        0x37a5919dc9f0d245b554c4c930d41ff4
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =22080
                     LayoutCachedTop =420
                     LayoutCachedWidth =23160
@@ -488,14 +484,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label14"
                     Caption ="KDB Comm"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xe9581f64322d5049a00dc67f0fdaaf5c
+                        0xd8595c0adff92a4f94c58ea3ac8d2423
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =23220
                     LayoutCachedTop =420
                     LayoutCachedWidth =24300
@@ -518,14 +513,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label10"
                     Caption ="CBH Rev"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xabd85e244b27284888011d89825013e6
+                        0xfab4df14b46157429b288998d065058e
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =17520
                     LayoutCachedTop =420
                     LayoutCachedWidth =18600
@@ -548,14 +542,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label9"
                     Caption ="Earned"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x8600ee05a7888c4c8f54a73a43d02599
+                        0x71c0b49859268145aae9e15a5a73f41c
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =12960
                     LayoutCachedTop =660
                     LayoutCachedWidth =14190
@@ -578,14 +571,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label8"
                     Caption ="Early Take Off"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x09624471b907a448aec98ab4c039e211
+                        0xd1e7934f66783a41b2be4937b94b4fcf
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =11400
                     LayoutCachedTop =660
                     LayoutCachedWidth =12750
@@ -608,14 +600,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label7"
                     Caption ="Assoc"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xf93ecb5a2e21ab4e931d7c513eb79550
+                        0xf83945c2cccbff47b20867b7c61c03b9
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =330
                     LayoutCachedWidth =5310
@@ -638,14 +629,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label6"
                     Caption ="Total Chks Uncashed"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x0a9b79e33a49164387fe20747b320d8c
+                        0xfd33706266945749983405879515f0ab
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =9240
                     LayoutCachedTop =480
                     LayoutCachedWidth =10260
@@ -668,14 +658,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label5"
                     Caption ="Advanced AR"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xabf07dff7fd1f44087199009e1f177bc
+                        0x7ddacbd4a62d3b489e215606fda3ad4d
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =7920
                     LayoutCachedTop =660
                     LayoutCachedWidth =9150
@@ -698,14 +687,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label4"
                     Caption ="Cost Hold"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x84bd6c12d36582449ec6eb4c80c8a75c
+                        0xa49fff7ba745474c8e1b2f24387ba62c
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =6900
                     LayoutCachedTop =660
                     LayoutCachedWidth =7830
@@ -728,14 +716,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label2"
                     Caption ="Orig Atty"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x13d570108b825d4b93b6cb8d801e14c6
+                        0x864b3cfb1ee36640b2a4d69f9cd913d6
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =3615
                     LayoutCachedTop =300
                     LayoutCachedWidth =4515
@@ -758,9 +745,8 @@ Begin Form
                     BorderColor =15066597
                     Name ="chkNonZero"
                     GUID = Begin
-                        0x54c3dae88ba7a947a25ac4087d2bd654
+                        0xe4b9c81e3ef70e44a8915d18a7dd42ee
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =5405
                     LayoutCachedTop =755
@@ -780,13 +766,12 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label93"
                     Caption ="Non Zero"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x7fbe61ec5af02e489c222f0ef1063e9b
+                        0xc466867dadb8d840a05d9cb2b624bf95
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =5615
                     LayoutCachedTop =695
                     LayoutCachedWidth =6845
@@ -808,14 +793,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label24"
                     Caption ="Avail Balance"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x02f2559de1cc5140b0c163ddbb8bb98b
+                        0xddccefee1099b64aab1d02b43ca91cc9
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =5340
                     LayoutCachedTop =420
                     LayoutCachedWidth =6540
@@ -838,14 +822,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label3"
                     Caption ="Name"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x841f2d6ec41d6a48a9a6347ed9fb21bd
+                        0x951db39c1900da4c99f9e857157a32f0
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =1080
                     LayoutCachedTop =300
                     LayoutCachedWidth =3240
@@ -867,14 +850,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label0"
                     Caption ="File No."
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x3d458e4bfa03354283cf2400aeb8c139
+                        0x693febb5693ba040abc3b149d9b4007c
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedTop =660
                     LayoutCachedWidth =960
                     LayoutCachedHeight =944
@@ -896,14 +878,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label98"
                     Caption ="Tr"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x793f74b0d16f224faf3915dcaf6eb024
+                        0xdbf46ed8f152ec48978b7115a329ddcb
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =16260
                     LayoutCachedTop =660
                     LayoutCachedWidth =16560
@@ -926,14 +907,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label96"
                     Caption ="Tr"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x789769d345c9c842a36148df78b3e52b
+                        0xe456dd3ce856f64abe44aae10edaba4a
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =14400
                     LayoutCachedTop =660
                     LayoutCachedWidth =14700
@@ -956,14 +936,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label95"
                     Caption ="Cost Reimb"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xbb09d9b2c350454cb1188bbb0737ab0f
+                        0x24c4cf4e7718314e8e7b10f279caded6
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =14760
                     LayoutCachedTop =660
                     LayoutCachedWidth =15990
@@ -986,14 +965,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label112"
                     Caption ="Total Uncl Deposits"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xd2c6487e0044714e88d555f4dbaf53b8
+                        0xbaae5fc8ee5a6844b01833b62293e518
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =10320
                     LayoutCachedTop =480
                     LayoutCachedWidth =11340
@@ -1016,14 +994,13 @@ Begin Form
                     RightMargin =44
                     BottomMargin =22
                     BorderColor =15066597
+                    ForeColor =0
                     Name ="Label154"
                     Caption ="Populate Trust"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xb720462f4c848e40b566ca7d11f1da34
+                        0xc15b00fb4b5a87458bf9fbdba0bef1ae
                     End
                     BottomPadding =150
-                    GridlineColor =10921638
                     LayoutCachedLeft =16620
                     LayoutCachedTop =480
                     LayoutCachedWidth =17460
@@ -1046,9 +1023,8 @@ Begin Form
                     BorderColor =15066597
                     Name ="Check190"
                     GUID = Begin
-                        0xe33df26d3585534a85c3a4ae21e5ab24
+                        0x3bb57e9f0e409943b96d478e8c2baf3c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =15780
                     LayoutCachedTop =720
@@ -1069,9 +1045,8 @@ Begin Form
                     BorderColor =15066597
                     Name ="Check189"
                     GUID = Begin
-                        0x3193dad9574a2e4bbe4ac4735b489c15
+                        0x95dbcbea74865948aa1b690bf5d8cdfe
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =13725
                     LayoutCachedTop =720
@@ -1092,9 +1067,8 @@ Begin Form
                     BorderColor =15066597
                     Name ="Check188"
                     GUID = Begin
-                        0x90a89ec31989eb4086590d667d97d29f
+                        0x40649e1d7c96d3479d7578c4b66b9669
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =8310
                     LayoutCachedTop =420
@@ -1115,9 +1089,8 @@ Begin Form
                     BorderColor =15066597
                     Name ="Check187"
                     GUID = Begin
-                        0x51a8aa6302b2ff4296daee39829f5367
+                        0x7bbae726302c8c46bef4d6d2913bf213
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =10620
                     LayoutCachedTop =255
@@ -1138,9 +1111,8 @@ Begin Form
                     BorderColor =15066597
                     Name ="Check186"
                     GUID = Begin
-                        0x30485647d3022a45be3152a1905105ea
+                        0x0445a9900caaa04ea589b2b28947fc8e
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =9540
                     LayoutCachedTop =300
@@ -1163,19 +1135,14 @@ Begin Form
                     FontSize =8
                     TabIndex =12
                     BorderColor =15066597
-                    ForeColor =2235926
-                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"0\""
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"4\";\"4\""
                     GUID = Begin
-                        0xb4d7166d85b2634aa8a757b1a66fa539
+                        0x149ef2921bfc294d978555cf82d58586
                     End
                     Name ="cmbClients"
                     RowSourceType ="Table/Query"
                     RowSource ="qry_caseID_clients"
                     ColumnWidths ="0;2268"
-                    FontName ="Trebuchet MS"
-                    BaseInfo ="\"qry_caseID_clients\";\"TblCase\";\"\";\"CaseID\";\"last_name] & \"\", \"\" & ["
-                        "first_name\";\"PrimaryKey\""
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1080
                     LayoutCachedTop =600
@@ -1198,17 +1165,14 @@ Begin Form
                     FontSize =9
                     TabIndex =13
                     BorderColor =15066597
-                    ForeColor =2235926
                     ColumnInfo ="\"\";\"\";\"\";\"\";\"0\";\"0\""
                     GUID = Begin
-                        0x9423dfefa454cb4b9db3057706a20ed3
+                        0xcb9ee63b71c39d49ba7a5d4337eeea19
                     End
                     Name ="Combo185"
                     RowSourceType ="Table/Query"
                     RowSource ="qry_orig_atty"
                     ColumnWidths ="0;2268"
-                    FontName ="Trebuchet MS"
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =4635
                     LayoutCachedTop =600
@@ -1231,17 +1195,14 @@ Begin Form
                     FontSize =9
                     TabIndex =14
                     BorderColor =15066597
-                    ForeColor =2235926
                     ColumnInfo ="\"\";\"\";\"\";\"\";\"0\";\"0\""
                     GUID = Begin
-                        0xbe77f06ca110f54eb807e4ea7872c628
+                        0x0806153a67468b45b5a7d1980bfa6d48
                     End
                     Name ="Combo127"
                     RowSourceType ="Table/Query"
                     RowSource ="qry_orig_atty"
                     ColumnWidths ="0;2268"
-                    FontName ="Trebuchet MS"
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =3645
                     LayoutCachedTop =615
@@ -1263,14 +1224,11 @@ Begin Form
                     FontSize =8
                     TabIndex =15
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumCostReimb"
                     ControlSource ="=Sum([CostReimb])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xfb404b435f3a214f976d6bb1d030752f
+                        0xb82621d003e1ab4181ff5e3d7858a304
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =14760
                     LayoutCachedTop =300
@@ -1292,14 +1250,11 @@ Begin Form
                     FontSize =8
                     TabIndex =16
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumTOEarned"
                     ControlSource ="=Sum([TOEarned])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x03eadb2679942e4292a2fcdb617f3902
+                        0x76036c8bf2afa74e88d9d18ca21b404c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =12960
                     LayoutCachedTop =300
@@ -1321,14 +1276,11 @@ Begin Form
                     FontSize =8
                     TabIndex =17
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="SumEarlyEarned"
                     ControlSource ="=Sum([EarlyEarned])"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xf860bac05dd19d44874149521533c0c9
+                        0x888f094f2f5ee24287801db9712d4209
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =11520
                     LayoutCachedTop =300
@@ -1348,14 +1300,11 @@ Begin Form
                     FontSize =8
                     TabIndex =18
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="TotalCommissions"
                     ControlSource ="=[SumCBHCom]+[SumMKCom]+[SumMTCom]+[SumKDBCom]"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x3d4a8b4c04125c4e9f514aef364bf4c8
+                        0xe684cdb84409b744aabf213b8a621408
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =16020
                     LayoutCachedWidth =17160
@@ -1375,14 +1324,11 @@ Begin Form
                     FontSize =8
                     TabIndex =19
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="TOEarlyandEarned"
                     ControlSource ="=[SumEarlyEarned]+[SumTOEarned]"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xf979648ef9a648479676dc443a8eab61
+                        0x480ea58e0e18e94d852317adb94cfc40
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =12240
                     LayoutCachedWidth =13440
@@ -1395,7 +1341,7 @@ Begin Form
             Height =420
             Name ="Detail"
             GUID = Begin
-                0x7371f9994884bb499ac011279caa4ce9
+                0x6b7fd0145420ec4f933af8f15b189d5b
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -1412,14 +1358,12 @@ Begin Form
                     Height =315
                     FontSize =9
                     BorderColor =15066597
-                    ForeColor =3984025
+                    ForeColor =12673797
                     Name ="CaseNum"
                     ControlSource ="FileNumber"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xc763247ed33c924983a907d67a2c2d01
+                        0xabef5237582efb40b77faedc9a477ebc
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedWidth =1080
                     LayoutCachedHeight =315
@@ -1438,14 +1382,11 @@ Begin Form
                     FontSize =9
                     TabIndex =1
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text119"
                     ControlSource ="Name"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x06ae73d596bb5546a12f78dc41f6a0a8
+                        0x5bc2c50f9057bb4f8a2de02bfaba0915
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1140
                     LayoutCachedWidth =3495
@@ -1461,14 +1402,11 @@ Begin Form
                     Height =315
                     TabIndex =2
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text120"
                     ControlSource ="Orig_Atty"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x2be7ceb4050efb4abf63f9208698bba0
+                        0x38c3d315f443b04eb011d071b4cd759e
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =3600
                     LayoutCachedWidth =4560
@@ -1484,14 +1422,11 @@ Begin Form
                     Height =315
                     TabIndex =3
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text121"
                     ControlSource ="HandlingAtty_Case"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x3d342545882e804f89afedb14a0fcf74
+                        0x3af92b247c66854098c12e87c417564f
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =4665
                     LayoutCachedWidth =5400
@@ -1506,14 +1441,11 @@ Begin Form
                     Height =315
                     TabIndex =4
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text122"
                     ControlSource ="AvailBalance"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x3681af6d429e464d9f3e21d0ee60df30
+                        0x1cb2fbf79897324d9761d7a58d7cb84b
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =5460
                     LayoutCachedWidth =6900
@@ -1529,14 +1461,11 @@ Begin Form
                     Height =315
                     TabIndex =5
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text123"
                     ControlSource ="CostHold"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x43c1dbeab7bbda4dbaee2c27c9267d8d
+                        0x0b2f55d6904b81439bbdac8cd0614b7c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =6960
                     LayoutCachedWidth =7920
@@ -1552,14 +1481,11 @@ Begin Form
                     Height =315
                     TabIndex =6
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text124"
                     ControlSource ="TotalAdvancedAR"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xa6705491c1b05e4fb15f825b97ace140
+                        0xb0fbe502bb5dea4f9018c3eea93cebb5
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =7980
                     LayoutCachedWidth =9180
@@ -1575,14 +1501,11 @@ Begin Form
                     Height =315
                     TabIndex =7
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text125"
                     ControlSource ="TotalUnCashedChks"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x058f474f6188064daeb97da6f9027c79
+                        0x2739efc9edfe2b4ca7ada2751207791e
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =9240
                     LayoutCachedWidth =10260
@@ -1598,14 +1521,11 @@ Begin Form
                     Height =315
                     TabIndex =8
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="Text126"
                     ControlSource ="TotalUnclearedDeps"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xe99f846e1f611543b3314a0d896c4b84
+                        0x965a1c744e369642a956d183b220e5f1
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =10320
                     LayoutCachedWidth =11340
@@ -1619,14 +1539,11 @@ Begin Form
                     Height =315
                     TabIndex =9
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtEarlyEarned"
                     ControlSource ="EarlyEarned"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x9ad0ad20ddf413408aa9b8c29003ef40
+                        0x4116b4f48ee1534d8da929280626ad53
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =11400
                     LayoutCachedWidth =12840
@@ -1640,14 +1557,11 @@ Begin Form
                     Height =315
                     TabIndex =10
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtEarned"
                     ControlSource ="TOEarned"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xd20e911b5a73114ab696770bbd39c36f
+                        0x087c17f6dfd1f342a4bf6e56fe61a9a9
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =12960
                     LayoutCachedWidth =14400
@@ -1664,9 +1578,8 @@ Begin Form
                     Name ="chkTOEarnedTr"
                     ControlSource ="TOEarnedTr"
                     GUID = Begin
-                        0xf51012b44844ea47b90c90a4984258e2
+                        0x3f3bb0176b0d734e9d255fb5e74367ba
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =14460
                     LayoutCachedWidth =14700
@@ -1680,14 +1593,11 @@ Begin Form
                     Height =315
                     TabIndex =12
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtCostReimb"
                     ControlSource ="CostReimb"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x25e0dfbdf6b3c941b1218f97668b9961
+                        0x9d0fc3f73f35744bab22967cab3c7549
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =14760
                     LayoutCachedWidth =16200
@@ -1704,9 +1614,8 @@ Begin Form
                     Name ="chkCostReimbTr"
                     ControlSource ="CostReimbTr"
                     GUID = Begin
-                        0xd899f275569bc2498fd75fd296e3c0d4
+                        0x8a39fe811210c54ebc7ff7d23f0792fa
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =16320
                     LayoutCachedWidth =16680
@@ -1721,14 +1630,11 @@ Begin Form
                     Height =315
                     TabIndex =14
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtCBHRev"
                     ControlSource ="CBHRev"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x32b781db20b7b1409967a026731ebd9c
+                        0x4c68490dba76cf478caaf1b7cc2cec3c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =17520
                     LayoutCachedWidth =18600
@@ -1743,14 +1649,11 @@ Begin Form
                     Height =315
                     TabIndex =15
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtCBHCom"
                     ControlSource ="CBHCom"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x04339b024d7a4142860c650174b7098c
+                        0xc29e9115f8d9db458757b7db00ce3b0f
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =18660
                     LayoutCachedWidth =19740
@@ -1765,14 +1668,11 @@ Begin Form
                     Height =315
                     TabIndex =16
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtMKRev"
                     ControlSource ="MKRev"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xe93aa54e58efbc4b9beaf86c1f124a92
+                        0x5f687f078dedcd4791b86723a5f69830
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =19800
                     LayoutCachedWidth =20880
@@ -1787,14 +1687,11 @@ Begin Form
                     Height =315
                     TabIndex =17
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtMKCom"
                     ControlSource ="MKCom"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xe253e78ebab64b4e91c507a9eb6fab23
+                        0x53a4a560237b554a94f2b86fd196682d
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =20940
                     LayoutCachedWidth =22020
@@ -1809,14 +1706,11 @@ Begin Form
                     Height =315
                     TabIndex =18
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtMTCom"
                     ControlSource ="MTCom"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x46e390e94bc41043a43312b6939d4285
+                        0x75a415aa0c42b348adb77794cdc5f918
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =22080
                     LayoutCachedWidth =23160
@@ -1831,14 +1725,11 @@ Begin Form
                     Height =315
                     TabIndex =19
                     BorderColor =15066597
-                    ForeColor =4210752
                     Name ="txtKDBCom"
                     ControlSource ="KBCom"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x18530f78aaefa141892f9f6a6af7e14f
+                        0xc1bc1713a925f349973951fd688325d9
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =23220
                     LayoutCachedWidth =24300
@@ -1851,31 +1742,23 @@ Begin Form
                     Width =705
                     Height =285
                     TabIndex =20
-                    ForeColor =4210752
                     Name ="cmdInsertIntoTA"
                     Caption ="Trust"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x2072800fbaf62242bebd827cc3afea35
+                        0x1dd4fb5dc076bb40a5fef6bb1b644b1b
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =16680
                     LayoutCachedWidth =17385
                     LayoutCachedHeight =285
-                    BackColor =7660736
                     BorderColor =15066597
                     BorderThemeColorIndex =1
                     BorderTint =100.0
                     BorderShade =90.0
-                    HoverColor =10677717
-                    PressedColor =1937772
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
             End
         End
@@ -1883,7 +1766,7 @@ Begin Form
             Height =360
             Name ="FormFooter"
             GUID = Begin
-                0x77b1be7015b61e4c99a50b5f66c9e993
+                0xa80b6712a1e37a46be8451cba986608b
             End
             AutoHeight =1
             AlternateBackThemeColorIndex =1

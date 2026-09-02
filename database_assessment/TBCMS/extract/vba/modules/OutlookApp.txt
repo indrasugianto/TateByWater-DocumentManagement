@@ -41,7 +41,7 @@ Public Sub SendMail(strMailBody As String, strSubject As String, strTo As String
     Set olMail = olApp.CreateItem(0)
     
     With olMail
-        .Body = strBody
+        .body = strBody
         .Subject = strSubject
         .To = strTo
         If strCc <> "" Then
@@ -108,7 +108,7 @@ Public Sub GetMailDetail(strCriteria As String)
             rst.AddNew
             rst![Subject] = olMail.Subject
             rst![ReceivedTime] = olMail.ReceivedTime
-            rst![Body] = olMail.Body
+            rst![body] = olMail.body
             rst![FROM] = olMail.SenderEmailAddress
             For Each atch In olMail.attachments
                 strPath = CurrentProject.path & "\" & atch.FileName
@@ -131,7 +131,7 @@ Sub AppendFile(AttachmentRs As Recordset2, strFile As String)
 End Sub
 
 
-Public Sub SaveAttachmentsToDisk(strPath As String, Optional Subject As String = "", Optional sTo As String = "", Optional SenderName As String = "", Optional SentOnBehalfOfName As String = "", Optional ReplyRecipientNames As String = "", Optional ReceivedByName As String, Optional ConversationTopic As String = "", Optional CC As String, Optional BCC As String, Optional Body As String)
+Public Sub SaveAttachmentsToDisk(strPath As String, Optional Subject As String = "", Optional sTo As String = "", Optional SenderName As String = "", Optional SentOnBehalfOfName As String = "", Optional ReplyRecipientNames As String = "", Optional ReceivedByName As String, Optional ConversationTopic As String = "", Optional CC As String, Optional BCC As String, Optional body As String)
      Dim OTab As Object
     Dim olRow As Object
     Dim olFolder As Object

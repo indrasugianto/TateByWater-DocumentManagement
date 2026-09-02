@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-1399486490
+Checksum =-1753469462
 Begin Form
     RecordSelectors = NotDefault
     NavigationButtons = NotDefault
@@ -23,25 +23,25 @@ Begin Form
         0x4e47c5cd5419e540
     End
     GUID = Begin
-        0x9aec55ce6c42ad4a85493284ec9348a7
+        0x2c178a138c5ef2488a25f5608fcc05b9
     End
     NameMap = Begin
-        0x0acc0e5500000000575dc33c58d1a8428d36b413499bef65000000004f24e79e ,
-        0x2f72e5400000000000000000740062006c005300630061006e00730000000000 ,
-        0x0000c912bd01724ae1448137dd1e8087aa9307000000575dc33c58d1a8428d36 ,
-        0xb413499bef655300630061006e004c006f0063006100740069006f006e000000 ,
-        0x000000004500fbe3705fe64a84dc57c372f6911707000000575dc33c58d1a842 ,
-        0x8d36b413499bef6543006100730065004900440000000000000053f5eaa10249 ,
-        0x0b4999bacbf18b7be46b07000000575dc33c58d1a8428d36b413499bef655400 ,
-        0x7900700065006f0066005300630061006e0000000000000015ed85d843c9be41 ,
-        0x9cb8ed13cbd70447000000008481e79e2f72e540000000000000000074006200 ,
-        0x6c00440072006f0070004400000000000000b0a3135480e0044b8d56dd523262 ,
-        0xf8890700000015ed85d843c9be419cb8ed13cbd7044743006f00640065000000 ,
-        0x000000007231a709e542be4ba46e4cc970573ff10700000015ed85d843c9be41 ,
-        0x9cb8ed13cbd7044743006f0064006500560061006c00000000000000b8d5cc22 ,
-        0x41219a48b288d4d4fdaf8b2a0700000015ed85d843c9be419cb8ed13cbd70447 ,
-        0x53006f00720074004f0072006400650072000000000000007e2e4f73c650854c ,
-        0xa3d7a5df4f10adbe0700000015ed85d843c9be419cb8ed13cbd7044746006900 ,
+        0x0acc0e5500000000b7110bc23018c248a39b7be5475f362300000000461d30ca ,
+        0xb25de6400000000000000000740062006c005300630061006e00730000000000 ,
+        0x000059ef2b8fae5b2947a8fc5faf9281581a07000000b7110bc23018c248a39b ,
+        0x7be5475f36235300630061006e004c006f0063006100740069006f006e000000 ,
+        0x00000000fa8157e38f4a704db51ba4b4b3c732e107000000b7110bc23018c248 ,
+        0xa39b7be5475f36234300610073006500490044000000000000003415b40ec0d6 ,
+        0xe84eb01d91736ef2a76007000000b7110bc23018c248a39b7be5475f36235400 ,
+        0x7900700065006f0066005300630061006e00000000000000b9176e80f27cb640 ,
+        0x87b8fff285f65b4f000000004e1974810c3ae640000000000000000074006200 ,
+        0x6c00440072006f00700044000000000000005bef6e020eebdd439485dc88f112 ,
+        0x0d9707000000b9176e80f27cb64087b8fff285f65b4f43006f00640065000000 ,
+        0x000000003b3f23c40f5ec74fa9650a307e0a701107000000b9176e80f27cb640 ,
+        0x87b8fff285f65b4f43006f0064006500560061006c0000000000000006e31c3c ,
+        0xf829d04c8f4779442c3aa06907000000b9176e80f27cb64087b8fff285f65b4f ,
+        0x53006f00720074004f007200640065007200000000000000287ac41c516aef46 ,
+        0x86a664fd026f5f9b07000000b9176e80f27cb64087b8fff285f65b4f46006900 ,
         0x65006c0064004e0061006d006500000000000000000000000000000000000000 ,
         0x000000000c000000050000000000000000000000000000000000
     End
@@ -65,7 +65,10 @@ Begin Form
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -81,8 +84,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -97,7 +103,10 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
             FontName ="Calibri"
+            GridlineColor =10921638
             AllowValueListEdits =1
             InheritValueList =1
             ThemeFontIndex =1
@@ -113,7 +122,7 @@ Begin Form
             Height =375
             Name ="Detail"
             GUID = Begin
-                0xc6ab26c65a924747832a3d14eac8f834
+                0xce049e60d8eedf41872cbd45ee983986
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -134,9 +143,8 @@ Begin Form
                     Name ="Text0"
                     ControlSource ="ScanLocation"
                     GUID = Begin
-                        0x27c2bdcb85cecf4dace3a0828ad7e247
+                        0xe8c476f002b9084ca9b38c828739304e
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2700
                     LayoutCachedTop =60
@@ -155,14 +163,11 @@ Begin Form
                     Width =900
                     Height =315
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text2"
                     ControlSource ="CaseID"
                     GUID = Begin
-                        0x21f6602bf0ffb7498280356dd0e0adc5
+                        0x7f4ceb60cc551643b84375096779304c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =4980
                     LayoutCachedTop =60
@@ -180,10 +185,9 @@ Begin Form
                     FontSize =10
                     TabIndex =2
                     BorderColor =13421772
-                    ForeColor =3484194
                     ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"510\""
                     GUID = Begin
-                        0xaa596d57b65efb488a1d88cdd6aebb87
+                        0x2d1f0010b1c60f4b806d8bdbe5f9a4fe
                     End
                     Name ="Combo2"
                     ControlSource ="TypeofScan"
@@ -192,7 +196,6 @@ Begin Form
                         "ROM tblDropD WHERE (((tblDropD.FieldName)=\"ScanType\")) ORDER BY tblDropD.SortO"
                         "rder; "
                     ColumnWidths ="576;1872"
-                    GridlineColor =10921638
 
                     LayoutCachedTop =60
                     LayoutCachedWidth =2520

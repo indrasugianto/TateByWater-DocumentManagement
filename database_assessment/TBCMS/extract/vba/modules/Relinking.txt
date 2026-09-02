@@ -85,12 +85,12 @@ ReLink_Error:
 End Function
 
 Private Function PathExists(path As String) As Boolean
-    Dim FSO As FileSystemObject
-    Set FSO = New FileSystemObject
+    Dim fso As FileSystemObject
+    Set fso = New FileSystemObject
 
-    PathExists = FSO.FileExists(path)
+    PathExists = fso.FileExists(path)
 
-    Set FSO = Nothing
+    Set fso = Nothing
 End Function
 
 Public Function GetLinkName() As String

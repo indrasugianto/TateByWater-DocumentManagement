@@ -1,6 +1,8 @@
 # Table: vw_rpt_Matter_Closing *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_rpt_Matter_Closing`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_rpt_Matter_Closing`
+
+**Row count:** 22953
 
 ## Columns
 

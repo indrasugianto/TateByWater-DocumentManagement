@@ -15,19 +15,9 @@
     "bottom": 1008
   },
   "paperSize": 1,
-  "groupLevels": [
-    {
-      "fieldExpression": "[Matter and AR].CaseID",
-      "sortOrder": "ascending",
-      "groupHeader": true,
-      "groupFooter": true
-    }
-  ],
   "sections": [
     {
       "type": "Detail",
-      "height": 300,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -97,8 +87,6 @@
     },
     {
       "type": "ReportHeader",
-      "height": 4380,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -160,9 +148,9 @@
         {
           "type": "Image",
           "name": "Image0",
-          "left": 468,
-          "top": 36,
-          "width": 4572,
+          "left": 470,
+          "top": 30,
+          "width": 4580,
           "height": 780,
           "borderColor": 10921638
         },
@@ -345,8 +333,6 @@
     },
     {
       "type": "ReportFooter",
-      "height": 1380,
-      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -398,7 +384,6 @@
     },
     {
       "type": "PageHeader",
-      "height": 360,
       "controls": [
         {
           "type": "Rectangle",
@@ -502,7 +487,6 @@
     },
     {
       "type": "PageFooter",
-      "height": 1080,
       "controls": [
         {
           "type": "Rectangle",
@@ -592,20 +576,8 @@
       ]
     },
     {
-      "type": "GroupHeader",
-      "groupIndex": 0,
-      "groupField": "[Matter and AR].CaseID",
-      "height": 0,
-      "forceNewPage": 1,
-      "keepTogether": true,
-      "controls": []
-    },
-    {
       "type": "GroupFooter",
       "groupIndex": 0,
-      "groupField": "[Matter and AR].CaseID",
-      "height": 1380,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

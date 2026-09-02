@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-1892279339
+Checksum =-1251154603
 Begin Form
     DividingLines = NotDefault
     AllowDesignChanges = NotDefault
@@ -20,7 +20,7 @@ Begin Form
         0xaae7f27b0ff9e440
     End
     GUID = Begin
-        0x1339e31e6cef2e47bfd8eaab3d6ca731
+        0xf629525dfdf2854ea7f135dda3cc9b3d
     End
     NameMap = Begin
         0x0acc0e5500000000000000000000000000000000000000000c00000005000000 ,
@@ -33,10 +33,10 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x0001be00a81b3f1f40000000400000004082572c8082572c0000000040000000 ,
+        0x00000000000000000000000000000000404416d99c010000800316d99c010000 ,
         0x010408019c00b40743ff800701000100ea0a6f08640001000f00580202000100 ,
-        0x5802030000004c6574746572006156657273696f6e00bed00000000000000000 ,
-        0xc0b8cf2260760000000000000000000000000000000000000000000000000000 ,
+        0x5802030000004c657474657200010000d07bb5839c0100000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000200 ,
         0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -104,7 +104,7 @@ Begin Form
     PrtDevNames = Begin
         0x0800230047000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x000000000000005553423030330000000000
+        0x0000000000000055534230303300000000000000000000000000
     End
     AllowDatasheetView =0
     FilterOnLoad =0
@@ -120,12 +120,12 @@ Begin Form
     AlternateBackThemeColorIndex =1
     AlternateBackShade =95.0
     PrtDevModeW = Begin
-        0x0000ffff000000005098ffff00000000000000000a0000000000000000000000 ,
-        0x0000000000000000ff0000000000000000000000000000000000000000000000 ,
+        0x000078ee9c01000000000000000000000000000000000000b6a17005fa7f0000 ,
+        0x50c91cc78800000005857005fa7f000010534ff79c010000408323f69c010000 ,
         0x01040801dc00b40743ff800701000100ea0a6f08640001000f00580202000100 ,
-        0x5802030000004c00650074007400650072000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000000000000ffffffff ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x5802030000004c006500740074006500720000000000000050c91cc788000000 ,
+        0x00090000000000000000000000000000408323f69c010000caab7005fa7f0000 ,
+        0xd8524ff79c010000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000200 ,
         0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -195,14 +195,18 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x00000000000055005300420030003000330000000000000000000000
+        0x0000000000005500530042003000300033000000000000000000000000000000 ,
+        0x000000000000000000000000
     End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -218,8 +222,8 @@ Begin Form
             BorderLineStyle =0
             SizeMode =3
             PictureAlignment =2
-            BorderColor =16777215
-            GridlineColor =16777215
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -229,7 +233,9 @@ Begin Form
         Begin CommandButton
             FontSize =11
             FontWeight =400
+            ForeColor =4210752
             FontName ="Calibri"
+            GridlineColor =10921638
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
@@ -237,19 +243,24 @@ Begin Form
             UseTheme =1
             Shape =1
             Gradient =12
+            BackColor =14461583
             BackThemeColorIndex =4
             BackTint =60.0
             BorderLineStyle =0
-            BorderColor =16777215
+            BorderColor =14461583
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
+            HoverColor =15189940
             HoverThemeColorIndex =4
             HoverTint =40.0
+            PressedColor =9917743
             PressedThemeColorIndex =4
             PressedShade =75.0
+            HoverForeColor =4210752
             HoverForeThemeColorIndex =0
             HoverForeTint =75.0
+            PressedForeColor =4210752
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
         End
@@ -258,7 +269,7 @@ Begin Form
             BackColor =12428174
             Name ="FormHeader"
             GUID = Begin
-                0x23cf3d0e2cfc1d4b88bdef7498d90fe8
+                0xd66b9dd9a5e8d0498f3ea1e657083f1b
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -267,7 +278,7 @@ Begin Form
                     OverlapFlags =85
                     TextAlign =1
                     Left =3540
-                    Top =135
+                    Top =140
                     Width =6180
                     Height =460
                     FontSize =16
@@ -278,14 +289,13 @@ Begin Form
                     Caption ="Reconciliation and Take Off (Steps)"
                     FontName ="Calibri Light"
                     GUID = Begin
-                        0x230eed39ac406f419ee2314d885176fe
+                        0x6ada7be4782b154d95ab44704fbd466f
                     End
                     GroupTable =1
-                    GridlineColor =10921638
                     LayoutCachedLeft =3540
-                    LayoutCachedTop =135
+                    LayoutCachedTop =140
                     LayoutCachedWidth =9720
-                    LayoutCachedHeight =595
+                    LayoutCachedHeight =600
                     LayoutGroup =1
                     ThemeFontIndex =0
                     BorderThemeColorIndex =2
@@ -300,13 +310,11 @@ Begin Form
                     Top =75
                     Width =3312
                     Height =576
-                    BorderColor =10921638
                     Name ="Image97"
                     Picture ="TateBywater_Final_Logo_Navy"
                     GUID = Begin
-                        0x2e45d95abcef0f4092eab807d8714792
+                        0xa97ed894c665df4faf9b07ac98d79fff
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =120
                     LayoutCachedTop =75
@@ -328,10 +336,9 @@ Begin Form
                     Caption ="&Close"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xeba11fece3e90b468ae11c14c025ea6f
+                        0x15e4164881e2504e94c4e255fb36becd
                     End
                     UnicodeAccessKey =67
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =14880
                     LayoutCachedTop =120
@@ -353,16 +360,18 @@ Begin Form
                     PressedColor =12746034
                     PressedThemeColorIndex =8
                     PressedShade =80.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     QuickStyle =34
                     QuickStyleMask =-1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
             End
         End
@@ -370,7 +379,7 @@ Begin Form
             Height =10020
             Name ="Detail"
             GUID = Begin
-                0x5a2804732c1d8d4384d760f9f012112c
+                0xd34f93515f4dc743a3b48c7e88477a0e
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -389,9 +398,8 @@ Begin Form
                     Caption ="Trust Account Entries \015\012Chronological"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x955dc19e9d7f2247a23a0729c5cbf9b4
+                        0x65180da5215aa9448f1f754579a83ccc
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =300
                     LayoutCachedTop =1740
@@ -404,22 +412,23 @@ Begin Form
                     BackColor =12349952
                     BackThemeColorIndex =-1
                     BackTint =100.0
-                    BorderColor =14461583
                     HoverColor =5026082
                     HoverThemeColorIndex =-1
                     HoverTint =100.0
                     PressedColor =2366701
                     PressedThemeColorIndex =-1
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -434,9 +443,8 @@ Begin Form
                     Caption ="Take Off"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x84e1b93db1cd414f9d52ba4ffffdfd8a
+                        0x878b77374f56b14084ac16d1792f485e
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =300
                     LayoutCachedTop =5100
@@ -449,22 +457,23 @@ Begin Form
                     BackColor =12349952
                     BackThemeColorIndex =-1
                     BackTint =100.0
-                    BorderColor =14461583
                     HoverColor =5026082
                     HoverThemeColorIndex =-1
                     HoverTint =100.0
                     PressedColor =2366701
                     PressedThemeColorIndex =-1
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -479,9 +488,8 @@ Begin Form
                     Caption ="Reconciliation"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x9983afe0b138bb46a10c291a7aa1dd58
+                        0xb93fa9c441174244bcce3989425f6cdf
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =300
                     LayoutCachedTop =3420
@@ -494,22 +502,23 @@ Begin Form
                     BackColor =12349952
                     BackThemeColorIndex =-1
                     BackTint =100.0
-                    BorderColor =14461583
                     HoverColor =5026082
                     HoverThemeColorIndex =-1
                     HoverTint =100.0
                     PressedColor =2366701
                     PressedThemeColorIndex =-1
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -524,9 +533,8 @@ Begin Form
                     Caption ="Attorney Fees and \015\012Cost Reimbursements"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xe320e8e5ab99924d85be0adedc220642
+                        0x8a3605b9a530024da070622ce3cd822c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =300
                     LayoutCachedTop =7410
@@ -539,21 +547,22 @@ Begin Form
                     BackColor =12349952
                     BackThemeColorIndex =-1
                     BackTint =100.0
-                    BorderColor =14461583
                     HoverColor =12874308
                     HoverTint =100.0
                     PressedColor =13017476
                     PressedThemeColorIndex =-1
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin Label
                     OverlapFlags =85
@@ -562,7 +571,7 @@ Begin Form
                     Width =11400
                     Height =900
                     FontSize =10
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="Label0"
                     Caption ="2) Reconcile each transaction in the Trust Account with the WF Trust and NMI. Ch"
                         "eck the box on any uncashed checks and uncleared deposits.                      "
@@ -571,9 +580,8 @@ Begin Form
                         "                                                   3) Uncheck any checks/deposit"
                         "s which have since cleared"
                     GUID = Begin
-                        0x63bbb7db0ebb9f4081fa0ea2df2693ac
+                        0x6dd1542173202b48945fe7b9089b159b
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =1800
                     LayoutCachedWidth =16020
@@ -587,16 +595,15 @@ Begin Form
                     Width =11400
                     Height =1140
                     FontSize =10
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="Label1"
                     Caption ="4) In the Reconciliation form enter in Actual Balances from TBFMT Wells Fargo, J"
                         "MB (Dale), and TD Bank (Somerfield) accounts.                  5) If accounts re"
                         "concile, check the Reconciled box and press \"Insert Data\" (be sure to press it"
                         " only once). "
                     GUID = Begin
-                        0xcd23b8d3f3633740bee8c60ede00aa18
+                        0x7eeea887afd37a4d94dc917fb07bdf85
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =3480
                     LayoutCachedWidth =16020
@@ -610,7 +617,7 @@ Begin Form
                     Width =11400
                     Height =2265
                     FontSize =10
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="Label2"
                     Caption ="6) In the Take Off form, press the print button to create a Reconciliation Repor"
                         "t.  Save as a PDF and store in SUpdegraff's Takeoff folder.    7) Input early ta"
@@ -634,9 +641,8 @@ Begin Form
                         "                            12)  Clear all filters on the form and press \"Inser"
                         "t Fee Data\"."
                     GUID = Begin
-                        0xaf9f81ece4edac4cbb2f7757de578293
+                        0xcea1d7fc5cb1e845bad4d3cb10e89b5f
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =5100
                     LayoutCachedWidth =16020
@@ -650,14 +656,13 @@ Begin Form
                     Width =11400
                     Height =1140
                     FontSize =10
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="Label3"
                     Caption ="14)The Take Off Attorneys Fees and Cost Reimbursements form shows fees and reimb"
                         "ursements by take off date."
                     GUID = Begin
-                        0x7403b0bcdc26864395a84ff36a0bd22b
+                        0x219c701a42787646b2c5de0c00750e0b
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =7410
                     LayoutCachedWidth =16020
@@ -677,9 +682,8 @@ Begin Form
                     Caption ="Uncashed Checks and Uncleared Deposits"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xdd56bfd07b4f184683e8c5a45acda12e
+                        0x41c5f68f761d2f4ba899151fff9a443f
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2460
                     LayoutCachedTop =1740
@@ -692,22 +696,23 @@ Begin Form
                     BackColor =12349952
                     BackThemeColorIndex =-1
                     BackTint =100.0
-                    BorderColor =14461583
                     HoverColor =5026082
                     HoverThemeColorIndex =-1
                     HoverTint =100.0
                     PressedColor =2366701
                     PressedThemeColorIndex =-1
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -722,9 +727,8 @@ Begin Form
                     Caption ="Advanced Client Expenses"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x7fd58523b0279f4f9ec5692f37bd437d
+                        0xe7e4c3658a1abe4f880e98723aec91f0
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =300
                     LayoutCachedTop =300
@@ -737,22 +741,23 @@ Begin Form
                     BackColor =12349952
                     BackThemeColorIndex =-1
                     BackTint =100.0
-                    BorderColor =14461583
                     HoverColor =5026082
                     HoverThemeColorIndex =-1
                     HoverTint =100.0
                     PressedColor =2366701
                     PressedThemeColorIndex =-1
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin Label
                     OverlapFlags =85
@@ -761,14 +766,13 @@ Begin Form
                     Width =11400
                     Height =900
                     FontSize =10
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="Label6"
                     Caption ="1) In the Advanced Client Expenses form or the Clients form make sure advanced c"
                         "osts are correctly marked as checked for purposes of Cost Reimbursement. "
                     GUID = Begin
-                        0x4cbee48c0a549d408a66af0979ad5285
+                        0xb3f5e688e7606a44b68ffc6b1e241982
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =300
                     LayoutCachedWidth =16020
@@ -782,14 +786,13 @@ Begin Form
                     Width =11400
                     Height =390
                     FontSize =10
-                    BorderColor =8355711
+                    ForeColor =0
                     Name ="Label7"
                     Caption ="15) Uncheck Advance Client Expenses in the Clients Form where Cost Reimbursement"
                         " has occurred. "
                     GUID = Begin
-                        0x43930798e63ac149ab97d2591c6c0b48
+                        0xe09c69de10db3646b0dea935d2f6fd3f
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4620
                     LayoutCachedTop =8670
                     LayoutCachedWidth =16020
@@ -803,7 +806,7 @@ Begin Form
             BackColor =12428174
             Name ="FormFooter"
             GUID = Begin
-                0x54d661380f343d4d8bc2885ee598f747
+                0x3dfe31a39b0c0648ae57f63a86b1c889
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0

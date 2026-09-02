@@ -14,19 +14,9 @@
     "bottom": 720
   },
   "paperSize": 1,
-  "groupLevels": [
-    {
-      "fieldExpression": "Last_Name",
-      "sortOrder": "ascending",
-      "groupHeader": false,
-      "groupFooter": false
-    }
-  ],
   "sections": [
     {
       "type": "Detail",
-      "height": 360,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -260,8 +250,6 @@
     },
     {
       "type": "ReportHeader",
-      "height": 1620,
-      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -439,14 +427,7 @@
       ]
     },
     {
-      "type": "ReportFooter",
-      "height": 720,
-      "keepTogether": true,
-      "controls": []
-    },
-    {
       "type": "PageHeader",
-      "height": 480,
       "controls": [
         {
           "type": "Label",
@@ -674,7 +655,6 @@
     },
     {
       "type": "PageFooter",
-      "height": 315,
       "controls": [
         {
           "type": "TextBox",

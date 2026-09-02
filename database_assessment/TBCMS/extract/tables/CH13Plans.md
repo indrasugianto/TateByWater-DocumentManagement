@@ -1,6 +1,8 @@
 # Table: CH13Plans *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.CH13Plans`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.CH13Plans`
+
+**Row count:** 191
 
 ## Columns
 

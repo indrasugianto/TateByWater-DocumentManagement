@@ -1,7 +1,7 @@
-Version =20
+Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =1694120785
+Checksum =-1176203364
 Begin Form
     AutoCenter = NotDefault
     DividingLines = NotDefault
@@ -16,45 +16,45 @@ Begin Form
     ItemSuffix =30
     Right =18765
     Bottom =12285
-    DatasheetGridlinesColor =15461355
+    DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0xa93ecce576ffe440
     End
     GUID = Begin
-        0x1a2f4c323cc5ac449ff1b460c1ed64ac
+        0x04da7b87181ef742921520d8423998ae
     End
     NameMap = Begin
-        0x0acc0e5500000000a60e6698b7717d41856a07395d66735c00000000922641e9 ,
-        0x76ffe440000000000000000071007200790043006100730065004c0069007300 ,
-        0x74004f00700065006e00000000000000989c609ff03f454397ebec0d976a28ff ,
-        0x07000000a60e6698b7717d41856a07395d66735c430061007300650049004400 ,
-        0x000000000000649dfe7af83c7647ad6fb14ec9ee619e07000000a60e6698b771 ,
-        0x7d41856a07395d66735c43006100730065004f00700065006e00440061007400 ,
-        0x6500000000000000f458d47c5f78cc4aab4ecd8b71e0fcd907000000a60e6698 ,
-        0xb7717d41856a07395d66735c43006c00690065006e0074004e0061006d006500 ,
-        0x000000000000e1985d5f655f6f469b50b95b7e2374fd07000000a60e6698b771 ,
-        0x7d41856a07395d66735c43006100730065005f004c0065007400740065007200 ,
-        0x0000000000001e747bb16a7b964aa2e9346e0e4778e507000000a60e6698b771 ,
-        0x7d41856a07395d66735c79007200000000000000b8fc5cca7aa30142a0f88e22 ,
-        0xf0441d4f07000000a60e6698b7717d41856a07395d66735c4e0075006d006200 ,
-        0x650072005f000000000000007dca2456c5564b428ed35f53c943152e07000000 ,
-        0xa60e6698b7717d41856a07395d66735c4f007200690067005f00410074007400 ,
-        0x79000000000000003e2fbfcb6ee621488df88db784249c7607000000a60e6698 ,
-        0xb7717d41856a07395d66735c45007800740065006e006400650064005f004c00 ,
-        0x65006400670065007200000000000000e6d5bf64b7851445b7d37529ecfa96b4 ,
-        0x07000000a60e6698b7717d41856a07395d66735c43006f007500720074000000 ,
-        0x0000000099ca0f87017b60479039882a08e4814007000000a60e6698b7717d41 ,
-        0x856a07395d66735c4d00610074007400650072005f0074007900700065000000 ,
-        0x0000000051e3856afe204e488e9bce2e73dcaa4607000000a60e6698b7717d41 ,
-        0x856a07395d66735c460069006c0065004e0075006d0062006500720000000000 ,
-        0x0000f001949e67d486499cc10187baca3cb707000000a60e6698b7717d41856a ,
-        0x07395d66735c5300630061006e0020004c006f0063006100740069006f006e00 ,
-        0x0000000000009fb70ccc41f4714695559101df2e748c07000000a60e6698b771 ,
-        0x7d41856a07395d66735c480061006e0064006c0069006e006700410074007400 ,
-        0x79005f004300610073006500000000000000473cd49f76e2964893db1e2ec773 ,
-        0x73ca07000000a60e6698b7717d41856a07395d66735c43006c006f0073006500 ,
-        0x64000000000000005f99c0a9001f3d4f94debab9eb62669307000000a60e6698 ,
-        0xb7717d41856a07395d66735c43006f0064006500560061006c00000000000000 ,
+        0x0acc0e55000000001c6515eb78bbe440bb52018b44a7f06000000000dadda094 ,
+        0x2f89e640000000000000000071007200790043006100730065004c0069007300 ,
+        0x74004f00700065006e0000000000000064293fed6fae0b4980de3c90cfca9ad3 ,
+        0x070000001c6515eb78bbe440bb52018b44a7f060430061007300650049004400 ,
+        0x00000000000034aa63e578158d49bcb46a06ec8237f3070000001c6515eb78bb ,
+        0xe440bb52018b44a7f06043006100730065004f00700065006e00440061007400 ,
+        0x6500000000000000880d959ba7748f4fb9896a18ce4c5948070000001c6515eb ,
+        0x78bbe440bb52018b44a7f06043006c00690065006e0074004e0061006d006500 ,
+        0x00000000000070cbd4c9acced64e8ec5b11a31d36cab070000001c6515eb78bb ,
+        0xe440bb52018b44a7f06043006100730065005f004c0065007400740065007200 ,
+        0x0000000000001d86b7f9c887474da4907d0081184752070000001c6515eb78bb ,
+        0xe440bb52018b44a7f060790072000000000000001dad74061dd7e445a98e7b76 ,
+        0xa1cbfb85070000001c6515eb78bbe440bb52018b44a7f0604e0075006d006200 ,
+        0x650072005f000000000000001726f429b748884c92341fbecec04b1907000000 ,
+        0x1c6515eb78bbe440bb52018b44a7f0604f007200690067005f00410074007400 ,
+        0x79000000000000009da41a354a5f0940a85778710b82ff9a070000001c6515eb ,
+        0x78bbe440bb52018b44a7f06045007800740065006e006400650064005f004c00 ,
+        0x650064006700650072000000000000000d32a5da36ab8049b31ff617e72cb431 ,
+        0x070000001c6515eb78bbe440bb52018b44a7f06043006f007500720074000000 ,
+        0x0000000083d62322b089214592576ab8119e81cb070000001c6515eb78bbe440 ,
+        0xbb52018b44a7f0604d00610074007400650072005f0074007900700065000000 ,
+        0x000000001e97a7706248fe49a12adb82f288da0e070000001c6515eb78bbe440 ,
+        0xbb52018b44a7f060460069006c0065004e0075006d0062006500720000000000 ,
+        0x0000185181acd8428a49b8012d85e6cbd683070000001c6515eb78bbe440bb52 ,
+        0x018b44a7f0605300630061006e0020004c006f0063006100740069006f006e00 ,
+        0x0000000000006fb05e46cc929540b036985af4cf6406070000001c6515eb78bb ,
+        0xe440bb52018b44a7f060480061006e0064006c0069006e006700410074007400 ,
+        0x79005f004300610073006500000000000000cf847dd0bbbef54a97cfa2c3a80e ,
+        0x1326070000001c6515eb78bbe440bb52018b44a7f06043006c006f0073006500 ,
+        0x64000000000000000debbdd8f1158242bbaf4aa7b72416f6070000001c6515eb ,
+        0x78bbe440bb52018b44a7f06043006f0064006500560061006c00000000000000 ,
         0x000000000000000000000000000000000c000000050000000000000000000000 ,
         0x000000000000
     End
@@ -66,7 +66,7 @@ Begin Form
         "[HandlingAtty_Case], [qryCaseListOpen].[Closed], [qryCaseListOpen].[CodeVal] FRO"
         "M qryCaseListOpen; "
     Caption ="frmCaseListOpen subform"
-    DatasheetFontName ="Trebuchet MS"
+    DatasheetFontName ="Calibri"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -84,7 +84,10 @@ Begin Form
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -98,6 +101,8 @@ Begin Form
             BorderLineStyle =0
             LabelX =230
             LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
             BorderThemeColorIndex =1
             BorderShade =65.0
             GridlineThemeColorIndex =1
@@ -109,8 +114,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -122,10 +130,10 @@ Begin Form
         End
         Begin FormHeader
             Height =0
-            BackColor =14670543
+            BackColor =15064278
             Name ="FormHeader"
             GUID = Begin
-                0xff6b39f933d267458a1fc0552b3e1aa5
+                0x7fe784040d29a94f8374ebd4f64da7e7
             End
             AutoHeight =1
             AlternateBackThemeColorIndex =1
@@ -137,7 +145,7 @@ Begin Form
             Height =8370
             Name ="Detail"
             GUID = Begin
-                0xa2c4d283944d844a9822a4dc5de87559
+                0x1ffbff3b07db6a4eaf9094e9b4de7fd8
             End
             AutoHeight =1
             AlternateBackColor =15921906
@@ -152,15 +160,11 @@ Begin Form
                     Top =360
                     Height =315
                     ColumnWidth =1440
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="CaseID"
                     ControlSource ="CaseID"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x0888d1979634da4eb977a3ad7df385f0
+                        0x916f71fa36b93743a60dd7dfb293c318
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =360
@@ -173,15 +177,11 @@ Begin Form
                             Top =360
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="CaseID_Label"
                             Caption ="CaseID"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0xc1e421fdb0f9b645ac1e7d3ed32cdda9
+                                0x762764c47f8ae94eaab5cd518b2bb423
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =360
                             LayoutCachedWidth =1800
@@ -198,15 +198,11 @@ Begin Form
                     Height =330
                     ColumnWidth =1620
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="CaseOpenDate"
                     ControlSource ="CaseOpenDate"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xaf61b586c2a0ed4288da825abe150fa5
+                        0x31d1a2892459f4419f1a096f187c2ab8
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =780
@@ -219,15 +215,11 @@ Begin Form
                             Top =780
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="CaseOpenDate_Label"
                             Caption ="CaseOpenDate"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x4a8ad28dbab02342b48c78aed88f3d2f
+                                0x48826c9f38c2704c9653aeab4fdd8b41
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =780
                             LayoutCachedWidth =1800
@@ -244,15 +236,11 @@ Begin Form
                     Height =330
                     ColumnWidth =3000
                     TabIndex =2
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="ClientName"
                     ControlSource ="ClientName"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x1848080a7d33c14b8d1d23263b42d3ae
+                        0xfea792acba303147bd46a9e658a7f390
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =1200
@@ -265,15 +253,11 @@ Begin Form
                             Top =1200
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="ClientName_Label"
                             Caption ="ClientName"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0xb98f92c5f0e02947af9f791f86c66865
+                                0x7939dad8a359034d9e2f926a246ea28a
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =1200
                             LayoutCachedWidth =1800
@@ -292,15 +276,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =3
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Case_Letter"
                     ControlSource ="Case_Letter"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xb879d85bdad3c242b2257ee70ea22688
+                        0x4df82a59284daa48bd1c4902e698e1c7
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =1620
@@ -313,15 +293,11 @@ Begin Form
                             Top =1620
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Case_Letter_Label"
                             Caption ="Case_Letter"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x95239e825a558e4883357159a7c7007d
+                                0xed92b3213ac2364196f388a52d0faed6
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =1620
                             LayoutCachedWidth =1800
@@ -340,15 +316,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =4
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="yr"
                     ControlSource ="yr"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x5d654332907095458b44afa27ef3aa1d
+                        0x45d9c71d1618924e9caefc6cd9f76442
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =2340
@@ -361,15 +333,11 @@ Begin Form
                             Top =2340
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="yr_Label"
                             Caption ="yr"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x7a7343e6be17694881ee372c1a571b27
+                                0x1ce08c02a7eac8439bc319caf687ca3f
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =2340
                             LayoutCachedWidth =1800
@@ -386,15 +354,11 @@ Begin Form
                     Height =330
                     ColumnWidth =1530
                     TabIndex =5
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Number_"
                     ControlSource ="Number_"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x016e78a979f5064d90208339ce1ae5d4
+                        0x5fa0ef7a57a64d4882adc6ff1f044a8a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =3060
@@ -407,15 +371,11 @@ Begin Form
                             Top =3060
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Number__Label"
                             Caption ="Number_"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x8105460c186d4342bde4d0a39551710a
+                                0x4dbf6994ee87af4bb9b0074f55e1f4b0
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =3060
                             LayoutCachedWidth =1800
@@ -434,15 +394,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =6
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Orig_Atty"
                     ControlSource ="Orig_Atty"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xbba2af00c000f746a12b3c0a11572097
+                        0x9b553a48de470642a632c655dace85b8
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =3480
@@ -455,15 +411,11 @@ Begin Form
                             Top =3480
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Orig_Atty_Label"
                             Caption ="Orig_Atty"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x6435e231b273464aaaa2395886b4e94f
+                                0xad67880762a090469111c5d9d26a00a9
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =3480
                             LayoutCachedWidth =1800
@@ -482,15 +434,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =7
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Extended_Ledger"
                     ControlSource ="Extended_Ledger"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x8d75f504d17e194ea524c3f843b16e27
+                        0xb30d4a2deba87942856b623b8ef548c4
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =4200
@@ -503,15 +451,11 @@ Begin Form
                             Top =4200
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Extended_Ledger_Label"
                             Caption ="Extended_Ledger"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x019f433e00da394a8341eb66837f60fb
+                                0x7665d8055146dc43af66a6ef7232b7d2
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =4200
                             LayoutCachedWidth =1800
@@ -530,15 +474,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =8
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Court"
                     ControlSource ="Court"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xdc6d4d14ca756249964873d2cc597e27
+                        0x0417266005890f4ab3da8795dfb2826a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =4920
@@ -551,15 +491,11 @@ Begin Form
                             Top =4920
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Court_Label"
                             Caption ="Court"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0xc68ae0fd0b968d42ad179cca769c1c91
+                                0x3bac0ee4f3db2b4e8d7eb302b4f0af0a
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =4920
                             LayoutCachedWidth =1800
@@ -578,15 +514,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =9
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Matter_type"
                     ControlSource ="Matter_type"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xd009428585387345b52a9d67a7b7a0af
+                        0xea5af040a496924c84f7acbe236e97ba
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =5640
@@ -599,15 +531,11 @@ Begin Form
                             Top =5640
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Matter_type_Label"
                             Caption ="Matter_type"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x65fdec030eb6ba45ab68b7c4fad79507
+                                0x542218b91159934992902f92958235e9
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =5640
                             LayoutCachedWidth =1800
@@ -624,15 +552,11 @@ Begin Form
                     Height =330
                     ColumnWidth =3000
                     TabIndex =10
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="FileNumber"
                     ControlSource ="FileNumber"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xb08a9cc7ad3b094a806fe4d0b8f43d8d
+                        0xc056df5bdf5ba146a777768631f39b02
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =6360
@@ -645,15 +569,11 @@ Begin Form
                             Top =6360
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="FileNumber_Label"
                             Caption ="FileNumber"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x6079606b6a4bf841b819318400e5d8e1
+                                0xc55607687c0d2244bb8898881e4dd125
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =6360
                             LayoutCachedWidth =1800
@@ -671,16 +591,13 @@ Begin Form
                     Height =330
                     ColumnWidth =3000
                     TabIndex =11
-                    BorderColor =10921638
                     ForeColor =1279872587
                     Name ="Scan Location"
                     ControlSource ="Scan Location"
-                    FontName ="Trebuchet MS"
                     EventProcPrefix ="Scan_Location"
                     GUID = Begin
-                        0x36e005d9ef233e448170e25d847fe608
+                        0x59f7b00e0855f84c94c98a4e34f0f024
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =6780
@@ -695,16 +612,12 @@ Begin Form
                             Top =6780
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Scan Location_Label"
                             Caption ="Scan Location"
-                            FontName ="Trebuchet MS"
                             EventProcPrefix ="Scan_Location_Label"
                             GUID = Begin
-                                0x5c700b38e5226f439e96af0d080457fd
+                                0x7be7eb02b61ac5429769512e22a4d4b4
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =6780
                             LayoutCachedWidth =1800
@@ -723,16 +636,12 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =12
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="HandlingAtty_Case"
                     ControlSource ="HandlingAtty_Case"
                     StatusBarText ="case specific field"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x8a97a91f3dcbeb44ab41b55c6277e867
+                        0x3109715b7ca5654292b1f22bc23fc01b
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =7200
@@ -745,15 +654,11 @@ Begin Form
                             Top =7200
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="HandlingAtty_Case_Label"
                             Caption ="HandlingAtty_Case"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x0cca5a2af7e10e48ad172ddd695677f9
+                                0xd38aaba041482849a372d147e5b4c3d1
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =7200
                             LayoutCachedWidth =1800
@@ -766,13 +671,11 @@ Begin Form
                     Left =1890
                     Top =7920
                     TabIndex =13
-                    BorderColor =10921638
                     Name ="Closed"
                     ControlSource ="Closed"
                     GUID = Begin
-                        0x83babad50fa856448999b87b4669c1b6
+                        0x976d8cd4e9da4f4192d7dd3ede3393d3
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1890
                     LayoutCachedTop =7920
@@ -785,15 +688,11 @@ Begin Form
                             Top =7920
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="Closed_Label"
                             Caption ="Closed"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x81a0b991f3686b45802b367631d1ed16
+                                0xc03105388a6fce48b615fb9d8700bba0
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =360
                             LayoutCachedTop =7920
                             LayoutCachedWidth =1800
@@ -812,15 +711,11 @@ Begin Form
                     Height =600
                     ColumnWidth =3000
                     TabIndex =14
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="CodeVal"
                     ControlSource ="CodeVal"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x09145252cf653e4f8094836bd547c110
+                        0x35791a94c743d84a9e9cf3af67d8b46f
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =7770
                     LayoutCachedTop =360
@@ -833,15 +728,11 @@ Begin Form
                             Top =360
                             Width =1440
                             Height =330
-                            BorderColor =8355711
-                            ForeColor =8355711
                             Name ="CodeVal_Label"
                             Caption ="CodeVal"
-                            FontName ="Trebuchet MS"
                             GUID = Begin
-                                0x7aa0915b1ed611409f52e18e53b2db14
+                                0xbc51c408307fdb47a4e5da0dc7275bbd
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =6240
                             LayoutCachedTop =360
                             LayoutCachedWidth =7680
@@ -855,7 +746,7 @@ Begin Form
             Height =0
             Name ="FormFooter"
             GUID = Begin
-                0x3c1aaa3d1ed335498307fe45557ae23b
+                0x3a2e5cf2266cfa45abba6f9db940cf69
             End
             AutoHeight =1
             AlternateBackThemeColorIndex =1

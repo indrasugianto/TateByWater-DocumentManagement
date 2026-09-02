@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "CommandFullHistoryInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19627,
-      "lineEnd": 19646,
+      "lineStart": 17811,
+      "lineEnd": 17830,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -20,8 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdEmailFullHistory_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18970,
-      "lineEnd": 18993,
+      "lineStart": 17154,
+      "lineEnd": 17177,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -56,8 +56,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordSentInvoice_Click",
       "sourceFile": "extract/vba/forms/frmInvoiceSent.txt",
-      "lineStart": 1075,
-      "lineEnd": 1139,
+      "lineStart": 1078,
+      "lineEnd": 1142,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -86,8 +86,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdEmailFullHistory_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18970,
-      "lineEnd": 18993,
+      "lineStart": 17154,
+      "lineEnd": 17177,
       "usesDoCmd": [
         "OpenReport",
         "SendObject"
@@ -100,8 +100,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "CommandFullHistoryInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19627,
-      "lineEnd": 19646,
+      "lineStart": 17811,
+      "lineEnd": 17830,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -146,8 +146,8 @@
       "objectName": "frmInvoiceSent",
       "procedureName": "cmdRecordSentInvoice_Click",
       "sourceFile": "extract/vba/forms/frmInvoiceSent.txt",
-      "lineStart": 1075,
-      "lineEnd": 1139,
+      "lineStart": 1078,
+      "lineEnd": 1142,
       "usesDoCmd": [
         "Close",
         "OpenReport",
@@ -164,8 +164,8 @@
       "objectName": "Invoice2",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Invoice2.txt",
-      "lineStart": 2068,
-      "lineEnd": 2100,
+      "lineStart": 2044,
+      "lineEnd": 2076,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -177,8 +177,8 @@
       "objectName": "Rpt_MergeInvTK",
       "procedureName": "Charge19_Click",
       "sourceFile": "extract/vba/reports/Rpt_MergeInvTK.txt",
-      "lineStart": 1949,
-      "lineEnd": 1981,
+      "lineStart": 1869,
+      "lineEnd": 1901,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [

@@ -17,25 +17,23 @@
 - frm_invoices_summary -> cmdPastDue -> onClick -> cmdPastDue_Click (medium confidence)
 - frm_invoices_summary -> cmdPastDueLT -> onClick -> cmdPastDueLT_Click (medium confidence)
 - frm_invoices_summary -> cmdRecordPDInvoice -> onClick -> cmdRecordPDInvoice_Click (medium confidence)
-- frmTimeKeepingOpen -> cmdPrintInvoice -> onClick -> cmdPrintInvoice_Click (medium confidence)
-- frmTimeKeepingOpen -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
-- zClient Ledger OLD -> cmdInvoice -> onClick -> cmdInvoice_Click (medium confidence)
-- zClient Ledger OLD -> cmdPastDueInvoice -> onClick -> cmdPastDueInvoice_Click (medium confidence)
-- zClient Ledger OLD -> cmdBalanceInvoice -> onClick -> cmdBalanceInvoice_Click (medium confidence)
-- zClient Ledger OLD -> CmdFullHistoryInvoice -> onClick -> CmdFullHistoryInvoice_Click (high confidence)
 - frmAttyNotes -> cmdPrintNotes -> onClick -> cmdPrintNotes_Click (medium confidence)
+- frmHomeAdmin -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (medium confidence)
 - zfrmSelectCaseNum -> CmdOpenInvoiceAttachReport -> onClick -> CmdOpenInvoiceAttachReport_Click (medium confidence)
 - frmHome -> cmdInvoice -> onClick -> cmdInvoice_Click (high confidence)
 - frmHome -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (medium confidence)
 - frmInvoiceSent -> cmdRecordSentInvoice -> onClick -> cmdRecordSentInvoice_Click (high confidence)
 - frmInvoiceSent -> cmdRecondSentPDInvoice -> onClick -> cmdRecondSentPDInvoice_Click (medium confidence)
-- zfrmSelectCaseNum_Discount -> CmdOpenInvoiceAttachReport -> onClick -> CmdOpenInvoiceAttachReport_Click (medium confidence)
+- frmPersonalInjury -> CrStatusRep -> onClick -> CrStatusRep_Click (medium confidence)
 - frmTimeKeepingClosed -> cmdRecord -> onClick -> cmdRecord_Click (medium confidence)
 - frmTimeKeepingClosed -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
 - frmTimeKeepingClosed -> cmdCompFull -> onClick -> cmdCompFull_Click (medium confidence)
 - frmTimeKeepingClosed -> cmdCompCurr -> onClick -> cmdCompCurr_Click (medium confidence)
 - frmTimeKeepingClosed -> cmdPreview2 -> onClick -> cmdPreview2_Click (medium confidence)
 - frmTimeKeepingClosed -> cmdRecordShort -> onClick -> cmdRecordShort_Click (medium confidence)
+- frmTimeKeepingOpen -> cmdPrintInvoice -> onClick -> cmdPrintInvoice_Click (medium confidence)
+- frmTimeKeepingOpen -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
+- zfrmSelectCaseNum_Discount -> CmdOpenInvoiceAttachReport -> onClick -> CmdOpenInvoiceAttachReport_Click (medium confidence)
 - frmUpcoming Hearings -> cmdPrintNotes -> onClick -> cmdPrintNotes_Click (medium confidence)
 - Time Keeping -> cmdPrintInvoice -> onClick -> cmdPrintInvoice_Click (medium confidence)
 - Time Keeping -> cmdPreview -> onClick -> cmdPreview_Click (medium confidence)
@@ -48,8 +46,10 @@
 - Time Keeping -> cmdEmailLong -> onClick -> cmdEmailLong_Click (medium confidence)
 - Time Keeping -> cmdRecordShortTK -> onClick -> cmdRecordShortTK_Click (medium confidence)
 - Time Keeping -> cmdTKReport -> onClick -> cmdTKReport_Click (medium confidence)
-- frmPersonalInjury -> CrStatusRep -> onClick -> CrStatusRep_Click (medium confidence)
-- frmHomeAdmin -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (medium confidence)
+- zClient Ledger OLD -> cmdInvoice -> onClick -> cmdInvoice_Click (medium confidence)
+- zClient Ledger OLD -> cmdPastDueInvoice -> onClick -> cmdPastDueInvoice_Click (medium confidence)
+- zClient Ledger OLD -> cmdBalanceInvoice -> onClick -> cmdBalanceInvoice_Click (medium confidence)
+- zClient Ledger OLD -> CmdFullHistoryInvoice -> onClick -> CmdFullHistoryInvoice_Click (high confidence)
 
 ## Data Lineage
 - RecordSource: `qryInvoiceRPT1`
@@ -58,16 +58,16 @@
 - Terminal Tables: vwInvoiceRPT1
 
 ## Related VBA Procedures
-- form frmClientLedger::cmdOpenDocumentFolderInvoices_Click [18666-18670]
-- form frmClientLedger::cmdTKReportAR_Click [18822-18841]
-- form frmClientLedger::CrStatusRep_Click [18862-18881]
-- form frmClientLedger::cmdEmailPastDue_Click [18919-18945]
-- form frmClientLedger::cmdEmailNoBalance_Click [18946-18969]
-- form frmClientLedger::cmdEmailFullHistory_Click [18970-18993]
-- form frmClientLedger::cmdPastDueInvoice_Click [19215-19242]
-- form frmClientLedger::cmdBalanceInvoice_Click [19243-19299]
-- form frmClientLedger::CommandFullHistoryInvoice_Click [19627-19646]
-- form frmClientLedger::cmdInvoice_Click [19647-19676]
+- form frmClientLedger::cmdOpenDocumentFolderInvoices_Click [16850-16854]
+- form frmClientLedger::cmdTKReportAR_Click [17006-17025]
+- form frmClientLedger::CrStatusRep_Click [17046-17065]
+- form frmClientLedger::cmdEmailPastDue_Click [17103-17129]
+- form frmClientLedger::cmdEmailNoBalance_Click [17130-17153]
+- form frmClientLedger::cmdEmailFullHistory_Click [17154-17177]
+- form frmClientLedger::cmdPastDueInvoice_Click [17399-17426]
+- form frmClientLedger::cmdBalanceInvoice_Click [17427-17483]
+- form frmClientLedger::CommandFullHistoryInvoice_Click [17811-17830]
+- form frmClientLedger::cmdInvoice_Click [17831-17860]
 - form frm_trust_summary::cmdPrintStmtTrust_Click [6949-6964]
 - form frm_invoices_summary::CaseID_Click [8052-8064]
 - form frm_invoices_summary::Cmd_PreviewNew_Click [8108-8138]
@@ -81,61 +81,61 @@
 - form frm_invoices_summary::cmdPrintPastDueLT_Click [8330-8344]
 - form frm_invoices_summary::cmdRecordInvoice_Click [8345-8403] [outputTo, runSql]
 - form frm_invoices_summary::cmdRecordPDInvoice_Click [8472-8530] [outputTo, runSql]
-- form frmTimeKeepingOpen::cmdPreview_Click [7386-7407]
-- form frmTimeKeepingOpen::cmdPrintInvoice_Click [7408-7431]
-- form frmTimeKeepingOpen::cmdAddNewTK_Click [7452-7533] [runSql]
-- form frmTakeOffReconciliation::txtTKButton_Click [3332-3389] [runSql]
-- form zClient Ledger OLD::cmdInvoice_Click [7925-7945]
-- form zClient Ledger OLD::cmdPastDueInvoice_Click [7946-7964]
-- form zClient Ledger OLD::cmdBalanceInvoice_Click [7965-7981]
-- form zClient Ledger OLD::CmdFullHistoryInvoice_Click [7982-8007]
-- form frmAttyNotes::cmdPrintNotes_Click [612-633]
-- form zfrmSelectCaseNum::CmdOpenInvoiceAttachReport_Click [385-404]
-- form frmHome::cmdInvoice_Click [1858-1867]
-- form frmHome::cmdDeleteAll_Click [1868-2005] [runSql]
-- form frmInvoiceSent::cmdBillingOpenInvoiceFolder_Click [1002-1011]
-- form frmInvoiceSent::cmdRecondSentPDInvoice_Click [1012-1074] [outputTo, runSql]
-- form frmInvoiceSent::cmdRecordSentInvoice_Click [1075-1139] [outputTo, runSql]
-- form zfrmSelectCaseNum_Discount::CmdOpenInvoiceAttachReport_Click [391-410]
-- form frmTimeKeepingClosed::cmdCompCurr_Click [7742-7790]
-- form frmTimeKeepingClosed::cmdCompFull_Click [7791-7823]
-- form frmTimeKeepingClosed::cmdPreview_Click [7824-7849]
-- form frmTimeKeepingClosed::cmdPrintInvoice_Click [7850-7873]
-- form frmTimeKeepingClosed::cmdPreview2_Click [7874-7894]
-- form frmTimeKeepingClosed::cmdRecordShort_Click [7925-8041] [outputTo, runSql]
-- form frmTimeKeepingClosed::cmdRecord_Click [8105-8221] [outputTo, runSql]
-- form frmUpcoming Hearings::cmdPrintNotes_Click [7565-7584]
-- form Time Keeping::cmdBillingOpenInvoiceFolder_Click [4010-4015]
-- form Time Keeping::cmdCompFullHistory_Click [4016-4057]
-- form Time Keeping::cmdCompShort_Click [4058-4100]
-- form Time Keeping::cmdEmailLong_Click [4101-4146]
-- form Time Keeping::cmdEmailShort_Click [4147-4204]
-- form Time Keeping::cmdPrevStatement_Click [4205-4234]
-- form Time Keeping::cmdPrevHourlyInvoice_Click [4235-4237]
-- form Time Keeping::cmdRecordShortTK_Click [4238-4355] [outputTo, runSql]
-- form Time Keeping::cmdTKReport_Click [4365-4384]
-- form Time Keeping::cmdPrintInvoice_Click [4465-4498]
-- form Time Keeping::cmdRecordTKStatement_Click [4517-4632] [outputTo, runSql]
-- form Time Keeping::cmdPreview_Click [4669-4687]
-- form Time Keeping::cmdCompCurrent_Click [4847-4900]
-- form frmTKClose::txtTKButton_Click [2378-2707] [runSql]
-- form frmPersonalInjury::CrStatusRep_Click [3991-4010]
+- form frmTakeOffReconciliation::txtTKButton_Click [3356-3413] [runSql]
+- form frmAttyNotes::cmdPrintNotes_Click [616-637]
 - form frmHomeAdmin::cmdInvoice_Click [6303-6312]
 - form frmHomeAdmin::cmdDeleteAll_Click [6313-6450] [runSql]
-- report rpt_Comprehensive_InvoiceTKEx3Costs::Report_Activate [2565-2574]
-- report rptInvoiceComprARCur::Report_Open [584-590]
-- report rpt_Compr_InvoiceADVCur::Report_Open [1610-1646]
-- report rptInvoiceComprPymtsARCur::Report_Open [572-576]
-- report Invoice2::Charge19_Click [2068-2100] [runSql]
-- report rpt_Comprehensive_InvoiceTKEx2::Report_Activate [2653-2662]
-- report Rpt_MergeInvTK::Charge19_Click [1949-1981] [runSql]
-- report rptInvoiceComprTrustCur::Report_NoData [584-605]
-- report rptInvoiceComprTrustCur::Report_Open [606-611]
-- report rpt_Comprehensive_InvoiceTKEx1::Report_Activate [2271-2280]
-- report rpt_Comprehensive_InvoiceTKEx3CostsS::Report_Activate [2454-2463]
-- report rpt_Comprehensive_InvoiceTKEx2S::Report_Activate [2531-2540]
-- report rpt_Comprehensive_InvoiceTKEx1S::Report_Activate [2097-2106]
+- form zfrmSelectCaseNum::CmdOpenInvoiceAttachReport_Click [395-414]
+- form frmHome::cmdInvoice_Click [1822-1831]
+- form frmHome::cmdDeleteAll_Click [1832-1969] [runSql]
+- form frmInvoiceSent::cmdBillingOpenInvoiceFolder_Click [1005-1014]
+- form frmInvoiceSent::cmdRecondSentPDInvoice_Click [1015-1077] [outputTo, runSql]
+- form frmInvoiceSent::cmdRecordSentInvoice_Click [1078-1142] [outputTo, runSql]
+- form frmPersonalInjury::CrStatusRep_Click [3818-3837]
+- form frmTimeKeepingClosed::cmdCompCurr_Click [7680-7728]
+- form frmTimeKeepingClosed::cmdCompFull_Click [7729-7761]
+- form frmTimeKeepingClosed::cmdPreview_Click [7762-7787]
+- form frmTimeKeepingClosed::cmdPrintInvoice_Click [7788-7811]
+- form frmTimeKeepingClosed::cmdPreview2_Click [7812-7832]
+- form frmTimeKeepingClosed::cmdRecordShort_Click [7863-7979] [outputTo, runSql]
+- form frmTimeKeepingClosed::cmdRecord_Click [8043-8159] [outputTo, runSql]
+- form frmTimeKeepingOpen::cmdPreview_Click [7350-7371]
+- form frmTimeKeepingOpen::cmdPrintInvoice_Click [7372-7395]
+- form frmTimeKeepingOpen::cmdAddNewTK_Click [7416-7497] [runSql]
+- form frmTKClose::txtTKButton_Click [2379-2708] [runSql]
+- form zfrmSelectCaseNum_Discount::CmdOpenInvoiceAttachReport_Click [400-419]
+- form frmUpcoming Hearings::cmdPrintNotes_Click [7504-7523]
+- form Time Keeping::cmdBillingOpenInvoiceFolder_Click [4009-4014]
+- form Time Keeping::cmdCompFullHistory_Click [4015-4056]
+- form Time Keeping::cmdCompShort_Click [4057-4099]
+- form Time Keeping::cmdEmailLong_Click [4100-4145]
+- form Time Keeping::cmdEmailShort_Click [4146-4203]
+- form Time Keeping::cmdPrevStatement_Click [4204-4233]
+- form Time Keeping::cmdPrevHourlyInvoice_Click [4234-4236]
+- form Time Keeping::cmdRecordShortTK_Click [4237-4354] [outputTo, runSql]
+- form Time Keeping::cmdTKReport_Click [4364-4383]
+- form Time Keeping::cmdPrintInvoice_Click [4464-4497]
+- form Time Keeping::cmdRecordTKStatement_Click [4516-4631] [outputTo, runSql]
+- form Time Keeping::cmdPreview_Click [4668-4686]
+- form Time Keeping::cmdCompCurrent_Click [4846-4899]
+- form zClient Ledger OLD::cmdInvoice_Click [7946-7966]
+- form zClient Ledger OLD::cmdPastDueInvoice_Click [7967-7985]
+- form zClient Ledger OLD::cmdBalanceInvoice_Click [7986-8002]
+- form zClient Ledger OLD::CmdFullHistoryInvoice_Click [8003-8028]
+- report rpt_Comprehensive_InvoiceTKEx3Costs::Report_Activate [2561-2570]
+- report rpt_Compr_InvoiceADVCur::Report_Open [1528-1564]
+- report rpt_Comprehensive_InvoiceTKEx3CostsS::Report_Activate [2450-2459]
+- report Invoice2::Charge19_Click [2044-2076] [runSql]
+- report rpt_Comprehensive_InvoiceTKEx2::Report_Activate [2647-2656]
+- report rpt_Comprehensive_InvoiceTKEx2S::Report_Activate [2530-2539]
+- report rpt_Comprehensive_InvoiceTKEx1::Report_Activate [2270-2279]
+- report rpt_Comprehensive_InvoiceTKEx1S::Report_Activate [2093-2102]
+- report Rpt_MergeInvTK::Charge19_Click [1869-1901] [runSql]
+- report rptInvoiceComprARCur::Report_Open [525-531]
+- report rptInvoiceComprPymtsARCur::Report_Open [515-519]
+- report rptInvoiceComprTrustCur::Report_NoData [519-540]
+- report rptInvoiceComprTrustCur::Report_Open [541-546]
 - module modGaz::fncGetLastInvoiceSent [64-74]
 - module modGaz::fncGetFilterOrderNrTA [180-193]
 - module modGaz::fncGetFilterOrderNrMatterAR [194-207]
-- module DocumentManagement::GetAllInvoicesFolderName [264-300]
+- module DocumentManagement::GetAllInvoicesFolderName [358-394]

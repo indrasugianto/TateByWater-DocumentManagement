@@ -1714,6 +1714,16 @@
       ]
     },
     {
+      "name": "qryTakeOffAvailBalance",
+      "sqlFile": "extract/queries/qryTakeOffAvailBalance.sql",
+      "type": "select",
+      "parameters": [],
+      "referencedTables": [],
+      "referencedQueries": [
+        "qryTakeOff_A"
+      ]
+    },
+    {
       "name": "qryTakeOffDate",
       "sqlFile": "extract/queries/qryTakeOffDate.sql",
       "type": "select",

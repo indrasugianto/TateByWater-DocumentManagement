@@ -1,6 +1,8 @@
 # Table: tblTakeOff *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblTakeOff`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblTakeOff`
+
+**Row count:** 45719
 
 ## Columns
 

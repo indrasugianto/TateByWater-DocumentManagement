@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "Command353_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19564,
-      "lineEnd": 19574,
+      "lineStart": 17748,
+      "lineEnd": 17758,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -20,44 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdClosingSheet_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18529,
-      "lineEnd": 18540,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "zClient Ledger OLD",
-      "controlName": "Command353",
-      "eventName": "onClick",
-      "procedureName": "Command353_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7734,
-      "lineEnd": 7740,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "frmToBeClosed",
-      "controlName": "Command353",
-      "eventName": "onClick",
-      "procedureName": "Command353_Click",
-      "sourceFile": "extract/vba/forms/frmToBeClosed.txt",
-      "lineStart": 6856,
-      "lineEnd": 6863,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "frmHome",
-      "controlName": "cmdDeleteAll",
-      "eventName": "onClick",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1868,
-      "lineEnd": 2005,
+      "lineStart": 16713,
+      "lineEnd": 16724,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -70,6 +34,42 @@
       "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
       "lineStart": 6313,
       "lineEnd": 6450,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmHome",
+      "controlName": "cmdDeleteAll",
+      "eventName": "onClick",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1832,
+      "lineEnd": 1969,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmToBeClosed",
+      "controlName": "Command353",
+      "eventName": "onClick",
+      "procedureName": "Command353_Click",
+      "sourceFile": "extract/vba/forms/frmToBeClosed.txt",
+      "lineStart": 6821,
+      "lineEnd": 6828,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "zClient Ledger OLD",
+      "controlName": "Command353",
+      "eventName": "onClick",
+      "procedureName": "Command353_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7755,
+      "lineEnd": 7761,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -90,8 +90,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18432,
-      "lineEnd": 18462,
+      "lineStart": 16616,
+      "lineEnd": 16646,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -104,8 +104,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18463,
-      "lineEnd": 18493,
+      "lineStart": 16647,
+      "lineEnd": 16677,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -118,8 +118,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClosingSheet_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18529,
-      "lineEnd": 18540,
+      "lineStart": 16713,
+      "lineEnd": 16724,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -132,8 +132,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19363,
-      "lineEnd": 19500,
+      "lineStart": 17547,
+      "lineEnd": 17684,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -148,8 +148,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19545,
-      "lineEnd": 19555,
+      "lineStart": 17729,
+      "lineEnd": 17739,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -159,117 +159,14 @@
       "objectName": "frmClientLedger",
       "procedureName": "Command353_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19564,
-      "lineEnd": 19574,
+      "lineStart": 17748,
+      "lineEnd": 17758,
       "usesDoCmd": [
         "Close",
         "OpenReport"
       ],
       "usesSql": false,
       "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "Command353_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7734,
-      "lineEnd": 7740,
-      "usesDoCmd": [
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdSubmitToFamilyLaw_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8066,
-      "lineEnd": 8096,
-      "usesDoCmd": [
-        "RunCommand",
-        "RunSQL",
-        "SetWarnings",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql",
-        "setWarnings"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "CaseOpenDate_AfterUpdate",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8122,
-      "lineEnd": 8126,
-      "usesDoCmd": [],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmToBeClosed",
-      "procedureName": "Command353_Click",
-      "sourceFile": "extract/vba/forms/frmToBeClosed.txt",
-      "lineStart": 6856,
-      "lineEnd": 6863,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmHome",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1868,
-      "lineEnd": 2005,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "Quit",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7608,
-      "lineEnd": 7660,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7723,
-      "lineEnd": 7770,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
     },
     {
       "objectType": "form",
@@ -288,6 +185,109 @@
       "redFlags": [
         "runSql"
       ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmHome",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1832,
+      "lineEnd": 1969,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "Quit",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmToBeClosed",
+      "procedureName": "Command353_Click",
+      "sourceFile": "extract/vba/forms/frmToBeClosed.txt",
+      "lineStart": 6821,
+      "lineEnd": 6828,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "Command353_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 7755,
+      "lineEnd": 7761,
+      "usesDoCmd": [
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8087,
+      "lineEnd": 8117,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql",
+        "setWarnings"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8143,
+      "lineEnd": 8147,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "module",
@@ -321,6 +321,45 @@
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "MoveDocumentByCaseStatus",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1373,
+      "lineEnd": 1585,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "GetIntakeDocumentFileName",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1682,
+      "lineEnd": 1758,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "Phase5_E2E_HappyPathTest",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1759,
+      "lineEnd": 2092,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
     },
     {
       "objectType": "module",

@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdAttyReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3272,
-      "lineEnd": 3299,
+      "lineStart": 3265,
+      "lineEnd": 3317,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -44,8 +44,8 @@
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "cmdAttyReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3272,
-      "lineEnd": 3299,
+      "lineStart": 3265,
+      "lineEnd": 3317,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -60,8 +60,8 @@
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "Form_Load",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3300,
-      "lineEnd": 3323,
+      "lineStart": 3318,
+      "lineEnd": 3347,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -71,8 +71,8 @@
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "cmdInsertData_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3471,
-      "lineEnd": 3550,
+      "lineStart": 3495,
+      "lineEnd": 3574,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -82,10 +82,32 @@
     {
       "objectType": "form",
       "objectName": "frmTRUSTENTRIESCHRON",
+      "procedureName": "FilterClear",
+      "sourceFile": "extract/vba/forms/frmTRUSTENTRIESCHRON.txt",
+      "lineStart": 2448,
+      "lineEnd": 2483,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTRUSTENTRIESCHRON",
       "procedureName": "cmdRequery_Click",
       "sourceFile": "extract/vba/forms/frmTRUSTENTRIESCHRON.txt",
-      "lineStart": 2480,
-      "lineEnd": 2489,
+      "lineStart": 2484,
+      "lineEnd": 2499,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTRUSTENTRIESCHRON",
+      "procedureName": "cmdWFReconcile_AfterUpdate",
+      "sourceFile": "extract/vba/forms/frmTRUSTENTRIESCHRON.txt",
+      "lineStart": 2500,
+      "lineEnd": 2514,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -95,8 +117,8 @@
       "objectName": "frmTRUSTENTRIESCHRON",
       "procedureName": "Form_Load",
       "sourceFile": "extract/vba/forms/frmTRUSTENTRIESCHRON.txt",
-      "lineStart": 2494,
-      "lineEnd": 2502,
+      "lineStart": 2515,
+      "lineEnd": 2529,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []

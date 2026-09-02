@@ -37,16 +37,16 @@ Private Sub Frm_BeforeUpdate(Cancel As Integer)
 endit:
 End Sub
 
-Public Sub ExeCommand(Cmd As ControlType)
+Public Sub ExeCommand(cmd As ControlType)
     Dim frm As Form
 
     Set frm = CodeContextObject
     On Error GoTo ErrHand
-    If Cmd <> Cancelrec Then DoCmd.RunCommand acCmdSaveRecord
+    If cmd <> Cancelrec Then DoCmd.RunCommand acCmdSaveRecord
         
-    If Cmd = SaveRec Then
+    If cmd = SaveRec Then
         MsgBox "Record saved", vbInformation, "Save"
-    ElseIf Cmd = Addrec Then
+    ElseIf cmd = Addrec Then
         If frm.AllowAdditions Then
            DoCmd.GoToRecord , , acNewRec
         Else

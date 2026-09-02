@@ -1,7 +1,7 @@
-Version =20
+Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-978768891
+Checksum =-766349393
 Begin Form
     RecordSelectors = NotDefault
     MaxButton = NotDefault
@@ -23,36 +23,36 @@ Begin Form
     ItemSuffix =12
     Right =12525
     Bottom =7920
-    DatasheetGridlinesColor =15461355
+    DatasheetGridlinesColor =15132391
     Filter ="[ID]=10"
     RecSrcDt = Begin
         0x769646f9e641e440
     End
     GUID = Begin
-        0x334273a6dd792342b592bf68ee72f9b1
+        0x37eafa7ee00a4e459a2939688f89aade
     End
     NameMap = Begin
-        0x0acc0e5500000000c6ef2ef3991c6d4c952aa8839d402cd6000000005f5091e6 ,
-        0x76ffe4400000000000000000740062006c005500730065007200730000000000 ,
-        0x00007538fc0d54f49c4d9fa65ec897f44b0c06000000334273a6dd792342b592 ,
-        0xbf68ee72f9b149004400000000000000a41b4d3b8e98a0499b8394c49b19e7c5 ,
-        0x07000000c6ef2ef3991c6d4c952aa8839d402cd6490044000000000000002e4b ,
-        0x98b023bee648807447752d7665d607000000c6ef2ef3991c6d4c952aa8839d40 ,
-        0x2cd6550073006500720049004400000000000000a94f13fc69c44a459250bc11 ,
-        0xa258c02607000000c6ef2ef3991c6d4c952aa8839d402cd65000570044000000 ,
-        0x00000000d5f5ab5a53c3cc46a01934e0369ee9f107000000c6ef2ef3991c6d4c ,
-        0x952aa8839d402cd64100630063006500730073000000000000008408800ef5a8 ,
-        0x704491c2ea27d97d2fc900000000d02a6ee676ffe44000000000000000007400 ,
-        0x62006c0041006300630065007300730054007900700065000000000000000990 ,
-        0xa7007ae6db4daa952fc394b86ecd070000008408800ef5a8704491c2ea27d97d ,
-        0x2fc94100630063006500730073005400790070006500000000000000715d58dc ,
-        0xd1454c4b8d086becea27aa3c070000008408800ef5a8704491c2ea27d97d2fc9 ,
+        0x0acc0e5500000000f2bfa91575079444a9e4cc2d3395cc3a00000000ced685e0 ,
+        0xf579e6400000000000000000740062006c005500730065007200730000000000 ,
+        0x0000e1c4bf429e48d94398906080b11cbe660600000037eafa7ee00a4e459a29 ,
+        0x39688f89aade4900440000000000000099816a183028ea499ca82dda0ce9e5f2 ,
+        0x07000000f2bfa91575079444a9e4cc2d3395cc3a490044000000000000007285 ,
+        0x2e320d9aa84996a3c402f779c47d07000000f2bfa91575079444a9e4cc2d3395 ,
+        0xcc3a550073006500720049004400000000000000762949cf947d9b4284a5eb99 ,
+        0x39dc72e707000000f2bfa91575079444a9e4cc2d3395cc3a5000570044000000 ,
+        0x0000000042dd71295214ec41a7dc1e2acd78152107000000f2bfa91575079444 ,
+        0xa9e4cc2d3395cc3a410063006300650073007300000000000000e974ccea0536 ,
+        0xcc41a308668dfe50d77700000000c81cde568d86e64000000000000000007400 ,
+        0x62006c004100630063006500730073005400790070006500000000000000a6c6 ,
+        0xe0638b31cc4398225320b08dd3c707000000e974ccea0536cc41a308668dfe50 ,
+        0xd777410063006300650073007300540079007000650000000000000018e7303b ,
+        0x76766a4e99bb61f1f5a0597007000000e974ccea0536cc41a308668dfe50d777 ,
         0x4100630063006500730073004400650073006300720069007000740069006f00 ,
         0x6e00000000000000000000000000000000000000000000000c00000005000000 ,
         0x0000000000000000000000000000
     End
     RecordSource ="SELECT * FROM tblUsers; "
-    DatasheetFontName ="Trebuchet MS"
+    DatasheetFontName ="Calibri"
     OnLoad ="=Form_Load(False,True)"
     FilterOnLoad =0
     ShowPageMargins =0
@@ -71,7 +71,10 @@ Begin Form
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -84,17 +87,20 @@ Begin Form
         Begin CommandButton
             FontSize =11
             FontWeight =400
+            ForeColor =4210752
             FontName ="Calibri"
+            GridlineColor =10921638
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
             Shape =1
             Gradient =12
+            BackColor =14461583
             BackThemeColorIndex =4
             BackTint =60.0
             BorderLineStyle =0
-            BorderColor =16777215
+            BorderColor =14461583
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
@@ -105,8 +111,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -121,7 +130,10 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
             FontName ="Calibri"
+            GridlineColor =10921638
             AllowValueListEdits =1
             InheritValueList =1
             ThemeFontIndex =1
@@ -137,7 +149,7 @@ Begin Form
             Height =2700
             Name ="Detail"
             GUID = Begin
-                0x82250df32f03ed41a6ff2586e45b5161
+                0x90b521754f12d64fb785aebad57dd353
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -153,15 +165,11 @@ Begin Form
                     Height =288
                     FontWeight =600
                     BackColor =16751001
-                    BorderColor =8355711
-                    ForeColor =8355711
                     Name ="Label0"
                     Caption ="ID"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xbb02c18c262e6a4db6e9205cf5bdfd5f
+                        0xf6caa652ea018b4098aa94b2ac6204f7
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =900
                     LayoutCachedTop =720
                     LayoutCachedWidth =2200
@@ -177,15 +185,11 @@ Begin Form
                     Top =720
                     Width =2940
                     Height =288
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="ID"
                     ControlSource ="ID"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x7538fc0d54f49c4d9fa65ec897f44b0c
+                        0xe1c4bf429e48d94398906080b11cbe66
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2580
                     LayoutCachedTop =720
@@ -201,15 +205,11 @@ Begin Form
                     Height =288
                     FontWeight =600
                     BackColor =16751001
-                    BorderColor =8355711
-                    ForeColor =8355711
                     Name ="Label2"
                     Caption ="UserID"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x7189a9bb80d3d6479bab9683bb32c60b
+                        0xfce4f689e7eccb4fa9439bcf7fd287dc
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =900
                     LayoutCachedTop =1058
                     LayoutCachedWidth =2200
@@ -225,15 +225,11 @@ Begin Form
                     Width =2940
                     Height =288
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="UserID"
                     ControlSource ="UserID"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xf9f83520b1aaf044962afaf864234e21
+                        0x460897291ee76545bb49ccdfee1cc952
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2580
                     LayoutCachedTop =1058
@@ -249,15 +245,11 @@ Begin Form
                     Height =288
                     FontWeight =600
                     BackColor =16751001
-                    BorderColor =8355711
-                    ForeColor =8355711
                     Name ="Label4"
                     Caption ="PWD"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xbcbeaf312e4f4c43aadb55829b0eef1f
+                        0xb6738a1788e4bc4b9916da2f8d90fadf
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =900
                     LayoutCachedTop =1396
                     LayoutCachedWidth =2200
@@ -273,16 +265,12 @@ Begin Form
                     Width =2940
                     Height =288
                     TabIndex =3
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="PWD"
                     ControlSource ="PWD"
-                    FontName ="Trebuchet MS"
                     InputMask ="Password"
                     GUID = Begin
-                        0x992188dbb3f6a5448a347c4532e8e442
+                        0x771260e39d041e4e938a1b617c758857
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2580
                     LayoutCachedTop =1396
@@ -298,15 +286,11 @@ Begin Form
                     Height =288
                     FontWeight =600
                     BackColor =16751001
-                    BorderColor =8355711
-                    ForeColor =8355711
                     Name ="Label6"
                     Caption ="Access"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0xd82899990089184db63c4cd9aa7e8d11
+                        0x72cfef3123ee434c917c4427a48034f7
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =900
                     LayoutCachedTop =1734
                     LayoutCachedWidth =2200
@@ -323,11 +307,10 @@ Begin Form
                     Width =2940
                     Height =315
                     TabIndex =2
-                    BorderColor =10921638
                     ForeColor =4210752
                     ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"510\""
                     GUID = Begin
-                        0xbe923c3689568e4fbf8765193e2d7531
+                        0x65af1ff38d2c794bb462025d7f1439f8
                     End
                     Name ="Access"
                     ControlSource ="Access"
@@ -335,8 +318,6 @@ Begin Form
                     RowSource ="SELECT tblAccessType.AccessType, tblAccessType.AccessDescription, * FROM tblAcce"
                         "ssType; "
                     ColumnWidths ="0;2880"
-                    FontName ="Trebuchet MS"
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2580
                     LayoutCachedTop =1734
@@ -354,20 +335,18 @@ Begin Form
                     Height =360
                     TabIndex =4
                     TopMargin =60
-                    BackColor =4406316
+                    BackColor =6968388
                     BorderColor =8355711
                     ForeColor =16777215
                     Name ="lblTitle"
                     ControlSource ="=GetCompanyName()"
-                    FontName ="Trebuchet MS"
                     GUID = Begin
-                        0x6643e80f28d778429612062afc67c881
+                        0x5b87fa3fbe1cb34c9a44fab9d40c55b4
                     End
                     LeftPadding =0
                     TopPadding =0
                     RightPadding =0
                     BottomPadding =0
-                    GridlineColor =10921638
 
                     LayoutCachedWidth =5820
                     LayoutCachedHeight =360
@@ -386,15 +365,12 @@ Begin Form
                     Width =1386
                     Height =366
                     TabIndex =5
-                    ForeColor =4210752
                     Name ="Command8"
                     Caption ="Save"
-                    FontName ="Trebuchet MS"
                     ControlTipText ="Save Record"
                     GUID = Begin
-                        0xb47a100dd6aadf4e987486e9b8a440a2
+                        0xe158d70d5e9c454bac3779811301f24b
                     End
-                    GridlineColor =10921638
                     OnClickEmMacro = Begin
                         Version =196611
                         ColumnsShown =10
@@ -471,12 +447,10 @@ Begin Form
                     LayoutCachedWidth =4206
                     LayoutCachedHeight =2586
                     PictureCaptionArrangement =1
-                    BackColor =7660736
-                    BorderColor =7660736
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -485,15 +459,12 @@ Begin Form
                     Width =1266
                     Height =366
                     TabIndex =6
-                    ForeColor =4210752
                     Name ="Command10"
                     Caption ="Cancel"
-                    FontName ="Trebuchet MS"
                     ControlTipText ="Undo Record"
                     GUID = Begin
-                        0x68e10a2fd3c239428a8c8edef12bc38c
+                        0x0e6183bddd51b949b67b7e5d2bbe345f
                     End
-                    GridlineColor =10921638
                     OnClickEmMacro = Begin
                         Version =196611
                         ColumnsShown =10
@@ -570,12 +541,10 @@ Begin Form
                     LayoutCachedWidth =5586
                     LayoutCachedHeight =2586
                     PictureCaptionArrangement =1
-                    BackColor =7660736
-                    BorderColor =7660736
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =247
@@ -584,17 +553,16 @@ Begin Form
                     Width =306
                     Height =246
                     TabIndex =7
+                    ForeColor =0
                     Name ="Command11"
                     Caption ="Cancel"
-                    FontName ="Trebuchet MS"
                     ControlTipText ="Undo Record"
                     GUID = Begin
-                        0xc2de508fca026d4189ead8521ed0bff0
+                        0xfa7a9ee31590834f9256bca91efa2d3c
                     End
                     LeftPadding =60
                     RightPadding =75
                     BottomPadding =120
-                    GridlineColor =10921638
                     OnClickEmMacro = Begin
                         Version =196611
                         ColumnsShown =0
@@ -674,16 +642,16 @@ Begin Form
                     ForeTint =100.0
                     Shape =7
                     Gradient =2
-                    BackColor =2540176
+                    BackColor =12874308
                     BackTint =100.0
-                    BorderColor =2540176
+                    BorderColor =12874308
                     BorderTint =100.0
                     QuickStyle =23
                     QuickStyleMask =-1
-                    WebImagePaddingLeft =4
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =4
-                    WebImagePaddingBottom =7
+                    WebImagePaddingLeft =6
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =7
+                    WebImagePaddingBottom =11
                     Overlaps =1
                 End
             End

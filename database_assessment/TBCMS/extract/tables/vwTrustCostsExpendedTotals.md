@@ -1,6 +1,8 @@
 # Table: vwTrustCostsExpendedTotals *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTrustCostsExpendedTotals`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTrustCostsExpendedTotals`
+
+**Row count:** 1957
 
 ## Columns
 

@@ -1,6 +1,8 @@
 # Table: vwTKClose_A *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTKClose_A`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTKClose_A`
+
+**Row count:** 5643
 
 ## Columns
 

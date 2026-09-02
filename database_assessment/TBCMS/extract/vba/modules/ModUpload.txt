@@ -9,7 +9,7 @@ Option Compare Database
 
 Public Enum ImportType
     Excel
-    Text
+    text
 End Enum
 
 ''******************************INSTRUCTIONS ON HOW TO USE******************************
@@ -63,7 +63,7 @@ On Error GoTo Upload_Error
    On Error GoTo 0
    
    'transfer the spreadsheet
-   If impType = Text Then
+   If impType = text Then
        DoCmd.TransferText acLinkDelim, , TemporaryTableName, FileName, False
     Else
        DoCmd.TransferSpreadsheet acImport, acSpreadsheetTypeExcel12, TemporaryTableName, FileName, False

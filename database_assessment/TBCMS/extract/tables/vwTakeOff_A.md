@@ -1,6 +1,8 @@
 # Table: vwTakeOff_A *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTakeOff_A`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTakeOff_A`
+
+**Row count:** 12101
 
 ## Columns
 

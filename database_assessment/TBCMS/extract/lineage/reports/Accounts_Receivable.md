@@ -2,8 +2,8 @@
 
 ## Trigger Paths
 - frm_invoices_summary -> cmdOpenReportAcctReceivable -> onClick -> cmdOpenReportAcctReceivable_Click (high confidence)
-- frmHome -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (high confidence)
 - frmHomeAdmin -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (high confidence)
+- frmHome -> cmdDeleteAll -> onClick -> cmdDeleteAll_Click (high confidence)
 
 ## Data Lineage
 - RecordSource: `qry_invoices_summaryRPT`
@@ -13,5 +13,5 @@
 
 ## Related VBA Procedures
 - form frm_invoices_summary::cmdOpenReportAcctReceivable_Click [8457-8467]
-- form frmHome::cmdDeleteAll_Click [1868-2005] [runSql]
 - form frmHomeAdmin::cmdDeleteAll_Click [6313-6450] [runSql]
+- form frmHome::cmdDeleteAll_Click [1832-1969] [runSql]

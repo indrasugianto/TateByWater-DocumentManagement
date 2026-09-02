@@ -1,6 +1,8 @@
 # Table: vw_time_table_totals_SUM *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_time_table_totals_SUM`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_time_table_totals_SUM`
+
+**Row count:** 2839
 
 ## Columns
 

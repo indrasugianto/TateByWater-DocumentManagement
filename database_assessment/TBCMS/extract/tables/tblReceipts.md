@@ -1,6 +1,8 @@
 # Table: tblReceipts *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblReceipts`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblReceipts`
+
+**Row count:** 1451
 
 ## Columns
 

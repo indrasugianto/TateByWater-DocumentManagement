@@ -1,6 +1,8 @@
 # Table: tblDocumentTypes *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblDocumentTypes`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblDocumentTypes`
+
+**Row count:** 29
 
 ## Columns
 

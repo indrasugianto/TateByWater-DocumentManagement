@@ -1,6 +1,8 @@
 # Table: vwEarnedAdvLegalSUM *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwEarnedAdvLegalSUM`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwEarnedAdvLegalSUM`
+
+**Row count:** 591
 
 ## Columns
 

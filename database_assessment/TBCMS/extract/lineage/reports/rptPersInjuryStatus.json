@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdAttyReport_Click",
       "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
-      "lineStart": 581,
-      "lineEnd": 586,
+      "lineStart": 589,
+      "lineEnd": 594,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -20,20 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdAllAttyReport_Click",
       "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
-      "lineStart": 575,
-      "lineEnd": 580,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "frmPersonalInjury",
-      "controlName": "CrStatusRep",
-      "eventName": "onClick",
-      "procedureName": "CrStatusRep_Click",
-      "sourceFile": "extract/vba/forms/frmPersonalInjury.txt",
-      "lineStart": 3991,
-      "lineEnd": 4010,
+      "lineStart": 583,
+      "lineEnd": 588,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -46,6 +34,18 @@
       "sourceFile": "extract/vba/forms/frmOpenReport.txt",
       "lineStart": 631,
       "lineEnd": 636,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmPersonalInjury",
+      "controlName": "CrStatusRep",
+      "eventName": "onClick",
+      "procedureName": "CrStatusRep_Click",
+      "sourceFile": "extract/vba/forms/frmPersonalInjury.txt",
+      "lineStart": 3818,
+      "lineEnd": 3837,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -80,8 +80,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18432,
-      "lineEnd": 18462,
+      "lineStart": 16616,
+      "lineEnd": 16646,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -94,8 +94,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18463,
-      "lineEnd": 18493,
+      "lineStart": 16647,
+      "lineEnd": 16677,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -108,8 +108,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19363,
-      "lineEnd": 19500,
+      "lineStart": 17547,
+      "lineEnd": 17684,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -124,38 +124,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19545,
-      "lineEnd": 19555,
-      "usesDoCmd": [],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdSubmitToFamilyLaw_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8066,
-      "lineEnd": 8096,
-      "usesDoCmd": [
-        "RunCommand",
-        "RunSQL",
-        "SetWarnings",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql",
-        "setWarnings"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "CaseOpenDate_AfterUpdate",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8122,
-      "lineEnd": 8126,
+      "lineStart": 17729,
+      "lineEnd": 17739,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
@@ -165,8 +135,8 @@
       "objectName": "frmPersInjuryStatusReport",
       "procedureName": "cmdAllAttyReport_Click",
       "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
-      "lineStart": 575,
-      "lineEnd": 580,
+      "lineStart": 583,
+      "lineEnd": 588,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -179,50 +149,8 @@
       "objectName": "frmPersInjuryStatusReport",
       "procedureName": "cmdAttyReport_Click",
       "sourceFile": "extract/vba/forms/frmPersInjuryStatusReport.txt",
-      "lineStart": 581,
-      "lineEnd": 586,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7608,
-      "lineEnd": 7660,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7723,
-      "lineEnd": 7770,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmPersonalInjury",
-      "procedureName": "CrStatusRep_Click",
-      "sourceFile": "extract/vba/forms/frmPersonalInjury.txt",
-      "lineStart": 3991,
-      "lineEnd": 4010,
+      "lineStart": 589,
+      "lineEnd": 594,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -259,6 +187,78 @@
       "redFlags": []
     },
     {
+      "objectType": "form",
+      "objectName": "frmPersonalInjury",
+      "procedureName": "CrStatusRep_Click",
+      "sourceFile": "extract/vba/forms/frmPersonalInjury.txt",
+      "lineStart": 3818,
+      "lineEnd": 3837,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8087,
+      "lineEnd": 8117,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql",
+        "setWarnings"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8143,
+      "lineEnd": 8147,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
       "objectType": "module",
       "objectName": "modGaz",
       "procedureName": "fncGetTABalanceWithCaseID",
@@ -290,6 +290,45 @@
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "MoveDocumentByCaseStatus",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1373,
+      "lineEnd": 1585,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "GetIntakeDocumentFileName",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1682,
+      "lineEnd": 1758,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "Phase5_E2E_HappyPathTest",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1759,
+      "lineEnd": 2092,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
     },
     {
       "objectType": "module",

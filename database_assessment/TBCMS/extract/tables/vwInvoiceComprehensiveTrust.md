@@ -1,6 +1,8 @@
 # Table: vwInvoiceComprehensiveTrust *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwInvoiceComprehensiveTrust`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwInvoiceComprehensiveTrust`
+
+**Row count:** 50212
 
 ## Columns
 

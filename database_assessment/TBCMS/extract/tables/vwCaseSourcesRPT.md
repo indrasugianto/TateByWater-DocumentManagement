@@ -1,6 +1,8 @@
 # Table: vwCaseSourcesRPT *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwCaseSourcesRPT`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwCaseSourcesRPT`
+
+**Row count:** 7000
 
 ## Columns
 

@@ -1,6 +1,8 @@
 # Table: vw_max_matterID_by_orderNr *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_max_matterID_by_orderNr`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_max_matterID_by_orderNr`
+
+**Row count:** 5641
 
 ## Columns
 

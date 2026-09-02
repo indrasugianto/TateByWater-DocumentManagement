@@ -1,6 +1,8 @@
 # Table: Tblmsgbox *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.Tblmsgbox`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.Tblmsgbox`
+
+**Row count:** 4
 
 ## Columns
 

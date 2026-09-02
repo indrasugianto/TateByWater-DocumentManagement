@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordShort_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7925,
-      "lineEnd": 8041,
+      "lineStart": 7863,
+      "lineEnd": 7979,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -20,8 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompShort_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4058,
-      "lineEnd": 4100,
+      "lineStart": 4057,
+      "lineEnd": 4099,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -32,8 +32,8 @@
       "eventName": "onClick",
       "procedureName": "cmdEmailShort_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4147,
-      "lineEnd": 4204,
+      "lineStart": 4146,
+      "lineEnd": 4203,
       "confidence": "medium",
       "reportMentionType": "inferred",
       "via": "vba"
@@ -44,8 +44,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordShortTK_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4238,
-      "lineEnd": 4355,
+      "lineStart": 4237,
+      "lineEnd": 4354,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -67,8 +67,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18432,
-      "lineEnd": 18462,
+      "lineStart": 16616,
+      "lineEnd": 16646,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -81,8 +81,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18463,
-      "lineEnd": 18493,
+      "lineStart": 16647,
+      "lineEnd": 16677,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -95,8 +95,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19363,
-      "lineEnd": 19500,
+      "lineStart": 17547,
+      "lineEnd": 17684,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -111,19 +111,50 @@
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19545,
-      "lineEnd": 19555,
+      "lineStart": 17729,
+      "lineEnd": 17739,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
     },
     {
       "objectType": "form",
-      "objectName": "frmTimeKeepingOpen",
+      "objectName": "frmTakeOffReconciliation",
+      "procedureName": "txtTKButton_Click",
+      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
+      "lineStart": 3356,
+      "lineEnd": 3413,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdRecordShort_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7863,
+      "lineEnd": 7979,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdAddNewTK_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
-      "lineStart": 7452,
-      "lineEnd": 7533,
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 8000,
+      "lineEnd": 8042,
       "usesDoCmd": [
         "Close",
         "openform"
@@ -135,12 +166,191 @@
     },
     {
       "objectType": "form",
-      "objectName": "frmTakeOffReconciliation",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdRecord_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 8043,
+      "lineEnd": 8159,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingOpen",
+      "procedureName": "cmdAddNewTK_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7416,
+      "lineEnd": 7497,
+      "usesDoCmd": [
+        "Close",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTKClose",
       "procedureName": "txtTKButton_Click",
-      "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3332,
-      "lineEnd": 3389,
+      "sourceFile": "extract/vba/forms/frmTKClose.txt",
+      "lineStart": 2379,
+      "lineEnd": 2708,
       "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdCompShort_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4057,
+      "lineEnd": 4099,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdEmailShort_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4146,
+      "lineEnd": 4203,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "SendObject"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdRecordShortTK_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4237,
+      "lineEnd": 4354,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdRecordTKStatement_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4516,
+      "lineEnd": 4631,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdCreateAR_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4632,
+      "lineEnd": 4667,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdInsertTime_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4687,
+      "lineEnd": 4710,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdAddNew_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4711,
+      "lineEnd": 4732,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "addNewTK",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4733,
+      "lineEnd": 4788,
+      "usesDoCmd": [
+        "GoToRecord"
+      ],
       "usesSql": true,
       "redFlags": [
         "runSql"
@@ -151,8 +361,8 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdCreateHourlyBill_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8008,
-      "lineEnd": 8032,
+      "lineStart": 8029,
+      "lineEnd": 8053,
       "usesDoCmd": [
         "openform"
       ],
@@ -164,8 +374,8 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdSubmitToFamilyLaw_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8066,
-      "lineEnd": 8096,
+      "lineStart": 8087,
+      "lineEnd": 8117,
       "usesDoCmd": [
         "RunCommand",
         "RunSQL",
@@ -183,221 +393,11 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8122,
-      "lineEnd": 8126,
+      "lineStart": 8143,
+      "lineEnd": 8147,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7608,
-      "lineEnd": 7660,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7723,
-      "lineEnd": 7770,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdRecordShort_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7925,
-      "lineEnd": 8041,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdAddNewTK_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 8062,
-      "lineEnd": 8104,
-      "usesDoCmd": [
-        "Close",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdRecord_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 8105,
-      "lineEnd": 8221,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdCompShort_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4058,
-      "lineEnd": 4100,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdEmailShort_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4147,
-      "lineEnd": 4204,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "SendObject"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdRecordShortTK_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4238,
-      "lineEnd": 4355,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdRecordTKStatement_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4517,
-      "lineEnd": 4632,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdCreateAR_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4633,
-      "lineEnd": 4668,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdInsertTime_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4688,
-      "lineEnd": 4711,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdAddNew_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4712,
-      "lineEnd": 4733,
-      "usesDoCmd": [],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "addNewTK",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4734,
-      "lineEnd": 4789,
-      "usesDoCmd": [
-        "GoToRecord"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTKClose",
-      "procedureName": "txtTKButton_Click",
-      "sourceFile": "extract/vba/forms/frmTKClose.txt",
-      "lineStart": 2378,
-      "lineEnd": 2707,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
     },
     {
       "objectType": "module",
@@ -431,6 +431,45 @@
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "MoveDocumentByCaseStatus",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1373,
+      "lineEnd": 1585,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "GetIntakeDocumentFileName",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1682,
+      "lineEnd": 1758,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "Phase5_E2E_HappyPathTest",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1759,
+      "lineEnd": 2092,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
     },
     {
       "objectType": "module",

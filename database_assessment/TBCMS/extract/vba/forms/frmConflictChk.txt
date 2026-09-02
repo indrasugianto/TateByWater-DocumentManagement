@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-1294668301
+Checksum =3844366
 Begin Form
     RecordSelectors = NotDefault
     NavigationButtons = NotDefault
@@ -22,16 +22,16 @@ Begin Form
         0xdbf56fe5ddefe440
     End
     GUID = Begin
-        0xbcae9ae38aff8f4492c944a9297738f9
+        0x2990e383db713542b0ba78756aaf170a
     End
     NameMap = Begin
-        0x0acc0e55000000006946ce4f2cf6c94bb576b69a5fcb9c0b01000000f9cdd70f ,
-        0x755ae5400000000000000000660072006d0043006c00690065006e0074007300 ,
-        0x43006f006e0066006c00690063007400000000000000e85a4983bc236d49b955 ,
-        0x14ec725fd46f01000000f04f5a1e2c1ae5400000000000000000660072006d00 ,
+        0x0acc0e55000000008c3fc0c5fbf6e242b762e0ea4e5412ca010000009d3a0695 ,
+        0x2f89e6400000000000000000660072006d0043006c00690065006e0074007300 ,
+        0x43006f006e0066006c00690063007400000000000000130c448d83b10d4189bf ,
+        0x2bda43ed4fc3010000003008d38a2f89e6400000000000000000660072006d00 ,
         0x49006e00740061006b006500730043006f006e0066006c006900630074007300 ,
-        0x00000000000040b2ef9113b53144a99c6407ee7698da010000000205a2e8d368 ,
-        0xe5400000000000000000660072006d004f007000700050006100720074007900 ,
+        0x0000000000002578d7938da7954ead9c99e50c8db588010000006f65d88a2f89 ,
+        0xe6400000000000000000660072006d004f007000700050006100720074007900 ,
         0x43006f006e0066006c0069006300740000000000000000000000000000000000 ,
         0x0000000000000c000000050000000000000000000000000000000000
     End
@@ -42,10 +42,10 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x000000000400000404000000090400000400000020000000380000000c070000 ,
+        0x000bb3f29c01000030ba10f79c010000109306819c0100000000000000000000 ,
         0x010403069c00dc760f93010001000100ea0a6f08640001000700580201000100 ,
-        0x5802030000004c65747465720000000018000000040000040400000009040000 ,
-        0x0400000020000000000000000000000000000000010000000000000001000000 ,
+        0x5802030000004c657474657200000000e14d000000000000e14d000000000000 ,
+        0x105a2baef67f0000000000000000000000000000010000000000000001000000 ,
         0x0200000003010000ffffffff4749533400000000000000000000000044494e55 ,
         0x220000025c068070c636e58a0000000000000000000000000000000000000000 ,
         0x0000000000000000100000000000000000001c00000001000000000000001d00 ,
@@ -1002,7 +1002,7 @@ Begin Form
     PrtDevNames = Begin
         0x0800260044000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000031302e302e302e33350000000000
+        0x0000000031302e302e302e333500000000000000000000000000
     End
     AllowDatasheetView =0
     FilterOnLoad =0
@@ -1018,12 +1018,12 @@ Begin Form
     AlternateBackThemeColorIndex =1
     AlternateBackShade =95.0
     PrtDevModeW = Begin
-        0x000037010244c6a294ff8e0044000000010000000000000000000000c1ded4f4 ,
-        0x20fb8e003afb9664010000000000000025000000330000006000000033000000 ,
+        0x0000000000000000000000000000000030a750dc9c01000069078577fa7f0000 ,
+        0x988600000000000086557d849c0100000d0000000000000098a750dc9c010000 ,
         0x01040306dc00dc760f93010001000100ea0a6f08640001000700580201000100 ,
-        0x5802030000004c0065007400740065007200000010168f2400000000305ae929 ,
-        0xdc158f00557a0501bc038f0066abc7a2ac2e8f0000000000897a050141dfd4f4 ,
-        0xa0fb8e003afb0000000000000000000000000000010000000000000001000000 ,
+        0x5802030000004c0065007400740065007200000000000000f44c6e77fa7f0000 ,
+        0x9886000000000000ffffffff0000000030a750dc9c010000260d4fadf67f0000 ,
+        0x0400000088000000000000000000000000000000010000000000000001000000 ,
         0x0200000003010000ffffffff4749533400000000000000000000000044494e55 ,
         0x220000025c068070c636e58a0000000000000000000000000000000000000000 ,
         0x0000000000000000100000000000000000001c00000001000000000000001d00 ,
@@ -1982,14 +1982,18 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x310030002e0030002e0030002e003300350000000000000000000000
+        0x310030002e0030002e0030002e00330035000000000000000000000000000000 ,
+        0x000000000000000000000000
     End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -2001,6 +2005,7 @@ Begin Form
         End
         Begin Line
             BorderLineStyle =0
+            GridlineColor =10921638
             BorderThemeColorIndex =0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
@@ -2011,8 +2016,8 @@ Begin Form
             BorderLineStyle =0
             SizeMode =3
             PictureAlignment =2
-            BorderColor =16777215
-            GridlineColor =16777215
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -2022,7 +2027,9 @@ Begin Form
         Begin CommandButton
             FontSize =11
             FontWeight =400
+            ForeColor =4210752
             FontName ="Calibri"
+            GridlineColor =10921638
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
@@ -2030,24 +2037,31 @@ Begin Form
             UseTheme =1
             Shape =1
             Gradient =12
+            BackColor =14461583
             BackThemeColorIndex =4
             BackTint =60.0
             BorderLineStyle =0
-            BorderColor =16777215
+            BorderColor =14461583
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
+            HoverColor =15189940
             HoverThemeColorIndex =4
             HoverTint =40.0
+            PressedColor =9917743
             PressedThemeColorIndex =4
             PressedShade =75.0
+            HoverForeColor =4210752
             HoverForeThemeColorIndex =0
             HoverForeTint =75.0
+            PressedForeColor =4210752
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
         End
         Begin Subform
             BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
             BorderThemeColorIndex =1
             GridlineThemeColorIndex =1
             GridlineShade =65.0
@@ -2058,7 +2072,7 @@ Begin Form
             BackColor =12428174
             Name ="FormHeader"
             GUID = Begin
-                0x50ad8f2b4d5d814d93c9333ca8469385
+                0x664f667b4321ca4cafe8156121847566
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -2071,14 +2085,12 @@ Begin Form
                     Height =840
                     FontSize =36
                     FontWeight =700
-                    BorderColor =8355711
                     ForeColor =16777215
                     Name ="Label40"
                     Caption ="CONFLICT CHECK"
                     GUID = Begin
-                        0x04fe7bc4dab42b4b9cf7ce0efc56821c
+                        0x9371a00a7a8d13489aea24067c9c2ff2
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =1440
                     LayoutCachedTop =240
                     LayoutCachedWidth =6780
@@ -2092,13 +2104,11 @@ Begin Form
                     Top =240
                     Width =1020
                     Height =840
-                    BorderColor =10921638
                     Name ="Image36"
                     Picture ="Logo Transparent"
                     GUID = Begin
-                        0x74ebdff039eeb14885f6ac46629db007
+                        0xde487bc08d0acf4491f6720eecf45a8a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =300
                     LayoutCachedTop =240
@@ -2115,14 +2125,14 @@ Begin Form
                     Height =345
                     FontSize =10
                     FontWeight =700
+                    ForeColor =0
                     Name ="cmbclose"
                     Caption ="&Close"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x0d0eb799e44b8446b7a0bead116c8ac1
+                        0xe35763d333c87a4bac3bfb5c1544742f
                     End
                     UnicodeAccessKey =67
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =20160
                     LayoutCachedTop =510
@@ -2150,25 +2160,23 @@ Begin Form
                     PressedForeTint =100.0
                     QuickStyle =34
                     QuickStyleMask =-881
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =2
-                    WebImagePaddingBottom =2
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
                 End
                 Begin Image
                     Left =21480
                     Top =510
                     Width =480
                     Height =345
-                    BorderColor =10921638
                     Name ="cmbHome"
                     OnClick ="[Event Procedure]"
                     Picture ="Home Button.ico"
                     GUID = Begin
-                        0xd0ec6d2f5992cd4a8347a4bbcb42192f
+                        0xcef69dde56253743b178b6db32898c0e
                     End
                     GroupTable =1
-                    GridlineColor =10921638
                     ImageData = Begin
                         0x0000010009000000000001002000b22e00009600000080800000010020002808 ,
                         0x0100482f00006060000001002000a89400007037010048480000010020008854 ,
@@ -7620,7 +7628,7 @@ Begin Form
             Height =10680
             Name ="Detail"
             GUID = Begin
-                0x9b83b7a11552fb4eb6e89663f9ca5103
+                0x1947a179fdf7c94da83b852f71531246
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -7634,13 +7642,11 @@ Begin Form
                     Top =120
                     Width =10800
                     Height =10320
-                    BorderColor =10921638
                     Name ="frmClientsConflict"
                     SourceObject ="Form.frmClientsConflict"
                     GUID = Begin
-                        0xbaf47c9181badb448cd443f78e5aa716
+                        0x5986041d3a59144b9914724a160a70b0
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =60
                     LayoutCachedTop =120
@@ -7655,14 +7661,12 @@ Begin Form
                     Width =11160
                     Height =4860
                     TabIndex =1
-                    BorderColor =10921638
                     Name ="Conflict Check"
                     SourceObject ="Form.frmIntakesConflicts"
                     EventProcPrefix ="Conflict_Check"
                     GUID = Begin
-                        0xab2b2a3fe4e5bf489c2fd945e05e50bf
+                        0xa9b0235b242ca74dbd891c9c3041bd94
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =11280
                     LayoutCachedTop =5580
@@ -7677,9 +7681,8 @@ Begin Form
                     Height =10320
                     Name ="Line5"
                     GUID = Begin
-                        0xa87679d8d47c374398c1c4fd90709cf1
+                        0xf95b4c746b9a6c43838d1265c3f0eb58
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =11040
                     LayoutCachedTop =120
                     LayoutCachedWidth =11040
@@ -7693,13 +7696,11 @@ Begin Form
                     Width =11160
                     Height =5295
                     TabIndex =2
-                    BorderColor =10921638
                     Name ="frmOppPartyConflict"
                     SourceObject ="Form.frmOppPartyConflict"
                     GUID = Begin
-                        0x34340a2af6746247a32333d42d0cd540
+                        0xad2908c54dc66c4f9f6ccf8ff350706c
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =11280
                     LayoutCachedTop =120
@@ -7713,7 +7714,7 @@ Begin Form
             BackColor =12428174
             Name ="FormFooter"
             GUID = Begin
-                0x52edd54a375f50479bfff841e82f9e2e
+                0x4428e162319cd1409feea3fa45a48e68
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0

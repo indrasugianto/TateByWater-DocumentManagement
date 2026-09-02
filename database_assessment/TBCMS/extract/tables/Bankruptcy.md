@@ -1,6 +1,8 @@
 # Table: Bankruptcy *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.Bankruptcy`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.Bankruptcy`
+
+**Row count:** 211
 
 ## Columns
 

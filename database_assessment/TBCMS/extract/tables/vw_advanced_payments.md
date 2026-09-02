@@ -1,6 +1,8 @@
 # Table: vw_advanced_payments *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_advanced_payments`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_advanced_payments`
+
+**Row count:** 542
 
 ## Columns
 

@@ -1,6 +1,8 @@
 # Table: TB Time Keeping *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.TB Time Keeping`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.TB Time Keeping`
+
+**Row count:** 8743
 
 ## Columns
 

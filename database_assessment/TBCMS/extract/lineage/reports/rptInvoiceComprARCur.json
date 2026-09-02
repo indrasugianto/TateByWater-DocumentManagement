@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompCurr_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7742,
-      "lineEnd": 7790,
+      "lineStart": 7680,
+      "lineEnd": 7728,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -20,8 +20,8 @@
       "eventName": "onClick",
       "procedureName": "cmdCompCurrent_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4847,
-      "lineEnd": 4900,
+      "lineStart": 4846,
+      "lineEnd": 4899,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -56,8 +56,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19647,
-      "lineEnd": 19676,
+      "lineStart": 17831,
+      "lineEnd": 17860,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -84,8 +84,8 @@
       "objectName": "frmTimeKeepingClosed",
       "procedureName": "cmdCompCurr_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7742,
-      "lineEnd": 7790,
+      "lineStart": 7680,
+      "lineEnd": 7728,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -98,8 +98,8 @@
       "objectName": "Time Keeping",
       "procedureName": "cmdCompCurrent_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4847,
-      "lineEnd": 4900,
+      "lineStart": 4846,
+      "lineEnd": 4899,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -109,22 +109,22 @@
     },
     {
       "objectType": "report",
-      "objectName": "rptInvoiceComprARCur",
+      "objectName": "rpt_Compr_InvoiceADVCur",
       "procedureName": "Report_Open",
-      "sourceFile": "extract/vba/reports/rptInvoiceComprARCur.txt",
-      "lineStart": 584,
-      "lineEnd": 590,
+      "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
+      "lineStart": 1528,
+      "lineEnd": 1564,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": []
     },
     {
       "objectType": "report",
-      "objectName": "rpt_Compr_InvoiceADVCur",
+      "objectName": "rptInvoiceComprARCur",
       "procedureName": "Report_Open",
-      "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
-      "lineStart": 1610,
-      "lineEnd": 1646,
+      "sourceFile": "extract/vba/reports/rptInvoiceComprARCur.txt",
+      "lineStart": 525,
+      "lineEnd": 531,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": []

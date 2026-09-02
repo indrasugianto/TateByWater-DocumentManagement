@@ -1,5 +1,7 @@
 # Table: z_PCADataSources
 
+**Row count:** 2
+
 ## Columns
 
 | # | Column | Type | Size | Nullable | Default | Key | Notes |

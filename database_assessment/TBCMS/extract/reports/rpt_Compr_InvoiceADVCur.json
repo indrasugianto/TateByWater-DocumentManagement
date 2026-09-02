@@ -17,8 +17,6 @@
   "sections": [
     {
       "type": "Detail",
-      "height": 4740,
-      "keepTogether": true,
       "controls": [
         {
           "type": "Rectangle",
@@ -131,25 +129,9 @@
               "bottom": 720
             },
             "paperSize": 1,
-            "groupLevels": [
-              {
-                "fieldExpression": "CaseID",
-                "sortOrder": "ascending",
-                "groupHeader": true,
-                "groupFooter": true
-              },
-              {
-                "fieldExpression": "Tdate",
-                "sortOrder": "ascending",
-                "groupHeader": false,
-                "groupFooter": false
-              }
-            ],
             "sections": [
               {
                 "type": "Detail",
-                "height": 420,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -235,36 +217,8 @@
                 ]
               },
               {
-                "type": "ReportHeader",
-                "height": 0,
-                "backColor": 15064278,
-                "keepTogether": true,
-                "controls": []
-              },
-              {
-                "type": "ReportFooter",
-                "height": 0,
-                "keepTogether": true,
-                "controls": []
-              },
-              {
-                "type": "PageHeader",
-                "height": 0,
-                "controls": []
-              },
-              {
-                "type": "PageFooter",
-                "height": 0,
-                "controls": []
-              },
-              {
                 "type": "GroupHeader",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 675,
-                "backColor": 14148063,
-                "forceNewPage": 1,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Label",
@@ -402,9 +356,6 @@
               {
                 "type": "GroupFooter",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 480,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -523,19 +474,9 @@
               "bottom": 240
             },
             "paperSize": 1,
-            "groupLevels": [
-              {
-                "fieldExpression": "CaseID",
-                "sortOrder": "ascending",
-                "groupHeader": true,
-                "groupFooter": true
-              }
-            ],
             "sections": [
               {
                 "type": "Detail",
-                "height": 300,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -600,9 +541,6 @@
               {
                 "type": "GroupHeader",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 660,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Rectangle",
@@ -678,9 +616,6 @@
               {
                 "type": "GroupFooter",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 600,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -751,25 +686,15 @@
             "orderByOn": true,
             "orientation": "portrait",
             "margins": {
-              "left": 187,
-              "right": 187,
-              "top": 187,
-              "bottom": 187
+              "left": 341,
+              "right": 341,
+              "top": 240,
+              "bottom": 240
             },
             "paperSize": 1,
-            "groupLevels": [
-              {
-                "fieldExpression": "CaseID",
-                "sortOrder": "ascending",
-                "groupHeader": true,
-                "groupFooter": true
-              }
-            ],
             "sections": [
               {
                 "type": "Detail",
-                "height": 300,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -834,10 +759,6 @@
               {
                 "type": "GroupHeader",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 615,
-                "backColor": 15590879,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "Label",
@@ -903,9 +824,6 @@
               {
                 "type": "GroupFooter",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 315,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -982,25 +900,9 @@
               "bottom": 240
             },
             "paperSize": 1,
-            "groupLevels": [
-              {
-                "fieldExpression": "CaseID",
-                "sortOrder": "ascending",
-                "groupHeader": true,
-                "groupFooter": true
-              },
-              {
-                "fieldExpression": "TDate",
-                "sortOrder": "ascending",
-                "groupHeader": false,
-                "groupFooter": false
-              }
-            ],
             "sections": [
               {
                 "type": "Detail",
-                "height": 300,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1063,10 +965,6 @@
               {
                 "type": "GroupHeader",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 675,
-                "backColor": 13556704,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1161,9 +1059,6 @@
               {
                 "type": "GroupFooter",
                 "groupIndex": 0,
-                "groupField": "CaseID",
-                "height": 435,
-                "keepTogether": true,
                 "controls": [
                   {
                     "type": "TextBox",
@@ -1226,8 +1121,6 @@
     },
     {
       "type": "ReportHeader",
-      "height": 2460,
-      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -1244,9 +1137,9 @@
         {
           "type": "Image",
           "name": "Image0",
-          "left": 396,
+          "left": 390,
           "top": 60,
-          "width": 4572,
+          "width": 4575,
           "height": 780,
           "borderColor": 10921638
         },
@@ -1324,9 +1217,9 @@
           "type": "Label",
           "name": "Label38",
           "left": 840,
-          "top": 876,
+          "top": 870,
           "width": 4155,
-          "height": 312,
+          "height": 315,
           "caption": "ATTORNEYS AT LAW",
           "fontName": "Californian FB",
           "fontSize": 11,
@@ -1445,8 +1338,6 @@
     },
     {
       "type": "ReportFooter",
-      "height": 1320,
-      "keepTogether": true,
       "controls": [
         {
           "type": "Label",
@@ -1498,7 +1389,6 @@
     },
     {
       "type": "PageHeader",
-      "height": 915,
       "controls": [
         {
           "type": "TextBox",
@@ -1598,7 +1488,6 @@
     },
     {
       "type": "PageFooter",
-      "height": 960,
       "controls": [
         {
           "type": "TextBox",

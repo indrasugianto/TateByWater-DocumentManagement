@@ -1,6 +1,8 @@
 # Table: vwTTAmountHours_TotalCaseID *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTTAmountHours_TotalCaseID`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTTAmountHours_TotalCaseID`
+
+**Row count:** 2839
 
 ## Columns
 

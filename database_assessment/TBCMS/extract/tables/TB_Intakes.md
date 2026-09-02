@@ -1,6 +1,8 @@
 # Table: TB Intakes *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.TB Intakes`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.TB Intakes`
+
+**Row count:** 1724
 
 ## Columns
 

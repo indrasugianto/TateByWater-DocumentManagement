@@ -1,11 +1,10 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =-248146181
+Checksum =-402343443
 Begin Report
     LayoutForPrint = NotDefault
     DividingLines = NotDefault
-    FilterOn = NotDefault
     AllowDesignChanges = NotDefault
     DateGrouping =1
     GrpKeepTogether =1
@@ -24,52 +23,52 @@ Begin Report
         0xf67e2d43ac16e540
     End
     GUID = Begin
-        0x1a6a68f2dbc5654087bcc1868b300880
+        0xc9615e5e3a5a2c448071f360a5adb4df
     End
     NameMap = Begin
-        0x0acc0e55000000005721e61ea3bb2a45ac78312163591a40000000001e7a785c ,
-        0x561fe540000000000000000071007200790049006e0076006f00690063006500 ,
-        0x41007400740061006300680052005000540031000000000000006f3506fbcd1d ,
-        0x94428a7e19960a692087070000005721e61ea3bb2a45ac78312163591a404200 ,
-        0x69006c006c005f004900440000000000000029dc4d86bf16684ba6c5f62070de ,
-        0x73cc070000005721e61ea3bb2a45ac78312163591a40420069006c006c002000 ,
-        0x5000610069006400000000000000b6f370055a89384e8b280ba2e8c0ae440700 ,
-        0x00005721e61ea3bb2a45ac78312163591a40420069006c006c00200043006c00 ,
-        0x6f007300650064000000000000006c122e7e99d1b34cb7ac80d3f4b3a7310700 ,
-        0x00005721e61ea3bb2a45ac78312163591a40460069007200730074005f004e00 ,
-        0x61006d006500000000000000a8ddb76a18dc684f8ceeff364627044407000000 ,
-        0x5721e61ea3bb2a45ac78312163591a404c006100730074005f004e0061006d00 ,
-        0x6500000000000000350adce981dda6418f90d7af7055baaa070000005721e61e ,
-        0xa3bb2a45ac78312163591a404100640064007200650073007300000000000000 ,
-        0x2b9470085f166a4bb734170e0f5fdd5b070000005721e61ea3bb2a45ac783121 ,
-        0x63591a404300690074007900000000000000bf188a58d5667a439b2e3b95fdcd ,
-        0x2d99070000005721e61ea3bb2a45ac78312163591a4053007400610074006500 ,
-        0x0000000000009ec151f1e5bfde4bab24134755decaf6070000005721e61ea3bb ,
-        0x2a45ac78312163591a405a0069007000000000000000db34dfba0d4fc242b089 ,
-        0x4521ea76b52d070000005721e61ea3bb2a45ac78312163591a40430061007300 ,
+        0x0acc0e5500000000996948efdc616d46a97755bc2a24273100000000f1f1ce97 ,
+        0x2f89e640000000000000000071007200790049006e0076006f00690063006500 ,
+        0x4100740074006100630068005200500054003100000000000000faf0eb4a5c8c ,
+        0xfa4d984259f0af7ae54807000000996948efdc616d46a97755bc2a2427314200 ,
+        0x69006c006c005f00490044000000000000003245d0e80cb6ba4cbb7a1a21088d ,
+        0xc17507000000996948efdc616d46a97755bc2a242731420069006c006c002000 ,
+        0x500061006900640000000000000035726245a245be41924eaf1bcc5ef23e0700 ,
+        0x0000996948efdc616d46a97755bc2a242731420069006c006c00200043006c00 ,
+        0x6f007300650064000000000000009cf09f7573fe4249926126dd75a0f84b0700 ,
+        0x0000996948efdc616d46a97755bc2a242731460069007200730074005f004e00 ,
+        0x61006d0065000000000000000b804eae42f20e4c8cadda004c05ed4707000000 ,
+        0x996948efdc616d46a97755bc2a2427314c006100730074005f004e0061006d00 ,
+        0x65000000000000004c5499880604744ebe022a085b799ce307000000996948ef ,
+        0xdc616d46a97755bc2a2427314100640064007200650073007300000000000000 ,
+        0x38f697bc3534a945bccae82d78b28a6e07000000996948efdc616d46a97755bc ,
+        0x2a2427314300690074007900000000000000070b7a68aa2f4e4bb0956e0f46b2 ,
+        0x770b07000000996948efdc616d46a97755bc2a24273153007400610074006500 ,
+        0x0000000000007cecace9248c1342b45cb3968ba918ee07000000996948efdc61 ,
+        0x6d46a97755bc2a2427315a0069007000000000000000bd7c65c1dfce1f478904 ,
+        0xfb194f23c44a07000000996948efdc616d46a97755bc2a242731430061007300 ,
         0x6500490044000000000000007aac268d1172dd4f9ace2031f057b5d107000000 ,
-        0x5721e61ea3bb2a45ac78312163591a4063006100730065004e006f0000000000 ,
-        0x0000e52185e6a79c4b42aac9ec78a88c8ef2070000005721e61ea3bb2a45ac78 ,
-        0x312163591a40420069006c004c00200043006c006f0073006500640020004400 ,
-        0x6100740065000000000000008af8e16fae6ba34596bc0538d2142a5b07000000 ,
-        0x5721e61ea3bb2a45ac78312163591a404500780065006300750074006f007200 ,
-        0x000000000000e809aa9c9b91db47853bbc4c461ec83d070000005721e61ea3bb ,
-        0x2a45ac78312163591a404d00610074007400650072005f005400790070006500 ,
-        0x000000000000c36630a8ca17cb48a7303eeb12055eff070000005721e61ea3bb ,
-        0x2a45ac78312163591a40490041004e0075006d00620065007200000000000000 ,
-        0x2e80e306f41b4046913cffbf1eaf5c97070000005721e61ea3bb2a45ac783121 ,
-        0x63591a4054006400610074006500000000000000bb231899ec604e498ef76896 ,
-        0x9b7433e1070000005721e61ea3bb2a45ac78312163591a404400650073006300 ,
-        0x720069007000740069006f006e00000000000000f3c2dff984cb3b47883cf81f ,
-        0x83e2176e070000005721e61ea3bb2a45ac78312163591a40540069006d006500 ,
-        0x5f00000000000000c88e4bbea4102e42ab8c768c809d1a44070000005721e61e ,
-        0xa3bb2a45ac78312163591a40540061007400740079000000000000002b14293b ,
-        0xaab481408a9e5f3327aa4ae1070000005721e61ea3bb2a45ac78312163591a40 ,
+        0x996948efdc616d46a97755bc2a24273163006100730065004e006f0000000000 ,
+        0x00009ad9a95681b84841a45eb58f7a1075a607000000996948efdc616d46a977 ,
+        0x55bc2a242731420069006c004c00200043006c006f0073006500640020004400 ,
+        0x610074006500000000000000152af3a8069dfd429ae9975eebc076d807000000 ,
+        0x996948efdc616d46a97755bc2a2427314500780065006300750074006f007200 ,
+        0x000000000000936484ae53ac8d4f89f191b20d23de3a07000000996948efdc61 ,
+        0x6d46a97755bc2a2427314d00610074007400650072005f005400790070006500 ,
+        0x0000000000003bb47c36950c0c47b9f71e2865683c1207000000996948efdc61 ,
+        0x6d46a97755bc2a242731490041004e0075006d00620065007200000000000000 ,
+        0x19f4a112ea6775438376abdba1c8fab207000000996948efdc616d46a97755bc ,
+        0x2a24273154006400610074006500000000000000f7f6e21e9e59ad4e88f8d4b9 ,
+        0x0d5129a607000000996948efdc616d46a97755bc2a2427314400650073006300 ,
+        0x720069007000740069006f006e00000000000000331e7f3558a1be46a0ab77ce ,
+        0x32cb535707000000996948efdc616d46a97755bc2a242731540069006d006500 ,
+        0x5f000000000000003e2736be64f6504093a4eca63c65969907000000996948ef ,
+        0xdc616d46a97755bc2a24273154006100740074007900000000000000507b06e8 ,
+        0x9aa74f48ac54392c0ef4038907000000996948efdc616d46a97755bc2a242731 ,
         0x5200610074006500000000000000537fdd0ae350f049b4a532bffbf782280700 ,
-        0x00005721e61ea3bb2a45ac78312163591a4041006d006f0075006e0074000000 ,
-        0x00000000203ec903c8424d4da1639ac63a384142060000001a6a68f2dbc56540 ,
-        0x87bcc1868b30088041006d006f0075006e0074000000000000003d20f9a056f8 ,
-        0x50438cb3571dc9e35c6a070000005721e61ea3bb2a45ac78312163591a405400 ,
+        0x0000996948efdc616d46a97755bc2a24273141006d006f0075006e0074000000 ,
+        0x00000000090b78a916b39f46b8f4336e27df8d6806000000c9615e5e3a5a2c44 ,
+        0x8071f360a5adb4df41006d006f0075006e00740000000000000009a6e49818f4 ,
+        0x4349bb9430bef206ff8607000000996948efdc616d46a97755bc2a2427315400 ,
         0x69006d0065004e006f0074006500730000000000000000000000000000000000 ,
         0x0000000000000c000000050000000000000000000000000000000000
     End
@@ -81,14 +80,14 @@ Begin Report
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x0055ce00881af126d458ce009855ce00716e086102000000a455ce003ab50661 ,
-        0x010403069c00040643b7000201000100ea0a6f08640001000f00580201000100 ,
-        0x5802030001004c65747465720058ce0010b90861ffffffffc855ce00ccb40661 ,
-        0xd458ce00d4580000000000000000000000000000010000000000000001000000 ,
-        0x0200000012010000ffffffff0000000000000000000000000000000044494e55 ,
-        0x22006803c4054000e26097690000000000000000000000000000000000000000 ,
-        0x00000000000000001e0000000100000000000000000000000000000001000000 ,
-        0x0000000000001300000000000000000001000100000000000000000000000000 ,
+        0x009e1bc78800000040d321aef67f00002046f1adf67f00002000000000000000 ,
+        0x010403069c00e80343b7000201000100ea0a6f08640001000f00580201000100 ,
+        0x5802030001004c6574746572000000000500000000000000b0911bc788000000 ,
+        0x90971bc788000000000000000000000000000000010000000000000001000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -104,41 +103,27 @@ Begin Report
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000100000000000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000068030000534d544a ,
-        0x0000000010005803000000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x400000004d534458010000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
     End
     PrtDevNames = Begin
-        0x0800220055000100000000000000000000000000000000000000000000000000 ,
+        0x08003b006c000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x000000000000000000000000000000000000000000545330303100
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,
+        0x35362d626536332d33376332313832623061383600
     End
     FilterOnLoad =0
     FitToPage =1
@@ -154,15 +139,15 @@ Begin Report
     AlternateBackShade =95.0
     PrtDevModeW = Begin
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x4d004600500020004d003100320037002d004d00310032003800200000000000 ,
-        0x01040306dc00040643b7000201000100ea0a6f08640001000f00580201000100 ,
+        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,
+        0x01040306dc00e80343b7000201000100ea0a6f08640001000f00580201000100 ,
         0x5802030001004c00650074007400650072000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000010000000000000001000000 ,
-        0x0200000012010000ffffffff0000000000000000000000000000000044494e55 ,
-        0x22006803c4054000e26097690000000000000000000000000000000000000000 ,
-        0x00000000000000001e0000000100000000000000000000000000000001000000 ,
-        0x0000000000001300000000000000000001000100000000000000000000000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -178,51 +163,42 @@ Begin Report
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000100000000000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000068030000534d544a ,
-        0x0000000010005803000000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x400000004d534458010000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
     End
     PrtDevNamesW = Begin
-        0x04001e0051000100000000000000000000000000000000000000000000000000 ,
+        0x0400370068000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000540053003000300031000000
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000000000005700530044002d003800310066003100 ,
+        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,
+        0x6500360033002d00330037006300320031003800320062003000610038003600 ,
+        0x0000
     End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -234,6 +210,8 @@ Begin Report
         End
         Begin Rectangle
             BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -242,6 +220,7 @@ Begin Report
         End
         Begin Line
             BorderLineStyle =0
+            GridlineColor =10921638
             BorderThemeColorIndex =0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
@@ -251,8 +230,8 @@ Begin Report
             BorderLineStyle =0
             SizeMode =3
             PictureAlignment =2
-            BorderColor =16777215
-            GridlineColor =16777215
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -263,6 +242,8 @@ Begin Report
             BorderLineStyle =0
             LabelX =230
             LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
             BorderThemeColorIndex =1
             BorderShade =65.0
             GridlineThemeColorIndex =1
@@ -274,8 +255,11 @@ Begin Report
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             ShowDatePicker =0
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
@@ -288,7 +272,7 @@ Begin Report
         End
         Begin EmptyCell
             Height =240
-            GridlineColor =12632256
+            GridlineColor =10921638
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
@@ -305,7 +289,7 @@ Begin Report
             Height =3300
             Name ="ReportHeader"
             GUID = Begin
-                0x7b4be7f79fbba644b82ba9054c2e17fb
+                0x54811eb39c7c9a488a86ad29acab6857
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -313,16 +297,14 @@ Begin Report
                 Begin Line
                     LineSlant = NotDefault
                     BorderWidth =5
-                    OverlapFlags =81
                     Left =120
                     Top =1680
                     Width =10620
                     BorderColor =-2147483599
                     Name ="Line28"
                     GUID = Begin
-                        0x66f9f9c8c3a1d44caa136b19f98e1131
+                        0x4eb14408ee816448ac3aa0bf677594bd
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =120
                     LayoutCachedTop =1680
                     LayoutCachedWidth =10740
@@ -331,7 +313,6 @@ Begin Report
                 End
                 Begin TextBox
                     Visible = NotDefault
-                    OverlapFlags =211
                     TextAlign =1
                     IMESentenceMode =3
                     Left =4920
@@ -340,15 +321,13 @@ Begin Report
                     Height =300
                     ColumnOrder =3
                     FontSize =8
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="Text6"
                     ControlSource ="Bill Paid"
                     FontName ="MS Sans Serif"
                     GUID = Begin
-                        0x95a43d29d57d694fabc5e3adccaea06c
+                        0x275b9c2870fd5a4293d5f0f94dfe017a
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =4920
@@ -362,22 +341,19 @@ Begin Report
                         Begin Label
                             Visible = NotDefault
                             FontUnderline = NotDefault
-                            OverlapFlags =81
                             TextAlign =1
                             Left =4920
                             Top =720
                             Width =1080
                             Height =240
                             FontSize =8
-                            BorderColor =8355711
                             ForeColor =-2147483617
                             Name ="Label7"
                             Caption ="Bill Paid"
                             FontName ="MS Sans Serif"
                             GUID = Begin
-                                0x4a32a15c9d7c3d46952afb9ac1564a1f
+                                0xf9f57f3c89fa2c40b2a385a7b7881051
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =4920
                             LayoutCachedTop =720
                             LayoutCachedWidth =6000
@@ -390,18 +366,15 @@ Begin Report
                 End
                 Begin CheckBox
                     Visible = NotDefault
-                    OverlapFlags =81
                     Left =6180
                     Top =450
                     ColumnOrder =4
                     TabIndex =1
-                    BorderColor =10921638
                     Name ="Check8"
                     ControlSource ="Bill Closed"
                     GUID = Begin
-                        0x8b9d96d636334b469846894095e8d822
+                        0xaccc95b6cedb8f40bf174cfeee2f059a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =6180
                     LayoutCachedTop =450
@@ -410,21 +383,18 @@ Begin Report
                     Begin
                         Begin Label
                             Visible = NotDefault
-                            OverlapFlags =243
                             Left =6410
                             Top =450
                             Width =1050
                             Height =315
                             FontSize =8
-                            BorderColor =8355711
                             ForeColor =-2147483617
                             Name ="Label9"
                             Caption ="Bill Closed"
                             FontName ="MS Sans Serif"
                             GUID = Begin
-                                0xf82711c666c1cc42a81be5816f07470b
+                                0x236a685d5fd8c44c8ffaa58db5f49799
                             End
-                            GridlineColor =10921638
                             LayoutCachedLeft =6410
                             LayoutCachedTop =450
                             LayoutCachedWidth =7460
@@ -436,7 +406,6 @@ Begin Report
                     End
                 End
                 Begin Label
-                    OverlapFlags =243
                     TextAlign =2
                     Left =7140
                     Top =240
@@ -444,15 +413,13 @@ Begin Report
                     Height =540
                     FontSize =20
                     FontWeight =800
-                    BorderColor =8355711
                     ForeColor =-2147483617
                     Name ="Label27"
                     Caption ="STATEMENT"
                     FontName ="Arial"
                     GUID = Begin
-                        0xde1f83cd7cdd14459a9bfed62d7a4040
+                        0xd45aa6437ebe2a46aa8dc24a77fe47cf
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =7140
                     LayoutCachedTop =240
                     LayoutCachedWidth =9735
@@ -462,22 +429,19 @@ Begin Report
                     ForeTint =100.0
                 End
                 Begin Label
-                    OverlapFlags =243
                     TextAlign =2
                     Left =7477
                     Top =720
                     Width =1980
                     Height =330
                     FontSize =12
-                    BorderColor =8355711
                     ForeColor =-2147483617
                     Name ="Label28"
                     Caption ="HOURLY DETAIL"
                     FontName ="Arial"
                     GUID = Begin
-                        0x0547b467ecedd841b83bc17517b3fc3c
+                        0x98d12539eaaf5f4990b69f6ea366d078
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =7477
                     LayoutCachedTop =720
                     LayoutCachedWidth =9457
@@ -487,7 +451,6 @@ Begin Report
                     ForeTint =100.0
                 End
                 Begin Label
-                    OverlapFlags =81
                     Left =6720
                     Top =1140
                     Width =3465
@@ -495,12 +458,14 @@ Begin Report
                     FontSize =10
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label29"
                     Caption ="** Please see INVOICE for Balance Due **"
                     GUID = Begin
-                        0xd0fa079638a3124dab71797d43169c5e
+                        0x3c14c6bd02ebe041aef48d040f0d9a2b
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =6720
                     LayoutCachedTop =1140
                     LayoutCachedWidth =10185
@@ -515,7 +480,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     IMESentenceMode =3
                     Left =420
                     Top =2220
@@ -523,16 +487,14 @@ Begin Report
                     Height =300
                     ColumnOrder =5
                     TabIndex =2
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="First and Last Name"
                     ControlSource ="=Nz([First_Name],\"\")+\" \"+Nz([Last_Name],\"\")"
                     FontName ="Arial"
                     EventProcPrefix ="First_and_Last_Name"
                     GUID = Begin
-                        0xb72405d4bba33147917b5bcdbd801c71
+                        0xd6d355dd83c4bf468bec7d546525639a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =420
                     LayoutCachedTop =2220
@@ -544,7 +506,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =83
                     IMESentenceMode =3
                     Left =420
                     Top =2520
@@ -552,15 +513,13 @@ Begin Report
                     Height =300
                     ColumnOrder =6
                     TabIndex =3
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="Text34"
                     ControlSource ="=[Address]"
                     FontName ="Arial"
                     GUID = Begin
-                        0x837a8f65364499499bf9e5a049923541
+                        0x5f5a9efb2aacce448bcb9a3fe53ae0b0
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =420
                     LayoutCachedTop =2520
@@ -572,7 +531,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =83
                     IMESentenceMode =3
                     Left =420
                     Top =2820
@@ -580,15 +538,13 @@ Begin Report
                     Height =300
                     ColumnOrder =7
                     TabIndex =4
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="Text35"
                     ControlSource ="=[City]+\", \"+[State]+\" \"+[Zip]"
                     FontName ="Arial"
                     GUID = Begin
-                        0xce49c70e8dd1d34183005cb9ffd30394
+                        0x8495e7ef6ef1344386bae992a256f66a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =420
                     LayoutCachedTop =2820
@@ -610,6 +566,7 @@ Begin Report
                     ColumnOrder =2
                     TabIndex =5
                     BackColor =-2147483643
+                    BorderColor =0
                     ForeColor =-2147483640
                     Name ="Text25"
                     ControlSource ="=Nz(DLookUp(\"SumofBalance\",\"qryTrustAccountBalanceTotals\",\"CaseID=\" & [Cas"
@@ -617,9 +574,10 @@ Begin Report
                     Format ="$#,##0.00;($#,##0.00)"
                     FontName ="Arial"
                     GUID = Begin
-                        0xa5830674a212204aa7f06ba3af0fcca8
+                        0xe413aaa2df0fbb43b622a665522129b7
                     End
                     AsianLineBreak =0
+                    GridlineColor =0
                     ShowDatePicker =1
 
                     LayoutCachedLeft =4020
@@ -650,9 +608,8 @@ Begin Report
                     Caption ="Client Funds Balance"
                     FontName ="Arial"
                     GUID = Begin
-                        0x5da0aabc5db37c48a1090907ddbfcaed
+                        0x7950a652ebcba84b9864f2ddef5e06e1
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =4020
                     LayoutCachedTop =2100
                     LayoutCachedWidth =5460
@@ -666,7 +623,6 @@ Begin Report
                 Begin TextBox
                     FELineBreak = NotDefault
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =1
                     Left =8880
                     Top =2280
@@ -675,14 +631,16 @@ Begin Report
                     ColumnOrder =9
                     TabIndex =6
                     BackColor =-2147483643
+                    BorderColor =0
                     ForeColor =-2147483640
                     Name ="Text29"
                     ControlSource ="caseNo"
                     FontName ="Arial"
                     GUID = Begin
-                        0xf104923bd7d4274d95dcbe9cf9d6e039
+                        0x094c5587c802094a936003c482a39b3c
                     End
                     AsianLineBreak =0
+                    GridlineColor =0
                     ShowDatePicker =1
 
                     LayoutCachedLeft =8880
@@ -699,7 +657,6 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =81
                     TextAlign =1
                     Left =7200
                     Top =2280
@@ -712,9 +669,8 @@ Begin Report
                     Caption ="Client File #"
                     FontName ="Arial"
                     GUID = Begin
-                        0x87be7a56347908429b4b5eb53e6183c0
+                        0xeb293770ce3a964baab0a727d195cbeb
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =7200
                     LayoutCachedTop =2280
                     LayoutCachedWidth =8655
@@ -727,7 +683,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =1
                     IMESentenceMode =3
                     Left =8880
@@ -736,15 +691,13 @@ Begin Report
                     Height =300
                     ColumnOrder =8
                     TabIndex =7
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="Text31"
                     ControlSource ="BilL Closed Date"
                     FontName ="Arial"
                     GUID = Begin
-                        0x8cc5767bd5b6cb4f93aac0660354a266
+                        0x6dbf3608ada84649ab8ff949cb34b1e4
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =8880
@@ -756,7 +709,6 @@ Begin Report
                     ForeTint =100.0
                 End
                 Begin Label
-                    OverlapFlags =81
                     TextAlign =1
                     Left =7200
                     Top =2760
@@ -769,9 +721,8 @@ Begin Report
                     Caption ="TK Close Date"
                     FontName ="Arial"
                     GUID = Begin
-                        0x8d765feaa77eb64f815e613b22d4eadb
+                        0x646d290be28bf542b913ebbb861cb3f4
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =7200
                     LayoutCachedTop =2760
                     LayoutCachedWidth =8820
@@ -784,7 +735,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =83
                     IMESentenceMode =3
                     Left =420
                     Top =1920
@@ -792,15 +742,13 @@ Begin Report
                     Height =300
                     ColumnOrder =0
                     TabIndex =8
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="Text38"
                     ControlSource ="Executor"
                     FontName ="Arial"
                     GUID = Begin
-                        0xc29928315352c243bfdcda8814199827
+                        0x6c6a43f27c835d4d80cb5b99b641ec56
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =420
                     LayoutCachedTop =1920
@@ -814,13 +762,11 @@ Begin Report
                     PictureType =2
                     Width =5580
                     Height =1320
-                    BorderColor =10921638
                     Name ="Image195"
                     Picture ="1_TB 2019 Attorneys, color_png"
                     GUID = Begin
-                        0xf976352e1628d34bbcc0eab6dc6b8294
+                        0xe26e5a988ff31143beac971506515065
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedWidth =5580
                     LayoutCachedHeight =1320
@@ -832,7 +778,7 @@ Begin Report
             Height =660
             Name ="PageHeaderSection"
             GUID = Begin
-                0x23abad933ca63c48b37b74abe3cddcf3
+                0x43658003dec3d14d96dcbe698ef92da1
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -841,20 +787,22 @@ Begin Report
                 Begin TextBox
                     FELineBreak = NotDefault
                     OldBorderStyle =0
-                    OverlapFlags =81
                     Left =1260
                     Top =180
                     Width =5010
                     Height =285
                     FontSize =10
                     TabIndex =1
+                    BorderColor =0
+                    ForeColor =0
                     Name ="Matter_Type"
                     ControlSource ="Matter_Type"
                     FontName ="Arial"
                     GUID = Begin
-                        0xb417afe4867f374f80bbace608dff868
+                        0xfdf883d1e2c3384089f51cbd110b8282
                     End
                     AsianLineBreak =0
+                    GridlineColor =0
                     ShowDatePicker =1
 
                     LayoutCachedLeft =1260
@@ -871,22 +819,19 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =81
                     Left =420
                     Top =180
                     Width =780
                     Height =240
                     FontSize =10
                     FontWeight =600
-                    BorderColor =8355711
                     ForeColor =-2147483617
                     Name ="Label37"
                     Caption ="Matter:\015\012"
                     FontName ="Arial"
                     GUID = Begin
-                        0x6e1f024f2de28a46a1903ff17e6ba3e2
+                        0xda992b0e37f20b4b8853a5e0638c5ec5
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =420
                     LayoutCachedTop =180
                     LayoutCachedWidth =1200
@@ -896,7 +841,6 @@ Begin Report
                     ForeTint =100.0
                 End
                 Begin Label
-                    OverlapFlags =81
                     TextAlign =1
                     Left =7200
                     Top =180
@@ -909,9 +853,8 @@ Begin Report
                     Caption ="Number"
                     FontName ="Arial"
                     GUID = Begin
-                        0xc0046e864fe2d540bf6a5dca9d45ba06
+                        0xc2de87462eea024699fc5a7b0551f2d5
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =7200
                     LayoutCachedTop =180
                     LayoutCachedWidth =8640
@@ -924,22 +867,19 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =1
                     IMESentenceMode =3
                     Left =8880
                     Top =180
                     Width =1065
                     Height =300
-                    BorderColor =10921638
                     ForeColor =-2147483617
                     Name ="Text36"
                     ControlSource ="IANumber"
                     FontName ="Arial"
                     GUID = Begin
-                        0x1641bb80d16f5549ad5c9338491143f2
+                        0x45ea3c571454604e90d1b7d4a7fde5b3
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =8880
@@ -953,16 +893,14 @@ Begin Report
                 Begin Line
                     LineSlant = NotDefault
                     BorderWidth =2
-                    OverlapFlags =81
                     Left =120
                     Top =600
                     Width =10620
                     BorderColor =-2147483598
                     Name ="Line35"
                     GUID = Begin
-                        0x12321a38ec70cd4b86afc65492ab07fe
+                        0xf6ccb6184a3b7549a8038d8ed5a18473
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =120
                     LayoutCachedTop =600
                     LayoutCachedWidth =10740
@@ -979,31 +917,27 @@ Begin Report
             Height =660
             Name ="GroupHeader0"
             GUID = Begin
-                0x243c4f1378c1b048872f1b06e131cddb
+                0xa6c67c0bbff5f24c94ac98ad438cf8a6
             End
             AlternateBackShade =95.0
             BackThemeColorIndex =1
             Begin
                 Begin Rectangle
                     OldBorderStyle =0
-                    OverlapFlags =81
                     Left =120
                     Width =10620
                     Height =600
                     BackColor =15523798
-                    BorderColor =10921638
                     Name ="Box197"
                     GUID = Begin
-                        0xda4b64107ac1124983cdf14d42454320
+                        0x5ec8d6c0038f324a977e0f81d1f62898
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =120
                     LayoutCachedWidth =10740
                     LayoutCachedHeight =600
                     BackThemeColorIndex =-1
                 End
                 Begin Label
-                    OverlapFlags =211
                     Left =240
                     Top =150
                     Width =480
@@ -1011,13 +945,15 @@ Begin Report
                     FontSize =10
                     FontWeight =600
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label12"
                     Caption ="Date"
                     FontName ="Arial"
                     GUID = Begin
-                        0xc140e1f67ac81e49b72fab412dafc64c
+                        0x072173bb70fa5d438c556ce2725b3b47
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =240
                     LayoutCachedTop =150
                     LayoutCachedWidth =720
@@ -1032,7 +968,6 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =211
                     Left =1500
                     Top =150
                     Width =1320
@@ -1040,13 +975,15 @@ Begin Report
                     FontSize =10
                     FontWeight =600
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label13"
                     Caption ="Description"
                     FontName ="Arial"
                     GUID = Begin
-                        0xa26e94db2610f341ba30f551c5e82a45
+                        0x20a6e1edec9e0846bd7ac35a268cd87d
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =1500
                     LayoutCachedTop =150
                     LayoutCachedWidth =2820
@@ -1061,7 +998,6 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =211
                     TextAlign =3
                     Left =7020
                     Top =60
@@ -1070,13 +1006,15 @@ Begin Report
                     FontSize =10
                     FontWeight =600
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label14"
                     Caption ="Hours\015\012(0.00)"
                     FontName ="Arial"
                     GUID = Begin
-                        0x88662b92ee1c724da6695bc6867e0a27
+                        0x031f38dc27b6494b9a802fa244ccee7a
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =7020
                     LayoutCachedTop =60
                     LayoutCachedWidth =7620
@@ -1091,7 +1029,6 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =211
                     TextAlign =2
                     Left =8340
                     Width =600
@@ -1099,13 +1036,15 @@ Begin Report
                     FontSize =10
                     FontWeight =600
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label15"
                     Caption ="Rate"
                     FontName ="Arial"
                     GUID = Begin
-                        0x5218b9f20a65ad4e943e74fc89e352cb
+                        0x5db37020ef2a2d4792d492c4c2bfa20b
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =8340
                     LayoutCachedWidth =8940
                     LayoutCachedHeight =300
@@ -1119,7 +1058,6 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =211
                     Left =8055
                     Top =240
                     Width =1185
@@ -1127,13 +1065,15 @@ Begin Report
                     FontSize =10
                     FontWeight =600
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label16"
                     Caption ="Atty / Staff"
                     FontName ="Arial"
                     GUID = Begin
-                        0x2c609af2b0c43c42a2177cbbb2b1728f
+                        0xab6aa805fd3fd3498d30dab325cc1429
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =8055
                     LayoutCachedTop =240
                     LayoutCachedWidth =9240
@@ -1148,7 +1088,6 @@ Begin Report
                     GridlineShade =100.0
                 End
                 Begin Label
-                    OverlapFlags =211
                     TextAlign =2
                     Left =9300
                     Top =150
@@ -1157,13 +1096,15 @@ Begin Report
                     FontSize =10
                     FontWeight =600
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label17"
                     Caption ="Amount"
                     FontName ="Arial"
                     GUID = Begin
-                        0xb9302db98cd9cc46b3d32bfea1dfbe24
+                        0x09bfc4d18e6dfe448e60cef3e171654f
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =9300
                     LayoutCachedTop =150
                     LayoutCachedWidth =10380
@@ -1185,14 +1126,13 @@ Begin Report
             Height =765
             Name ="Detail"
             GUID = Begin
-                0x0a6ef4a8fe1f114c9ce96b87d074eb58
+                0x6804f4df9b43324a8c5c0afb6d530ad8
             End
             AlternateBackShade =95.0
             BackThemeColorIndex =1
             Begin
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =1
                     IMESentenceMode =3
                     Left =180
@@ -1200,14 +1140,11 @@ Begin Report
                     Width =1020
                     Height =315
                     FontSize =9
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Tdate"
                     ControlSource ="Tdate"
                     GUID = Begin
-                        0xa53f3d9eeddf5f4c8bca1cd5cc9e61ac
+                        0x6c71a238e2ff6d40b7234d0764fb9eb8
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =180
@@ -1219,7 +1156,6 @@ Begin Report
                     CanGrow = NotDefault
                     CanShrink = NotDefault
                     OldBorderStyle =0
-                    OverlapFlags =81
                     IMESentenceMode =3
                     Left =1500
                     Top =75
@@ -1227,14 +1163,11 @@ Begin Report
                     Height =660
                     FontSize =9
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Description"
                     ControlSource ="Description"
                     GUID = Begin
-                        0xe4200aeb1743b940bdf4bc23b8a9e437
+                        0xe00f752f25052446857ddc6e1aeba963
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1500
                     LayoutCachedTop =75
@@ -1243,7 +1176,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =3
                     IMESentenceMode =3
                     Left =6660
@@ -1252,14 +1184,11 @@ Begin Report
                     Height =315
                     FontSize =9
                     TabIndex =2
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Time_"
                     ControlSource ="Time_"
                     GUID = Begin
-                        0xbd49f6823b47f149945cb4151f105cd4
+                        0x9dad9c57cb005e46a086091bf5a57263
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =6660
                     LayoutCachedTop =75
@@ -1268,7 +1197,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =2
                     IMESentenceMode =3
                     Left =8055
@@ -1277,14 +1205,11 @@ Begin Report
                     Height =315
                     FontSize =9
                     TabIndex =3
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Tatty"
                     ControlSource ="Tatty"
                     GUID = Begin
-                        0xc443def09846ac4880d02ef4d858b1d6
+                        0xc9d9444c4d79b64ba86265ac791cf4f8
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =8055
                     LayoutCachedTop =330
@@ -1293,7 +1218,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =243
                     TextAlign =2
                     IMESentenceMode =3
                     Left =8055
@@ -1302,15 +1226,12 @@ Begin Report
                     Height =315
                     FontSize =9
                     TabIndex =4
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Rate"
                     ControlSource ="Rate"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0xa2de9c3cc6915a46b9b68f5bb89a1c3d
+                        0x47407a4a263f1241a641354f7113d1bd
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =8055
                     LayoutCachedTop =75
@@ -1321,7 +1242,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =3
                     IMESentenceMode =3
                     Left =9360
@@ -1330,15 +1250,12 @@ Begin Report
                     Height =315
                     FontSize =9
                     TabIndex =5
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Amount"
                     ControlSource ="Amount"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x203ec903c8424d4da1639ac63a384142
+                        0x090b78a916b39f46b8f4336e27df8d68
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =9360
                     LayoutCachedTop =75
@@ -1355,7 +1272,7 @@ Begin Report
             Height =1260
             Name ="GroupFooter1"
             GUID = Begin
-                0x90b16bae97b75441b5c96864dff69b2a
+                0x22a6a5cf7befb7468dbdfa493698d131
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -1364,17 +1281,14 @@ Begin Report
             Begin
                 Begin Rectangle
                     OldBorderStyle =0
-                    OverlapFlags =81
                     Left =120
                     Width =10620
                     Height =420
                     BackColor =15523798
-                    BorderColor =10921638
                     Name ="Box31"
                     GUID = Begin
-                        0x089d3abea4bdec4d85105ac13f832a28
+                        0xa4de35cdccef324bbaf1b517759c91fa
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =120
                     LayoutCachedWidth =10740
                     LayoutCachedHeight =420
@@ -1383,7 +1297,6 @@ Begin Report
                 Begin TextBox
                     FontItalic = NotDefault
                     OldBorderStyle =0
-                    OverlapFlags =211
                     TextAlign =3
                     IMESentenceMode =3
                     Left =9075
@@ -1392,14 +1305,13 @@ Begin Report
                     Height =315
                     FontSize =10
                     FontWeight =700
-                    BorderColor =10921638
+                    ForeColor =0
                     Name ="Text15"
                     ControlSource ="=Sum([Amount])"
                     Format ="$#,##0.00;($#,##0.00)"
                     GUID = Begin
-                        0x11b936d00925824da93e2671a6ee08c1
+                        0xefa64267226bac449ce6f192eec44811
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =9075
                     LayoutCachedTop =60
@@ -1409,7 +1321,6 @@ Begin Report
                     CurrencySymbol ="$"
                 End
                 Begin Label
-                    OverlapFlags =211
                     TextAlign =3
                     Left =7140
                     Top =60
@@ -1418,13 +1329,15 @@ Begin Report
                     FontSize =10
                     FontWeight =700
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label175"
                     Caption ="Total Hourly:"
                     FontName ="MS Sans Serif"
                     GUID = Begin
-                        0x678d256ab16b584f89e89cd84fb48fce
+                        0x140fc1233de2854cb053e31ff674bfaa
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =7140
                     LayoutCachedTop =60
                     LayoutCachedWidth =8940
@@ -1448,14 +1361,11 @@ Begin Report
                     Width =5040
                     Height =660
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text28"
                     ControlSource ="TimeNotes"
                     GUID = Begin
-                        0x73970870b71d1f4187b9103609ad2933
+                        0x170d7cb4a3acb447be26fed81375f3f7
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2700
                     LayoutCachedTop =540
@@ -1468,7 +1378,7 @@ Begin Report
             Height =1080
             Name ="PageFooterSection"
             GUID = Begin
-                0xaec1e7e2523d6844a08e1438af775934
+                0xef8305ae23b1284ebabf9cebf93d05f9
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -1476,7 +1386,6 @@ Begin Report
             Begin
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =2
                     BackStyle =0
                     IMESentenceMode =3
@@ -1484,14 +1393,11 @@ Begin Report
                     Top =600
                     Width =3600
                     Height =315
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text23"
                     ControlSource ="=IIf(([Page]>1),\"Page \" & [Page] & \" of \" & [Pages],\"\")"
                     GUID = Begin
-                        0x9ca6c112b7339f498c4b119dff329020
+                        0x91d3fb1586130941acfff65c8acbb695
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =3660
                     LayoutCachedTop =600
@@ -1499,18 +1405,15 @@ Begin Report
                     LayoutCachedHeight =915
                 End
                 Begin Rectangle
-                    OverlapFlags =81
                     Left =120
                     Top =180
                     Width =10620
                     Height =300
                     BackColor =8210719
-                    BorderColor =10921638
                     Name ="Box191"
                     GUID = Begin
-                        0x0947ad587ad6ad4aae8800b3886f2a12
+                        0x6a73460848ee6547b1788476a3c00881
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =120
                     LayoutCachedTop =180
                     LayoutCachedWidth =10740
@@ -1518,23 +1421,20 @@ Begin Report
                     BackThemeColorIndex =-1
                 End
                 Begin Label
-                    OverlapFlags =211
                     TextAlign =2
                     Left =1320
                     Top =210
                     Width =7800
                     Height =300
                     FontSize =9
-                    BorderColor =8355711
                     ForeColor =16777215
                     Name ="Label192"
                     Caption ="2740 Chain Bridge Road, Vienna, VA 22181     703-938-5100    www.tatebywater.com"
                         "\015\012"
                     FontName ="Century Gothic"
                     GUID = Begin
-                        0xaf1b258b3ddb8c4bb885421db29f8731
+                        0x3cfc4d1c03c00b438bb594e5c36868cd
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =1320
                     LayoutCachedTop =210
                     LayoutCachedWidth =9120
@@ -1545,7 +1445,6 @@ Begin Report
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =3
                     BackStyle =0
                     IMESentenceMode =3
@@ -1555,15 +1454,14 @@ Begin Report
                     Height =300
                     FontSize =9
                     TabIndex =1
-                    BorderColor =10921638
+                    ForeColor =0
                     Name ="Text8"
                     ControlSource ="=Date()"
                     Format ="Short Date"
                     FontName ="Arial"
                     GUID = Begin
-                        0xa81ef13335c196499eede8f817fecf74
+                        0x14b20b153582ab408368457ed61bc9bb
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =9660
                     LayoutCachedTop =600
@@ -1575,7 +1473,6 @@ Begin Report
                 Begin TextBox
                     FELineBreak = NotDefault
                     OldBorderStyle =0
-                    OverlapFlags =81
                     TextAlign =1
                     Left =120
                     Top =600
@@ -1584,14 +1481,16 @@ Begin Report
                     FontSize =9
                     TabIndex =2
                     BackColor =-2147483643
+                    BorderColor =0
                     ForeColor =-2147483640
                     Name ="Text37"
                     ControlSource ="caseNo"
                     FontName ="Arial"
                     GUID = Begin
-                        0x6a9325d0fd640e47aacfbaca74842f7d
+                        0xf821cba7ebd0a44d91eae721e086197a
                     End
                     AsianLineBreak =0
+                    GridlineColor =0
                     ShowDatePicker =1
 
                     LayoutCachedLeft =120
@@ -1614,7 +1513,7 @@ Begin Report
             Height =0
             Name ="ReportFooter"
             GUID = Begin
-                0x47359a0bab5b9348b32616cec2c45f72
+                0x4ab891252346ef4f975871555a60cd4e
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0

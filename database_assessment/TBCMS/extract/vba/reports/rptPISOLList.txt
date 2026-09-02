@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =832955756
+Checksum =1270463740
 Begin Report
     LayoutForPrint = NotDefault
     DividingLines = NotDefault
@@ -22,7 +22,7 @@ Begin Report
         0x915b444a2f5ee540
     End
     GUID = Begin
-        0x41b0cd0f3d9b064d86a62a14eb7a29e2
+        0x1957950242c19649b5e62e496b781eee
     End
     NameMap = Begin
         0x0acc0e5500000000000000000000000000000000000000000c00000005000000 ,
@@ -35,14 +35,14 @@ Begin Report
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x00474e01f88b881d044a4e01c8464e011b72cb5502000000d4464e019c95b455 ,
-        0x010403069c0004060f93010002000100ea0a6f08640001000700580201000100 ,
-        0x5802030000004c657474657200494e01fc3ccc55fffffffff8464e012e95b455 ,
-        0x044a4e01044a0000000000000000000000000000010000000000000001000000 ,
-        0x0200000012010000ffffffff0000000000000000000000000000000044494e55 ,
-        0x22006803c4054000e26097690000000000000000000000000000000000000000 ,
-        0x00000000000000001e0000000100000000000000000000000000000001000000 ,
-        0x0000000000001300000000000000000001000100000000000000000000000000 ,
+        0x009e1bc78800000040d321aef67f00002046f1adf67f00002000000000000000 ,
+        0x010403069c00e8030f93010002000100ea0a6f08640001000700ffff01000100 ,
+        0xffff030000004c6574746572000000000500000000000000b0911bc788000000 ,
+        0x0100000000000000000000000000000000000000010000000000000001000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -58,41 +58,27 @@ Begin Report
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000100000000000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000068030000534d544a ,
-        0x0000000010005803000000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x400000004d534458010000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
     End
     PrtDevNames = Begin
-        0x0800220055000100000000000000000000000000000000000000000000000000 ,
+        0x08003b006c000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x000000000000000000000000000000000000000000545330303100
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x0000000000000000000000005753442d38316631613333372d613866662d3433 ,
+        0x35362d626536332d33376332313832623061383600
     End
     FilterOnLoad =0
     FitToPage =1
@@ -108,15 +94,15 @@ Begin Report
     AlternateBackShade =95.0
     PrtDevModeW = Begin
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x4d004600500020004d003100320037002d004d00310032003800200000000000 ,
-        0x01040306dc0004060f93010002000100ea0a6f08640001000700580201000100 ,
-        0x5802030000004c0065007400740065007200000004d89500a404a11ca004a11c ,
-        0x04d8950000000000000000000000000000000000000000000000000000000000 ,
+        0x4800500020004c0061007300650072004a006500740020003400300000000000 ,
+        0x01040306dc00e8030f93010002000100ea0a6f08640001000700ffff01000100 ,
+        0xffff030000004c00650074007400650072000000000000003b00000000000000 ,
+        0x5001eeee9c010000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000010000000000000001000000 ,
-        0x0200000012010000ffffffff0000000000000000000000000000000044494e55 ,
-        0x22006803c4054000e26097690000000000000000000000000000000000000000 ,
-        0x00000000000000001e0000000100000000000000000000000000000001000000 ,
-        0x0000000000001300000000000000000001000100000000000000000000000000 ,
+        0x0200000044010000ffffffff4749533400000000000000000000000044494e55 ,
+        0x22007001cc031c0005cb92770000000000000000000000000000000000000000 ,
+        0x00000000000000000c0000000100000000000000000000000000010000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -132,51 +118,42 @@ Begin Report
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000100000000000000000000000000000000000000 ,
-        0x00000000000000000000000000000000000000000000000068030000534d544a ,
-        0x0000000010005803000000000000000000000000000000000000000000000000 ,
+        0x00000000000000000000000000000000000000000000000070010000534d544a ,
+        0x00000000100060017b00450039003400310034003400460038002d0030003300 ,
+        0x410033002d0034003000360061002d0042004200310046002d00300034003800 ,
+        0x4300370038003200320036003800350035007d000000496e70757442696e0041 ,
+        0x75746f53656c65637400524553444c4c00556e69726573444c4c005061706572 ,
+        0x53697a65004c4554544552004f7269656e746174696f6e00504f525452414954 ,
+        0x004d6564696154797065004175746f005265736f6c7574696f6e003630304450 ,
+        0x4900506167654f75747075745175616c697479004e6f726d616c00436f6c6f72 ,
+        0x4d6f646500436f6c6f7200446f63756d656e744e5570003100436f6c6c617465 ,
+        0x004f4e004475706c6578004e4f4e45004f757470757442696e004175746f0000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x400000004d534458010000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000000000000
+        0x00000000000000001c0000005634444d01000000000000000000000000000000 ,
+        0x00000000
     End
     PrtDevNamesW = Begin
-        0x04001e0051000100000000000000000000000000000000000000000000000000 ,
+        0x0400370068000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000540053003000300031000000
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x000000000000000000000000000000005700530044002d003800310066003100 ,
+        0x61003300330037002d0061003800660066002d0034003300350036002d006200 ,
+        0x6500360033002d00330037006300320031003800320062003000610038003600 ,
+        0x0000
     End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -188,6 +165,8 @@ Begin Report
         End
         Begin Rectangle
             BorderLineStyle =0
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -196,6 +175,7 @@ Begin Report
         End
         Begin Line
             BorderLineStyle =0
+            GridlineColor =10921638
             BorderThemeColorIndex =0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
@@ -205,8 +185,8 @@ Begin Report
             BorderLineStyle =0
             SizeMode =3
             PictureAlignment =2
-            BorderColor =16777215
-            GridlineColor =16777215
+            BorderColor =10921638
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -217,6 +197,8 @@ Begin Report
             BorderLineStyle =0
             LabelX =230
             LabelY =-30
+            BorderColor =10921638
+            GridlineColor =10921638
             BorderThemeColorIndex =1
             BorderShade =65.0
             GridlineThemeColorIndex =1
@@ -228,8 +210,11 @@ Begin Report
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             ShowDatePicker =0
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
@@ -245,7 +230,10 @@ Begin Report
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
             FontName ="Calibri"
+            GridlineColor =10921638
             AllowValueListEdits =1
             InheritValueList =1
             ThemeFontIndex =1
@@ -265,7 +253,7 @@ Begin Report
             Height =1620
             Name ="ReportHeader"
             GUID = Begin
-                0x2d3a0f98f7f3ee4c90e45cb96fddbfd3
+                0xeb17f6c425a04c4a817f2a5bc5950b23
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -278,9 +266,8 @@ Begin Report
                     BorderColor =-2147483599
                     Name ="Line28"
                     GUID = Begin
-                        0x83fdb1b2ef60bb40b617668da85823b4
+                        0xd9469925be219a4dbbe05539677372f9
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =60
                     LayoutCachedTop =1500
                     LayoutCachedWidth =12960
@@ -293,14 +280,12 @@ Begin Report
                     Width =3645
                     Height =825
                     FontSize =16
-                    BorderColor =8355711
                     ForeColor =-2147483617
                     Name ="Label0"
                     Caption ="Personal Injury Case Status &\015\012Statute of Limitations"
                     GUID = Begin
-                        0xc28de6f71d25f649b5d8c70d620f0aae
+                        0x76a933aa587f2546ae411368037c66d9
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =3600
                     LayoutCachedTop =300
                     LayoutCachedWidth =7245
@@ -314,13 +299,11 @@ Begin Report
                     Top =120
                     Width =3480
                     Height =1080
-                    BorderColor =10921638
                     Name ="Image73"
                     Picture ="TB 2019 Attorneys, color_png"
                     GUID = Begin
-                        0xcb6fa442bbea1a47a9b69d3e0c59f933
+                        0x4133ee3dcd223b48a7c61b1384b4ac69
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =60
                     LayoutCachedTop =120
@@ -333,7 +316,7 @@ Begin Report
             Height =420
             Name ="PageHeaderSection"
             GUID = Begin
-                0x7d8801a082b32c429fa7ea8bd367c9e6
+                0x89268e7dc9b3464a983f7a184cf869b5
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -347,12 +330,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label264"
                     Caption ="Client Name"
                     GUID = Begin
-                        0x95f707a47c925449855769b2c9d000d7
+                        0x2e303d40a6b53a43ac2a412012638f3f
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =60
                     LayoutCachedTop =60
                     LayoutCachedWidth =1620
@@ -374,12 +359,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label265"
                     Caption ="File No."
                     GUID = Begin
-                        0xc91174462452394b8785eb77518b57f3
+                        0x13bdb34dd282604ba310d215578bc560
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =2520
                     LayoutCachedTop =60
                     LayoutCachedWidth =3240
@@ -400,12 +387,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label266"
                     Caption ="Orig Atty"
                     GUID = Begin
-                        0x586f07c67248604992b53e72bb73b8f5
+                        0x612f04ca45b79e4a97ead3ff214b70ad
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =3540
                     LayoutCachedWidth =3960
                     LayoutCachedHeight =420
@@ -426,12 +415,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label270"
                     Caption ="90 days SOL"
                     GUID = Begin
-                        0x9702de7179239a4ab005ce329f42922f
+                        0x6b5a69a7a362f942b3ffe2fe8bc8349e
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =5640
                     LayoutCachedTop =60
                     LayoutCachedWidth =6540
@@ -453,12 +444,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label74"
                     Caption ="60 days SOL"
                     GUID = Begin
-                        0xa20ee5a2d5166b4fa2ed4a58acd81888
+                        0xeb6f9529a19ec748adbee0059034d691
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =6780
                     LayoutCachedTop =60
                     LayoutCachedWidth =7680
@@ -480,12 +473,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label75"
                     Caption ="30 days SOL"
                     GUID = Begin
-                        0x9d64bdd4f5e4244f9e81f20909fdf251
+                        0xb01668d770e7bd4c8e00ba402820ea4d
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =7860
                     LayoutCachedTop =60
                     LayoutCachedWidth =8760
@@ -506,12 +501,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label76"
                     Caption ="SOL"
                     GUID = Begin
-                        0x08e65a13d2668047adf345404dfd7a19
+                        0x59845f3dd0808440978998a7e718c1bc
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =9660
                     LayoutCachedWidth =10020
                     LayoutCachedHeight =300
@@ -532,12 +529,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label80"
                     Caption ="Current Status"
                     GUID = Begin
-                        0xc984fddefee2b543b1af5c3c755b9bf1
+                        0xfd8be881d5702b4bb5362632a08080ac
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =4200
                     LayoutCachedTop =60
                     LayoutCachedWidth =5295
@@ -558,12 +557,14 @@ Begin Report
                     FontSize =8
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label84"
                     Caption ="Last Note Entry"
                     GUID = Begin
-                        0xf805e4abc621424cb8e0e0df38e63c7f
+                        0xb70e0f0237fe6f45a4ca1f4ede38b392
                     End
+                    GridlineColor =0
                     LayoutCachedLeft =10680
                     LayoutCachedWidth =11820
                     LayoutCachedHeight =240
@@ -582,7 +583,7 @@ Begin Report
             Height =660
             Name ="Detail"
             GUID = Begin
-                0xae64282229e02b4fb90aa96384c543a0
+                0x35672aa0974ff54797d92402cb10f71d
             End
             AlternateBackColor =14277081
             AlternateBackThemeColorIndex =1
@@ -595,12 +596,10 @@ Begin Report
                     Width =2460
                     Height =300
                     FontSize =8
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Name"
                     ControlSource ="Name"
                     GUID = Begin
-                        0x4338a798beb92d46b6c158d43bd02906
+                        0x2cec14dc68ab9b44bef4474ea1bb990c
                     End
                     GridlineColor =-2147483609
 
@@ -617,12 +616,10 @@ Begin Report
                     Height =300
                     FontSize =7
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Matter_Type"
                     ControlSource ="=[PISOL]-90"
                     GUID = Begin
-                        0x9f9083f949ea424e8e5c0c42acd24165
+                        0xc5610582c48c21418fe52c5785edade7
                     End
                     GridlineColor =-2147483609
 
@@ -645,14 +642,11 @@ Begin Report
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Orig_Atty"
                     ControlSource ="Orig_Atty"
                     GUID = Begin
-                        0x77887c7e9f183b42a8878a3fcb7af114
+                        0x9f55df7eb0edd14bb831bec922eacc52
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =3540
@@ -676,14 +670,11 @@ Begin Report
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text1"
                     ControlSource ="FileNumber"
                     GUID = Begin
-                        0x3154d96909fd714e8e300b9bcf1daa85
+                        0x4a8e3f839e52e64c9d57ee2c05d85c4f
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =2520
@@ -702,12 +693,10 @@ Begin Report
                     Height =300
                     FontSize =7
                     TabIndex =4
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text77"
                     ControlSource ="=[PISOL]-60"
                     GUID = Begin
-                        0x76ca4ba96974ab4fbc8f6da65853ba2a
+                        0x7ddf796beae95d4b80716247d80c0269
                     End
                     GridlineColor =-2147483609
 
@@ -725,12 +714,10 @@ Begin Report
                     Height =300
                     FontSize =7
                     TabIndex =5
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text78"
                     ControlSource ="=[PISOL]-30"
                     GUID = Begin
-                        0x9e30ff9e28b29c4da5b0a6385f01389c
+                        0xc84bb235f754794ebf19816dfff640cf
                     End
                     GridlineColor =-2147483609
 
@@ -748,12 +735,10 @@ Begin Report
                     Height =300
                     FontSize =7
                     TabIndex =6
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text79"
                     ControlSource ="PISOL"
                     GUID = Begin
-                        0x33bed0965d6e8940bfdcf2140b7bc883
+                        0xc205485b612a9e49a55d551afd63fea5
                     End
                     GridlineColor =-2147483609
 
@@ -776,14 +761,11 @@ Begin Report
                     TopMargin =22
                     RightMargin =44
                     BottomMargin =22
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text81"
                     ControlSource ="FileNumber"
                     GUID = Begin
-                        0x9ad17d4a3751bf47bade0fcf38902069
+                        0x63a220623b779447aa5f784a7b0ab38f
                     End
-                    GridlineColor =10921638
                     ShowDatePicker =1
 
                     LayoutCachedLeft =4080
@@ -802,12 +784,10 @@ Begin Report
                     Height =540
                     FontSize =7
                     TabIndex =8
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text85"
                     ControlSource ="LastNote"
                     GUID = Begin
-                        0x5c3a9c3d256c6644a66f201331a7d13a
+                        0xedc400b539fbe2429cf2d5a88dfe3e1c
                     End
                     GridlineColor =-2147483609
 
@@ -823,7 +803,7 @@ Begin Report
             Height =315
             Name ="PageFooterSection"
             GUID = Begin
-                0x09a48842866b4145a4fbcec20851ddd6
+                0xcffde1607da26a4aa21cb8162415481e
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -837,14 +817,11 @@ Begin Report
                     Left =9360
                     Width =3600
                     Height =315
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text7"
                     ControlSource ="=\"Page \" & [Page] & \" of \" & [Pages]"
                     GUID = Begin
-                        0x86a5fca0b1a2b34cbac15026fe7058db
+                        0x75e038d32fc2674fa38183a6e2e06078
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =9360
                     LayoutCachedWidth =12960
@@ -856,12 +833,14 @@ Begin Report
                     Height =300
                     FontWeight =500
                     BackColor =-2147483633
+                    BorderColor =0
                     ForeColor =-2147483630
                     Name ="Label30"
                     Caption ="Personal Injury SOL List"
                     GUID = Begin
-                        0xc57caccb40758d45af392507b33767bf
+                        0xb85c1e93eaa4ec4ba0862669d3fb68a9
                     End
+                    GridlineColor =0
                     LayoutCachedWidth =6480
                     LayoutCachedHeight =300
                     BackThemeColorIndex =-1
@@ -880,14 +859,11 @@ Begin Report
                     Height =315
                     FontSize =9
                     TabIndex =1
-                    BorderColor =10921638
-                    ForeColor =4210752
                     Name ="Text82"
                     ControlSource ="=Date()"
                     GUID = Begin
-                        0x9208e143b4493b41b6da83a41f2507fe
+                        0xf80f644b29da08459d748eb3b8c82534
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2280
                     LayoutCachedWidth =3780
@@ -900,7 +876,7 @@ Begin Report
             Height =0
             Name ="ReportFooter"
             GUID = Begin
-                0x6af1bed1c55502499e364a0faa656c24
+                0x3c102a48ba38b24c8ae6d4fc4d0e95b1
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0

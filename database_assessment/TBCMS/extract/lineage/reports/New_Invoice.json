@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19647,
-      "lineEnd": 19676,
+      "lineStart": 17831,
+      "lineEnd": 17860,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -32,8 +32,8 @@
       "eventName": "onClick",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7925,
-      "lineEnd": 7945,
+      "lineStart": 7946,
+      "lineEnd": 7966,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -62,8 +62,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19647,
-      "lineEnd": 19676,
+      "lineStart": 17831,
+      "lineEnd": 17860,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -104,8 +104,8 @@
       "objectName": "zClient Ledger OLD",
       "procedureName": "cmdInvoice_Click",
       "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 7925,
-      "lineEnd": 7945,
+      "lineStart": 7946,
+      "lineEnd": 7966,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -118,8 +118,8 @@
       "objectName": "rpt_Compr_InvoiceADVCur",
       "procedureName": "Report_Open",
       "sourceFile": "extract/vba/reports/rpt_Compr_InvoiceADVCur.txt",
-      "lineStart": 1610,
-      "lineEnd": 1646,
+      "lineStart": 1528,
+      "lineEnd": 1564,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": []

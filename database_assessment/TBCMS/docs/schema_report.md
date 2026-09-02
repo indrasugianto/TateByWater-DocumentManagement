@@ -1,12 +1,3188 @@
-# Schema Report: TBCMS
+# Schema Report: Downloads
 ---
 ## Tables
+### Bankruptcy (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| BankruptcyID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| Chapter | Long | 4 | yes |  |
+| Case Filed | DateTime | 8 | yes |  |
+| Deadline for Filing Sched | DateTime | 8 | yes |  |
+| Document Date for Trustee | DateTime | 8 | yes |  |
+| Trustee | Text | 255 | yes |  |
+| POCDeadline | DateTime | 8 | yes |  |
+| GovtPOC | DateTime | 8 | yes |  |
+| Deadline to Object | DateTime | 8 | yes |  |
+| BJudge | Text | 255 | yes |  |
+| OriginalScheduleDeadline | DateTime | 8 | yes |  |
+| PrevBank | Boolean | 1 | yes |  |
+| PrevDate | DateTime | 8 | yes |  |
+| PrevCaseNumber | Text | 255 | yes |  |
+| PrevLocation | Text | 255 | yes |  |
+| TrusteeAddress | Text | 255 | yes |  |
+| TrusteeCity | Text | 255 | yes |  |
+| TrusteeZip | Text | 255 | yes |  |
+| TrusteeState | Text | 255 | yes |  |
+| TrusteeDocuments | Text | 255 | yes |  |
+| ForeTrustee | Text | 255 | yes |  |
+| ForeAddress | Text | 255 | yes |  |
+| ForeCity | Text | 255 | yes |  |
+| ForeState | Text | 255 | yes |  |
+| ForeZIP | Text | 255 | yes |  |
+| ForePhone | Text | 255 | yes |  |
+| ForeFax | Text | 255 | yes |  |
+| ForeSaleDate | DateTime | 8 | yes |  |
+| ForeTime | DateTime | 8 | yes |  |
+| ForeFileNumber | Text | 255 | yes |  |
+| TrusteePhone | Text | 255 | yes |  |
+| TrusteeFax | Text | 255 | yes |  |
+| TrusteeEmail | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** BankruptcyID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Bankruptcy$PrimaryKey [primary, unique]: BankruptcyID
+
+**Row count:** 211
+
+### Billing (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| Balance Due Date | DateTime | 8 | yes |  |
+| Past Due | Boolean | 1 | yes |  |
+| Long Term Collections | Boolean | 1 | yes |  |
+| chkBalanceDue | Boolean | 1 | yes |  |
+| Billing Notes | Memo | 0 | yes |  |
+| WriteOff | Boolean | 1 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Billing$PrimaryKey [primary, unique]: ID
+
+**Row count:** 2043
+
+### CH13Plans (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| IDCH13Plans | Long | 4 | no |  |
+| IDBankruptcy | Long | 4 | yes |  |
+| PlanNr | Long | 4 | yes |  |
+| DateFiled | DateTime | 8 | yes |  |
+| ConfirmDate | DateTime | 8 | yes |  |
+| Notes | Text | 255 | yes |  |
+| Confirmed | Boolean | 1 | yes |  |
+| Objected | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** IDCH13Plans
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- CH13Plans$PrimaryKey [primary, unique]: IDCH13Plans
+
+**Row count:** 191
+
+### Disposition (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| DispoID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| Disposition | Memo | 0 | yes |  |
+| Trial | Boolean | 1 | yes |  |
+| Plea | Boolean | 1 | yes |  |
+| Not Guilty Dismissed | Boolean | 1 | yes |  |
+| Entire np | Boolean | 1 | yes |  |
+| PI Settlement Amount | Currency | 8 | yes |  |
+| Dispo_Date | DateTime | 8 | yes |  |
+| Dispo_Atty | Text | 255 | yes |  |
+| DispoJudge | Text | 255 | yes |  |
+| DispoOppC | Text | 255 | yes |  |
+| Total Earned Fee | Currency | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** DispoID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Disposition$PrimaryKey [primary, unique]: DispoID
+
+**Row count:** 7497
+
+### errMsgs (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| Message | Text | 255 | yes |  |
+| Buttons | Text | 255 | yes |  |
+| Title | Text | 255 | yes |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- errMsgs$PrimaryKey [primary, unique]: ID
+
+**Row count:** 2
+
+### Family Law - Divorce (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| C Length at Residence | Text | 255 | yes |  |
+| C Prior Address | Text | 255 | yes |  |
+| C Length at Prior Address | Text | 255 | yes |  |
+| C Length in VA | Text | 255 | yes |  |
+| C Birthplace | Text | 255 | yes |  |
+| C Employer | Text | 255 | yes |  |
+| C Primary Education | Text | 255 | yes |  |
+| C College | Text | 255 | yes |  |
+| C Marriage Number | Text | 255 | yes |  |
+| D Address | Text | 255 | yes |  |
+| D City | Text | 255 | yes |  |
+| D State | Text | 255 | yes |  |
+| D Zip | Text | 255 | yes |  |
+| D Home Phone | Text | 255 | yes |  |
+| D Other Phone | Text | 255 | yes |  |
+| D Email | Text | 255 | yes |  |
+| D DOB | Text | 255 | yes |  |
+| D SSN | Text | 255 | yes |  |
+| D Employer | Text | 255 | yes |  |
+| D Work Address | Text | 255 | yes |  |
+| D Work City | Text | 255 | yes |  |
+| D Work State | Text | 255 | yes |  |
+| D Work Zip | Text | 255 | yes |  |
+| D Work Phone | Text | 255 | yes |  |
+| D Primary Education | Text | 255 | yes |  |
+| D College | Text | 255 | yes |  |
+| D Marriage Number | Text | 255 | yes |  |
+| Date of Marriage | DateTime | 8 | yes |  |
+| Place of Marriage | Text | 255 | yes |  |
+| Date of Separation | DateTime | 8 | yes |  |
+| Length of Separation | Text | 255 | yes |  |
+| Wife Maiden Name | Text | 255 | yes |  |
+| Number of Children | Text | 255 | yes |  |
+| Child Custodian | Text | 255 | yes |  |
+| C Title | Text | 255 | yes |  |
+| D Title | Text | 255 | yes |  |
+| Date of PSA | DateTime | 8 | yes |  |
+| Place of Last Cohabit | Text | 255 | yes |  |
+| Divorce Grounds | Text | 255 | yes |  |
+| FL Court Case No | Text | 255 | yes |  |
+| Complaint Filed Date | DateTime | 8 | yes |  |
+| Waiver Date | DateTime | 8 | yes |  |
+| Publish Dates | DateTime | 8 | yes |  |
+| Publish Return Date | DateTime | 8 | yes |  |
+| Complaint Serve Date | DateTime | 8 | yes |  |
+| Complaint Serve Method | Text | 255 | yes |  |
+| NOH Serve Date | DateTime | 8 | yes |  |
+| NOH Serve Method | Text | 255 | yes |  |
+| Witness | Text | 255 | yes |  |
+| D_Last_Name | Text | 255 | yes |  |
+| D_First_Name | Text | 255 | yes |  |
+| D_BirthPlace | Text | 255 | yes |  |
+| Uncontested by Affidavit | Boolean | 1 | yes |  |
+| Waiver of Service | Boolean | 1 | yes |  |
+| Service by Publication | Boolean | 1 | yes |  |
+| Sheriff Service | Boolean | 1 | yes |  |
+| Divorce with MSA | Boolean | 1 | yes |  |
+| Divorce without MSA | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Family Law - Divorce$PrimaryKey [primary, unique]: ID
+
+**Row count:** 28
+
+### Matter and AR (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| MatterID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+| FirmPrepaid | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| InsertPymt | Boolean | 1 | yes |  |
+| AdvancedLegal | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| Creimb | Boolean | 1 | yes |  |
+
+**Primary Key:** MatterID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Matter and AR$PrimaryKey [primary, unique]: MatterID
+
+**Row count:** 22953
+
+### Personal Injury (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| ClaimNo1 | Text | 255 | yes |  |
+| InsCo1 | Text | 255 | yes |  |
+| Adjuster1 | Text | 255 | yes |  |
+| Adjuster1 Address | Text | 255 | yes |  |
+| Adjuster1 City | Text | 255 | yes |  |
+| Adjuster1 State | Text | 255 | yes |  |
+| Adjuster1 Zip | Text | 255 | yes |  |
+| Adjuster1 Phone | Text | 255 | yes |  |
+| Adjuster1 Fax | Text | 255 | yes |  |
+| Adjuster1 Email | Text | 255 | yes |  |
+| ClaimNo2 | Text | 255 | yes |  |
+| InsCo2 | Text | 255 | yes |  |
+| Adjuster2 | Text | 255 | yes |  |
+| Adjuster2 Address | Text | 255 | yes |  |
+| Adjuster2 City | Text | 255 | yes |  |
+| Adjuster2 State | Text | 255 | yes |  |
+| Adjuster2 Zip | Text | 255 | yes |  |
+| Adjuster2 Phone | Text | 255 | yes |  |
+| Adjuster2 Fax | Text | 255 | yes |  |
+| Adjuster2 Email | Text | 255 | yes |  |
+| Filing Date | DateTime | 8 | yes |  |
+| Medicare | Boolean | 1 | yes |  |
+| Med Pay | Boolean | 1 | yes |  |
+| ERISA | Boolean | 1 | yes |  |
+| Litigation | Boolean | 1 | yes |  |
+| Slip and Fall | Boolean | 1 | yes |  |
+| Auto Accident | Boolean | 1 | yes |  |
+| Medical Lien | Boolean | 1 | yes |  |
+| Assignment | Boolean | 1 | yes |  |
+| Med Mal | Boolean | 1 | yes |  |
+| DOI | DateTime | 8 | yes |  |
+| HealthIns | Text | 255 | yes |  |
+| PolicyNo | Text | 255 | yes |  |
+| GroupNo | Text | 255 | yes |  |
+| csettleper | Text | 255 | yes |  |
+| csettlelit | Text | 255 | yes |  |
+| location | Text | 255 | yes |  |
+| Medicaid | Boolean | 1 | yes |  |
+| OppPartyInsured | Text | 255 | yes |  |
+| Demand | Currency | 8 | yes |  |
+| BriefDescription | Memo | 0 | yes |  |
+| PIState | Text | 255 | yes |  |
+| AutoCarrier | Text | 255 | yes |  |
+| AutoPolicyNo | Text | 255 | yes |  |
+| UnderinsLimits | Currency | 8 | yes |  |
+| MaxMed | Currency | 8 | yes |  |
+| PISOL | DateTime | 8 | yes |  |
+| PolicyNo1 | Text | 255 | yes |  |
+| AdjusterExt | Text | 255 | yes |  |
+| CompltServed | Boolean | 1 | yes |  |
+| ServedDate | DateTime | 8 | yes |  |
+| OtherDriver | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| PIStatus | Text | 50 | yes |  |
+| LiabilityLimit | Currency | 8 | yes |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Personal Injury$PrimaryKey [primary, unique]: ID
+
+**Row count:** 444
+
+### ProofOfClaims (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| IDProofOfClaims | Long | 4 | no |  |
+| IDBankruptcy | Long | 4 | yes |  |
+| ClaimNr | Long | 4 | yes |  |
+| DateFiled | DateTime | 8 | yes |  |
+| CreditorName | Text | 255 | yes |  |
+| Secured | Currency | 8 | yes |  |
+| Priority | Currency | 8 | yes |  |
+| Unsecured | Currency | 8 | yes |  |
+| Arrears | Currency | 8 | yes |  |
+
+**Primary Key:** IDProofOfClaims
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- ProofOfClaims$PrimaryKey [primary, unique]: IDProofOfClaims
+
+**Row count:** 903
+
+### TB Intakes (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| GI Last Name | Text | 255 | yes |  |
+| GI First Name | Text | 255 | yes |  |
+| GI phone | Text | 255 | yes |  |
+| GI Date | DateTime | 8 | yes |  |
+| GI Practice Area | Text | 255 | yes |  |
+| GI Individual Referrer | Text | 255 | yes |  |
+| GI Comments | Memo | 0 | yes |  |
+| GI No Further Action | Boolean | 1 | yes |  |
+| GI Open | Boolean | 1 | yes |  |
+| GI Open Date | DateTime | 8 | yes |  |
+| GI Referral | Long | 4 | yes |  |
+| ReasonDintHire | Memo | 0 | yes |  |
+| FollowUpDate | DateTime | 8 | yes |  |
+| Attorny | Text | 255 | yes |  |
+| QuotedFee | Currency | 8 | yes |  |
+| Scan Location GI | Memo | 0 | yes |  |
+| Scanned GI | Boolean | 1 | yes |  |
+| GIDOB | DateTime | 8 | yes |  |
+| GI Matter | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- TB Intakes$PrimaryKey [primary, unique]: ID
+
+**Row count:** 1724
+
+### TB Time Keeping (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Bill_ID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| Bill Sent | DateTime | 8 | yes |  |
+| Bill Paid | DateTime | 8 | yes |  |
+| Bill Closed | Boolean | 1 | yes |  |
+| BilL Closed Date | DateTime | 8 | yes |  |
+| Discount | Currency | 8 | yes |  |
+| Bill Number | Text | 255 | yes |  |
+| IANumber | Text | 255 | yes |  |
+| Bill Open | DateTime | 8 | yes |  |
+| TimeNotes | Memo | 0 | yes |  |
+| TKLocked | Boolean | 1 | yes |  |
+| InvoiceTotalAdvance | Boolean | 1 | yes |  |
+| InvoiceExceedsTrust | Boolean | 1 | yes |  |
+| StatementLessTrust | Boolean | 1 | yes |  |
+| TrustatClose | Currency | 8 | yes |  |
+| InvoiceNoAdvance | Boolean | 1 | yes |  |
+| ARatClose | Currency | 8 | yes |  |
+| AdvBalanceatClose | Currency | 8 | yes |  |
+| ReplenishBalanceatClose | Currency | 8 | yes |  |
+| AdvCostBal | Currency | 8 | yes |  |
+| AdvFeesBal | Currency | 8 | yes |  |
+| OutsAdvDue | Currency | 8 | yes |  |
+| CostResBalance | Currency | 8 | yes |  |
+| InvoiceCostHold | Boolean | 1 | yes |  |
+| InvoiceAdvCostFee | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** Bill_ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- TB Time Keeping$PrimaryKey [primary, unique]: Bill_ID
+
+**Row count:** 8743
+
+### tbl_CtCaseNumbers (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CtCaseNoID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| Matter_Charge | Text | 255 | yes |  |
+| CtNumber | Text | 255 | yes |  |
+| District | Boolean | 1 | yes |  |
+| Circuit | Boolean | 1 | yes |  |
+| CodeSection | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** CtCaseNoID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tbl_CtCaseNumbers$PrimaryKey [primary, unique]: CtCaseNoID
+
+**Row count:** 9689
+
+### tbl_InvoiceSent (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| InvoiceSentID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| InvSent | DateTime | 8 | yes |  |
+| InvoiceNumber | Text | 255 | yes |  |
+| TK Sent | Boolean | 1 | yes |  |
+| TKDate | DateTime | 8 | yes |  |
+| InvSentNotes | Text | 255 | yes |  |
+| InvBalance | Currency | 8 | yes |  |
+| TKNumber | Text | 255 | yes |  |
+| TKBalance | Currency | 8 | yes |  |
+| ClientCall | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** InvoiceSentID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tbl_InvoiceSent$PrimaryKey [primary, unique]: InvoiceSentID
+
+**Row count:** 12529
+
+### tblAccessType (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| AccessType | Long | 4 | yes |  |
+| AccessDescription | Text | 255 | yes |  |
+| AdminPane | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblAccessType$PrimaryKey [primary, unique]: ID
+
+**Row count:** 6
+
+### TblActionNeeded (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ActionNeededID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| ActionNeededDet | Text | 255 | yes |  |
+| ActionComp | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| DateComp | Text | 10 | yes |  |
+| DateComp1 | DateTime | 8 | yes |  |
+| ActPerson | Text | 10 | yes |  |
+| StartDate | DateTime | 8 | yes |  |
+
+**Primary Key:** ActionNeededID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- TblActionNeeded$PrimaryKey [primary, unique]: ActionNeededID
+
+**Row count:** 5347
+
+### tblAttorneys (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| AttysID | Long | 4 | no |  |
+| AttyName | Text | 255 | yes |  |
+| AttyEmail | Text | 255 | yes |  |
+| VABar | Text | 255 | yes |  |
+| MDBar | Text | 255 | yes |  |
+| DCBar | Text | 255 | yes |  |
+| USBankBar | Text | 255 | yes |  |
+| AttyInitials | Text | 255 | yes |  |
+| AttyCel | Text | 255 | yes |  |
+
+**Primary Key:** AttysID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblAttorneys$PrimaryKey [primary, unique]: AttysID
+
+**Row count:** 0
+
+### tblCalls (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CallID | Long | 4 | no |  |
+| CFirstName | Text | 255 | yes |  |
+| CLastName | Text | 255 | yes |  |
+| CDate | DateTime | 8 | yes |  |
+| CPracticeArea | Text | 255 | yes |  |
+| CReferral | Text | 255 | yes |  |
+| Consult | Boolean | 1 | yes |  |
+| CAtty | Text | 255 | yes |  |
+| CallTime | DateTime | 8 | yes |  |
+| HiredFirm | Boolean | 1 | yes |  |
+| CallMatter | Text | 255 | yes |  |
+| CallComments | Memo | 0 | yes |  |
+| Transferred to Atty | Text | 255 | yes |  |
+| CPhone | Text | 255 | yes |  |
+| SchedDate | DateTime | 8 | yes |  |
+| SchedTime | DateTime | 8 | yes |  |
+| ClientType | Text | 255 | yes |  |
+| attyEmail | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| CPhoneType | Text | 255 | yes |  |
+| CPhoneExt | Text | 255 | yes |  |
+
+**Primary Key:** CallID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblCalls$PrimaryKey [primary, unique]: CallID
+
+**Row count:** 13171
+
+### tblCase (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| PartnerRate | Currency | 8 | yes |  |
+| AssocRate | Currency | 8 | yes |  |
+| FileLocation | Text | 50 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblCase$PrimaryKey [primary, unique]: CaseID
+
+**Row count:** 12099
+
+### tblCaseDocuments (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseDocumentID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| DocumentType | Text | 250 | no |  |
+| DocumentFileName | Memo | 0 | no |  |
+| CreatedOn | DateTime | 8 | no |  |
+
+**Primary Key:** CaseDocumentID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- PK_tblCaseDocuments [primary, unique]: CaseDocumentID
+
+**Row count:** 27226
+
+### tblChild (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Child_ID | Long | 4 | no |  |
+| FamilyLaw_ID | Long | 4 | yes |  |
+| ChildName | Text | 255 | yes |  |
+| DOB_child | DateTime | 8 | yes |  |
+
+**Primary Key:** Child_ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblChild$PrimaryKey [primary, unique]: Child_ID
+
+**Row count:** 28
+
+### tblDocumentRootDirectory (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| DocumentRootDirectoryID | Long | 4 | no |  |
+| DocumentRootDirectory | Memo | 0 | no |  |
+| ScannerDirectory | Memo | 0 | no |  |
+| DocumentRootNaming | Memo | 0 | no |  |
+| DocumentClosedNaming | Memo | 0 | no |  |
+| AllInvoicesDirectory | Memo | 0 | no |  |
+| AllInvoicesNaming | Memo | 0 | no |  |
+| ClosedFileScanDirectory | Memo | 0 | no |  |
+| ClosedFileScanNaming | Memo | 0 | no |  |
+| IntakeDirectory | Memo | 0 | no |  |
+
+**Primary Key:** DocumentRootDirectoryID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- PK_tblDocumentRootDirectory [primary, unique]: DocumentRootDirectoryID
+
+**Row count:** 1
+
+### tblDocumentTypes (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| DocumentTypeID | Long | 4 | no |  |
+| DocumentType | Text | 250 | no |  |
+| DocumentNamingRule | Memo | 0 | no |  |
+| DocumentFolder | Memo | 0 | no |  |
+| SortOrder | Long | 4 | no |  |
+| IsVisible | Boolean | 1 | no |  |
+
+**Primary Key:** DocumentTypeID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- IX_tblDocumentTypes_DocumentType [unique]: DocumentType
+- PK_tblDocumentTypes [primary, unique]: DocumentTypeID
+
+**Row count:** 29
+
+### tblDropboxLog
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| LogID | Long | 4 | yes |  |
+| LogDate | DateTime | 8 | yes |  |
+| LogLevel | Text | 20 | yes |  |
+| FunctionName | Text | 100 | yes |  |
+| Details | Memo | 0 | yes |  |
+
+**Primary Key:** LogID
+
+**Indexes:**
+- Index_221598FD_EE80_4273 [primary, unique]: LogID
+
+**Row count:** 59
+
+### tblDropboxTokens
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TokenID | Long | 4 | yes |  |
+| DropboxAccountEmail | Text | 255 | yes |  |
+| AccessToken | Memo | 0 | yes |  |
+| RefreshToken | Memo | 0 | yes |  |
+| TokenType | Text | 50 | yes |  |
+| ExpiresAt | DateTime | 8 | yes |  |
+| CreatedDate | DateTime | 8 | yes |  |
+| TokenStatus | Text | 20 | yes |  |
+
+**Primary Key:** TokenID
+
+**Indexes:**
+- Index_30A77AB1_9CE8_4DE9 [primary, unique]: TokenID
+
+**Row count:** 1
+
+### tblDropD (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| DropID | Long | 4 | no |  |
+| Code | Text | 255 | yes |  |
+| CodeVal | Text | 255 | yes |  |
+| FieldName | Text | 255 | yes |  |
+| Description | Text | 255 | yes |  |
+| SortOrder | Long | 4 | yes |  |
+| Description1 | Text | 255 | yes |  |
+| SortOrder1 | Long | 4 | yes |  |
+
+**Primary Key:** DropID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblDropD$PrimaryKey [primary, unique]: DropID
+
+**Row count:** 245
+
+### tblFields (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Object | Text | 55 | yes |  |
+| FieldName | Text | 55 | yes |  |
+| FieldType | Text | 20 | yes |  |
+| FieldSize | Long | 4 | yes |  |
+| FieldAttributes | Long | 4 | yes |  |
+| FldDescription | Text | 20 | yes |  |
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Row count:** 0
+
+### tblFormAccessMapping (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| FormName | Text | 255 | yes |  |
+| MinimumAccess_Show | Long | 4 | yes |  |
+| MinimumAccess_Edit | Long | 4 | yes |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblFormAccessMapping$PrimaryKey [primary, unique]: ID
+
+**Row count:** 5
+
+### tblHearingDate (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| HearingID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| Hearing_Date | DateTime | 8 | yes |  |
+| HearingType | Text | 255 | yes |  |
+| HearingTime | DateTime | 8 | yes |  |
+| HrgResult | Text | 255 | yes |  |
+| HrgCal | Boolean | 1 | yes |  |
+| Verified | Boolean | 1 | yes |  |
+| ClientPresent | Boolean | 1 | yes |  |
+| Reminder | Text | 255 | yes |  |
+| ReminderCheck | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** HearingID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblHearingDate$PrimaryKey [primary, unique]: HearingID
+
+**Row count:** 14670
+
+### Tblmsgbox (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| AccessName | Text | 255 | yes |  |
+| MessageName | Text | 255 | yes |  |
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Row count:** 4
+
+### tblNotes (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| IDNotes | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| NoteDate | DateTime | 8 | yes |  |
+| NotePerson | Text | 255 | yes |  |
+| NoteDescription | Memo | 0 | yes |  |
+| NoteTime | Long | 4 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** IDNotes
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblNotes$PrimaryKey [primary, unique]: IDNotes
+
+**Row count:** 8006
+
+### tblPersInjDemand (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| PIDemandID | Long | 4 | no |  |
+| ID | Long | 4 | yes |  |
+| DemandDate | DateTime | 8 | yes |  |
+| DemandParty | Text | 255 | yes |  |
+| DemandAmount | Currency | 8 | yes |  |
+
+**Primary Key:** PIDemandID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblPersInjDemand$PrimaryKey [primary, unique]: PIDemandID
+
+**Row count:** 1309
+
+### tblPersInjLog (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| PersInjLogID | Long | 4 | no |  |
+| ID | Long | 4 | yes |  |
+| EventDate | DateTime | 8 | yes |  |
+| EventDescription | Memo | 0 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| LogParalegal | Text | 10 | yes |  |
+
+**Primary Key:** PersInjLogID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblPersInjLog$PrimaryKey [primary, unique]: PersInjLogID
+
+**Row count:** 6036
+
+### tblPersInjProv (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| PIProviderID | Long | 4 | no |  |
+| ID | Long | 4 | yes |  |
+| Provider | Text | 255 | yes |  |
+| ReqDate | DateTime | 8 | yes |  |
+| RcvDate | DateTime | 8 | yes |  |
+| PBillAmount | Currency | 8 | yes |  |
+| Lien | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| PBillRed | Currency | 8 | yes |  |
+
+**Primary Key:** PIProviderID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblPersInjProv$PrimaryKey [primary, unique]: PIProviderID
+
+**Row count:** 1940
+
+### tblPrevBank (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| IDPrevBank | Long | 4 | no |  |
+| IDBankruptcy | Long | 4 | yes |  |
+| PrevDate | DateTime | 8 | yes |  |
+| PrevCaseNumber | Text | 255 | yes |  |
+| PrevLocation | Text | 255 | yes |  |
+| PChapter | Text | 255 | yes |  |
+
+**Primary Key:** IDPrevBank
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblPrevBank$PrimaryKey [primary, unique]: IDPrevBank
+
+**Row count:** 66
+
+### tblReceipts (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ReceiptID | Long | 4 | no |  |
+| RDate | DateTime | 8 | yes |  |
+| RFrom | Text | 255 | yes |  |
+| RFor | Text | 255 | yes |  |
+| RAmount | Currency | 8 | yes |  |
+| RMatter | Text | 255 | yes |  |
+| RDue | Currency | 8 | yes |  |
+| RCash | Boolean | 1 | yes |  |
+| RCC | Boolean | 1 | yes |  |
+| RCheck | Boolean | 1 | yes |  |
+| RLock | Boolean | 1 | yes |  |
+| RCheckNumber | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** ReceiptID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblReceipts$PrimaryKey [primary, unique]: ReceiptID
+
+**Row count:** 1451
+
+### tblScans (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ScansID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| ScanLocation | Memo | 0 | yes |  |
+| TypeofScan | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** ScansID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblScans$PrimaryKey [primary, unique]: ScansID
+
+**Row count:** 4678
+
+### tblTakeOff (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TakeOffID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| TakeOffMonthID | Long | 4 | no |  |
+| AvailBalance | Currency | 8 | yes |  |
+| TotalUnCashedChks | Currency | 8 | yes |  |
+| TotalUnclearedDeps | Currency | 8 | yes |  |
+| TotalAdvancedAR | Currency | 8 | yes |  |
+| EarlyEarned | Currency | 8 | yes |  |
+| TOEarned | Currency | 8 | yes |  |
+| CostReimb | Currency | 8 | yes |  |
+| CBHRev | Currency | 8 | yes |  |
+| MKRev | Currency | 8 | yes |  |
+| CBHCom | Currency | 8 | yes |  |
+| MTRev | Currency | 8 | yes |  |
+| MTCom | Currency | 8 | yes |  |
+| KBCom | Currency | 8 | yes |  |
+| MKCom | Currency | 8 | yes |  |
+| TOEarnedTr | Boolean | 1 | yes |  |
+| CostReimbTr | Boolean | 1 | yes |  |
+| InsertedTrust | Boolean | 1 | yes |  |
+| TotalHourlyOuts | Currency | 8 | yes |  |
+| OpenTK | Text | 20 | yes |  |
+| AdvCostBal | Currency | 8 | yes |  |
+| AdvFeeBal | Currency | 8 | yes |  |
+| CostHoldBal | Currency | 8 | yes |  |
+| BRRev | Currency | 8 | yes |  |
+| BRCom | Currency | 8 | yes |  |
+| RLFCom | Currency | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| TOBilled | Currency | 8 | yes |  |
+| TOAttBilled | Currency | 8 | yes |  |
+
+**Primary Key:** TakeOffID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblTakeOff$PrimaryKey [primary, unique]: TakeOffID
+
+**Row count:** 45719
+
+### tblTakeOffMonth (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TakeOffMonthID | Long | 4 | no |  |
+| TakeOffDate | DateTime | 8 | yes |  |
+| WF Balance | Currency | 8 | yes |  |
+| SumUncashed | Currency | 8 | yes |  |
+| SumUncleared | Currency | 8 | yes |  |
+| WFplusuncashed | Currency | 8 | yes |  |
+| WFActual | Currency | 8 | yes |  |
+| ReconcileValue | Currency | 8 | yes |  |
+| DaleBalance | Currency | 8 | yes |  |
+| DaleActual | Currency | 8 | yes |  |
+| SomBalance | Currency | 8 | yes |  |
+| SomActual | Currency | 8 | yes |  |
+| CombinedTrust | Currency | 8 | yes |  |
+| AccReconciled | Boolean | 1 | yes |  |
+| JRTFees | Currency | 8 | yes |  |
+| DEBFees | Currency | 8 | yes |  |
+| GBFFees | Currency | 8 | yes |  |
+| PMFees | Currency | 8 | yes |  |
+| TDTFees | Currency | 8 | yes |  |
+| CBHFees | Currency | 8 | yes |  |
+| MKFees | Currency | 8 | yes |  |
+| MTFees | Currency | 8 | yes |  |
+| KDBFees | Currency | 8 | yes |  |
+| TotalTOEarned | Currency | 8 | yes |  |
+| TotalTOCostReimb | Currency | 8 | yes |  |
+| TotalTOCommissions | Currency | 8 | yes |  |
+| TotalCBHCommissions | Text | 255 | yes |  |
+| TotalCBHRev | Currency | 8 | yes |  |
+| TotalMKCommissions | Currency | 8 | yes |  |
+| TotalMKRev | Currency | 8 | yes |  |
+| TotalMTCommissions | Currency | 8 | yes |  |
+| TotalKDBCommissions | Currency | 8 | yes |  |
+| FeeDataInserted | Boolean | 1 | yes |  |
+| LastWF | Text | 255 | yes |  |
+| NHFees | Currency | 8 | yes |  |
+| RLFFees | Currency | 8 | yes |  |
+| RLFDeedFees | Currency | 8 | yes |  |
+| TotalRLFCommissions | Currency | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| JFFees | Currency | 8 | yes |  |
+| WNEFees | Currency | 8 | yes |  |
+
+**Primary Key:** TakeOffMonthID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblTakeOffMonth$PrimaryKey [primary, unique]: TakeOffMonthID
+
+**Row count:** 147
+
+### tblTimeTableDetail (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Time_ID | Long | 4 | no |  |
+| Bill_ID | Long | 4 | yes |  |
+| Tdate | DateTime | 8 | yes |  |
+| Description | Memo | 0 | yes |  |
+| Tatty | Text | 255 | yes |  |
+| Rate | Currency | 8 | yes |  |
+| Time_ | Double | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** Time_ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblTimeTableDetail$PrimaryKey [primary, unique]: Time_ID
+
+**Row count:** 61287
+
+### tblUsers (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| UserID | Text | 255 | no |  |
+| PWD | Text | 255 | no |  |
+| Access | Long | 4 | yes |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- tblUsers$PrimaryKey [primary, unique]: ID
+
+**Row count:** 50
+
+### tblYearMap (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| ID | Long | 4 | no |  |
+| YearNum | Double | 8 | yes |  |
+| YearID | Text | 255 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Row count:** 35
+
+### Trust Account (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TrustAccountID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| Credit | Currency | 8 | yes |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| CheckNumber | Text | 255 | yes |  |
+| DepCleared | Boolean | 1 | yes |  |
+| Reconciled | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| CostReimb | Boolean | 1 | yes |  |
+| AdvFee | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+
+**Primary Key:** TrustAccountID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- Trust Account$PrimaryKey [primary, unique]: TrustAccountID
+
+**Row count:** 44799
+
+### vw_advanced_payments (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Name | Memo | 0 | no |  |
+| FileNumber | Memo | 0 | yes |  |
+| MatterID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+| FirmPrepaid | Boolean | 1 | yes |  |
+| InsertPymt | Boolean | 1 | yes |  |
+| AdvancedLegal | Boolean | 1 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| CodeVal | Text | 255 | yes |  |
+| Creimb | Boolean | 1 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 542
+
+### vw_advanced_totals_SUM (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| SumOfCharge | Currency | 8 | yes |  |
+| FirmPrepaid | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 1180
+
+### vw_current_invoice (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Balance | Currency | 8 | yes |  |
+| Balance Due Date | DateTime | 8 | yes |  |
+| Billing Notes | Memo | 0 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| CaseID | Long | 4 | no |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 22953
+
+### vw_frm_invoices_summary (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| Name | Memo | 0 | no |  |
+| First_Name | Text | 255 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| SumOfCharge | Currency | 8 | yes |  |
+| SumOfPayment | Currency | 8 | yes |  |
+| SumOfBalance | Currency | 8 | yes |  |
+| BalanceCalculated | Currency | 8 | yes |  |
+| BalRetCalculated | Currency | 8 | yes |  |
+| FileNumber | Memo | 0 | yes |  |
+| Balance Due Date | DateTime | 8 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| CodeVal | Text | 255 | yes |  |
+| Executor | Text | 255 | yes |  |
+| LastOfInvSent | DateTime | 8 | yes |  |
+| Long Term Collections | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5641
+
+### vw_invoice_comprehensive_trust_acc_cur_unfiltered (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| balance | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 44799
+
+### vw_invoices_summary (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| Name | Memo | 0 | no |  |
+| First_Name | Text | 255 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| SumOfCharge | Currency | 8 | yes |  |
+| SumOfPayment | Currency | 8 | yes |  |
+| SumOfBalance | Currency | 8 | yes |  |
+| BalanceCalculated | Currency | 8 | yes |  |
+| BalRetCalculated | Currency | 8 | yes |  |
+| FileNumber | Memo | 0 | yes |  |
+| Balance Due Date | DateTime | 8 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| CodeVal | Text | 255 | yes |  |
+| Executor | Text | 255 | yes |  |
+| Long Term Collections | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5641
+
+### vw_last_invoice_sent (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| LastOfInvSent | DateTime | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 1900
+
+### vw_max_matterID_by_orderNr (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| MaxOfOrderNr | Long | 4 | yes |  |
+| MaxOfMatterID | Long | 4 | yes |  |
+| CaseID | Long | 4 | no |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5641
+
+### vw_rpt_Matter_Closing (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| MatterID | Long | 4 | no |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| RunningDebit | Currency | 8 | yes |  |
+| RunningCredit | Currency | 8 | yes |  |
+| RunningBalance | Currency | 8 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| RetBal | Currency | 8 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+
+**Primary Key:** MatterID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: MatterID
+
+**Row count:** 22953
+
+### vw_take_off_step2_sums (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TakeOffMonthID | Long | 4 | no |  |
+| SumOfCBHRev | Currency | 8 | yes |  |
+| SumOfMKRev | Currency | 8 | yes |  |
+| SumOfCBHCom | Currency | 8 | yes |  |
+| SumOfMTRev | Currency | 8 | yes |  |
+| SumOfMTCom | Currency | 8 | yes |  |
+| SumOfKBCom | Currency | 8 | yes |  |
+| SumOfMKCom | Currency | 8 | yes |  |
+| SumOfRLFCom | Currency | 8 | yes |  |
+| SumOfEarlyEarned | Currency | 8 | yes |  |
+| SumOfTOEarned | Currency | 8 | yes |  |
+| SumOfTOEarlyAndEarned | Currency | 8 | yes |  |
+| SumOfCostReimb | Currency | 8 | yes |  |
+
+**Primary Key:** TakeOffMonthID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: TakeOffMonthID
+
+**Row count:** 111
+
+### vw_time_table_totals_atty_SUM (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| SumOfSumOfAmount | Double | 8 | yes |  |
+| Tatty | Text | 255 | yes |  |
+| CaseID | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5738
+
+### vw_time_table_totals_SUM (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| SumOfSumOfAmount | Double | 8 | yes |  |
+| CaseID | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 2839
+
+### vwAdvLegalFeesSum (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| SumOfCharge | Currency | 8 | yes |  |
+| AdvancedLegal | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 925
+
+### vwARCreditsSum (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| SumOfPayment | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 165
+
+### vwBillingTracker2 (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Bill_ID | Long | 4 | yes |  |
+| Tdate | DateTime | 8 | yes |  |
+| Tatty | Text | 255 | yes |  |
+| Rate | Currency | 8 | yes |  |
+| Time_ | Double | 8 | yes |  |
+| Billed | Double | 8 | yes |  |
+| CaseID | Long | 4 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Name | Memo | 0 | yes |  |
+| FileNumber | Memo | 0 | yes |  |
+| Time_ID | Long | 4 | no |  |
+
+**Primary Key:** Time_ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: Time_ID
+
+**Row count:** 61287
+
+### vwCaseListOpen (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| ClientName | Memo | 0 | no |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Court | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| FileNumber | Memo | 0 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| CodeVal | Text | 255 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| PIStatus | Text | 50 | no |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 1990
+
+### vwCaseSourcesRPT (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Case_Letter | Text | 255 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| CaseNo | Memo | 0 | yes |  |
+| yr | Text | 254 | yes |  |
+| Total Earned Fee | Currency | 8 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 7000
+
+### vwCostReimbSUM (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 1072
+
+### vwDispos (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Case_Letter | Text | 255 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| Court | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Dispo_Atty | Text | 255 | yes |  |
+| Dispo_Date | DateTime | 8 | yes |  |
+| PI Settlement Amount | Currency | 8 | yes |  |
+| Entire np | Boolean | 1 | yes |  |
+| Not Guilty Dismissed | Boolean | 1 | yes |  |
+| Plea | Boolean | 1 | yes |  |
+| Trial | Boolean | 1 | yes |  |
+| Disposition | Memo | 0 | yes |  |
+| Name | Memo | 0 | yes |  |
+| Case No | Memo | 0 | yes |  |
+| Litigation | Boolean | 1 | yes |  |
+| CodeVal | Text | 255 | yes |  |
+| FieldName | Text | 255 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 6932
+
+### vwEarnedAdvLegalSUM (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 591
+
+### vwfrmClientLedger (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| FileNo | Memo | 0 | yes |  |
+| PartnerRate | Currency | 8 | yes |  |
+| AssocRate | Currency | 8 | yes |  |
+| FileLocation | Text | 50 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 12099
+
+### vwfrmTakeOffSubForm (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| FileNumber | Memo | 0 | yes |  |
+| Name | Memo | 0 | no |  |
+| CaseID | Long | 4 | no |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| TakeOffID | Long | 4 | yes |  |
+| TakeOffMonthID | Long | 4 | yes |  |
+| AvailBalance | Currency | 8 | yes |  |
+| TotalUnCashedChks | Currency | 8 | yes |  |
+| TotalUnclearedDeps | Currency | 8 | yes |  |
+| TotalAdvancedAR | Currency | 8 | yes |  |
+| EarlyEarned | Currency | 8 | yes |  |
+| TOEarned | Currency | 8 | yes |  |
+| TOAttBilled | Currency | 8 | yes |  |
+| CostReimb | Currency | 8 | yes |  |
+| CBHRev | Currency | 8 | yes |  |
+| MKRev | Currency | 8 | yes |  |
+| CBHCom | Currency | 8 | yes |  |
+| MTRev | Currency | 8 | yes |  |
+| MTCom | Currency | 8 | yes |  |
+| KBCom | Currency | 8 | yes |  |
+| MKCom | Currency | 8 | yes |  |
+| TOEarnedTr | Boolean | 1 | yes |  |
+| CostReimbTr | Boolean | 1 | yes |  |
+| InsertedTrust | Boolean | 1 | yes |  |
+| TotalHourlyOuts | Currency | 8 | yes |  |
+| OpenTK | Text | 20 | yes |  |
+| AdvCostBal | Currency | 8 | yes |  |
+| AdvFeeBal | Currency | 8 | yes |  |
+| CostHoldBal | Currency | 8 | yes |  |
+| BRRev | Currency | 8 | yes |  |
+| BRCom | Currency | 8 | yes |  |
+| RLFCom | Currency | 8 | yes |  |
+| AdvEarned | Currency | 8 | no |  |
+| RemEarned | Currency | 8 | yes |  |
+| SumOfCBHRev | Currency | 8 | yes |  |
+| SumOfMKRev | Currency | 8 | yes |  |
+| SumOfCBHCom | Currency | 8 | yes |  |
+| SumOfMTRev | Currency | 8 | yes |  |
+| SumOfMTCom | Currency | 8 | yes |  |
+| SumOfKBCom | Currency | 8 | yes |  |
+| SumOfMKCom | Currency | 8 | yes |  |
+| SumOfRLFCom | Currency | 8 | yes |  |
+| SumOfEarlyEarned | Currency | 8 | yes |  |
+| SumOfTOEarned | Currency | 8 | yes |  |
+| SumOfTOEarlyAndEarned | Currency | 8 | yes |  |
+| SumOfCostReimb | Currency | 8 | yes |  |
+
+**Primary Key:** TakeOffID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: TakeOffID
+
+**Row count:** 52463
+
+### vwInvoiceComprehensiveTrust (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TrustAccountID | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| Credit | Currency | 8 | yes |  |
+| CaseID | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 50212
+
+### vwInvoiceRPT (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| MatterID | Long | 4 | yes |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+| Case No | Memo | 0 | yes |  |
+| ID | Long | 4 | yes |  |
+| Balance Due Date | DateTime | 8 | yes |  |
+| Past Due | Boolean | 1 | yes |  |
+| Long Term Collections | Boolean | 1 | yes |  |
+| chkBalanceDue | Boolean | 1 | yes |  |
+| Billing Notes | Memo | 0 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 22953
+
+### vwInvoiceRPT1 (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| MatterID | Long | 4 | yes |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+| Case No | Memo | 0 | yes |  |
+| Balance Due Date | DateTime | 8 | yes |  |
+| Past Due | Boolean | 1 | yes |  |
+| Long Term Collections | Boolean | 1 | yes |  |
+| chkBalanceDue | Boolean | 1 | yes |  |
+| Billing Notes | Memo | 0 | yes |  |
+| RunningDebit | Currency | 8 | yes |  |
+| RunningCredit | Currency | 8 | yes |  |
+| RunningBalance | Currency | 8 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 22953
+
+### vwMatter (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| MatterID | Long | 4 | no |  |
+| Date2 | DateTime | 8 | yes |  |
+| CaseID | Long | 4 | no |  |
+| SumOfCharge | Currency | 8 | yes |  |
+| SumOfPayment | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+
+**Primary Key:** MatterID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: MatterID
+
+**Row count:** 22953
+
+### vwMatterAndAR (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| MatterID | Long | 4 | no |  |
+| CaseID | Long | 4 | no |  |
+| Date2 | DateTime | 8 | yes |  |
+| Pay_Outlay | Memo | 0 | yes |  |
+| Charge | Currency | 8 | yes |  |
+| Payment | Currency | 8 | yes |  |
+| Creimb | Boolean | 1 | yes |  |
+| FirmPrepaid | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| InsertPymt | Boolean | 1 | yes |  |
+| AdvancedLegal | Boolean | 1 | yes |  |
+| SumOfCharge | Currency | 8 | yes |  |
+| SumOfPayment | Currency | 8 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+
+**Primary Key:** MatterID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: MatterID
+
+**Row count:** 22953
+
+### vwMatterBalanceTotals (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| SumOfBalance | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5641
+
+### vwNewTrustComp (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | yes |  |
+| SumOfDebit | Currency | 8 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| TrustAccountID | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| Credit | Currency | 8 | yes |  |
+| CheckNumber | Text | 255 | yes |  |
+| Case No | Memo | 0 | yes |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| DepCleared | Boolean | 1 | yes |  |
+| Reconciled | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| Name | Memo | 0 | no |  |
+| FileNumber | Memo | 0 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 50212
+
+### vwPILogLatestDate (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| MaxEventDate | DateTime | 8 | yes |  |
+| ID | Long | 4 | yes |  |
+
+**Primary Key:** ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: ID
+
+**Row count:** 373
+
+### vwStmtTrustRPT (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| TrustAccountID | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| Credit | Currency | 8 | yes |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| CheckNumber | Text | 255 | yes |  |
+| Case No | Memo | 0 | yes |  |
+| DepCleared | Boolean | 1 | yes |  |
+| Reconciled | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 50212
+
+### vwStmtTrustRPT1 (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | yes |  |
+| SumOfDebit | Currency | 8 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| TrustAccountID | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| Credit | Currency | 8 | yes |  |
+| CheckNumber | Text | 255 | yes |  |
+| Case No | Memo | 0 | yes |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| DepCleared | Boolean | 1 | yes |  |
+| Reconciled | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| Name | Memo | 0 | no |  |
+| FileNumber | Memo | 0 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 50212
+
+### vwTakeOff_A (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| FileNumber | Memo | 0 | yes |  |
+| Name | Memo | 0 | no |  |
+| Orig_Atty | Text | 255 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| SumOfAdvancedAR | Currency | 8 | yes |  |
+| SumOfUnclearedDeposits | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| SumOfUncashedChecks | Currency | 8 | yes |  |
+| SumOfTotal | Double | 8 | yes |  |
+| IANumber | Text | 255 | yes |  |
+| Bill_ID | Long | 4 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| SumOfCostBalance | Currency | 8 | yes |  |
+| SumofPrepaid | Currency | 8 | yes |  |
+| SumAdvLegal | Currency | 8 | yes |  |
+| SumEarnedAdv | Currency | 8 | yes |  |
+| SumCostReimb | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 12101
+
+### vwTakeOff_trust_account (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| SumOfDebit | Currency | 8 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 6686
+
+### vwTakeOffStep2 (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| FileNumber | Memo | 0 | yes |  |
+| Name | Memo | 0 | no |  |
+| CaseID | Long | 4 | no |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| TakeOffID | Long | 4 | yes |  |
+| TakeOffMonthID | Long | 4 | yes |  |
+| AvailBalance | Currency | 8 | yes |  |
+| TotalUnCashedChks | Currency | 8 | yes |  |
+| TotalUnclearedDeps | Currency | 8 | yes |  |
+| TotalAdvancedAR | Currency | 8 | yes |  |
+| EarlyEarned | Currency | 8 | yes |  |
+| TOEarned | Currency | 8 | yes |  |
+| TOAttBilled | Currency | 8 | yes |  |
+| CostReimb | Currency | 8 | yes |  |
+| CBHRev | Currency | 8 | yes |  |
+| MKRev | Currency | 8 | yes |  |
+| CBHCom | Currency | 8 | yes |  |
+| MTRev | Currency | 8 | yes |  |
+| MTCom | Currency | 8 | yes |  |
+| KBCom | Currency | 8 | yes |  |
+| MKCom | Currency | 8 | yes |  |
+| TOEarnedTr | Boolean | 1 | yes |  |
+| CostReimbTr | Boolean | 1 | yes |  |
+| InsertedTrust | Boolean | 1 | yes |  |
+| TotalHourlyOuts | Currency | 8 | yes |  |
+| OpenTK | Text | 20 | yes |  |
+| AdvCostBal | Currency | 8 | yes |  |
+| AdvFeeBal | Currency | 8 | yes |  |
+| CostHoldBal | Currency | 8 | yes |  |
+| BRRev | Currency | 8 | yes |  |
+| BRCom | Currency | 8 | yes |  |
+| RLFCom | Currency | 8 | yes |  |
+| AdvEarned | Currency | 8 | no |  |
+| RemEarned | Currency | 8 | yes |  |
+
+**Primary Key:** TakeOffID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: TakeOffID
+
+**Row count:** 52463
+
+### vwTimeKeepingClosed (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Bill Sent | DateTime | 8 | yes |  |
+| Bill Paid | DateTime | 8 | yes |  |
+| Bill Closed | Boolean | 1 | yes |  |
+| BilL Closed Date | DateTime | 8 | yes |  |
+| Discount | Currency | 8 | yes |  |
+| IANumber | Text | 255 | yes |  |
+| FileNumber | Memo | 0 | yes |  |
+| BalanceCalculated | Double | 8 | yes |  |
+| CaseID | Long | 4 | no |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| Bill Open | DateTime | 8 | yes |  |
+| Name | Memo | 0 | no |  |
+| Bill_ID | Long | 4 | no |  |
+| TrustatClose | Currency | 8 | yes |  |
+| StatementLessTrust | Boolean | 1 | yes |  |
+| InvoiceExceedsTrust | Boolean | 1 | yes |  |
+| InvoiceTotalAdvance | Boolean | 1 | yes |  |
+| InvoiceNoAdvance | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 95
+
+### vwTimeKeepingOpen (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Bill Closed | Boolean | 1 | yes |  |
+| Bill_ID | Long | 4 | no |  |
+| IANumber | Text | 255 | yes |  |
+| FileNumber | Memo | 0 | yes |  |
+| BalanceCalculated | Double | 8 | yes |  |
+| CaseID | Long | 4 | no |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| Closed | Boolean | 1 | yes |  |
+| Clsdate | DateTime | 8 | yes |  |
+| Extended_Ledger | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Address | Text | 255 | yes |  |
+| CourtCaseNo | Text | 255 | yes |  |
+| City | Text | 255 | yes |  |
+| FamilyLaw | Boolean | 1 | yes |  |
+| State | Text | 255 | yes |  |
+| Zip | Text | 255 | yes |  |
+| Country | Text | 255 | yes |  |
+| HmPhone | Text | 255 | yes |  |
+| Action | Text | 255 | yes |  |
+| OtherPhone | Text | 255 | yes |  |
+| Fax | Text | 255 | yes |  |
+| WkPhone | Text | 255 | yes |  |
+| Comments | Memo | 0 | yes |  |
+| Email | Text | 255 | yes |  |
+| Referral | Text | 255 | yes |  |
+| Individual Referrer | Text | 255 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| SOL | DateTime | 8 | yes |  |
+| Court | Text | 255 | yes |  |
+| CType | Text | 255 | yes |  |
+| POfc | Text | 255 | yes |  |
+| ComplainingWitness | Text | 255 | yes |  |
+| DOB | DateTime | 8 | yes |  |
+| WkAddress | Text | 255 | yes |  |
+| WkCity | Text | 255 | yes |  |
+| WkState | Text | 255 | yes |  |
+| WkZip | Text | 255 | yes |  |
+| Pro Bono | Boolean | 1 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| Action_Needed_on_Payment | Boolean | 1 | yes |  |
+| SSN | Text | 255 | yes |  |
+| Employer Name | Text | 255 | yes |  |
+| Last Updated Contact Info | DateTime | 8 | yes |  |
+| Ocounsel | Text | 255 | yes |  |
+| Firm | Text | 255 | yes |  |
+| OC Address | Text | 255 | yes |  |
+| OC City | Text | 255 | yes |  |
+| OC State | Text | 255 | yes |  |
+| OC Zip | Text | 255 | yes |  |
+| OC Phone | Text | 255 | yes |  |
+| OC Email | Text | 255 | yes |  |
+| OC Fax | Text | 255 | yes |  |
+| Pro Bono PM | Text | 255 | yes |  |
+| Pro Bono JRT | Text | 255 | yes |  |
+| ContingencyFee | Boolean | 1 | yes |  |
+| AuthorityToTalkTo | Memo | 0 | yes |  |
+| Hourly | Boolean | 1 | yes |  |
+| Contingency | Boolean | 1 | yes |  |
+| Hybrid | Boolean | 1 | yes |  |
+| Family-Law | Boolean | 1 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+| Scan | Boolean | 1 | yes |  |
+| Scan Location | Memo | 0 | yes |  |
+| ScanNotAvail | Boolean | 1 | yes |  |
+| ParaLegal | Text | 255 | yes |  |
+| Spanish | Boolean | 1 | yes |  |
+| Offdate | DateTime | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| CltNarrative | Memo | 0 | yes |  |
+| ARTrustZero | Boolean | 1 | yes |  |
+| F73 | Text | 255 | yes |  |
+| F74 | Text | 255 | yes |  |
+| F75 | Text | 255 | yes |  |
+| F76 | Text | 255 | yes |  |
+| PhName1 | Text | 255 | yes |  |
+| PhName2 | Text | 255 | yes |  |
+| LengthRes | Text | 255 | yes |  |
+| LengthEmp | Text | 255 | yes |  |
+| LegalStatus | Text | 255 | yes |  |
+| CurrentBond | Text | 255 | yes |  |
+| CrRecord | Memo | 0 | yes |  |
+| TrustChronMemo | Memo | 0 | yes |  |
+| Executor | Text | 255 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| Reviewable | Boolean | 1 | yes |  |
+| ReviewReq | DateTime | 8 | yes |  |
+| ReviewReceivedDate | DateTime | 8 | yes |  |
+| ReviewReceived | Boolean | 1 | yes |  |
+| Testimonial | Memo | 0 | yes |  |
+| ReviewFollowUp | DateTime | 8 | yes |  |
+| Stars | Long | 4 | yes |  |
+| Review Source | Text | 255 | yes |  |
+| Review Date | DateTime | 8 | yes |  |
+| Title | Text | 255 | yes |  |
+| OPartyLast | Text | 255 | yes |  |
+| OPartyFirst | Text | 255 | yes |  |
+| OPartyDOB | DateTime | 8 | yes |  |
+| SSMA_TimeStamp | Binary | 8 | no |  |
+| Bill Open | DateTime | 8 | yes |  |
+| Name | Memo | 0 | no |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 1121
+
+### vwTimeTableDetail (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| Time_ID | Long | 4 | no |  |
+| Bill_ID | Long | 4 | yes |  |
+| Tdate | DateTime | 8 | yes |  |
+| Description | Memo | 0 | yes |  |
+| Tatty | Text | 255 | yes |  |
+| Rate | Currency | 8 | yes |  |
+| Time_ | Double | 8 | yes |  |
+| Amount | Double | 8 | yes |  |
+
+**Primary Key:** Time_ID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: Time_ID
+
+**Row count:** 61287
+
+### vwTKClose_A (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| FileNumber | Memo | 0 | yes |  |
+| Name | Memo | 0 | no |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Case_Letter | Text | 255 | yes |  |
+| HandlingAtty_Case | Text | 255 | yes |  |
+| SumOfAdvancedAR | Currency | 8 | yes |  |
+| CostHold | Currency | 8 | yes |  |
+| SumOfUnclearedDeposits | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| SumOfUncashedChecks | Currency | 8 | yes |  |
+| AvailBalance | Currency | 8 | yes |  |
+| BankBalance | Currency | 8 | yes |  |
+| SumOfTotal | Double | 8 | yes |  |
+| IANumber | Text | 255 | yes |  |
+| Bill_ID | Long | 4 | yes |  |
+| Retainer | Currency | 8 | yes |  |
+| RetainerReimb | Boolean | 1 | yes |  |
+| RetReimbAmount | Currency | 8 | yes |  |
+| MaxOfMatterID | Long | 4 | yes |  |
+| AROutstandingBalance | Currency | 8 | yes |  |
+| AdvanceCostBalance | Currency | 8 | yes |  |
+| AdvLegalFeeBalance | Currency | 8 | yes |  |
+| CostExpendedBalance | Currency | 8 | yes |  |
+| Fixed | Boolean | 1 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5643
+
+### vwTrustAccount (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| SumOfDebit | Currency | 8 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| TrustAccountID | Long | 4 | no |  |
+
+**Primary Key:** TrustAccountID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: TrustAccountID
+
+**Row count:** 44799
+
+### vwTrustAccountBalanceTotals (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | yes |  |
+| SumOfBalance | Currency | 8 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 6686
+
+### vwTrustAccountTable (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| TrustAccountID | Long | 4 | no |  |
+| CaseID | Long | 4 | yes |  |
+| TDate | DateTime | 8 | yes |  |
+| TMatter | Memo | 0 | yes |  |
+| Debit | Currency | 8 | yes |  |
+| Credit | Currency | 8 | yes |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| CheckNumber | Text | 255 | yes |  |
+| DepCleared | Boolean | 1 | yes |  |
+| Reconciled | Boolean | 1 | yes |  |
+| OrderNr | Long | 4 | yes |  |
+| CostReimb | Boolean | 1 | yes |  |
+| AdvFee | Boolean | 1 | yes |  |
+| SumOfDebit | Currency | 8 | yes |  |
+| SumOfCredit | Currency | 8 | yes |  |
+| Balance | Currency | 8 | yes |  |
+
+**Primary Key:** TrustAccountID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: TrustAccountID
+
+**Row count:** 44799
+
+### vwTrustCostsExpendedTotals (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| SumOfCostBalance | Currency | 8 | yes |  |
+| CaseID | Long | 4 | no |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 1957
+
+### vwTrustReportRPT (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| CaseNo | Memo | 0 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+| TrustAccountID | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 50212
+
+### vwTrustReportRPT1 (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| CaseID | Long | 4 | no |  |
+| Case_Letter | Text | 255 | yes |  |
+| yr | Text | 254 | yes |  |
+| Number_ | Long | 4 | yes |  |
+| Orig_Atty | Text | 255 | yes |  |
+| Matter_type | Text | 255 | yes |  |
+| CaseOpenDate | DateTime | 8 | yes |  |
+| SumOfBalance | Long | 4 | no |  |
+| CheckCashed | Boolean | 1 | yes |  |
+| CaseNo | Memo | 0 | yes |  |
+| Last_Name | Text | 255 | yes |  |
+| First_Name | Text | 255 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 12135
+
+### vwTrustTotalEarnedSum (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| SumOfSumOfCredit | Currency | 8 | yes |  |
+| CaseID | Long | 4 | no |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 6475
+
+### vwTTAmountHours_SUM_byAtty_TotalCaseID (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| SumOfSumOfTime_ | Double | 8 | yes |  |
+| Tatty | Text | 255 | yes |  |
+| CaseID | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 5738
+
+### vwTTAmountHours_TotalCaseID (linked)
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| SumOfSumOfTime_ | Double | 8 | yes |  |
+| CaseID | Long | 4 | yes |  |
+
+**Primary Key:** CaseID
+
+**Linked Connect:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater`
+
+**Indexes:**
+- UniqueIndex [primary, unique]: CaseID
+
+**Row count:** 2839
+
+### z_PCADataSources
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| PCADataSourceName | Text | 200 | no | "BaseTables" |
+| ApplicationStatus | Text | 50 | no |  |
+| DataSourceType | Text | 50 | yes | "" |
+| DataSourceConnectString | Text | 255 | yes | "" |
+| TablePrefix | Text | 50 | yes | "" |
+| TableSuffix | Text | 50 | yes | "" |
+| VisibleInSetupForm | Integer | 2 | yes | 0 |
+| MustBeConnectedForAppToRun | Integer | 2 | yes | 0 |
+| SQLServerName | Text | 255 | yes |  |
+
+**Primary Key:** PCADataSourceName, ApplicationStatus
+
+**Indexes:**
+- PrimaryKey [primary, unique]: PCADataSourceName, ApplicationStatus
+
+**Row count:** 2
+
+### z_PCADataSources_TableList
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| PCADataSourceName | Text | 50 | no | "TateBywater" |
+| ConnectAs | Text | 50 | no | "" |
+| ForeignTableName | Text | 50 | yes | "" |
+| IsView | Boolean | 1 | yes | No |
+| UniqueID | Text | 255 | yes |  |
+
+**Primary Key:** PCADataSourceName, ConnectAs
+
+**Indexes:**
+- PrimaryKey [primary, unique]: PCADataSourceName, ConnectAs
+- UniqueID: UniqueID
+
+**Row count:** 88
+
 ### z_PCASettings
-| Column | Type | Size |
-|--------|------|------|
-| INISection | VARCHAR | 50 |
-| INIKey | VARCHAR | 50 |
-| INIDescription | VARCHAR | 50 |
+| Column | Type | Size | Nullable | Default |
+|--------|------|------|----------|---------|
+| INISection | Text | 50 | no |  |
+| INIKey | Text | 50 | no | "" |
+| INIDescription | Text | 50 | yes |  |
+
+**Primary Key:** INISection, INIKey
+
+**Indexes:**
+- Key: INIKey
+- PrimaryKey [primary, unique]: INISection, INIKey
 
 **Row count:** 4
 
@@ -735,6 +3911,12 @@ SELECT qryTakeOff_A.CaseID, qryTakeOff_A.FileNumber, qryTakeOff_A.Name, qryTakeO
 ### qryTakeOff2
 ```sql
 SELECT tblCase.CaseID, Replace([Case_Letter] & [yr] & "-" & [Number_] & "-" & [Orig_Atty],"__","_") AS FileNumber, [Last_Name] & ", " & [First_Name] AS Name, tblCase.Orig_Atty, tblCase.HandlingAtty_Case, qryTakeOff_advanced_AR.SumOfCharge AS SumOfAdvancedAR, qryTakeOff_cost_hold.CostHold, qryTakeOff_uncleared_deposits.SumOfDebit AS SumOfUnclearedDeposits, qryTakeOff_trust_account.Balance, qryTakeOff_unchashed_checks.SumOfCredit AS SumOfUncashedChecks, [Balance]-Nz([SumOfUnclearedDeposits],0) AS ...
+```
+### qryTakeOffAvailBalance
+```sql
+SELECT CaseID, [Balance]-Nz([SumOfUnclearedDeposits],0) AS AvailBalance
+
+FROM qryTakeOff_A;
 ```
 ### qryTakeOffDate
 ```sql
@@ -1533,7 +4715,7 @@ WHERE ((([Trust Account].CheckCashed)=Yes)) OR ((([Trust Account].Dep...
 |------|-------|--------|
 | Forms | 94 | Intakes, Time Keeping, frmActionNeeded, frmActionNeededAll, frmActionNeededAll2, frmActionNeededAll3, frmAddUser, frmAdminLoginTK, frmApplicationLoad, frmAttyFeeGeneration, frmAttyNotes, frmBankruptcy, frmBilling, frmBrowse, frmBrowse_BackEnd, frmCalendarCheck, frmCalls, frmCallsList, frmCaseList, frmCaseListAll, frmCaseListClosed, frmCaseListOpen, frmCaseListOpen subform, frmChild, frmClientLedger, frmClientReviews, frmClientsConflict, frmConflictChk, frmCrimStatusReport, frmCtCaseNumbers, frmDisposition, frmDispositions, frmFamilyLaw, frmHearingDate, frmHome, frmHomeAdmin, frmHomeAdminLogin, frmIntakesConflicts, frmInvoiceSent, frmLogin, frmMatter, frmOkAlert, frmOpenReport, frmOppPartyConflict, frmPersInjDemand, frmPersInjLog, frmPersInjLog2, frmPersInjProvider, frmPersInjuryStatusReport, frmPersonalInjury, frmPersonalInjury2, frmReceipt, frmScanLocation, frmScansubform, frmSourceAnalytics, frmSubCH13Plans, frmSubPrevBankrupt, frmSubProofOfClaims, frmTKClose, frmTRUSTENTRIESCHRON, frmTakeOff, frmTakeOff2, frmTakeOffReconciliation, frmTakeOffSteps, frmTakeOffSubForm, frmTakeOffSubForm2, frmTakeOffSubForm3, frmTakeOffSubForm_OLD, frmTakeOffTest, frmTakeOffTotalFeesCosts, frmTimeKeepingClosed, frmTimeKeepingOpen, frmTimeTableDetail, frmTimeTableDetailMerge, frmToBeClosed, frmToBeScanned, frmTrustAccount, frmUpcoming Hearings, frmUsers, frmUsers_Edit, frmYearWiseCaseList, frmYesNoAlert, frm_Billing_Tracker, frm_Billing_Tracker2, frm_advanced_payments, frm_invoices_summary, frm_trust_summary, frm_uncashed_trust_checks, zClient Ledger OLD, zfrmFamilyLaw OLD, zfrmPersInjSOL, zfrmPersonalDetailsFamilyLaw, zfrmSelectCaseNum, zfrmSelectCaseNum_Discount |
 | Reports | 99 | Accounts Receivable, Case Sources and Revenue, Client Closing Sheet, Client_Trust_Accounts_for_PreTake_Off, Client_Trust_Accounts_for_Take_Off, Copy Of Client Closing Sheet, Invoice, Invoice - No Balance Due, Invoice - Past Due, Invoice Attach - Hourly, Invoice Attach - Hourly w Discount, Invoice2, New Invoice, Rpt_MergeInvTK, Statement of Trust Account, rptBillingTotals, rptClientNotes, rptComprehensiveTKStatement, rptCriminalStatus, rptCriminalStatusActionNeeded, rptCriminalStatusChargeNos, rptCriminalStatusNotesLog, rptCriminalStatusNotesLog2, rptCriminalStatusUpcHrgs, rptInvoiceComprARCur, rptInvoiceComprPymtsAR, rptInvoiceComprPymtsARCur, rptInvoiceComprTrustCur, rptInvoiceComprehensiveAR, rptInvoiceComprehensiveAR2, rptInvoiceComprehensiveTrust, rptInvoiceComprehensiveTrust2, rptLastTenOpen, rptLastWeekIntake, rptPISOLList, rptPIStatusSOL, rptPersInjProviderBills, rptPersInjStatusAction, rptPersInjStatusDemand, rptPersInjStatusLog, rptPersInjuryStatus, rptReceipt, rptReceiptC, rptReceiptR, rptReceiptRec, rptReconciliation, rptTKReport, rptTKReport2, rpt_Billing_Closing, rpt_CaseNumber_Closing, rpt_Compr_InvoiceADVCur, rpt_Compr_InvoiceStmtCur, rpt_Compr_InvoiceTKExCur, rpt_Comprehensive_Invoice, rpt_Comprehensive_Invoice2, rpt_Comprehensive_InvoiceADV, rpt_Comprehensive_InvoiceADVS, rpt_Comprehensive_InvoiceStmt, rpt_Comprehensive_InvoiceStmtS, rpt_Comprehensive_InvoiceTKEx, rpt_Comprehensive_InvoiceTKEx1, rpt_Comprehensive_InvoiceTKEx1S, rpt_Comprehensive_InvoiceTKEx2, rpt_Comprehensive_InvoiceTKEx2S, rpt_Comprehensive_InvoiceTKEx3Costs, rpt_Comprehensive_InvoiceTKEx3CostsS, rpt_Comprehensive_InvoiceTKLessTrustCostAR, rpt_Comprehensive_InvoiceTKLessTrustRep, rpt_Comprehensive_InvoiceTKLessTrustRep2, rpt_Disposition_Closing, rpt_File_Folder_Label, rpt_Main_Closing, rpt_Matter_Closing, rpt_MergeInvMatter, rpt_MergeInvTimeDetail, rpt_OpenCases, rpt_Open_Cases, rpt_Reconciliation sub, rpt_TKExceedsTrust, rpt_TKLessTrust, rpt_TKTotalAdvance, rpt_TimeDetail_Comprehensive, rpt_TimeDetail_Comprehensive2, rpt_Trust_Chron_35, rpt_Trust_Chron_35D, rpt_Trust_Chron_35W, rpt_Trust_Chron_65, rpt_Trust_Chron_65D, rpt_Trust_Chron_65W, rpt_Trust_Chron_95, rpt_Trust_Chron_95D, rpt_Trust_Chron_95W, rpt_Trust_Closing, rpt_address_label, rpt_address_labelEx, rpt_adj_address_label, rpt_ftrustee_address_label, rpt_opp_counsel_address_label, rpt_trustee_address_label |
-| Modules | 23 | AccessType, Authentication, CaseGeneratorModule, Configuration, Context, DocumentManagement, FormUtils, ModGeneric Func, ModUpload, Module1, OutlookApp, PcaStdLib, Relinking, UI Images, User, Util, ValidatedForm, basFindField, clsFormValidation, modErrmsgs, modFutureDateVarification, modGaz, mod_create_table_with_all_db_schema |
+| Modules | 24 | AccessType, Authentication, CaseGeneratorModule, Configuration, Context, DocumentManagement, DropboxService, FormUtils, ModGeneric Func, ModUpload, Module1, OutlookApp, PcaStdLib, Relinking, UI Images, User, Util, ValidatedForm, basFindField, clsFormValidation, modErrmsgs, modFutureDateVarification, modGaz, mod_create_table_with_all_db_schema |
 | Classes | 0 |  |
 | Macros | 0 |  |
 
@@ -1542,28 +4724,28 @@ WHERE ((([Trust Account].CheckCashed)=Yes)) OR ((([Trust Account].Dep...
 
 | Report | Data Source | Sections | Subreports |
 |--------|------------|----------|------------|
-| rpt_TKTotalAdvance | qryInvoiceAttachRPT1 | 7 | 0 |
+| rpt_TKTotalAdvance | qryInvoiceAttachRPT1 | 5 | 0 |
 | rpt_Matter_Closing | SELECT vw_rpt_Matter_Closing.CaseID, vw_rpt_Matter_Closing.M... | 3 | 0 |
-| rptCriminalStatusNotesLog | SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePers... | 3 | 0 |
+| rptCriminalStatusNotesLog | SELECT tblNotes.CaseID, tblNotes.NoteDate, tblNotes.NotePers... | 2 | 0 |
 | rpt_Trust_Closing | qryStmtTrustRPT1 | 3 | 0 |
 | rpt_Billing_Closing | SELECT tblCase.CaseID, Disposition.[Total Earned Fee] AS Exp... | 1 | 0 |
 | Accounts Receivable | qry_invoices_summaryRPT | 5 | 0 |
 | rpt_Main_Closing | tblCase | 3 | 5 |
-| rpt_Disposition_Closing | qry_Disposition_ClosingSheet | 3 | 0 |
-| rpt_CaseNumber_Closing | tbl_CtCaseNumbers | 5 | 0 |
+| rpt_Disposition_Closing | qry_Disposition_ClosingSheet | 1 | 0 |
+| rpt_CaseNumber_Closing | tbl_CtCaseNumbers | 2 | 0 |
 | Case Sources and Revenue | qryCaseSourcesRPT1 | 5 | 0 |
-| rpt_Comprehensive_InvoiceStmtS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
-| rpt_Comprehensive_InvoiceTKEx3Costs | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
+| rpt_Comprehensive_InvoiceStmtS | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 4 | 4 |
+| rpt_Comprehensive_InvoiceTKEx3Costs | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 4 | 4 |
 | Copy Of Client Closing Sheet | qryClosing RPT1 | 4 | 0 |
 | rpt_Compr_InvoiceADVCur | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 4 |
 | Client Closing Sheet | qryClosing RPT1 | 4 | 0 |
 | rptInvoiceComprehensiveTrust2 | qryInvoiceComprehensiveTrustCredit4 | 3 | 0 |
-| Client_Trust_Accounts_for_PreTake_Off | qryTakeOff | 5 | 0 |
-| Client_Trust_Accounts_for_Take_Off | qryAttyTrustAcctsTOff | 5 | 0 |
-| rpt_Reconciliation sub | SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qry... | 5 | 0 |
-| rpt_Comprehensive_Invoice | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 5 | 3 |
-| New Invoice | qry_current_invoice | 7 | 0 |
-| Invoice | qryInvoiceRPT1 | 7 | 0 |
+| Client_Trust_Accounts_for_PreTake_Off | qryTakeOff | 4 | 0 |
+| Client_Trust_Accounts_for_Take_Off | qryAttyTrustAcctsTOff | 4 | 0 |
+| rpt_Reconciliation sub | SELECT qryTakeOffStep2.FileNumber, qryTakeOffStep2.Name, qry... | 2 | 0 |
+| rpt_Comprehensive_Invoice | SELECT [TB Time Keeping].[Bill Closed], [TB Time Keeping].IA... | 4 | 3 |
+| New Invoice | qry_current_invoice | 6 | 0 |
+| Invoice | qryInvoiceRPT1 | 6 | 0 |
 | Invoice - No Balance Due | qryInvoiceRPT1 | 7 | 0 |
 | Invoice - Past Due | qryInvoiceRPT1 | 7 | 0 |
 | Invoice Attach - Hourly | qryInvoiceAttachRPT1 | 7 | 0 |
@@ -1747,10 +4929,27 @@ WHERE ((([Trust Account].CheckCashed)=Yes)) OR ((([Trust Account].Dep...
 |----------|-------|
 | Structured forms (`extract/forms/*.json`) | 94 |
 | Structured reports (`extract/reports/*.json`) | 99 |
-| Query index (`extract/queries/index.json`) | 213 |
-| VBA index (`extract/vba/index.json`) | 1200 procedures |
+| Query index (`extract/queries/index.json`) | 214 |
+| VBA index (`extract/vba/index.json`) | 1329 procedures |
 | Report lineage index (`extract/lineage/index.json`) | 99 reports |
+| Linked tables | 88 |
 | App manifest (`extract/app_manifest.json`) | 1 |
+
+## Migration Hints
+- **Startup object:** `frmHome` (database-properties)
+- **VBA red flags:**
+  - `createObject` (39)
+  - `eval` (1)
+  - `fileSystem` (20)
+  - `outputTo` (8)
+  - `runSql` (47)
+  - `setWarnings` (4)
+  - `transferSpreadsheet` (1)
+  - `transferText` (1)
+- **High-risk areas:**
+  - CreateObject calls found; external automation needs migration planning.
+  - File-system access (FileSystemObject/Kill/MkDir) found; reconcile with deployment model.
+  - 88 linked table(s) detected; back-end connectivity must be reproduced.
 
 ## Report Lineage Summary
 **Generated:** 99 lineage report(s)

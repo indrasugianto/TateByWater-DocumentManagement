@@ -1,6 +1,8 @@
 # Table: tbl_InvoiceSent *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tbl_InvoiceSent`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tbl_InvoiceSent`
+
+**Row count:** 12529
 
 ## Columns
 

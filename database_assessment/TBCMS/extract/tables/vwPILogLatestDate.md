@@ -1,6 +1,8 @@
 # Table: vwPILogLatestDate *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwPILogLatestDate`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwPILogLatestDate`
+
+**Row count:** 373
 
 ## Columns
 

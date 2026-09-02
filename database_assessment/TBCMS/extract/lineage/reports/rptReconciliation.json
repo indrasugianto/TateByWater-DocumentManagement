@@ -8,8 +8,8 @@
       "eventName": "onClick",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 4471,
-      "lineEnd": 4480,
+      "lineStart": 4472,
+      "lineEnd": 4481,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -27,22 +27,11 @@
   "relatedVbaProcedures": [
     {
       "objectType": "form",
-      "objectName": "frmAttyFeeGeneration",
-      "procedureName": "FilterMe",
-      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
-      "lineStart": 8563,
-      "lineEnd": 8575,
-      "usesDoCmd": [],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
       "objectName": "frmTakeOffReconciliation",
       "procedureName": "cmdInsertData_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffReconciliation.txt",
-      "lineStart": 3471,
-      "lineEnd": 3550,
+      "lineStart": 3495,
+      "lineEnd": 3574,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -51,11 +40,22 @@
     },
     {
       "objectType": "form",
+      "objectName": "frmAttyFeeGeneration",
+      "procedureName": "FilterMe",
+      "sourceFile": "extract/vba/forms/frmAttyFeeGeneration.txt",
+      "lineStart": 8493,
+      "lineEnd": 8505,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
       "objectName": "frmTakeOff",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 4471,
-      "lineEnd": 4480,
+      "lineStart": 4472,
+      "lineEnd": 4481,
       "usesDoCmd": [
         "OpenReport"
       ],
@@ -67,8 +67,8 @@
       "objectName": "frmTakeOff",
       "procedureName": "cmbInsertFees_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 4889,
-      "lineEnd": 4944,
+      "lineStart": 4890,
+      "lineEnd": 4945,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": []
@@ -78,8 +78,8 @@
       "objectName": "frmTakeOff",
       "procedureName": "fncRecordExists",
       "sourceFile": "extract/vba/forms/frmTakeOff.txt",
-      "lineStart": 4945,
-      "lineEnd": 5009,
+      "lineStart": 4946,
+      "lineEnd": 5010,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -91,8 +91,8 @@
       "objectName": "frmTakeOff2",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 767,
-      "lineEnd": 776,
+      "lineStart": 785,
+      "lineEnd": 794,
       "usesDoCmd": [
         "OpenReport"
       ],
@@ -104,8 +104,8 @@
       "objectName": "frmTakeOff2",
       "procedureName": "cmdShowReportTDT_Click",
       "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 1122,
-      "lineEnd": 1196,
+      "lineStart": 1140,
+      "lineEnd": 1214,
       "usesDoCmd": [
         "Close",
         "OpenReport"
@@ -118,8 +118,8 @@
       "objectName": "frmTakeOff2",
       "procedureName": "fncRecordExists",
       "sourceFile": "extract/vba/forms/frmTakeOff2.txt",
-      "lineStart": 1197,
-      "lineEnd": 1261,
+      "lineStart": 1215,
+      "lineEnd": 1279,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -131,8 +131,8 @@
       "objectName": "frmTakeOffTest",
       "procedureName": "cmd_PreviewReconReport_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 768,
-      "lineEnd": 777,
+      "lineStart": 785,
+      "lineEnd": 794,
       "usesDoCmd": [
         "OpenReport"
       ],
@@ -144,8 +144,8 @@
       "objectName": "frmTakeOffTest",
       "procedureName": "cmbInsertFees_Click",
       "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 1144,
-      "lineEnd": 1197,
+      "lineStart": 1161,
+      "lineEnd": 1214,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": []
@@ -155,8 +155,8 @@
       "objectName": "frmTakeOffTest",
       "procedureName": "fncRecordExists",
       "sourceFile": "extract/vba/forms/frmTakeOffTest.txt",
-      "lineStart": 1198,
-      "lineEnd": 1262,
+      "lineStart": 1215,
+      "lineEnd": 1279,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [

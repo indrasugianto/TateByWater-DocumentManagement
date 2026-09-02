@@ -12,9 +12,9 @@
 - Terminal Tables: vw_current_invoice
 
 ## Related VBA Procedures
-- form frmClientLedger::cmdInvoice_Click [19647-19676]
+- form frmClientLedger::cmdInvoice_Click [17831-17860]
 - form frm_invoices_summary::Cmd_PreviewNew_Click [8108-8138]
 - form frm_invoices_summary::Cmd_PrintNew_Click [8139-8170]
-- form zClient Ledger OLD::cmdInvoice_Click [7925-7945]
-- report rpt_Compr_InvoiceADVCur::Report_Open [1610-1646]
+- form zClient Ledger OLD::cmdInvoice_Click [7946-7966]
+- report rpt_Compr_InvoiceADVCur::Report_Open [1528-1564]
 - module modGaz::fncGetFilterOrderNrMatterAR [194-207]

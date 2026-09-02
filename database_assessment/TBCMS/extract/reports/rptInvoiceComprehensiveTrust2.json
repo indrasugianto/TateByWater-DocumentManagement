@@ -12,25 +12,9 @@
     "bottom": 240
   },
   "paperSize": 1,
-  "groupLevels": [
-    {
-      "fieldExpression": "CaseID",
-      "sortOrder": "ascending",
-      "groupHeader": true,
-      "groupFooter": true
-    },
-    {
-      "fieldExpression": "TDate",
-      "sortOrder": "ascending",
-      "groupHeader": false,
-      "groupFooter": false
-    }
-  ],
   "sections": [
     {
       "type": "Detail",
-      "height": 240,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -93,10 +77,6 @@
     {
       "type": "GroupHeader",
       "groupIndex": 0,
-      "groupField": "CaseID",
-      "height": 675,
-      "backColor": 15590879,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -218,9 +198,6 @@
     {
       "type": "GroupFooter",
       "groupIndex": 0,
-      "groupField": "CaseID",
-      "height": 435,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",

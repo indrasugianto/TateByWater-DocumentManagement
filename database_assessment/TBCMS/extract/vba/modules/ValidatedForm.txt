@@ -7,9 +7,9 @@ Option Compare Database
 Public WithEvents MyForm As Access.Form
 Attribute MyForm.VB_VarHelpID = -1
 
-Private Sub MyForm_Error(DataErr As Integer, Response As Integer)
+Private Sub MyForm_Error(DataErr As Integer, response As Integer)
     If DataErr = 2113 Then
         ShowMessage "Please enter proper data for " & Screen.ActiveControl.Name
-        Response = 0
+        response = 0
     End If
 End Sub

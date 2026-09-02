@@ -1,6 +1,8 @@
 # Table: vwTakeOff_trust_account *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTakeOff_trust_account`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTakeOff_trust_account`
+
+**Row count:** 6686
 
 ## Columns
 

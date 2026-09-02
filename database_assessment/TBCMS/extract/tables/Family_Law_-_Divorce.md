@@ -1,6 +1,8 @@
 # Table: Family Law - Divorce *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.Family Law - Divorce`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.Family Law - Divorce`
+
+**Row count:** 28
 
 ## Columns
 

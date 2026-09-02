@@ -1,6 +1,8 @@
 # Table: tblPersInjProv *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblPersInjProv`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblPersInjProv`
+
+**Row count:** 1940
 
 ## Columns
 

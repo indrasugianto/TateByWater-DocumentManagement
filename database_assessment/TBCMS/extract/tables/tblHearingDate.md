@@ -1,6 +1,8 @@
 # Table: tblHearingDate *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblHearingDate`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.tblHearingDate`
+
+**Row count:** 14670
 
 ## Columns
 

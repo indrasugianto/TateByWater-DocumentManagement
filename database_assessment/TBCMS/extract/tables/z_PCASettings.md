@@ -1,5 +1,7 @@
 # Table: z_PCASettings
 
+**Row count:** 4
+
 ## Columns
 
 | # | Column | Type | Size | Nullable | Default | Key | Notes |

@@ -3,25 +3,13 @@
   "dataSource": "qryInvoiceAttachRPT1",
   "triggerPaths": [
     {
-      "formName": "frmTimeKeepingOpen",
-      "controlName": "cmdPrintInvoice",
+      "formName": "frmHomeAdmin",
+      "controlName": "cmdDeleteAll",
       "eventName": "onClick",
-      "procedureName": "cmdPrintInvoice_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
-      "lineStart": 7408,
-      "lineEnd": 7431,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "frmTimeKeepingOpen",
-      "controlName": "cmdPreview",
-      "eventName": "onClick",
-      "procedureName": "cmdPreview_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
-      "lineStart": 7386,
-      "lineEnd": 7407,
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
+      "lineStart": 6313,
+      "lineEnd": 6450,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -32,8 +20,8 @@
       "eventName": "onClick",
       "procedureName": "CmdOpenInvoiceAttachReport_Click",
       "sourceFile": "extract/vba/forms/zfrmSelectCaseNum.txt",
-      "lineStart": 385,
-      "lineEnd": 404,
+      "lineStart": 395,
+      "lineEnd": 414,
       "confidence": "medium",
       "reportMentionType": "inferred",
       "via": "vba"
@@ -44,22 +32,10 @@
       "eventName": "onClick",
       "procedureName": "cmdDeleteAll_Click",
       "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1868,
-      "lineEnd": 2005,
+      "lineStart": 1832,
+      "lineEnd": 1969,
       "confidence": "high",
       "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "zfrmSelectCaseNum_Discount",
-      "controlName": "CmdOpenInvoiceAttachReport",
-      "eventName": "onClick",
-      "procedureName": "CmdOpenInvoiceAttachReport_Click",
-      "sourceFile": "extract/vba/forms/zfrmSelectCaseNum_Discount.txt",
-      "lineStart": 391,
-      "lineEnd": 410,
-      "confidence": "medium",
-      "reportMentionType": "inferred",
       "via": "vba"
     },
     {
@@ -68,8 +44,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecord_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 8105,
-      "lineEnd": 8221,
+      "lineStart": 8043,
+      "lineEnd": 8159,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -80,8 +56,8 @@
       "eventName": "onClick",
       "procedureName": "cmdPreview2_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7874,
-      "lineEnd": 7894,
+      "lineStart": 7812,
+      "lineEnd": 7832,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -92,10 +68,46 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordShort_Click",
       "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7925,
-      "lineEnd": 8041,
+      "lineStart": 7863,
+      "lineEnd": 7979,
       "confidence": "high",
       "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmTimeKeepingOpen",
+      "controlName": "cmdPrintInvoice",
+      "eventName": "onClick",
+      "procedureName": "cmdPrintInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7372,
+      "lineEnd": 7395,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "frmTimeKeepingOpen",
+      "controlName": "cmdPreview",
+      "eventName": "onClick",
+      "procedureName": "cmdPreview_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7350,
+      "lineEnd": 7371,
+      "confidence": "high",
+      "reportMentionType": "literal",
+      "via": "vba"
+    },
+    {
+      "formName": "zfrmSelectCaseNum_Discount",
+      "controlName": "CmdOpenInvoiceAttachReport",
+      "eventName": "onClick",
+      "procedureName": "CmdOpenInvoiceAttachReport_Click",
+      "sourceFile": "extract/vba/forms/zfrmSelectCaseNum_Discount.txt",
+      "lineStart": 400,
+      "lineEnd": 419,
+      "confidence": "medium",
+      "reportMentionType": "inferred",
       "via": "vba"
     },
     {
@@ -104,8 +116,8 @@
       "eventName": "onClick",
       "procedureName": "cmdPrintInvoice_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4465,
-      "lineEnd": 4498,
+      "lineStart": 4464,
+      "lineEnd": 4497,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -116,8 +128,8 @@
       "eventName": "onClick",
       "procedureName": "cmdPreview_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4669,
-      "lineEnd": 4687,
+      "lineStart": 4668,
+      "lineEnd": 4686,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -128,8 +140,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordTKStatement_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4517,
-      "lineEnd": 4632,
+      "lineStart": 4516,
+      "lineEnd": 4631,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -140,20 +152,8 @@
       "eventName": "onClick",
       "procedureName": "cmdRecordShortTK_Click",
       "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4238,
-      "lineEnd": 4355,
-      "confidence": "high",
-      "reportMentionType": "literal",
-      "via": "vba"
-    },
-    {
-      "formName": "frmHomeAdmin",
-      "controlName": "cmdDeleteAll",
-      "eventName": "onClick",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHomeAdmin.txt",
-      "lineStart": 6313,
-      "lineEnd": 6450,
+      "lineStart": 4237,
+      "lineEnd": 4354,
       "confidence": "high",
       "reportMentionType": "literal",
       "via": "vba"
@@ -200,8 +200,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmail_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18432,
-      "lineEnd": 18462,
+      "lineStart": 16616,
+      "lineEnd": 16646,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -214,8 +214,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmdClientReviewEmailESP_Click",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 18463,
-      "lineEnd": 18493,
+      "lineStart": 16647,
+      "lineEnd": 16677,
       "usesDoCmd": [],
       "usesSql": true,
       "redFlags": [
@@ -228,8 +228,8 @@
       "objectName": "frmClientLedger",
       "procedureName": "cmbFileNumbers_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19363,
-      "lineEnd": 19500,
+      "lineStart": 17547,
+      "lineEnd": 17684,
       "usesDoCmd": [
         "GoToRecord",
         "openform"
@@ -244,284 +244,11 @@
       "objectName": "frmClientLedger",
       "procedureName": "CaseOpenDate_AfterUpdate",
       "sourceFile": "extract/vba/forms/frmClientLedger.txt",
-      "lineStart": 19545,
-      "lineEnd": 19555,
+      "lineStart": 17729,
+      "lineEnd": 17739,
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingOpen",
-      "procedureName": "cmdPreview_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
-      "lineStart": 7386,
-      "lineEnd": 7407,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingOpen",
-      "procedureName": "cmdPrintInvoice_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
-      "lineStart": 7408,
-      "lineEnd": 7431,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "cmdSubmitToFamilyLaw_Click",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8066,
-      "lineEnd": 8096,
-      "usesDoCmd": [
-        "RunCommand",
-        "RunSQL",
-        "SetWarnings",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql",
-        "setWarnings"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "zClient Ledger OLD",
-      "procedureName": "CaseOpenDate_AfterUpdate",
-      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
-      "lineStart": 8122,
-      "lineEnd": 8126,
-      "usesDoCmd": [],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "zfrmSelectCaseNum",
-      "procedureName": "CmdOpenInvoiceAttachReport_Click",
-      "sourceFile": "extract/vba/forms/zfrmSelectCaseNum.txt",
-      "lineStart": 385,
-      "lineEnd": 404,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmHome",
-      "procedureName": "cmdDeleteAll_Click",
-      "sourceFile": "extract/vba/forms/frmHome.txt",
-      "lineStart": 1868,
-      "lineEnd": 2005,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "Quit",
-        "openform"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdClose_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7608,
-      "lineEnd": 7660,
-      "usesDoCmd": [
-        "Close"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Intakes",
-      "procedureName": "cmdCreateOpen_Click",
-      "sourceFile": "extract/vba/forms/Intakes.txt",
-      "lineStart": 7723,
-      "lineEnd": 7770,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "zfrmSelectCaseNum_Discount",
-      "procedureName": "CmdOpenInvoiceAttachReport_Click",
-      "sourceFile": "extract/vba/forms/zfrmSelectCaseNum_Discount.txt",
-      "lineStart": 391,
-      "lineEnd": 410,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdPrintInvoice_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7850,
-      "lineEnd": 7873,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdPreview2_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7874,
-      "lineEnd": 7894,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdRecordShort_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 7925,
-      "lineEnd": 8041,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "frmTimeKeepingClosed",
-      "procedureName": "cmdRecord_Click",
-      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
-      "lineStart": 8105,
-      "lineEnd": 8221,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdRecordShortTK_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4238,
-      "lineEnd": 4355,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdPrintInvoice_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4465,
-      "lineEnd": 4498,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": true,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdRecordTKStatement_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4517,
-      "lineEnd": 4632,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport",
-        "OutputTo"
-      ],
-      "usesSql": true,
-      "redFlags": [
-        "outputTo",
-        "runSql"
-      ]
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdPreview_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4669,
-      "lineEnd": 4687,
-      "usesDoCmd": [
-        "Close",
-        "OpenReport"
-      ],
-      "usesSql": false,
-      "redFlags": []
-    },
-    {
-      "objectType": "form",
-      "objectName": "Time Keeping",
-      "procedureName": "cmdInsertTime_Click",
-      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
-      "lineStart": 4688,
-      "lineEnd": 4711,
-      "usesDoCmd": [],
-      "usesSql": true,
-      "redFlags": [
-        "runSql"
-      ]
     },
     {
       "objectType": "form",
@@ -540,6 +267,279 @@
       "redFlags": [
         "runSql"
       ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zfrmSelectCaseNum",
+      "procedureName": "CmdOpenInvoiceAttachReport_Click",
+      "sourceFile": "extract/vba/forms/zfrmSelectCaseNum.txt",
+      "lineStart": 395,
+      "lineEnd": 414,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmHome",
+      "procedureName": "cmdDeleteAll_Click",
+      "sourceFile": "extract/vba/forms/frmHome.txt",
+      "lineStart": 1832,
+      "lineEnd": 1969,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "Quit",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdPrintInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7788,
+      "lineEnd": 7811,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdPreview2_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7812,
+      "lineEnd": 7832,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdRecordShort_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 7863,
+      "lineEnd": 7979,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingClosed",
+      "procedureName": "cmdRecord_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingClosed.txt",
+      "lineStart": 8043,
+      "lineEnd": 8159,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingOpen",
+      "procedureName": "cmdPreview_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7350,
+      "lineEnd": 7371,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "frmTimeKeepingOpen",
+      "procedureName": "cmdPrintInvoice_Click",
+      "sourceFile": "extract/vba/forms/frmTimeKeepingOpen.txt",
+      "lineStart": 7372,
+      "lineEnd": 7395,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "zfrmSelectCaseNum_Discount",
+      "procedureName": "CmdOpenInvoiceAttachReport_Click",
+      "sourceFile": "extract/vba/forms/zfrmSelectCaseNum_Discount.txt",
+      "lineStart": 400,
+      "lineEnd": 419,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdClose_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7636,
+      "lineEnd": 7688,
+      "usesDoCmd": [
+        "Close"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Intakes",
+      "procedureName": "cmdCreateOpen_Click",
+      "sourceFile": "extract/vba/forms/Intakes.txt",
+      "lineStart": 7751,
+      "lineEnd": 7798,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdRecordShortTK_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4237,
+      "lineEnd": 4354,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdPrintInvoice_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4464,
+      "lineEnd": 4497,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": true,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdRecordTKStatement_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4516,
+      "lineEnd": 4631,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport",
+        "OutputTo"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "outputTo",
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdPreview_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4668,
+      "lineEnd": 4686,
+      "usesDoCmd": [
+        "Close",
+        "OpenReport"
+      ],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "form",
+      "objectName": "Time Keeping",
+      "procedureName": "cmdInsertTime_Click",
+      "sourceFile": "extract/vba/forms/Time_Keeping.txt",
+      "lineStart": 4687,
+      "lineEnd": 4710,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "runSql"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "cmdSubmitToFamilyLaw_Click",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8087,
+      "lineEnd": 8117,
+      "usesDoCmd": [
+        "RunCommand",
+        "RunSQL",
+        "SetWarnings",
+        "openform"
+      ],
+      "usesSql": true,
+      "redFlags": [
+        "runSql",
+        "setWarnings"
+      ]
+    },
+    {
+      "objectType": "form",
+      "objectName": "zClient Ledger OLD",
+      "procedureName": "CaseOpenDate_AfterUpdate",
+      "sourceFile": "extract/vba/forms/zClient_Ledger_OLD.txt",
+      "lineStart": 8143,
+      "lineEnd": 8147,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
     },
     {
       "objectType": "module",
@@ -573,6 +573,45 @@
       "usesDoCmd": [],
       "usesSql": false,
       "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "MoveDocumentByCaseStatus",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1373,
+      "lineEnd": 1585,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "GetIntakeDocumentFileName",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1682,
+      "lineEnd": 1758,
+      "usesDoCmd": [],
+      "usesSql": false,
+      "redFlags": []
+    },
+    {
+      "objectType": "module",
+      "objectName": "DocumentManagement",
+      "procedureName": "Phase5_E2E_HappyPathTest",
+      "sourceFile": "extract/vba/modules/DocumentManagement.txt",
+      "lineStart": 1759,
+      "lineEnd": 2092,
+      "usesDoCmd": [],
+      "usesSql": true,
+      "redFlags": [
+        "createObject",
+        "fileSystem"
+      ]
     },
     {
       "objectType": "module",

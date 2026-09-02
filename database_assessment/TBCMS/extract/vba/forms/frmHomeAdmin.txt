@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =1118018204
+Checksum =-519165853
 Begin Form
     RecordSelectors = NotDefault
     NavigationButtons = NotDefault
@@ -23,7 +23,7 @@ Begin Form
         0xf9fdc3a5ef45e440
     End
     GUID = Begin
-        0x1d8cf8b6024fb54599e62edd653804b2
+        0x90ee560408ef4041966ab09f38a60c89
     End
     NameMap = Begin
         0x0acc0e5500000000000000000000000000000000000000000c00000005000000 ,
@@ -36,10 +36,10 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x000000009c000000000000000000000020367235ae0100000a00000000000000 ,
+        0x00000000000000000000000000000000404416d99c010000800316d99c010000 ,
         0x010408019c00b407032f000001000100ea0a6f08640001000f00580202000100 ,
-        0x5802010000004c6574746572007f0000a0f1f832ae0100000000000000000000 ,
-        0x504d6e859c000000000000000000000000000000000000000000000000000000 ,
+        0x5802010000004c657474657200010000705550819c0100000000000000000000 ,
+        0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000200 ,
         0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -107,7 +107,7 @@ Begin Form
     PrtDevNames = Begin
         0x080023003e000100000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000005553 ,
-        0x423030330000000000000000000000000000000000
+        0x4230303300000000000000000000000000000000000000000000000000
     End
     FilterOnLoad =0
     ShowPageMargins =0
@@ -122,12 +122,12 @@ Begin Form
     AlternateBackThemeColorIndex =1
     AlternateBackShade =95.0
     PrtDevModeW = Begin
-        0x0000000000000000d64ca2faf97f00000000000000000000d95e0194ffffffff ,
-        0x40266f859c000000f2493f5dae010000000fc90b000000008202000000000000 ,
+        0x000078ee9c01000000000000000000000000000000000000b6a17005fa7f0000 ,
+        0x50c91cc78800000005857005fa7f000010534ff79c010000408323f69c010000 ,
         0x01040801dc00b407032f000001000100ea0a6f08640001000f00580202000100 ,
-        0x5802010000004c0065007400740065007200000000000000082c6f859c000000 ,
-        0x0000000000000000000000000000000001005c0cae0100000000000000000000 ,
-        0x5007115dae010000000000000000000000000000000000000000000000000000 ,
+        0x5802010000004c006500740074006500720000000000000050c91cc788000000 ,
+        0x00090000000000000000000000000000408323f69c010000caab7005fa7f0000 ,
+        0xd8524ff79c010000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000200 ,
         0x0000000001008804bb0201008804bb0200000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
@@ -198,7 +198,7 @@ Begin Form
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
         0x0000000000000000000000000000000000000000550053004200300030003300 ,
         0x0000000000000000000000000000000000000000000000000000000000000000 ,
-        0x0000
+        0x000000000000000000000000000000000000
     End
     NoSaveCTIWhenDisabled =1
     Begin
@@ -326,7 +326,7 @@ Begin Form
             BackColor =7163693
             Name ="FormHeader"
             GUID = Begin
-                0xbc6deb6e40f99f4aac4bf3e3b5e2c7d6
+                0xa2b7720b6674794fb64f0baff8f2e79a
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -343,7 +343,7 @@ Begin Form
                     Caption ="Delete all data in the database"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xf6b94e117cac2c46bc779161a8274899
+                        0x707c554f42892646bae33c62df2d5939
                     End
                     LeftPadding =150
                     TopPadding =120
@@ -367,10 +367,10 @@ Begin Form
                     HoverForeThemeColorIndex =1
                     PressedForeThemeColorIndex =1
                     SoftEdges =1
-                    WebImagePaddingLeft =10
-                    WebImagePaddingTop =8
-                    WebImagePaddingRight =10
-                    WebImagePaddingBottom =8
+                    WebImagePaddingLeft =15
+                    WebImagePaddingTop =12
+                    WebImagePaddingRight =16
+                    WebImagePaddingBottom =13
                     Overlaps =1
                 End
                 Begin CommandButton
@@ -387,7 +387,7 @@ Begin Form
                     Caption ="&Close"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x0c2f0e0f3cdedd448a42e3dfb1dcc65b
+                        0x68693c3529450b4e8df9288012d6afe5
                     End
                     UnicodeAccessKey =67
 
@@ -416,10 +416,10 @@ Begin Form
                     PressedForeThemeColorIndex =1
                     QuickStyle =34
                     QuickStyleMask =-1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin Image
                     Left =16980
@@ -430,7 +430,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     Picture ="Home Button.ico"
                     GUID = Begin
-                        0x92a000badaebef489bde299015d234d4
+                        0xe0f510eff3edba48b36b6e7f4ba8476c
                     End
                     GroupTable =1
                     ImageData = Begin
@@ -5883,7 +5883,7 @@ Begin Form
             Height =7140
             Name ="Detail"
             GUID = Begin
-                0x233520965544b54898efdc89850bad4f
+                0x7b5b86ea459eea4c8cd09d8c8aa16aea
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -5900,7 +5900,7 @@ Begin Form
                     Caption ="Take Off Steps"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x21843ecbdeb6cd43b2297a27a692eed2
+                        0xb9847deaa9fd3641bf7ab1e6216d5a2f
                     End
 
                     LayoutCachedLeft =2220
@@ -5917,10 +5917,10 @@ Begin Form
                     OldBorderStyle =0
                     HoverColor =7961551
                     PressedColor =11830108
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =2
-                    WebImagePaddingBottom =2
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
                     Overlaps =1
                 End
                 Begin CommandButton
@@ -5935,7 +5935,7 @@ Begin Form
                     Caption ="Source Analytics"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x28d35bd18ec5334291a90fd4d7ff88d7
+                        0xa680abdb9204fa4cb2c1eacc51ce1c0c
                     End
 
                     LayoutCachedLeft =14460
@@ -5954,10 +5954,10 @@ Begin Form
                     HoverThemeColorIndex =0
                     HoverTint =85.0
                     PressedColor =7500402
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =2
-                    WebImagePaddingBottom =2
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
                     Overlaps =1
                 End
                 Begin CommandButton
@@ -5972,7 +5972,7 @@ Begin Form
                     Caption ="Trust Account (Chron)"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xd4a6e3fbc5898044b2b98d107d95e02c
+                        0xe7ece88d3cb98347a031c44fde63fb83
                     End
 
                     LayoutCachedLeft =6345
@@ -5989,10 +5989,10 @@ Begin Form
                     OldBorderStyle =0
                     HoverColor =12428174
                     PressedColor =1643706
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =2
-                    WebImagePaddingBottom =2
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
                     Overlaps =1
                 End
                 Begin CommandButton
@@ -6007,7 +6007,7 @@ Begin Form
                     Caption ="Reconciliation"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x58fd6953e059ae47a5109da6376c695b
+                        0xffee17d646e4f146a6e2c57ba5773de1
                     End
 
                     LayoutCachedLeft =6345
@@ -6027,10 +6027,10 @@ Begin Form
                     HoverForeThemeColorIndex =1
                     PressedForeThemeColorIndex =1
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -6044,7 +6044,7 @@ Begin Form
                     Caption ="TK CLOSE"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x601275b832bed740af0c798310a2f532
+                        0x362ff98a2673c242a6cb5b7213c6dfc6
                     End
 
                     LayoutCachedLeft =10440
@@ -6063,10 +6063,10 @@ Begin Form
                     HoverThemeColorIndex =7
                     HoverTint =60.0
                     PressedColor =5026082
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =2
-                    WebImagePaddingBottom =2
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =3
+                    WebImagePaddingBottom =3
                 End
                 Begin Label
                     OverlapFlags =85
@@ -6080,7 +6080,7 @@ Begin Form
                     Name ="Label119"
                     Caption ="ADMIN"
                     GUID = Begin
-                        0xcad961ba5f0825458dee7d12f1a835d1
+                        0x81e216d01d9ff64bafdc328d5812a6d8
                     End
                     LayoutCachedLeft =5820
                     LayoutCachedTop =660
@@ -6101,7 +6101,7 @@ Begin Form
                     Caption ="Take Off\015\012Transfer"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0x4a216591cee1664b96cbb6447a27f3b6
+                        0x38c995724f306648b93ee65f36679e67
                     End
 
                     LayoutCachedLeft =6360
@@ -6122,10 +6122,10 @@ Begin Form
                     PressedForeColor =0
                     PressedForeThemeColorIndex =0
                     SoftEdges =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin Image
                     PictureType =2
@@ -6135,7 +6135,7 @@ Begin Form
                     Name ="Image121"
                     Picture ="TB 2019 Attorneys, color_png"
                     GUID = Begin
-                        0x891d89152d1f29438a790fcf117615f1
+                        0xc0e04efd397d8b4da078a8fdd1d26667
                     End
 
                     LayoutCachedLeft =420
@@ -6151,7 +6151,7 @@ Begin Form
             BackColor =7163693
             Name ="FormFooter"
             GUID = Begin
-                0xdb6315df04cb6c4f8ee58e6da7b95408
+                0xaf4d54e55d0a774b91c93ee577becac5
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -6167,7 +6167,7 @@ Begin Form
                     Name ="Label61"
                     Caption ="Client Management System (vers. 1.0.0 - SQL)"
                     GUID = Begin
-                        0x041d41b91bdc734bb60bee992ea6ed75
+                        0x776a067111f6e3418c9d621654cea86b
                     End
                     LayoutCachedLeft =11790
                     LayoutCachedTop =420

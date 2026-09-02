@@ -13,19 +13,9 @@
     "bottom": 720
   },
   "paperSize": 1,
-  "groupLevels": [
-    {
-      "fieldExpression": "Balance Due Date",
-      "sortOrder": "ascending",
-      "groupHeader": false,
-      "groupFooter": false
-    }
-  ],
   "sections": [
     {
       "type": "Detail",
-      "height": 480,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -214,8 +204,6 @@
     },
     {
       "type": "ReportHeader",
-      "height": 975,
-      "keepTogether": true,
       "controls": [
         {
           "type": "Line",
@@ -256,8 +244,6 @@
     },
     {
       "type": "ReportFooter",
-      "height": 540,
-      "keepTogether": true,
       "controls": [
         {
           "type": "TextBox",
@@ -295,7 +281,6 @@
     },
     {
       "type": "PageHeader",
-      "height": 540,
       "controls": [
         {
           "type": "Label",
@@ -479,7 +464,6 @@
     },
     {
       "type": "PageFooter",
-      "height": 360,
       "controls": [
         {
           "type": "Label",

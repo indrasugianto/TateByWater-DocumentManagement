@@ -1,7 +1,7 @@
 Version =21
 VersionRequired =20
 PublishOption =1
-Checksum =1981183731
+Checksum =1922567973
 Begin Form
     RecordSelectors = NotDefault
     NavigationButtons = NotDefault
@@ -23,24 +23,24 @@ Begin Form
         0x6691623f2f5ee540
     End
     GUID = Begin
-        0xf38c7f96d5f44b4682da95d046495f25
+        0xec2203a814fddb4a973a10bbc33aba72
     End
     NameMap = Begin
-        0x0acc0e5500000000bdbf4c6d50708a41845ec55ead70720b00000000a63052d9 ,
-        0x51c4e5400000000000000000740062006c004e006f0074006500730000000000 ,
-        0x000066cc92bf4e687341b8a7b63f26149b5f07000000bdbf4c6d50708a41845e ,
-        0xc55ead70720b490044004e006f00740065007300000000000000fdda6fcc742f ,
-        0x7248a4e8efc8fd326c8307000000bdbf4c6d50708a41845ec55ead70720b4300 ,
-        0x610073006500490044000000000000008c6a74ec98283f489c9b27ccac405013 ,
-        0x07000000bdbf4c6d50708a41845ec55ead70720b4e006f007400650044006100 ,
-        0x7400650000000000000039bbce6ace3a5846adee8c38ec07d5eb07000000bdbf ,
-        0x4c6d50708a41845ec55ead70720b4e006f007400650050006500720073006f00 ,
-        0x6e000000000000009e114ce730743a438e049a72bb3c7f7007000000bdbf4c6d ,
-        0x50708a41845ec55ead70720b4e006f0074006500440065007300630072006900 ,
-        0x7000740069006f006e000000000000008a0f292608af84489355858be136fc12 ,
-        0x07000000bdbf4c6d50708a41845ec55ead70720b4e006f007400650054006900 ,
-        0x6d006500000000000000db306b4942849846bfd6c9aa18c0aed007000000bdbf ,
-        0x4c6d50708a41845ec55ead70720b530053004d0041005f00540069006d006500 ,
+        0x0acc0e5500000000ba44670239a9b74484cf1a8fe687d4a100000000722d32ca ,
+        0xb25de6400000000000000000740062006c004e006f0074006500730000000000 ,
+        0x00006272be5c6c57884facdfe708f066da9a07000000ba44670239a9b74484cf ,
+        0x1a8fe687d4a1490044004e006f0074006500730000000000000042128b9dc917 ,
+        0x834086567398ea4dbcda07000000ba44670239a9b74484cf1a8fe687d4a14300 ,
+        0x61007300650049004400000000000000010c85d014724a45994f9dd7a130578e ,
+        0x07000000ba44670239a9b74484cf1a8fe687d4a14e006f007400650044006100 ,
+        0x740065000000000000002ff89be7e6fef74d8251bc1a1421509c07000000ba44 ,
+        0x670239a9b74484cf1a8fe687d4a14e006f007400650050006500720073006f00 ,
+        0x6e00000000000000b8974436a0fe734b8849cb68f7d4fb5607000000ba446702 ,
+        0x39a9b74484cf1a8fe687d4a14e006f0074006500440065007300630072006900 ,
+        0x7000740069006f006e00000000000000b106ca45d59aec48ad735f1d54b3f805 ,
+        0x07000000ba44670239a9b74484cf1a8fe687d4a14e006f007400650054006900 ,
+        0x6d006500000000000000770ce171904e0940bd621e288aab999607000000ba44 ,
+        0x670239a9b74484cf1a8fe687d4a1530053004d0041005f00540069006d006500 ,
         0x5300740061006d00700000000000000000000000000000000000000000000000 ,
         0x0c000000050000000000000000000000000000000000
     End
@@ -66,7 +66,10 @@ Begin Form
         Begin Label
             BackStyle =0
             FontSize =11
+            BorderColor =8355711
+            ForeColor =8355711
             FontName ="Calibri"
+            GridlineColor =10921638
             ThemeFontIndex =1
             BackThemeColorIndex =1
             BorderThemeColorIndex =0
@@ -79,7 +82,9 @@ Begin Form
         Begin CommandButton
             FontSize =11
             FontWeight =400
+            ForeColor =4210752
             FontName ="Calibri"
+            GridlineColor =10921638
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
@@ -87,19 +92,24 @@ Begin Form
             UseTheme =1
             Shape =1
             Gradient =12
+            BackColor =14461583
             BackThemeColorIndex =4
             BackTint =60.0
             BorderLineStyle =0
-            BorderColor =16777215
+            BorderColor =14461583
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
+            HoverColor =15189940
             HoverThemeColorIndex =4
             HoverTint =40.0
+            PressedColor =9917743
             PressedThemeColorIndex =4
             PressedShade =75.0
+            HoverForeColor =4210752
             HoverForeThemeColorIndex =0
             HoverForeTint =75.0
+            PressedForeColor =4210752
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
         End
@@ -109,8 +119,11 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =4210752
             FontName ="Calibri"
             AsianLineBreak =1
+            GridlineColor =10921638
             BackThemeColorIndex =1
             BorderThemeColorIndex =1
             BorderShade =65.0
@@ -125,7 +138,10 @@ Begin Form
             BorderLineStyle =0
             LabelX =-1800
             FontSize =11
+            BorderColor =10921638
+            ForeColor =3484194
             FontName ="Calibri"
+            GridlineColor =10921638
             AllowValueListEdits =1
             InheritValueList =1
             ThemeFontIndex =1
@@ -142,7 +158,7 @@ Begin Form
             BackColor =11830108
             Name ="FormHeader"
             GUID = Begin
-                0x9be528f1b8ee0344b5a6f40261d4bc3a
+                0x72f768d79ad7094e95411ac28a9ee267
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
@@ -154,14 +170,12 @@ Begin Form
                     Width =660
                     Height =300
                     FontWeight =700
-                    BorderColor =8355711
                     ForeColor =16777215
                     Name ="Label0"
                     Caption ="DATE"
                     GUID = Begin
-                        0xd18c5543d885d9498c0b0343a6a6efbd
+                        0xf2a9756159ca2f43b9034080d03b60df
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =120
                     LayoutCachedTop =60
                     LayoutCachedWidth =780
@@ -176,14 +190,12 @@ Begin Form
                     Width =990
                     Height =300
                     FontWeight =700
-                    BorderColor =8355711
                     ForeColor =16777215
                     Name ="Label1"
                     Caption ="Atty/Staff"
                     GUID = Begin
-                        0xa9effc01be3d724b989e0594ff3747b3
+                        0x99edd8ddcfb5754090a74f2fb4dced2a
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =1440
                     LayoutCachedTop =75
                     LayoutCachedWidth =2430
@@ -202,9 +214,8 @@ Begin Form
                     Name ="cmdPrintNotes"
                     OnClick ="[Event Procedure]"
                     GUID = Begin
-                        0xa404b8702cf3b449ac72204f3c5518d0
+                        0xf7c8757e1526a349b58b83e72fdd7b98
                     End
-                    GridlineColor =10921638
                     ImageData = Begin
                         0x2800000010000000100000000100200000000000000000000000000000000000 ,
                         0x000000000000000000000000000000000000000000000000727272ff727272ff ,
@@ -264,16 +275,18 @@ Begin Form
                     PressedThemeColorIndex =5
                     PressedTint =20.0
                     PressedShade =100.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     QuickStyle =34
                     QuickStyleMask =-1009
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =3
+                    WebImagePaddingTop =3
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =2
                 End
                 Begin Label
                     FontItalic = NotDefault
@@ -284,14 +297,12 @@ Begin Form
                     Width =990
                     Height =300
                     FontWeight =700
-                    BorderColor =8355711
                     ForeColor =16777215
                     Name ="Label9"
                     Caption ="Time"
                     GUID = Begin
-                        0x901b07aab707a5459a6b2da898f36a24
+                        0x37e3adae8f35c04495ae2f8c2025fd70
                     End
-                    GridlineColor =10921638
                     LayoutCachedLeft =2880
                     LayoutCachedTop =60
                     LayoutCachedWidth =3870
@@ -311,13 +322,11 @@ Begin Form
                     FontSize =9
                     TabIndex =1
                     BorderColor =14277081
-                    ForeColor =4210752
                     Name ="Text10"
                     ControlSource ="CaseID"
                     GUID = Begin
-                        0xe31c32fee4cf0448843b270a05e6451d
+                        0x0e16ca12f8f6b94e9f9fa88825ce7252
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =4155
                     LayoutCachedTop =30
@@ -331,7 +340,7 @@ Begin Form
             Height =1500
             Name ="Detail"
             GUID = Begin
-                0x486a9e163568554aae7f83c793a46970
+                0x869432fcee459548977486014b71bed9
             End
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -347,13 +356,11 @@ Begin Form
                     Height =315
                     FontSize =9
                     BorderColor =14277081
-                    ForeColor =4210752
                     Name ="NoteDate"
                     ControlSource ="NoteDate"
                     GUID = Begin
-                        0xadf7f6c14d9ea64ab0e8db1cb432ec89
+                        0x7bd7a6ce65b8c84d9d74fb79fc9b2ffc
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =60
                     LayoutCachedTop =60
@@ -373,15 +380,13 @@ Begin Form
                     FontSize =9
                     TabIndex =1
                     BorderColor =14277081
-                    ForeColor =3484194
                     GUID = Begin
-                        0x1d5f5230f677944c92cd79d9f9e9f2db
+                        0x38f5204f82be8f4eba5017af846877fa
                     End
                     Name ="cmbNotePerson"
                     ControlSource ="NotePerson"
                     RowSourceType ="Value List"
                     RowSource ="JRT;DEB;PM;TDT;NH;RLF;CMH;BA;KDB;RRL;WNE;HG;IQ;AO;KP;JO;KM"
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =1440
                     LayoutCachedTop =60
@@ -399,13 +404,11 @@ Begin Form
                     FontSize =8
                     TabIndex =3
                     BorderColor =14277081
-                    ForeColor =4210752
                     Name ="NoteDescription"
                     ControlSource ="NoteDescription"
                     GUID = Begin
-                        0xebc9cea1905cc044930c8dcc07659ed4
+                        0x250044baf3881b48a7625a33f205683d
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =60
                     LayoutCachedTop =420
@@ -426,13 +429,12 @@ Begin Form
                     Caption ="Command19"
                     ControlTipText ="Delete Record"
                     GUID = Begin
-                        0xc609c9767bc13044b0bb4f4f1d55d3c8
+                        0x86a84b9a705893498525b96c9c10ba38
                     End
                     LeftPadding =105
                     TopPadding =60
                     RightPadding =120
                     BottomPadding =165
-                    GridlineColor =10921638
                     OnClickEmMacro = Begin
                         Version =196611
                         ColumnsShown =10
@@ -540,6 +542,7 @@ Begin Form
                     ForeThemeColorIndex =1
                     ForeTint =100.0
                     Gradient =0
+                    BackColor =16777215
                     BackThemeColorIndex =1
                     BackTint =100.0
                     OldBorderStyle =0
@@ -552,15 +555,18 @@ Begin Form
                     PressedColor =0
                     PressedThemeColorIndex =0
                     PressedShade =80.0
+                    HoverForeColor =16777215
                     HoverForeThemeColorIndex =1
                     HoverForeTint =100.0
+                    PressedForeColor =16777215
                     PressedForeThemeColorIndex =1
                     PressedForeTint =100.0
                     Shadow =-1
                     QuickStyle =36
                     QuickStyleMask =-369
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
+                    WebImagePaddingLeft =1
+                    WebImagePaddingRight =2
+                    WebImagePaddingBottom =3
                     Overlaps =1
                 End
                 Begin TextBox
@@ -574,14 +580,12 @@ Begin Form
                     FontSize =9
                     TabIndex =4
                     BorderColor =14277081
-                    ForeColor =4210752
                     Name ="=NoteTime"
                     ControlSource ="NoteTime"
                     EventProcPrefix ="Ctl_NoteTime"
                     GUID = Begin
-                        0x76a23a1f4b80ac468cac5c7fc269b5cc
+                        0xdc7e959944bf394f990c6c1ee0cd9d4a
                     End
-                    GridlineColor =10921638
 
                     LayoutCachedLeft =2580
                     LayoutCachedTop =60
@@ -595,7 +599,7 @@ Begin Form
             Height =0
             Name ="FormFooter"
             GUID = Begin
-                0xe5ea0834231d284b8bc043926ff37133
+                0x030b35a16080af4e9ab236c22e639697
             End
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0

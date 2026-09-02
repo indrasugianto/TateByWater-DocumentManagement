@@ -1,6 +1,8 @@
 # Table: vwMatterAndAR *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwMatterAndAR`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwMatterAndAR`
+
+**Row count:** 22953
 
 ## Columns
 

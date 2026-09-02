@@ -1,6 +1,8 @@
 # Table: vwfrmClientLedger *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwfrmClientLedger`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwfrmClientLedger`
+
+**Row count:** 12099
 
 ## Columns
 

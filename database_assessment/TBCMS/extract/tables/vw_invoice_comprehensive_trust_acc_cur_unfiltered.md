@@ -1,6 +1,8 @@
 # Table: vw_invoice_comprehensive_trust_acc_cur_unfiltered *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_invoice_comprehensive_trust_acc_cur_unfiltered`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vw_invoice_comprehensive_trust_acc_cur_unfiltered`
+
+**Row count:** 44799
 
 ## Columns
 

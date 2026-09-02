@@ -1,6 +1,8 @@
 # Table: vwTimeTableDetail *(linked)*
 
-**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=tbf-cms;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTimeTableDetail`
+**Linked source:** `ODBC;DRIVER=SQL Server;SERVER=awsql2022dev;APP=Microsoft Office;DATABASE=TateBywater` → `dbo.vwTimeTableDetail`
+
+**Row count:** 61287
 
 ## Columns
 
