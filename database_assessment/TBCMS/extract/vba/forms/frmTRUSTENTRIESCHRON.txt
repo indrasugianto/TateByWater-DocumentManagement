@@ -2490,7 +2490,12 @@ Private Sub cmdRequery_Click()
     Me.txtSumOfUncashed = DLookup("SumOfCredit", "qryReconciliation_sumOfCredit")  'Not cashed! please check qyery !
     Me.txtSumOfUnclearDeposits = DLookup("SumOfDebit", "qryReconciliation_sumOfUnclearedDeposits")
 
-    If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Or IsNull(Me.txtSumOfUnclearDeposits) Then
+    ' LEGACY (pre-2026-09-02 guard narrowing, see .docs/reconciliation-forms-null-calculation-followup-2026-09-02.md)
+    'If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Or IsNull(Me.txtSumOfUnclearDeposits) Then
+    ' txtSumOfUnclearDeposits excluded: [Trust Account].DepCleared has never been True for any row
+    ' (0 of 44,799, back to 1899-12-30), so qryReconciliation_sumOfUnclearedDeposits is permanently
+    ' Null. The Nz() below already treats it as $0.00 - the value txt_WF_CHK has always used.
+    If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Then
         MsgBox "One or more reconciliation values could not be calculated (Null)." & vbCrLf & _
                "Do not rely on txt_WF_CHK until this is resolved.", vbExclamation, "TB CMS"
     End If
@@ -2520,7 +2525,12 @@ Private Sub Form_Load()
     Me.txtSumOfUncashed = DLookup("SumOfCredit", "qryReconciliation_sumOfCredit")  'Not cashed! please check qyery !
     Me.txtSumOfUnclearDeposits = DLookup("SumOfDebit", "qryReconciliation_sumOfUnclearedDeposits")
 
-    If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Or IsNull(Me.txtSumOfUnclearDeposits) Then
+    ' LEGACY (pre-2026-09-02 guard narrowing, see .docs/reconciliation-forms-null-calculation-followup-2026-09-02.md)
+    'If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Or IsNull(Me.txtSumOfUnclearDeposits) Then
+    ' txtSumOfUnclearDeposits excluded: [Trust Account].DepCleared has never been True for any row
+    ' (0 of 44,799, back to 1899-12-30), so qryReconciliation_sumOfUnclearedDeposits is permanently
+    ' Null. The Nz() below already treats it as $0.00 - the value txt_WF_CHK has always used.
+    If IsNull(Me.txtSumOfBalances) Or IsNull(Me.txtSumOfUncashed) Then
         MsgBox "One or more reconciliation values could not be calculated (Null)." & vbCrLf & _
                "Do not rely on txt_WF_CHK until this is resolved.", vbExclamation, "TB CMS"
     End If
